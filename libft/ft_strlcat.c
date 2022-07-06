@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: myko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 16:07:51 by myko              #+#    #+#             */
-/*   Updated: 2022/07/06 19:58:11 by myko             ###   ########.fr       */
+/*   Created: 2022/07/06 19:39:01 by myko              #+#    #+#             */
+/*   Updated: 2022/07/06 20:01:46 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <unistd.h>
-
-#endif
+size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
+{
+	return (dst);
+}
