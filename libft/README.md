@@ -1,6 +1,6 @@
 [0. 개념](#0.-개념)  
-[1. Part1 문제](#1.-Part1-문제)  
-[4. Test result](#4.-Test-result)
+[1. Part1 문제](#1.-part1-문제)  
+[4. Test result](#4.-test-result)
 
 
 # 0. 개념
