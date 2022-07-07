@@ -6,28 +6,32 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:18:20 by myko              #+#    #+#             */
-/*   Updated: 2022/07/07 19:18:22 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/08 06:43:49 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	find_i(char const *s, int i, char c)
+{
+	while (s[i] && s[i] == c)
+		i++;
+	return (i);
+}
 
 int	word_count(char const *s, char c)
 {
 	int	i;
 	int	cnt;
 
-	i = 0;
 	cnt = 0;
-	while (s[i] == c)
-		i++;
+	i = find_i(s, 0, c);
 	while (s[i])
 	{
-		while (s[i] != c)
+		while (s[i] && s[i] != c)
 			i++;
 		cnt++;
-		while (s[i] == c)
-			i++;
+		i = find_i(s, i, c);
 	}
 	return (cnt);
 }
@@ -39,26 +43,21 @@ char	**ft_str_input(char const *s, char **ss, char c)
 	int	k;
 	int	j;
 
-	i = 0;
 	k = 0;
-	j = 0;
-	while (s[i] == c)
-		i++;
-	e = i;
+	i = find_i(s, 0, c);
 	while (s[i])
 	{
-		while (s[e] != c)
+		e = i;
+		while (s[e] && s[e] != c)
 			e++;
-		ss[k] = (char *)malloc(sizeof(char) * (e - i + 2));
+		ss[k] = (char *)malloc(sizeof(char) * (e - i + 1) + 1);
 		if (ss[k] == 0)
 			return (0);
+		j = 0;
 		while (i < e)
 			ss[k][j++] = s[i++];
 		ss[k++][j] = 0;
-		j = 0;
-		while (s[i] == c)
-			i++;
-		e = i;
+		i = find_i(s, i, c);
 	}
 	ss[k] = 0;
 	return (ss);
@@ -70,10 +69,13 @@ char	**ft_split(char const *s, char c)
 	char	**ss;
 
 	w_cnt = word_count(s, c);
-	if (w_cnt == 0)
-		return (0);
 	ss = (char **)malloc(sizeof(char *) * (w_cnt + 1));
 	if (ss == 0)
 		return (0);
+	if (w_cnt == 0)
+	{
+		ss[0] = 0;
+		return (ss);
+	}	
 	return (ft_str_input(s, ss, c));
 }
