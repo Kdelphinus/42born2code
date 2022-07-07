@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:49:23 by myko              #+#    #+#             */
-/*   Updated: 2022/07/06 17:10:46 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/07 14:43:07 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t	i;
 
-	i = -1;
-	while (++i < len)
+	i = 0;
+	while (i < len)
+	{
 		*(unsigned char *)(b + i) = (unsigned char)c;
+		i++;
+	}
 	return (b);
 }

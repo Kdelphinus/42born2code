@@ -6,13 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:07:51 by myko              #+#    #+#             */
-/*   Updated: 2022/07/06 19:58:11 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/07 14:11:27 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>
+# include <stdlib.h>
 
 #endif

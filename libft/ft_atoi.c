@@ -6,7 +6,7 @@
 /*   By: myko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 21:40:25 by myko              #+#    #+#             */
-/*   Updated: 2022/07/06 22:33:34 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/07 14:39:07 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	ft_atoi(char *str)
 		result = result * 10 + (str[i] - '0') * sign;
 		i++;
 	}
-	if (result > 2147483647)
-		return (result % 2147483647);
+	if (result < 0 && sign > 0)
+		return (-1);
+	if (result > 0 && sign < 0)
+		return (0);
 	return (result);
 }
