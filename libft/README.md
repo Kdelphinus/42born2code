@@ -244,19 +244,19 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 |:-:|:-:|:-:|:-:|:-:|
 |ft_memset|o|o|o|o|
 |ft_bzero|o|o|o|o|
-|ft_calloc|o|o|o|size_t를 넘어가는 범위는 libft에선 처리 불가(??)|
+|ft_calloc|o|o|o|MOK, size_t를 넘어가는 범위는 libft에선 처리 불가(??)|
 |ft_memcpy|o|o|o|o|
-|ft_memmove|x|x|x|x|
+|ft_memmove|o|o|o|o|
 |ft_memchr|o|o|o|o|
-|ft_memcmp|x|x|o|x|
+|ft_memcmp|o|o|o|o|
 |ft_strlen|o|o|o|o|
-|ft_strdup|o|o|o|o|
+|ft_strdup|o|o|o|MOK, o|
 |ft_strlcat|o|o|o|o|
 |ft_strlcpy|o|o|o|o|
 |ft_strchr|o|o|o|x|
 |ft_strrchr|o|o|o|x|
-|ft_strnstr|o|x|o|x|
-|ft_strncmp|x|x|o|x|
+|ft_strnstr|o|o|o|x|
+|ft_strncmp|o|o|o|x|
 |ft_atoi|o|o|o|o|
 |ft_isalpha|o|o|o|o|
 |ft_isdigit|o|o|o|o|
@@ -271,10 +271,10 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
 |:-:|:-:|:-:|:-:|:-:|
 |ft_strmapi|o|o|np||
-|ft_substr|o|o|np|x|
-|ft_strjoin|o|o|np|o|
-|ft_strtrim|o|x|np|x|
-|ft_split|x|x|x|x|
+|ft_substr|o|o|np|MOK, MKO|
+|ft_strjoin|o|o|np|MOK, o|
+|ft_strtrim|o|A|np|LEAKS.KO, MOK|
+|ft_split|x|x, A|crash, np|B, MOK|
 |ft_itoa|o|o|o||
 |ft_striteri|o|o|np||
 |ft_putchar_fd|o|o|o||
