@@ -255,13 +255,13 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 |:-:|:-:|:-:|:-:|:-:|
 |ft_memset|o|o|o|o|
 |ft_bzero|o|o|o|o|
-|ft_calloc|o|o|o|MOK, size_t를 넘어가는 범위는 libft에선 처리 불가(??)|
+|ft_calloc|o|o|o|size_t를 넘어가는 범위는 libft에선 처리 불가(??)|
 |ft_memcpy|o|o|o|o|
 |ft_memmove|o|o|o|o|
 |ft_memchr|o|o|o|o|
 |ft_memcmp|o|o|o|o|
 |ft_strlen|o|o|o|o|
-|ft_strdup|o|o|o|MOK, o|
+|ft_strdup|o|o|o|o|
 |ft_strlcat|o|o|o|o|
 |ft_strlcpy|o|o|o|o|
 |ft_strchr|o|o|o|o|
@@ -282,10 +282,10 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
 |:-:|:-:|:-:|:-:|:-:|
 |ft_strmapi|o|o|np||
-|ft_substr|o|o|np|MOK, MKO|
-|ft_strjoin|o|o|np|MOK, o|
-|ft_strtrim|o|A|np|LEAKS.KO, MOK|
-|ft_split|_**X**_|_**X**_, A|crash, np|B, MOK|
+|ft_substr|o|o|np|_**MKO**_|
+|ft_strjoin|o|o|np|o|
+|ft_strtrim|o|_**A**_|np|_**LEAKS.KO**_|
+|ft_split|_**X**_|_**X, A**_|_**crash**_, np|_**B**_|
 |ft_itoa|o|o|o||
 |ft_striteri|o|o|np||
 |ft_putchar_fd|o|o|o||
