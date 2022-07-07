@@ -6,13 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:19:04 by myko              #+#    #+#             */
-/*   Updated: 2022/07/07 19:19:05 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/08 03:20:55 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_partstrcmp(const char *haystack, const char *needle, size_t n)
+int	ft_partstrcmp(const char *haystack, const char *needle)
 {
 	size_t	i;
 
@@ -23,25 +23,29 @@ int	ft_partstrcmp(const char *haystack, const char *needle, size_t n)
 			return (0);
 		i++;
 	}
-	if (i < n)
-		return (1);
-	return (0);
+	return (1);
 }
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
+	size_t	n_len;
+	size_t	h_len;
 	char	*r;
 
 	i = 0;
 	r = (char *)haystack;
-	if (needle[0] == 0)
+	h_len = ft_strlen(haystack);
+	n_len = ft_strlen(needle);
+	if (n_len == 0)
 		return (r);
-	while (i < len)
+	if (len < n_len || h_len < n_len)
+		return (0);
+	while (i <= len - n_len && r[i])
 	{
-		if (haystack[i] == needle[0])
+		if (r[i] == needle[0])
 		{
-			if (ft_partstrcmp(haystack + i, needle, len - i + 1))
+			if (ft_partstrcmp(r + i, needle))
 				return (r + i);
 		}
 		i++;

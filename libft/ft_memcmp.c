@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:17:56 by myko              #+#    #+#             */
-/*   Updated: 2022/07/07 19:17:58 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/08 02:00:26 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	int		r;
 
 	i = 0;
-	if (*(unsigned char *)s1 == 0)
-		return (0);
 	while (i < n)
 	{
 		if (*(unsigned char *)(s1 + i) != *(unsigned char *)(s2 + i))
