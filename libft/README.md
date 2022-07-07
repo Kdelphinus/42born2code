@@ -1,37 +1,22 @@
-0. [개념](#0-개념)  
-	0.1 [void pointer](#01-void-pointer)  
-	0.2 [size_t](#02-size_t)  
-	0.3 [restrict](#03-restrict)  
-1. [Part1 문제](#1-part1-문제)  
-	1.1 [ft_memset](#11-ft_memset)  
-	1.2 [ft_bzero](#12-ft_bzero)  
-	1.3 [ft_calloc](#13-ft_calloc)  
-	1.4 [ft_memcpy](#14-ft_memcpy)  
-	1.5 [ft_memmove](#15-ft_memmove)  
-	1.6 [ft_memchr](#16-ft_memchr)  
-	1.7 [ft_memcmp](#17-ft_memcmp)  
-	1.8 [ft_strlen](#18-ft_strlen)  
-	1.9 [ft_strdup](#19-ft_strdup)  
-	1.10 [ft_strlcat](#110-ft_strlcat)  
-	1.11 [ft_strlcpy](#111-ft_strlcpy)  
-	1.12 [ft_strchr](#112-ft_strchr)  
-	1.13 [ft_strrchr](#113-ft_strrchr)  
-	1.14 [ft_strnstr](#114-ft_strnstr)  
-	1.15 [ft_strncmp](#115-ft_strncmp)  
-	1.16 [ft_atoi](#116-ft_atoi)  
-	1.17 [ft_isalpha](#117-ft_isalpha)  
-	1.18 [ft_isdigit](#118-ft_isdigit)  
-	1.19 [ft_isalnum](#119-ft_isalnum)  
-	1.20 [ft_isascii](#120-ft_isascii)  
-	1.21 [ft_isprint](#121-ft_isprint)  
-	1.22 [ft_toupper](#122-ft_toupper)  
-	1.23 [ft_tolower](#123-ft_tolower)  
-2. [Part2 문제](#2-part2-문제)  
-3. [Bonus 문제](#3-bonus-문제)  
-4. [Test result](#4-test-result)  
-	4.1 [Part1](#41-part1)  
-	4.2 [Part2](#42-part2)  
-	4.3 [Bonus](#43-bonus)  
+# Contents
+
+## 0. [개념](#0-개념)  
+- [void pointer](#01-void-pointer)  
+- [size_t](#02-size_t)  
+- [restrict](#03-restrict)  
+## 1. [Part1 문제](#1-part1-문제)  
+|[ft_memset](#11-ft_memset)|[ft_bzero](#12-ft_bzero)|[ft_calloc](#13-ft_calloc)|[ft_memcpy](#14-ft_memcpy)|[ft_memmove](#15-ft_memmove)|[ft_memchr](#16-ft_memchr)|
+|:---:|:---:|:---:|:---:|:---:|:---:|
+|[ft_memcmp](#17-ft_memcmp)|[ft_strlen](#18-ft_strlen)|[ft_strdup](#19-ft_strdup)|[ft_strlcat](#110-ft_strlcat)|[ft_strlcpy](#111-ft_strlcpy)|[ft_strchr](#112-ft_strchr)|
+|[ft_strrchr](#113-ft_strrchr)|[ft_strnstr](#114-ft_strnstr)|[ft_strncmp](#115-ft_strncmp)|[ft_atoi](#116-ft_atoi)|[ft_isalpha](#117-ft_isalpha)|[ft_isdigit](#118-ft_isdigit)|
+|[ft_isalnum](#119-ft_isalnum)|[ft_isascii](#120-ft_isascii)|[ft_isprint](#121-ft_isprint)|[ft_toupper](#122-ft_toupper)|[ft_tolower](#123-ft_tolower)||
+  
+## 2. [Part2 문제](#2-part2-문제)  
+## 3. [Bonus 문제](#3-bonus-문제)  
+## 4. [Test result](#4-test-result)  
+- [Part1](#41-part1)  
+- [Part2](#42-part2)  
+- [Bonus](#43-bonus)  
 
 
 # 0. 개념
