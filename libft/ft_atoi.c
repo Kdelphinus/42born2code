@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:17:18 by myko              #+#    #+#             */
-/*   Updated: 2022/07/07 19:17:22 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/07 20:52:03 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int			i;
 	int			sign;

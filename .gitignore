@@ -110,5 +110,7 @@ tags
 [._]*.un~
 
 libft-unit-test
+libft/libft-war-machine
+libft/libftTester
 
 # End of https://www.toptal.com/developers/gitignore/api/vim,macos,c
