@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 22:09:55 by myko              #+#    #+#              #
-#    Updated: 2022/07/07 22:12:45 by myko             ###   ########.fr        #
+#    Updated: 2022/07/08 08:11:24 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: clean all
+re: fclean all
 
 .PHONY: all bonus clean fclean re
