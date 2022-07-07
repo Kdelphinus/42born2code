@@ -253,8 +253,8 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 |ft_strdup|o|o|o|MOK, o|
 |ft_strlcat|o|o|o|o|
 |ft_strlcpy|o|o|o|o|
-|ft_strchr|o|o|o|x|
-|ft_strrchr|o|o|o|x|
+|ft_strchr|o|o|o|_**X**_|
+|ft_strrchr|o|o|o|_**X**_|
 |ft_strnstr|o|o|o|o|
 |ft_strncmp|o|o|o|o|
 |ft_atoi|o|o|o|o|
@@ -274,7 +274,7 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 |ft_substr|o|o|np|MOK, MKO|
 |ft_strjoin|o|o|np|MOK, o|
 |ft_strtrim|o|A|np|LEAKS.KO, MOK|
-|ft_split|x|x, A|crash, np|B, MOK|
+|ft_split|_**X**_|_**X**_, A|crash, np|B, MOK|
 |ft_itoa|o|o|o||
 |ft_striteri|o|o|np||
 |ft_putchar_fd|o|o|o||
@@ -285,12 +285,12 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 ## 4.3 Bonus
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
 |:-:|:-:|:-:|:-:|:-:|
-|ft_lstnew|x|x|x|x|
-|ft_lstdelone|x|x|x|x|
-|ft_lstclear|x|x|x|x|
-|ft_lstadd_front|x|x|x|x|
-|ft_lstadd_back|x|x|x|x|
-|ft_lstsize|x|x|x|x|
-|ft_lstiter|x|x|x|x|
-|ft_lstmap|x|x|x|x|
-|ft_lstlast|x|x|x|x|
+|ft_lstnew|_**X**_|_**X**_|_**X**_|_**X**_|
+|ft_lstdelone|_**X**_|_**X**_|_**X**_|_**X**_|
+|ft_lstclear|_**X**_|_**X**_|_**X**_|_**X**_|
+|ft_lstadd_front|_**X**_|_**X**_|_**X**_|_**X**_|
+|ft_lstadd_back|_**X**_|_**X**_|_**X**_|_**X**_|
+|ft_lstsize|_**X**_|_**X**_|_**X**_|_**X**_|
+|ft_lstiter|_**X**_|_**X**_|_**X**_|_**X**_|
+|ft_lstmap|_**X**_|_**X**_|_**X**_|_**X**_|
+|ft_lstlast|_**X**_|_**X**_|_**X**_|_**X**_|
