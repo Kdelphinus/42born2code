@@ -3,7 +3,35 @@
 	0.2 [size_t](#02-size_t)  
 	0.3 [restrict](#03-restrict)  
 1. [Part1 문제](#1-part1-문제)  
-4. [Test result](#4-test-result)
+	1.1 [ft_memset](#11-ft_memset)  
+	1.2 [ft_bzero](#12-ft_bzero)  
+	1.3 [ft_calloc](#13-ft_calloc)  
+	1.4 [ft_memcpy](#14-ft_memcpy)  
+	1.5 [ft_memmove](#15-ft_memmove)  
+	1.6 [ft_memchr](#16-ft_memchr)  
+	1.7 [ft_memcmp](#17-ft_memcmp)  
+	1.8 [ft_strlen](#18-ft_strlen)  
+	1.9 [ft_strdup](#19-ft_strdup)  
+	1.10 [ft_strlcat](#110-ft_strlcat)  
+	1.11 [ft_strlcpy](#111-ft_strlcpy)  
+	1.12 [ft_strchr](#112-ft_strchr)  
+	1.13 [ft_strrchr](#113-ft_strrchr)  
+	1.14 [ft_strnstr](#114-ft_strnstr)  
+	1.15 [ft_strncmp](#115-ft_strncmp)  
+	1.16 [ft_atoi](#116-ft_atoi)  
+	1.17 [ft_isalpha](#117-ft_isalpha)  
+	1.18 [ft_isdigit](#118-ft_isdigit)  
+	1.19 [ft_isalnum](#119-ft_isalnum)  
+	1.20 [ft_isascii](#120-ft_isascii)  
+	1.21 [ft_isprint](#121-ft_isprint)  
+	1.22 [ft_toupper](#122-ft_toupper)  
+	1.23 [ft_tolower](#123-ft_tolower)  
+2. [Part2 문제](#2-part2-문제)  
+3. [Bonus 문제](#3-bonus-문제)  
+4. [Test result](#4-test-result)  
+	4.1 [Part1](#41-part1)  
+	4.2 [Part2](#42-part2)  
+	4.3 [Bonus](#43-bonus)  
 
 
 # 0. 개념
@@ -226,7 +254,7 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 
 # 4. Test result
 
-## Part1
+## 4.1 Part1
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
 |:-:|:-:|:-:|:-:|:-:|
 |ft_memset|o|o|o|o|
@@ -254,7 +282,7 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 |ft_tolower|o|o|o|o|
 
 
-## Part2
+## 4.2 Part2
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
 |:-:|:-:|:-:|:-:|:-:|
 |ft_strmapi|o|o|np||
@@ -269,7 +297,7 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 |ft_putendl_fd|o|o|np||
 |ft_putnbr_fd|o|o|o||
 
-## Part3
+## 4.3 Bonus
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
 |:-:|:-:|:-:|:-:|:-:|
 |ft_lstnew|x|x|x|x|
