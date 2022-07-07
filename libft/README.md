@@ -1,3 +1,33 @@
+[0. 개념](#0.-개념)
+
+
+# 0. 개념
+
+## void pointer
+
+**void pointer**는 자료형이 정해져 있지 않기 떄문에 임의의 자료형 포인터도 받을 수 있다. 이는 다시 말해 가져올 값이나 저장할 값의 크기도 모른다는 의미다. 그렇기에 void pointer는 역참조가 불가하다. 그렇기에 void pointer를 받는 함수에 값을 넣기 위해선 형변환을 거쳐서 값을 대입해야 한다.
+
+> void  *b;
+> char  c;
+> *(char *)(b) = c;
+
+
+
+# Part1
+
+## ft_memset
+**void  \*ft_memset(void \*b, int c, size_t len);**
+- b: 바꿀 주소를 가리키는 포인터
+- c: 임의로 바꿀 값(부호 없는 문자로 변환됨)
+- len: 바꿀 크기
+  
+받은 주소에서 len의 길이만큼 c로 초기화하는 함수이다.  
+이때, c는 함수 내부에서 unsigned char로 변환되기 때문에 원하는 int형으로 바꾸기엔 무리가 있다.  
+> 메모리 단위로 바꾸기 위해 unsigned char로 변환한다.  
+
+
+# Test result
+
 ## Part1
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
 |:-:|:-:|:-:|:-:|:-:|
