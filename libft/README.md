@@ -267,11 +267,14 @@ ft_substr은 원본 문자열의 start 인덱스에서 최대 len 길의 문자�
 
 > 특이사항  
 >  
-> 1. start >= s_len  
+> 1. sstart >= s_len  
 > 만약 시작 인덱스가 주어진 원본 문자열을 벗어난다면 빈 문자열을 반환한다.
 >  
-> 2. s_len - start  
-> malloc할 때, 원본 문자열의 길이에서 시작 인덱스를 빼줘서 알맞는 문자열의 길이만 할당한다.  
+> 2. s_len - sstart  < len
+> 원본 문자열의 길이에서 시작 인덱스를 빼준 길이가 len보다 작다면 s_len - sstart만큼만 할당한다.   
+>   
+> 3. s_len - sstart >= len
+> 2번과 반대의 경우라면 최대 길이인 len만큼만 할당한다.  
 
 ## 2.3 ft_strjoin
 **```char	*ft_strjoin(char const *s1, char const *s2)```**
@@ -383,7 +386,7 @@ ft_putnbr_fd는 주어진 fd의 형태로 숫자를 문자열로 출력하는 �
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
 |:-:|:-:|:-:|:-:|:-:|
 |ft_strmapi|o|o|np|o|
-|ft_substr|o|o|_**X**_|o|
+|ft_substr|o|o|o|o|
 |ft_strjoin|o|o|np|o|
 |ft_strtrim|o|o|np|o|
 |ft_split|o|o|np|o|
