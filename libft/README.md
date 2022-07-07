@@ -382,17 +382,17 @@ ft_putnbr_fd는 주어진 fd의 형태로 숫자를 문자열로 출력하는 �
 ## 4.2 Part2
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
 |:-:|:-:|:-:|:-:|:-:|
-|ft_strmapi|o|o|np||
-|ft_substr|o|o|np|_**MKO**_|
+|ft_strmapi|o|o|np|o|
+|ft_substr|o|o|_**X**_|o|
 |ft_strjoin|o|o|np|o|
-|ft_strtrim|o|_**A**_|np|_**LEAKS.KO**_|
-|ft_split|_**X**_|_**X, A**_|_**crash**_, np|_**B**_|
-|ft_itoa|o|o|o||
-|ft_striteri|o|o|np||
-|ft_putchar_fd|o|o|o||
-|ft_putstr_fd|o|o|np||
-|ft_putendl_fd|o|o|np||
-|ft_putnbr_fd|o|o|o||
+|ft_strtrim|o|o|np|o|
+|ft_split|o|o|np|o|
+|ft_itoa|o|o|o|o|
+|ft_striteri|o|o|np|o|
+|ft_putchar_fd|o|o|o|o|
+|ft_putstr_fd|o|o|np|o|
+|ft_putendl_fd|o|o|np|o|
+|ft_putnbr_fd|o|o|o|o|
 
 ## 4.3 Bonus
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
