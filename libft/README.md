@@ -13,10 +13,10 @@
 |[ft_isalnum](#119-ft_isalnum)|[ft_isascii](#120-ft_isascii)|[ft_isprint](#121-ft_isprint)|[ft_toupper](#122-ft_toupper)|[ft_tolower](#123-ft_tolower)||
   
 ## 2. [Part2 문제](#2-part2-문제)  
-|||||
+|[ft_strmapi](#21-ft_strmapi)|[ft_substr](#22-ft_substr)|[ft_strjoin](#23-ft_strjoin)|[ft_strtrim](#24-ft_strtrim)|
 |:---:|:---:|:---:|:---:|
-|||||
-|||||
+|[ft_split](#25-ft_split)|[ft_itoa](#26-ft_itoa)|[ft_striteri](#27-ft_striteri)|[ft_putchar_fd](#28-ft_putchar_fd)|
+|[ft_putstr_fd](#29-ft_putstr_fd)|[ft_putendl_fd](#210-ft_putendl_fd)|[ft_putnbr_fd](#211-ft_putnbr_fd)||
 
 ## 3. [Bonus 문제](#3-bonus-문제)  
 ## 4. [Test result](#4-test-result)  
@@ -246,7 +246,108 @@ toupper는 받은 변수가 소문자이면 대문자로 바꾸고 그 외에 �
 **```int	ft_tolower(int c)```**
 - c: 바꿀 아스키 코드 값
 
-toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 값이면 그대로 반환하는 함수다.
+toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 값이면 그대로 반환하는 함수다.  
+  
+# 2. Part2 문제
+
+## 2.1 ft_strmapi
+**```char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))```**
+- s: 함수를 적용할 문자열
+- f: 문자열의 각 문자를 적용할 함수
+
+ft_strmapi는 해당 문자의 인덱스와 문자를 주어진 함수에 넣어 나온 값으로 새로운 문자열을 생성하는 함수다. 
+
+## 2.2 ft_substr
+**```char	*ft_substr(char const *s, unsigned int start, size_t len)```**
+- s: 부분 문자열을 생성할 원본 문자열
+- start: 부분 문자열의 시작 인덱스
+- len: 부분 문자열의 최대 길이
+
+ft_substr은 원본 문자열의 start 인덱스에서 최대 len 길의 문자를 새로 할당한 주소에 복사하여 반환하는 함수이다.  
+
+> 특이사항  
+>  
+> 1. start >= s_len  
+> 만약 시작 인덱스가 주어진 원본 문자열을 벗어난다면 빈 문자열을 반환한다.
+>  
+> 2. s_len - start  
+> malloc할 때, 원본 문자열의 길이에서 시작 인덱스를 빼줘서 알맞는 문자열의 길이만 할당한다.  
+
+## 2.3 ft_strjoin
+**```char	*ft_strjoin(char const *s1, char const *s2)```**
+- s1: 접두 문자열
+- s2: 접미 문자열
+
+ft_strjoin은 s1 + s2의 값을 새로 할당된 메모리에 복사하여 반환하는 함수이다.  
+  
+## 2.4 ft_strtrim
+**```char	*ft_strtrim(char const *s1, char const *set)```**
+- s1: 양쪽을 잘라낼 원본 문자열
+- set: 제거될 문자들의 집합
+
+ft_strtrim은 문자열의 양쪽 끝에 set에 포함된 문자들이 있으면 제거하는 함수이다. 
+
+> 예시  
+>  
+> 1) s1 = "ABCCBA", set = "AB" -> result = "CC"  
+> 2) s1 = "ACCBACBA", set = "AB" -> result = "CCBAC"  
+> 3) s1 = "Hello world!", set = "Hlde" -> result = "o world!"  
+  
+> 특이사항
+>  
+> end - start + 1은 trim된 후 문자열의 길이다. 그렇기에 이것이 0 이하이면 빈 문자열이 반환된다.  
+> 만약 end - start + 1이 0보다 클 경우, null의 크기를 하나 더 추가하여 malloc 해준다.
+>  
+> 또한 트림할 위치를 파악할 때, 문자열을 넘어가지 않도록 주의한다.  
+
+## 2.5 ft_split
+**```char	**ft_split(char const *s, char c)```**
+- s: 구분자 기준으로 나눌 원본 문자열
+- c: 구분자
+
+ft_split은 문자 c를 기준으로 s를 나눈 값들을 저장한 char의 이중 포인터를 반환하는 함수다. 
+
+## 2.6 ft_itoa
+**```char	*ft_itoa(int n)```**
+- n: 문자열로 바꿀 정수
+
+ft_itoa는 받은 정수를 문자열로 바꿔 반환하는 함수다. 부호에 따른 크기 할당과 int 범위에 넘어가 오버플로우가 나지 않도록 주의해야 한다. 
+
+## 2.7 ft_striteri
+**```void	ft_striteri(char *s, void (*f)(unsigned int, char*))```**
+- s: 함수를 적용할 문자열
+- f: 문자열의 적용할 함수
+
+ft_striteri는 문자의 인덱스와 문자의 주소를 사용하는 함수 f를 문자열의 문자에 모두 적용시키는 함수다.
+
+## 2.8 ft_putchar_fd
+**```void	ft_putchar_fd(char c, int fd)```**
+- c: 출력할 문자
+- fd: 값이 쓰여질 파일 식별자(file descriptor)
+
+ft_putchar_fd는 주어진 fd의 형태로 문자를 출력하는 함수다.
+
+## 2.9 ft_putstr_fd
+**```void	ft_putstr_fd(char *s, int fd)```**
+- s: 출력할 문자열
+- fd: 값이 쓰여질 파일 식별자
+
+ft_putstr_fd는 주어진 fd의 형태로 문자열을 출력하는 함수다.
+
+## 2.10 ft_putendl_fd
+**```void	ft_putendl_fd(char *s, int fd)```**
+- s: 출력할 문자열
+- fd: 값이 쓰여질 파일 식별자
+
+ft_putendl_fd는 주어진 fd의 형태로 문자열을 줄바꿈하여 출력하는 함수다.
+
+## 2.11 ft_putnbr_fd
+**```ft_putnbr_fd(int n, int fd)```**
+- n: 출력할 숫자
+- fd: 값이 쓰여질 파일 식별자
+
+ft_putnbr_fd는 주어진 fd의 형태로 숫자를 문자열로 출력하는 함수다.
+
 
 # 4. Test result
 
@@ -281,17 +382,17 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 ## 4.2 Part2
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
 |:-:|:-:|:-:|:-:|:-:|
-|ft_strmapi|o|o|np|mok|
+|ft_strmapi|o|o|np||
 |ft_substr|o|o|np|_**MKO**_|
 |ft_strjoin|o|o|np|o|
 |ft_strtrim|o|_**A**_|np|_**LEAKS.KO**_|
 |ft_split|_**X**_|_**X, A**_|_**crash**_, np|_**B**_|
-|ft_itoa|o|o|o|mok|
-|ft_striteri|o|o|np|o|
-|ft_putchar_fd|o|o|o|o|
-|ft_putstr_fd|o|o|np|o|
-|ft_putendl_fd|o|o|np|o|
-|ft_putnbr_fd|o|o|o|o|
+|ft_itoa|o|o|o||
+|ft_striteri|o|o|np||
+|ft_putchar_fd|o|o|o||
+|ft_putstr_fd|o|o|np||
+|ft_putendl_fd|o|o|np||
+|ft_putnbr_fd|o|o|o||
 
 ## 4.3 Bonus
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
