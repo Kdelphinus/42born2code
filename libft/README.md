@@ -4,6 +4,7 @@
 - [void pointer](#01-void-pointer)  
 - [size_t](#02-size_t)  
 - [restrict](#03-restrict)  
+- [file descriptor](#04-file-descriptor)  
 
 ## 1. [Part1 문제](#1-part1-문제)  
 |[ft_memset](#11-ft_memset)|[ft_bzero](#12-ft_bzero)|[ft_calloc](#13-ft_calloc)|[ft_memcpy](#14-ft_memcpy)|[ft_memmove](#15-ft_memmove)|[ft_memchr](#16-ft_memchr)|
@@ -56,6 +57,25 @@ size_t는 unistd.h, stdlib.h 등 여러 헤더파일에 정의되어있습니다
 
 **restrict**는 메모리 접근과 관련하여 최적화를 위해 사용되는 형 한정어이다. 각 포인터가 개별적인 공간을 가리키고 있고 다른 곳에서 접근하지 않겠다는 것을 의미하며 restrict 포인터만이 접근할 수 있다. 그렇기에 이미 restrict로 할당된 공간을 사용하지 않도록 주의해야 한다. 이 키워드는 c99 표준에 해당하며 libft에선 이를 위해 컴파일에 std=99 플래그 사용을 금하고 있기에 사용하지 않았다.
   
+## 0.4 file descriptor
+
+**file descriptor**란 유닉스에서 시스템으로부터 할당받은 파일이나 소켓을 대표하는 정수다. 파일 디스크립터는 음이 아닌 정수로 일반적으로 int로 표현된다. (이때, 음수는 없는 값 또는 오류 조건을 나타내기 위해 예약된다.)  
+  
+이때, fd의 0 ~ 2는 unistd.h에 명시되있듯이 고정되어있다.  
+  
+- 표준 입력(standard input): file descriptor 0  
+- 표준 출력(standard output): file descriptor 1 
+- 표준 에러 출력(standard error): file descriptor 2
+  
+이러한 파일 디스크립터를 가진 파일이라면 프로그램이 시작되면 기본적으로 열리고, 종료 시 자동으로 닫힌다. 
+  
+파일 디스크립터가 단순히 숫자인 이유는 숫자가 프로세스가 유지하고 있는 파일 디스크립터 테이블의 인덱스이기 때문이다. 위에서 보았듯, 0 ~ 2는 고정이기에 파일을 오픈학서나 소켓을 생성할 때 부여되는 파일 디스크립터는 3부터 시작한다. 즉, 프로세스가 실행 중에 파일을 열면 사용하지 않는 가장 작은 값을 파일 디스크립터로 할당해준다. 그러면 다음 프로세스가 열여있는 파일에 시스템 콜을 이용해서 접근할 때, 파일 디스크립터 값을 이용해 파일을 지칭할 수 있게 된다. 
+  
+![fd](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbCac2C%2FbtqKOiIduMO%2FBFcmVhAimtHXugTtqKPOu0%2Fimg.png)
+
+위 그림처럼 파일 디스크립터의 테이블은 각 항목마다 fd 플래그와 파일 테이블로의 포인터를 가지고 있다. 이 포인터를 이용해서 fd를 통해 시스템 파일을 참조할 수 있는 것이다. 
+
+[원문](https://code4human.tistory.com/123)  
 
 # 1. Part1 문제
 
