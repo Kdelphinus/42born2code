@@ -6,7 +6,7 @@
 /*   By: myko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:39:01 by myko              #+#    #+#             */
-/*   Updated: 2022/07/06 20:09:18 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/07 15:30:26 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 	size_t	src_len;
 
 	i = 0;
-	dst_len = 0;
-	src_len = 0;
-	while (dst[dst_len])
-		dst_len++;
-	while (src[src_len])
-		src_len++;
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
 	if (dstsize < dst_len + 1)
 		return (src_len + dstsize);
 	while (i < dstsize - 1 - dst_len && src[i])
