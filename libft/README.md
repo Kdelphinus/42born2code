@@ -1,5 +1,6 @@
-[0. 개념](#0.-개념)
+[0. 개념](#0.-개념)  
 [1. Part1 문제](#1.-Part1-문제)
+[4. Test result](#4.-Test-result)
 
 
 # 0. 개념
@@ -27,7 +28,7 @@
 > 메모리 단위로 바꾸기 위해 unsigned char로 변환한다.  
 
 
-# Test result
+# 4. Test result
 
 ## Part1
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
