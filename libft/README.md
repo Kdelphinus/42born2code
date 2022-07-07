@@ -28,7 +28,7 @@
 
 ## Part2
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
-|---|---|---|---|---|
+|:-:|:-:|:-:|:-:|:-:|
 |ft_strmapi|o|o|np||
 |ft_substr|o|o|np|x|
 |ft_strjoin|o|o|np|o|
@@ -43,7 +43,7 @@
 
 ## Part3
 ||Libtest|libft-war-machine|libft-unit-test|libftTester|
-|---|---|---|---|---|
+|:-:|:-:|:-:|:-:|:-:|
 |ft_lstnew|x|x|x|x|
 |ft_lstdelone|x|x|x|x|
 |ft_lstclear|x|x|x|x|
