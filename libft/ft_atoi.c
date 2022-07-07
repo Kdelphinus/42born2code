@@ -6,14 +6,14 @@
 /*   By: myko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 21:40:25 by myko              #+#    #+#             */
-/*   Updated: 2022/07/07 14:39:07 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/07 17:00:26 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	sign;
+	int			i;
+	int			sign;
 	long long	result;
 
 	i = 0;
