@@ -1,9 +1,9 @@
-[0. 개념](#0-개념)  
-	[0.1 void pointer](##01-void-pointer). 
-	[0.2 size_t](##02-size_t). 
-	[0.3 restrict](##03-restrict). 
-[1. Part1 문제](#1-part1-문제)  
-[4. Test result](#4-test-result)
+0. [개념](#0-개념)  
+	0.1 [void pointer](##01-void-pointer)  
+	0.2 [size_t](##02-size_t)  
+	0.3 [restrict](##03-restrict)  
+1. [Part1 문제](#1-part1-문제)  
+4. [Test result](#4-test-result)
 
 
 # 0. 개념
