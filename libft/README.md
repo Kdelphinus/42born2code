@@ -1,4 +1,5 @@
 [0. 개념](#0.-개념)
+[1. Part1 문제](#1.-Part1-문제)
 
 
 # 0. 개념
@@ -13,9 +14,9 @@
 
 
 
-# Part1
+# 1. Part1 문제
 
-## ft_memset
+## 1.1 ft_memset
 **void  \*ft_memset(void \*b, int c, size_t len);**
 - b: 바꿀 주소를 가리키는 포인터
 - c: 임의로 바꿀 값(부호 없는 문자로 변환됨)
