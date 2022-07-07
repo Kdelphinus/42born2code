@@ -255,8 +255,8 @@ toupper는 받은 변수가 대문자이면 소문자로 바꾸고 그 외에 �
 |ft_strlcpy|o|o|o|o|
 |ft_strchr|o|o|o|x|
 |ft_strrchr|o|o|o|x|
-|ft_strnstr|o|o|o|x|
-|ft_strncmp|o|o|o|x|
+|ft_strnstr|o|o|o|o|
+|ft_strncmp|o|o|o|o|
 |ft_atoi|o|o|o|o|
 |ft_isalpha|o|o|o|o|
 |ft_isdigit|o|o|o|o|
