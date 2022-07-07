@@ -109,8 +109,7 @@ tags
 # Persistent undo
 [._]*.un~
 
-libft-unit-test
-libft/libft-war-machine
-libft/libftTester
+# add
+libft/libft_eval/
 
 # End of https://www.toptal.com/developers/gitignore/api/vim,macos,c
