@@ -122,7 +122,7 @@ memset과 마찬가지로 메모리 단위로 바꾸기 때문에 unsigned char�
 if (dst == 0 && src == 0)
 	return (0);
 ```
-> memset이 구동되는 과정을 보면 dst만 null이거나 src만 null일 땐 세그멘테이션 오류가 난다. 즉, 원본 함수에서도 예외 처리를 하지 않는다. 그러나 dst와 src가 모두 null일 땐, 원본 함수가 null을 반환하기 때문에 이와 동일하게 두 값이 모두 null일 때만 예외처리를 하였다.
+> memcpy가 구동되는 과정을 보면 dst만 null이거나 src만 null일 땐 세그멘테이션 오류가 난다. 즉, 원본 함수에서도 예외 처리를 하지 않는다. 그러나 dst와 src가 모두 null일 땐, 원본 함수가 null을 반환하기 때문에 이와 동일하게 두 값이 모두 null일 때만 예외처리를 하였다.
 
 ## 1.5 ft_memmove
 **```void	*ft_memmove(void *dst, const void *src, size_t len)```**
