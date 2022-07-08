@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:44:21 by myko              #+#    #+#             */
-/*   Updated: 2022/07/07 19:45:28 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/08 10:31:57 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	int	size;
-
-	size = ft_strlen(s);
-	write(fd, s, size);
+	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);
 }

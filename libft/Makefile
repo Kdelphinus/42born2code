@@ -6,13 +6,13 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 22:09:55 by myko              #+#    #+#              #
-#    Updated: 2022/07/08 08:11:24 by myko             ###   ########.fr        #
+#    Updated: 2022/07/08 11:20:31 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -c
-NAME = libft.a
+CC 		= cc
+CFLAGS 	= -Wall -Wextra -Werror -c
+NAME 	= libft.a
 
 SRCS =  \
 ft_atoi.c \
@@ -54,13 +54,13 @@ ft_toupper.c
 BONUSES = \
 ft_lstnew.c \
 ft_lstadd_front.c \
-ft_lstsize.c \
-ft_lstlast.c \
-ft_lstadd_back.c \
-ft_lstdelone.c \
-ft_lstclear.c \
-ft_lstiter.c \
-ft_lstmap.c
+#ft_lstsize.c \
+#ft_lstlast.c \
+#ft_lstadd_back.c \
+#ft_lstdelone.c \
+#ft_lstclear.c \
+#ft_lstiter.c \
+#ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUSES:.c=.o)

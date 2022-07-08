@@ -6,13 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:19:04 by myko              #+#    #+#             */
-/*   Updated: 2022/07/08 03:20:55 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/08 10:52:13 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_partstrcmp(const char *haystack, const char *needle)
+static int	ft_partstrcmp(const char *haystack, const char *needle)
 {
 	size_t	i;
 

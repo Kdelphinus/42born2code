@@ -6,13 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:17:43 by myko              #+#    #+#             */
-/*   Updated: 2022/07/07 19:17:45 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/08 10:30:56 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	n_len(long long ln)
+static int	n_len(long long ln)
 {
 	int	i;
 
@@ -51,7 +51,7 @@ char	*ft_itoa(int n)
 		number[size + sign] = ln % 10 + '0';
 		ln /= 10;
 	}
-	if (sign)
-		number[size + sign] = '-';
+	if (sign == 1)
+		number[0] = '-';
 	return (number);
 }

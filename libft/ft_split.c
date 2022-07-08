@@ -6,37 +6,45 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:18:20 by myko              #+#    #+#             */
-/*   Updated: 2022/07/08 06:43:49 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/08 10:43:54 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	find_i(char const *s, int i, char c)
+static int	find_start(char const *s, int i, char c)
 {
 	while (s[i] && s[i] == c)
 		i++;
 	return (i);
 }
 
-int	word_count(char const *s, char c)
+static int	word_count(char const *s, char c)
 {
 	int	i;
 	int	cnt;
 
 	cnt = 0;
-	i = find_i(s, 0, c);
+	i = find_start(s, 0, c);
 	while (s[i])
 	{
 		while (s[i] && s[i] != c)
 			i++;
 		cnt++;
-		i = find_i(s, i, c);
+		i = find_start(s, i, c);
 	}
 	return (cnt);
 }
 
-char	**ft_str_input(char const *s, char **ss, char c)
+static char	**null_guard(char **ss, int k)
+{
+	while (--k >= 0)
+		free(ss[k]);
+	free(ss);
+	return (0);
+}
+
+static char	**ft_str_input(char const *s, char **ss, char c)
 {
 	int	i;
 	int	e;
@@ -44,7 +52,7 @@ char	**ft_str_input(char const *s, char **ss, char c)
 	int	j;
 
 	k = 0;
-	i = find_i(s, 0, c);
+	i = find_start(s, 0, c);
 	while (s[i])
 	{
 		e = i;
@@ -52,12 +60,12 @@ char	**ft_str_input(char const *s, char **ss, char c)
 			e++;
 		ss[k] = (char *)malloc(sizeof(char) * (e - i + 1) + 1);
 		if (ss[k] == 0)
-			return (0);
+			return (null_guard(ss, k));
 		j = 0;
 		while (i < e)
 			ss[k][j++] = s[i++];
 		ss[k++][j] = 0;
-		i = find_i(s, i, c);
+		i = find_start(s, i, c);
 	}
 	ss[k] = 0;
 	return (ss);
