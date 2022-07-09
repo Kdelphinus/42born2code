@@ -20,7 +20,7 @@
 |[ft_putstr_fd](#29-ft_putstr_fd)|[ft_putendl_fd](#210-ft_putendl_fd)|[ft_putnbr_fd](#211-ft_putnbr_fd)||
 
 ## 3. [Bonus 문제](#3-bonus-문제)  
-
+  
 ## 4. [Test result](#4-test-result)  
 - [Part1](#41-part1)  
 - [Part2](#42-part2)  
