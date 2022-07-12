@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:17:18 by myko              #+#    #+#             */
-/*   Updated: 2022/07/08 13:14:59 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/12 19:35:13 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ int	ft_atoi(const char *str)
 	}
 	while (ft_isdigit(str[i]))
 	{
+		if (result >= 922337203685477580 && str[i] > '7')
+			return (-1);
+		if (result <= -922337203685477580 && str[i] > '8')
+			return (0);
 		result = result * 10 + (str[i] - '0') * sign;
 		i++;
 	}

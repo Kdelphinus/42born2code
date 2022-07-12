@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:37:56 by myko              #+#    #+#             */
-/*   Updated: 2022/07/08 13:42:09 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/12 20:41:42 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 int	ft_lstsize(t_list *lst)
 {
 	int		cnt;
-	t_list	*nt;
 
 	cnt = 0;
-	nt = lst;
-	while (nt -> next)
+	while (lst)
 	{
-		nt = nt -> next;
+		lst = lst->next;
 		cnt++;
 	}
 	return (cnt);

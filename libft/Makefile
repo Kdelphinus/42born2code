@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 22:09:55 by myko              #+#    #+#              #
-#    Updated: 2022/07/08 14:36:06 by myko             ###   ########.fr        #
+#    Updated: 2022/07/12 21:18:03 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,12 +55,12 @@ BONUSES = \
 ft_lstnew.c \
 ft_lstadd_front.c \
 ft_lstsize.c \
-#ft_lstlast.c \
-#ft_lstadd_back.c \
-#ft_lstdelone.c \
-#ft_lstclear.c \
-#ft_lstiter.c \
-#ft_lstmap.c
+ft_lstlast.c \
+ft_lstadd_back.c \
+ft_lstdelone.c \
+ft_lstclear.c \
+ft_lstiter.c \
+ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUSES:.c=.o)
@@ -73,10 +73,10 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
-	ar crs $@ $(OBJ_FILES)
+	ar crs $@ $?
 
-bonus:
-	make WITH_BONUS=1 all
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar crs $(NAME) $?
 
 %.o: %.c
 	$(CC) $(CFLAGS) $< -o ${<:.c=.o}

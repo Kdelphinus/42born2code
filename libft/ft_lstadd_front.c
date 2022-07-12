@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:17:18 by myko              #+#    #+#             */
-/*   Updated: 2022/07/08 13:27:40 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/12 20:06:24 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	new -> next = *lst;
+	new->next = *lst;
 	*lst = new;
 }
