@@ -105,13 +105,10 @@ memset과 마찬가지로 메모리 단위로 바꾸기 때문에 unsigned char�
   
 기본적으론 malloc(count * size)와 동일한 기능을 가진 함수이다. 그러나 할당한 메모리 안의 값을 모두 0으로 초기화해주는 동작도 함께 수행한다.
 
-> libftTester의 세 번째 테스트케이스에서 ko가 뜬다.  
-> 
-> ```ft_calloc(SIZE_MAX, SIZE_MAX) == NULL```  
-> 
-> 테스트케이스는 다음과 같으며 위에서와 같이 count * size의 크기를 할당하는데 곱한 값이 size_t의 범위를 넘어갈 경우를 확인하는 테스트케이스이다. 이에 대한 해결방법으로 동적할당 실패 시, errno를 이용해 처리할 수 있다고 하나 errno.h안에 정의되어 있는 만큼 현재 사용이 불가할 것으로 보인다.  
-> 
-> 해당 케이스는 기계 역시 잡지 않는 것으로 보인다.  
+> ```
+> if ((size * count) / size != count)
+> ```  
+> 만약 size * count가 size_t의 범위를 넘어가지 않는다면 위 조건문은 항상 참이다. 그러나 size_t를 넘어가 overflow가 생기면 위 값은 참이 될 수 없다. 
 
 ## 1.4 ft_memcpy
 **```void	*ft_memcpy(void *dst, const void *src, size_t n)```**
