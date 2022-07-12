@@ -20,6 +20,11 @@
 |[ft_putstr_fd](#29-ft_putstr_fd)|[ft_putendl_fd](#210-ft_putendl_fd)|[ft_putnbr_fd](#211-ft_putnbr_fd)||
 
 ## 3. [Bonus 문제](#3-bonus-문제)  
+
+|[ft_lstnew](#31-ft_lstnew)|[ft_lstdelone](#32-ft_lstdelone)|[ft_lstclear](#33-ft_lstclear)|
+|:---:|:---:|:---:|
+|[ft_lstadd_front](#34-ft_lstadd_front)|[ft_lstadd_back](#35-ft_lstadd_back)|[ft_lstsize](#36-ft_lstsize)|
+|[ft_lstiter](#37-ft_lstiter)|[ft_lstmap](#38-ft_lstmap)|[ft_lstlast](#39-ft_lstlast)|
   
 ## 4. [Test result](#4-test-result)  
 - [Part1](#41-part1)  
@@ -369,6 +374,25 @@ ft_putendl_fd는 주어진 fd의 형태로 문자열을 줄바꿈하여 출력�
 
 ft_putnbr_fd는 주어진 fd의 형태로 숫자를 문자열로 출력하는 함수다.
 
+# 3. bonus 문제
+
+## 3.1 ft_lstnew
+
+## 3.2 ft_lstdelone
+
+## 3.3 ft_lstclear
+
+## 3.4 ft_lstadd_front
+
+## 3.5 ft_lstadd_back
+
+## 3.6 ft_lstsize
+
+## 3.7 ft_lstiter
+
+## 3.8 ft_lstmap
+
+## 3.9 ft_lstlast
 
 # 4. Test result
 
