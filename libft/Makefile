@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 22:09:55 by myko              #+#    #+#              #
-#    Updated: 2022/07/12 21:18:03 by myko             ###   ########.fr        #
+#    Updated: 2022/07/12 21:32:58 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,15 +64,10 @@ ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUSES:.c=.o)
-ifdef WITH_BONUS
-	OBJ_FILES = ${OBJS} ${BONUS_OBJS}
-else
-	OBJ_FILES = ${OBJS}
-endif
 
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES)
+$(NAME): $(OBJS)
 	ar crs $@ $?
 
 bonus: $(OBJS) $(BONUS_OBJS)
