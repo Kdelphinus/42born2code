@@ -420,10 +420,10 @@ ft_putnbr_fd는 주어진 fd의 형태로 숫자를 문자열로 출력하는 �
 |:-:|:-:|:-:|:-:|:-:|
 |ft_lstnew      |o      |o      |o      |o      |
 |ft_lstdelone   |o      |o      |o      |       |
-|ft_lstclear    |_**A**_|o      |_**C**_|_**E**_|
+|ft_lstclear    |o      |o      |o      |o      |
 |ft_lstadd_front|o      |o      |o      |o      |
-|ft_lstadd_back |o      |o      |o      |_**A**_|
+|ft_lstadd_back |o      |o      |o      |o      |
 |ft_lstsize     |o      |o      |o      |o      |
-|ft_lstiter     |o      |o      |np     |       |
-|ft_lstmap      |_**A**_|_**X**_|_**X**_|       |
-|ft_lstlast     |o      |_**A**_|o      |_**A**_|
+|ft_lstiter     |o      |o      |np     |o      |
+|ft_lstmap      |o      |o      |np     |o      |
+|ft_lstlast     |o      |o      |o      |o      |
