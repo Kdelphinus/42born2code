@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:17:32 by myko              #+#    #+#             */
-/*   Updated: 2022/07/12 15:26:57 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/13 12:46:46 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*r;
 
-	if ((size * count) / size != count)
+	if (size != 0 && (size * count) / size != count)
 		return (0);
 	r = malloc(size * count);
 	if (r == 0)
