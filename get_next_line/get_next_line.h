@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:43:07 by myko              #+#    #+#             */
-/*   Updated: 2022/07/13 15:45:22 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/13 17:03:55 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+char	*get_next_line(int fd);
 
 #endif
