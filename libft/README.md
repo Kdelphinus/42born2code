@@ -422,7 +422,7 @@ ft_lstsize는 주어진 연결 리스트의 길이를 구하는 함수이다. ls
 - lst: f 함수를 적용할 list
 - f: list의 content에 적용할 함수
 
-ft_lstiter는 주어진 list의 content에 f함수를 적용하는 함수다. null이 입력될 때, 오류가 발생하도록 while 조건문에 lst를 넣지 않고 무조건 들어가서 f함수에 null이 들어갈 때, 오류가 나도록 만들었다.  
+ft_lstiter는 주어진 list의 content에 f함수를 적용하는 함수다. null이 입력될 때, 빈 리스트로 가정하고 빈 리스트를 반환했다.
 
 ## 3.8 ft_lstmap
 **```t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))```**
@@ -432,7 +432,7 @@ ft_lstiter는 주어진 list의 content에 f함수를 적용하는 함수다. nu
 
 ft_lstmap은 주어진 lst에 f함수를 적용한 값을 복사하여 list를 만드는 함수이다. ft_lstnew로 새로운 list를 만들고 ft_lstadd_back으로 차근차근 list를 이어가는 함수이다. 만약 ft_lstnew에서 malloc 오류로 null이 리턴된 경우, ft_lstclear로 만들어진 모든 list를 제거하고 null을 반환한다.  
   
-이 함수 역시 null이 입력되었을 때, 오류가 나도록 while 조건문에 lst 대신 1을 넣었다.
+이 함수 역시 null이 입력되었을 때, 빈 리스트가 들어온 것으로 가정하고 빈 리스트를 반환한다. 
 
 ## 3.9 ft_lstlast  
 **```t_list	*ft_lstlast(t_list *lst)```**
@@ -494,6 +494,6 @@ ft_lstlast는 주어진 lst에서 가장 마지막 부분을 반환하는 함수
 |ft_lstadd_front|o      |o      |o      |o      |
 |ft_lstadd_back |o      |o      |o      |o      |
 |ft_lstsize     |o      |o      |o      |o      |
-|ft_lstiter     |o      |o      |np     |o      |
-|ft_lstmap      |o      |o      |np     |o      |
+|ft_lstiter     |o      |o      |o      |o      |
+|ft_lstmap      |o      |o      |o      |o      |
 |ft_lstlast     |o      |o      |o      |o      |
