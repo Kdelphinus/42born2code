@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 16:01:30 by myko              #+#    #+#             */
-/*   Updated: 2022/07/12 20:51:28 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/13 13:57:36 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*new;
 
 	c_lst = 0;
-	while (1)
+	while (lst)
 	{
 		new = ft_lstnew(f(lst->content));
 		if (new == 0)
@@ -28,7 +28,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		}
 		ft_lstadd_back(&c_lst, new);
 		lst = lst->next;
-		if (lst == 0)
-			return (c_lst);
 	}
+	return (c_lst);
 }

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 16:00:26 by myko              #+#    #+#             */
-/*   Updated: 2022/07/12 20:41:55 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/13 13:55:10 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	while (1)
+	while (lst)
 	{
 		f(lst->content);
 		lst = lst->next;
-		if (lst == 0)
-			return ;
 	}
 }

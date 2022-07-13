@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 22:09:55 by myko              #+#    #+#              #
-#    Updated: 2022/07/13 13:04:41 by myko             ###   ########.fr        #
+#    Updated: 2022/07/13 14:10:49 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ all: $(NAME)
 $(NAME): $(OBJS_FILES)
 	ar crs $@ $^
 
-bonus: $(OBJS) $(BONUS_OBJS)
+bonus:
 	make WITH_BONUS=1 all
 
 %.o: %.c
