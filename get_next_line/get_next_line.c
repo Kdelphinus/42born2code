@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:42:10 by myko              #+#    #+#             */
-/*   Updated: 2022/07/13 18:03:43 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/14 17:20:01 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	*get_next_line(int fd)
 			cbuff[j] = buff[j];
 			j++;
 		}
+		if (i != nr)
+			cbuff[j] = '\n';
 		free(buff);
 		return (cbuff);
 	}

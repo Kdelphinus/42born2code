@@ -6,11 +6,9 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:36:15 by myko              #+#    #+#             */
-/*   Updated: 2022/07/08 10:49:14 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/14 13:36:19 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
