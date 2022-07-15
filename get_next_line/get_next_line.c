@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:42:10 by myko              #+#    #+#             */
-/*   Updated: 2022/07/14 17:20:01 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/15 20:15:30 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,9 @@
 
 char	*get_next_line(int fd)
 {
-	int		i;
-	int		j;
-	ssize_t	nr;
-	char	*buff;
-	char	*cbuff;
+	static char	*o_line;
 
-	buff = (char *)malloc(BUFFER_SIZE);
-	if (buff == 0)
+	if (fd < 0 || BUFFERSIZE <= 0)
 		return (0);
-	nr = read(fd, buff, BUFFER_SIZE);
-	while (nr > 0)
-	{
-		i = 0;
-		while (i < nr && buff[i] != '\n')
-			i++;
-		j = 0;
-		cbuff = (char *)malloc(i);
-		while (j < i)
-		{
-			cbuff[j] = buff[j];
-			j++;
-		}
-		if (i != nr)
-			cbuff[j] = '\n';
-		free(buff);
-		return (cbuff);
-	}
-	return (0);
+
 }
