@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:43:07 by myko              #+#    #+#             */
-/*   Updated: 2022/07/15 18:53:20 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/15 21:15:54 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 char	*get_next_line(int fd);
 int		ft_strlen(const char *s);
-char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strjoin(char *s1, const char *s2);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
 
