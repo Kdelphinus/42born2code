@@ -6,11 +6,40 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:42:10 by myko              #+#    #+#             */
-/*   Updated: 2022/07/15 21:38:09 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/20 00:18:45 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+static char	*for_next(char *save)
+{
+	char	*str;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (save[i] && save[i] != '\n')
+		i++;
+	if (!save[i])
+	{
+		free(save);
+		return (NULL);
+	}
+	str = (char *)malloc(sizeof(char) * (ft_strlen(save) - i));
+	if (!str)
+		return (NULL);
+	j = 0;
+	while (save[i + 1])
+	{
+		str[j] = save[i + 1];
+		j++;
+		i++;
+	}
+	str[j] = 0;
+	free (save);
+	return (str);
+}
 
 static char	*get_new_line(char *line)
 {
@@ -58,6 +87,8 @@ static char	*get_read(char *line, int fd)
 		}
 		buff[rd] = 0;
 		line = ft_strjoin(line, buff);
+		if (!line)
+			return (0);
 	}
 	free(buff);
 	return (line);
@@ -74,5 +105,6 @@ char	*get_next_line(int fd)
 	if (line == 0)
 		return (0);
 	n_line = get_new_line(line);
+	line = for_next(line);
 	return (n_line);
 }
