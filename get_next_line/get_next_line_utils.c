@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:42:38 by myko              #+#    #+#             */
-/*   Updated: 2022/07/15 20:05:35 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/20 17:11:01 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_strjoin(char *s1, const char *s2)
 	return (sj);
 }
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strchr(const char *s, int c)
 {
 	int		i;
 	char	cc;
@@ -63,12 +63,12 @@ char	*ft_strchr(const char *s, int c)
 	while (cs[i])
 	{
 		if (cs[i] == cc)
-			return (&cs[i]);
+			return (i);
 		i++;
 	}
 	if (cs[i] == cc)
-		return (&cs[i]);
-	return (0);
+		return (i);
+	return (-1);
 }
 
 char	*ft_strdup(const char *s1)
@@ -89,4 +89,22 @@ char	*ft_strdup(const char *s1)
 	}
 	s2[i] = 0;
 	return (s2);
+}
+
+int	ft_strlcpy(char *dst, const char *src, int dstsize)
+{
+	int	i;
+	int	src_len;
+
+	i = 0;
+	src_len = ft_strlen(src);
+	if (dstsize == 0)
+		return (src_len);
+	while (i < dstsize - 1 && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = 0;
+	return (src_len);
 }
