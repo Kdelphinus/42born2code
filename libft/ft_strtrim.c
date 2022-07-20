@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:19:14 by myko              #+#    #+#             */
-/*   Updated: 2022/07/08 13:26:09 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/20 18:20:04 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = 0;
 	init(set, check);
 	end = ft_strlen(s1);
+	if (end == 0)
+		return (ft_strdup(""));
 	start = find_start(s1, check);
 	end = find_end(s1, check, end);
-	if (end + 1 <= start)
+	if (end <= start)
 		return (ft_strdup(""));
 	st = (char *)malloc(sizeof(char) * (end - start + 2));
 	if (st == 0)

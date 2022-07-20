@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:18:20 by myko              #+#    #+#             */
-/*   Updated: 2022/07/08 10:43:54 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/20 18:21:22 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	**ft_str_input(char const *s, char **ss, char c)
 		e = i;
 		while (s[e] && s[e] != c)
 			e++;
-		ss[k] = (char *)malloc(sizeof(char) * (e - i + 1) + 1);
+		ss[k] = (char *)malloc(sizeof(char) * (e - i) + 1);
 		if (ss[k] == 0)
 			return (null_guard(ss, k));
 		j = 0;
