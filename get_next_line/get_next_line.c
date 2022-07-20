@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:42:10 by myko              #+#    #+#             */
-/*   Updated: 2022/07/20 17:14:21 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/20 17:29:13 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	*ft_read(int fd)
 	tmp = ft_strdup("");
 	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	rd = read(fd, buff, BUFFER_SIZE);
+	if (rd <= 0)
+		return (0);
 	idx = ft_strchr(buff, '\n');
 	while (rd > 0 && idx == -1)
 	{
