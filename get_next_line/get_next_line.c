@@ -6,49 +6,53 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:42:10 by myko              #+#    #+#             */
-/*   Updated: 2022/07/20 17:29:13 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/21 16:40:09 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_read(int fd)
+char	*ft_read(int fd, char **line)
 {
 	int		rd;
 	int		idx;
 	char	*tmp;
 	char	*buff;
-	char	*line;
+	char	*c_line;
 
-	line = ft_strdup("");
+	c_line = ft_strdup("");
 	tmp = ft_strdup("");
 	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (buff == 0)
+		return (0);
 	rd = read(fd, buff, BUFFER_SIZE);
 	if (rd <= 0)
 		return (0);
 	idx = ft_strchr(buff, '\n');
 	while (rd > 0 && idx == -1)
 	{
-		line = ft_strjoin(line, buff);
+		c_line = ft_strjoin(c_line, buff);
 		rd = read(fd, buff, BUFFER_SIZE);
 		idx = ft_strchr(buff, '\n');
 	}
 	if (idx >= 0)
 	{
 		ft_strlcpy(tmp, buff, idx + 2);
-		line = ft_strjoin(line, tmp);
+		c_line = ft_strjoin(c_line, tmp);
+		*line = ft_strdup(buff + idx + 1);
 	}
 	free(buff);
 	free(tmp);
-	return (line);
+	return (c_line);
 }
 
 char	*get_next_line(int fd)
 {
+	char		*c_line;
 	static char	*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	line = ft_read(fd);
-	return (line);
+	c_line = ft_read(fd, &line);
+	return (c_line);
 }
