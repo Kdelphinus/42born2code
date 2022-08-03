@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 17:31:54 by myko              #+#    #+#             */
-/*   Updated: 2022/08/03 21:12:51 by myko             ###   ########.fr       */
+/*   Created: 2022/08/03 20:40:41 by myko              #+#    #+#             */
+/*   Updated: 2022/08/03 21:42:55 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_printf(const char *format, ...)
-{
-	va_list	ap;
+# include <stdlib.h>
+# include <stdarg.h>
 
-	va_start(ap, format);
+char	*form = "cspdiuxX%";
 
-}
+int		chr_count(char *str, char chr);
+
+#endif

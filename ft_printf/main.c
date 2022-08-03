@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 20:40:41 by myko              #+#    #+#             */
-/*   Updated: 2022/08/03 20:47:40 by myko             ###   ########.fr       */
+/*   Created: 2022/08/03 21:41:54 by myko              #+#    #+#             */
+/*   Updated: 2022/08/03 21:43:14 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
+#include <stdio.h>
 
-# include <stdlib.h>
-# include <stdarg.h>
-
-char	*form = "cspdiuxX%";
-
-#endif
+int	main(void)
+{
+	printf("%d\n", chr_count("%d%d%d%d", '%'));
+}

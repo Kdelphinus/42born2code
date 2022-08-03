@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   chr_count.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 17:31:54 by myko              #+#    #+#             */
-/*   Updated: 2022/08/03 21:12:51 by myko             ###   ########.fr       */
+/*   Created: 2022/08/03 21:13:43 by myko              #+#    #+#             */
+/*   Updated: 2022/08/03 21:41:06 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_printf(const char *format, ...)
+int	chr_count(char *str, char chr)
 {
-	va_list	ap;
+	int	cnt;
 
-	va_start(ap, format);
-
+	cnt = 0;
+	while (*str)
+	{
+		if (*str == chr)
+			cnt++;
+		str++;
+	}
+	return (cnt);
 }
