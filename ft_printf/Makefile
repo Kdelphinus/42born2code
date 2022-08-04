@@ -6,16 +6,44 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 17:30:00 by myko              #+#    #+#              #
-#    Updated: 2022/07/20 17:31:35 by myko             ###   ########.fr        #
+#    Updated: 2022/08/04 19:39:03 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = CC
-CFLAGS = -Wall -Wextra -Werror -c
+CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
-
-SRCS = 
-BONUSES = 
+SRCS_DIR = ./srcs/
+SRCS_NAME = ft_printf.c \
+			 ft_chr_count.c
+SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAME))
+OBJS_DIR = ./objs/
+OBJS_NAME = $(SRCS_NAME:.c=.o)
+OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAME))
+INC = ./includes/
+LIBFT_DIR = ./lib/
 
 all: $(NAME)
 
+$(NAME): $(OBJS)
+	make -C $(LIBFT_DIR)
+	cp $(LIBFT_DIR)libft.a $(NAME)
+	ar crs $@ $(OBJS)
+
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c
+	@mkdir $(OBJS_DIR) 2> /dev/null || true
+	$(CC) $(CFLAGS) -c $< -I $(INC) -o $@
+
+clean: 
+	make -C $(LIBFT_DIR) clean
+	rm -rf $(OBJS_DIR)
+
+fclean: clean
+	make -C $(LIBFT_DIR) fclean
+	rm -rf $(NAME)
+
+re:
+	make fclean
+	make all
+
+.PHONY: all bonus clean fclean re

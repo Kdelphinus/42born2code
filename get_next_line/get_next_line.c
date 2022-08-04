@@ -37,7 +37,7 @@ char	*ft_read(int fd)
 	}
 	if (idx >= 0)
 	{
-		ft_strlcpy(tmp, buff, idx + 2);
+		ft_strlcpy(tmp, buff, idx + 1);
 		c_line = ft_strjoin(c_line, tmp);
 	}
 	free(buff);
