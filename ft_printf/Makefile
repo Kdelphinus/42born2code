@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 17:30:00 by myko              #+#    #+#              #
-#    Updated: 2022/08/04 19:13:53 by myko             ###   ########.fr        #
+#    Updated: 2022/08/04 19:39:03 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJS_DIR = ./objs/
 OBJS_NAME = $(SRCS_NAME:.c=.o)
 OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAME))
 INC = ./includes/
-LIBFT_DIR = ./lib/libft/
+LIBFT_DIR = ./lib/
 
 all: $(NAME)
 

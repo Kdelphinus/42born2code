@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 20:40:41 by myko              #+#    #+#             */
-/*   Updated: 2022/08/04 17:20:36 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/04 19:22:43 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-char	*form = "cspdiuxX%";
+static const char	*g_form = "cspdiuxX%";
 
 int		ft_printf(const char *format, ...);
 int		ft_chr_count(char *str, char chr);
