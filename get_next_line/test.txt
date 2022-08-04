@@ -3,3 +3,7 @@ seoul
 
 myko
 
+get_next_line
+read
+malloc
+free

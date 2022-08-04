@@ -6,13 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 15:42:10 by myko              #+#    #+#             */
-/*   Updated: 2022/07/21 16:40:09 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/21 20:15:22 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_read(int fd, char **line)
+char	*ft_read(int fd)
 {
 	int		rd;
 	int		idx;
@@ -39,7 +39,6 @@ char	*ft_read(int fd, char **line)
 	{
 		ft_strlcpy(tmp, buff, idx + 2);
 		c_line = ft_strjoin(c_line, tmp);
-		*line = ft_strdup(buff + idx + 1);
 	}
 	free(buff);
 	free(tmp);
@@ -48,11 +47,11 @@ char	*ft_read(int fd, char **line)
 
 char	*get_next_line(int fd)
 {
-	char		*c_line;
+	//char		*c_line;
 	static char	*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	c_line = ft_read(fd, &line);
-	return (c_line);
+	line = ft_read(fd);
+	return (line);
 }
