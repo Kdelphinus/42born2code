@@ -6,13 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:31:54 by myko              #+#    #+#             */
-/*   Updated: 2022/08/04 19:59:46 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/04 22:00:34 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-#include <stdio.h>
+
 int	ft_printf(const char *format, ...)
 {
 	int		cnt;
@@ -25,5 +25,6 @@ int	ft_printf(const char *format, ...)
 		write(1, format, ft_strlen((char *)format));
 		return (ft_strlen((char *)format));
 	}
+	(void *)g_form;
 	return (0);
 }

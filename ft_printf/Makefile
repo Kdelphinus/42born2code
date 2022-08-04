@@ -6,11 +6,11 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 17:30:00 by myko              #+#    #+#              #
-#    Updated: 2022/08/04 19:39:03 by myko             ###   ########.fr        #
+#    Updated: 2022/08/04 21:59:48 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = CC
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 SRCS_DIR = ./srcs/
