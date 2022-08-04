@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:31:54 by myko              #+#    #+#             */
-/*   Updated: 2022/08/04 22:00:34 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/04 22:07:36 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int	ft_printf(const char *format, ...)
 {
+	int		i;
 	int		cnt;
 	va_list	ap;
 
@@ -25,6 +26,11 @@ int	ft_printf(const char *format, ...)
 		write(1, format, ft_strlen((char *)format));
 		return (ft_strlen((char *)format));
 	}
-	(void *)g_form;
+	i = 0;
+	while (g_form[i])
+	{
+		if (ft_strchr(format, g_form[i]))
+			continue;
+	}
 	return (0);
 }
