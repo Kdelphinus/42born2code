@@ -70,10 +70,29 @@ va_arg는 va_list에 저장된 값을 바탕으로 현재 매개인자를 반환
 - 기존에 가리키고 있던 값의 타입으로 캐스팅하여 반환한다.
 
 
+## 0.2 라이브러리 추가
+
+### 0.2.1 -L
+-L은 사용할 라이브러리의 위치를 지정하는 옵션이다. ```-L<디렉토리명>```으로 사용한다.
+
+### 0.2.2 -l
+
+-l은 링크할 정적 라이브러리를 명시할 때 사용하는 옵션이다. 이때 대상 라이브러리의 이름에서 ```lib```과  ```.a```를 제외한 나머지 이름만 적는다. 
+
+예를 들어 libft.a를 링크시키려면 ```-lft```를 옵션으로 주면 된다.
+
+### 0.2.3 응용
+예를 들어 ```\lib\libft```에 ```libft.a```라는 라이브러리를 사용하고 싶다면 옵션을 다음과 같이 주면 된다.
+
+```
+-L./lib/libft -lft
+```
+
+
 # 참고 자료
 - [팔만코딩경, [C] 가변인자 뜯어보기](https://80000coding.oopy.io/b1bc0184-9612-49f2-813b-ffeaf830f4fe)
 - [코딩 도장, 66 함수에서 가변 인자 사용하기](https://dojang.io/mod/page/view.php?id=577)
 - [IBM, 가변 인수 리스트 처리](https://www.ibm.com/docs/ko/i/7.3?topic=lf-va-arg-va-copy-va-end-va-start-handle-variable-argument-list)
 - [gcc, 3.7.2 Common Predifined Macros](https://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html)
 - [양햄찌가 만드는 세상, 가변인자 함수의 사용](https://jhnyang.tistory.com/293)
-- 
+- [mtak0235, 라이브러리](https://velog.io/@mtak0235/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC)

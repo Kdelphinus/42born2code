@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 17:30:00 by myko              #+#    #+#              #
-#    Updated: 2022/08/03 21:10:25 by myko             ###   ########.fr        #
+#    Updated: 2022/08/04 15:57:34 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = CC
 CFLAGS = -Wall -Wextra -Werror -c
 NAME = libftprintf.a
 
-LIBFT = -L ./libft -lft
+LIBFT = -L ./lib/libft -lft
 
 all: $(NAME)
 
