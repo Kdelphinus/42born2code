@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:31:54 by myko              #+#    #+#             */
-/*   Updated: 2022/08/04 16:46:08 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/04 19:05:54 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 
 	va_start(ap, format);
-	return (-1);
+	return (0);
 }

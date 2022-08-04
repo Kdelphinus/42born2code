@@ -6,14 +6,14 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 22:09:55 by myko              #+#    #+#              #
-#    Updated: 2022/08/04 18:40:46 by myko             ###   ########.fr        #
+#    Updated: 2022/08/04 19:14:21 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
-INC = ./include/
+INC = ./includes/
 SRCS_DIR = ./srcs/
 SRCS_NAME =  \
 ft_atoi.c \

@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 17:30:00 by myko              #+#    #+#              #
-#    Updated: 2022/08/04 17:40:49 by myko             ###   ########.fr        #
+#    Updated: 2022/08/04 19:13:53 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,15 +20,14 @@ SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAME))
 OBJS_DIR = ./objs/
 OBJS_NAME = $(SRCS_NAME:.c=.o)
 OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAME))
-INC = ./include/
+INC = ./includes/
 LIBFT_DIR = ./lib/libft/
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_DIR)
-	cp $(LIBFT_DIR)libft.a .
-	mv libft.a $(NAME)
+	cp $(LIBFT_DIR)libft.a $(NAME)
 	ar crs $@ $(OBJS)
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
