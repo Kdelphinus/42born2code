@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 20:40:41 by myko              #+#    #+#             */
-/*   Updated: 2022/08/03 21:42:55 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/04 17:20:36 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 char	*form = "cspdiuxX%";
 
-int		chr_count(char *str, char chr);
+int		ft_printf(const char *format, ...);
+int		ft_chr_count(char *str, char chr);
 
 #endif

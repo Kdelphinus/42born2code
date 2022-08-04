@@ -6,15 +6,16 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 22:09:55 by myko              #+#    #+#              #
-#    Updated: 2022/07/16 01:18:41 by myko             ###   ########.fr        #
+#    Updated: 2022/08/04 18:40:46 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC 		= cc
-CFLAGS 	= -Wall -Wextra -Werror -c
-NAME 	= libft.a
-
-SRCS =  \
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+NAME = libft.a
+INC = ./include/
+SRCS_DIR = ./srcs/
+SRCS_NAME =  \
 ft_atoi.c \
 ft_bzero.c \
 ft_calloc.c \
@@ -49,9 +50,9 @@ ft_striteri.c \
 ft_substr.c \
 ft_tolower.c \
 ft_toupper.c
+SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAME))
 
-
-BONUSES = \
+BONUS_NAME = \
 ft_lstnew.c \
 ft_lstadd_front.c \
 ft_lstsize.c \
@@ -61,9 +62,14 @@ ft_lstdelone.c \
 ft_lstclear.c \
 ft_lstiter.c \
 ft_lstmap.c
+BONUSES = $(addprefix $(SRCS_DIR), $(BONUS_NAME))
 
-OBJS = $(SRCS:.c=.o)
-BONUS_OBJS = $(BONUSES:.c=.o)
+OBJS_DIR = ./objs/
+OBJS_NAME = $(SRCS_NAME:.c=.o)
+OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAME))
+
+BONUS_OBJS_NAME = $(BONUS_NAME:.c=.o)
+BONUS_OBJS = $(addprefix $(OBJS_DIR), $(BONUS_OBJS_NAME))
 
 ifdef WITH_BONUS
 	OBJS_FILES = $(OBJS) $(BONUS_OBJS)
@@ -79,11 +85,12 @@ $(NAME): $(OBJS_FILES)
 bonus:
 	make WITH_BONUS=1 all
 
-%.o: %.c
-	$(CC) $(CFLAGS) $< -o ${<:.c=.o}
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c
+	@mkdir $(OBJS_DIR) 2> /dev/null || true
+	$(CC) $(CFLAGS) -c $< -I $(INC) -o $@
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	rm -rf $(OBJS_DIR)
 
 fclean: clean
 	rm -f $(NAME)
