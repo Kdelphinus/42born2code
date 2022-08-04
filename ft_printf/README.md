@@ -91,6 +91,7 @@ va_arg는 va_list에 저장된 값을 바탕으로 현재 매개인자를 반환
 
 # 참고 자료
 - [팔만코딩경, [C] 가변인자 뜯어보기](https://80000coding.oopy.io/b1bc0184-9612-49f2-813b-ffeaf830f4fe)
+- [팔만코딩경, [make] Makefile 개념 및 사용법 정리](https://80000coding.oopy.io/e836636a-c302-4f8f-9b7c-cc71c5d62fff)
 - [코딩 도장, 66 함수에서 가변 인자 사용하기](https://dojang.io/mod/page/view.php?id=577)
 - [IBM, 가변 인수 리스트 처리](https://www.ibm.com/docs/ko/i/7.3?topic=lf-va-arg-va-copy-va-end-va-start-handle-variable-argument-list)
 - [gcc, 3.7.2 Common Predifined Macros](https://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html)
