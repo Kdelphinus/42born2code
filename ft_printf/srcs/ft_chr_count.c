@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:13:43 by myko              #+#    #+#             */
-/*   Updated: 2022/08/04 17:19:39 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/05 18:52:28 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_chr_count(char *str, char chr)
+int	ft_chr_count(const char *str, char chr)
 {
 	int	cnt;
 
