@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 17:30:00 by myko              #+#    #+#              #
-#    Updated: 2022/08/05 19:20:28 by myko             ###   ########.fr        #
+#    Updated: 2022/08/06 01:24:49 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 SRCS_DIR = ./srcs/
 SRCS_NAME = ft_printf.c \
-			 ft_chr_count.c
+			 ft_printf_utils.c
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAME))
 OBJS_DIR = ./objs/
 OBJS_NAME = $(SRCS_NAME:.c=.o)
@@ -31,7 +31,7 @@ $(NAME): $(OBJS)
 	ar crs $@ $(OBJS)
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
-	@mkdir $(OBJS_DIR) 2> /dev/null || true
+	mkdir $(OBJS_DIR) 2> /dev/null || true
 	$(CC) $(CFLAGS) -c $< -I $(INC) -o $@
 
 clean: 
