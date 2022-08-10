@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 01:29:34 by myko              #+#    #+#             */
-/*   Updated: 2022/08/06 01:29:36 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/10 17:19:40 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 
 int	main(void)
 {
-	int	cnt;
+	int	ft_cnt, cnt;
 
-	cnt = ft_printf("%d seoul %c %s\n", 42, 'K', "delphinus");
-	printf("ft_printf cnt: %d\n", cnt);
-	cnt = printf("%d seoul %c %s\n", 42, 'K', "delphiuns");
+	ft_cnt = 0;
+	cnt = 0;
+	ft_cnt = ft_printf(" NULL %s NULL", NULL);
+	printf("\n");
+	cnt = printf(" NULL %s NULL", NULL);
+	printf("\n");
+	printf("ft_printf cnt: %d\n", ft_cnt);
 	printf("printf cnt: %d\n", cnt);
 }
