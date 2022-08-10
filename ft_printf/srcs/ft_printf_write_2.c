@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:52:54 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 21:02:50 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/10 21:09:59 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	write_u(va_list ap)
 	unsigned int	num;
 
 	num = va_arg(ap, unsigned int);
+	ft_putunnbr(num);
 	return (ft_nbr_count(num));
 }
 

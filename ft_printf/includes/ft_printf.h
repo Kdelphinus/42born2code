@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 20:40:41 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 20:38:52 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/10 21:09:24 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ int		ft_printf(const char *format, ...);
 int		ft_chr_count(const char *str, char chr);
 int		ft_nbr_count(long long lnum);
 int		ft_convert_base(long long lnum, const char *base, int flag);
+
+// ft_printf_utils_2.c
+void	ft_putunnbr(unsigned int num);
 
 // ft_printf_write.c
 int		write_c(va_list ap);
