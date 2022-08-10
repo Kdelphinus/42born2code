@@ -6,26 +6,12 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:13:43 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 22:20:34 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/10 22:31:29 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-
-int	ft_chr_count(const char *str, char chr)
-{
-	int	cnt;
-
-	cnt = 0;
-	while (*str)
-	{
-		if (*str == chr)
-			cnt++;
-		str++;
-	}
-	return (cnt);
-}
 
 int	ft_nbr_count(long long lnum)
 {
