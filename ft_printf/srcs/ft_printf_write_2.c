@@ -6,12 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:52:54 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 21:09:59 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/10 21:43:13 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	write_x(char fm, va_list ap)
 {
@@ -37,16 +36,6 @@ int	write_x(char fm, va_list ap)
 	return (ft_convert_base(lnum, "0123456789abcdef", flag));
 }
 
-int	write_i(va_list ap)
-{
-	char	*nbr;
-	int		size;
-
-	size = 0;
-	nbr = va_arg(ap, char *);
-	return (size);
-}
-
 int	write_u(va_list ap)
 {
 	unsigned int	num;
@@ -58,8 +47,12 @@ int	write_u(va_list ap)
 
 int	write_p(va_list ap)
 {
+	int		size;
 	void	*ptr;
 
+	size = 2;
 	ptr = va_arg(ap, void *);
-	return (1);
+	write(1, "0x", 2);
+	size += ft_putptr((unsigned long long)ptr);
+	return (size);
 }

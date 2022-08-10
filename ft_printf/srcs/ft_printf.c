@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:31:54 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 18:59:34 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/10 21:20:39 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ static int	format_print(const char **format, va_list ap)
 		size = write_c(ap);
 	else if (fm == 's')
 		size = write_s(ap);
-	else if (fm == 'd')
+	else if (fm == 'd' || fm == 'i')
 		size = write_d(ap);
 	else if (fm == '%')
 		size = write_per();
 	else if (fm == 'x' || fm == 'X')
 		size = write_x(fm, ap);
-	else if (fm == 'i')
-		size = write_i(ap);
 	else if (fm == 'u')
 		size = write_u(ap);
 	else if (fm == 'p')

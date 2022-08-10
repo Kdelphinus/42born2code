@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 20:40:41 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 21:09:24 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/10 21:33:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		ft_convert_base(long long lnum, const char *base, int flag);
 
 // ft_printf_utils_2.c
 void	ft_putunnbr(unsigned int num);
+int		ft_putptr(unsigned long long ptr);
 
 // ft_printf_write.c
 int		write_c(va_list ap);
@@ -35,7 +36,6 @@ int		write_per(void);
 
 // ft_printf_write_2.c
 int		write_x(char fm, va_list ap);
-int		write_i(va_list ap);
 int		write_u(va_list ap);
 int		write_p(va_list ap);
 
