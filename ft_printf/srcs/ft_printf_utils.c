@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:13:43 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 21:02:25 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/10 22:20:34 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ static int	cal_minus(int **nbr_p, int idx)
 		nbr[idx]++;
 		if (nbr[idx] < 16)
 			break ;
-		if (idx == 0)
-			return (0);
 		nbr[idx] = 0;
 		idx--;
 	}

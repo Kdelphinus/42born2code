@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:31:54 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 21:20:39 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/10 22:16:19 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	format_print(const char **format, va_list ap)
 
 	(*format)++;
 	fm = *(*format);
-	size = 0;
+	size = -1;
 	if (fm == 'c')
 		size = write_c(ap);
 	else if (fm == 's')
@@ -41,6 +41,7 @@ static int	format_print(const char **format, va_list ap)
 int	ft_printf(const char *format, ...)
 {
 	int		size;
+	int		tmp;
 	va_list	ap;
 
 	if (ft_chr_count(format, '%') == 0)
@@ -53,7 +54,12 @@ int	ft_printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format == '%')
-			size += format_print(&format, ap);
+		{
+			tmp = format_print(&format, ap);
+			if (tmp == -1)
+				return (-1);
+			size += tmp;
+		}
 		else
 		{
 			write(1, format, 1);
@@ -61,5 +67,6 @@ int	ft_printf(const char *format, ...)
 		}
 		format++;
 	}
+	va_end(ap);
 	return (size);
 }
