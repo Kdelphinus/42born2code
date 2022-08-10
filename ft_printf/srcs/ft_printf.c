@@ -6,13 +6,12 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:31:54 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 17:30:35 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/10 18:59:34 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-#include <stdio.h>
 
 static int	format_print(const char **format, va_list ap)
 {
@@ -21,15 +20,23 @@ static int	format_print(const char **format, va_list ap)
 
 	(*format)++;
 	fm = *(*format);
+	size = 0;
 	if (fm == 'c')
 		size = write_c(ap);
 	else if (fm == 's')
 		size = write_s(ap);
 	else if (fm == 'd')
 		size = write_d(ap);
-	else
-		size = 0;
-	(*format)++;
+	else if (fm == '%')
+		size = write_per();
+	else if (fm == 'x' || fm == 'X')
+		size = write_x(fm, ap);
+	else if (fm == 'i')
+		size = write_i(ap);
+	else if (fm == 'u')
+		size = write_u(ap);
+	else if (fm == 'p')
+		size = write_p(ap);
 	return (size);
 }
 
@@ -53,8 +60,8 @@ int	ft_printf(const char *format, ...)
 		{
 			write(1, format, 1);
 			size++;
-			format++;
 		}
+		format++;
 	}
 	return (size);
 }

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:21:14 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 17:31:44 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/10 17:55:12 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,10 @@ int	write_d(va_list ap)
 	num = va_arg(ap, int);
 	ft_putnbr_fd(num, 1);
 	return (ft_nbr_count(num));
+}
+
+int	write_per(void)
+{
+	write(1, "%", 1);
+	return (1);
 }

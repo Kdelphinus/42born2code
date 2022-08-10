@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 17:30:00 by myko              #+#    #+#              #
-#    Updated: 2022/08/10 17:28:17 by myko             ###   ########.fr        #
+#    Updated: 2022/08/10 18:07:54 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ NAME = libftprintf.a
 SRCS_DIR = ./srcs/
 SRCS_NAME = ft_printf.c \
 			 ft_printf_utils.c \
-			 ft_printf_write.c
+			 ft_printf_write.c \
+			 ft_printf_write_2.c
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAME))
 OBJS_DIR = ./objs/
 OBJS_NAME = $(SRCS_NAME:.c=.o)
