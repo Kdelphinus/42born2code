@@ -88,8 +88,161 @@ va_arg는 va_list에 저장된 값을 바탕으로 현재 매개인자를 반환
 -L./lib/libft -lft
 ```
 
+```
+# 실제 테스트 할 때 사용한 쉘 스크립트
+make re
+gcc -Wall -Wextra -Werror main.c -L. -lftprintf
+./a.out
+read next
+make fclean
+rm a.out
+```
+
+## 0.3 printf
+```
+int	printf(const char *format, ...)
+```
+
+printf는 여러 자료형을 출력하는 함수이다. 반환값으로 출력한 자료형의 길이를 반환하며 ```stdio.h```에 정의되어 있다. 
+
+### 0.3.1 변수 출력 형식(mandatory part)
+- %c: 문자(정수 역시 문자로 해석)
+- %s: 문자열(정수 역시 문자열로 해석)
+- %p: 포인터가 참조하고 있는 메모리의 주소값(8자리 16진수)
+- %d: 부호가 있는 10진 정수
+- %i: 부호가 있는 10진 정수
+- %u: 부호없는 10진 진수로 해석
+- %x: 소문자를 사용하여 부호없는 16진 진수로 해석
+- %X: 대문자를 사용하여 부호없는 16진 진수로 해석
+- %%: %를 출력
+
+그 외 옵션들은 참고자료를 참고
+
+### 0.3.2 d와 i의 차이
+d와 i 모두 부호가 있는 10진 진수로 해석한다. 그렇기에 두 옵션에 대해 출력에선 차이가 없다. 그렇기에 va_arg를 int형으로 불러온다면 i에 8진수가 들어오든 16진수가 들어오든 10진수로 변환되어 변수에 저장된다. 
+
+따라서 현 프로젝트인 printf에선 두 개를 출력하는 함수의 차이가 없고 scanf 등 입력을 받는 프로젝트를 진행하게 된다면 i에 기능을 추가해야 할 것이다.
+
+# 1. 파일
+## 1.0 libft
+이전 과제에서 작성한 libft를 가져와 헤더는 ```includes```, 파일들을 ```lib```폴더에 저장하고 사용하였다.
+
+## 1.1 includes
+libft.h와 ft_printf.h 헤더 파일이 들어있다. 
+
+```write```함수를 위한 ```unistd.h```와 가변인자를 위한 ```stdarg.h```가 선언되어 있으며 그 외에도 각 파일마다 사용하는 함수들의 프로토타입이 정의되어 있다.
+
+## 1.2 lib
+이전 과제에서 만든 libft의 파일들이 있다. 기존의 파일을 그대로 사용한다.
+
+## 1.3 srcs
+ft_printf를 실제로 동작시키기 위해 필요한 파일들이 들어있다.
+
+### 1.3.1 ft_printf.c
+중심이 되는 함수들이 들어있으며 ft_printf의 옵션을 구분하여 출력하거나 옵션별 동작으로 넘기는 과정을 수행한다.
+
+#### 1.3.1.1 ft_printf
+```int	ft_printf(const char *format, ...)```
+
+가장 먼저 동작하는 함수로 ```format```과 가변인자를 받는 함수다. ```format```이 끝날 때까지 문자를 탐색하며 옵션이 들어올 때, ```format_print``` 함수를 호출하여 처리하고 그 외에은 ```write```함수로 출력한다. 
+
+이때 잘못된 옵션이 들어올 경우 음수를 반환하여 사용자에게 잘못됨을 인지시켰다.
+
+#### 1.3.1.2 format_print
+```static int	format_print(const char **format, va_list ap)```
+
+format에서 %를 인식하면 이 함수로 들어오게 된다. % 다음에 오는 옵션에 따라서 각각의 출력을 위한 함수를 호출하여 출력한 길이를 받고 이를 반환한다. 
+
+### 1.3.2 ft_printf_write.c
+
+c, s, d, %에 대한 옵션을 수행하는 함수가 정의되어 있다. 
+
+#### 1.3.2.1 write_c
+```int	write_c(va_list ap)```
+
+c옵션을 처리하는 함수다. va_arg는 메뉴얼을 보면 ```char```형태로 받을 수 없다. 그렇기에 int로 받아 아스키 코드를 저장하고 이를 출력한다.
+
+이때, 출력하는 길이는 항상 1이기에 길이를 따로 구하지 않고 1를 반환한다.
+
+#### 1.3.2.2 write_s
+```int	write_s(va_list ap)```
+
+s옵션을 처리하는 함수다. va_arg를 이용하여 ```char *```자료형으로 받아온다. 만약 받은 변수가 ```NULL```이라면 ```printf```가 그러하듯 "(null)"을 출력한다. 이외의 상황에선 write를 활용하여 출력 후, 길이를 반환한다. 
+
+#### 1.3.2.3 write_d
+```int	write_d(va_list ap)```
+d와 i옵션을 처리하는 함수다. va_arg를 이용하여 ```int```자료형을 받아온 후, libft에 있는 ```ft_putnbr_fd```함수로 출력한다. 
+
+길이는 후에 ```ft_printf_utils.c```에 정의되어 있는 ```ft_nbr_count```함수를 이용하여 구한 뒤, 반환한다.
+
+#### 1.3.2.4 write_per
+```int	write_per(void)```
+%옵션을 처리하는 함수다. 바로 %를 하나 출력하고 1을 반환한다.
+
+### 1.3.3 ft_printf_write_2.c
+x, X, u, p에 대한 옵션을 수행하는 함수가 정의되어 있다.
+
+#### 1.3.3.1 write_x
+```int	write_x(char fm, va_list ap)```
+
+x와 X에 대한 옵션을 처리하는 함수다. ```int```형으로 가변인자를 받고 ```ft_printf_utils.c```에 정의된 ```ft_convert_base```를 통해 16진수로 출력한다. 이때 x면 소문자, X면 대문자로 출력한다.
+
+#### 1.3.3.2 write_u
+```int	write_u(va_list ap)```
+
+u에 대한 옵션을 처리하는 함수다. ```unsigned int```형으로 받아 ```ft_printf_utile_2.c```에 정의된 ```ft_putunnbr```함수로 출력했다. 길이는 d옵션과 마찬가지로 ```ft_nbr_count```함수를 이용해 반환했다.
+
+#### 1.3.3.3 write_p
+```int	write_p(va_list ap)```
+
+p에 대한 옵션을 처리하는 함수다. 먼저 16진수로 표현되기에 앞에 0x를 먼저 출력하고 출력한 길이에 추가한다. 그 뒤, ```ft_printf_utile_2.c```에 정의된 ```ft_putptr```함수로 주소를 출력했다. 이때 주소가 얼마나 클지 모르고, 항상 양수임을 감안해서 ```unsigned long long```으로 형변환하여 입력했다.
+
+### 1.3.4 ft_printf_utils.c
+숫자의 길이를 세는 함수와 16진수로 변환하는 동작에 대한 함수가 정의되어 있다. 
+
+#### 1.3.4.1 ft_nbr_count
+```int	ft_nbr_count(long long num)```
+숫자의 길이를 계산하여 반환하는 함수다. 음수인 경우 -부호를 출력해야 하기에 길이를 하나 더 추가했다.
+
+#### 1.3.4.2 cal_idx
+```static int	cal_idx(long long num, int flag)```
+
+```ft_convert_base```함수의 동작 중에서 현재 출력해야 하는 인덱스를 구하는 함수다. 양수인 경우 주어진 인덱스를 그대로 반환하나 음수인 경우 보수를 출력해야 하기 때문에 반전시켜서 반환한다.
+
+#### 1.3.4.3 cal_minus
+```static int	cal_minus(int **nbr_p, int idx)```
+
+음수인 경우 보수를 구하여 그 수의 1을 더한 값을 반환하는 것이 컴퓨터의 동작이다. 그렇기에 ```cal_idx```에서 보수를 구하여도 거기에 1을 더해야 한다. 
+
+우선 첫번째 반복문은 만약 앞자리가 남았다면 0의 보수인 15번째 수를 채우는 과정이다. 
+
+다음 반복문은 끝자리에 1을 더해 인덱스를 늘리고 그에 따른 올림을 처리하는 과정이다. 
+
+#### 1.3.4.4 ft_convert_base
+```int	ft_convert_base(long long lnum, const char *base, int flag)```
+
+주어진 수와 base를 이용하여 16진수를 출력하는 함수다. ```calloc```을 사용해 8자리의 칸을 먼저 만든 후, 계산하는 방식이다. 이때 ```flag```가 1이면 음수이기에 음수를 따로 처리한다.
+
+### 1.3.5 ft_printf_utils_2.c
+unsigned int를 출력하는 함수나 주소를 출력하는 함수가 정의되어 있다.
+
+#### 1.3.5.1 ft_putunnbr
+```void	ft_putunnbr(unsigned int num)```
+
+unsigned int형을 출력하는 함수다.
+
+#### 1.3.5.2 ft_putptr_2
+```static void	ft_putptr_2(unsigned long long ptr, int *cnt, char *base)```
+
+재귀를 돌며 주소를 출력하기 위해 작성된 함수다. 재귀의 특성상 출력된 길이를 저장하며 가져가긴 어렵기에 ```cnt```의 주소값을 입력하여 반환이 필요없도록 작성했다.
+
+#### 1.3.5.3 ft_putptr
+```int	ft_putptr(unsigned long long ptr)```
+
+주소를 출력하는 함수다. ```ft_putptr_2```로 주소를 출력한 뒤, cnt에 저장된 값을 반환한다. 
 
 # 참고 자료
+- [팔만코딩경, ft_printf](https://80000coding.oopy.io/10c13274-8701-4395-9f39-d5c349735c94)
 - [팔만코딩경, [C] 가변인자 뜯어보기](https://80000coding.oopy.io/b1bc0184-9612-49f2-813b-ffeaf830f4fe)
 - [팔만코딩경, [make] Makefile 개념 및 사용법 정리](https://80000coding.oopy.io/e836636a-c302-4f8f-9b7c-cc71c5d62fff)
 - [코딩 도장, 66 함수에서 가변 인자 사용하기](https://dojang.io/mod/page/view.php?id=577)

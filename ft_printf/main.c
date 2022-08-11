@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 21:37:26 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 22:30:05 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/11 15:53:12 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	main(void)
 	ft_cnt = 0;
 	cnt = 0;
 	ft_printf("----test----\n");
-	ft_cnt = ft_printf("%d%s %c%s %X", 42, "Seoul", 'K', "delphinus", 42);
+	ft_cnt = ft_printf("%d%s %c%s %X %A", 42, "Seoul", 'K', "delphinus", 42, 0x2a);
 	printf("\n");
-	cnt = printf("%d%s %c%s %X", 42, "Seoul", 'K', "delphinus", 42);
+	cnt = printf("%d%s %c%s %X %A", 42, "Seoul", 'K', "delphinus", 42, 0x2a);
 	printf("\n");
 	printf("ft_printf cnt: %d\n", ft_cnt);
 	printf("printf cnt: %d\n", cnt);
