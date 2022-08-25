@@ -6,12 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:36:15 by myko              #+#    #+#             */
-/*   Updated: 2022/08/25 13:58:16 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/25 14:06:37 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 static int	ft_read(int fd, char *c_line, char *buff)
 {
@@ -20,7 +19,10 @@ static int	ft_read(int fd, char *c_line, char *buff)
 
 	rd = read(fd, buff, BUFFER_SIZE);
 	if (rd <= 0)
+	{
+		free(buff);
 		return (-2);
+	}
 	idx = ft_strchr(buff, '\n');
 	while (rd > 0 && idx == -1)
 	{
