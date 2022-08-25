@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:37:01 by myko              #+#    #+#             */
-/*   Updated: 2022/08/24 19:12:30 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/25 13:40:51 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int		ft_strlen(const char *s);
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *s1, const char *s2);
+
+int		ft_strlen(const char *s);
+char	*ft_strljoin(char *s1, const char *s2, int s2_len);
 int		ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
-int		ft_strlcpy(char *dst, const char *src, int dstsize);
 
 #endif

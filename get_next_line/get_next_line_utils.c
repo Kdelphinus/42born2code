@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:55:31 by myko              #+#    #+#             */
-/*   Updated: 2022/08/24 19:11:51 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/25 13:40:32 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,14 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, const char *s2)
+char	*ft_strljoin(char *s1, const char *s2, int s2_len)
 {
 	int		i;
 	int		s1_len;
-	int		s2_len;
 	char	*sj;
 
 	i = 0;
 	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
 	sj = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (sj == 0)
 		return (0);
@@ -89,22 +87,4 @@ char	*ft_strdup(const char *s1)
 	}
 	s2[i] = 0;
 	return (s2);
-}
-
-int	ft_strlcpy(char *dst, const char *src, int dstsize)
-{
-	int	i;
-	int	src_len;
-
-	i = 0;
-	src_len = ft_strlen(src);
-	if (dstsize == 0)
-		return (src_len);
-	while (i < dstsize - 1 && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = 0;
-	return (src_len);
 }
