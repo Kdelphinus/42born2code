@@ -8,6 +8,8 @@ gcc -Wall -Wextra -Werror main.c get_next_line.c get_next_line_utils.c -I. get_n
 echo "\nsolution: "
 cat test.txt
 
+echo "\n"
+
 echo "result: "
 ./a.out
 

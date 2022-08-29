@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: myko <myko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:55:31 by myko              #+#    #+#             */
-/*   Updated: 2022/08/25 13:40:32 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/29 16:38:55 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,21 @@ char	*ft_strljoin(char *s1, const char *s2, int s2_len)
 	return (sj);
 }
 
-int	ft_strchr(const char *s, int c)
+int	ft_strchr(char *s, int c)
 {
 	int		i;
 	char	cc;
-	char	*cs;
 
 	i = 0;
 	cc = (char)c;
-	cs = (char *)s;
-	while (cs[i])
+	while (s[i])
 	{
-		if (cs[i] == cc)
+		if (s[i] == cc)
 			return (i);
 		i++;
 	}
-	if (cs[i] == cc)
-		return (i);
+	// if (s[i] == cc)
+	// 	return (i);
 	return (-1);
 }
 
