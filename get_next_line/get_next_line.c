@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:36:15 by myko              #+#    #+#             */
-/*   Updated: 2022/08/29 16:23:18 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/29 17:21:35 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	ft_read(int fd, char **c_line, char *buff)
 		*c_line = ft_strljoin(*c_line, buff, rd);
 		rd = read(fd, buff, BUFFER_SIZE);
 		if (rd <= 0)
-			return (-1);
+			return (idx);
 		idx = ft_strchr(buff, '\n');
 	}
 	return (idx);
@@ -55,11 +55,12 @@ char	*get_next_line(int fd)
 	buff = (char *)malloc(sizeof(char) * ((size_t)BUFFER_SIZE + 1));
 	if (buff == 0)
 		return (0);
+	buff[BUFFER_SIZE] = 0;
 	idx = ft_read(fd, &c_line, buff);
 	if (idx == -2)
 	{
-		free(buff);
 		free(c_line);
+		free(buff);
 		return (0);
 	}
 	if (idx >= 0)

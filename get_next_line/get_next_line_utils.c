@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:55:31 by myko              #+#    #+#             */
-/*   Updated: 2022/08/29 16:38:55 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/29 17:09:36 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,19 @@ char	*ft_strljoin(char *s1, const char *s2, int s2_len)
 	return (sj);
 }
 
-int	ft_strchr(char *s, int c)
+int	ft_strchr(char *s, char c)
 {
 	int		i;
-	char	cc;
 
 	i = 0;
-	cc = (char)c;
 	while (s[i])
 	{
-		if (s[i] == cc)
+		if (s[i] == c)
 			return (i);
 		i++;
 	}
-	// if (s[i] == cc)
-	// 	return (i);
+	if (s[i] == c)
+		return (i);
 	return (-1);
 }
 
