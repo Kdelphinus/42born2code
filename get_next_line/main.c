@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:24:51 by myko              #+#    #+#             */
-/*   Updated: 2022/08/29 16:05:55 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/30 17:11:35 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@ int	main(void)
 	char	*str;
 
 	fd = open("test.txt", O_RDWR);
-	str = get_next_line(fd);
-	while (str)
+	while ((str = get_next_line(fd)) != NULL)
 	{
 		printf("%s", str);
-		str = get_next_line(fd);
+		free(str);
 	}
+	// while (1)
+	// {
+		
+	// }
 	return (0);
 }
