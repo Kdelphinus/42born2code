@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:24:51 by myko              #+#    #+#             */
-/*   Updated: 2022/08/31 16:02:41 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/31 16:52:23 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 
 int	main(void)
 {
-	int		idx = 1;
+	int		idx;
 	int		fd;
 	char	*str;
-	
+
+	idx = 1;
 	fd = open("test", O_RDWR);
 	while (1)
 	{
@@ -32,7 +33,7 @@ int	main(void)
 		if (!str)
 		{
 			free(str);
-			break;
+			break ;
 		}
 		free(str);
 	}

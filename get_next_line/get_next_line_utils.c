@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:55:31 by myko              #+#    #+#             */
-/*   Updated: 2022/08/30 16:46:28 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/31 16:50:32 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,19 @@ char	*ft_strljoin(char *s1, char *s2, int s2_len)
 	int		s1_len;
 	char	*sj;
 
-	i = 0;
+	i = -1;
 	s1_len = 0;
 	if (s1)
 		s1_len = ft_strlen(s1);
 	sj = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
 	if (sj == 0)
 		return (0);
-	while (i < s1_len)
-	{
+	while (++i < s1_len)
 		sj[i] = s1[i];
-		i++;
-	}
-	if (s1)
-		free(s1);
-	i = 0;
-	while (i < s2_len)
-	{
+	free(s1);
+	i = -1;
+	while (++i < s2_len)
 		sj[i + s1_len] = s2[i];
-		i++;
-	}
 	sj[i + s1_len] = 0;
 	return (sj);
 }
@@ -86,4 +79,11 @@ char	*ft_strdup(char *s1)
 	}
 	s2[i] = 0;
 	return (s2);
+}
+
+char	*char_free(char **line, char **c_line)
+{
+	free(*line);
+	free(*c_line);
+	return (0);
 }
