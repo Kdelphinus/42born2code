@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:36:15 by myko              #+#    #+#             */
-/*   Updated: 2022/08/30 18:26:13 by myko             ###   ########.fr       */
+/*   Updated: 2022/08/31 16:07:03 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,26 @@ char	*get_next_line(int fd)
 	{
 		idx = ft_strchr(line, '\n'); 
 		c_line = ft_strljoin(0, line, idx + 1);
-		tmp = ft_strdup(line + idx + 1);
-		free(line);
-		line = ft_strdup(tmp);
-		free(tmp);
+		if (idx + 1 == ft_strlen(line))
+		{
+			free(line);
+			line = 0;
+		}
+		else
+		{
+			tmp = ft_strdup(line + idx + 1);
+			free(line);
+			line = ft_strdup(tmp);
+			free(tmp);
+		}
 		return (c_line);
 	}
 	else if (line)
+	{
 		c_line = ft_strdup(line);
+		free(line);
+		line = 0;
+	}
 	else
 		c_line = 0;
 	buff = (char *)malloc(sizeof(char) * ((size_t)BUFFER_SIZE + 1));
@@ -69,12 +81,8 @@ char	*get_next_line(int fd)
 	if (idx == -2)
 	{		
 		free(buff);
-		if (line)
-		{
-			free(line);
-			line = 0;
+		if (c_line)
 			return (c_line);
-		}
 		free(line);
 		free(c_line);
 		return (0);
@@ -83,7 +91,10 @@ char	*get_next_line(int fd)
 	{
 		c_line = ft_strljoin(c_line, buff, idx + 1);
 		free(line);
-		line = ft_strdup(buff + idx + 1);
+		if (idx + 1 == ft_strlen(buff))
+			line = 0;
+		else
+			line = ft_strdup(buff + idx + 1);
 	}
 	free(buff);
 	return (c_line);
