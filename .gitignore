@@ -137,4 +137,6 @@ tags
 # Ignore code-workspaces
 *.code-workspace
 
+Born2beroot/*.iso
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
