@@ -266,22 +266,29 @@ $ sudo usermod -aG sudo <NEW_USER>
 ```
 $ sudo visudo
 
-Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 // 보안을 위해 secure_path(sudo가 사용할 수 있는 경로)를 제한하라
-Defaults        passwd_tries=3
-// 일치하지 않는 password인 경우 입력은 3회로 제한하라
-Defaults        authfail_message="Authentication faliure!"
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
 // Authentication 획득 실패 시 출력되는 error 메시지
-Defaults        badpass_message="Password is wrong!"
+Defaults        authfail_message="Failed to obtain permission"
+
 // password가 일치하지 않는 경우 출력되는 error 메시지
-Defaults        iolog_dir="/var/log/sudo"
+Defaults        badpass_message="Failed to pass password"
+
 // log(input, output)의 저장을 해당 디렉토리에 하라
-Defaults        log_input
+Defaults        iolog_dir="/var/log/sudo"
+
 // sudo 명령어 실행 시 입력된 명령어를 iolog_dir에 log로 저장하라
-Defaults        log_output
+Defaults        log_input
+
 // sudo 명령어 실행 시 출력 결과를 iolog_dir에 log로 저장하라
-Defaults        requiretty
+Defaults        log_output
+
 // sudo 명령어가 tty(콘솔, 터미널) 외부(cron)에서 실행되지 않도록하라
+Defaults        requiretty
+
+// 일치하지 않는 password인 경우 입력은 3회로 제한하라
+Defaults        passwd_tries=3
 ```
 
 secure_path는 명령을 수행하기 위해 sudo가 실행할 소프트웨어를 찾는 경로를 의미한다.
@@ -330,7 +337,7 @@ $ sudo ufw status
 
 ## 6.3 active된 UFW rule list 확인 & port 4242에 관한 rule 존재여부
 ```
-$ sudo cat/etc/ufw/user.rules
+$ sudo cat /etc/ufw/user.rules
 ```
 
 ## 6.4 port 8080에 새로운 rule 추가 & rule list에 해당 rule이 추가되었는지 확인
