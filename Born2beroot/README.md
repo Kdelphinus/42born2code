@@ -370,7 +370,7 @@ $ sudo apt update
 $ sudo ls /var/log/sudo/00/00
 ```
 
-# 6. ``` UFW ```
+# 6. UFW
 
 ``` UFW ``` 는 Uncomplicated Firewall의 약자로 복잡하지 않은 방화벽 관리 프로그램이다. 
 
@@ -407,7 +407,7 @@ $ sudo ufw status numbered
 $ sudo ufw delete <NUMBER>
 ```
 
-# 7. ``` SSH ```
+# 7. SSH
 
 ``` SSH ``` (Secure Shell)는 원격으로 호스트 컴퓨터에 접속하기 위해 사용되는 인터넷 프로토콜로 단어 그대로 보안 쉘이다. 기존 유닉스 시스템 쉘에 원격 접속하기 위해 사용하던 텔넷은 암호화가 이루어지지 않아 계정 정보 탈취의 위험성이 높았기에 이에 암호화 기능을 추가하여 1995년에 나온 프로토콜이다.
 
