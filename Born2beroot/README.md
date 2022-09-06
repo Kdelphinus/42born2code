@@ -1,6 +1,61 @@
 # Born2beroot
 
 # Index
+[1. Project overview](1-project-overview)  
+- [1.1 virtual machine은 무엇인가?](11-virtual-machine은-무엇인가)
+- [1.2 CentOS와 Debian의 차이점](12-CentOS와-Debian의-차이점)
+- [1.3 virtual machine의 장점](13-virtual-machine의-장점)
+- [1.4 aptitude와 apt의 차이점 (in debian)](14-aptitude와-apt의-차이점-in-debian)
+- [1.5 APPArmor(Application Armor)는 무엇인가?](15-apparmorapplication-armor는-무엇인가)
+  
+[2. Simple setup](2-simple-setup)
+- [2.1 시작 시 GUI 환경이 아닌가?](21-시작-시-gui-환경이-아닌가)
+- [2.2 machine에 연결할 경우, password를 요구하는가?](22-machine에-연결할-경우-password를-요구하는가)
+- [2.3 password가 주어진 정책에 맞는가?](23-password가-주어진-정책에-맞는가)
+- [2.4 UFW service가 실행되었는가?](24-ufw-service가-실행되었는가)
+- [2.5 SSH service가 실행되었는가?](25-ssh-service가-실행되었는가)
+- [2.6 OS가 Debian인가?](26-os가-debian인가)
+
+[3. User](3-user)
+- [3.1 평가 받는 학생의 유저가 sudo와 user42 그룹에 속해져있는가?](31-평가-받는-학생의-유저가-sudo와-user42-그룹에-속해져있는가)
+- [3.2 새로운 유저 생성 후, 평가자가 password policy에 맞는 password를 설정 후, passowrd policy의 설정 방법 설명](32-새로운-유저-생성-후-평가자가-password-policy에-맞는-password를-설정-후-password-policy의-설정-방법-설명)
+- [3.3 evaluating 그룹을 만든 후, 해당 그룹에 새 유저를 추가](33-evaluating-그룹을-만든-후-해당-그룹에-새-유저를-추가)
+
+[4. Hostname & Partitions](4-hostname--partitions)
+- [4.1 hostname이 myko42인가?](41-hostname이-myko42인가)
+- [4.2 hostname을 변경 후, restart하기](42-hostname을-변경-후-restart하기)
+- [4.3 원래 이름으로 복원](43-원래-이름으로-복원)
+- [4.4 partitions 확인하기](44-partitions-확인하기)
+- [4.5 partitions와 subject 비교](45-partitions와-subject-비교)
+- [4.6 LVM이란?](46-lvm이란)
+
+[5. Sudo](5-sudo)
+- [5.1 sudo 프로그램이 설치되어있는가?](51-sudo-프로그램이-설치되어있는가)
+- [5.2 새 user를 sudo 그룹에 할당하기](52-새-user를-sudo-그룹에-할당하기)
+- [5.3 sudo의 값](53-sudo의-값)
+- [5.4 sudo의 장점](54-sudo의-장점)
+- [5.5 /var/log/sudo/ 폴더에 한 개 이상의 파일이 존재하는가?](55-varlogsudo-폴더에-한-개-이상의-파일이-존재하는가)
+- [5.6 sudo 명령어 실행 후, 로그 파일이 업데이트되었는가?](56-sudo-명령어-실행-후-로그-파일이-업데이트되었는가)
+
+[6. UFW](6-ufw)
+- [6.1 UFW의 설치 여부 확인](61-ufw의-설치-여부-확인)
+- [6.2 UFW의 작동 여부 확인](62-ufw의-작동-여부-확인)
+- [6.3 active된 UFW rule list 확인 & port 4242에 관한 rule 존재여부](63-active된-ufw-rule-list-확인--port-4242에-관한-rule-존재여부)
+- [6.4 port 8080에 새로운 rule 추가 & rule list에 해당 rule이 추가되었는지 확인](64-port-8080에-새로운-rule-추가--rule-list에-해당-rule이-추가되었는지-확인)
+- [6.5 새로운 rule 삭제](65-새로운-rule-삭제)
+
+[7. SSH](7-ssh)
+- [7.1 SSH의 설치 여부](71-ssh의-설치-여부)
+- [7.2 SSH의 작동 여부](72-ssh의-작동-여부)
+- [7.3 SSH service가 port 4242만 사용하는가?](73-ssh-service가-port-4242만-사용하는가)
+- [7.4 SSH를 이용해 새 user로 login하기](74-ssh를-이용해-새-user로-login하기)
+- [7.5 SSH를 통해 root로 login 할 수 없는가?](75-ssh를-통해-root로-login-할-수-없는가)
+
+[8. Script monitoring](8-script-monitoring)
+- [8.1 cron이란?](81-cron이란)
+- [8.2 10분마다 실행되도록 설정](82-10분마다-실행되도록-설정)
+
+[참고](참고)
 
 # 1. Project overview
 
@@ -38,7 +93,7 @@ VMware와 Virtualbox 역시 유형 2의 하이퍼바이저를 사용한다.
 > Host와 Guest
 > 하이퍼바이저가 설치되는 물리 하드웨어를 ``` host ``` , 하이퍼바이저에서 리소스를 사용하는 여러 가상머신을 ``` guest ``` 라고 한다.
 
-## 1.2 ``` CentOS ``` 와 ``` Dibian ``` 의 차이점
+## 1.2 CentOS와 Debian의 차이점
 
 두 OS 모두 ``` 리눅스 커널 + 자유소프트웨어 ``` 로 구성된 리눅스 배포판이다. 그렇기에 두 OS의 차이는 자유소프트웨어(패키지 포맷, 패키지 관리 툴 등)이다.
 
@@ -48,12 +103,12 @@ VMware와 Virtualbox 역시 유형 2의 하이퍼바이저를 사용한다.
 >  
 > 커널이란 이름은 단단한 껍질 안의 씨앗처럼 OS 내에 위치하고 어떤 유형에 관계없이 하드웨어의 모든 주요 기능을 제어하기 때문에 붙은 이름이다. 
 
-### 1.2.1 ``` CentOS ```
+### 1.2.1 CentOS
 
 - RHEL(레드헷 엔터프라이즈 리눅스, 레드헷이 개발한 컴퓨터 운영체제이자 유로기업용 서버 OS)에서 사후 기술지원과 상표권을 배제하고 제작한 오픈소스
 - 패키지 포맷으로 .rpm 확장자를 사용하고, yum(yellow dog update, duke university에서 RPM 설치를 개선하기 위해 개발한 패키지 관리자)을 패키지 관리 툴로 사용한다.
 
-### 1.2.2 ``` Debian ```
+### 1.2.2 Debian
 
 - debian 프로젝트에서 제작한 오픈소스다.
 - 패키지 포맷으로 .deb 확장자를 사용하고 dpkg(데비안 패키지 관리 시스템의 기초가 되는 소프트웨어)와 APT를 패키지 관리 툴로 사용한다.
@@ -61,7 +116,7 @@ VMware와 Virtualbox 역시 유형 2의 하이퍼바이저를 사용한다.
 - Ubuntu는 debian 기반의 OS다.
 - APT는 처음에는 debian 계열을 위해 고안되었으나 현재는 .rpm 패키지와도 호환되도록 업데이트되어서 CentOS에서도 사용 가능하다.
 
-## 1.3 ``` virtual machine ``` 의 장점
+## 1.3 virtual machine의 장점
 
 1. 비용 절감  
 여러 가상 환경을 하나의 인프라(하드웨어)에서 설치하기에 물리적 인프라 설치 공간을 줄일 수 있게 된다. 이 때문에 많은 서버를 유지 보수하지 않아도 되고 많은 전력을 사용할 필요가 없어 비용을 줄이는 데 도움이 된다.
@@ -72,7 +127,7 @@ VMware와 Virtualbox 역시 유형 2의 하이퍼바이저를 사용한다.
 3. downtime(시스템을 이용할 수 없는 시간)의 최소화
 vm은 호스트가 예기치 않게 중단될 경우, 다른 물리적 서버의 하이퍼바이저로 이전할 수 있다. 이는 유용한 백업 대책이 있다는 의미이다.  
 
-## 1.4 ``` aptitude ``` 와 ``` apt ``` 의 차이점 (in debian)
+## 1.4 aptitude와 apt의 차이점 (in debian)
 
 ### 1.4.1 aptitude
 
@@ -98,7 +153,7 @@ vm은 호스트가 예기치 않게 중단될 경우, 다른 물리적 서버의
 - aptitude는 'why', 'why-not' 명령어를 통해 어떤 동작이 왜 되고 안 되는지 확인할 수 있다.
 - apt는 설치, 제거 중 충돌이 일어날 경우 종료되지만 aptitude는 해결 방법을 제시할 수 있다.
 
-## 1.5 ``` APPArmor ``` (Application Armor)는 무엇인가?
+## 1.5 APPArmor(Application Armor)는 무엇인가?
 
 ``` APPArmor ``` 는 리눅스 커널의 보안 시스템이다. 오픈 소스이고 생성한 개별 프로그램에 대한 profile 파일을 통해 여러 권한을 통제함으로 개별 프로그램을 보호한다.
 
@@ -201,7 +256,7 @@ $ lsblk
 
 ## 4.5 partitions와 subject 비교
 
-## 4.6 ``` LVM ``` 이란?
+## 4.6 LVM이란?
 
 ``` LVM ``` (Logical Volume Manager)은 리눅스의 저장 공간을 효율적이고 유연하게 관리하기 위한 커널의 한 부분이다.  
 
@@ -491,7 +546,7 @@ $ sudo service cron restart
 
 ---
 
-## 참고 문헌
+## 참고
 
 - [태헌의 notion, born2beroot](https://www.notion.so/born2beroot-2ce1177e08904c329fb437c7fdcd7113)
 - [syyim, [스터디 정리]하이퍼바이저의 종류](https://lovejaco.github.io/posts/two-types-of-hypervisors/)
