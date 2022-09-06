@@ -176,7 +176,7 @@ $ sudo groupadd evaluating
 $ sudo usermod -aG evaluating <NEW_USER>
 ```
 
--G: user가 명시된 그룹에만 속하게 된다.
+-G: user가 명시된 그룹에만 속하게 된다.  
 -Ga: user가 기존에 속해져 있던 그룹 + 명시된 그룹에 속하게 된다.
 
 # 4. Hostname & Partitions
@@ -215,33 +215,272 @@ $ lsblk
 ![관련 용어](https://t1.daumcdn.net/cfile/tistory/260BBB3855F932B218)
 
 1. 파티션(Partition)
-- 하나의 하드디스크에 대해 영역을 나누는 것을 의미
-- fdisk로 파티션 설정 가능
+    - 하나의 하드디스크에 대해 영역을 나누는 것을 의미
+    - fdisk로 파티션 설정 가능
 
 2. 물리적 볼륨(PV, Physical Volume)
-- 실제 디스크 장치를 분할한 파티션된 상태를 의미
-- PV는 일정한 크기의 PE들로 구성
+    - 실제 디스크 장치를 분할한 파티션된 상태를 의미
+    - PV는 일정한 크기의 PE들로 구성
 
 3. 물리적 확장(PE, Physical Extent)
-- PV를 구성하는 일정한 크기의 블록
-- 보통 1PE는 4MB에 해당
-- PE와 LE는 1:1 대응
+    - PV를 구성하는 일정한 크기의 블록
+    - 보통 1PE는 4MB에 해당
+    - PE와 LE는 1:1 대응
 
 4. 볼륨 그룹(VG, Volume Group)
-- PV들이 모여서 생성되는 단위
-- 사용자는 VG를 원하는대로 쪼개서 LV로 만듬
+    - PV들이 모여서 생성되는 단위
+    - 사용자는 VG를 원하는대로 쪼개서 LV로 만듬
 
 5. 논리적 볼륨(LV, Logical Volume)
-- 사용자가 최종적으로 사용하는 단위
-- VG에서 필요한 크기로 할당받아 LV를 생성
+    - 사용자가 최종적으로 사용하는 단위
+    - VG에서 필요한 크기로 할당받아 LV를 생성
 
 6. VGDA(Volume Group Descriptor Area)
-- 볼륨그룹의 모든 정보가 기록되는 부분
-- VG의 이름, 상태, 속해있는 PV, LV, PE, LE들의 할당 상태 등을 저장
-- 각 물리볼륨의 첫 부분에 저장
+    - 볼륨그룹의 모든 정보가 기록되는 부분
+    - VG의 이름, 상태, 속해있는 PV, LV, PE, LE들의 할당 상태 등을 저장
+    - 각 물리볼륨의 첫 부분에 저장
 
 ### 4.6.2 LVM 작동 방법
 
+1. 하드 디스크를 여러 개로 나누어 partition을 설정한다.
+2. 각 partition을 LVM으로 사용하기 위해 PV로 변환해준다.
+3. 하나 이상의 PV를 그룹화하여 VG로 만든다.
+4. 가상의 partition들처럼 VG를 나누어 할당한 것이 LV다.
+5. LV를 새 파일시스템(마운트 포인트)과 1대 1로 마운트(연결)한다.
+
+> 파일시스템은 파일이나 자료를 쉽게 발견, 접근할 수 있도록 보관하거나 조직하는 체제이다.
+
+# 5. Sudo
+
+## 5.1 sudo 프로그램이 설치되어있는가?
+```
+$ sudo --version
+```
+
+## 5.2 새 user를 sudo 그룹에 할당하기
+```
+$ sudo usermod -aG sudo <NEW_USER>
+```
+
+## 5.3 sudo의 값
+```
+$ sudo visudo
+
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+// 보안을 위해 secure_path(sudo가 사용할 수 있는 경로)를 제한하라
+Defaults        passwd_tries=3
+// 일치하지 않는 password인 경우 입력은 3회로 제한하라
+Defaults        authfail_message="Authentication faliure!"
+// Authentication 획득 실패 시 출력되는 error 메시지
+Defaults        badpass_message="Password is wrong!"
+// password가 일치하지 않는 경우 출력되는 error 메시지
+Defaults        iolog_dir="/var/log/sudo"
+// log(input, output)의 저장을 해당 디렉토리에 하라
+Defaults        log_input
+// sudo 명령어 실행 시 입력된 명령어를 iolog_dir에 log로 저장하라
+Defaults        log_output
+// sudo 명령어 실행 시 출력 결과를 iolog_dir에 log로 저장하라
+Defaults        requiretty
+// sudo 명령어가 tty(콘솔, 터미널) 외부(cron)에서 실행되지 않도록하라
+```
+
+secure_path는 명령을 수행하기 위해 sudo가 실행할 소프트웨어를 찾는 경로를 의미한다.
+
+> ``` /A:/B ``` -> A에 없으면 B에서 찾으라는 의미
+
+## 5.4 sudo의 장점
+
+sudo는 일반 사용자가 root 권한을 빌려 명령을 실행하기 위해 사용한다. 그렇기에 다음과 같은 장점이 생긴다.
+
+- 시스템 침입자가 sudo를 사용하면 sudoers(sudo 명령어를 사용할 수 있는 계정을 관리하는 파일)에 자신이 노출되므로 침입을 확인할 수 있다.  
+- root 계정에 장시간 접속하지 않아도 되므로 위험한 명령어를 실행할 가능성이 낮아진다.  
+- sudo 사용 시에는 log가 남아 추적이 쉽다.  
+- root의 password를 타인과 공유하지 않아도 된다.
+
+## 5.5 /var/log/sudo/ 폴더에 한 개 이상의 파일이 존재하는가?
+```
+$ sudo ls /var/log/sudo
+```
+
+## 5.6 sudo 명령어 실행 후, 로그 파일이 업데이트되었는가?
+```
+$ sudo apt update
+$ sudo ls /var/log/sudo/00/00
+```
+
+# 6. ``` UFW ```
+
+``` UFW ``` 는 Uncomplicated Firewall의 약자로 복잡하지 않은 방화벽 관리 프로그램이다. 
+
+> 방화벽 관리 프로그램은 데이터 패킷을 분석하고 적요오딘 규칙 집합을 기반으로 허용 여부를 결정하여 들어오고 나가는 네트워크 트래픽을 제어하는 소프트웨어나 하드웨어 기반 네트워크 보안 시스템이다.
+
+일반적으로 리눅스에선 Iptables를 방화벽으로 사용하지만 복잡하다는(절차상 번거로운) 단점이 있다. 그래서 이를 쉽게(간편하게) 사용할 수 있도록 사용하는 것이 ``` UFW ``` 이다. 대표적으로 외부 침입자가 내부 network에 침입하는 경우를 막기위해 사용한다.
+
+우리 과제에선 port 22를 닫고 port 4242를 여는데 사용했다.
+
+## 6.1 UFW의 설치 여부 확인
+```
+$ sudo ufw --version
+```
+
+## 6.2 UFW의 작동 여부 확인
+```
+$ sudo ufw status
+```
+
+## 6.3 active된 UFW rule list 확인 & port 4242에 관한 rule 존재여부
+```
+$ sudo cat/etc/ufw/user.rules
+```
+
+## 6.4 port 8080에 새로운 rule 추가 & rule list에 해당 rule이 추가되었는지 확인
+```
+$ sudo ufw allow 8080
+$ sudo cat /etc/ufw/user.rules
+```
+
+## 6.5 새로운 rule 삭제
+```
+$ sudo ufw status numbered
+$ sudo ufw delete <NUMBER>
+```
+
+# 7. ``` SSH ```
+
+``` SSH ``` (Secure Shell)는 원격으로 호스트 컴퓨터에 접속하기 위해 사용되는 인터넷 프로토콜로 단어 그대로 보안 쉘이다. 기존 유닉스 시스템 쉘에 원격 접속하기 위해 사용하던 텔넷은 암호화가 이루어지지 않아 계정 정보 탈취의 위험성이 높았기에 이에 암호화 기능을 추가하여 1995년에 나온 프로토콜이다.
+
+쉘로 원격 접속하는 것이므로 기본적으로 CLI 상에서 작업한다. 또한 암호화 기법을 사용하기에 통신이 노출되어도 이해할 수 없는 암호화된 문자로 보인다.
+
+![ssh 작동방식](https://user-images.githubusercontent.com/16536810/59079319-2720dc80-891e-11e9-970e-467662d9465a.png)
+
+ssh는 서버에 접속할 때, 비밀번호대신 ssh key를 제출하는 방식이다. 이러한 ssh 키는 공개키(public key)와 비공개키(private key)로 이루어진다. 키를 생성하면 공개키와 비공개키가 생성되는데 비공개키는 로컬 머신(SSH Client), 공개키는 원격 머신(SSH Server)에 있어야 한다. SSH 접속을 시도하면 SSH Client가 로컬 머신의 비공키와 원격 머신의 비공개키를 비교해서 둘이 일치하는지 확인하는 방식으로 동작한다.
+
+이러한 SSH는 다음과 같은 기능을 가진다.
+- 보안 접속을 통한 다양한 기능 제공
+- IP spoofing(IP 스푸핑, IP 위변조 기법 중 하나)을 방지하는 기능 제공
+- X11 패킷 포워딩(TCP/IP 패킷 포워딩의 특별한 경우) 및 일반적인 TCP/IP([참고자료](https://nordvpn.com/ko/blog/tcp-ip-protocol/)) 패킷 포워딩을 제공
+
+## 7.1 SSH의 설치 여부
+```
+$ sudo ssh -V
+```
+
+## 7.2 SSH의 작동 여부
+```
+$ systemctl status ssh
+```
+
+## 7.3 SSH service가 port 4242만 사용하는가?
+```
+$ sudo vi /etc/ssh/sshd_config
+```
+
+> sshd_config -> server 측 설정
+> ssh_config -> client 측 설정
+
+## 7.4 SSH를 이용해 새 user로 login하기
+```
+$ sudo <NEW_USER>@<MAC_IP> -p <HOST_PORT>
+```
+
+## 7.5 SSH를 통해 root로 login 할 수 없는가?
+```
+$ cat /etc/ssh/sshd_config | grep "PermitRootLogin"
+```
+> ssh 연결을 위해 포트 포워딩이 필요하다.
+
+# 8. Script monitoring
+```
+printf "#Architecture: "
+uname -a
+
+printf "#CPU physical : "
+nproc --all
+
+printf "#vCPU : "
+cat /proc/cpuinfo | grep processor | wc -l
+
+printf "#Memory Usage: "
+free -m | grep Mem | awk '{printf"%d/%dMB (%.2f%%)\n", $3, $2, $3/$2 * 100}'
+
+printf "#Disk Usage: "
+df -a -BM | grep /dev/map | awk '{sum+=$3}END{print sum}' | tr -d '\n'
+printf "/"
+df -a -BM | grep /dev/map | awk '{sum+=$4}END{print sum}' | tr -d '\n'
+printf "MB ("
+df -a -BM | grep /dev/map | awk '{sum1+=$3 ; sum2+=$4 }END{printf "%d", sum1 / sum2 * 100}' | tr -d '\n'
+printf "%%)\n"
+
+printf "#CPU load: "
+mpstat | grep all | awk '{printf "%.2f%%\n", 100-$13}'
+
+printf "#Last boot: "
+who -b | awk '{printf $3" "$4"\n"}'
+
+printf "#LVM use: "
+if [ "$(lsblk | grep lvm | wc -l)" -gt 0 ] ; then printf "yes\n" ; else printf "no\n" ; fi
+
+printf "#Connections TCP : "
+ss | grep -i tcp | wc -l | tr -d '\n'
+printf " ESTABLISHED\n"
+
+printf "#User log: "
+who | wc -l
+
+printf "#Network: IP "
+hostname -I | tr -d '\n'
+printf "("
+ip link show | awk '$1 == "link/ether" {print $2}' | sed '2, $d' | tr -d '\n'
+printf ")\n"
+
+printf "#Sudo : "
+journalctl _COMM=sudo | wc -l | tr -d '\n'
+printf " cmd\n"
+```
+
+```
+uname -a // 시스템의 정보를 출력
+nproc --all // 물리적으로 설치된 프로세스 갯수
+cat /proc/cpuinfo | grep processor | wc -l
+free -m // 메모리 사용량을 mb 단위(-m)로 출력한다
+df -P // 리눅스 내 디스크 메모리 전체 현황을 한줄로(-P) 출력한다
+mpstat // 현재 CPU의 사용량을 출력한다
+who -b // 마지막 리부트 날짜와 시간
+ss -t | grep -i ESTAB // 활성화된 tcp 네트워크 상태를 출력한다 | 대문자/소문자를 구분하지 않고 ESTAB을 찾는다
+who // 서버를 사용하는 유저들을 출력한다
+hostname -I // IPv4 주소
+```
+
+## 8.1 cron이란?
+
+특정 작업을 특정 시간에 자동으로 실행시키기 위한 시간 기반 job scheduler 형 데몬이다. cron은 crontab이란 설정 파일을 기반으로 작동한다.
+
+> 데몬은 사용자가 직접적으로 제어하지 않고, 백그라운드에서 돌면서 여러 작업을 하는 프로그램을 말한다. 백그라운드 프로세스와 다른 점은 사용자와 상호작용하지 않는 독자적인 프로세스라는 것이다.
+
+## 8.2 10분마다 실행되도록 설정
+```
+* * * * * command 
+| | | | |_ // 요일
+| | | |_ // 월
+| | |_ // 날짜
+| |_ // 시간
+|_ // 분
+
+// 예시1) 5일에서 6일까지 2시,3시,4시에 매 10분마다 test.sh 를 실행
+*/10 2,3,4 5-6 * * /home/script/test.sh
+
+// 10분마다 monitoring.sh를 싱행
+*/10 * * * * /monitoring.sh
+```
+
+```
+$ sudo crontab -e
+
+// crontab
+*/10 * * * * bash ~/monitoring.sh
+
+$ sudo service cron restart
+```
 
 ---
 
@@ -253,3 +492,6 @@ $ lsblk
 - [Red Hat, yum의 개념과 사용법](https://access.redhat.com/ko/solutions/82093)
 - [joonpark.log, aptitude vs apt](https://velog.io/@joonpark/aptitude-vs-apt)
 - [SGB IT 프로젝트, 리눅스 LVM에 관하여(Centos 6.6 기준)](https://sgbit.tistory.com/12)
+- [외눈박이 행성의 두눈박이 두 번째 집, 12. Linux - Sudo 명령어 및 sudoers 파일](https://whitewing4139.tistory.com/74)
+- [위키백과, UFW](https://ko.wikipedia.org/wiki/UFW)
+- [hyeseong-dev.log, [리눅스] ssh란?](https://velog.io/@hyeseong-dev/%EB%A6%AC%EB%88%85%EC%8A%A4-ssh%EB%9E%80)
