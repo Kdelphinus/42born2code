@@ -516,10 +516,34 @@ hostname -I // IPv4 주소
 ## 8.1 cron이란?
 
 특정 작업을 특정 시간에 자동으로 실행시키기 위한 시간 기반 job scheduler 형 데몬이다. cron은 crontab이란 설정 파일을 기반으로 작동한다.
+즉, `` 특정 시간에 특정 작업을 할 수 있게 도와주는 것 `` 이 cron이다. 
 
 > 데몬은 사용자가 직접적으로 제어하지 않고, 백그라운드에서 돌면서 여러 작업을 하는 프로그램을 말한다. 백그라운드 프로세스와 다른 점은 사용자와 상호작용하지 않는 독자적인 프로세스라는 것이다.
 
-## 8.2 10분마다 실행되도록 설정
+### 8.1.1 crontab basic
+
+- 편집
+```
+$ crontab -e
+```
+
+일단 기본 명령어는 e옵션을 이용한 것으로 위 명령어를 입력하면 크론탭을 설정할 수 있는 장소로 들어간다. 
+
+- 보기
+```
+$ crontab -l
+```
+
+만약 보고만 싶다면 l옵션으로 cat과 같은 동작을 실행시킬 수 있다. 
+
+- 삭제
+```
+$ crontab -r
+```
+
+그리고 크론탭의 설정을 삭제하고 싶다면 r옵션을 이용하면 된다. 
+
+### 8.1.2 주기 결정
 ```
 * * * * * command 
 | | | | |_ // 요일
@@ -544,6 +568,22 @@ $ sudo crontab -e
 $ sudo service cron restart
 ```
 
+### 8.1.3 팁
+
+크론을 쓸 때는 한 줄에 하나의 명령만 써야 한다.
+```
+# 잘못된 예
+* * * 5 5
+/home/script/test.sh
+```
+
+```
+# 잘된 예
+* * * 5 5 /home/script/test.sh
+```
+
+그 외에도 크론 작업 내역을 로그로 남기거나 기존 크론 내역을 백업할 수도 있다. 이에 대해서는 [이곳](https://jdm.kr/blog/2)을 참고하면 된다.
+
 ---
 
 ## 참고
@@ -557,3 +597,5 @@ $ sudo service cron restart
 - [외눈박이 행성의 두눈박이 두 번째 집, 12. Linux - Sudo 명령어 및 sudoers 파일](https://whitewing4139.tistory.com/74)
 - [위키백과, UFW](https://ko.wikipedia.org/wiki/UFW)
 - [hyeseong-dev.log, [리눅스] ssh란?](https://velog.io/@hyeseong-dev/%EB%A6%AC%EB%88%85%EC%8A%A4-ssh%EB%9E%80)
+- [JDM's Blog](https://jdm.kr/blog/2)
+- [개발놀이 끄적이기, sudoers - requiretty 옵션](https://nostressdev.tistory.com/8)
