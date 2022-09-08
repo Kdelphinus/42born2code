@@ -53,7 +53,6 @@
 
 [8. Script monitoring](#8-script-monitoring)
 - [8.1 cron이란?](#81-cron이란)
-- [8.2 10분마다 실행되도록 설정](#82-10분마다-실행되도록-설정)
 
 [참고](#참고)
 
@@ -92,6 +91,52 @@ VMware와 Virtualbox 역시 유형 2의 하이퍼바이저를 사용한다.
 
 > Host와 Guest
 > 하이퍼바이저가 설치되는 물리 하드웨어를 ``` host ``` , 하이퍼바이저에서 리소스를 사용하는 여러 가상머신을 ``` guest ``` 라고 한다.
+
+### 1.1.2 가상화의 종류
+
+가상화는 방식에 따라 호스트 가상화, 하이퍼바이저 가상화, 컨테이너 가상화로 나뉜다.
+
+#### 1.1.2.1 호스트 가상화
+
+호스트 가상화는 기본이 되는 host OS 위에 guest OS가 구동되는 방식이다. virtual box 등이 이에 해당한다.
+
+- 장점: 가상의 하드웨어를 에뮬레이팅하기에 호스트 운영체제에 크게 제약사항이 없다.
+- 단점: OS위에 OS가 얹히는 방식이기에 오버헤드(어떤 처리를 하기 위해 들어가는 간접적인 처리 시간 · 메모리 등)가 클 수 있다.
+
+![호스트 가상화](https://tech.cloud.nongshim.co.kr/wp-content/uploads/2018/09/Image0.png)
+
+#### 1.1.2.2 하이퍼바이저 가상화
+
+하이퍼바이저 가상화는 host OS없이 하드웨어에 하이퍼바이저를 설치하여 이용하는 방식이다. 
+
+- 장점: 별도의 호느스 os가 없기 때문에 오버헤드가 적고 하드웨어를 직접 제어하기에 효율적으로 리소스를 관리할 수 있다.
+- 단점: 자체적으로 머신에 대한 관리 기능이 없기 때문에 관리를 위한 컴퓨터나 콘솔이 필요하다.
+
+하이퍼바이저 가상화는 세부저긍로 전가상화와 반가상화로 분류된다.
+
+![하이퍼바이저 가상화](https://tech.cloud.nongshim.co.kr/wp-content/uploads/2018/09/Image.png)
+
+##### 1.1.2.2.1 전가상화(Full-Virtualization)
+
+전가상화는 하드웨어를 완전히 가상화하는 방식으로 Hardware Virtual Machine으로도 불린다. 하이퍼바이저를 실행하면 DOM0라는 관리용 가상 머신이 실행되고, 모든 가상머신들은 DOM0를 통해서만 하드웨어 접근이 이루어진다. 그렇기에 하이퍼바이저는 가상화된 OS가 무엇이든지 명령어를 알아들을 수 있다.
+
+- 장점: 하드웨어를 완전히 가상화하기 때문에 게스트 OS의 별다른 수정이 필요없다.
+- 단점: 하이퍼바이저가 모든 명령을 중재하기에 성능이 비교적 느리다.
+
+##### 1.1.2.2.2 반가상화(Para-Virtualization)
+
+반가상화는 전가상화와 달리 하드웨어를 완전히 가상화하지 않는다. 이는 전가상화의 단점인 성능저하 문제를 해결하기 위함인데 하이퍼콜(hyper call)이라는 인터페이스를 통해 하이퍼바이저에게 직접 요청을 날린다. 그렇기에 각 OS들이 각각의 번역기를 가지고 명령을 보내는 것이다.
+
+- 장점: 전가상화에 비해 성능이 빠르다.
+- 단점: 하이퍼바이저에게 하이퍼 콜을 요청할 수 있도록 각 OS의 커널을 수정해야한다. 그렇기에 오픈소스 OS가 아니라면 반가상화를 이용하기 어렵다.
+
+#### 1.1.2.3 컨테이너 가상화
+
+컨테이너 가상화는 호스트 OS 위에 컨테이너 관리 소프트웨어를 설치하여 논리적으로 컨테이너를 나누어 사용한다. 컨테이너는 어플리케이션 동작을 위한 라이브러리와 어플리케이션 등으로 구성되기떄문에 이를 각각의 서버처럼 사용할 수 있다.
+
+- 장점: 오버헤드가 적어 가볍고 빠르다.
+
+![컨테이너 가상화](https://tech.cloud.nongshim.co.kr/wp-content/uploads/2018/09/Image2.png)
 
 ## 1.2 CentOS와 Debian의 차이점
 
@@ -350,6 +395,14 @@ secure_path는 명령을 수행하기 위해 sudo가 실행할 소프트웨어�
 
 > ``` /A:/B ``` -> A에 없으면 B에서 찾으라는 의미
 
+> ** requiretty **
+> 
+> cron 등이 실제 tty를 통해 접속된 상태에서만 sudo 명령어 실행이 가능하도록 하는 옵션이다.
+
+### 5.3.1 tty
+
+``` tty ``` 는 예전에 정보를 컴퓨터에 입력하고 컴퓨터에서 정보를 가져오는 데 사용한 텔레타이프(TTY)에서 유래했으며 현재는 일반적으로 Unix/Linux에서 터미널을 나타내는데 사용한다. 
+
 ## 5.4 sudo의 장점
 
 sudo는 일반 사용자가 root 권한을 빌려 명령을 실행하기 위해 사용한다. 그렇기에 다음과 같은 장점이 생긴다.
@@ -597,5 +650,7 @@ $ sudo service cron restart
 - [외눈박이 행성의 두눈박이 두 번째 집, 12. Linux - Sudo 명령어 및 sudoers 파일](https://whitewing4139.tistory.com/74)
 - [위키백과, UFW](https://ko.wikipedia.org/wiki/UFW)
 - [hyeseong-dev.log, [리눅스] ssh란?](https://velog.io/@hyeseong-dev/%EB%A6%AC%EB%88%85%EC%8A%A4-ssh%EB%9E%80)
-- [JDM's Blog](https://jdm.kr/blog/2)
-- [개발놀이 끄적이기, sudoers - requiretty 옵션](https://nostressdev.tistory.com/8)
+- [JDM's Blog, 리눅스 크론탭 사용법](https://jdm.kr/blog/2)
+- [Mr.november11, [Linux]sudo 명령어 수행 시 sudo: sorry, you must have a tty to run do Error가 발생할 때 해결 방안
+출처: https://november11tech.tistory.com/98 [Mr.november11:티스토리]](https://november11tech.tistory.com/98)
+- [NDS 클라우드 기술 블로그, [소개] 가상화의 종류 3가지](https://tech.cloud.nongshim.co.kr/2018/09/18/%EA%B0%80%EC%83%81%ED%99%94%EC%9D%98-%EC%A2%85%EB%A5%983%EA%B0%80%EC%A7%80/)
