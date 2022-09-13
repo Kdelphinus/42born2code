@@ -352,6 +352,21 @@ $ lsblk
 
 # 5. Sudo
 
+## 5.0 sudo vs root
+
+### 5.0.1 sudo
+
+- 현재 계정에서 root 권한을 빌려오는 것
+- 즉, sudo 자체가 유저는 아니며 root가 거부한다면 root 권한을 빌려올 수 없다.
+
+### 5.0.2 root
+
+- 다른 계정에서도 `` su `` 를 이용하여 root 계정으로 변환 가능
+> su: root 계정으로 로그인하나 root 계정의 환경변수를 가져오지 않고 현재 계정의 환경변수를 사용  
+> su - 계정명: root 계정의 환경변수까지 사용
+
+
+
 ## 5.1 sudo 프로그램이 설치되어있는가?
 ```
 $ sudo --version
@@ -653,6 +668,14 @@ $ sudo service cron restart
 ```
 # 잘된 예
 * * * 5 5 /home/script/test.sh
+```
+
+### 8.1.4 crontab off
+
+```
+sudo systemctl disable cron # 끈다.
+sudo systemctl status cron # 꺼졌는지 확인
+reboot # 리부트
 ```
 
 그 외에도 크론 작업 내역을 로그로 남기거나 기존 크론 내역을 백업할 수도 있다. 이에 대해서는 [이곳](https://jdm.kr/blog/2)을 참고하면 된다.
