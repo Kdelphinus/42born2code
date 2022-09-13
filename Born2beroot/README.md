@@ -206,6 +206,10 @@ vm은 호스트가 예기치 않게 중단될 경우, 다른 물리적 서버의
 - raw 소켓([참고자료](https://mangkyu.tistory.com/16)) 액세스 권한
 - 파일의 읽기, 쓰기, 실행 권한
 
+## 1.6 SELinux
+
+CentOS의 경우
+
 # 2. Simple setup
 
 ## 2.1 시작 시 GUI 환경이 아닌가?
