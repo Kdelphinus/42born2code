@@ -236,11 +236,11 @@ $ cat /etc/os-release
 
 ## 3.1 평가 받는 학생의 유저가 sudo와 user42 그룹에 속해져있는가?
 ```
-$ groups
+$ groups <USER_NAME>
 // or
 $ getent group sudo user42
 // or
-$ id
+$ id <USER_NAME>
 ```
 
 ## 3.2 새로운 유저 생성 후, 평가자가 password policy에 맞는 password를 설정 후, password policy의 설정 방법 설명
@@ -253,7 +253,6 @@ $ sudo vi /etc/login.defs
 PASS_MAX_DAYS 30 // 30일 후 만료
 PASS_MIN_DAYS 2  // 최소 사용기간 2일
 PASS_WARN_AGE 7  // 7일전에 경고 보내기
-PASS_MIN_LEN 10  // 최소 10글자 이상
 
 $ sudo apt install libpam-pwquality // 패키지 설치
 $ sudo vi /etc/pam.d/common-password // 이 파일에서 비밀번호 정책 수정
@@ -278,6 +277,20 @@ $ sudo usermod -aG evaluating <NEW_USER>
 
 -G: user가 명시된 그룹에만 속하게 된다.  
 -Ga: user가 기존에 속해져 있던 그룹 + 명시된 그룹에 속하게 된다.
+
+## 3.4 새 유저 삭제
+```
+sudo deluser <USER_NAEM>
+
+or
+
+sudo deluser --remove-home <USER_NAME> # 사용자, 홈 디렉토리, 메일 스풀을 모두 삭제
+```
+
+### 3.5 비밀번호 변경
+```
+passwd <USER_NAME>
+```
 
 # 4. Hostname & Partitions
 
