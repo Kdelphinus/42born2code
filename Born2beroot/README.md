@@ -604,7 +604,6 @@ printf " cmd\n"
 ```
 
 ```
-who -b // 마지막 리부트 날짜와 시간
 ss -t | grep -i ESTAB // 활성화된 tcp 네트워크 상태를 출력한다 | 대문자/소문자를 구분하지 않고 ESTAB을 찾는다
 who // 서버를 사용하는 유저들을 출력한다
 hostname -I // IPv4 주소
@@ -684,6 +683,14 @@ hostname -I // IPv4 주소
 
 - 누가 로그인했는지 보여주는 명령어
 - -b: 마지막 리부트 날짜를 보여준다. 
+
+### 8.0.8 lsblk
+
+- 리눅스 디바이스 정보를 출력하는 명령어로 blkid보다 더 상세한 정보를 표시
+- lvm은 type에서 lvm으로 표시되기에 grep으로 가져오기 편하다.
+- -gt: 앞의 값이 더 큰 경우
+- 즉, 0보다 클 때만 then으로, 작거나 같으면 else로 간다.
+- 더 많은 쉘 스크립트 조건문은 [여기](https://jink1982.tistory.com/48) 참고
 
 ## 8.1 cron이란?
 
@@ -784,3 +791,4 @@ reboot # 리부트
 - [Today I Learned... 염초코, [공부] SSH (Secure Shell) : 기초 및 심화 개념](https://choco4study.tistory.com/32)
 - [skylove1982, 리눅스에서 CPU 정보를 확인하는 8가지 명령어](https://skylove1982.tistory.com/entry/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%97%90%EC%84%9C-CPU-%EC%A0%95%EB%B3%B4%EB%A5%BC-%ED%99%95%EC%9D%B8%ED%95%98%EB%8A%94-8%EA%B0%80%EC%A7%80-%EB%AA%85%EB%A0%B9%EC%96%B4-cpuinfo-lscpu-hardinfo-lshw-nproc-dmidecode-cpuid-inxi)
 - [서버 모니터링 by 이동인, MiB와 MB는 어떻게 다른가?](https://brunch.co.kr/@leedongins/133)
+- [IT 이야기, [명령어] mpstat 설명](https://blueyikim.tistory.com/555)
