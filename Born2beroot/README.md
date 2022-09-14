@@ -52,6 +52,7 @@
 - [7.5 SSH를 통해 root로 login 할 수 없는가?](#75-ssh를-통해-root로-login-할-수-없는가)
 
 [8. Script monitoring](#8-script-monitoring)
+- [8.0 monitoring.sh](#80-monitoring.sh)
 - [8.1 cron이란?](#81-cron이란)
 
 [참고](#참고)
@@ -618,6 +619,8 @@ ss -t | grep -i ESTAB // 활성화된 tcp 네트워크 상태를 출력한다 | 
 who // 서버를 사용하는 유저들을 출력한다
 hostname -I // IPv4 주소
 ```
+
+## 8.0 monitoring.sh
 
 ### 8.0.1 uname -a
 
