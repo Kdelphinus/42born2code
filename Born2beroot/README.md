@@ -599,7 +599,7 @@ ip link show | awk '$1 == "link/ether" {print $2}' | sed '2, $d' | tr -d '\n'
 printf ")\n"
 
 printf "#Sudo : "
-ls -l /var/log/sudo/00/00 | grep -v ^total | wc -l | tr -d '\n'
+ls -lR /var/log/sudo/00 | grep log.json | wc -l | tr -d '\n'
 printf " cmd\n"
 ```
 
@@ -679,6 +679,11 @@ hostname -I // IPv4 주소
 
 - 따라서 현재 사용하고 있는 프로세서는 유휴한 CPU를 제외한 나머지이다.
 - 이는 %usr ~ %gnice를 더한 것과 100 - %idle한 값이 일치한다.
+
+### 8.0.7 who
+
+- 누가 로그인했는지 보여주는 명령어
+- -b: 마지막 리부트 날짜를 보여준다. 
 
 ## 8.1 cron이란?
 
