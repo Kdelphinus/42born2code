@@ -570,20 +570,16 @@ printf "#vCPU : "
 cat /proc/cpuinfo | grep processor | wc -l
 
 printf "#Memory Usage: "
-free -m | grep Mem | awk '{printf"%d/%dMiB (%.2f%%)\n", $3, $2, $3/$2 * 100}'
+free -m | grep Mem | awk '{printf"%d/%dMiB (%.2f%%)\n", $3, $2, $3/$2 * 100}' 
 
-printf "#Disk Usage: "
-df -a -BM | grep /dev/map | awk '{sum+=$3}END{print sum}' | tr -d '\n'
-printf "/"
-df -a -BM | grep /dev/map | awk '{sum+=$4}END{print sum}' | tr -d '\n'
-printf "MB ("
-df -a -BM | grep /dev/map | awk '{sum1+=$3 ; sum2+=$4 }END{printf "%d", sum1 / sum2 * 100}' | tr -d '\n'
-printf "%%)\n"
+tdisk=`df -BM | grep -v ^Filesystem | awk '{sum += $2} END {printf sum}'`
+udisk=`df -BM | grep -v ^Filesystem | awk '{sum += $3} END {printf sum}'`
+echo $udisk $tdisk | awk '{printf "#Disk Usage: %d/%dMiB (%d%%)\n", $1, $2, $1/$2*100}'
 
 printf "#CPU load: "
 mpstat | grep all | awk '{printf "%.2f%%\n", 100-$13}'
 
-printf "#Last boot: "
+printf "#Last boot: " 
 who -b | awk '{printf $3" "$4"\n"}'
 
 printf "#LVM use: "
@@ -603,17 +599,11 @@ ip link show | awk '$1 == "link/ether" {print $2}' | sed '2, $d' | tr -d '\n'
 printf ")\n"
 
 printf "#Sudo : "
-journalctl _COMM=sudo | wc -l | tr -d '\n'
+ls -l /var/log/sudo/00/00 | grep -v ^total | wc -l | tr -d '\n'
 printf " cmd\n"
 ```
 
 ```
-uname -a // 시스템의 정보를 출력
-nproc --all // 물리적으로 설치된 프로세스 갯수
-cat /proc/cpuinfo | grep processor | wc -l
-free -m // 메모리 사용량을 MiB 단위로 출력한다
-df -P // 리눅스 내 디스크 메모리 전체 현황을 한줄로(-P) 출력한다
-mpstat // 현재 CPU의 사용량을 출력한다
 who -b // 마지막 리부트 날짜와 시간
 ss -t | grep -i ESTAB // 활성화된 tcp 네트워크 상태를 출력한다 | 대문자/소문자를 구분하지 않고 ESTAB을 찾는다
 who // 서버를 사용하는 유저들을 출력한다
