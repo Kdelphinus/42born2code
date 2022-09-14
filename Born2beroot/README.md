@@ -692,6 +692,26 @@ hostname -I // IPv4 주소
 - 즉, 0보다 클 때만 then으로, 작거나 같으면 else로 간다.
 - 더 많은 쉘 스크립트 조건문은 [여기](https://jink1982.tistory.com/48) 참고
 
+### 8.0.9 ss
+
+- 리눅스 시스템의 소켓 상태를 조회할 수 있는 명령어
+- netstat과 비슷한 동작을 하지만 최근 리눅스 배포판에선 ss를 권장
+  
+- 기본적으론 listening socket(연결을 위해 대기 중인 소켓)을 제외한 현재 연결된 모든 소켓(TCP/UDP/Unix)을 표시한다.
+- -a: 모든 소켓 표시
+- -f: 옵션으로 소켓 유형 조회(unix, inet, inet6, link, netlink, vsock)
+- -t: TCP 소켓만 표시
+
+출력되는 항목들은 다음과 같다.
+
+- Neitd: 소켓 유형,IP 버전 
+
+http://choesin.com/linux%EC%97%90%EC%84%9C-ss-%EB%AA%85%EB%A0%B9%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
+
+https://dulidungsil.tistory.com/m/entry/ss-socket-statistics
+
+https://www.lesstif.com/lpt/linux-socket-ss-socket-statistics-91947283.html
+
 ## 8.1 cron이란?
 
 특정 작업을 특정 시간에 자동으로 실행시키기 위한 시간 기반 job scheduler 형 데몬이다. cron은 crontab이란 설정 파일을 기반으로 작동한다.
