@@ -569,7 +569,7 @@ printf "#vCPU : "
 cat /proc/cpuinfo | grep processor | wc -l
 
 printf "#Memory Usage: "
-free -m | grep Mem | awk '{printf"%d/%dMB (%.2f%%)\n", $3, $2, $3/$2 * 100}'
+free -m | grep Mem | awk '{printf"%d/%dMiB (%.2f%%)\n", $3, $2, $3/$2 * 100}'
 
 printf "#Disk Usage: "
 df -a -BM | grep /dev/map | awk '{sum+=$3}END{print sum}' | tr -d '\n'
@@ -610,7 +610,7 @@ printf " cmd\n"
 uname -a // 시스템의 정보를 출력
 nproc --all // 물리적으로 설치된 프로세스 갯수
 cat /proc/cpuinfo | grep processor | wc -l
-free -m // 메모리 사용량을 mb 단위(-m)로 출력한다
+free -m // 메모리 사용량을 MiB 단위로 출력한다
 df -P // 리눅스 내 디스크 메모리 전체 현황을 한줄로(-P) 출력한다
 mpstat // 현재 CPU의 사용량을 출력한다
 who -b // 마지막 리부트 날짜와 시간
@@ -629,12 +629,15 @@ hostname -I // IPv4 주소
 
 - nproc: 사용가능한 프로세싱 유닛의 개수 출력
 - --all: 설치된 프로세서들의 개수 출력
+- 물리적 cpu의 개수
 
 ### 8.0.3 cat /proc/cpuinfo
 
 - cpu 정보를 가져온다.
 - processor는 프로세서의 id
 - 따라서 processor만 가져와 줄 개수를 구하면 가상 cpu의 개수
+- 가상 cpu는 물리적 cpu와 기본적으론 다르지 않다.
+- 그러나 하이퍼 쓰레딩을 사용하면 하나의 cpu 당, 두 개의 프로세서를 담당하기에 물리적 cpu의 2배로 늘어난다.
 
 ### 8.0.4 free -m 
 
@@ -653,6 +656,9 @@ hostname -I // IPv4 주소
 > - 1024 KiB = 1 MiB
 
 ### 8.0.5 df 
+
+- 사용가능한 디스크 공간을 보여주는 명령어
+- 
 
 ## 8.1 cron이란?
 
