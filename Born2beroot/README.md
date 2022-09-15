@@ -297,6 +297,9 @@ sudo deluser --remove-home <USER_NAME> # 사용자, 홈 디렉토리, 메일 스
 passwd <USER_NAME>
 ```
 
+### 3.6 그룹 삭제
+
+
 # 4. Hostname & Partitions
 
 ## 4.1 hostname이 myko42인가?
@@ -493,6 +496,12 @@ $ sudo ufw status numbered
 $ sudo ufw delete <NUMBER>
 ```
 
+or
+
+```
+ufw delete allow <PORT_NUMBER>
+```
+
 # 7. SSH
 
 ``` SSH ``` (Secure Shell)는 원격으로 호스트 컴퓨터에 접속하기 위해 사용되는 인터넷 프로토콜로 단어 그대로 보안 쉘이다. 기존 유닉스 시스템 쉘에 원격 접속하기 위해 사용하던 텔넷은 암호화가 이루어지지 않아 계정 정보 탈취의 위험성이 높았기에 이에 암호화 기능을 추가하여 1995년에 나온 프로토콜이다.
@@ -599,14 +608,8 @@ ip link show | awk '$1 == "link/ether" {print $2}' | sed '2, $d' | tr -d '\n'
 printf ")\n"
 
 printf "#Sudo : "
-ls -lR /var/log/sudo/00 | grep log.json | wc -l | tr -d '\n'
+ls -lR /var/log/sudo/00 | grep log$ | wc -l | tr -d '\n'
 printf " cmd\n"
-```
-
-```
-ss -t | grep -i ESTAB // 활성화된 tcp 네트워크 상태를 출력한다 | 대문자/소문자를 구분하지 않고 ESTAB을 찾는다
-who // 서버를 사용하는 유저들을 출력한다
-hostname -I // IPv4 주소
 ```
 
 ## 8.0 monitoring.sh
@@ -696,21 +699,41 @@ hostname -I // IPv4 주소
 
 - 리눅스 시스템의 소켓 상태를 조회할 수 있는 명령어
 - netstat과 비슷한 동작을 하지만 최근 리눅스 배포판에선 ss를 권장
+- 기본적인 연결을 tcp로 하기에 활성화된 tcp를 확인
   
 - 기본적으론 listening socket(연결을 위해 대기 중인 소켓)을 제외한 현재 연결된 모든 소켓(TCP/UDP/Unix)을 표시한다.
 - -a: 모든 소켓 표시
 - -f: 옵션으로 소켓 유형 조회(unix, inet, inet6, link, netlink, vsock)
 - -t: TCP 소켓만 표시
 
-출력되는 항목들은 다음과 같다.
+### 8.0.10 who
 
-- Neitd: 소켓 유형,IP 버전 
+- 서버에 로그인 중인 유저들의 로그들을 출력한다.
+- /var/run/utmp 파일에 저장
+- 사용자가 원격으로 서버에 로그인할 때 사용자 정보를 저장하고 사용자가 원격 호스트에서 로그아웃할 때 정보를 제거한다.
 
-http://choesin.com/linux%EC%97%90%EC%84%9C-ss-%EB%AA%85%EB%A0%B9%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
+### 8.0.11 hostname
 
-https://dulidungsil.tistory.com/m/entry/ss-socket-statistics
+- 시스템의 호스트네임을 보여주는 명령어
+- 옵션에 따라 다른 시스템 관련 정보나 호스트네임을 변경할 수도 있다.
 
-https://www.lesstif.com/lpt/linux-socket-ss-socket-statistics-91947283.html
+- -I: 호스트의 모든 주소를 가져온다. (루프백과 ipv6는 생략)
+- 만약 네트워크 인터페이스가 여러 개라면 어떤 네트워크 디바이스로 라우팅 되는지 확인할 수 없기에 확인절차가 필요
+- 허나 crontab을 통해서 처리는 불가
+
+### 8.0.12 ip
+
+- 리눅스 시스템 관리자가 알아야 하는 네트워크 인터페이스를 구성하기 위한 명령어
+- link: 네트워크 인터페이스를 표시하고 수정
+- link/ether에 있는 MAC 주소를 가져옴
+
+### 8.0.13 sudo 로그
+
+- sudo 로그는 /var/log/sudo/00 안에 생김
+- 그 안에 00이란 폴더 안에 00, 01, 02, ..., 11, ..., 1A 이런식으로 순차적으로 생성
+- 그 후, 숫자와 알파벳으로 만들 수 있는 모든 두자리를 사용하면 01이란 폴더를 새로 만들고 반복
+- 그렇기에 /var/log/sudo/00 안에 있는 모든 하위 폴더를 확인하여 log로 끝나는 파일의 개수를 세는 것으로 확인
+- log로 끝나는 파일은 log란 파일만 존재한다.
 
 ## 8.1 cron이란?
 
@@ -767,6 +790,14 @@ $ sudo crontab -e
 $ sudo service cron restart
 ```
 
+- 서버 시작 시, script 실행 안 되게 수정
+```
+$ sudo systemctl disable cron
+$ sudo reboot
+$ sudo service cron status
+$ sudo systemctl enable cron
+```
+
 ### 8.1.3 팁
 
 크론을 쓸 때는 한 줄에 하나의 명령만 써야 한다.
@@ -812,3 +843,4 @@ reboot # 리부트
 - [skylove1982, 리눅스에서 CPU 정보를 확인하는 8가지 명령어](https://skylove1982.tistory.com/entry/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%97%90%EC%84%9C-CPU-%EC%A0%95%EB%B3%B4%EB%A5%BC-%ED%99%95%EC%9D%B8%ED%95%98%EB%8A%94-8%EA%B0%80%EC%A7%80-%EB%AA%85%EB%A0%B9%EC%96%B4-cpuinfo-lscpu-hardinfo-lshw-nproc-dmidecode-cpuid-inxi)
 - [서버 모니터링 by 이동인, MiB와 MB는 어떻게 다른가?](https://brunch.co.kr/@leedongins/133)
 - [IT 이야기, [명령어] mpstat 설명](https://blueyikim.tistory.com/555)
+- [오뇽, [리눅스 명령어]who - 호스트에 로그인한 사용자 정보 출력](https://shaeod.tistory.com/623)
