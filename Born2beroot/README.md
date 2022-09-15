@@ -52,7 +52,7 @@
 - [7.5 SSH를 통해 root로 login 할 수 없는가?](#75-ssh를-통해-root로-login-할-수-없는가)
 
 [8. Script monitoring](#8-script-monitoring)
-- [8.0 monitoring.sh](#80-monitoring.sh)
+- [8.0 monitoring.sh](#80-monitoringsh)
 - [8.1 cron이란?](#81-cron이란)
 
 [참고](#참고)
@@ -566,6 +566,25 @@ $ sudo <NEW_USER>@<MAC_IP> -p <HOST_PORT>
 $ cat /etc/ssh/sshd_config | grep "PermitRootLogin"
 ```
 > ssh 연결을 위해 포트 포워딩이 필요하다.
+
+## 7.6 키를 발급받아서 ssh 연결하기
+
+```
+$ ssh-keygen -t rsa -C <KEY_NAME>
+```
+
+그리고 경로의 마지막을 <KEY_NAME>으로 하여 새로운 키를 생성한다.  
+그러면 ~/.ssh 에 KEY_NAME, KEY_NAME.pub가 생긴다. 그러면 먼저 키를 ssh 서버에 복사한다.
+
+```
+$ ssh-copy-id <USER_NAME>@<IP_NUMBER> -i <KEY_NAME.pub path> -p <PORT_NUMBER>
+```
+
+그러면 서버의 ~/.ssh에도 키가 생성된다. 이렇게 조건이 맞을 때에 접속이 가능하다.
+
+```
+$ ssh <USER_NAME>@<IP_NUMBER> -i <KEY_NAME path> -p <PORT_NUMBER>
+```
 
 # 8. Script monitoring
 ```
