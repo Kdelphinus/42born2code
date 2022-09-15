@@ -268,7 +268,7 @@ minlen=10 // 최소 길이 10
 difok=7 // 기존 패스워드와 달라야 하는 문자 수 7
 maxrepeat=3 // 동일한 문자를 반복 가능한 최대 횟수 3
 ucredit=-1 // 대문자 한개 이상 포함
-lcredit=-1 // 소문자 한개 이상 포함
+lcredit=0 // 소문자를 한 개 이상 포함하라는 말이 없다.
 dcredit=-1 // digit 한개 이상 포함
 reject_username // username이 그대로 혹은 reversed 된 문자는 패스워드로 사용 불가
 enforce_for_root // root 계정도 위의 정책들 적용
@@ -627,7 +627,7 @@ ip link show | awk '$1 == "link/ether" {print $2}' | sed '2, $d' | tr -d '\n'
 printf ")\n"
 
 printf "#Sudo : "
-ls -lR /var/log/sudo/00 | grep log$ | wc -l | tr -d '\n'
+ls -lR /var/log/sudo/ | grep log$ | wc -l | tr -d '\n'
 printf " cmd\n"
 ```
 
