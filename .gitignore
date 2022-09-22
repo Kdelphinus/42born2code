@@ -137,4 +137,6 @@ tags
 # Ignore code-workspaces
 *.code-workspace
 
+fract-ol/fractol
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
