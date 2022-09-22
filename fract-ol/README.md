@@ -82,7 +82,6 @@ $$
 <img src="https://javalab.org/wp-content/uploads/complex_number.png" height=350px width=500px>
 
 
-
 # 참고 자료
 
 - [위키백과, 프랙탈](https://ko.wikipedia.org/wiki/%ED%94%84%EB%9E%99%ED%83%88)
