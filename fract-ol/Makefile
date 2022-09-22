@@ -6,10 +6,10 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 16:07:52 by myko              #+#    #+#              #
-#    Updated: 2022/09/21 16:14:39 by myko             ###   ########.fr        #
+#    Updated: 2022/09/22 19:23:54 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
-	gcc -Lmlx -lmlx -framework OpenGL -framework AppKit main.c
+	gcc -Lmlx -lmlx -framework OpenGL -framework AppKit main.c mandelbrot_set.c
 	./a.out
