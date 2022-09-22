@@ -13,9 +13,8 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "mlx/mlx.h"
-# include <mlx.h>
-# include "mlx_linux/mlx.h" // linux
+# include "../mlx/mlx.h"
+# include "../mlx_linux/mlx.h" // linux
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>

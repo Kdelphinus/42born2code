@@ -19,7 +19,7 @@ OBJS_DIR = ./objs/
 OBJS_NAME = $(SRCS_NAME:.c=.o)
 OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAME))
 INC = ./includes/
-MLX_LINUX_DIR = ./mlx_linux/
+MLX_LINUX_DIR = ./mlx_linux
 
 all:
 	gcc -Lmlx -lmlx -framework OpenGL -framework AppKit $(SRCS) -o $(NAME)
@@ -30,14 +30,13 @@ ubuntu: $(OBJS)
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)
-	gcc -I. -Imlx_linux -O3 -c $< -o $@
+	gcc -I$(INC) -Imlx_linux -O3 -c $< -o $@
 
 clean:
 	make -C $(MLX_LINUX_DIR) clean
 	rm -rf $(OBJS_DIR)
 
 fclean: clean
-	make -C $(MLX_LINUX_DIR) fclean
 	rm -rf $(NAME)
 
 re:
