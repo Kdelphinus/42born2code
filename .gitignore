@@ -137,8 +137,4 @@ tags
 # Ignore code-workspaces
 *.code-workspace
 
-fract-ol/minilibx_mms_20200219/
-fract-ol/minilibx_opengl_20191021/
-fract-ol/so_long_tutorial/
-
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
