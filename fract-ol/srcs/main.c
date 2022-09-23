@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 13:51:02 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/23 16:20:37 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,17 @@ static void	all_init(t_mlx *mlx, t_img *img, t_complex *complex)
 	img->img_ptr = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
 	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, \
 			&img->size_l, &img->endian);
+	// mandelbrot
 	complex->z_real = 0;
 	complex->z_imagin = 0;
 	complex->c_real = -5;
 	complex->c_imagin = -5;
+
+	// juila
+	// complex->z_real = -5;
+	// complex->z_imagin = -5;
+	// complex->c_real = 0;
+	// complex->c_imagin = 0;
 }
 
 static int	key_press(int keycode, t_complex *complex)
@@ -37,6 +44,12 @@ static int	close(t_complex *complex)
 	exit(0);
 }
 
+static int	error()
+{
+	printf("Error\n");
+	return (-1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_mlx		mlx;
@@ -45,8 +58,15 @@ int	main(int argc, char **argv)
 	int			count_h;
 	int			count_w;
 
+	// if (argc != 2)
+	// 	return (error());
 	all_init(&mlx, &img, &complex);
+	// if (ft_strcmp(argv[2], "mandelbrot"))
+	// 	mandel_draw(&complex, &img);
+	// else
+	// 	return (error());
 	mandel_draw(&complex, &img);
+	// julia_draw(&complex, &img);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, img.img_ptr, 0, 0);
 	mlx_hook(mlx.win, X_EVENT_KEY_PRESS, 0, &key_press, &complex);
 	mlx_hook(mlx.win, X_EVENT_KEY_EXIT, 0, &close, &complex);

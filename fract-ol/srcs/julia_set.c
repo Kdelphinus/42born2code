@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot_set.c                                   :+:      :+:    :+:   */
+/*   julia_set.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 16:24:26 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/23 15:18:06 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int	mandelbrot(t_complex *complex)
+static int	julia(t_complex *complex)
 {
 	double	x;
 	double	y;
@@ -34,7 +34,7 @@ static int	mandelbrot(t_complex *complex)
 	return (SUCCESS);
 }
 
-void	mandel_draw(t_complex *complex, t_img *img)
+void	julia_draw(t_complex *complex, t_img *img)
 {
 	int	value;
 	int	coor;
@@ -43,19 +43,13 @@ void	mandel_draw(t_complex *complex, t_img *img)
 	{
 		while (complex->c_real <= 5)
 		{
-			coor = (int)((complex->c_imagin + 5) * 100) * WIDTH + \
-				(int)((complex->c_real + 5) * 100);
-			value = mandelbrot(complex);
+			value = julia(complex);
+			coor = (int)((complex->z_imagin + 5) * 100) * WIDTH + \
+				(int)((complex->z_real + 5) * 100);
 			if (value == SUCCESS)
-				img->data[coor] = 0x006AFF;
-			else if (value > 2)
-				img->data[coor] = 0x408FFF;
-			else if (value > 1)
-				img->data[coor] = 0x80B5FF;
-			else if (value > 0)
-				img->data[coor] = 0xBFDAFF;
-			else
 				img->data[coor] = 0xFFFFFF;
+			else
+				img->data[coor] = 0x0055CC;
 			complex->c_real += 0.01;
 			complex->z_real = 0;
 			complex->z_imagin = 0;

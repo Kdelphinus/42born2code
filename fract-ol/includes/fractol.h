@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 14:48:22 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/23 16:20:58 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_mlx
 }			t_mlx;
 
 void	mandel_draw(t_complex *complex, t_img *img);
+void	julia_draw(t_complex *complex, t_img *img);
 int		main(int argc, char **argv);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif
