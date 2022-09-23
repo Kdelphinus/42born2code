@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 16:50:12 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/23 17:08:57 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	complex_init(t_complex *complex)
 	complex->z_real = -5;
 	complex->z_imagin = -5;
 	complex->c_real = -0.194;
-	complex->c_imagin = 0.0656;
+	complex->c_imagin = 0.656;
 }
 
 void	julia_draw(t_complex *complex, t_img *img)

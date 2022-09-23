@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 16:42:51 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/23 17:01:37 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	all_init(t_mlx *mlx, t_img *img)
 {
 	mlx->mlx_ptr = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "mlx");
+	mlx->win = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "fract-ol");
 	img->img_ptr = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
 	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, \
 			&img->size_l, &img->endian);

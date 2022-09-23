@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 16:43:30 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/23 17:09:02 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define X_EVENT_KEY_EXIT	17
 # define KEY_ESC			53
 # define BOUNDARY			2
-# define MAX_REPEAT			1024
+# define MAX_REPEAT			20
 
 # define WIDTH				1000
 # define HEIGHT				1000
