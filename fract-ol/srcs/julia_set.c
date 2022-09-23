@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 15:18:06 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/23 16:50:12 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,45 @@ static int	julia(t_complex *complex)
 	return (SUCCESS);
 }
 
+static void	complex_init(t_complex *complex)
+{
+	complex->z_real = -5;
+	complex->z_imagin = -5;
+	complex->c_real = -0.194;
+	complex->c_imagin = 0.0656;
+}
+
 void	julia_draw(t_complex *complex, t_img *img)
 {
-	int	value;
-	int	coor;
+	int		value;
+	int		coor;
+	double	tmp_real;
+	double	tmp_imagin;
 
-	while (complex->c_imagin <= 5)
+	complex_init(complex);
+	while (complex->z_imagin <= 5)
 	{
-		while (complex->c_real <= 5)
+		tmp_imagin = complex->z_imagin;
+		while (complex->z_real <= 5)
 		{
-			value = julia(complex);
+			tmp_real = complex->z_real;
 			coor = (int)((complex->z_imagin + 5) * 100) * WIDTH + \
 				(int)((complex->z_real + 5) * 100);
+			value = julia(complex);
 			if (value == SUCCESS)
-				img->data[coor] = 0xFFFFFF;
+				img->data[coor] = 0x006AFF;
+			// else if (value > 2)
+			// 	img->data[coor] = 0x408FFF;
+			// else if (value > 1)
+			// 	img->data[coor] = 0x80B5FF;
+			// else if (value > 0)
+			// 	img->data[coor] = 0xBFDAFF;
 			else
-				img->data[coor] = 0x0055CC;
-			complex->c_real += 0.01;
-			complex->z_real = 0;
-			complex->z_imagin = 0;
+				img->data[coor] = 0xFFFFFF;
+			complex->z_real = tmp_real + 0.01;
+			complex->z_imagin = tmp_imagin;
 		}
-		complex->c_imagin += 0.01;
-		complex->c_real = -5;
+		complex->z_imagin = tmp_imagin + 0.01;
+		complex->z_real = -5;
 	}
 }

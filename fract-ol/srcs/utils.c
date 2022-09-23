@@ -6,16 +6,16 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:01:05 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 15:09:42 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/23 16:39:28 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(const char *s1, const char *s2)
+static int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	while (s1[i] || s2[i])
+	while (1)
 	{
 		if (s1[i] != s2[i])
 			return (0);
@@ -23,5 +23,13 @@ int	ft_strcmp(const char *s1, const char *s2)
 			return (1);
 		i++;
 	}
+}
+
+int	kind_fractal(char *s)
+{
+	if (ft_strcmp(s, "mandelbrot"))
+		return (1);
+	else if (ft_strcmp(s, "julia"))
+		return (2);
 	return (0);
 }

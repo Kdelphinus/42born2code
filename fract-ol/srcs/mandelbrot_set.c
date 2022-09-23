@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 16:24:26 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/23 16:42:00 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,20 @@ static int	mandelbrot(t_complex *complex)
 	return (SUCCESS);
 }
 
+static void	complex_init(t_complex *complex)
+{
+	complex->z_real = 0;
+	complex->z_imagin = 0;
+	complex->c_real = -5;
+	complex->c_imagin = -5;
+}
+
 void	mandel_draw(t_complex *complex, t_img *img)
 {
 	int	value;
 	int	coor;
 
+	complex_init(complex);
 	while (complex->c_imagin <= 5)
 	{
 		while (complex->c_real <= 5)
