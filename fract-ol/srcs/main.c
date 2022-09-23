@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 00:11:38 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/23 13:51:02 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ static void	all_init(t_mlx *mlx, t_img *img, t_complex *complex)
 	mlx->mlx_ptr = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "mlx");
 	img->img_ptr = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
-	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_l, &img->endian);
+	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, \
+			&img->size_l, &img->endian);
 	complex->z_real = 0;
-	complex->z_imaginary=0;
-	complex->c_real = -300;
-	complex->c_imaginary=-200;
+	complex->z_imagin = 0;
+	complex->c_real = -5;
+	complex->c_imagin = -5;
 }
 
 static int	key_press(int keycode, t_complex *complex)

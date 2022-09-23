@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 00:11:54 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/23 14:48:22 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
 # define KEY_ESC			53
-# define BOUNDARY			4
-# define MAX_REPEAT			64
+# define BOUNDARY			2
+# define MAX_REPEAT			1024
 
-# define WIDTH				500
-# define HEIGHT				500
+# define WIDTH				1000
+# define HEIGHT				1000
 
 typedef struct s_complex
 {
-	int	z_real;
-	int	z_imaginary;
+	double	z_real;
+	double	z_imagin;
 	double	c_real;
-	double	c_imaginary;
+	double	c_imagin;
 }			t_complex;
 
 typedef struct s_img
