@@ -6,6 +6,8 @@
 - [0.2 Mandelbrot set](#02-mandelbrot-set)
 - [0.3 Julia set](#03-julia-set)
 - [0.4 복소수의 표현](#04-복소수의-표현)
+[1. Mandatory part](#1-mandatory-part)
+[2. Bonus part](#2-bonus-part)
 
 # 0. 개념
 ## 0.1 fractal
