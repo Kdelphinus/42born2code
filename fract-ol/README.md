@@ -75,15 +75,13 @@ $$
 
 그러나 망델로브와 다르게 발산하지 않는 $z$ 의 집합으로 그린다. 즉, $z$ 와 $c$ 의 역할이 반대인 것이다.
 
-![줄리아 집합 예시](./img/julia.png)
+![여러가지 julia](https://horizon.kias.re.kr/wp-content/uploads/2019/12/julia.png)
 
 ## 0.4 복소수의 표현
 
 복소수는 실수 부분과 순허수를 합쳐서 $a+bi \; (여기서 \; i^2 = -1)$ 로 표현되는 수를 의미한다. 이러한 복소수는 x축을 실수, y축을 허수를 표현하여 좌표평면에 나타낼 수 있다. 
 
 <img src="https://javalab.org/wp-content/uploads/complex_number.png" height=350px width=500px>
-
-![여러가지 julia](https://horizon.kias.re.kr/wp-content/uploads/2019/12/julia.png)
 
 # 1. Mandatory part
 
