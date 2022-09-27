@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 17:24:44 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 17:39:10 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv);
 // utils_1.c
 int		kind_fractal(char *s);
 double	str_to_double(char *s);
+void	coloring_green(int coor, int value, t_img *img);
+void	coloring_blue(int coor, int value, t_img *img);
 
 // utils_2.c
 int		close(void);

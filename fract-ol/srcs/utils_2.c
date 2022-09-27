@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:17:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 17:19:10 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 17:35:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	close(void)
 int	ft_error(void)
 {
 	printf("❌ Please enter one of the parameters below. ❌\n");
-	printf("- mandelbrot\n- julia\n");
+	printf("- mandelbrot\n");
+	printf("- julia\n");
+	printf("- julia [c_real] [c_imagin]\n");
 	return (-1);
 }

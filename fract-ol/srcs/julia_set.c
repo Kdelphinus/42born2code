@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 17:31:41 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 17:40:48 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,30 +51,6 @@ static int	julia(t_complex *complex)
 	return (SUCCESS);
 }
 
-static void	julia_coloring(int coor, int value, t_img *img)
-{
-	if (value == SUCCESS || value > 100)
-		img->data[coor] = 0x4baf4b;
-	else if (value > 80)
-		img->data[coor] = 0x46aa46;
-	else if (value > 60)
-		img->data[coor] = 0x41a541;
-	else if (value > 40)
-		img->data[coor] = 0x3ca03c;
-	else if (value > 20)
-		img->data[coor] = 0x329632;
-	else if (value > 10)
-		img->data[coor] = 0x288c28;
-	else if (value > 5)
-		img->data[coor] = 0x1e821e;
-	else if (value > 3)
-		img->data[coor] = 0x147814;
-	else if (value > 2)
-		img->data[coor] = 0x0a6e0a;
-	else
-		img->data[coor] = 0x006400;
-}
-
 void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv)
 {
 	int		value;
@@ -92,7 +68,8 @@ void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv)
 			coor = (complex->z_imagin + COOR_BOUNDARY) * 100 * WIDTH + \
 				(complex->z_real + COOR_BOUNDARY) * 100;
 			value = julia(complex);
-			julia_coloring(coor, value, img);
+			// coloring_green(coor, value, img);
+			coloring_blue(coor, value, img);
 			complex->z_real = tmp_real + 0.01;
 			complex->z_imagin = tmp_imagin;
 		}
