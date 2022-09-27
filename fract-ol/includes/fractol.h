@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 17:39:10 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 18:07:39 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <stdio.h>
 # include <math.h>
 
-# define SUCCESS			-1
-
 // use mlx
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
 # define KEY_ESC			53
+# define KEY_LEFT			123
+# define KEY_RIGHT			124
 # define SCROLL_UP			4
 # define SCROLL_DOWN		5
 
@@ -50,6 +50,7 @@ typedef struct s_img
 	int		size_l;
 	int		bpp;
 	int		endian;
+	int		color;
 }			t_img;
 
 typedef struct s_mlx

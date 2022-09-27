@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 17:12:12 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 18:06:11 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,20 @@ static void	all_init(t_mlx *mlx, t_img *img)
 	img->img_ptr = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT);
 	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, \
 			&img->size_l, &img->endian);
+	img->color = -1;
 }
 
-static int	key_press(int keycode)
+// TODO 이미지를 변환할 방법을 찾아야 함
+static int	key_press(int keycode, t_img *img)
 {
 	if (keycode == KEY_ESC)
 		exit(0);
+	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
+		img->color *= -1;
 	return (0);
 }
 
+// TODO zoom 기능을 추가해야 함
 // static int	mouse_scroll(int scroll, t_img *img)
 // {
 // 	if (scroll == SCROLL_UP)
@@ -56,7 +61,7 @@ int	main(int argc, char **argv)
 		julia_draw(&complex, &img, argc, argv);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, img.img_ptr, 0, 0);
 	// mlx_mouse_hook(mlx.win, &mouse_scroll, &complex);
-	mlx_hook(mlx.win, X_EVENT_KEY_PRESS, 0, &key_press, &complex);
+	mlx_hook(mlx.win, X_EVENT_KEY_PRESS, 0, &key_press, &img);
 	mlx_hook(mlx.win, X_EVENT_KEY_EXIT, 0, &close, &complex);
 	mlx_loop(mlx.mlx_ptr);
 }

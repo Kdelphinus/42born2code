@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 17:40:48 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 18:09:59 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	complex_init(t_complex *complex, int argc, char **argv)
 	if (argc != 4)
 	{
 		printf("Set default value.\nc_real: 0.3757, c_imagin: -0.3054\n");
-		complex->c_real = 0.3757;
-		complex->c_imagin = -0.3054;
+		complex->c_real = -0.5125;
+		complex->c_imagin = -0.5213;
 	}
 	else
 	{
@@ -48,7 +48,7 @@ static int	julia(t_complex *complex)
 		complex->z_real = x;
 		complex->z_imagin = y;
 	}
-	return (SUCCESS);
+	return (n);
 }
 
 void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv)
@@ -68,8 +68,10 @@ void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv)
 			coor = (complex->z_imagin + COOR_BOUNDARY) * 100 * WIDTH + \
 				(complex->z_real + COOR_BOUNDARY) * 100;
 			value = julia(complex);
-			// coloring_green(coor, value, img);
-			coloring_blue(coor, value, img);
+			if (img->color == 1)
+				coloring_green(coor, value, img);
+			else
+				coloring_blue(coor, value, img);
 			complex->z_real = tmp_real + 0.01;
 			complex->z_imagin = tmp_imagin;
 		}
