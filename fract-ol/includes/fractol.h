@@ -6,14 +6,14 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 19:26:19 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 22:08:11 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../mlx/mlx.h"
+// # include "../mlx/mlx.h"
 # include "../mlx_linux/mlx.h" // linux
 # include <stdlib.h>
 # include <stdio.h>
@@ -74,7 +74,7 @@ void	coloring_green(int coor, int value, t_img *img);
 void	coloring_blue(int coor, int value, t_img *img);
 
 // utils_2.c
-int		close(void);
+int		ft_close(void);
 int		ft_error(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 19:32:25 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 22:08:20 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, img.img_ptr, 0, 0);
 	// mlx_mouse_hook(mlx.win, &mouse_scroll, &complex);
 	mlx_hook(mlx.win, X_EVENT_KEY_PRESS, 0, &key_press, &img);
-	mlx_hook(mlx.win, X_EVENT_KEY_EXIT, 0, &close, &complex);
+	mlx_hook(mlx.win, X_EVENT_KEY_EXIT, 0, &ft_close, &img);
 	mlx_loop(mlx.mlx_ptr);
 }

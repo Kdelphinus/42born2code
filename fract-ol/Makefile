@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 16:07:52 by myko              #+#    #+#              #
-#    Updated: 2022/09/27 18:47:19 by myko             ###   ########.fr        #
+#    Updated: 2022/09/27 22:09:22 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,4 +61,8 @@ re:
 	@make fclean
 	@make all
 
-.PHONY: all ubuntu clean clean_ubuntu fclean fclean_ubuntu re
+re_ubuntu:
+	@make fclean_ubuntu
+	@make ubuntu
+
+.PHONY: all ubuntu clean clean_ubuntu fclean fclean_ubuntu re re_ubuntu
