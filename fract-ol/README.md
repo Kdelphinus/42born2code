@@ -104,6 +104,13 @@ $$
 - 줌은 실제 마우스 위치를 따릅니다.
 - 확대/축소 외에도: 화살표와 함께 이동합니다.
 - 색상 범위를 이동합니다.
+
+# 3번째 프랙탈 후보
+- [Multibrot set](https://en.wikipedia.org/wiki/Multibrot_set)
+- [Tricorn](https://en.wikipedia.org/wiki/Tricorn_(mathematics))
+- [Buddhabrot](https://en.wikipedia.org/wiki/Buddhabrot)
+- [Mandelbox](https://en.wikipedia.org/wiki/Mandelbox)
+- [Burning Ship fractal](https://en.wikipedia.org/wiki/Burning_Ship_fractal)
 # 참고 자료
 
 - [위키백과, 프랙탈](https://ko.wikipedia.org/wiki/%ED%94%84%EB%9E%99%ED%83%88)
