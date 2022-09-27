@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 18:49:13 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 19:26:19 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		main(int argc, char **argv);
 // fractal draw
 void	mandel_draw(t_complex *complex, t_img *img);
 void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv);
-void	multibrot_draw(t_complex *complex, t_img *img);
+void	multibrot_draw(t_complex *complex, t_img *img, int argc, char **argv);
 
 // utils_1.c
 int		kind_fractal(char *s);

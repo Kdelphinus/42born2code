@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:01:05 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 18:44:41 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 19:50:16 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,68 @@
 
 static int	ft_strcmp(char *s1, char *s2)
 {
-	int	i;
-
-	i = 0;
 	while (1)
 	{
-		if (s1[i] != s2[i])
+		if (*s1 != *s2)
 			return (0);
-		if (s1[i] == 0 && s2[i] == 0)
+		if (*s1 == 0 && *s2 == 0)
 			return (1);
-		i++;
+		s1++;
+		s2++;
 	}
 }
 
-static int	ft_isdigit(int c)
+static int	ft_strlen(char *s)
 {
-	return ('0' <= c && c <= '9');
+	int	i;
+
+	i = 0;
+	while (*s)
+	{
+		s++;
+		i++;
+	}
+	return (i);
+}
+
+static int	sign_flag(char **s, int *flag)
+{
+	int	i;
+
+	i = 0;
+	if (**s == '-' || **s == '+')
+	{
+		if (**s == '-')
+			*flag *= -1;
+		i++;
+	}
+	return (i);
 }
 
 double	str_to_double(char *s)
 {
-	double	i;
-	double	flag;
+	int		len;
+	int		i;
+	int		flag;
 	double	result;
 
-	i = 0;
 	flag = 1;
 	result = 0;
-	if (*s == '-' || *s == '+')
-	{
-		if (*s == '-')
-			flag = -1;
-		s++;
-	}
+	len = ft_strlen(s);
+	i = sign_flag(&s, &flag);
 	while (*s)
 	{
-		if (ft_isdigit(*s))
+		if ('0' <= *s && *s <= '9')
 			result = result * 10 + (*s - '0');
 		else if (*s == '.')
 			i = 0;
+		else
+			break ;
 		i++;
 		s++;
 	}
+	if (i == len)
+		return (flag * result);
 	return (flag * result / pow(10, i - 1));
 }
 
