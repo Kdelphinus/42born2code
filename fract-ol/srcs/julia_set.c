@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 18:13:41 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 18:14:50 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	complex_init(t_complex *complex, int argc, char **argv)
 	}
 }
 
-static int	julia(t_complex *complex)
+static int	julia_calculation(t_complex *complex)
 {
 	double	x;
 	double	y;
@@ -67,7 +67,7 @@ void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv)
 			tmp_real = complex->z_real;
 			coor = (complex->z_imagin + COOR_BOUNDARY) * 100 * WIDTH + \
 				(complex->z_real + COOR_BOUNDARY) * 100;
-			value = julia(complex);
+			value = julia_calculation(complex);
 			if (img->color == 1)
 				coloring_green(coor, value, img);
 			else

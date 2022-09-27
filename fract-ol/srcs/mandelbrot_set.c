@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 18:13:56 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 18:15:02 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	complex_init(t_complex *complex)
 	complex->c_imagin = -COOR_BOUNDARY;
 }
 
-static int	mandelbrot(t_complex *complex)
+static int	mandelbrot_calculation(t_complex *complex)
 {
 	double	x;
 	double	y;
@@ -54,7 +54,7 @@ void	mandel_draw(t_complex *complex, t_img *img)
 		{
 			coor = (complex->c_imagin + COOR_BOUNDARY) * 100 * WIDTH + \
 				(complex->c_real + COOR_BOUNDARY) * 100;
-			value = mandelbrot(complex);
+			value = mandelbrot_calculation(complex);
 			if (img->color == 1)
 				coloring_green(coor, value, img);
 			else
