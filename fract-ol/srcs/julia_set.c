@@ -6,20 +6,27 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 16:57:18 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 17:31:41 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	complex_init(t_complex *complex)
+static void	complex_init(t_complex *complex, int argc, char **argv)
 {
 	complex->z_real = -COOR_BOUNDARY;
 	complex->z_imagin = -COOR_BOUNDARY;
-	// complex->c_real = 0.2733;
-	// complex->c_imagin = -0.0074;
-	complex->c_real = -0.5125;
-	complex->c_imagin = 0.5213;
+	if (argc != 4)
+	{
+		printf("Set default value.\nc_real: 0.3757, c_imagin: -0.3054\n");
+		complex->c_real = 0.3757;
+		complex->c_imagin = -0.3054;
+	}
+	else
+	{
+		complex->c_real = str_to_double(argv[2]);
+		complex->c_imagin = str_to_double(argv[3]);
+	}
 }
 
 static int	julia(t_complex *complex)
@@ -68,14 +75,14 @@ static void	julia_coloring(int coor, int value, t_img *img)
 		img->data[coor] = 0x006400;
 }
 
-void	julia_draw(t_complex *complex, t_img *img)
+void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv)
 {
 	int		value;
 	int		coor;
 	double	tmp_real;
 	double	tmp_imagin;
 
-	complex_init(complex);
+	complex_init(complex, argc, argv);
 	while (complex->z_imagin <= COOR_BOUNDARY)
 	{
 		tmp_imagin = complex->z_imagin;

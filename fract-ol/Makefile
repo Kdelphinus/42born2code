@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 16:07:52 by myko              #+#    #+#              #
-#    Updated: 2022/09/27 14:07:32 by myko             ###   ########.fr        #
+#    Updated: 2022/09/27 17:18:20 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRCS_DIR = ./srcs/
 SRCS_NAME = main.c \
 			mandelbrot_set.c \
 			julia_set.c \
-			utils.c
+			utils_1.c \
+			utils_2.c
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAME))
 OBJS_DIR = ./objs/
 OBJS_NAME = $(SRCS_NAME:.c=.o)
