@@ -6,9 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:01:05 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 14:23:26 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 14:57:12 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fractol.h"
 
 static int	ft_strcmp(char *s1, char *s2)
 {
@@ -41,7 +43,7 @@ int	close(void)
 
 int	ft_error(void)
 {
-	printf("Please enter one of the parameters below\n");
+	printf("❌ Please enter one of the parameters below. ❌\n");
 	printf("- mandelbrot\n- julia\n");
 	return (-1);
 }

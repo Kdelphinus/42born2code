@@ -6,11 +6,19 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 13:54:23 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 15:04:08 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static void	complex_init(t_complex *complex)
+{
+	complex->z_real = -COOR_BOUNDARY;
+	complex->z_imagin = -COOR_BOUNDARY;
+	complex->c_real = 0.2733;
+	complex->c_imagin = -0.0074;
+}
 
 static int	julia(t_complex *complex)
 {
@@ -34,12 +42,18 @@ static int	julia(t_complex *complex)
 	return (SUCCESS);
 }
 
-static void	complex_init(t_complex *complex)
+static void	julia_coloring(int coor, int value, t_img *img)
 {
-	complex->z_real = -COOR_BOUNDARY;
-	complex->z_imagin = -COOR_BOUNDARY;
-	complex->c_real = 0.2733;
-	complex->c_imagin = -0.0074;
+	if (value == SUCCESS)
+		img->data[coor] = 0x006AFF;
+	else if (value > 2)
+		img->data[coor] = 0x408FFF;
+	else if (value > 1)
+		img->data[coor] = 0x80B5FF;
+	else if (value > 0)
+		img->data[coor] = 0xBFDAFF;
+	else
+		img->data[coor] = 0xFFFFFF;
 }
 
 void	julia_draw(t_complex *complex, t_img *img)
@@ -56,19 +70,10 @@ void	julia_draw(t_complex *complex, t_img *img)
 		while (complex->z_real <= COOR_BOUNDARY)
 		{
 			tmp_real = complex->z_real;
-			coor = (int)((complex->z_imagin + COOR_BOUNDARY) * 100) * WIDTH + \
-				(int)((complex->z_real + COOR_BOUNDARY) * 100);
+			coor = (complex->z_imagin + COOR_BOUNDARY) * 100 * WIDTH + \
+				(complex->z_real + COOR_BOUNDARY) * 100;
 			value = julia(complex);
-			if (value == SUCCESS)
-				img->data[coor] = 0x006AFF;
-			else if (value > 2)
-				img->data[coor] = 0x408FFF;
-			else if (value > 1)
-				img->data[coor] = 0x80B5FF;
-			else if (value > 0)
-				img->data[coor] = 0xBFDAFF;
-			else
-				img->data[coor] = 0xFFFFFF;
+			julia_coloring(coor, value, img);
 			complex->z_real = tmp_real + 0.01;
 			complex->z_imagin = tmp_imagin;
 		}

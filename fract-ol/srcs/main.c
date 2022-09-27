@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 14:24:41 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 15:04:23 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,14 @@ static int	key_press(int keycode)
 	return (0);
 }
 
-static int	mouse_scroll(int scroll)
+// static int	mouse_scroll(int scroll, t_img *img)
+// {
+// 	if (scroll == SCROLL_UP)
+// 		img->zoom ;
+// 	else if (scroll == SCROLL_DOWN)
+// 		continue ;
+// 	return (0);
+// }
 
 int	main(int argc, char **argv)
 {
@@ -48,7 +55,7 @@ int	main(int argc, char **argv)
 	else
 		return (ft_error());
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, img.img_ptr, 0, 0);
-	mlx_mouse_hook(mlx.win, );
+	// mlx_mouse_hook(mlx.win, &mouse_scroll, &complex);
 	mlx_hook(mlx.win, X_EVENT_KEY_PRESS, 0, &key_press, &complex);
 	mlx_hook(mlx.win, X_EVENT_KEY_EXIT, 0, &close, &complex);
 	mlx_loop(mlx.mlx_ptr);
