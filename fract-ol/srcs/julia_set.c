@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 15:04:08 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 16:57:18 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ static void	complex_init(t_complex *complex)
 {
 	complex->z_real = -COOR_BOUNDARY;
 	complex->z_imagin = -COOR_BOUNDARY;
-	complex->c_real = 0.2733;
-	complex->c_imagin = -0.0074;
+	// complex->c_real = 0.2733;
+	// complex->c_imagin = -0.0074;
+	complex->c_real = -0.5125;
+	complex->c_imagin = 0.5213;
 }
 
 static int	julia(t_complex *complex)
@@ -44,16 +46,26 @@ static int	julia(t_complex *complex)
 
 static void	julia_coloring(int coor, int value, t_img *img)
 {
-	if (value == SUCCESS)
-		img->data[coor] = 0x006AFF;
+	if (value == SUCCESS || value > 100)
+		img->data[coor] = 0x4baf4b;
+	else if (value > 80)
+		img->data[coor] = 0x46aa46;
+	else if (value > 60)
+		img->data[coor] = 0x41a541;
+	else if (value > 40)
+		img->data[coor] = 0x3ca03c;
+	else if (value > 20)
+		img->data[coor] = 0x329632;
+	else if (value > 10)
+		img->data[coor] = 0x288c28;
+	else if (value > 5)
+		img->data[coor] = 0x1e821e;
+	else if (value > 3)
+		img->data[coor] = 0x147814;
 	else if (value > 2)
-		img->data[coor] = 0x408FFF;
-	else if (value > 1)
-		img->data[coor] = 0x80B5FF;
-	else if (value > 0)
-		img->data[coor] = 0xBFDAFF;
+		img->data[coor] = 0x0a6e0a;
 	else
-		img->data[coor] = 0xFFFFFF;
+		img->data[coor] = 0x006400;
 }
 
 void	julia_draw(t_complex *complex, t_img *img)

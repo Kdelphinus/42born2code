@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 14:33:41 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 16:49:35 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 // use to calculate fractal
 # define BOUNDARY			2
-# define MAX_REPEAT			64
+# define MAX_REPEAT			256
 # define COOR_BOUNDARY		5
 # define WIDTH				1000
 # define HEIGHT				1000
