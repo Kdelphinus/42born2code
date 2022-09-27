@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 16:42:00 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 13:37:22 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static void	complex_init(t_complex *complex)
 {
 	complex->z_real = 0;
 	complex->z_imagin = 0;
-	complex->c_real = -5;
-	complex->c_imagin = -5;
+	complex->c_real = -COOR_BOUNDARY;
+	complex->c_imagin = -COOR_BOUNDARY;
 }
 
 void	mandel_draw(t_complex *complex, t_img *img)
@@ -48,12 +48,12 @@ void	mandel_draw(t_complex *complex, t_img *img)
 	int	coor;
 
 	complex_init(complex);
-	while (complex->c_imagin <= 5)
+	while (complex->c_imagin <= COOR_BOUNDARY)
 	{
-		while (complex->c_real <= 5)
+		while (complex->c_real <= COOR_BOUNDARY)
 		{
-			coor = (int)((complex->c_imagin + 5) * 100) * WIDTH + \
-				(int)((complex->c_real + 5) * 100);
+			coor = (int)((complex->c_imagin + COOR_BOUNDARY) * 100) * WIDTH + \
+				(int)((complex->c_real + COOR_BOUNDARY) * 100);
 			value = mandelbrot(complex);
 			if (value == SUCCESS)
 				img->data[coor] = 0x006AFF;
@@ -70,6 +70,6 @@ void	mandel_draw(t_complex *complex, t_img *img)
 			complex->z_imagin = 0;
 		}
 		complex->c_imagin += 0.01;
-		complex->c_real = -5;
+		complex->c_real = -COOR_BOUNDARY;
 	}
 }

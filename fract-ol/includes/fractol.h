@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 21:37:16 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 14:26:16 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,18 @@
 # include <math.h>
 
 # define SUCCESS			-1
+
+// use mlx
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
 # define KEY_ESC			53
-# define BOUNDARY			2
-# define MAX_REPEAT			20
+# define SCROLL_UP			4
+# define SCROLL_DOWN		5
 
+// use to calculate fractal
+# define BOUNDARY			2
+# define MAX_REPEAT			64
+# define COOR_BOUNDARY		5
 # define WIDTH				1000
 # define HEIGHT				1000
 
@@ -52,9 +58,16 @@ typedef struct s_mlx
 	void	*win;
 }			t_mlx;
 
+// main.c
+int		main(int argc, char **argv);
+
+// fractal draw
 void	mandel_draw(t_complex *complex, t_img *img);
 void	julia_draw(t_complex *complex, t_img *img);
-int		main(int argc, char **argv);
+
+// utils.c
 int		kind_fractal(char *s);
+int		close(void);
+int		ft_error(void);
 
 #endif

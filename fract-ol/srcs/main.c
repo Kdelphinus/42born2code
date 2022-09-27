@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/09/23 21:42:06 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 14:24:41 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,14 @@ static void	all_init(t_mlx *mlx, t_img *img)
 			&img->size_l, &img->endian);
 }
 
-static int	key_press(int keycode, t_complex *complex)
+static int	key_press(int keycode)
 {
 	if (keycode == KEY_ESC)
 		exit(0);
 	return (0);
 }
 
-static int	close(t_complex *complex)
-{
-	exit(0);
-}
-
-static int	ft_error(void)
-{
-	printf("Error\n");
-	return (-1);
-}
+static int	mouse_scroll(int scroll)
 
 int	main(int argc, char **argv)
 {
@@ -57,6 +48,7 @@ int	main(int argc, char **argv)
 	else
 		return (ft_error());
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, img.img_ptr, 0, 0);
+	mlx_mouse_hook(mlx.win, );
 	mlx_hook(mlx.win, X_EVENT_KEY_PRESS, 0, &key_press, &complex);
 	mlx_hook(mlx.win, X_EVENT_KEY_EXIT, 0, &close, &complex);
 	mlx_loop(mlx.mlx_ptr);
