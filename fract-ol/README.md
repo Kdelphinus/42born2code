@@ -83,6 +83,8 @@ $$
 
 <img src="https://javalab.org/wp-content/uploads/complex_number.png" height=350px width=500px>
 
+![여러가지 julia](https://horizon.kias.re.kr/wp-content/uploads/2019/12/julia.png)
+
 # 1. Mandatory part
 
 - 당신의 소프트웨어는 줄리아 세트와 만델브로 세트를 제공해야 한다.
@@ -107,3 +109,4 @@ $$
 - [위키백과, 쥘리아 집합](https://ko.wikipedia.org/wiki/%EC%A5%98%EB%A6%AC%EC%95%84_%EC%A7%91%ED%95%A9)
 - [자바실험실, 망델브로 집합](https://javalab.org/mandelbrot_set/)
 - [카이스트 문희태 명예교수, 프랙탈 - 줄리아 집합](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=moonuga&logNo=220057782966)
+- [권석준, 패턴의 과학 [1]: 패턴의 자기닮음꼴과 프랙탈 차원](https://horizon.kias.re.kr/12112/)
