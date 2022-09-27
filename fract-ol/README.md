@@ -106,6 +106,11 @@ $$
 \end{aligned}
 $$
 
+> atan2(double x, double y)
+>  
+> `` atan2 `` 함수는 수학에서 arctan, 즉 $tan^{-1}$ 을 계산하는 함수다.
+> 이 함수는 반환하는 범위에 따라 atan( $-\pi / 2$ ~ $\pi / 2$ 범위로 리턴)와 atan2( $-\pi$ ~ $\pi$ 범위로 리턴)로 나뉜다.
+
 ![positive multibrot](img/multibrot_positive.png)
 
 ![negative multibrot](img/multibrot_negative.png)

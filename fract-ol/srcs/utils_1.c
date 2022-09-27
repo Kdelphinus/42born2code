@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:01:05 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 17:38:15 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 18:44:41 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ int	kind_fractal(char *s)
 		return (1);
 	else if (ft_strcmp(s, "julia"))
 		return (2);
+	else if (ft_strcmp(s, "multibrot"))
+		return (3);
 	return (0);
 }

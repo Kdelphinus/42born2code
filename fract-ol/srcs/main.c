@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 18:06:11 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 18:45:35 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int	main(int argc, char **argv)
 		mandel_draw(&complex, &img);
 	else if (flag == 2)
 		julia_draw(&complex, &img, argc, argv);
+	else if (flag == 3)
+		multibrot_draw(&complex, &img);
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, img.img_ptr, 0, 0);
 	// mlx_mouse_hook(mlx.win, &mouse_scroll, &complex);
 	mlx_hook(mlx.win, X_EVENT_KEY_PRESS, 0, &key_press, &img);
