@@ -3,9 +3,9 @@
 # Index
 [0. 개념](#0-개념)  
 - [0.1 fractal](#01-fractal)  
-- [0.2 Mandelbrot set](#02-mandelbrot-set)  
-- [0.3 Julia set](#03-julia-set)  
-- [0.4 복소수의 표현](#04-복소수의-표현)  
+- [0.2 복소수의 표현](#02-복소수의-표현)  
+- [0.3 Mandelbrot set](#03-mandelbrot-set)  
+- [0.4 Julia set](#04-julia-set)  
 
 [1. Mandatory part](#1-mandatory-part)  
 
@@ -43,8 +43,13 @@
 	- 부분과 전체의 모양이 정확하게 일치
 	- 위에 있는 시에르핀스키 삼각형이 대표적인 예
 
+## 0.2 복소수의 표현
 
-## 0.2 Mandelbrot set
+복소수는 실수 부분과 순허수를 합쳐서 $a+bi \; (여기서 \; i^2 = -1)$ 로 표현되는 수를 의미한다. 이러한 복소수는 x축을 실수, y축을 허수를 표현하여 좌표평면에 나타낼 수 있다. 
+
+<img src="https://javalab.org/wp-content/uploads/complex_number.png" height=350px width=500px>
+
+## 0.3 Mandelbrot set
 
 `` 망델브로 집합 `` 은 브누아 망델브로가 고안한 프랙탈이다. 망델브로 집합은 시간매개형 프랙탈로 점화식으로 만들어지는 점화식이다. 점화식을 발산하지 않게 하는 $c$ 들의 집합이다.
 
@@ -69,7 +74,7 @@ $$
 
 반대로 2를 초과하지 않는 경우, 계산이 무한히 이어지기에 적당한 $n$ 값에서 끊어주어야 한다. 그렇기에 이론적인 망델브로 집합은 얻을 수 없으며 근사한 집합만 얻을 수 있다.
 
-## 0.3 Julia set
+## 0.4 Julia set
 
 `` 줄리아 집합 `` 은 망델브로 집합과 점화식은 비슷하다.
 
@@ -81,11 +86,29 @@ $$
 
 ![여러가지 julia](https://horizon.kias.re.kr/wp-content/uploads/2019/12/julia.png)
 
-## 0.4 복소수의 표현
+## 0.5 Multibrot set
 
-복소수는 실수 부분과 순허수를 합쳐서 $a+bi \; (여기서 \; i^2 = -1)$ 로 표현되는 수를 의미한다. 이러한 복소수는 x축을 실수, y축을 허수를 표현하여 좌표평면에 나타낼 수 있다. 
+`` Multibrot set `` 은 mandelbrot set의 확장형으로 볼 수 있다.
 
-<img src="https://javalab.org/wp-content/uploads/complex_number.png" height=350px width=500px>
+$$
+z \mapsto z^d + c
+$$
+
+위 식에서 $d = 2$ 인 경우가 mandelbrot set이며 그 외에도 다양한 수가 들어갈 수 있다.
+
+위 점화식 역시, 실수와 허수 부분으로 나누면 다음과 같이 나눌 수 있다.
+
+$$
+\begin{aligned}
+&(x_0,y_0) = (0,0) \\
+&x_{n+1} = (x_n^2 + y_n^2)^{(n/2)} \times cos(n \times atan2(y_n, x_n)) + a \\
+&y_{n+1} = (x_n^2 + y_n^2)^{(n/2)} \times sin(n \times atan2(y_n, x_n)) + b
+\end{aligned}
+$$
+
+![positive multibrot](img/multibrot_positive.png)
+
+![negative multibrot](img/multibrot_negative.png)
 
 # 1. Mandatory part
 
@@ -106,7 +129,6 @@ $$
 - 색상 범위를 이동합니다.
 
 # 3번째 프랙탈 후보
-- [Multibrot set](https://en.wikipedia.org/wiki/Multibrot_set)
 - [Tricorn](https://en.wikipedia.org/wiki/Tricorn_(mathematics))
 - [Buddhabrot](https://en.wikipedia.org/wiki/Buddhabrot)
 - [Mandelbox](https://en.wikipedia.org/wiki/Mandelbox)
