@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 18:09:59 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 18:13:41 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	complex_init(t_complex *complex, int argc, char **argv)
 	complex->z_imagin = -COOR_BOUNDARY;
 	if (argc != 4)
 	{
-		printf("Set default value.\nc_real: 0.3757, c_imagin: -0.3054\n");
+		printf("Set default value.\nc_real: -0.5125, c_imagin: -0.5213\n");
 		complex->c_real = -0.5125;
 		complex->c_imagin = -0.5213;
 	}
@@ -38,7 +38,7 @@ static int	julia(t_complex *complex)
 	x = 0;
 	y = 0;
 	n = -1;
-	while (n++ <= MAX_REPEAT)
+	while (++n <= MAX_REPEAT)
 	{
 		x = pow(complex->z_real, 2) - pow(complex->z_imagin, 2) \
 			+ complex->c_real;

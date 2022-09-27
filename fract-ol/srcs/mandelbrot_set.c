@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 18:07:07 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/27 18:13:56 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	mandelbrot(t_complex *complex)
 	x = 0;
 	y = 0;
 	n = -1;
-	while (n++ <= MAX_REPEAT)
+	while (++n <= MAX_REPEAT)
 	{
 		x = pow(complex->z_real, 2) - pow(complex->z_imagin, 2) \
 			+ complex->c_real;
