@@ -6,30 +6,30 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/28 19:50:08 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/28 23:22:45 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
-static void	complex_init(t_complex *complex, int argc, char **argv)
+static void	complex_init(t_fractal *fractal, int argc, char **argv)
 {
-	complex->z_real = -COOR_BOUNDARY * complex->zoom;
-	complex->z_imagin = -COOR_BOUNDARY * complex->zoom;
+	fractal->complex->z_real = -fractal->coor_boundary;
+	fractal->complex->z_imagin = -fractal->coor_boundary;
 	if (argc != 4)
 	{
 		printf("Set default value.\nc_real: -0.5125, c_imagin: -0.5213\n");
-		complex->c_real = -0.5125 * complex->zoom;
-		complex->c_imagin = -0.5213 * complex->zoom;
+		fractal->complex->c_real = -0.5125;
+		fractal->complex->c_imagin = -0.5213;
 	}
 	else
 	{
-		complex->c_real = str_to_double(argv[2]);
-		complex->c_imagin = str_to_double(argv[3]);
+		fractal->complex->c_real = str_to_double(argv[2]);
+		fractal->complex->c_imagin = str_to_double(argv[3]);
 	}
 }
 
-static int	julia_calculation(t_complex *complex)
+static int	julia_calculation(t_fractal *fractal)
 {
 	double	x;
 	double	y;
@@ -40,42 +40,42 @@ static int	julia_calculation(t_complex *complex)
 	n = -1;
 	while (++n <= MAX_REPEAT)
 	{
-		x = pow(complex->z_real, 2) - pow(complex->z_imagin, 2) \
-			+ complex->c_real;
-		y = 2 * complex->z_real * complex->z_imagin + complex->c_imagin;
+		x = pow(fractal->complex->z_real, 2) - pow(fractal->complex->z_imagin, 2) \
+			+ fractal->complex->c_real;
+		y = 2 * fractal->complex->z_real * fractal->complex->z_imagin + fractal->complex->c_imagin;
 		if ((pow(x, 2) + pow(y, 2)) > pow(BOUNDARY, 2))
 			return (n);
-		complex->z_real = x;
-		complex->z_imagin = y;
+		fractal->complex->z_real = x;
+		fractal->complex->z_imagin = y;
 	}
 	return (MAX_REPEAT);
 }
 
-void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv)
+void	julia_draw(t_fractal *fractal, int argc, char **argv)
 {
 	int		value;
 	int		coor;
 	double	tmp_real;
 	double	tmp_imagin;
 
-	complex_init(complex, argc, argv);
-	while (complex->z_imagin <= COOR_BOUNDARY * complex->zoom)
+	complex_init(fractal, argc, argv);
+	while (fractal->complex->z_imagin <= fractal->coor_boundary)
 	{
-		tmp_imagin = complex->z_imagin;
-		while (complex->z_real <= COOR_BOUNDARY * complex->zoom)
+		tmp_imagin = fractal->complex->z_imagin;
+		while (fractal->complex->z_real <= fractal->coor_boundary)
 		{
-			tmp_real = complex->z_real;
-			coor = (complex->z_imagin + COOR_BOUNDARY * complex->zoom) * (100 / complex->zoom) * WIDTH + \
-				(complex->z_real + COOR_BOUNDARY * complex->zoom) * (100 / complex->zoom);
-			value = julia_calculation(complex);
-			if (img->color == 1)
-				coloring_green(coor, value, img);
+			tmp_real = fractal->complex->z_real;
+			coor = (fractal->complex->z_imagin + fractal->coor_boundary) * (HEIGHT / 2.0 / fractal->coor_boundary) * WIDTH + \
+				(fractal->complex->z_real + fractal->coor_boundary) * (WIDTH / 2.0 / fractal->coor_boundary);
+			value = julia_calculation(fractal);
+			if (fractal->color == 1)
+				coloring_green(coor, value, fractal->img);
 			else
-				coloring_blue(coor, value, img);
-			complex->z_real = tmp_real + 0.01 * complex->zoom;
-			complex->z_imagin = tmp_imagin;
+				coloring_blue(coor, value, fractal->img);
+			fractal->complex->z_real = tmp_real + (fractal->coor_boundary * 2.0 / WIDTH);
+			fractal->complex->z_imagin = tmp_imagin;
 		}
-		complex->z_imagin = tmp_imagin + 0.01 * complex->zoom;
-		complex->z_real = -COOR_BOUNDARY * complex->zoom;
+		fractal->complex->z_imagin = tmp_imagin + (fractal->coor_boundary * 2.0 / HEIGHT);
+		fractal->complex->z_real = -fractal->coor_boundary;
 	}
 }

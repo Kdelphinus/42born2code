@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/28 19:49:34 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/28 23:29:22 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 // use to calculate fractal
 # define BOUNDARY			2
 # define MAX_REPEAT			256
-# define COOR_BOUNDARY		5
+# define COOR_BOUNDARY		2
 # define WIDTH				1000
 # define HEIGHT				1000
 
@@ -41,7 +41,6 @@ typedef struct s_complex
 	double	z_imagin;
 	double	c_real;
 	double	c_imagin;
-	double	zoom;
 }			t_complex;
 
 typedef struct s_img
@@ -51,22 +50,25 @@ typedef struct s_img
 	int		size_l;
 	int		bpp;
 	int		endian;
-	int		color;
 }			t_img;
 
-typedef struct s_mlx
+typedef struct s_fractal
 {
-	void	*mlx_ptr;
-	void	*win;
-}			t_mlx;
+	void		*mlx_ptr;
+	void		*win;
+	t_img		*img;
+	t_complex	*complex;
+	double		coor_boundary;
+	int			color;
+}				t_fractal;
 
 // main.c
 int		main(int argc, char **argv);
 
 // fractal draw
-void	mandel_draw(t_complex *complex, t_img *img);
-void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv);
-void	multibrot_draw(t_complex *complex, t_img *img, int argc, char **argv);
+void	mandel_draw(t_fractal *fractal);
+void	julia_draw(t_fractal *fractal, int argc, char **argv);
+void	multibrot_draw(t_fractal *fractal, int argc, char **argv);
 
 // utils_1.c
 int		kind_fractal(char *s);

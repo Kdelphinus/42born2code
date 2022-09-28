@@ -6,18 +6,18 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/28 18:54:07 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/28 23:23:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
-static double	complex_init(t_complex *complex, int argc, char **argv)
+static double	complex_init(t_fractal *fractal, t_complex *complex, int argc, char **argv)
 {
 	complex->z_real = 0;
 	complex->z_imagin = 0;
-	complex->c_real = -COOR_BOUNDARY;
-	complex->c_imagin = -COOR_BOUNDARY;
+	complex->c_real = -fractal->coor_boundary;
+	complex->c_imagin = -fractal->coor_boundary;
 	if (argc == 3)
 		return (str_to_double(argv[2]));
 	printf("Set default value.\nd: 6\n");
@@ -49,29 +49,29 @@ static int	multibrot_calculation(t_complex *complex, double d)
 	return (MAX_REPEAT);
 }
 
-void	multibrot_draw(t_complex *complex, t_img *img, int argc, char **argv)
+void	multibrot_draw(t_fractal *fractal, int argc, char **argv)
 {
 	int		value;
 	int		coor;
 	double	d;
 
-	d = complex_init(complex, argc, argv);
-	while (complex->c_imagin <= COOR_BOUNDARY)
+	d = complex_init(fractal, fractal->complex, argc, argv);
+	while (fractal->complex->c_imagin <= fractal->coor_boundary)
 	{
-		while (complex->c_real <= COOR_BOUNDARY)
+		while (fractal->complex->c_real <= fractal->coor_boundary)
 		{
-			coor = (complex->c_imagin + COOR_BOUNDARY) * 100 * WIDTH + \
-				(complex->c_real + COOR_BOUNDARY) * 100;
-			value = multibrot_calculation(complex, d);
-			if (img->color == 1)
-				coloring_green(coor, value, img);
+			coor = (fractal->complex->c_imagin + fractal->coor_boundary) * (HEIGHT / 2.0 / fractal->coor_boundary) * WIDTH + \
+				(fractal->complex->c_real + fractal->coor_boundary) * (WIDTH / 2.0 / fractal->coor_boundary);
+			value = multibrot_calculation(fractal->complex, d);
+			if (fractal->color == 1)
+				coloring_green(coor, value, fractal->img);
 			else
-				coloring_blue(coor, value, img);
-			complex->c_real += 0.01;
-			complex->z_real = 0;
-			complex->z_imagin = 0;
+				coloring_blue(coor, value, fractal->img);
+			fractal->complex->c_real += fractal->coor_boundary * 2.0 / WIDTH;
+			fractal->complex->z_real = 0;
+			fractal->complex->z_imagin = 0;
 		}
-		complex->c_imagin += 0.01;
-		complex->c_real = -COOR_BOUNDARY;
+		fractal->complex->c_imagin += fractal->coor_boundary * 2.0 / HEIGHT;
+		fractal->complex->c_real = -fractal->coor_boundary;
 	}
 }

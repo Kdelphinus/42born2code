@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 16:07:52 by myko              #+#    #+#              #
-#    Updated: 2022/09/28 18:06:21 by myko             ###   ########.fr        #
+#    Updated: 2022/09/28 21:52:14 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 NAME = fractol
 FLAG = -Wall -Wextra -Werror
 MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX_FLAG_LINUX = -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz
 
 SRCS_DIR = ./srcs/
 SRCS_NAME = main.c \
@@ -28,6 +29,9 @@ SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAME))
 OBJS_DIR = ./objs/
 OBJS_NAME = $(SRCS_NAME:.c=.o)
 OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAME))
+OBJS_DIR_LINUX = ./objs_linux/
+OBJS_NAME = $(SRCS_NAME:.c=.o)
+OBJS_LINUX = $(addprefix $(OBJS_DIR_LINUX), $(OBJS_NAME))
 INC = ./includes/
 MLX_LINUX_DIR = ./mlx_linux/
 
@@ -42,34 +46,34 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 	mkdir -p $(OBJS_DIR)
 	$(CC) $(FLAG) -I$(INC) -Imlx -c $< -o $@
 
-# ubuntu: $(OBJS)
-# 	make -C $(MLX_LINUX_DIR)
-# 	gcc $(FLAG) $(OBJS) -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-# 	@printf "$(BOLD)All done!$(SGR0)\n"
+linux: $(OBJS_LINUX)
+	make -C $(MLX_LINUX_DIR)
+	gcc $(FLAG) $(OBJS_LINUX) $(MLX_FLAG_LINUX) -o $(NAME)
+	@printf "$(BOLD)All done!$(SGR0)\n"
 
-# $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
-# 	mkdir -p $(OBJS_DIR)
-# 	gcc $(FLAG) -I$(INC) -Imlx_linux -O3 -c $< -o $@
+$(OBJS_DIR_LINUX)%.o: $(SRCS_DIR)%.c
+	mkdir -p $(OBJS_DIR_LINUX)
+	gcc $(FLAG) -I$(INC) -Imlx_linux -O3 -c $< -o $@
 
 clean:
 	rm -rf $(OBJS_DIR)
 
-clean_ubuntu:
+clean_linux:
 	make -C $(MLX_LINUX_DIR) clean
-	rm -rf $(OBJS_DIR)
+	rm -rf $(OBJS_DIR_LINUX)
 
 fclean: clean
 	rm -rf $(NAME)
 
-fclean_ubuntu: clean_ubuntu
+fclean_linux: clean_linux
 	rm -rf $(NAME)
 
 re:
 	make fclean
 	make all
 
-re_ubuntu:
-	make fclean_ubuntu
-	make ubuntu
+re_linux:
+	make fclean_linux
+	make linux
 
-.PHONY: all ubuntu clean clean_ubuntu fclean fclean_ubuntu re re_ubuntu
+.PHONY: all linux clean clean_linux fclean fclean_linux re re_linux
