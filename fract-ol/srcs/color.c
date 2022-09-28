@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:38:17 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 18:07:29 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/28 19:49:09 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	coloring_green(int coor, int value, t_img *img)
 {
-	if (value > 100)
+	if (value == MAX_REPEAT)
+		img->data[coor] = 0x6dcf6d;
+	else if (value > 100)
 		img->data[coor] = 0x4baf4b;
 	else if (value > 80)
 		img->data[coor] = 0x46aa46;
@@ -38,7 +40,9 @@ void	coloring_green(int coor, int value, t_img *img)
 
 void	coloring_blue(int coor, int value, t_img *img)
 {
-	if (value > 100)
+	if (value == MAX_REPEAT)
+		img->data[coor] = 0xd3eeff;
+	else if (value > 100)
 		img->data[coor] = 0xb1ccf0;
 	else if (value > 80)
 		img->data[coor] = 0x7fa7dc;

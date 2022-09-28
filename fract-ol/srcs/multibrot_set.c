@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 19:50:28 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/28 18:54:07 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	multibrot_calculation(t_complex *complex, double d)
 		complex->z_real = x;
 		complex->z_imagin = y;
 	}
-	return (n);
+	return (MAX_REPEAT);
 }
 
 void	multibrot_draw(t_complex *complex, t_img *img, int argc, char **argv)

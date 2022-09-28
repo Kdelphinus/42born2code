@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 22:08:11 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/28 19:49:34 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_complex
 	double	z_imagin;
 	double	c_real;
 	double	c_imagin;
+	double	zoom;
 }			t_complex;
 
 typedef struct s_img

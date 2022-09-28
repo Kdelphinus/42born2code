@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 19:25:31 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/28 19:50:08 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	complex_init(t_complex *complex, int argc, char **argv)
 {
-	complex->z_real = -COOR_BOUNDARY;
-	complex->z_imagin = -COOR_BOUNDARY;
+	complex->z_real = -COOR_BOUNDARY * complex->zoom;
+	complex->z_imagin = -COOR_BOUNDARY * complex->zoom;
 	if (argc != 4)
 	{
 		printf("Set default value.\nc_real: -0.5125, c_imagin: -0.5213\n");
-		complex->c_real = -0.5125;
-		complex->c_imagin = -0.5213;
+		complex->c_real = -0.5125 * complex->zoom;
+		complex->c_imagin = -0.5213 * complex->zoom;
 	}
 	else
 	{
@@ -48,7 +48,7 @@ static int	julia_calculation(t_complex *complex)
 		complex->z_real = x;
 		complex->z_imagin = y;
 	}
-	return (n);
+	return (MAX_REPEAT);
 }
 
 void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv)
@@ -59,23 +59,23 @@ void	julia_draw(t_complex *complex, t_img *img, int argc, char **argv)
 	double	tmp_imagin;
 
 	complex_init(complex, argc, argv);
-	while (complex->z_imagin <= COOR_BOUNDARY)
+	while (complex->z_imagin <= COOR_BOUNDARY * complex->zoom)
 	{
 		tmp_imagin = complex->z_imagin;
-		while (complex->z_real <= COOR_BOUNDARY)
+		while (complex->z_real <= COOR_BOUNDARY * complex->zoom)
 		{
 			tmp_real = complex->z_real;
-			coor = (complex->z_imagin + COOR_BOUNDARY) * 100 * WIDTH + \
-				(complex->z_real + COOR_BOUNDARY) * 100;
+			coor = (complex->z_imagin + COOR_BOUNDARY * complex->zoom) * (100 / complex->zoom) * WIDTH + \
+				(complex->z_real + COOR_BOUNDARY * complex->zoom) * (100 / complex->zoom);
 			value = julia_calculation(complex);
 			if (img->color == 1)
 				coloring_green(coor, value, img);
 			else
 				coloring_blue(coor, value, img);
-			complex->z_real = tmp_real + 0.01;
+			complex->z_real = tmp_real + 0.01 * complex->zoom;
 			complex->z_imagin = tmp_imagin;
 		}
-		complex->z_imagin = tmp_imagin + 0.01;
-		complex->z_real = -COOR_BOUNDARY;
+		complex->z_imagin = tmp_imagin + 0.01 * complex->zoom;
+		complex->z_real = -COOR_BOUNDARY * complex->zoom;
 	}
 }
