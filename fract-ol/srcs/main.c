@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/09/28 23:42:43 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 01:24:12 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static int	mouse_scroll(int scroll, int x, int y, t_fractal *fractal)
 		fractal->coor_boundary *= 0.9;
 	else if (scroll == SCROLL_DOWN)
 		fractal->coor_boundary *= 1.1;
+	mandel_draw(fractal);
 	mlx_put_image_to_window(fractal->mlx_ptr, fractal->win, fractal->img->img_ptr, 0, 0);
-	printf("%d\n", scroll);
 	return (0);
 }
 
