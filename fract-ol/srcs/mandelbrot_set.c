@@ -6,18 +6,18 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/28 23:22:29 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 16:53:04 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static void	complex_init(t_complex *complex, t_fractal *fractal)
+static void	complex_init(t_frac *frac, t_complex *complex)
 {
-	complex->z_real = 0;
-	complex->z_imagin = 0;
-	complex->c_real = -fractal->coor_boundary;
-	complex->c_imagin = -fractal->coor_boundary;
+	complex->z_r = 0;
+	complex->z_i = 0;
+	complex->c_r = -frac->c_bd;
+	complex->c_i = -frac->c_bd;
 }
 
 static int	mandelbrot_calculation(t_complex *complex)
@@ -31,39 +31,37 @@ static int	mandelbrot_calculation(t_complex *complex)
 	n = -1;
 	while (++n <= MAX_REPEAT)
 	{
-		x = pow(complex->z_real, 2) - pow(complex->z_imagin, 2) \
-			+ complex->c_real;
-		y = 2 * complex->z_real * complex->z_imagin + complex->c_imagin;
+		x = pow(complex->z_r, 2) - pow(complex->z_i, 2) + complex->c_r;
+		y = 2 * complex->z_r * complex->z_i + complex->c_i;
 		if ((pow(x, 2) + pow(y, 2)) > pow(BOUNDARY, 2))
 			return (n);
-		complex->z_real = x;
-		complex->z_imagin = y;
+		complex->z_r = x;
+		complex->z_i = y;
 	}
 	return (MAX_REPEAT);
 }
 
-void	mandel_draw(t_fractal *fractal)
+void	mandelbrot_draw(t_frac *frac)
 {
-	int	value;
-	int	coor;
+	int		value;
+	int		coor;
+	double	fix;
 
-	complex_init(fractal->complex, fractal);
-	while (fractal->complex->c_imagin <= fractal->coor_boundary)
+	complex_init(frac, frac->complex);
+	fix = frac->c_bd * 2.0;
+	while (frac->complex->c_i <= frac->c_bd)
 	{
-		while (fractal->complex->c_real <= fractal->coor_boundary)
+		while (frac->complex->c_r <= frac->c_bd)
 		{
-			coor = (fractal->complex->c_imagin + fractal->coor_boundary) * (HEIGHT / 2.0 / fractal->coor_boundary) * WIDTH + \
-				(fractal->complex->c_real + fractal->coor_boundary) * (WIDTH / 2.0 / fractal->coor_boundary);
-			value = mandelbrot_calculation(fractal->complex);
-			if (fractal->color == 1)
-				coloring_green(coor, value, fractal->img);
-			else
-				coloring_blue(coor, value, fractal->img);
-			fractal->complex->c_real += fractal->coor_boundary * 2.0 / WIDTH;
-			fractal->complex->z_real = 0;
-			fractal->complex->z_imagin = 0;
+			coor = (frac->complex->c_i + frac->c_bd) * (SIDE / fix) \
+				* SIDE + (frac->complex->c_r + frac->c_bd) * (SIDE / fix);
+			value = mandelbrot_calculation(frac->complex);
+			coloring(coor, value, frac);
+			frac->complex->c_r += fix / SIDE;
+			frac->complex->z_r = 0;
+			frac->complex->z_i = 0;
 		}
-		fractal->complex->c_imagin += fractal->coor_boundary * 2.0 / HEIGHT;
-		fractal->complex->c_real = -fractal->coor_boundary;
+		frac->complex->c_i += fix / SIDE;
+		frac->complex->c_r = -fix / 2;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:01:05 by myko              #+#    #+#             */
-/*   Updated: 2022/09/27 19:50:16 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 16:53:38 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,17 @@ double	str_to_double(char *s)
 	return (flag * result / pow(10, i - 1));
 }
 
-int	kind_fractal(char *s)
+int	fractal_draw(t_frac *frac)
 {
-	if (ft_strcmp(s, "mandelbrot"))
-		return (1);
-	else if (ft_strcmp(s, "julia"))
-		return (2);
-	else if (ft_strcmp(s, "multibrot"))
-		return (3);
-	return (0);
+	if (frac->c_argc == 1)
+		return (0);
+	if (ft_strcmp(frac->c_argv[1], "mandelbrot"))
+		mandelbrot_draw(frac);
+	else if (ft_strcmp(frac->c_argv[1], "julia"))
+		julia_draw(frac);
+	else if (ft_strcmp(frac->c_argv[1], "multibrot"))
+		multibrot_draw(frac);
+	else
+		return (0);
+	return (1);
 }

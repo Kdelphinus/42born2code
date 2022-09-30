@@ -6,13 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:38:17 by myko              #+#    #+#             */
-/*   Updated: 2022/09/28 19:49:09 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 16:56:18 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	coloring_green(int coor, int value, t_img *img)
+static void	coloring_green(int coor, int value, t_img *img)
 {
 	if (value == MAX_REPEAT)
 		img->data[coor] = 0x6dcf6d;
@@ -38,7 +38,7 @@ void	coloring_green(int coor, int value, t_img *img)
 		img->data[coor] = 0x006400;
 }
 
-void	coloring_blue(int coor, int value, t_img *img)
+static void	coloring_blue(int coor, int value, t_img *img)
 {
 	if (value == MAX_REPEAT)
 		img->data[coor] = 0xd3eeff;
@@ -62,4 +62,12 @@ void	coloring_blue(int coor, int value, t_img *img)
 		img->data[coor] = 0x065acc;
 	else
 		img->data[coor] = 0x064abc;
+}
+
+void	coloring(int coor, int value, t_frac *frac)
+{
+	if (frac->color == 1)
+		coloring_blue(coor, value, frac->img);
+	else if (frac->color == -1)
+		coloring_green(coor, value, frac->img);
 }

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/28 23:29:22 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 16:59:47 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,14 @@
 # define BOUNDARY			2
 # define MAX_REPEAT			256
 # define COOR_BOUNDARY		2
-# define WIDTH				1000
-# define HEIGHT				1000
+# define SIDE				1000
 
 typedef struct s_complex
 {
-	double	z_real;
-	double	z_imagin;
-	double	c_real;
-	double	c_imagin;
+	double	z_r;
+	double	z_i;
+	double	c_r;
+	double	c_i;
 }			t_complex;
 
 typedef struct s_img
@@ -52,29 +51,31 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
-typedef struct s_fractal
+typedef struct s_frac
 {
 	void		*mlx_ptr;
 	void		*win;
 	t_img		*img;
 	t_complex	*complex;
-	double		coor_boundary;
+	double		c_bd;
 	int			color;
-}				t_fractal;
+	int			flag;
+	int			c_argc;
+	char		**c_argv;
+}				t_frac;
 
 // main.c
 int		main(int argc, char **argv);
 
 // fractal draw
-void	mandel_draw(t_fractal *fractal);
-void	julia_draw(t_fractal *fractal, int argc, char **argv);
-void	multibrot_draw(t_fractal *fractal, int argc, char **argv);
+void	mandelbrot_draw(t_frac *frac);
+void	julia_draw(t_frac *frac);
+void	multibrot_draw(t_frac *frac);
+void	coloring(int coor, int value, t_frac *frac);
 
 // utils_1.c
-int		kind_fractal(char *s);
+int		fractal_draw(t_frac *frac);
 double	str_to_double(char *s);
-void	coloring_green(int coor, int value, t_img *img);
-void	coloring_blue(int coor, int value, t_img *img);
 
 // utils_2.c
 int		ft_close(void);

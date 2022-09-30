@@ -6,30 +6,34 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/28 23:22:45 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 17:00:57 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static void	complex_init(t_fractal *fractal, int argc, char **argv)
+static void	complex_init(t_frac *frac, t_complex *complex)
 {
-	fractal->complex->z_real = -fractal->coor_boundary;
-	fractal->complex->z_imagin = -fractal->coor_boundary;
-	if (argc != 4)
+	complex->z_r = -frac->c_bd;
+	complex->z_i = -frac->c_bd;
+	if (frac->c_argc != 4)
 	{
-		printf("Set default value.\nc_real: -0.5125, c_imagin: -0.5213\n");
-		fractal->complex->c_real = -0.5125;
-		fractal->complex->c_imagin = -0.5213;
+		if (!frac->flag)
+		{
+			printf("Set default value.\nc_r: -0.5125, c_i: -0.5213\n");
+			frac->flag = 1;
+		}
+		complex->c_r = -0.5125;
+		complex->c_i = -0.5213;
 	}
 	else
 	{
-		fractal->complex->c_real = str_to_double(argv[2]);
-		fractal->complex->c_imagin = str_to_double(argv[3]);
+		complex->c_r = str_to_double(frac->c_argv[2]);
+		complex->c_i = str_to_double(frac->c_argv[3]);
 	}
 }
 
-static int	julia_calculation(t_fractal *fractal)
+static int	julia_calculation(t_complex *complex)
 {
 	double	x;
 	double	y;
@@ -40,42 +44,40 @@ static int	julia_calculation(t_fractal *fractal)
 	n = -1;
 	while (++n <= MAX_REPEAT)
 	{
-		x = pow(fractal->complex->z_real, 2) - pow(fractal->complex->z_imagin, 2) \
-			+ fractal->complex->c_real;
-		y = 2 * fractal->complex->z_real * fractal->complex->z_imagin + fractal->complex->c_imagin;
+		x = pow(complex->z_r, 2) - pow(complex->z_i, 2) + complex->c_r;
+		y = 2 * complex->z_r * complex->z_i + complex->c_i;
 		if ((pow(x, 2) + pow(y, 2)) > pow(BOUNDARY, 2))
 			return (n);
-		fractal->complex->z_real = x;
-		fractal->complex->z_imagin = y;
+		complex->z_r = x;
+		complex->z_i = y;
 	}
 	return (MAX_REPEAT);
 }
 
-void	julia_draw(t_fractal *fractal, int argc, char **argv)
+void	julia_draw(t_frac *frac)
 {
 	int		value;
 	int		coor;
-	double	tmp_real;
-	double	tmp_imagin;
+	double	tmp_r;
+	double	tmp_i;
+	double	fix;
 
-	complex_init(fractal, argc, argv);
-	while (fractal->complex->z_imagin <= fractal->coor_boundary)
+	complex_init(frac, frac->complex);
+	fix = frac->c_bd * 2.0;
+	while (frac->complex->z_i <= frac->c_bd)
 	{
-		tmp_imagin = fractal->complex->z_imagin;
-		while (fractal->complex->z_real <= fractal->coor_boundary)
+		tmp_i = frac->complex->z_i;
+		while (frac->complex->z_r <= frac->c_bd)
 		{
-			tmp_real = fractal->complex->z_real;
-			coor = (fractal->complex->z_imagin + fractal->coor_boundary) * (HEIGHT / 2.0 / fractal->coor_boundary) * WIDTH + \
-				(fractal->complex->z_real + fractal->coor_boundary) * (WIDTH / 2.0 / fractal->coor_boundary);
-			value = julia_calculation(fractal);
-			if (fractal->color == 1)
-				coloring_green(coor, value, fractal->img);
-			else
-				coloring_blue(coor, value, fractal->img);
-			fractal->complex->z_real = tmp_real + (fractal->coor_boundary * 2.0 / WIDTH);
-			fractal->complex->z_imagin = tmp_imagin;
+			tmp_r = frac->complex->z_r;
+			coor = (frac->complex->z_i + frac->c_bd) * (SIDE / fix) \
+				* SIDE + (frac->complex->z_r + frac->c_bd) * (SIDE / fix);
+			value = julia_calculation(frac->complex);
+			coloring(coor, value, frac);
+			frac->complex->z_r = tmp_r + (fix / SIDE);
+			frac->complex->z_i = tmp_i;
 		}
-		fractal->complex->z_imagin = tmp_imagin + (fractal->coor_boundary * 2.0 / HEIGHT);
-		fractal->complex->z_real = -fractal->coor_boundary;
+		frac->complex->z_i = tmp_i + (fix / SIDE);
+		frac->complex->z_r = -fix / 2;
 	}
 }

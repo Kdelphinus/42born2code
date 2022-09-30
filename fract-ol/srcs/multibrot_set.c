@@ -6,21 +6,25 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/28 23:23:17 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 17:00:27 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static double	complex_init(t_fractal *fractal, t_complex *complex, int argc, char **argv)
+static double	complex_init(t_frac *frac, t_complex *complex)
 {
-	complex->z_real = 0;
-	complex->z_imagin = 0;
-	complex->c_real = -fractal->coor_boundary;
-	complex->c_imagin = -fractal->coor_boundary;
-	if (argc == 3)
-		return (str_to_double(argv[2]));
-	printf("Set default value.\nd: 6\n");
+	complex->z_r = 0;
+	complex->z_i = 0;
+	complex->c_r = -frac->c_bd;
+	complex->c_i = -frac->c_bd;
+	if (frac->c_argc == 3)
+		return (str_to_double(frac->c_argv[2]));
+	if (!frac->flag)
+	{
+		printf("Set default value.\nd: 6\n");
+		frac->flag = 1;
+	}
 	return (6);
 }
 
@@ -35,43 +39,42 @@ static int	multibrot_calculation(t_complex *complex, double d)
 	n = -1;
 	while (++n <= MAX_REPEAT)
 	{
-		x = pow(pow(complex->z_real, 2) + pow(complex->z_imagin, 2), d / 2.0) \
-			* cos(d * atan2(complex->z_imagin, complex->z_real)) \
-			+ complex->c_real;
-		y = pow(pow(complex->z_real, 2) + pow(complex->z_imagin, 2), d / 2.0) \
-			* sin(d * atan2(complex->z_imagin, complex->z_real)) \
-			+ complex->c_imagin;
+		x = pow(pow(complex->z_r, 2) + pow(complex->z_i, 2), d / 2.0) \
+			* cos(d * atan2(complex->z_i, complex->z_r)) \
+			+ complex->c_r;
+		y = pow(pow(complex->z_r, 2) + pow(complex->z_i, 2), d / 2.0) \
+			* sin(d * atan2(complex->z_i, complex->z_r)) \
+			+ complex->c_i;
 		if ((pow(x, 2) + pow(y, 2)) > pow(BOUNDARY, 2))
 			return (n);
-		complex->z_real = x;
-		complex->z_imagin = y;
+		complex->z_r = x;
+		complex->z_i = y;
 	}
 	return (MAX_REPEAT);
 }
 
-void	multibrot_draw(t_fractal *fractal, int argc, char **argv)
+void	multibrot_draw(t_frac *frac)
 {
 	int		value;
 	int		coor;
 	double	d;
+	double	fix;
 
-	d = complex_init(fractal, fractal->complex, argc, argv);
-	while (fractal->complex->c_imagin <= fractal->coor_boundary)
+	d = complex_init(frac, frac->complex);
+	fix = frac->c_bd * 2.0;
+	while (frac->complex->c_i <= frac->c_bd)
 	{
-		while (fractal->complex->c_real <= fractal->coor_boundary)
+		while (frac->complex->c_r <= frac->c_bd)
 		{
-			coor = (fractal->complex->c_imagin + fractal->coor_boundary) * (HEIGHT / 2.0 / fractal->coor_boundary) * WIDTH + \
-				(fractal->complex->c_real + fractal->coor_boundary) * (WIDTH / 2.0 / fractal->coor_boundary);
-			value = multibrot_calculation(fractal->complex, d);
-			if (fractal->color == 1)
-				coloring_green(coor, value, fractal->img);
-			else
-				coloring_blue(coor, value, fractal->img);
-			fractal->complex->c_real += fractal->coor_boundary * 2.0 / WIDTH;
-			fractal->complex->z_real = 0;
-			fractal->complex->z_imagin = 0;
+			coor = (frac->complex->c_i + frac->c_bd) * (SIDE / fix) \
+				* SIDE + (frac->complex->c_r + frac->c_bd) * (SIDE / fix);
+			value = multibrot_calculation(frac->complex, d);
+			coloring(coor, value, frac);
+			frac->complex->c_r += fix / SIDE;
+			frac->complex->z_r = 0;
+			frac->complex->z_i = 0;
 		}
-		fractal->complex->c_imagin += fractal->coor_boundary * 2.0 / HEIGHT;
-		fractal->complex->c_real = -fractal->coor_boundary;
+		frac->complex->c_i += fix / SIDE;
+		frac->complex->c_r = -fix / 2;
 	}
 }
