@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/09/30 18:31:21 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 20:06:33 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ static void	all_init(t_frac *frac)
 			&image.size_l, &image.endian);
 	frac->img = &image;
 	frac->flag = 0;
-	frac->color = 1;
+	frac->color = 0;
+	frac->move_ud = 0;
+	frac->move_rl = 0;
 	frac->c_bd = 2;
 	printf("init done\n");
 }
 
-// TODO 이미지 이동 구현
+// TODO 이미지 이동 구현, julia에서 계속 오류
 static int	key_press(int keycode, t_frac *frac)
 {
 	if (keycode == KEY_ESC)
@@ -44,6 +46,14 @@ static int	key_press(int keycode, t_frac *frac)
 		frac->color = 2;
 	else if (keycode == KEY_G)
 		frac->color = 3;
+	else if (keycode == KEY_UP)
+		frac->move_ud += frac->c_bd / 20.0;
+	else if (keycode == KEY_DOWN)
+		frac->move_ud -= frac->c_bd / 20.0;
+	else if (keycode == KEY_RIGHT)
+		frac->move_rl += frac->c_bd / 20.0;
+	else if (keycode == KEY_LEFT)
+		frac->move_ud -= frac->c_bd / 20.0;
 	return (0);
 }
 
@@ -56,6 +66,8 @@ static int	mouse_scroll(int scroll, int x, int y, t_frac *frac)
 		frac->c_bd *= 0.95;
 	else if (scroll == SCROLL_DOWN)
 		frac->c_bd *= 1.05;
+	else if (scroll == 1)
+		frac->color++;
 	fractal_draw(frac);
 	mlx_put_image_to_window(frac->mlx_ptr, frac->win, frac->img->img_ptr, 0, 0);
 	return (0);

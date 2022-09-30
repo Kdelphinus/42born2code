@@ -136,8 +136,13 @@ $$
 # 3번째 프랙탈 후보
 - [Tricorn](https://en.wikipedia.org/wiki/Tricorn_(mathematics))
 - [Buddhabrot](https://en.wikipedia.org/wiki/Buddhabrot)
-- [Mandelbox](https://en.wikipedia.org/wiki/Mandelbox)
 - [Burning Ship fractal](https://en.wikipedia.org/wiki/Burning_Ship_fractal)
+- [Koch snowflake](https://en.wikipedia.org/wiki/Koch_snowflake)
+- [Fibonacci word fractal](https://en.wikipedia.org/wiki/Fibonacci_word_fractal)
+- [De Rham curve](https://en.wikipedia.org/wiki/De_Rham_curve)
+- [Blancmange curve](https://en.wikipedia.org/wiki/Blancmange_curve)
+- [Sierpiński triangle](https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle)
+- [Dragon curve](https://en.wikipedia.org/wiki/Dragon_curve)
 # 참고 자료
 
 - [42 Docs, LiniLibX](https://harm-smits.github.io/42docs/libs/minilibx)

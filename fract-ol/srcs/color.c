@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:38:17 by myko              #+#    #+#             */
-/*   Updated: 2022/09/30 18:21:19 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 20:06:26 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,36 +90,37 @@ static void	coloring_achromatic(int coor, int value, t_img *img)
 		img->data[coor] = 0x000000;
 }
 
-static void	coloring_achromatic_reverse(int coor, int value, t_img *img)
+static void	coloring_nature(int coor, int value, t_img *img)
 {
+	int	n;
+	int	color;
+	int	range;
+
 	if (value == MAX_REPEAT)
-		img->data[coor] = 0x000000;
-	else if (value > 100)
-		img->data[coor] = 0x191919;
-	else if (value > 80)
-		img->data[coor] = 0x2c2c2c;
-	else if (value > 60)
-		img->data[coor] = 0x3f3f3f;
-	else if (value > 40)
-		img->data[coor] = 0x545454;
-	else if (value > 20)
-		img->data[coor] = 0x6a6a6a;
-	else if (value > 10)
-		img->data[coor] = 0x808080;
-	else if (value > 5)
-		img->data[coor] = 0x949494;
-	else if (value > 3)
-		img->data[coor] = 0xa9a9a9;
-	else if (value > 2)
-		img->data[coor] = 0xd3d3d3;
-	else
-		img->data[coor] = 0xffffff;
+	{
+		img->data[coor] = 0;
+		return ;
+	}
+	range = 5;
+	n = MAX_REPEAT - range - 1;
+	color = 1052688;
+	while (n > 0)
+	{
+		if (n - range <= value && value <= n + range)
+		{
+			img->data[coor] = color;
+			return ;
+		}
+		color += 1052688;
+		n -= range * 2;
+	}
+	img->data[coor] = 0xffffff;
 }
 
 void	coloring(int coor, int value, t_frac *frac)
 {
 	if (frac->color % 4 == 0)
-		coloring_achromatic_reverse(coor, value, frac->img);
+		coloring_nature(coor, value, frac->img);
 	else if (frac->color % 4 == 1)
 		coloring_achromatic(coor, value, frac->img);
 	else if (frac->color % 4 == 2)

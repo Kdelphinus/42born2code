@@ -6,14 +6,14 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 16:07:52 by myko              #+#    #+#              #
-#    Updated: 2022/09/30 17:29:59 by myko             ###   ########.fr        #
+#    Updated: 2022/09/30 19:26:46 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # TODO Makefile 리링크 방지하기
 
 NAME = fractol
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror -g
 MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
 MLX_FLAG_LINUX = -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz
 

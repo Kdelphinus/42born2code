@@ -12,13 +12,19 @@
 
 #include "../includes/fractol.h"
 
-static double	complex_init(t_frac *frac, t_complex *complex)
+static double	complex_init(t_frac *frac)
 {
+	t_complex *complex;
+
+	complex = (t_complex *)malloc(sizeof(t_complex));
+	if (!complex)
+		ft_close();
+	frac->complex = complex;
 	frac->c_bd = 7;
-	complex->z_r = 0;
-	complex->z_i = 0;
-	complex->c_r = -frac->c_bd;
-	complex->c_i = -frac->c_bd;
+	complex->z_r = frac->move_rl;
+	complex->z_i = frac->move_ud;
+	complex->c_r = -frac->c_bd + frac->move_rl;
+	complex->c_i = -frac->c_bd + frac->move_ud;
 	if (frac->c_argc == 3)
 		return (str_to_double(frac->c_argv[2]));
 	if (!frac->flag)
@@ -69,21 +75,21 @@ void	mandelbox_draw(t_frac *frac)
 	double	fix;
 	double	scale;
 
-	scale = complex_init(frac, frac->complex);
+	scale = complex_init(frac);
 	fix = frac->c_bd * 2.0;
-	while (frac->complex->c_i <= frac->c_bd)
+	while (frac->complex->c_i <= frac->c_bd + frac->move_ud)
 	{
-		while (frac->complex->c_r <= frac->c_bd)
+		while (frac->complex->c_r <= frac->c_bd + frac->move_rl)
 		{
-			coor = (frac->complex->c_i + frac->c_bd) * (SIDE / fix) \
-				* SIDE + (frac->complex->c_r + frac->c_bd) * (SIDE / fix);
+			coor = (frac->complex->c_i + frac->c_bd - frac->move_ud) * (SIDE / fix) \
+				* SIDE + (frac->complex->c_r + frac->c_bd - frac->move_rl) * (SIDE / fix);
 			value = mandelbox_calculation(frac->complex, scale);
 			coloring(coor, value, frac);
 			frac->complex->c_r += fix / SIDE;
-			frac->complex->z_r = 0;
-			frac->complex->z_i = 0;
+			frac->complex->z_r = frac->move_rl;
+			frac->complex->z_i = frac->move_ud;
 		}
 		frac->complex->c_i += fix / SIDE;
-		frac->complex->c_r = -fix / 2;
+		frac->complex->c_r = -fix / 2 + frac->move_rl;
 	}
 }

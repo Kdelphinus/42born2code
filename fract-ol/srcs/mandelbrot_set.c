@@ -6,18 +6,24 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/30 16:53:04 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 19:35:37 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static void	complex_init(t_frac *frac, t_complex *complex)
+static void	complex_init(t_frac *frac)
 {
-	complex->z_r = 0;
-	complex->z_i = 0;
-	complex->c_r = -frac->c_bd;
-	complex->c_i = -frac->c_bd;
+	t_complex *complex;
+
+	complex = (t_complex *)malloc(sizeof(t_complex));
+	if (!complex)
+		ft_close();
+	frac->complex = complex;
+	complex->z_r = frac->move_rl;
+	complex->z_i = frac->move_ud;
+	complex->c_r = -frac->c_bd + frac->move_rl;
+	complex->c_i = -frac->c_bd + frac->move_ud;
 }
 
 static int	mandelbrot_calculation(t_complex *complex)
@@ -47,21 +53,21 @@ void	mandelbrot_draw(t_frac *frac)
 	int		coor;
 	double	fix;
 
-	complex_init(frac, frac->complex);
+	complex_init(frac);
 	fix = frac->c_bd * 2.0;
-	while (frac->complex->c_i <= frac->c_bd)
+	while (frac->complex->c_i <= frac->c_bd + frac->move_ud)
 	{
-		while (frac->complex->c_r <= frac->c_bd)
+		while (frac->complex->c_r <= frac->c_bd + frac->move_rl)
 		{
-			coor = (frac->complex->c_i + frac->c_bd) * (SIDE / fix) \
-				* SIDE + (frac->complex->c_r + frac->c_bd) * (SIDE / fix);
+			coor = (frac->complex->c_i + frac->c_bd - frac->move_ud) * (SIDE / fix) \
+				* SIDE + (frac->complex->c_r + frac->c_bd - frac->move_rl) * (SIDE / fix);
 			value = mandelbrot_calculation(frac->complex);
 			coloring(coor, value, frac);
 			frac->complex->c_r += fix / SIDE;
-			frac->complex->z_r = 0;
-			frac->complex->z_i = 0;
+			frac->complex->z_r = frac->move_rl;
+			frac->complex->z_i = frac->move_ud;
 		}
 		frac->complex->c_i += fix / SIDE;
-		frac->complex->c_r = -fix / 2;
+		frac->complex->c_r = -fix / 2 + frac->move_rl;
 	}
 }

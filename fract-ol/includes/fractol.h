@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/30 18:30:46 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 20:04:49 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 
 // use to calculate fractal
 # define BOUNDARY			2
-# define MAX_REPEAT			256
+# define MAX_REPEAT			128
 # define COOR_BOUNDARY		2
 # define SIDE				1000
 
@@ -66,6 +66,8 @@ typedef struct s_frac
 	t_img		*img;
 	t_complex	*complex;
 	double		c_bd;
+	double		move_ud;
+	double		move_rl;
 	int			color;
 	int			flag;
 	int			c_argc;
