@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/30 16:59:47 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 18:30:46 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,20 @@
 # include <stdio.h>
 # include <math.h>
 
+// TODO KEY_UP, KEY_DOWN 값 다시 확인하기
+// KEY_AR, KEY_A, KEY_B, KEY_G 값도 확인하여 고치기
 // use mlx
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
 # define KEY_ESC			53
+# define KEY_UP				121
+# define KEY_DOWN			122
 # define KEY_LEFT			123
 # define KEY_RIGHT			124
+# define KEY_AR				20
+# define KEY_A				21
+# define KEY_B				22
+# define KEY_G				23
 # define SCROLL_UP			4
 # define SCROLL_DOWN		5
 
@@ -71,6 +79,7 @@ int		main(int argc, char **argv);
 void	mandelbrot_draw(t_frac *frac);
 void	julia_draw(t_frac *frac);
 void	multibrot_draw(t_frac *frac);
+void	mandelbox_draw(t_frac *frac);
 void	coloring(int coor, int value, t_frac *frac);
 
 // utils_1.c

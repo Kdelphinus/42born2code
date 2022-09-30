@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/09/30 17:12:17 by myko             ###   ########.fr       */
+/*   Updated: 2022/09/30 18:31:21 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,16 @@ static void	all_init(t_frac *frac)
 // TODO 이미지 이동 구현
 static int	key_press(int keycode, t_frac *frac)
 {
-	(void)*frac;
 	if (keycode == KEY_ESC)
 		exit(0);
+	else if (keycode == KEY_AR)
+		frac->color = 0;
+	else if (keycode == KEY_A)
+		frac->color = 1;
+	else if (keycode == KEY_B)
+		frac->color = 2;
+	else if (keycode == KEY_G)
+		frac->color = 3;
 	return (0);
 }
 

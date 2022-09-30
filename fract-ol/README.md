@@ -140,9 +140,12 @@ $$
 - [Burning Ship fractal](https://en.wikipedia.org/wiki/Burning_Ship_fractal)
 # 참고 자료
 
+- [42 Docs, LiniLibX](https://harm-smits.github.io/42docs/libs/minilibx)
 - [위키백과, 프랙탈](https://ko.wikipedia.org/wiki/%ED%94%84%EB%9E%99%ED%83%88)
 - [위키백과, 망델브로 집합](https://ko.wikipedia.org/wiki/%EB%A7%9D%EB%8D%B8%EB%B8%8C%EB%A1%9C_%EC%A7%91%ED%95%A9)
 - [위키백과, 쥘리아 집합](https://ko.wikipedia.org/wiki/%EC%A5%98%EB%A6%AC%EC%95%84_%EC%A7%91%ED%95%A9)
 - [자바실험실, 망델브로 집합](https://javalab.org/mandelbrot_set/)
 - [카이스트 문희태 명예교수, 프랙탈 - 줄리아 집합](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=moonuga&logNo=220057782966)
 - [권석준, 패턴의 과학 [1]: 패턴의 자기닮음꼴과 프랙탈 차원](https://horizon.kias.re.kr/12112/)
+- [fractalforums, Mandelbox 2D vs 3D and bailing](http://www.fractalforums.com/programming/mandelbox-2d-vs-3d-and-bailing/)
+- [Wikipedia, Mandelbox](https://en.wikipedia.org/wiki/Mandelbox)

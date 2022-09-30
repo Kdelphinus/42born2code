@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 16:07:52 by myko              #+#    #+#              #
-#    Updated: 2022/09/28 21:52:14 by myko             ###   ########.fr        #
+#    Updated: 2022/09/30 17:29:59 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS_NAME = main.c \
 			mandelbrot_set.c \
 			julia_set.c \
 			multibrot_set.c \
+			mandelbox_set.c \
 			utils_1.c \
 			utils_2.c \
 			color.c
