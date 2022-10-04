@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:01:05 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 17:21:54 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/04 20:06:37 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ int	fractal_draw(t_frac *frac)
 		multibrot_draw(frac);
 	else if (ft_strcmp(frac->c_argv[1], "mandelbox"))
 		mandelbox_draw(frac);
+	else if (ft_strcmp(frac->c_argv[1], "multicron"))
+		multicron_draw(frac);
+	else if (ft_strcmp(frac->c_argv[1], "burning"))
+		burning_draw(frac);
 	else
 		return (0);
 	return (1);

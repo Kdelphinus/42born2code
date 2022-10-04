@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   multibrot_set.c                                    :+:      :+:    :+:   */
+/*   multicron.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 19:57:59 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/04 19:58:00 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,12 @@ static void	complex_init(t_frac *frac)
 		if (frac->c_argc == 3)
 			frac->d = str_to_double(frac->c_argv[2]);
 		else
-		{
-			printf("Set default value.\nd: 4\n");
-			frac->d = 4;
-		}
+			frac->d = 2;
 		frac->flag = 1;
 	}
 }
 
-static int	multibrot_calculation(t_complex *complex, double d)
+static int	multicron_calculation(t_complex *complex, double d)
 {
 	double	x;
 	double	y;
@@ -52,7 +49,7 @@ static int	multibrot_calculation(t_complex *complex, double d)
 		if ((pow(x, 2) + pow(y, 2)) > pow(BOUNDARY, 2))
 			return (n);
 		complex->z_r = x;
-		complex->z_i = y;
+		complex->z_i = -y;
 	}
 	return (MAX_REPEAT);
 }
@@ -68,7 +65,7 @@ static int	coor_calculation(t_frac *frac, double fix)
 	return (coor);
 }
 
-void	multibrot_draw(t_frac *frac)
+void	multicron_draw(t_frac *frac)
 {
 	int		value;
 	int		coor;
@@ -81,7 +78,7 @@ void	multibrot_draw(t_frac *frac)
 		while (frac->complex->c_r <= frac->c_bd + frac->move_rl)
 		{
 			coor = coor_calculation(frac, fix);
-			value = multibrot_calculation(frac->complex, frac->d);
+			value = multicron_calculation(frac->complex, frac->d);
 			coloring(coor, value, frac);
 			frac->complex->c_r += fix / SIDE;
 			frac->complex->z_r = frac->move_rl;

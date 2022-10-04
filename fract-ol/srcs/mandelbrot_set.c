@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 17:33:18 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/04 19:56:51 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	complex_init(t_frac *frac)
 {
+	frac->multi = 0;
 	frac->complex->z_r = frac->move_rl;
 	frac->complex->z_i = frac->move_ud;
 	frac->complex->c_r = -frac->c_bd + frac->move_rl;

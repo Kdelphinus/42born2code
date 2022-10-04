@@ -143,6 +143,7 @@ $$
 - [Blancmange curve](https://en.wikipedia.org/wiki/Blancmange_curve)
 - [Sierpiński triangle](https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle)
 - [Dragon curve](https://en.wikipedia.org/wiki/Dragon_curve)
+
 # 참고 자료
 
 - [42 Docs, LiniLibX](https://harm-smits.github.io/42docs/libs/minilibx)
@@ -154,3 +155,4 @@ $$
 - [권석준, 패턴의 과학 [1]: 패턴의 자기닮음꼴과 프랙탈 차원](https://horizon.kias.re.kr/12112/)
 - [fractalforums, Mandelbox 2D vs 3D and bailing](http://www.fractalforums.com/programming/mandelbox-2d-vs-3d-and-bailing/)
 - [Wikipedia, Mandelbox](https://en.wikipedia.org/wiki/Mandelbox)
+- [개발자 지망생, 절대값 함수 abs, fabs에 대해서](https://blockdmask.tistory.com/335)

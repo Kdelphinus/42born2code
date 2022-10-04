@@ -12,21 +12,22 @@
 
 #include "../includes/fractol.h"
 
-static double	complex_init(t_frac *frac)
+static void	complex_init(t_frac *frac)
 {
+	frac->multi = 1;
 	frac->c_bd = 7;
 	frac->complex->z_r = frac->move_rl;
 	frac->complex->z_i = frac->move_ud;
 	frac->complex->c_r = -frac->c_bd + frac->move_rl;
 	frac->complex->c_i = -frac->c_bd + frac->move_ud;
-	if (frac->c_argc == 3)
-		return (str_to_double(frac->c_argv[2]));
 	if (!frac->flag)
 	{
-		printf("Set default value.\nd: 2\n");
+		if (frac->c_argc == 3)
+			frac->d = str_to_double(frac->c_argv[2]);
+		else
+			frac->d = 2;
 		frac->flag = 1;
 	}
-	return (2);
 }
 
 static void	z_calculation(t_complex *complex)
@@ -83,16 +84,15 @@ void	mandelbox_draw(t_frac *frac)
 	int		value;
 	int		coor;
 	double	fix;
-	double	scale;
 
-	scale = complex_init(frac);
+	complex_init(frac);
 	fix = frac->c_bd * 2.0;
 	while (frac->complex->c_i <= frac->c_bd + frac->move_ud)
 	{
 		while (frac->complex->c_r <= frac->c_bd + frac->move_rl)
 		{
 			coor = coor_calculation(frac, fix);
-			value = mandelbox_calculation(frac->complex, scale);
+			value = mandelbox_calculation(frac->complex, frac->d);
 			coloring(coor, value, frac);
 			frac->complex->c_r += fix / SIDE;
 			frac->complex->z_r = frac->move_rl;

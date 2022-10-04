@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/09/30 20:04:49 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/04 20:07:00 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,10 @@ typedef struct s_frac
 	double		c_bd;
 	double		move_ud;
 	double		move_rl;
+	double		d;
 	int			color;
 	int			flag;
+	int			multi;
 	int			c_argc;
 	char		**c_argv;
 }				t_frac;
@@ -82,6 +84,8 @@ void	mandelbrot_draw(t_frac *frac);
 void	julia_draw(t_frac *frac);
 void	multibrot_draw(t_frac *frac);
 void	mandelbox_draw(t_frac *frac);
+void	multicron_draw(t_frac *frac);
+void	burning_draw(t_frac *frac);
 void	coloring(int coor, int value, t_frac *frac);
 
 // utils_1.c

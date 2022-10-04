@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   multibrot_set.c                                    :+:      :+:    :+:   */
+/*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 19:57:59 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/04 20:09:13 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,14 @@
 
 static void	complex_init(t_frac *frac)
 {
-	frac->multi = 1;
+	frac->multi = 0;
 	frac->complex->z_r = frac->move_rl;
 	frac->complex->z_i = frac->move_ud;
 	frac->complex->c_r = -frac->c_bd + frac->move_rl;
 	frac->complex->c_i = -frac->c_bd + frac->move_ud;
-	if (!frac->flag)
-	{
-		if (frac->c_argc == 3)
-			frac->d = str_to_double(frac->c_argv[2]);
-		else
-		{
-			printf("Set default value.\nd: 4\n");
-			frac->d = 4;
-		}
-		frac->flag = 1;
-	}
 }
 
-static int	multibrot_calculation(t_complex *complex, double d)
+static int	burning_calculation(t_complex *complex)
 {
 	double	x;
 	double	y;
@@ -43,12 +32,8 @@ static int	multibrot_calculation(t_complex *complex, double d)
 	n = -1;
 	while (++n <= MAX_REPEAT)
 	{
-		x = pow(pow(complex->z_r, 2) + pow(complex->z_i, 2), d / 2.0) \
-			* cos(d * atan2(complex->z_i, complex->z_r)) \
-			+ complex->c_r;
-		y = pow(pow(complex->z_r, 2) + pow(complex->z_i, 2), d / 2.0) \
-			* sin(d * atan2(complex->z_i, complex->z_r)) \
-			+ complex->c_i;
+		x = fabs(pow(complex->z_r, 2) - pow(complex->z_i, 2) + complex->c_r);
+		y = fabs(2 * complex->z_r * complex->z_i + complex->c_i);
 		if ((pow(x, 2) + pow(y, 2)) > pow(BOUNDARY, 2))
 			return (n);
 		complex->z_r = x;
@@ -68,7 +53,7 @@ static int	coor_calculation(t_frac *frac, double fix)
 	return (coor);
 }
 
-void	multibrot_draw(t_frac *frac)
+void	burning_draw(t_frac *frac)
 {
 	int		value;
 	int		coor;
@@ -81,7 +66,7 @@ void	multibrot_draw(t_frac *frac)
 		while (frac->complex->c_r <= frac->c_bd + frac->move_rl)
 		{
 			coor = coor_calculation(frac, fix);
-			value = multibrot_calculation(frac->complex, frac->d);
+			value = burning_calculation(frac->complex);
 			coloring(coor, value, frac);
 			frac->complex->c_r += fix / SIDE;
 			frac->complex->z_r = frac->move_rl;

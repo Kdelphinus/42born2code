@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 17:22:49 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/04 19:58:08 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,14 @@ static int	mouse_scroll(int scroll, int x, int y, t_frac *frac)
 		frac->c_bd *= 0.98;
 	else if (scroll == SCROLL_DOWN)
 		frac->c_bd *= 1.02;
-	else if (scroll == 1)
-		frac->color++;
+	if (frac->multi)
+	{
+		if (scroll == 1)
+			frac->d += 0.1;
+		else if (scroll == 3)
+			frac->d -= 0.1;
+		printf("d: %f\n", frac->d);
+	}
 	fractal_draw(frac);
 	mlx_put_image_to_window(frac->mlx_ptr, frac->win, frac->img->img_ptr, 0, 0);
 	return (0);
