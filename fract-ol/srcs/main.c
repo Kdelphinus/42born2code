@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 19:58:08 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/04 20:23:28 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,18 @@ static int	key_press(int keycode, t_frac *frac)
 // TODO x, y는 마우스의 위치
 static int	mouse_scroll(int scroll, int x, int y, t_frac *frac)
 {
-	(void)x;
-	(void)y;
 	if (scroll == SCROLL_UP)
+	{
 		frac->c_bd *= 0.98;
+		frac->move_rl = 2 * frac->c_bd / (x - SIDE / 2.0);
+		frac->move_ud = 2 * frac->c_bd / (y- SIDE / 2.0);
+	}
 	else if (scroll == SCROLL_DOWN)
+	{
 		frac->c_bd *= 1.02;
+		frac->move_rl = 2 * frac->c_bd / (x - SIDE / 2.0);
+		frac->move_ud = 2 * frac->c_bd / (y- SIDE / 2.0);
+	}
 	if (frac->multi)
 	{
 		if (scroll == 1)
