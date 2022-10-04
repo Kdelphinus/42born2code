@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:17:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/30 20:08:12 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/03 16:31:00 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	ft_error(void)
 	printf("- mandelbrot\n");
 	printf("- julia [c_r] [c_i]\n");
 	printf("- multibrot [d]\n");
-	printf("- mandelbox [scale]")
+	printf("- mandelbox [scale]\n");
 	return (-1);
 }

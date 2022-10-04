@@ -14,17 +14,11 @@
 
 static double	complex_init(t_frac *frac)
 {
-	t_complex *complex;
-
-	complex = (t_complex *)malloc(sizeof(t_complex));
-	if (!complex)
-		ft_close();
-	frac->complex = complex;
 	frac->c_bd = 7;
-	complex->z_r = frac->move_rl;
-	complex->z_i = frac->move_ud;
-	complex->c_r = -frac->c_bd + frac->move_rl;
-	complex->c_i = -frac->c_bd + frac->move_ud;
+	frac->complex->z_r = frac->move_rl;
+	frac->complex->z_i = frac->move_ud;
+	frac->complex->c_r = -frac->c_bd + frac->move_rl;
+	frac->complex->c_i = -frac->c_bd + frac->move_ud;
 	if (frac->c_argc == 3)
 		return (str_to_double(frac->c_argv[2]));
 	if (!frac->flag)
@@ -35,6 +29,18 @@ static double	complex_init(t_frac *frac)
 	return (2);
 }
 
+static void	z_calculation(t_complex *complex)
+{
+	if (complex->z_r > 1)
+			complex->z_r = 2 - complex->z_r;
+	else if (complex->z_r < -1)
+		complex->z_r = -2 - complex->z_r;
+	if (complex->z_i > 1)
+		complex->z_i = 2 - complex->z_i;
+	else if (complex->z_i < -1)
+		complex->z_i = -2 - complex->z_i;
+}
+
 static int	mandelbox_calculation(t_complex *complex, double scale)
 {
 	int		n;
@@ -42,14 +48,7 @@ static int	mandelbox_calculation(t_complex *complex, double scale)
 	n = -1;
 	while (++n <= MAX_REPEAT)
 	{
-		if (complex->z_r > 1)
-			complex->z_r = 2 - complex->z_r;
-		else if (complex->z_r < -1)
-			complex->z_r = -2 - complex->z_r;
-		if (complex->z_i > 1)
-			complex->z_i = 2 - complex->z_i;
-		else if (complex->z_i < -1)
-			complex->z_i = -2 - complex->z_i;
+		z_calculation(complex);
 		if (pow(complex->z_i, 2) + pow(complex->z_r, 2) < 0.5)
 		{
 			complex->z_i *= 2;
@@ -68,6 +67,17 @@ static int	mandelbox_calculation(t_complex *complex, double scale)
 	return (MAX_REPEAT);
 }
 
+static int	coor_calculation(t_frac *frac, double fix)
+{
+	int	coor;
+
+	coor = (frac->complex->c_i + frac->c_bd - frac->move_ud) \
+		* (SIDE / fix) * SIDE \
+		+ (frac->complex->c_r + frac->c_bd - frac->move_rl) \
+		* (SIDE / fix);
+	return (coor);
+}
+
 void	mandelbox_draw(t_frac *frac)
 {
 	int		value;
@@ -81,8 +91,7 @@ void	mandelbox_draw(t_frac *frac)
 	{
 		while (frac->complex->c_r <= frac->c_bd + frac->move_rl)
 		{
-			coor = (frac->complex->c_i + frac->c_bd - frac->move_ud) * (SIDE / fix) \
-				* SIDE + (frac->complex->c_r + frac->c_bd - frac->move_rl) * (SIDE / fix);
+			coor = coor_calculation(frac, fix);
 			value = mandelbox_calculation(frac->complex, scale);
 			coloring(coor, value, frac);
 			frac->complex->c_r += fix / SIDE;

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/30 19:36:35 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/04 17:33:31 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,10 @@
 
 static double	complex_init(t_frac *frac)
 {
-	t_complex *complex;
-
-	complex = (t_complex *)malloc(sizeof(t_complex));
-	if (!complex)
-		ft_close();
-	frac->complex = complex;
-	complex->z_r = frac->move_rl;
-	complex->z_i = frac->move_ud;
-	complex->c_r = -frac->c_bd + frac->move_rl;
-	complex->c_i = -frac->c_bd + frac->move_ud;
+	frac->complex->z_r = frac->move_rl;
+	frac->complex->z_i = frac->move_ud;
+	frac->complex->c_r = -frac->c_bd + frac->move_rl;
+	frac->complex->c_i = -frac->c_bd + frac->move_ud;
 	if (frac->c_argc == 3)
 		return (str_to_double(frac->c_argv[2]));
 	if (!frac->flag)
@@ -59,6 +53,17 @@ static int	multibrot_calculation(t_complex *complex, double d)
 	return (MAX_REPEAT);
 }
 
+static int	coor_calculation(t_frac *frac, double fix)
+{
+	int	coor;
+
+	coor = (frac->complex->c_i + frac->c_bd - frac->move_ud) \
+		* (SIDE / fix) * SIDE \
+		+ (frac->complex->c_r + frac->c_bd - frac->move_rl) \
+		* (SIDE / fix);
+	return (coor);
+}
+
 void	multibrot_draw(t_frac *frac)
 {
 	int		value;
@@ -72,8 +77,7 @@ void	multibrot_draw(t_frac *frac)
 	{
 		while (frac->complex->c_r <= frac->c_bd + frac->move_rl)
 		{
-			coor = (frac->complex->c_i + frac->c_bd - frac->move_ud) * (SIDE / fix) \
-				* SIDE + (frac->complex->c_r + frac->c_bd - frac->move_rl) * (SIDE / fix);
+			coor = coor_calculation(frac, fix);
 			value = multibrot_calculation(frac->complex, d);
 			coloring(coor, value, frac);
 			frac->complex->c_r += fix / SIDE;

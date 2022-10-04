@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/09/30 19:36:12 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/04 17:33:26 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,8 @@
 
 static void	complex_init(t_frac *frac)
 {
-	t_complex *complex;
-
-	complex = (t_complex *)malloc(sizeof(t_complex));
-	if (!complex)
-		ft_close();
-	frac->complex = complex;
-	complex->z_r = -frac->c_bd + frac->move_rl;
-	complex->z_i = -frac->c_bd + frac->move_ud;
+	frac->complex->z_r = -frac->c_bd + frac->move_rl;
+	frac->complex->z_i = -frac->c_bd + frac->move_ud;
 	if (frac->c_argc != 4)
 	{
 		if (!frac->flag)
@@ -29,13 +23,13 @@ static void	complex_init(t_frac *frac)
 			printf("Set default value.\nc_r: -0.5125, c_i: -0.5213\n");
 			frac->flag = 1;
 		}
-		complex->c_r = -0.5125 + frac->move_rl;
-		complex->c_i = -0.5213 + frac->move_ud;
+		frac->complex->c_r = -0.5125 + frac->move_rl;
+		frac->complex->c_i = -0.5213 + frac->move_ud;
 	}
 	else
 	{
-		complex->c_r = str_to_double(frac->c_argv[2]) + frac->move_rl;
-		complex->c_i = str_to_double(frac->c_argv[3]) + frac->move_ud;
+		frac->complex->c_r = str_to_double(frac->c_argv[2]) + frac->move_rl;
+		frac->complex->c_i = str_to_double(frac->c_argv[3]) + frac->move_ud;
 	}
 }
 
@@ -60,6 +54,17 @@ static int	julia_calculation(t_complex *complex)
 	return (MAX_REPEAT);
 }
 
+static int	coor_calculator(t_frac *frac, double fix)
+{
+	int	coor;
+
+	coor = (frac->complex->z_i + frac->c_bd - frac->move_ud) \
+		* (SIDE / fix) * SIDE \
+		+ (frac->complex->z_r + frac->c_bd - frac->move_rl) \
+		* (SIDE / fix);
+	return (coor);
+}
+
 void	julia_draw(t_frac *frac)
 {
 	int		value;
@@ -76,8 +81,7 @@ void	julia_draw(t_frac *frac)
 		while (frac->complex->z_r <= frac->c_bd + frac->move_rl)
 		{
 			tmp_r = frac->complex->z_r;
-			coor = (frac->complex->z_i + frac->c_bd - frac->move_ud) * (SIDE / fix) \
-				* SIDE + (frac->complex->z_r + frac->c_bd - frac->move_rl) * (SIDE / fix);
+			coor = coor_calculator(frac, fix);
 			value = julia_calculation(frac->complex);
 			coloring(coor, value, frac);
 			frac->complex->z_r = tmp_r + (fix / SIDE);
