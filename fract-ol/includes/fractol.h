@@ -6,14 +6,14 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 20:07:00 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/04 20:24:29 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-// # include "../mlx/mlx.h"
+# include "../mlx/mlx.h"
 # include "../mlx_linux/mlx.h" // linux
 # include <stdlib.h>
 # include <stdio.h>

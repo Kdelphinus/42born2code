@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 20:23:28 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/04 20:24:47 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	key_press(int keycode, t_frac *frac)
 	return (0);
 }
 
-// TODO x, y는 마우스의 위치
+// TODO 마우스 위치에 따라 줌인아웃 되도록
 static int	mouse_scroll(int scroll, int x, int y, t_frac *frac)
 {
 	if (scroll == SCROLL_UP)
