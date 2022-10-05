@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 16:07:52 by myko              #+#    #+#              #
-#    Updated: 2022/10/05 17:34:13 by myko             ###   ########.fr        #
+#    Updated: 2022/10/05 18:36:53 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS_NAME = main.c \
 			key_hook.c \
 			utils_1.c \
 			utils_2.c \
+			utils_3.c \
 			color.c
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAME))
 OBJS_DIR = ./objs/

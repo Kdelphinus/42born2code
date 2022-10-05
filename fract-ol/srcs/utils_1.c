@@ -6,37 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:01:05 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 20:06:37 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/05 18:36:00 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static int	ft_strcmp(char *s1, char *s2)
-{
-	while (1)
-	{
-		if (*s1 != *s2)
-			return (0);
-		if (*s1 == 0 && *s2 == 0)
-			return (1);
-		s1++;
-		s2++;
-	}
-}
-
-static int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (*s)
-	{
-		s++;
-		i++;
-	}
-	return (i);
-}
 
 static int	sign_flag(char **s, int *flag)
 {
@@ -79,23 +53,40 @@ double	str_to_double(char *s)
 	return (flag * result / pow(10, i - 1));
 }
 
-int	fractal_draw(t_frac *frac)
+static int	kind_fractal(t_frac *frac)
 {
-	if (frac->c_argc == 1)
-		return (0);
 	if (ft_strcmp(frac->c_argv[1], "mandelbrot"))
-		mandelbrot_draw(frac);
+		frac->kind = 0;
 	else if (ft_strcmp(frac->c_argv[1], "julia"))
-		julia_draw(frac);
+		frac->kind = 1;
 	else if (ft_strcmp(frac->c_argv[1], "multibrot"))
-		multibrot_draw(frac);
+		frac->kind = 2;
 	else if (ft_strcmp(frac->c_argv[1], "mandelbox"))
-		mandelbox_draw(frac);
+		frac->kind = 3;
 	else if (ft_strcmp(frac->c_argv[1], "multicron"))
-		multicron_draw(frac);
+		frac->kind = 4;
 	else if (ft_strcmp(frac->c_argv[1], "burning"))
-		burning_draw(frac);
+		frac->kind = 5;
 	else
 		return (0);
+	return (1);
+}
+
+int	fractal_draw(t_frac *frac)
+{
+	if (frac->c_argc == 1 || (frac->kind == -1 && !kind_fractal(frac)))
+		return (0);
+	if (frac->kind == 0)
+		mandelbrot_draw(frac);
+	else if (frac->kind == 1)
+		julia_draw(frac);
+	else if (frac->kind == 2)
+		multibrot_draw(frac);
+	else if (frac->kind == 3)
+		mandelbox_draw(frac);
+	else if (frac->kind == 4)
+		multicron_draw(frac);
+	else if (frac->kind == 5)
+		burning_draw(frac);
 	return (1);
 }

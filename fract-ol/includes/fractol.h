@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/10/05 17:23:58 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/05 18:36:36 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <stdio.h>
 # include <math.h>
 
-// TODO KEY_UP, KEY_DOWN 값 다시 확인하기
-// KEY_AR, KEY_A, KEY_B, KEY_G 값도 확인하여 고치기
 // use mlx
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
@@ -39,7 +37,6 @@
 // use to calculate fractal
 # define BOUNDARY			2
 # define MAX_REPEAT			128
-# define COOR_BOUNDARY		2
 # define SIDE				1000
 
 typedef struct s_complex
@@ -69,6 +66,7 @@ typedef struct s_frac
 	double		move_ud;
 	double		move_rl;
 	double		d;
+	int			kind;
 	int			color;
 	int			flag;
 	int			multi;
@@ -100,5 +98,9 @@ double	str_to_double(char *s);
 int		ft_close(void);
 int		ft_error(void);
 void	ft_all_free(t_frac *frac);
+
+// utils_3.c
+int		ft_strlen(char *s);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif

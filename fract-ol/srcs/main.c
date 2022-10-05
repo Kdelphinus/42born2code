@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/10/05 17:23:16 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/05 18:32:39 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	frac_init(t_frac *frac)
 	}
 	frac->complex = comp;
 	frac->flag = 0;
+	frac->kind = -1;
 	frac->color = 0;
 	frac->move_ud = 0;
 	frac->move_rl = 0;
@@ -69,15 +70,14 @@ int	main(int argc, char **argv)
 	frac_init(frac);
 	frac->c_argv = argv;
 	frac->c_argc = argc;
+	mlx_mouse_hook(frac->win, &mouse_scroll, frac);
+	mlx_hook(frac->win, X_EVENT_KEY_PRESS, 0, &key_press, frac);
+	mlx_hook(frac->win, X_EVENT_KEY_EXIT, 0, &ft_close, frac);
 	if (!fractal_draw(frac))
 	{
 		ft_all_free(frac);
 		return (ft_error());
 	}
-	mlx_put_image_to_window(frac->mlx_ptr, frac->win, frac->img->img_ptr, 0, 0);
-	mlx_mouse_hook(frac->win, &mouse_scroll, frac);
-	mlx_hook(frac->win, X_EVENT_KEY_PRESS, 0, &key_press, frac);
-	mlx_hook(frac->win, X_EVENT_KEY_EXIT, 0, &ft_close, frac);
 	mlx_loop_hook(frac->mlx_ptr, &main_loop, frac);
 	mlx_loop(frac->mlx_ptr);
 	return (0);
