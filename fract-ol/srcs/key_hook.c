@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:22:39 by myko              #+#    #+#             */
-/*   Updated: 2022/10/05 19:12:03 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/05 19:44:23 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,29 @@ int	key_press(int keycode, t_frac *frac)
 	else if (keycode == KEY_G)
 		frac->color = 3;
 	else if (keycode == KEY_UP)
-		frac->move_ud -= frac->c_bd / 20.0;
+		frac->move_ud -= frac->c_bd / 10.0;
 	else if (keycode == KEY_DOWN)
-		frac->move_ud += frac->c_bd / 20.0;
+		frac->move_ud += frac->c_bd / 10.0;
 	else if (keycode == KEY_RIGHT)
-		frac->move_rl += frac->c_bd / 20.0;
+		frac->move_rl += frac->c_bd / 10.0;
 	else if (keycode == KEY_LEFT)
-		frac->move_rl -= frac->c_bd / 20.0;
+		frac->move_rl -= frac->c_bd / 10.0;
 	return (0);
 }
 
-// TODO 마우스 위치에 따라 줌인아웃 되도록
 int	mouse_scroll(int scroll, int x, int y, t_frac *frac)
 {
-	// (void)x;
-	// (void)y;
 	if (scroll == SCROLL_UP)
 	{
-		frac->c_bd *= 0.75;
-		frac->move_rl += 2 * (frac->c_bd + frac->move_rl) / (x - SIDE / 2.0);
-		frac->move_ud += 2 * (frac->c_bd + frac->move_ud) / (y - SIDE / 2.0);
+		frac->move_rl += (x - SIDE / 2.0) / SIDE;
+		frac->move_ud += (y - SIDE / 2.0) / SIDE;
+		frac->c_bd *= 0.9;
 	}
 	else if (scroll == SCROLL_DOWN)
 	{
-		frac->c_bd *= 1.25;
-		frac->move_rl += 2 * (frac->c_bd + frac->move_rl) / (x - SIDE / 2.0);
-		frac->move_ud += 2 * (frac->c_bd + frac->move_ud) / (y - SIDE / 2.0);
+		frac->move_rl += (x - SIDE / 2.0) / SIDE;
+		frac->move_ud += (y - SIDE / 2.0) / SIDE;
+		frac->c_bd *= 1.1;
 	}
 	return (0);
 }
