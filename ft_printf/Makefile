@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/20 17:30:00 by myko              #+#    #+#              #
-#    Updated: 2022/08/10 21:09:40 by myko             ###   ########.fr        #
+#    Updated: 2022/09/28 18:06:52 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 	mkdir $(OBJS_DIR) 2> /dev/null || true
 	$(CC) $(CFLAGS) -c $< -I $(INC) -o $@
 
-clean: 
+clean:
 	make -C $(LIBFT_DIR) clean
 	rm -rf $(OBJS_DIR)
 
