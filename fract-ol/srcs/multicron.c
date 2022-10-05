@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/05 16:39:06 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/05 18:52:02 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	complex_init(t_frac *frac)
 {
 	frac->multi = 1;
-	frac->complex->z_r = frac->move_rl;
-	frac->complex->z_i = frac->move_ud;
+	frac->complex->z_r = 0;
+	frac->complex->z_i = 0;
 	frac->complex->c_r = -frac->c_bd + frac->move_rl;
 	frac->complex->c_i = -frac->c_bd + frac->move_ud;
 	if (!frac->flag)
@@ -84,8 +84,8 @@ void	multicron_draw(t_frac *frac)
 			value = multicron_calculation(frac->complex, frac->d);
 			coloring(coor, value, frac);
 			frac->complex->c_r += fix / SIDE;
-			frac->complex->z_r = frac->move_rl;
-			frac->complex->z_i = frac->move_ud;
+			frac->complex->z_r = 0;
+			frac->complex->z_i = 0;
 		}
 		frac->complex->c_i += fix / SIDE;
 		frac->complex->c_r = -fix / 2 + frac->move_rl;

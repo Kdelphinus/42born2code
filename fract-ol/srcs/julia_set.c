@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 19:57:02 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/05 18:56:23 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ static void	complex_init(t_frac *frac)
 	frac->multi = 0;
 	frac->complex->z_r = -frac->c_bd + frac->move_rl;
 	frac->complex->z_i = -frac->c_bd + frac->move_ud;
-	if (frac->c_argc != 4)
+	if (!frac->flag)
 	{
-		if (!frac->flag)
+		if (frac->c_argc != 4)
 		{
 			printf("Set default value.\nc_r: -0.5125, c_i: -0.5213\n");
-			frac->flag = 1;
+			frac->complex->c_r = -0.5125;
+			frac->complex->c_i = -0.5213;
 		}
-		frac->complex->c_r = -0.5125 + frac->move_rl;
-		frac->complex->c_i = -0.5213 + frac->move_ud;
-	}
-	else
-	{
-		frac->complex->c_r = str_to_double(frac->c_argv[2]) + frac->move_rl;
-		frac->complex->c_i = str_to_double(frac->c_argv[3]) + frac->move_ud;
+		else
+		{
+			frac->complex->c_r = str_to_double(frac->c_argv[2]);
+			frac->complex->c_i = str_to_double(frac->c_argv[3]);
+		}
+		frac->flag = 1;
 	}
 }
 
