@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/10/05 16:44:11 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/05 17:23:58 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,10 @@ void	multicron_draw(t_frac *frac);
 void	burning_draw(t_frac *frac);
 void	coloring(int coor, int value, t_frac *frac);
 
+// key_hook.c
+int		key_press(int keycode, t_frac *frac);
+int		mouse_scroll(int scroll, int x, int y, t_frac *frac);
+
 // utils_1.c
 int		fractal_draw(t_frac *frac);
 double	str_to_double(char *s);
@@ -95,5 +99,6 @@ double	str_to_double(char *s);
 // utils_2.c
 int		ft_close(void);
 int		ft_error(void);
+void	ft_all_free(t_frac *frac);
 
 #endif
