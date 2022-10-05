@@ -115,6 +115,36 @@ $$
 
 ![negative multibrot](img/multibrot_negative.png)
 
+## 0.6 mandelbox
+
+``mandelbox`` 는 상자 모양의 프랙탈로 mandelbrot set과 유사한 방식으로 그려진다.
+여기서 mandelbrot과 차이점은 z 벡터 구성요소에 따라 다양한 수식처리를 해준다는 것이다.
+
+![mandelbox scale1.5](https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Mandelbox_20211127_1GP_RGBA8.png/440px-Mandelbox_20211127_1GP_RGBA8.png)
+
+## 0.7 multicron
+
+``multicron`` 역시 mandelbrot set과 유사한 방식으로 그려진다. 하나의 차이는 z의 크기를 구하는 방식이 antiholomorphic function을 사용한다는 것이다.
+
+$$
+z = u + iv \\
+\bar{f(z)} = u - iv
+$$
+
+위 그림처럼 사실상 우리에겐 허수의 부호가 바뀐 것 외에는 차이점이 없다.
+여기에 multibrot처럼 d의 값을 받아서 만든 것이 multicron이다.
+
+![multicron](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Multibar.gif/440px-Multibar.gif)
+## 0.8 burning ship
+
+``burning ship`` 프랙탈은 mandelbrot에서 각 실수, 허수 부분에 절댓값을 취해 그려지는 프랙탈이다.
+
+$$
+z_{n+1} = (|RE(z_n)| + i|Im(z_n)|)^2 + c, \; z_0 = 0
+$$
+
+![burning ship](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Ghost_Ship_fractal.png/360px-Ghost_Ship_fractal.png)
+
 # 1. Mandatory part
 
 - 당신의 소프트웨어는 줄리아 세트와 만델브로 세트를 제공해야 한다.
@@ -134,9 +164,7 @@ $$
 - 색상 범위를 이동합니다.
 
 # 3번째 프랙탈 후보
-- [Tricorn](https://en.wikipedia.org/wiki/Tricorn_(mathematics))
 - [Buddhabrot](https://en.wikipedia.org/wiki/Buddhabrot)
-- [Burning Ship fractal](https://en.wikipedia.org/wiki/Burning_Ship_fractal)
 - [Koch snowflake](https://en.wikipedia.org/wiki/Koch_snowflake)
 - [Fibonacci word fractal](https://en.wikipedia.org/wiki/Fibonacci_word_fractal)
 - [De Rham curve](https://en.wikipedia.org/wiki/De_Rham_curve)
@@ -156,3 +184,5 @@ $$
 - [fractalforums, Mandelbox 2D vs 3D and bailing](http://www.fractalforums.com/programming/mandelbox-2d-vs-3d-and-bailing/)
 - [Wikipedia, Mandelbox](https://en.wikipedia.org/wiki/Mandelbox)
 - [개발자 지망생, 절대값 함수 abs, fabs에 대해서](https://blockdmask.tistory.com/335)
+- [Wikipedia, Tricron](https://en.wikipedia.org/wiki/Tricorn_(mathematics))
+- [Wikipedia, Burning Ship fractal](https://en.wikipedia.org/wiki/Burning_Ship_fractal)

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 20:24:47 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/05 16:45:04 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,22 @@ static void	frac_init(t_frac *frac)
 		ft_close();
 	}
 	frac->complex = comp;
-	mlx = mlx_init();
-	frac->mlx_ptr = mlx;
-	frac->win = mlx_new_window(frac->mlx_ptr, SIDE, SIDE, "fract-ol");
-	img_init(frac);
 	frac->flag = 0;
 	frac->color = 0;
 	frac->move_ud = 0;
 	frac->move_rl = 0;
 	frac->c_bd = 2;
+	mlx = mlx_init();
+	frac->mlx_ptr = mlx;
+	frac->win = mlx_new_window(frac->mlx_ptr, SIDE, SIDE, "fract-ol");
+	img_init(frac);
 }
 
 static int	key_press(int keycode, t_frac *frac)
 {
 	if (keycode == KEY_ESC)
-		exit(0);
-	else if (keycode == KEY_AR)
+		ft_close();
+	if (keycode == KEY_AR)
 		frac->color = 0;
 	else if (keycode == KEY_A)
 		frac->color = 1;
@@ -64,14 +64,14 @@ static int	key_press(int keycode, t_frac *frac)
 		frac->color = 2;
 	else if (keycode == KEY_G)
 		frac->color = 3;
-	else if (keycode == KEY_UP)
-		frac->move_ud += frac->c_bd / 20.0;
-	else if (keycode == KEY_DOWN)
+	if (keycode == KEY_UP)
 		frac->move_ud -= frac->c_bd / 20.0;
+	else if (keycode == KEY_DOWN)
+		frac->move_ud += frac->c_bd / 20.0;
 	else if (keycode == KEY_RIGHT)
 		frac->move_rl += frac->c_bd / 20.0;
 	else if (keycode == KEY_LEFT)
-		frac->move_ud -= frac->c_bd / 20.0;
+		frac->move_rl -= frac->c_bd / 20.0;
 	fractal_draw(frac);
 	mlx_put_image_to_window(frac->mlx_ptr, frac->win, frac->img->img_ptr, 0, 0);
 	return (0);
@@ -80,25 +80,19 @@ static int	key_press(int keycode, t_frac *frac)
 // TODO 마우스 위치에 따라 줌인아웃 되도록
 static int	mouse_scroll(int scroll, int x, int y, t_frac *frac)
 {
+	(void)x;
+	(void)y;
 	if (scroll == SCROLL_UP)
 	{
-		frac->c_bd *= 0.98;
-		frac->move_rl = 2 * frac->c_bd / (x - SIDE / 2.0);
-		frac->move_ud = 2 * frac->c_bd / (y- SIDE / 2.0);
+		frac->c_bd *= 0.95;
+		// frac->move_rl = 2 * frac->c_bd / (x - SIDE / 2.0);
+		// frac->move_ud = 2 * frac->c_bd / (y - SIDE / 2.0);
 	}
 	else if (scroll == SCROLL_DOWN)
 	{
-		frac->c_bd *= 1.02;
-		frac->move_rl = 2 * frac->c_bd / (x - SIDE / 2.0);
-		frac->move_ud = 2 * frac->c_bd / (y- SIDE / 2.0);
-	}
-	if (frac->multi)
-	{
-		if (scroll == 1)
-			frac->d += 0.1;
-		else if (scroll == 3)
-			frac->d -= 0.1;
-		printf("d: %f\n", frac->d);
+		frac->c_bd *= 1.05;
+		// frac->move_rl = 2 * frac->c_bd / (x - SIDE / 2.0);
+		// frac->move_ud = 2 * frac->c_bd / (y - SIDE / 2.0);
 	}
 	fractal_draw(frac);
 	mlx_put_image_to_window(frac->mlx_ptr, frac->win, frac->img->img_ptr, 0, 0);

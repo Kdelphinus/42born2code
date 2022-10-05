@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 20:24:29 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/05 16:44:11 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
 # define KEY_ESC			53
-# define KEY_UP				121
-# define KEY_DOWN			122
+# define KEY_UP				126
+# define KEY_DOWN			125
 # define KEY_LEFT			123
 # define KEY_RIGHT			124
-# define KEY_AR				20
-# define KEY_A				21
-# define KEY_B				22
-# define KEY_G				23
+# define KEY_AR				45
+# define KEY_A				0
+# define KEY_B				11
+# define KEY_G				5
 # define SCROLL_UP			4
 # define SCROLL_DOWN		5
 

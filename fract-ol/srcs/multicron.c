@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/04 19:58:00 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/05 16:39:06 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ static void	complex_init(t_frac *frac)
 		if (frac->c_argc == 3)
 			frac->d = str_to_double(frac->c_argv[2]);
 		else
+		{
+			printf("Set default value.\nd: 2\n");
 			frac->d = 2;
+		}
 		frac->flag = 1;
 	}
 }
