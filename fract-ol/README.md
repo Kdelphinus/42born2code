@@ -6,6 +6,10 @@
 - [0.2 복소수의 표현](#02-복소수의-표현)  
 - [0.3 Mandelbrot set](#03-mandelbrot-set)  
 - [0.4 Julia set](#04-julia-set)  
+- [0.5 Multibrot set](#05-multibrot-set)  
+- [0.6 Mandelbox](#06-mandelbox)  
+- [0.7 Multicron](#07-multicron)  
+- [0.8 Burning ship](#08-burning-ship)  
 
 [1. Mandatory part](#1-mandatory-part)  
 
@@ -115,14 +119,14 @@ $$
 
 ![negative multibrot](img/multibrot_negative.png)
 
-## 0.6 mandelbox
+## 0.6 Mandelbox
 
 ``mandelbox`` 는 상자 모양의 프랙탈로 mandelbrot set과 유사한 방식으로 그려진다.
 여기서 mandelbrot과 차이점은 z 벡터 구성요소에 따라 다양한 수식처리를 해준다는 것이다.
 
 ![mandelbox scale1.5](https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Mandelbox_20211127_1GP_RGBA8.png/440px-Mandelbox_20211127_1GP_RGBA8.png)
 
-## 0.7 multicron
+## 0.7 Multicron
 
 ``multicron`` 역시 mandelbrot set과 유사한 방식으로 그려진다. 하나의 차이는 z의 크기를 구하는 방식이 antiholomorphic function을 사용한다는 것이다.
 
@@ -135,7 +139,7 @@ $$
 여기에 multibrot처럼 d의 값을 받아서 만든 것이 multicron이다.
 
 ![multicron](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Multibar.gif/440px-Multibar.gif)
-## 0.8 burning ship
+## 0.8 Burning ship
 
 ``burning ship`` 프랙탈은 mandelbrot에서 각 실수, 허수 부분에 절댓값을 취해 그려지는 프랙탈이다.
 
