@@ -6,13 +6,12 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 16:07:52 by myko              #+#    #+#              #
-#    Updated: 2022/10/04 20:06:05 by myko             ###   ########.fr        #
+#    Updated: 2022/10/05 17:34:13 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# TODO Makefile 리링크 방지하기
-
 NAME = fractol
+NAME_LINUX = fractol_linux
 FLAG = -Wall -Wextra -Werror -g
 MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
 MLX_FLAG_LINUX = -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz
@@ -25,6 +24,7 @@ SRCS_NAME = main.c \
 			mandelbox.c \
 			multicron.c \
 			burning_ship.c \
+			key_hook.c \
 			utils_1.c \
 			utils_2.c \
 			color.c
@@ -41,7 +41,9 @@ MLX_LINUX_DIR = ./mlx_linux/
 BOLD := $(shell tput bold)
 SGR0 := $(shell tput sgr0)
 
-all: $(OBJS)
+all: $(NAME)
+
+$(NAME): $(OBJS)
 	$(CC) $(OBJS) $(FLAG) $(MLX_FLAG) -o $(NAME)
 	@printf "$(BOLD)All done!$(SGR0)\n"
 
@@ -49,9 +51,11 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 	mkdir -p $(OBJS_DIR)
 	$(CC) $(FLAG) -I$(INC) -Imlx -c $< -o $@
 
-linux: $(OBJS_LINUX)
+linux: $(NAME_LINUX)
+
+$(NAME_LINUX): $(OBJS_LINUX)
 	make -C $(MLX_LINUX_DIR)
-	gcc $(FLAG) $(OBJS_LINUX) $(MLX_FLAG_LINUX) -o $(NAME)
+	gcc $(FLAG) $(OBJS_LINUX) $(MLX_FLAG_LINUX) -o $(NAME_LINUX)
 	@printf "$(BOLD)All done!$(SGR0)\n"
 
 $(OBJS_DIR_LINUX)%.o: $(SRCS_DIR)%.c
