@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/10/05 19:44:48 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/05 19:45:36 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 
 // use to calculate fractal
 # define BOUNDARY			2
-# define MAX_REPEAT			128
+# define MAX_REPEAT			128 // 128번이 그림이 잘나오나 너무 느림
 # define SIDE				1000
 
 typedef struct s_complex
