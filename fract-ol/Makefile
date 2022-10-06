@@ -6,13 +6,13 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 16:07:52 by myko              #+#    #+#              #
-#    Updated: 2022/10/05 18:36:53 by myko             ###   ########.fr        #
+#    Updated: 2022/10/06 17:11:48 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 NAME_LINUX = fractol_linux
-FLAG = -Wall -Wextra -Werror -g
+FLAG = -Wall -Wextra -Werror
 MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
 MLX_FLAG_LINUX = -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz
 
@@ -50,7 +50,7 @@ $(NAME): $(OBJS)
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 	mkdir -p $(OBJS_DIR)
-	$(CC) $(FLAG) -I$(INC) -Imlx -c $< -o $@
+	$(CC) $(FLAG) -I$(INC) -Imlx -O3 -c $< -o $@
 
 linux: $(NAME_LINUX)
 

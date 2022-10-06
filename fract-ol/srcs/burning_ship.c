@@ -6,22 +6,22 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/05 19:28:05 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/06 17:18:27 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static void	complex_init(t_frac *frac)
+static void	comp_init(t_frac *frac)
 {
 	frac->multi = 0;
-	frac->complex->z_r = 0;
-	frac->complex->z_i = 0;
-	frac->complex->c_r = -frac->c_bd + frac->move_rl;
-	frac->complex->c_i = -frac->c_bd + frac->move_ud;
+	frac->comp->z_r = 0;
+	frac->comp->z_i = 0;
+	frac->comp->c_r = -frac->c_bd + frac->move_rl;
+	frac->comp->c_i = -frac->c_bd + frac->move_ud;
 }
 
-static int	burning_calculation(t_complex *complex)
+static int	burning_calculation(t_comp *comp, int max_r)
 {
 	double	x;
 	double	y;
@@ -30,25 +30,25 @@ static int	burning_calculation(t_complex *complex)
 	x = 0;
 	y = 0;
 	n = -1;
-	while (++n <= MAX_REPEAT)
+	while (++n <= max_r)
 	{
-		x = fabs(pow(complex->z_r, 2) - pow(complex->z_i, 2) + complex->c_r);
-		y = fabs(2 * complex->z_r * complex->z_i + complex->c_i);
+		x = fabs(pow(comp->z_r, 2) - pow(comp->z_i, 2) + comp->c_r);
+		y = fabs(2 * comp->z_r * comp->z_i + comp->c_i);
 		if ((pow(x, 2) + pow(y, 2)) > pow(BOUNDARY, 2))
 			return (n);
-		complex->z_r = x;
-		complex->z_i = y;
+		comp->z_r = x;
+		comp->z_i = y;
 	}
-	return (MAX_REPEAT);
+	return (max_r);
 }
 
 static int	coor_calculation(t_frac *frac, double fix)
 {
 	int	coor;
 
-	coor = (frac->complex->c_i + frac->c_bd - frac->move_ud) \
+	coor = (frac->comp->c_i + frac->c_bd - frac->move_ud) \
 		* (SIDE / fix) * SIDE \
-		+ (frac->complex->c_r + frac->c_bd - frac->move_rl) \
+		+ (frac->comp->c_r + frac->c_bd - frac->move_rl) \
 		* (SIDE / fix);
 	return (coor);
 }
@@ -59,20 +59,20 @@ void	burning_draw(t_frac *frac)
 	int		coor;
 	double	fix;
 
-	complex_init(frac);
+	comp_init(frac);
 	fix = frac->c_bd * 2.0;
-	while (frac->complex->c_i <= frac->c_bd + frac->move_ud)
+	while (frac->comp->c_i <= frac->c_bd + frac->move_ud)
 	{
-		while (frac->complex->c_r <= frac->c_bd + frac->move_rl)
+		while (frac->comp->c_r <= frac->c_bd + frac->move_rl)
 		{
 			coor = coor_calculation(frac, fix);
-			value = burning_calculation(frac->complex);
+			value = burning_calculation(frac->comp, frac->max_r);
 			coloring(coor, value, frac);
-			frac->complex->c_r += fix / SIDE;
-			frac->complex->z_r = 0;
-			frac->complex->z_i = 0;
+			frac->comp->c_r += fix / SIDE;
+			frac->comp->z_r = 0;
+			frac->comp->z_i = 0;
 		}
-		frac->complex->c_i += fix / SIDE;
-		frac->complex->c_r = -fix / 2 + frac->move_rl;
+		frac->comp->c_i += fix / SIDE;
+		frac->comp->c_r = -fix / 2 + frac->move_rl;
 	}
 }

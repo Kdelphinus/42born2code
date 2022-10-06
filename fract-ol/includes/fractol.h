@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/10/05 19:45:36 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/06 17:26:54 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,15 @@
 
 // use to calculate fractal
 # define BOUNDARY			2
-# define MAX_REPEAT			128 // 128번이 그림이 잘나오나 너무 느림
-# define SIDE				1000
+# define SIDE				700
 
-typedef struct s_complex
+typedef struct s_comp
 {
 	double	z_r;
 	double	z_i;
 	double	c_r;
 	double	c_i;
-}			t_complex;
+}			t_comp;
 
 typedef struct s_img
 {
@@ -61,11 +60,12 @@ typedef struct s_frac
 	void		*mlx_ptr;
 	void		*win;
 	t_img		*img;
-	t_complex	*complex;
+	t_comp		*comp;
 	double		c_bd;
 	double		move_ud;
 	double		move_rl;
 	double		d;
+	int			max_r;
 	int			kind;
 	int			color;
 	int			flag;

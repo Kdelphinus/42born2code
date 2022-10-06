@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:17:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/05 17:32:53 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/06 17:25:46 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_close(void)
 void	ft_all_free(t_frac *frac)
 {
 	free(frac->img);
-	free(frac->complex);
+	free(frac->comp);
 	free(frac);
 }
 

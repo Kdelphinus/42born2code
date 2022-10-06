@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:22 by myko              #+#    #+#             */
-/*   Updated: 2022/10/05 18:32:39 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/06 17:23:41 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	img_init(t_frac *frac)
 	image = (t_img *)malloc(sizeof(t_img));
 	if (!image)
 	{
-		free(frac->complex);
+		free(frac->comp);
 		free(frac);
 		ft_close();
 	}
@@ -31,22 +31,23 @@ static void	img_init(t_frac *frac)
 
 static void	frac_init(t_frac *frac)
 {
-	void		*mlx;
-	t_complex	*comp;
+	void	*mlx;
+	t_comp	*comp;
 
-	comp = (t_complex *)malloc(sizeof(t_complex));
+	comp = (t_comp *)malloc(sizeof(t_comp));
 	if (!comp)
 	{
 		free(frac);
 		ft_close();
 	}
-	frac->complex = comp;
+	frac->comp = comp;
 	frac->flag = 0;
 	frac->kind = -1;
 	frac->color = 0;
 	frac->move_ud = 0;
 	frac->move_rl = 0;
 	frac->c_bd = 2;
+	frac->max_r = 128;
 	mlx = mlx_init();
 	frac->mlx_ptr = mlx;
 	frac->win = mlx_new_window(frac->mlx_ptr, SIDE, SIDE, "fract-ol");

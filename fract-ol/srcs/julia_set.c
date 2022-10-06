@@ -6,35 +6,36 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/05 18:56:23 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/06 17:37:24 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static void	complex_init(t_frac *frac)
+static void	comp_init(t_frac *frac)
 {
 	frac->multi = 0;
-	frac->complex->z_r = -frac->c_bd + frac->move_rl;
-	frac->complex->z_i = -frac->c_bd + frac->move_ud;
+	frac->comp->z_r = -frac->c_bd + frac->move_rl;
+	frac->comp->z_i = -frac->c_bd + frac->move_ud;
 	if (!frac->flag)
 	{
 		if (frac->c_argc != 4)
 		{
 			printf("Set default value.\nc_r: -0.5125, c_i: -0.5213\n");
-			frac->complex->c_r = -0.5125;
-			frac->complex->c_i = -0.5213;
+			frac->comp->c_r = -0.5125;
+			frac->comp->c_i = -0.5213;
 		}
 		else
 		{
-			frac->complex->c_r = str_to_double(frac->c_argv[2]);
-			frac->complex->c_i = str_to_double(frac->c_argv[3]);
+			frac->comp->c_r = str_to_double(frac->c_argv[2]);
+			frac->comp->c_i = str_to_double(frac->c_argv[3]);
+			printf("%f %f\n", frac->comp->c_r, frac->comp->c_i);
 		}
 		frac->flag = 1;
 	}
 }
 
-static int	julia_calculation(t_complex *complex)
+static int	julia_calculation(t_comp *comp, int max_r)
 {
 	double	x;
 	double	y;
@@ -43,25 +44,25 @@ static int	julia_calculation(t_complex *complex)
 	x = 0;
 	y = 0;
 	n = -1;
-	while (++n <= MAX_REPEAT)
+	while (++n <= max_r)
 	{
-		x = pow(complex->z_r, 2) - pow(complex->z_i, 2) + complex->c_r;
-		y = 2 * complex->z_r * complex->z_i + complex->c_i;
+		x = pow(comp->z_r, 2) - pow(comp->z_i, 2) + comp->c_r;
+		y = 2 * comp->z_r * comp->z_i + comp->c_i;
 		if ((pow(x, 2) + pow(y, 2)) > pow(BOUNDARY, 2))
 			return (n);
-		complex->z_r = x;
-		complex->z_i = y;
+		comp->z_r = x;
+		comp->z_i = y;
 	}
-	return (MAX_REPEAT);
+	return (max_r);
 }
 
 static int	coor_calculator(t_frac *frac, double fix)
 {
 	int	coor;
 
-	coor = (frac->complex->z_i + frac->c_bd - frac->move_ud) \
+	coor = (frac->comp->z_i + frac->c_bd - frac->move_ud) \
 		* (SIDE / fix) * SIDE \
-		+ (frac->complex->z_r + frac->c_bd - frac->move_rl) \
+		+ (frac->comp->z_r + frac->c_bd - frac->move_rl) \
 		* (SIDE / fix);
 	return (coor);
 }
@@ -74,21 +75,21 @@ void	julia_draw(t_frac *frac)
 	double	tmp_i;
 	double	fix;
 
-	complex_init(frac);
+	comp_init(frac);
 	fix = frac->c_bd * 2.0;
-	while (frac->complex->z_i <= frac->c_bd + frac->move_ud)
+	while (frac->comp->z_i <= frac->c_bd + frac->move_ud)
 	{
-		tmp_i = frac->complex->z_i;
-		while (frac->complex->z_r <= frac->c_bd + frac->move_rl)
+		tmp_i = frac->comp->z_i;
+		while (frac->comp->z_r <= frac->c_bd + frac->move_rl)
 		{
-			tmp_r = frac->complex->z_r;
+			tmp_r = frac->comp->z_r;
 			coor = coor_calculator(frac, fix);
-			value = julia_calculation(frac->complex);
+			value = julia_calculation(frac->comp, frac->max_r);
 			coloring(coor, value, frac);
-			frac->complex->z_r = tmp_r + (fix / SIDE);
-			frac->complex->z_i = tmp_i;
+			frac->comp->z_r = tmp_r + (fix / SIDE);
+			frac->comp->z_i = tmp_i;
 		}
-		frac->complex->z_i = tmp_i + (fix / SIDE);
-		frac->complex->z_r = -fix / 2 + frac->move_rl;
+		frac->comp->z_i = tmp_i + (fix / SIDE);
+		frac->comp->z_r = -fix / 2 + frac->move_rl;
 	}
 }
