@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/10/06 17:26:54 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/06 20:08:33 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # define KEY_LEFT			123
 # define KEY_RIGHT			124
 # define KEY_AR				45
-# define KEY_A				0
 # define KEY_B				11
 # define KEY_G				5
 # define SCROLL_UP			4

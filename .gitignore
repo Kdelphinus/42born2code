@@ -138,5 +138,6 @@ tags
 *.code-workspace
 
 fract-ol/fractol
+fract-ol/fractol_linux
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
