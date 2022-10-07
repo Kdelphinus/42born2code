@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:22:39 by myko              #+#    #+#             */
-/*   Updated: 2022/10/06 17:30:06 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/07 19:14:44 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int	mouse_scroll(int scroll, int x, int y, t_frac *frac)
 	else if (scroll == SCROLL_DOWN)
 	{
 		frac->c_bd *= 0.8;
-		frac->max_r *= 1.05;
+		if (frac->c_bd > 2)
+			frac->max_r = 128;
+		else
+			frac->max_r *= 1.05;
 		frac->move_rl += ((x - SIDE / 2.0) / SIDE) * frac->c_bd;
 		frac->move_ud += ((y - SIDE / 2.0) / SIDE) * frac->c_bd;
 	}

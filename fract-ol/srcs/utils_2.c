@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:17:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/06 17:25:46 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/07 19:15:31 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 int	ft_close(void)
 {
@@ -26,7 +26,7 @@ void	ft_all_free(t_frac *frac)
 
 int	ft_error(void)
 {
-	printf("❌ Please enter one of the parameters below. ❌\n");
+	printf("Please enter one of the parameters below.\n");
 	printf("- mandelbrot\n");
 	printf("- julia [c_r] [c_i]\n");
 	printf("- multibrot [d]\n");

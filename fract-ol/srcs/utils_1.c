@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:01:05 by myko              #+#    #+#             */
-/*   Updated: 2022/10/06 17:39:13 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/07 19:15:09 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../includes/fractol.h"
 
 static int	sign_flag(char **s, int *flag)
 {
