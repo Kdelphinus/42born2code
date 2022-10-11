@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/10/11 16:54:16 by myko             ###   ########.fr       */
+/*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
+/*   Updated: 2022/10/11 16:53:58 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#ifndef PIPEX_H
+# define PIPEX_H
 
-int	main(int argc, char **argv)
-{
-	if (argc != 5)
-		return (FAIL);
-	return (SUCCESS);
-}
+# define SUCCESS 0
+# define FAIL	-1
+
+#endif
