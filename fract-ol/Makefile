@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 16:07:52 by myko              #+#    #+#              #
-#    Updated: 2022/10/06 17:11:48 by myko             ###   ########.fr        #
+#    Updated: 2022/10/12 22:38:10 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ fclean: clean
 	rm -rf $(NAME)
 
 fclean_linux: clean_linux
-	rm -rf $(NAME)
+	rm -rf $(NAME_LINUX)
 
 re:
 	make fclean
