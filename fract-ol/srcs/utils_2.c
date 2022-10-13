@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:17:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/12 22:36:57 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/13 15:24:01 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_close(void)
 {
 	// linux에선 system 함수가 안 되는 듯
 	// system("leaks fractol");
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
 void	ft_all_free(t_frac *frac)
