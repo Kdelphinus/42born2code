@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:22:39 by myko              #+#    #+#             */
-/*   Updated: 2022/10/13 13:57:08 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/13 21:26:48 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,41 @@ int	key_press(int keycode, t_frac *frac)
 		frac->move_rl += frac->c_bd / 10.0;
 	else if (keycode == KEY_LEFT)
 		frac->move_rl -= frac->c_bd / 10.0;
+	else if (keycode == KEY_INCREASE && frac->multi)
+	{
+		frac->d += 0.05;
+		printf("d: %f\n", frac->d);
+	}
+	else if (keycode == KEY_DECREASE && frac->multi)
+	{
+		frac->d -= 0.05;
+		printf("d: %f\n", frac->d);
+	}
 	return (0);
 }
 
 int	mouse_scroll(int scroll, int x, int y, t_frac *frac)
 {
-	if (scroll == SCROLL_UP)
+	if (scroll == SCROLL_UP || scroll == SCROLL_DOWN)
 	{
-		frac->c_bd *= 1.2;
-		frac->max_r = fmax(frac->max_r * 0.95, 128);
-		frac->move_rl += ((x - SIDE / 2.0) / SIDE) * frac->c_bd;
-		frac->move_ud += ((y - SIDE / 2.0) / SIDE) * frac->c_bd;
+		if (scroll == SCROLL_UP)
+		{
+			frac->c_bd *= 1.2;
+			frac->max_r = fmax(frac->max_r * 0.95, 128);
+			frac->move_rl += ((x - SIDE / 2.0) / SIDE) * frac->c_bd;
+			frac->move_ud += ((y - SIDE / 2.0) / SIDE) * frac->c_bd;
+		}
+		else if (scroll == SCROLL_DOWN)
+		{
+			frac->c_bd *= 0.8;
+			if (frac->c_bd > 2)
+				frac->max_r = 128;
+			else
+				frac->max_r *= 1.05;
+			frac->move_rl += ((x - SIDE / 2.0) / SIDE) * frac->c_bd;
+			frac->move_ud += ((y - SIDE / 2.0) / SIDE) * frac->c_bd;
+		}
+		printf("max_r: %d\n", frac->max_r);
 	}
-	else if (scroll == SCROLL_DOWN)
-	{
-		frac->c_bd *= 0.8;
-		if (frac->c_bd > 2)
-			frac->max_r = 128;
-		else
-			frac->max_r *= 1.05;
-		frac->move_rl += ((x - SIDE / 2.0) / SIDE) * frac->c_bd;
-		frac->move_ud += ((y - SIDE / 2.0) / SIDE) * frac->c_bd;
-	}
-	printf("max_r: %d\n", frac->max_r);
 	return (0);
 }

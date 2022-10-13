@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/10/06 20:08:33 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/13 21:25:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define KEY_AR				45
 # define KEY_B				11
 # define KEY_G				5
+# define KEY_INCREASE		30
+# define KEY_DECREASE		33
 # define SCROLL_UP			4
 # define SCROLL_DOWN		5
 
