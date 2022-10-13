@@ -184,6 +184,111 @@ pid_t	waitpid(pid_t pid, int *status, int options);
   - pid가 자식 프로세스가 아닐 때 발생
 - 0: WNOHANG을 사용했고 자식 프로세스가 종료되지 않았을 때
 
+## 0.6 exit
+
+```
+#include <stdlib.h>
+
+void	exit(int status);
+```
+
+status가 1이면 에러로 인한 종료, 0은 정상 종료를 뜻한다. EXIT_SUCCUSS, EXIT_FAIURE로 미리 정의되어 있기 때문에 사용 가능하다.
+
+자식 프로세스가 비정상적으로 종료되었을 경우에는 커널에서 비정상 종료 상태를 별도로 설정한다. 부모 프로세스는 자식의 종료 상태(정상/비정상)를 wait 함수 또는 waitpid 함수로 얻을 수 있다.
+
+## 0.7 execve
+
+```
+#include <unistd.h>
+
+int	execve(const char *filename, char *const argv[], char *const envp[]);
+```
+
+``execve``는 실행 가능한 파일인 filename의 실행 코드를 현재 프로세스에 적재하여 기존의 실행코드와 교체하고 새로운 기능으로 실행한다. 즉, 현재 실행되는 프로그램의 기능은 없어지고 filename 프로그램을 메모리에 loading하여 처음부터 실행한다.
+
+### 파라미터
+- filename
+  - 교체할 실행 파일 / 명령어
+  - filename은 실행 가능한 binary이거나 shell이어야 한다.
+  - filename은 path가 설정되어 있는 디렉토리여도 절대 경로나 상대 경로로 정확한 위치를 지정해야 한다.
+- argv
+  - main에서의 argv와 비슷하며, argc가 없기에 argv 마지막에 NULL이 있다.
+- envp
+  - key=value 형식의 환경 변수 문자열 배열리스트로 마지막은 NULL이 와야 한다.
+  - 만약 설정된 환경 변수를 사용하려면 ``environ`` 전역변수를 그냥 사용한다.
+    - C 프로그램에서는 environ이라는 전역 변수가 미리 만들어 있어 이를 통해 환경 변수 목록을 확인할 수 있다. 다른 곳에서 미리 선언한 상태이므로 extern 문으로 environ 변수를 참조하여 환경 변수 목록을 확인할 수 있다.
+
+```
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <stdio.h>
+
+extern char **environ;
+
+int	main(int argc, char *argv[])
+{
+	char	**new_argv;
+	char	command[] = "ls";
+	int		idx;
+
+	new_argv = (char **)malloc(sizeof(char *) * (argc + 1));
+
+	new_argv[0] = command; // 명령어를 ls로 변경
+
+	// command line으로 넘어온 parameter를 그대로 사용
+	for (idx = 1; idx < argc; idx++)
+		new_argv[idx] = argv[idx];
+
+	// argc를 execve 파라미터에 전달할 수 없기 때문에 NULL이 파라미터의 끝을 의미한다.
+	new_argv[argc] = NULL;
+	if (execve("/bin/ls", new_argv, environ) == -1)
+	{
+		fprintf(stderr, "프로그램 실행 error: %s\n", strerror(errno));
+		return 1;
+	}
+
+	// ls 명령어 binary로 실행로직이 교체되었으므로 이후의 로직은 절대 실행되지 않는다.
+	printf("이것은 이제 ls 명령어러 이 라인은 출력되지 않는다. \n");
+	return 0;
+}
+```
+
+위 코드는 ls 프로그램을 실행한다.
+
+## 0.8 dup
+
+```
+#include <unistd.h>
+
+int	dup(int fd);
+```
+
+``dup``는 새로운 fd를 반환하지만 숫자만 다를 뿐 기존 fd와 복제된 fd는 완전히 같은 파일을 가리킨다. 또한 파라미터로 전달된 값이 유효한 fd가 아니거나 더 이상 fd를 할당하지 못할 경우, -1을 반환한다.
+
+복제된 fd가 기존 fd와 같은 파일을 가리키지만 기존 fd를 닫는다하여도 복제된 fd는 계속해서 열려있다.
+
+## 0.9 dup2
+
+```
+#incldue <unistd.h>
+
+int	dup2(int fd, int fd2);
+```
+
+``dup2``는 파일 식별자를 복제해 fd2를 fd1으로 바꿔주는 함수다. 예를 들어 ``int dup2(fd, stdout);``으로 사용하면 모든 출력이 fd로 향하게 된다.
+
+## 0.10 pipe
+
+```
+#include <unistd.h>
+
+int	pipe(int filedes[2]);
+```
+
+``pipe`` 는 프로세스간 통신 할 때, 사용하는 커뮤니케이션의 한 방법이다.
+
 # 참고 자료
 - [tseo.log, [C]](https://velog.io/@t1won/C-C-yee43s5w)
 - [팔만코딩경, [pipex]파이프 이해하기](https://80000coding.oopy.io/a19eda17-f1e2-454d-8182-7ae3271506fd#8a6afcee-eb48-4f63-836a-d25f16c57fc9)
