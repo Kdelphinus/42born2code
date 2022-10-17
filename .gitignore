@@ -140,4 +140,6 @@ tags
 fract-ol/fractol
 fract-ol/fractol_linux
 
+practice.c
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
