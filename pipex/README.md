@@ -333,6 +333,7 @@ fdA와 fdB 두 개의 파일 디스크렙터를 이용한다.
 자식 프로세느는 부모 프로세스로부터 읽기용 fdA[0], 쓰기용으로 fdB[1]만 있으면 된다. 역시 필요없는 fdA[1], fdB[0]은 닫아준다.
 
 # 참고 자료
+- [42 Seoul, Pipex](https://cdn.intra.42.fr/pdf/pdf/49390/en.subject.pdf)
 - [tseo.log, [C]](https://velog.io/@t1won/C-C-yee43s5w)
 - [팔만코딩경, [pipex]파이프 이해하기](https://80000coding.oopy.io/a19eda17-f1e2-454d-8182-7ae3271506fd#8a6afcee-eb48-4f63-836a-d25f16c57fc9)
 - [바다야크, C언어 에러 번호 구하는 변수 errno](https://badayak.com/entry/C%EC%96%B8%EC%96%B4-%EC%97%90%EB%9F%AC-%EB%B2%88%ED%98%B8-%EA%B5%AC%ED%95%98%EB%8A%94-%EB%B3%80%EC%88%98-errno)
