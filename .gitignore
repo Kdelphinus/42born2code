@@ -137,9 +137,14 @@ tags
 # Ignore code-workspaces
 *.code-workspace
 
+# practice
+practice.c
+
+# fract-ol
 fract-ol/fractol
 fract-ol/fractol_linux
 
-practice.c
+# pipex
+pipex/pipex
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
