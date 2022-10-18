@@ -6,11 +6,12 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 13:45:22 by myko              #+#    #+#              #
-#    Updated: 2022/10/18 14:57:42 by myko             ###   ########.fr        #
+#    Updated: 2022/10/18 22:32:17 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
+CC = gcc
 FLAG = -Wall -Wextra -Werror -g
 LIB_FLAG = -Llib -lft
 

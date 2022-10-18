@@ -6,11 +6,12 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/10/18 15:06:10 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/18 22:37:18 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+#include <sys/wait.h> // linux에선 waitpid가 여기에 들어있음
 
 extern char	**environ;
 
@@ -26,10 +27,10 @@ int	main(int argc, char **argv)
 	if (argc != 5)
 		return (FAIL);
 	pid = fork();
-	waitpid(pid, stat, WNOHANG);
+	printf("pid: %d\n", waitpid(pid, stat, WNOHANG));
 	if (pid > 0)
 	{
-		char	*command = "/bin/";
+		char	*command = "/usr/bin/";
 		i = 0;
 		tmp = ft_split(argv[3], ' ');
 		new_argv = (char **)malloc(sizeof(char *) * 1000);
