@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:18:20 by myko              #+#    #+#             */
-/*   Updated: 2022/10/18 13:47:10 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/20 18:21:22 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ char	**ft_split(char const *s, char c)
 	{
 		ss[0] = 0;
 		return (ss);
-	}
+	}	
 	return (ft_str_input(s, ss, c));
 }
