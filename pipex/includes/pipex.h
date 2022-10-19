@@ -6,12 +6,14 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/10/18 13:28:09 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/19 19:18:34 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
+
+extern char	**environ;
 
 # include "../lib/includes/libft.h"
 # include <errno.h> // errno
@@ -21,6 +23,6 @@
 # include <stdlib.h> // exit
 
 # define SUCCESS 0
-# define FAIL	-1
+# define FAIL	1
 
 #endif
