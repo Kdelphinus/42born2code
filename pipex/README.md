@@ -1,5 +1,21 @@
 # pipex
 
+# Index
+
+[0. External functs](#0-external-functs)
+- [0.1 errno](#01-errno)
+- [0.2 perror](#02-perror)
+- [0.3 strerror](#03-strerror)
+- [0.4 fork](#04-fork)
+- [0.5 waitpid](#05-waitpid)
+- [0.6 exit](#06-exit)
+- [0.7 execve](#07-execve)
+- [0.8 dup](#08-dup)
+- [0.9 dup2](#09-dup2)
+- [0.10 pipe](#010-pipe)
+- [0.11 access](#011-access)
+- [0.12 unlink](#012-unlink)
+
 # 0. External functs
 
 ## 0.1 errno
@@ -332,8 +348,81 @@ fdA와 fdB 두 개의 파일 디스크렙터를 이용한다.
 
 자식 프로세느는 부모 프로세스로부터 읽기용 fdA[0], 쓰기용으로 fdB[1]만 있으면 된다. 역시 필요없는 fdA[1], fdB[0]은 닫아준다.
 
+## 0.11 access
+
+```
+#include <unistd.h>
+
+int	access(const char *pathname, int mode);
+```
+
+``access``함수는 파일이나 디렉토리의 사용자 권한을 체크하는 함수다. mode에 따라 권한을 체크할 수 있으며 mode의 종류는 다음과 같다.
+
+- R_OK: 파일 존재 여부, 읽기 권한 여부
+- W_OK: 파일 존재 여부, 쓰기 권한 여부
+- X_OK: 파일 존재 여부, 실행 권한 여부
+- F_OK: 파일 존재 여부
+
+access의 반환값은 성공 시 0, 실패 시 -1을 반환하며 오류 원인은 errno에 세팅된다.
+
+아래의 예시처럼 사용할 수 있다.
+
+```
+#include <stdio.h>
+#include <unistd.h>
+
+int	main(void)
+{
+	char *pathname = "./hello.txt"
+	int	mode = R_OK | W_OK;
+
+	if (access(pathname, mode) == 0)
+		printf("have permission to read and write");
+	else
+		printf("do not have permission or the file does not exist");
+}
+```
+
+이때 mode에 비트 연산을 이용해서 여러가지 권한을 한 번에 체크할 수 있다. ([비트 연산 참고](https://gksid102.tistory.com/90))
+
+## 0.12 unlink
+
+```
+#include <unistd.h>
+
+int	unlink(const char *pathname);
+```
+
+``unlink`` 함수는 파일을 삭제하는 system call 함수이다.
+그러나 정확하게 이야기하면 ``unlink`` 함수는 hard link의 이름을 삭제하고 hard link가 참고하는 count를 하나 감소시킨다.
+그리고 hard link의 참조 count가 0이 되면 실제 파일의 내용이 저장되어 있는 disk space를 free하여 삭제한다.
+그렇기에 만약 hard link를 생성하지 않은 파일에 unlink를 사용하면 사실상 파일 삭제와 같은 역할을 한다.
+
+> ### hard link 복습
+> 1. i-node  
+> - 파일이 생성될 때, 파일마다 주어지는 고유 번호
+> - ls 명령어에서 -i 옵션을 주면 i-node를 확인할 수 있다.
+>   
+> 2. hard link
+> - 간단하게는 파일을 복사하는 것
+> - 허나 cp 명령어와는 다른데 어떤 파일을 수정해도 hard link로 연결된 모든 파일이 같이 수정된다.
+> - 왜냐하면 완전 새로운 파일을 만드는 것이 아니라 같은 i-node를 가리키는 파일을 하나 더 만드는 것이기 때문이다.
+>   
+> 3. soft link
+> - 바로가기 기능과 거의 비슷
+> - 그렇기에 i-node의 값이 원본과 다르다.
+
+그러나 만약 open 함수로 파일이 열려진 상태에서 unlink를 호출하여 hard link의 참조 count를 0으로 만들면 directory entry에서 파일 이름 등의 정보는 삭제되어도 disk space는 해제되지 않는다.
+
+즉, OS는 hard link의 참조 count가 0이면서 file open 참조 count도 0일 때, 파일의 내용이 저장된 disk space를 free한다.
+
+정상적으로 파일이나 link가 삭제되면 0을 반환한다. 오류가 발생하면 -1을 반환하고 errno에 상세오류 내용이 저장된다.
+
 # 참고 자료
 - [42 Seoul, Pipex](https://cdn.intra.42.fr/pdf/pdf/49390/en.subject.pdf)
 - [tseo.log, [C]](https://velog.io/@t1won/C-C-yee43s5w)
 - [팔만코딩경, [pipex]파이프 이해하기](https://80000coding.oopy.io/a19eda17-f1e2-454d-8182-7ae3271506fd#8a6afcee-eb48-4f63-836a-d25f16c57fc9)
 - [바다야크, C언어 에러 번호 구하는 변수 errno](https://badayak.com/entry/C%EC%96%B8%EC%96%B4-%EC%97%90%EB%9F%AC-%EB%B2%88%ED%98%B8-%EA%B5%AC%ED%95%98%EB%8A%94-%EB%B3%80%EC%88%98-errno)
+- [JDM's Blog, C언어 파일 권한 체크 - access() 사용법](https://jdm.kr/blog/76)
+- [it_note, unlink(2) - 파일 삭제](https://www.it-note.kr/177)
+- [NATION OF 6KKKI, 파일 링크: ln - 하드 링크(Hard Link), 소프트 링크(Soft Link)](https://6kkki.tistory.com/10)
