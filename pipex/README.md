@@ -273,6 +273,15 @@ int	main(int argc, char *argv[])
 
 위 코드는 ls 프로그램을 실행한다.
 
+### envp
+
+```
+int	main(int argc, char **argv, char **envp);
+```
+
+위에서 environ이란 전역변수로 간단하게 환경변수를 불러올 수 있다고 했지만 과제에서 전역변수가 선언에 관한 허용이 없다.
+그렇기에 argc, argv를 main의 파라미터로 받듯이 envp도 파라미터로 받아주어야 한다.
+
 ## 0.8 dup
 
 ```
@@ -425,3 +434,4 @@ int	unlink(const char *pathname);
 - [JDM's Blog, C언어 파일 권한 체크 - access() 사용법](https://jdm.kr/blog/76)
 - [it_note, unlink(2) - 파일 삭제](https://www.it-note.kr/177)
 - [NATION OF 6KKKI, 파일 링크: ln - 하드 링크(Hard Link), 소프트 링크(Soft Link)](https://6kkki.tistory.com/10)
+- [바다야크, C언어 main()함수 인수 중 프로그램 환경을 담고 있는 인수 envp](https://badayak.com/entry/C%EC%96%B8%EC%96%B4-main%ED%95%A8%EC%88%98-%EC%9D%B8%EC%88%98-%EC%A4%91-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%ED%99%98%EA%B2%BD%EC%9D%84-%EB%8B%B4%EA%B3%A0-%EC%9E%88%EB%8A%94-%EC%9D%B8%EC%88%98-envp)
