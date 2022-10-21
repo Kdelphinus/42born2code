@@ -417,7 +417,6 @@ int	unlink(const char *pathname);
 즉, OS는 hard link의 참조 count가 0이면서 file open 참조 count도 0일 때, 파일의 내용이 저장된 disk space를 free한다.
 
 정상적으로 파일이나 link가 삭제되면 0을 반환한다. 오류가 발생하면 -1을 반환하고 errno에 상세오류 내용이 저장된다.
-
 # 참고 자료
 - [42 Seoul, Pipex](https://cdn.intra.42.fr/pdf/pdf/49390/en.subject.pdf)
 - [tseo.log, [C]](https://velog.io/@t1won/C-C-yee43s5w)
