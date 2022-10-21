@@ -6,14 +6,12 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/10/21 18:32:50 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/22 01:12:02 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
-
-extern char	**environ;
 
 # include "../ftprintf/includes/libft.h"
 # include "../ftprintf/includes/ft_printf.h"
@@ -26,8 +24,5 @@ extern char	**environ;
 
 // linux
 # include <sys/wait.h> // waitpid
-
-# define SUCCESS 0
-# define FAIL	1
 
 #endif
