@@ -208,7 +208,7 @@ pid_t	waitpid(pid_t pid, int *status, int options);
 void	exit(int status);
 ```
 
-status가 1이면 에러로 인한 종료, 0은 정상 종료를 뜻한다. EXIT_SUCCUSS, EXIT_FAIURE로 미리 정의되어 있기 때문에 사용 가능하다.
+status가 1이면 에러로 인한 종료, 0은 정상 종료를 뜻한다. EXIT_SUCCESS, EXIT_FAILURE로 미리 정의되어 있기 때문에 사용 가능하다.
 
 자식 프로세스가 비정상적으로 종료되었을 경우에는 커널에서 비정상 종료 상태를 별도로 설정한다. 부모 프로세스는 자식의 종료 상태(정상/비정상)를 wait 함수 또는 waitpid 함수로 얻을 수 있다.
 
