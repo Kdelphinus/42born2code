@@ -6,13 +6,13 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 13:45:22 by myko              #+#    #+#              #
-#    Updated: 2022/10/19 20:06:06 by myko             ###   ########.fr        #
+#    Updated: 2022/10/21 18:26:43 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 CC = gcc
-FLAG = -Wall -Wextra -Werror -g
+FLAG = -Wall -Wextra -Werror
 FTPRINTF_FLAG = -Lftprintf -lftprintf
 
 SRCS_DIR = ./srcs/

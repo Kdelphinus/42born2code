@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/10/19 20:05:08 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/21 18:32:50 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ extern char	**environ;
 # include <unistd.h> // fork, waitpid, execve, dup, dup2, pipe
 # include <stdlib.h> // exit
 # include <fcntl.h> // open, write
+
+// linux
+# include <sys/wait.h> // waitpid
 
 # define SUCCESS 0
 # define FAIL	1
