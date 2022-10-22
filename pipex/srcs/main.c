@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/10/22 02:11:44 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/23 00:01:48 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	main(int argc, char **argv, char **envp)
 {
 	int		i;
 	int		fds[2];
-	// int		fdr;
-	// int		fdw;
+	int		fdr;
+	int		fdw;
 	pid_t	pid;
 	char	**new_argv;
 	char	*path;
@@ -59,8 +59,8 @@ int	main(int argc, char **argv, char **envp)
 		exit(EXIT_FAILURE);
 	}
 	i = -1;
-	// fdr = open(argv[1], O_RDONLY);
-	// fdw = open(argv[3], O_WRONLY);
+	fdr = open(argv[1], O_RDONLY);
+	fdw = open(argv[4], O_WRONLY);
 	if (pipe(fds) == -1)
 	{
 		ft_printf("pipe error: %s\n", strerror(errno));
