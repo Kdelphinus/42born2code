@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/10/23 00:43:18 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/25 00:37:18 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_path(char *filename, char **envp)
 	}
 	path_option = ft_split(envp[i] + 5, ':');
 	i = -1;
-	i = 8; // 경로를 찾지 못했을 때, 메모리 누수가 엄청남
+	i = 8;
 	while (path_option[++i])
 	{
 		if (path_option[i][ft_strlen(path_option[i]) - 1] != '/')
