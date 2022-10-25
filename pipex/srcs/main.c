@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/10/25 16:01:25 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/25 18:56:23 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	*ft_path(char *filename, char **envp)
 	}
 	path_option = ft_split(envp[i] + 5, ':');
 	i = -1;
-	i = 8;
 	while (path_option[++i])
 	{
 		if (path_option[i][ft_strlen(path_option[i]) - 1] != '/')
@@ -47,11 +46,10 @@ int	main(int argc, char **argv, char **envp)
 {
 	int		i;
 	int		fds[2];
-	int		fdr;
-	int		fdw;
+	int		*a;
 	pid_t	pid;
-	char	**new_argv;
 	char	*path;
+	char	**new_argv;
 
 	if (argc != 5)
 	{
@@ -59,8 +57,6 @@ int	main(int argc, char **argv, char **envp)
 		exit(EXIT_FAILURE);
 	}
 	i = -1;
-	fdr = open(argv[1], O_RDONLY);
-	fdw = open(argv[4], O_WRONLY);
 	if (pipe(fds) == -1)
 	{
 		ft_printf("pipe error: %s\n", strerror(errno));
@@ -76,7 +72,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		dup2(fds[1], STDOUT_FILENO);
 		close(fds[0]);
-		new_argv = ft_split(argv[2], ' ');
+		new_argv = ft_split(ft_strjoin(ft_strjoin(argv[2], " "), argv[1]), ' ');
 		path = ft_path(new_argv[0], envp);
 		if (!path)
 		{
@@ -94,7 +90,6 @@ int	main(int argc, char **argv, char **envp)
 	}
 	else
 	{
-		int	*a;
 		a = (int *)malloc(sizeof(a));
 		waitpid(0, a, 0);
 		dup2(fds[0], STDIN_FILENO);
