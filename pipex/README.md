@@ -16,6 +16,8 @@
 - [0.11 access](#011-access)
 - [0.12 unlink](#012-unlink)
 
+[참고자료](#참고-자료)
+
 # 0. External functs
 
 ## 0.1 errno
