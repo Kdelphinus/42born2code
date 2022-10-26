@@ -18,6 +18,8 @@
 
 [1. Redirection](#1-redirection)
 
+[Tester](#tester)
+
 [참고자료](#참고-자료)
 
 # 0. External functs
@@ -440,6 +442,11 @@ int	unlink(const char *pathname);
 | 표준 출력(덮어쓰기) | > | 명령어 > 파일 | 명령어의 표준 출력 스트림의 도착 지점을 파일로 설정(덮어쓰기)|
 | 표준 출력(추가) | >> | 명령어 >> 파일 | 명령어의 표준 출력 스트림의 도착지점 파일에 내용 추가 |
 | 표준 입력 | < | 명령어 < 파일 | 파일로부터 입력 받음 |
+
+# Tester
+- [francinette](https://github.com/xicodomingues/francinette)
+- [pipex-tester](https://github.com/vfurmane/pipex-tester)
+- [pipexMedic](https://github.com/gmarcha/pipexMedic)
 
 # 참고 자료
 - [42 Seoul, Pipex](https://cdn.intra.42.fr/pdf/pdf/49390/en.subject.pdf)
