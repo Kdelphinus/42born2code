@@ -6,12 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:21:14 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 22:13:43 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/26 13:47:36 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	write_c(va_list ap)
 {

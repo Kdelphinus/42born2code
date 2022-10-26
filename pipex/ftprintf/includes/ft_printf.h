@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 20:40:41 by myko              #+#    #+#             */
-/*   Updated: 2022/08/10 22:31:39 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/26 13:47:44 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdarg.h>
+# include "../lib/libft.h"
 
 // ft_printf.c
 int		ft_printf(const char *format, ...);

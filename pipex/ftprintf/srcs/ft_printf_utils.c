@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myko <myko@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 21:13:43 by myko              #+#    #+#             */
-/*   Updated: 2022/08/29 13:20:48 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/26 13:47:31 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	ft_nbr_count(long long lnum)
 {
