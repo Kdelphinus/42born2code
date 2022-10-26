@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 13:45:22 by myko              #+#    #+#              #
-#    Updated: 2022/10/26 13:48:36 by myko             ###   ########.fr        #
+#    Updated: 2022/10/26 14:58:20 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,10 @@ FLAG = -Wall -Wextra -Werror
 FTPRINTF_FLAG = -Lftprintf -lftprintf
 
 SRCS_DIR = ./srcs/
-SRCS_NAME = main.c
+SRCS_NAME = main.c \
+			error.c \
+			pipe_pid.c \
+			utils.c
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAME))
 OBJS_DIR = ./objs/
 OBJS_NAME = $(SRCS_NAME:.c=.o)

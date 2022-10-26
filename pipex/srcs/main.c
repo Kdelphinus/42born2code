@@ -6,19 +6,54 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/10/26 14:15:52 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/26 15:19:46 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
+static void	working_pid(int fds[], t_envp tenvp)
+{
+	int		fds2[2];
+	pid_t	pid;
+
+	if (pipe(fds2) == -1)
+		error(FORK_ERROR);
+	dup2(fds[1], STDOUT_FILENO);
+	close(fds[0]);
+	pid = fork();
+	if (pid == -1)
+		error(PIPE_ERROR);
+	if (pid == 0)
+		child_pid(fds2, tenvp);
+	else
+		parent_pid(fds, fds2, tenvp);
+}
+
+static void	result_pid(int fds[], char *outfile)
+{
+	int		a;
+	int		fd;
+	int		rd;
+	char	buff[10000];
+
+	wait(&a);
+	dup2(fds[0], STDIN_FILENO);
+	close(fds[1]);
+	if (access(outfile, W_OK))
+		error(PATH_ERROR);
+	fd = open(outfile, O_WRONLY | O_TRUNC);
+	rd = read(fds[0], buff, sizeof(buff) - 1);
+	buff[rd] = 0;
+	write(fd, buff, rd);
+	close(fd);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	int		fds[2];
-	int		fds2[2];
-	int		*a;
 	pid_t	pid;
-	pid_t	pid2;
+	t_envp	tenvp;
 
 	if (argc != 5)
 		error(ARGC_ERROR);
@@ -27,34 +62,13 @@ int	main(int argc, char **argv, char **envp)
 	pid = fork();
 	if (pid == -1)
 		error(FORK_ERROR);
+	tenvp.argc = argc;
+	tenvp.argv = argv;
+	tenvp.envp = envp;
+	tenvp.paths = envp_path(envp);
 	if (pid == 0)
-	{
-		if (pipe(fds2) == -1)
-			error(FORK_ERROR);
-		dup2(fds[1], STDOUT_FILENO);
-		close(fds[0]);
-		pid2 = fork();
-		if (pid2 == -1)
-			error(PIPE_ERROR);
-		if (pid2 == 0)
-			child_pid(fds2, argv, envp);
-		else
-			parent_pid(fds, fds2, argv, envp);
-	}
+		working_pid(fds, tenvp);
 	else
-	{
-		a = (int *)malloc(sizeof(int));
-		waitpid(0, a, WNOHANG);
-		dup2(fds[0], STDIN_FILENO);
-		close(fds[1]);
-		int	fd;
-		fd = open(argv[4], O_WRONLY);
-		char buff[10000];
-		int	rd;
-		rd = read(fds[0], buff, sizeof(buff) - 1);
-		buff[rd] = 0;
-		write(fd, buff, rd);
-		close(fd);
-	}
+		result_pid(fds, argv[4]);
 	return (0);
 }

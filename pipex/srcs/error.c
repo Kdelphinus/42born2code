@@ -6,15 +6,23 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:08:04 by myko              #+#    #+#             */
-/*   Updated: 2022/10/26 14:09:23 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/26 15:10:38 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-int	error(int i)
+int	error(int errnum)
 {
-	if (i == 0)
+	if (errnum == ARGC_ERROR)
 		ft_printf("The number of arguments does not match.\n");
+	else if (errnum == PIPE_ERROR)
+		ft_printf("pipe error: %s\n", strerror(errno));
+	else if (errnum == FORK_ERROR)
+		ft_printf("fork error: %s\n", strerror(errno));
+	else if (errnum == PATH_ERROR)
+		ft_printf("do not have file\n");
+	else if (errnum == RUN_ERROR)
+		ft_printf("run error: %s\n", strerror(errno));
 	exit(EXIT_FAILURE);
 }
