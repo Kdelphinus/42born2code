@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:08:04 by myko              #+#    #+#             */
-/*   Updated: 2022/10/26 15:10:38 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/26 18:13:31 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "../include/pipex.h"
 
 int	error(int errnum)
 {

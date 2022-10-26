@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/10/26 15:55:23 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/26 18:15:50 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "../include/pipex.h"
 
 void	child_pid(int fds2[], t_envp tenvp)
 {
@@ -23,15 +23,9 @@ void	child_pid(int fds2[], t_envp tenvp)
 				tenvp.argv[1]), ' ');
 	path = ft_path(new_argv[0], tenvp.paths);
 	if (!path)
-	{
-		// all_free(&new_argv);
 		error(PATH_ERROR);
-	}
 	if (execve(path, new_argv, tenvp.envp) == -1)
-	{
-		// all_free(&new_argv);
 		error(RUN_ERROR);
-	}
 }
 
 void	parent_pid(int fds[], int fds2[], t_envp tenvp)
@@ -48,13 +42,7 @@ void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 	new_argv = ft_split(tenvp.argv[3], ' ');
 	path = ft_path(new_argv[0], tenvp.paths);
 	if (!path)
-	{
-		// all_free(&new_argv);
 		error(PATH_ERROR);
-	}
 	if (execve(path, new_argv, tenvp.envp) == -1)
-	{
-		// all_free(&new_argv);
 		error(RUN_ERROR);
-	}
 }

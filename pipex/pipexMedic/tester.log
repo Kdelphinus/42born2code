@@ -1,0 +1,153 @@
+============================================================================
+
+
+      BASIC TEST
+      NUMBER 4
+      < input ls -l src/ | wc -l > output
+
+
+ - Bash output file:
+       5
+\EOF
+
+ - Pipex output file:
+       8
+\EOF
+
+ - Bash standard stream: None
+
+ - Pipex standard stream: None
+
+ - Bash exit code value: 0
+
+ - Pipex exit code value: 0
+
+File permissions of output files match
+
+
+============================================================================
+
+
+      BASIC TEST
+      NUMBER 5
+      < input grep Hello | awk '{count++} END {print count}' > output
+
+
+ - Bash output file:
+2
+\EOF
+
+ - Pipex output file: Empty
+
+ - Bash standard stream: None
+
+ - Pipex standard stream:
+awk: syntax error at source line 1
+ context is
+	 >>> ' <<< 
+awk: bailing out at source line 1
+\EOF
+
+ - Bash exit code value: 0
+
+ - Pipex exit code value: 0
+
+File permissions of output files match
+
+
+============================================================================
+
+
+      BASIC TEST
+      NUMBER 6
+      < input grep Hello | awk "{count++} END {print count}" > output
+
+
+ - Bash output file:
+2
+\EOF
+
+ - Pipex output file: Empty
+
+ - Bash standard stream: None
+
+ - Pipex standard stream:
+awk: non-terminated string {count++}... at source line 1
+ context is
+	 >>>  <<< 
+awk: giving up
+ source line number 2
+\EOF
+
+ - Bash exit code value: 0
+
+ - Pipex exit code value: 0
+
+File permissions of output files match
+
+
+============================================================================
+
+
+      BASIC TEST
+      NUMBER 7
+      < input grep Hello | awk '"{count++} END {print count}"' > output
+
+
+ - Bash output file:
+Hello World!
+Hello World!
+\EOF
+
+ - Pipex output file: Empty
+
+ - Bash standard stream: None
+
+ - Pipex standard stream:
+awk: syntax error at source line 1
+ context is
+	 >>> ' <<< 
+awk: bailing out at source line 1
+\EOF
+
+ - Bash exit code value: 0
+
+ - Pipex exit code value: 0
+
+File permissions of output files match
+
+
+============================================================================
+
+
+      BASIC TEST
+      NUMBER 8
+      < input grep Hello | awk "'{count++} END {print count}'" > output
+
+
+ - Bash output file: Empty
+
+ - Pipex output file: Empty
+
+ - Bash standard stream:
+awk: syntax error at source line 1
+ context is
+	 >>> ' <<< 
+awk: bailing out at source line 1
+\EOF
+
+ - Pipex standard stream:
+awk: non-terminated string '{count++}... at source line 1
+ context is
+	 >>>  <<< 
+awk: giving up
+ source line number 2
+\EOF
+
+ - Bash exit code value: 2
+
+ - Pipex exit code value: 0
+
+File permissions of output files match
+
+

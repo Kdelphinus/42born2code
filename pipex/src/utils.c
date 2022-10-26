@@ -6,21 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:05:31 by myko              #+#    #+#             */
-/*   Updated: 2022/10/26 15:20:23 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/26 18:16:08 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
-
-// void	all_free(char ***tmp)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	while (*tmp[++i])
-// 		free(*tmp[i]);
-// 	free(*tmp);
-// }
+#include "../include/pipex.h"
 
 char	**envp_path(char **envp)
 {
@@ -32,6 +22,7 @@ char	**envp_path(char **envp)
 		if (ft_strncmp(envp[i], "PATH", 4) == 0)
 			return (ft_split(envp[i] + 5, ':'));
 	}
+	error(PATH_ERROR);
 	return (NULL);
 }
 
@@ -48,8 +39,7 @@ char	*ft_path(char *filename, char **path)
 		tmp = ft_strjoin(tmp, filename);
 		if (access(tmp, F_OK) == 0)
 			return (tmp);
-		// free(tmp);
 	}
-	// all_free(&path);
+	error(PATH_ERROR);
 	return (NULL);
 }

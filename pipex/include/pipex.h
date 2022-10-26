@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/10/26 15:20:16 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/26 17:30:55 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
 # include <unistd.h> // fork, waitpid, execve, dup, dup2, pipe
 # include <stdlib.h> // exit
 # include <fcntl.h> // open, write
-
-// TODO linux
-# include <sys/wait.h> // waitpid
 
 typedef enum s_erroridx {
 	ARGC_ERROR = 0,

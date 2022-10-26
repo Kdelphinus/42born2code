@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/10/26 15:19:46 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/26 18:13:29 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+#include "../include/pipex.h"
 
 static void	working_pid(int fds[], t_envp tenvp)
 {
@@ -40,9 +40,7 @@ static void	result_pid(int fds[], char *outfile)
 	wait(&a);
 	dup2(fds[0], STDIN_FILENO);
 	close(fds[1]);
-	if (access(outfile, W_OK))
-		error(PATH_ERROR);
-	fd = open(outfile, O_WRONLY | O_TRUNC);
+	fd = open(outfile, O_RDWR | O_CREAT | O_TRUNC, 420);
 	rd = read(fds[0], buff, sizeof(buff) - 1);
 	buff[rd] = 0;
 	write(fd, buff, rd);
