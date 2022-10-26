@@ -450,3 +450,4 @@ int	unlink(const char *pathname);
 - [it_note, unlink(2) - 파일 삭제](https://www.it-note.kr/177)
 - [NATION OF 6KKKI, 파일 링크: ln - 하드 링크(Hard Link), 소프트 링크(Soft Link)](https://6kkki.tistory.com/10)
 - [바다야크, C언어 main()함수 인수 중 프로그램 환경을 담고 있는 인수 envp](https://badayak.com/entry/C%EC%96%B8%EC%96%B4-main%ED%95%A8%EC%88%98-%EC%9D%B8%EC%88%98-%EC%A4%91-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%ED%99%98%EA%B2%BD%EC%9D%84-%EB%8B%B4%EA%B3%A0-%EC%9E%88%EB%8A%94-%EC%9D%B8%EC%88%98-envp)
+- [로스카츠의 AI 머신러닝, [리눅스] 리다이렉션(redirection), 파이프(pipe)의 개념](https://losskatsu.github.io/os-kernel/linux-redirection/#)
