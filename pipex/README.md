@@ -16,6 +16,8 @@
 - [0.11 access](#011-access)
 - [0.12 unlink](#012-unlink)
 
+[1. Redirection](#1-redirection)
+
 [참고자료](#참고-자료)
 
 # 0. External functs
@@ -428,6 +430,17 @@ int	unlink(const char *pathname);
 즉, OS는 hard link의 참조 count가 0이면서 file open 참조 count도 0일 때, 파일의 내용이 저장된 disk space를 free한다.
 
 정상적으로 파일이나 link가 삭제되면 0을 반환한다. 오류가 발생하면 -1을 반환하고 errno에 상세오류 내용이 저장된다.
+
+# 1. Redirection
+
+리다이렉션은 각 스트림의 방향을 지정하는 기능을 갖고 있다.
+
+| 종류 | 기호 | 사용법 | 설명 |
+|:-:|:-:|:-:|:-|
+| 표준 출력(덮어쓰기) | > | 명령어 > 파일 | 명령어의 표준 출력 스트림의 도착 지점을 파일로 설정(덮어쓰기)|
+| 표준 출력(추가) | >> | 명령어 >> 파일 | 명령어의 표준 출력 스트림의 도착지점 파일에 내용 추가 |
+| 표준 입력 | < | 명령어 < 파일 | 파일로부터 입력 받음 |
+
 # 참고 자료
 - [42 Seoul, Pipex](https://cdn.intra.42.fr/pdf/pdf/49390/en.subject.pdf)
 - [tseo.log, [C]](https://velog.io/@t1won/C-C-yee43s5w)
