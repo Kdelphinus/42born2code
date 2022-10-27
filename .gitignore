@@ -147,6 +147,6 @@ fract-ol/fractol_linux
 # pipex
 pipex/pipex
 pipex/pipex-tester/
-pipex/pipexMedic
+pipex/pipexMedic/
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
