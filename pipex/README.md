@@ -20,7 +20,9 @@
 
 [2. Stdin, Stdout, Stderr and Pipes](#2-stdin-stdout-stderr-and-pipes)
 
-- [2.1](#21-)
+- [2.1 3개의 stream(stdin, stdout, stderr)](#21-3개의-streamstdin-stdout-stderr)
+- [2.2 pipe](#22-pipe)
+- [2.3 다중 커맨드와 변수](#23-다중-커맨드와-변수)
 
 [Tester](#tester)
 
