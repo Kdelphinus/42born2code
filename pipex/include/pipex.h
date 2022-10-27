@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/10/27 16:18:46 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/27 18:19:58 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdlib.h> // exit
 # include <fcntl.h> // open, write
 
-#include <sys/wait.h> // wait for linux
+# include <sys/wait.h> // wait for linux
 
 typedef enum s_erroridx {
 	ARGC_ERROR = 0,

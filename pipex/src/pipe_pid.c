@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/10/27 16:44:08 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/27 18:45:46 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@ void	child_pid(int fds2[], t_envp tenvp)
 {
 	char	*path;
 	char	**new_argv;
+	int		fd;
 
+	fd = open(tenvp.argv[1], O_RDONLY);
+	dup2(STDIN_FILENO, fd);
+	// dup2(fd, STDIN_FILENO);
 	dup2(fds2[1], STDOUT_FILENO);
 	close(fds2[0]);
-	new_argv = ft_split(ft_strjoin(ft_strjoin(tenvp.argv[2], " "), \
-				tenvp.argv[1]), ' ');
+	new_argv = ft_split(tenvp.argv[2], ' ');
 	path = ft_path(new_argv[0], tenvp.paths);
 	if (!path)
 		error(PATH_ERROR);
