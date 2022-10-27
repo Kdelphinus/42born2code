@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/10/26 18:13:29 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/27 16:43:59 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	working_pid(int fds[], t_envp tenvp)
 
 	if (pipe(fds2) == -1)
 		error(FORK_ERROR);
-	dup2(fds[1], STDOUT_FILENO);
-	close(fds[0]);
+	// dup2(fds[1], STDOUT_FILENO);
+	// close(fds[0]);
 	pid = fork();
 	if (pid == -1)
 		error(PIPE_ERROR);
@@ -44,6 +44,7 @@ static void	result_pid(int fds[], char *outfile)
 	rd = read(fds[0], buff, sizeof(buff) - 1);
 	buff[rd] = 0;
 	write(fd, buff, rd);
+	printf("%s", buff);
 	close(fd);
 }
 

@@ -18,6 +18,8 @@
 
 [1. Redirection](#1-redirection)
 
+[2. Stdin, Stdout, Stderr and Pipes](#2-stdin-stdout-stderr-and-pipes)
+
 [Tester](#tester)
 
 [참고자료](#참고-자료)
@@ -443,6 +445,56 @@ int	unlink(const char *pathname);
 | 표준 출력(추가) | >> | 명령어 >> 파일 | 명령어의 표준 출력 스트림의 도착지점 파일에 내용 추가 |
 | 표준 입력 | < | 명령어 < 파일 | 파일로부터 입력 받음 |
 
+# 2. Stdin, Stdout, Stderr and Pipes
+
+[이곳](https://velog.io/@jakeseo_me/%EC%9C%A0%EB%8B%89%EC%8A%A4%EC%9D%98-stdin-stdout-stderr-%EA%B7%B8%EB%A6%AC%EA%B3%A0-pipes%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90)을 참고하여 정리한 문단이다.
+
+## 2.1 3개의 stream(stdin, stdout, stderr)
+
+프로세스가 shell로부터 stdin, stdout, stderr를 상속받는 다는 과정을 알기 전에 먼저 stream을 간략하게 알고 넘어가야 한다.
+
+- ``stdin``: 받은 입력 값을 프로그램에 나타내주는 stream(ex. 프롬프트 등)
+- ``stdout``: 모든 출력값들이 가는 곳(ex. C의 printf, python의 print 등)
+- ``stderr``: 주로 디버깅 정보를 출력하거나 에러를 출력하는데 사용
+
+echo 명령어로 'foo'를 출력할 때의 동작을 간략화한 다이어그램이다.
+
+![echo foo](https://velog.velcdn.com/post-images%2Fjakeseo_me%2Fecf11ca0-6d70-11e9-8ea3-211446efebf3%2Fstdinstdoutstderr.png)
+
+echo 명령어는 커맨드라인의 인자 foo를 받는다. (stdin에서 받아들이는 것이 아니다.) 그리고 이 인자를 stdout으로 던져준다.
+
+만약 리다이렉션을 사용하면 stdout을 리다이렉션 된 파일에 저장된다.
+
+![re echo foo](https://velog.velcdn.com/post-images%2Fjakeseo_me%2Fb9b41670-6d71-11e9-8ea3-211446efebf3%2Fredirecting.png)
+
+## 2.2 Pipe
+
+만약 어떤 프로그램의 출력 결과를 다른 프로그램의 입력으로 사용하고 싶을 때, 사용하는 것이 ``pipe``다.
+
+```
+echo "foo bar baz" | wc -c
+```
+
+위와 같은 명령을 입력했다면 ``|``의 의미는 echo의 stdout을 wc의 stdin으로 사용하겠다는 의미다.
+
+![pipe](https://velog.velcdn.com/post-images%2Fjakeseo_me%2F6c167060-6d72-11e9-bebc-8307bd808a6b%2Fpipe.png)
+
+## 2.3 다중 커맨드와 변수
+
+만약 명령어들을 순차적으로 실행하고 싶다면 ``;`` 문자를 사용하면 된다.
+
+```
+mkdir foo; touch foo/file.txt
+```
+
+위와 같은 명령어를 사용하면 foo 폴더를 먼저 만든 후, foo 폴더 안에 file.txt 파일을 만들게 된다.
+
+```
+myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
+```
+
+또한 위처럼 명령어의 결과를 변수에 저장할 수도 있다.
+
 # Tester
 - [francinette](https://github.com/xicodomingues/francinette)
 - [pipex-tester](https://github.com/vfurmane/pipex-tester)
@@ -458,3 +510,4 @@ int	unlink(const char *pathname);
 - [NATION OF 6KKKI, 파일 링크: ln - 하드 링크(Hard Link), 소프트 링크(Soft Link)](https://6kkki.tistory.com/10)
 - [바다야크, C언어 main()함수 인수 중 프로그램 환경을 담고 있는 인수 envp](https://badayak.com/entry/C%EC%96%B8%EC%96%B4-main%ED%95%A8%EC%88%98-%EC%9D%B8%EC%88%98-%EC%A4%91-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%ED%99%98%EA%B2%BD%EC%9D%84-%EB%8B%B4%EA%B3%A0-%EC%9E%88%EB%8A%94-%EC%9D%B8%EC%88%98-envp)
 - [로스카츠의 AI 머신러닝, [리눅스] 리다이렉션(redirection), 파이프(pipe)의 개념](https://losskatsu.github.io/os-kernel/linux-redirection/#)
+- [jakeseo-javascript.js, 유닉스의 stdin, stdout, stderr 그리고 pipes에 대해 알아보자!](https://velog.io/@jakeseo_me/%EC%9C%A0%EB%8B%89%EC%8A%A4%EC%9D%98-stdin-stdout-stderr-%EA%B7%B8%EB%A6%AC%EA%B3%A0-pipes%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90)
