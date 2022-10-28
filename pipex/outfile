@@ -1,1 +1,16 @@
-      33
+total 184
+drwxr-xr-x  15 myko  2022_seoul    510 10 28 15:31 .
+drwxr-xr-x  14 myko  2022_seoul    476 10 27 17:37 ..
+-rw-r--r--   1 myko  2022_seoul   1606 10 26 18:13 Makefile
+-rw-r--r--   1 myko  2022_seoul  22750 10 27 19:05 README.md
+drwxr-xr-x   8 myko  2022_seoul    272 10 28 15:08 ftprintf
+drwxr-xr-x   3 myko  2022_seoul    102 10 28 15:06 include
+-rw-r--r--   1 myko  2022_seoul    220 10 27 18:10 infile
+-rw-r--r--   1 myko  2022_seoul    220 10 27 18:10 input
+drwxr-xr-x   6 myko  2022_seoul    204 10 28 15:31 obj
+-rw-r--r--   1 myko  2022_seoul      0 10 28 15:31 outfile
+-rw-r--r--   1 myko  2022_seoul      3 10 27 18:13 output
+-rwxr-xr-x   1 myko  2022_seoul  51688 10 28 15:31 pipex
+drwxr-xr-x  13 myko  2022_seoul    442 10 27 18:06 pipex-tester
+drwxr-xr-x   9 myko  2022_seoul    306 10 27 19:33 pipexMedic
+drwxr-xr-x   6 myko  2022_seoul    204 10 26 15:59 src

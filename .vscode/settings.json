@@ -2,6 +2,7 @@
     "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
     "files.associations": {
         "pipex.h": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "ft_printf.h": "c"
     }
 }

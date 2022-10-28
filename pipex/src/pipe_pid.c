@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/10/27 19:59:33 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/28 16:15:58 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,15 @@ void	child_pid(int fds2[], t_envp tenvp)
 	dup2(fd, STDIN_FILENO);
 	dup2(fds2[1], STDOUT_FILENO);
 	close(fds2[0]);
-	new_argv = ft_split(tenvp.argv[2], ' ');
+	if (ft_strncmp(tenvp.argv[3], "awk", 3) == 0)
+	{
+		new_argv = (char **)malloc(sizeof(char *) * 3);
+		new_argv[0] = "awk";
+		new_argv[1] = tenvp.argv[3] + 4;
+		new_argv[2] = NULL;
+	}
+	else
+		new_argv = ft_split(tenvp.argv[2], ' ');
 	path = ft_path(new_argv[0], tenvp.paths);
 	if (!path)
 		error(PATH_ERROR);
@@ -41,7 +49,15 @@ void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 	dup2(fds[1], STDOUT_FILENO);
 	close(fds2[1]);
 	close(fds[0]);
-	new_argv = ft_split(tenvp.argv[3], ' ');
+	if (ft_strncmp(tenvp.argv[3], "awk", 3) == 0)
+	{
+		new_argv = (char **)malloc(sizeof(char *) * 3);
+		new_argv[0] = "awk";
+		new_argv[1] = tenvp.argv[3] + 4;
+		new_argv[2] = NULL;
+	}
+	else
+		new_argv = ft_split(tenvp.argv[3], ' ');
 	path = ft_path(new_argv[0], tenvp.paths);
 	if (!path)
 		error(PATH_ERROR);
