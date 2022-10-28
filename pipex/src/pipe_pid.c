@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/10/28 20:19:44 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/28 21:10:26 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,22 @@ static	void	check_str(char **new_argv)
 	{
 		if (new_argv[i][0] == 39 || new_argv[i][0] == 34)
 			new_argv[i]++;
-		if (new_argv[i][ft_strlen(new_argv[i]) - 1] == 39 || new_argv[i][ft_strlen(new_argv[i]) - 1] == 34)
+		if (new_argv[i][ft_strlen(new_argv[i]) - 1] == 39 || \
+			new_argv[i][ft_strlen(new_argv[i]) - 1] == 34)
 			new_argv[i][ft_strlen(new_argv[i]) - 1] = 0;
-		// if (new_argv[i][0] == 39 && new_argv[i][ft_strlen(new_argv[i]) - 1] == 39)
-		// {
-		// 	new_argv[i]++;
-		// 	new_argv[i][ft_strlen(new_argv[i]) - 1] = 0;
-		// }
-		// else if (new_argv[i][0] == 34 && new_argv[i][ft_strlen(new_argv[i]) - 1] == 34)
-		// {
-		// 	new_argv[i]++;
-		// 	new_argv[i][ft_strlen(new_argv[i]) - 1] = 0;
-		// }
 	}
+}
+
+static char	**exception(int i, t_envp tenvp)
+{
+	char	**new_argv;
+
+	new_argv = (char **)malloc(sizeof(char *) * 3);
+	new_argv[0] = ft_strdup("awk");
+	new_argv[1] = ft_strdup(tenvp.argv[i] + 5);
+	new_argv[1][ft_strlen(new_argv[1]) - 1] = 0;
+	new_argv[2] = NULL;
+	return (new_argv);
 }
 
 void	child_pid(int fds2[], t_envp tenvp)
@@ -47,13 +50,7 @@ void	child_pid(int fds2[], t_envp tenvp)
 	dup2(fds2[1], STDOUT_FILENO);
 	close(fds2[0]);
 	if (ft_strncmp(tenvp.argv[2], "awk", 3) == 0)
-	{
-		new_argv = (char **)malloc(sizeof(char *) * 3);
-		new_argv[0] = ft_strdup("awk");
-		new_argv[1] = ft_strdup(tenvp.argv[2] + 5);
-		new_argv[1][ft_strlen(new_argv[1]) - 1] = 0;
-		new_argv[2] = NULL;
-	}
+		new_argv = exception(2, tenvp);
 	else
 	{
 		new_argv = ft_split(tenvp.argv[2], ' ');
@@ -78,13 +75,7 @@ void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 	close(fds2[1]);
 	close(fds[0]);
 	if (ft_strncmp(tenvp.argv[3], "awk", 3) == 0)
-	{
-		new_argv = (char **)malloc(sizeof(char *) * 3);
-		new_argv[0] = ft_strdup("awk");
-		new_argv[1] = ft_strdup(tenvp.argv[3] + 5);
-		new_argv[1][ft_strlen(new_argv[1]) - 1] = 0;
-		new_argv[2] = NULL;
-	}
+		new_argv = exception(3, tenvp);
 	else
 	{
 		new_argv = ft_split(tenvp.argv[3], ' ');
