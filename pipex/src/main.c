@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/10/28 16:25:23 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/28 16:35:23 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc != 5)
 		error(ARGC_ERROR);
+	tenvp.argc = argc;
+	tenvp.argv = argv;
+	tenvp.envp = envp;
+	tenvp.paths = envp_path(envp);
 	if (pipe(fds) == -1)
 		error(PIPE_ERROR);
 	pid = fork();
 	if (pid == -1)
 		error(FORK_ERROR);
-	tenvp.argc = argc;
-	tenvp.argv = argv;
-	tenvp.envp = envp;
-	tenvp.paths = envp_path(envp);
 	if (pid == 0)
 		working_pid(fds, tenvp);
 	else
