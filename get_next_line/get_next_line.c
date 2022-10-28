@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myko <myko@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:36:15 by myko              #+#    #+#             */
-/*   Updated: 2022/08/31 16:50:33 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/28 18:24:49 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,14 @@ static char	*ft_follow_up(char **c_line, char **buff, char **line, int idx)
 	return (*c_line);
 }
 
+static char	*error_handler(char **line)
+{
+	if (*line)
+		free(*line);
+	*line = NULL;
+	return (0);
+}
+
 char	*get_next_line(int fd)
 {
 	int			idx;
@@ -87,7 +95,7 @@ char	*get_next_line(int fd)
 	static char	*line;
 
 	if (read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (error_handler(&line));
 	if (line && ft_strchr(line, '\n') > -1)
 		return (ft_remain_line(&line));
 	else if (line)
