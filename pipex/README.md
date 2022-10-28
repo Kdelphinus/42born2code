@@ -502,22 +502,8 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
 # Tester
 - [francinette](https://github.com/xicodomingues/francinette)
 - [pipex-tester](https://github.com/vfurmane/pipex-tester)
-  - 25번
-  - 28번
   - 31번(Time Out)
 - [pipexMedic](https://github.com/gmarcha/pipexMedic)
-  - 5번
-	```
-	< input grep Hello | awk '{conut++} END {printf count}' > output
-	```
-  - 6번
-	```
-	< input grep Hello | awk "{conut++} END {printf count}" > output
-	```
-  - 7번
-	```
-	< input grep Hello | awk '"{conut++} END {printf count}"' > output
-	```
   - 8번
 	```
 	< input grep Hello | awk "'{conut++} END {printf count}'" > output
