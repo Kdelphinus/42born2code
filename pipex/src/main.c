@@ -6,11 +6,12 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/10/31 22:03:07 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/01 02:06:12 by delphinu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
+#include <stdlib.h>
 
 static void	working_pid(int fds[], t_envp tenvp)
 {
@@ -69,6 +70,6 @@ int	main(int argc, char **argv, char **envp)
 	else
 		result_pid(fds, &a, argv[4]);
 	if (a != 0)
-		return (2);
-	return (0);
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
