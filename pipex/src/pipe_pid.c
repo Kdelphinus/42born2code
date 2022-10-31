@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/10/28 21:10:26 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/31 21:59:32 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 	char	**new_argv;
 
 	wait(&b);
+	if (b != 0)
+		exit(EXIT_FAILURE);
 	dup2(fds2[0], STDIN_FILENO);
 	dup2(fds[1], STDOUT_FILENO);
 	close(fds2[1]);

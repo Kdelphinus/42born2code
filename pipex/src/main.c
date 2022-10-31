@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/10/28 16:35:23 by myko             ###   ########.fr       */
+/*   Updated: 2022/10/31 22:03:07 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ static void	working_pid(int fds[], t_envp tenvp)
 		parent_pid(fds, fds2, tenvp);
 }
 
-static void	result_pid(int fds[], char *outfile)
+static void	result_pid(int fds[], int *a, char *outfile)
 {
-	int		a;
 	int		fd;
 	int		rd;
 	char	buff[10000];
 
-	wait(&a);
+	wait(a);
+	if (*a != 0)
+		return ;
 	dup2(fds[0], STDIN_FILENO);
 	close(fds[1]);
 	fd = open(outfile, O_RDWR | O_CREAT | O_TRUNC, 420);
@@ -47,6 +48,7 @@ static void	result_pid(int fds[], char *outfile)
 
 int	main(int argc, char **argv, char **envp)
 {
+	int		a = 0;
 	int		fds[2];
 	pid_t	pid;
 	t_envp	tenvp;
@@ -65,6 +67,8 @@ int	main(int argc, char **argv, char **envp)
 	if (pid == 0)
 		working_pid(fds, tenvp);
 	else
-		result_pid(fds, argv[4]);
+		result_pid(fds, &a, argv[4]);
+	if (a != 0)
+		return (2);
 	return (0);
 }
