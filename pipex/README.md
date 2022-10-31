@@ -509,7 +509,7 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
 	< input grep Hello | awk "'{conut++} END {printf count}'" > output
 	```
 	```
-	./pipex input "grep Hello" "awk \"'{count++} END {printf count}'\" output
+	./pipex input "grep Hello" "awk \"'{count++} END {printf count}'\"" output
 	```
 
 # 참고 자료
