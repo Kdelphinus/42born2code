@@ -3,6 +3,7 @@
     "files.associations": {
         "pipex.h": "c",
         "algorithm": "c",
-        "ft_printf.h": "c"
+        "ft_printf.h": "c",
+        "cstdio": "c"
     }
 }
