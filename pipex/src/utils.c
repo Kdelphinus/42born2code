@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:05:31 by myko              #+#    #+#             */
-/*   Updated: 2022/11/01 18:44:21 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/01 19:46:14 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ char	*ft_path(char *filename, char **path)
 		if (access(tmp, F_OK) == 0)
 			return (tmp);
 	}
+	if (access(filename, F_OK) == 0)
+		return (filename);
 	return (NULL);
 }
