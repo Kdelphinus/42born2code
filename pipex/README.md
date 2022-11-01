@@ -200,6 +200,14 @@ pid_t	waitpid(pid_t pid, int *status, int options);
 - ``int *status``: 자식 프로세스의 종료 상태 정보
   - 정상 종료 시: status의 하위 8비트에는 0이 저장되며, 상위 8비트에는 프로세스가 종료되게한 exit 함수의 인자가 기록된다.
   - 비정상 종료 시: status의 하위 8비트에는 프로세스를 종료시킨 시그널의 번호가 저장되며 상위 8비트에는 0이 저장된다.
+
+	> |매크로|설명|
+	> |:---:|:---:|
+	> |WIFEXITED(status)|자식 프로세스가 정상적으로 종료되었다면 TRUE|
+	> |WIFSIGNALED(status)|자식 프로세스가 시그널에 의해 종료되었다면 TRUE|
+	> |WIFSTOPPED(status)|자식 프로세스가 중단되었다면 TRUE|
+	> |WEXITSTATUS(status)|자식 프로세스가 정상 종료되었을 때 반환한 값|
+
 - ``int options``: 여러 상수값이 있지만 대체로 두 가지를 많이 사용한다.
   - ``WNOHANG``: 자식 프로세스가 종료되었는지 실행 중인지 확인만 하고 바로 복귀, 즉 부모 프로세스는 block되지 않는다.
   - 0: 자식 프로세스가 종료될 때까지 block, 즉 wait과 같은 동작
@@ -523,3 +531,4 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
 - [바다야크, C언어 main()함수 인수 중 프로그램 환경을 담고 있는 인수 envp](https://badayak.com/entry/C%EC%96%B8%EC%96%B4-main%ED%95%A8%EC%88%98-%EC%9D%B8%EC%88%98-%EC%A4%91-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%ED%99%98%EA%B2%BD%EC%9D%84-%EB%8B%B4%EA%B3%A0-%EC%9E%88%EB%8A%94-%EC%9D%B8%EC%88%98-envp)
 - [로스카츠의 AI 머신러닝, [리눅스] 리다이렉션(redirection), 파이프(pipe)의 개념](https://losskatsu.github.io/os-kernel/linux-redirection/#)
 - [jakeseo-javascript.js, 유닉스의 stdin, stdout, stderr 그리고 pipes에 대해 알아보자!](https://velog.io/@jakeseo_me/%EC%9C%A0%EB%8B%89%EC%8A%A4%EC%9D%98-stdin-stdout-stderr-%EA%B7%B8%EB%A6%AC%EA%B3%A0-pipes%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90)
+- [December Dream, wait(), wait4(), waitpid() 함수의 status 반환값](https://decdream.tistory.com/39)
