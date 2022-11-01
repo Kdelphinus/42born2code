@@ -6,11 +6,27 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:05:31 by myko              #+#    #+#             */
-/*   Updated: 2022/11/01 18:16:25 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/01 18:44:21 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
+
+// TODO 우선 그냥 바로 할당
+static char	**path_init()
+{
+	char	**paths;
+
+	paths = malloc(sizeof(char *) * 7);
+	paths[0] = "/usr/local/bin";
+	paths[1] = "/usr/bin";
+	paths[2] = "/bin";
+	paths[3] = "/usr/sbin";
+	paths[4] = "/sbin";
+	paths[5] = "/usr/local/munki";
+	paths[6] = NULL;
+	return (paths);
+}
 
 char	**envp_path(char **envp)
 {
@@ -22,7 +38,7 @@ char	**envp_path(char **envp)
 		if (ft_strncmp(envp[i], "PATH", 4) == 0)
 			return (ft_split(envp[i] + 5, ':'));
 	}
-	return (NULL);
+	return (path_init());
 }
 
 char	*ft_path(char *filename, char **path)

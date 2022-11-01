@@ -1,5 +1,0 @@
-total 32
--rw-r--r--  1 myko  2022_seoul  1517 11  1 18:08 error.c
--rw-r--r--  1 myko  2022_seoul  2130 11  1 18:14 main.c
--rw-r--r--  1 myko  2022_seoul  2979 11  1 18:23 pipe_pid.c
--rw-r--r--  1 myko  2022_seoul  1382 11  1 18:16 utils.c
