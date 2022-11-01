@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/01 16:53:44 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/01 18:24:40 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ void	child_pid(int fds2[], t_envp tenvp)
 		error(RUN_ERROR, new_argv[0]);
 }
 
-void	parent_pid(pid_t pid, int fds[], int fds2[], t_envp tenvp)
+void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 {
+	// int		status;
 	char	*path;
 	char	**new_argv;
 
@@ -74,8 +75,12 @@ void	parent_pid(pid_t pid, int fds[], int fds2[], t_envp tenvp)
 	dup2(fds[1], STDOUT_FILENO);
 	close(fds2[1]);
 	close(fds[0]);
-	if (waitpid(pid, NULL, WNOHANG) == -1)
-		error(RUN_ERROR, "");
+	// status = 0;
+	// if (waitpid(pid, &status, WNOHANG) == -1)
+	// 	error(RUN_ERROR, "");
+	// printf("status: %d\n", status);
+	// if (status != 0)
+	// 	error(RUN_ERROR, "");
 	if (ft_strncmp(tenvp.argv[3], "awk", 3) == 0)
 		new_argv = exception(3, tenvp);
 	else

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/01 16:40:31 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/01 17:41:30 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		error(int errnum, char *problem);
 
 // pipe_pid.c
 void	child_pid(int fds2[], t_envp envp);
-void	parent_pid(pid_t pid, int fds[], int fds2[], t_envp tenvp);
+void	parent_pid(int fds[], int fds2[], t_envp tenvp);
 
 //utils.c
 // void	all_free(char ***tmp);
