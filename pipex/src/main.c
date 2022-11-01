@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/11/01 19:35:07 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/01 19:55:41 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static void	result_pid(pid_t pid, int fds[], char *outfile)
 	status = 0;
 	tmp = waitpid(pid, &status, 0);
 	fd = open(outfile, O_RDWR | O_CREAT | O_TRUNC, 420);
+	if (fd == -1)
+		exit(EXIT_FAILURE);
 	rd = read(fds[0], buff, sizeof(buff) - 1);
 	buff[rd] = 0;
 	write(fd, buff, rd);
