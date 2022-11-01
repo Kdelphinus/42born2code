@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/10/31 21:30:31 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/01 16:40:31 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ typedef enum s_erroridx {
 	PIPE_ERROR = 1,
 	FORK_ERROR = 2,
 	PATH_ERROR = 3,
-	RUN_ERROR = 4
+	RUN_ERROR = 4,
+	FILE_ERROR = 5,
+	COMMAND_ERROR = 6,
 }	t_erroridx;
 
 typedef struct s_envp{
@@ -40,11 +42,11 @@ typedef struct s_envp{
 int		main(int argc, char **argv, char **envp);
 
 // error.c
-int		error(int errnum);
+int		error(int errnum, char *problem);
 
 // pipe_pid.c
 void	child_pid(int fds2[], t_envp envp);
-void	parent_pid(int fds[], int fds2[], t_envp tenvp);
+void	parent_pid(pid_t pid, int fds[], int fds2[], t_envp tenvp);
 
 //utils.c
 // void	all_free(char ***tmp);

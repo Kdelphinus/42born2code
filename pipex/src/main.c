@@ -6,12 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/11/01 02:06:12 by delphinu         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:47:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
-#include <stdlib.h>
 
 static void	working_pid(int fds[], t_envp tenvp)
 {
@@ -19,25 +18,24 @@ static void	working_pid(int fds[], t_envp tenvp)
 	pid_t	pid;
 
 	if (pipe(fds2) == -1)
-		error(FORK_ERROR);
+		error(PIPE_ERROR, "pipe");
 	pid = fork();
 	if (pid == -1)
-		error(PIPE_ERROR);
+		error(FORK_ERROR, "pipe");
 	if (pid == 0)
 		child_pid(fds2, tenvp);
 	else
-		parent_pid(fds, fds2, tenvp);
+		parent_pid(pid, fds, fds2, tenvp);
 }
 
-static void	result_pid(int fds[], int *a, char *outfile)
+static void	result_pid(pid_t pid, int fds[], char *outfile)
 {
 	int		fd;
 	int		rd;
 	char	buff[10000];
 
-	wait(a);
-	if (*a != 0)
-		return ;
+	if (waitpid(pid, NULL, WNOHANG) == -1)
+		error(RUN_ERROR, "");
 	dup2(fds[0], STDIN_FILENO);
 	close(fds[1]);
 	fd = open(outfile, O_RDWR | O_CREAT | O_TRUNC, 420);
@@ -49,27 +47,26 @@ static void	result_pid(int fds[], int *a, char *outfile)
 
 int	main(int argc, char **argv, char **envp)
 {
-	int		a = 0;
 	int		fds[2];
 	pid_t	pid;
 	t_envp	tenvp;
 
 	if (argc != 5)
-		error(ARGC_ERROR);
+		error(ARGC_ERROR, "");
 	tenvp.argc = argc;
 	tenvp.argv = argv;
 	tenvp.envp = envp;
 	tenvp.paths = envp_path(envp);
+	if (!tenvp.paths)
+		error(PATH_ERROR, "path");
 	if (pipe(fds) == -1)
-		error(PIPE_ERROR);
+		error(PIPE_ERROR, "pipe");
 	pid = fork();
 	if (pid == -1)
-		error(FORK_ERROR);
+		error(FORK_ERROR, "fork");
 	if (pid == 0)
 		working_pid(fds, tenvp);
 	else
-		result_pid(fds, &a, argv[4]);
-	if (a != 0)
-		return (EXIT_FAILURE);
+		result_pid(pid, fds, argv[4]);
 	return (EXIT_SUCCESS);
 }

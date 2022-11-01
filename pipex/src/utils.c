@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:05:31 by myko              #+#    #+#             */
-/*   Updated: 2022/10/28 17:53:41 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/01 16:34:28 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ char	**envp_path(char **envp)
 		if (ft_strncmp(envp[i], "PATH", 4) == 0)
 			return (ft_split(envp[i] + 5, ':'));
 	}
-	error(PATH_ERROR);
 	return (NULL);
 }
 
@@ -40,6 +39,5 @@ char	*ft_path(char *filename, char **path)
 		if (access(tmp, F_OK) == 0)
 			return (tmp);
 	}
-	error(PATH_ERROR);
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/01 02:04:51 by delphinu         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:53:44 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	child_pid(int fds2[], t_envp tenvp)
 	int		fd;
 
 	fd = open(tenvp.argv[1], O_RDONLY);
+	if (fd == -1)
+		error(FILE_ERROR, tenvp.argv[1]);
 	dup2(fd, STDIN_FILENO);
 	dup2(fds2[1], STDOUT_FILENO);
 	close(fds2[0]);
@@ -58,24 +60,22 @@ void	child_pid(int fds2[], t_envp tenvp)
 	}
 	path = ft_path(new_argv[0], tenvp.paths);
 	if (!path)
-		error(PATH_ERROR);
+		error(COMMAND_ERROR, new_argv[0]);
 	if (execve(path, new_argv, tenvp.envp) == -1)
-		error(RUN_ERROR);
+		error(RUN_ERROR, new_argv[0]);
 }
 
-void	parent_pid(int fds[], int fds2[], t_envp tenvp)
+void	parent_pid(pid_t pid, int fds[], int fds2[], t_envp tenvp)
 {
-	int		b;
 	char	*path;
 	char	**new_argv;
 
-	wait(&b);
-	if (b != 0)
-		exit(EXIT_FAILURE);
 	dup2(fds2[0], STDIN_FILENO);
 	dup2(fds[1], STDOUT_FILENO);
 	close(fds2[1]);
 	close(fds[0]);
+	if (waitpid(pid, NULL, WNOHANG) == -1)
+		error(RUN_ERROR, "");
 	if (ft_strncmp(tenvp.argv[3], "awk", 3) == 0)
 		new_argv = exception(3, tenvp);
 	else
@@ -85,7 +85,7 @@ void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 	}
 	path = ft_path(new_argv[0], tenvp.paths);
 	if (!path)
-		error(PATH_ERROR);
+		error(COMMAND_ERROR, new_argv[0]);
 	if (execve(path, new_argv, tenvp.envp) == -1)
-		error(RUN_ERROR);
+		error(RUN_ERROR, new_argv[0]);
 }
