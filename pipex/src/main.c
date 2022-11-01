@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/11/01 18:37:10 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/01 19:35:07 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,14 @@ static void	result_pid(pid_t pid, int fds[], char *outfile)
 	dup2(fds[0], STDIN_FILENO);
 	close(fds[1]);
 	status = 0;
-	tmp = 0;
-	while (tmp != pid)
-	{
-		tmp = waitpid(pid, &status, WNOHANG);
-		if (tmp == -1)
-			exit(status);
-	}
+	tmp = waitpid(pid, &status, 0);
 	fd = open(outfile, O_RDWR | O_CREAT | O_TRUNC, 420);
 	rd = read(fds[0], buff, sizeof(buff) - 1);
 	buff[rd] = 0;
 	write(fd, buff, rd);
 	close(fd);
+	if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+		exit(WEXITSTATUS(status));
 }
 
 int	main(int argc, char **argv, char **envp)
