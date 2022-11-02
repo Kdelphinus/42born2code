@@ -6,13 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 02:14:32 by delphinu         ###   ########.fr       */
+/*   Updated: 2022/11/03 02:50:56 by delphinu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-void	check_str(char **new_argv)
+static void	check_str(char **new_argv)
 {
 	int	i;
 
@@ -27,12 +27,12 @@ void	check_str(char **new_argv)
 	}
 }
 
-char	**exception(int i, t_envp tenvp)
+static char	**exception(int i, t_envp tenvp, char *cmd)
 {
 	char	**new_argv;
 
 	new_argv = (char **)malloc(sizeof(char *) * 3);
-	new_argv[0] = ft_strdup("awk");
+	new_argv[0] = ft_strdup(cmd);
 	new_argv[1] = ft_strdup(tenvp.argv[i] + 5);
 	new_argv[1][ft_strlen(new_argv[1]) - 1] = 0;
 	new_argv[2] = NULL;
@@ -54,7 +54,9 @@ void	child_pid(int fds2[], t_envp tenvp)
 		error(ERROR, "fd");
 	close(fds2[0]);
 	if (ft_strncmp(tenvp.argv[2], "awk", 3) == 0)
-		new_argv = exception(2, tenvp);
+		new_argv = exception(2, tenvp, "awk");
+	else if (ft_strncmp(tenvp.argv[2], "sed", 3) == 0)
+		new_argv = exception(2, tenvp, "sed");
 	else
 	{
 		new_argv = ft_split(tenvp.argv[2], ' ');
@@ -84,7 +86,9 @@ void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 	if (status != 0)
 		error(ERROR, "");
 	if (ft_strncmp(tenvp.argv[3], "awk", 3) == 0)
-		new_argv = exception(3, tenvp);
+		new_argv = exception(3, tenvp, "awk");
+	else if (ft_strncmp(tenvp.argv[3], "sed", 3) == 0)
+		new_argv = exception(3, tenvp, "sed");
 	else
 	{
 		new_argv = ft_split(tenvp.argv[3], ' ');
