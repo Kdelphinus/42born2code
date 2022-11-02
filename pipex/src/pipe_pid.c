@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/02 17:30:27 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 02:10:14 by delphinu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ void	child_pid(int fds2[], t_envp tenvp)
 
 	fd = open(tenvp.argv[1], O_RDONLY);
 	if (fd == -1)
-		error(FILE_ERROR, tenvp.argv[1]);
+		error(ERROR, tenvp.argv[1]);
 	if (dup2(fd, STDIN_FILENO) == -1)
-		exit(EXIT_FAILURE);
+		error(ERROR, "fd");
 	if (dup2(fds2[1], STDOUT_FILENO) == -1)
-		exit(EXIT_FAILURE);
+		error(ERROR, "fd");
 	close(fds2[0]);
 	if (ft_strncmp(tenvp.argv[2], "awk", 3) == 0)
 		new_argv = exception(2, tenvp);
@@ -64,7 +64,7 @@ void	child_pid(int fds2[], t_envp tenvp)
 	if (!path)
 		error(COMMAND_ERROR, new_argv[0]);
 	if (execve(path, new_argv, tenvp.envp) == -1)
-		error(RUN_ERROR, new_argv[0]);
+		error(ERROR, new_argv[0]);
 }
 
 void	parent_pid(int fds[], int fds2[], t_envp tenvp)
@@ -74,15 +74,15 @@ void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 	char	**new_argv;
 
 	if (dup2(fds2[0], STDIN_FILENO) == -1)
-		exit(EXIT_FAILURE);
+		error(ERROR, "fd");
 	if (dup2(fds[1], STDOUT_FILENO) == -1)
-		exit(EXIT_FAILURE);
+		error(ERROR, "fd");
 	close(fds2[1]);
 	close(fds[0]);
 	status = 0;
 	waitpid(-1, &status, WNOHANG);
 	if (status != 0)
-		error(RUN_ERROR, "");
+		error(ERROR, "");
 	if (ft_strncmp(tenvp.argv[3], "awk", 3) == 0)
 		new_argv = exception(3, tenvp);
 	else
@@ -96,6 +96,6 @@ void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 	if (execve(path, new_argv, tenvp.envp) == -1)
 	{
 		write(2, "error\n", 6);
-		error(RUN_ERROR, new_argv[0]);
+		error(ERROR, new_argv[0]);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:08:04 by myko              #+#    #+#             */
-/*   Updated: 2022/11/02 16:30:06 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 02:10:54 by delphinu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,6 @@ int	error(int errnum, char *problem)
 		write(STDERR_FILENO, problem, ft_strlen(problem));
 		exit(127);
 	}
-	else if (errnum == PIPE_ERROR)
-		perror(problem);
-	else if (errnum == FORK_ERROR)
-		perror(problem);
-	else if (errnum == PATH_ERROR)
-		perror(problem);
-	else if (errnum == RUN_ERROR)
-		perror(problem);
-	else if (errnum == FILE_ERROR)
-		perror(problem);
 	else
 		perror(problem);
 	exit(EXIT_FAILURE);

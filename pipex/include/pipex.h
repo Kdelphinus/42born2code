@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/02 17:27:19 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 02:07:31 by delphinu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,8 @@
 
 typedef enum s_erroridx {
 	ARGC_ERROR = 0,
-	PIPE_ERROR = 1,
-	FORK_ERROR = 2,
-	PATH_ERROR = 3,
-	RUN_ERROR = 4,
-	FILE_ERROR = 5,
-	COMMAND_ERROR = 6,
+	COMMAND_ERROR = 1,
+	ERROR = 2,
 }	t_erroridx;
 
 typedef struct s_envp{

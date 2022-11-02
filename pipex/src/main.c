@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/11/02 17:30:50 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 02:10:44 by delphinu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	working_pid(int fds[], t_envp tenvp)
 	pid_t	pid;
 
 	if (pipe(fds2) == -1)
-		error(PIPE_ERROR, "pipe");
+		error(ERROR, "pipe");
 	pid = fork();
 	if (pid == -1)
-		error(FORK_ERROR, "pipe");
+		error(ERROR, "pipe");
 	if (pid == 0)
 		child_pid(fds2, tenvp);
 	else
@@ -36,13 +36,13 @@ static void	result_pid(pid_t pid, int fds[], char *outfile)
 	char	buff[10000];
 
 	if (dup2(fds[0], STDIN_FILENO) == -1)
-		exit(EXIT_FAILURE);
+		error(ERROR, "fd");
 	close(fds[1]);
 	status = 0;
 	waitpid(pid, &status, 0);
 	fd = open(outfile, O_RDWR | O_CREAT | O_TRUNC, 420);
 	if (fd == -1)
-		exit(EXIT_FAILURE);
+		error(ERROR, "fd");
 	rd = read(fds[0], buff, sizeof(buff) - 1);
 	buff[rd] = 0;
 	write(fd, buff, rd);
@@ -64,10 +64,10 @@ int	main(int argc, char **argv, char **envp)
 	tenvp.envp = envp;
 	tenvp.paths = envp_path(envp);
 	if (pipe(fds) == -1)
-		error(PIPE_ERROR, "pipe");
+		error(ERROR, "pipe");
 	pid = fork();
 	if (pid == -1)
-		error(FORK_ERROR, "fork");
+		error(ERROR, "fork");
 	if (pid == 0)
 		working_pid(fds, tenvp);
 	else
