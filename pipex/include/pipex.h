@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 02:07:31 by delphinu         ###   ########.fr       */
+/*   Updated: 2022/11/03 02:16:33 by delphinu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 # define PIPEX_H
 
 # include "../ftprintf/includes/ft_printf.h"
-# include <stdio.h> // perror
-# include <unistd.h> // fork, waitpid, execve, dup, dup2, pipe
-# include <stdlib.h> // exit
-# include <fcntl.h> // open, write
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
 
-# include <sys/wait.h> // wait for linux
+# include <sys/wait.h>
 
 typedef enum s_erroridx {
 	ARGC_ERROR = 0,
 	COMMAND_ERROR = 1,
 	ERROR = 2,
+	EXIT_COMMAND_ERROR = 127,
 }	t_erroridx;
 
 typedef struct s_envp{

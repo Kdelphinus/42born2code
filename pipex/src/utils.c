@@ -6,14 +6,14 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:05:31 by myko              #+#    #+#             */
-/*   Updated: 2022/11/02 16:23:19 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 02:15:11 by delphinu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
 // TODO 우선 그냥 바로 할당
-static char	**path_init()
+static char	**path_init(void)
 {
 	char	**paths;
 
