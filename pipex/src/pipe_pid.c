@@ -6,13 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/01 19:26:15 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/02 17:30:27 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-static	void	check_str(char **new_argv)
+void	check_str(char **new_argv)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ static	void	check_str(char **new_argv)
 	}
 }
 
-static char	**exception(int i, t_envp tenvp)
+char	**exception(int i, t_envp tenvp)
 {
 	char	**new_argv;
 
@@ -48,8 +48,10 @@ void	child_pid(int fds2[], t_envp tenvp)
 	fd = open(tenvp.argv[1], O_RDONLY);
 	if (fd == -1)
 		error(FILE_ERROR, tenvp.argv[1]);
-	dup2(fd, STDIN_FILENO);
-	dup2(fds2[1], STDOUT_FILENO);
+	if (dup2(fd, STDIN_FILENO) == -1)
+		exit(EXIT_FAILURE);
+	if (dup2(fds2[1], STDOUT_FILENO) == -1)
+		exit(EXIT_FAILURE);
 	close(fds2[0]);
 	if (ft_strncmp(tenvp.argv[2], "awk", 3) == 0)
 		new_argv = exception(2, tenvp);
@@ -71,12 +73,14 @@ void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 	char	*path;
 	char	**new_argv;
 
-	dup2(fds2[0], STDIN_FILENO);
-	dup2(fds[1], STDOUT_FILENO);
+	if (dup2(fds2[0], STDIN_FILENO) == -1)
+		exit(EXIT_FAILURE);
+	if (dup2(fds[1], STDOUT_FILENO) == -1)
+		exit(EXIT_FAILURE);
 	close(fds2[1]);
 	close(fds[0]);
 	status = 0;
-	// waitpid(-1, &status, WNOHANG);
+	waitpid(-1, &status, WNOHANG);
 	if (status != 0)
 		error(RUN_ERROR, "");
 	if (ft_strncmp(tenvp.argv[3], "awk", 3) == 0)

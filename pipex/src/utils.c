@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:05:31 by myko              #+#    #+#             */
-/*   Updated: 2022/11/01 19:46:14 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/02 16:23:19 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ static char	**path_init()
 {
 	char	**paths;
 
-	paths = malloc(sizeof(char *) * 7);
+	paths = malloc(sizeof(char *) * 6);
 	paths[0] = "/usr/local/bin";
 	paths[1] = "/usr/bin";
 	paths[2] = "/bin";
 	paths[3] = "/usr/sbin";
 	paths[4] = "/sbin";
-	paths[5] = "/usr/local/munki";
-	paths[6] = NULL;
+	paths[5] = NULL;
 	return (paths);
 }
 

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/11/01 21:25:36 by delphinu         ###   ########.fr       */
+/*   Updated: 2022/11/02 17:30:50 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static void	result_pid(pid_t pid, int fds[], char *outfile)
 	int		rd;
 	char	buff[10000];
 
-	dup2(fds[0], STDIN_FILENO);
+	if (dup2(fds[0], STDIN_FILENO) == -1)
+		exit(EXIT_FAILURE);
 	close(fds[1]);
 	status = 0;
 	waitpid(pid, &status, 0);
@@ -56,7 +57,7 @@ int	main(int argc, char **argv, char **envp)
 	pid_t	pid;
 	t_envp	tenvp;
 
-	if (argc != 5)
+	if (argc < 5)
 		error(ARGC_ERROR, "");
 	tenvp.argc = argc;
 	tenvp.argv = argv;
@@ -70,6 +71,6 @@ int	main(int argc, char **argv, char **envp)
 	if (pid == 0)
 		working_pid(fds, tenvp);
 	else
-		result_pid(pid, fds, argv[4]);
+		result_pid(pid, fds, argv[argc - 1]);
 	return (EXIT_SUCCESS);
 }
