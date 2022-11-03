@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/04 02:57:43 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/04 03:25:09 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static void	check_str(char **new_argv)
 	i = -1;
 	while (new_argv[++i])
 	{
-		if (new_argv[i][0] == 39 || new_argv[i][0] == 34)
+		if (new_argv[i][0] == '\'' || new_argv[i][0] == '"')
 			new_argv[i]++;
-		if (new_argv[i][ft_strlen(new_argv[i]) - 1] == 39 || \
-			new_argv[i][ft_strlen(new_argv[i]) - 1] == 34)
+		if (new_argv[i][ft_strlen(new_argv[i]) - 1] == '\'' || \
+			new_argv[i][ft_strlen(new_argv[i]) - 1] == '"')
 			new_argv[i][ft_strlen(new_argv[i]) - 1] = 0;
 	}
 }
@@ -56,6 +56,8 @@ static char	**argv_init(int i, t_envp tenvp)
 		new_argv = exception(i, tenvp, "sed");
 	else if (ft_strncmp(tenvp.argv[i], "./", 2) == 0)
 		new_argv = exception(i, tenvp, "sh");
+	else if (ft_strncmp(tenvp.argv[i], "grep", 4) == 0)
+		new_argv = exception(i, tenvp, "grep");
 	else
 	{
 		new_argv = ft_split(tenvp.argv[i], ' ');

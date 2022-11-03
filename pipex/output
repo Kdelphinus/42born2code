@@ -1,13 +1,3 @@
-total 192
--rw-r--r--  1 myko  2022_seoul   1609 10 28 19:01 Makefile
--rw-r--r--  1 myko  2022_seoul  23046 11  1 19:39 README.md
-drwxr-xr-x  8 myko  2022_seoul    272 11  2 16:18 ftprintf
-drwxr-xr-x  3 myko  2022_seoul    102 10 28 15:06 include
--rw-r--r--  1 myko  2022_seoul     39 10 31 21:13 infile
--rw-r--r--  1 myko  2022_seoul     39 10 31 21:13 input
-drwxr-xr-x  6 myko  2022_seoul    204 11  2 17:20 obj
--rw-r--r--  1 myko  2022_seoul      9 11  2 16:20 outfile
--rw-r--r--  1 myko  2022_seoul      0 11  2 17:20 output
--rwxr-xr-x  1 myko  2022_seoul  51992 11  2 17:20 pipex
-drwxr-xr-x  6 myko  2022_seoul    204 11  2 15:51 src
--rw-r--r--  1 myko  2022_seoul    694 11  2 17:04 wc -w
+Hello World!
+Hello World!
+Hello World!
