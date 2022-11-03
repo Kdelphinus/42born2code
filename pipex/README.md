@@ -512,37 +512,43 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
   - 6번
 	```
 	./pipex infile 'sed "s/And/But/"' 'awk "{count++} END {printf \\"count: %i\\" , count}"' outfile
-
+	```
+	```
 	< infile sed "s/And/But/" | awk "{count++} END {printf \\"count: %i\\" , count}" > outfile
+	```
+  - 9번
+	```
+	./pipex infile './"script space.sh"' "wc" outfile
+	```
+	```
+	< infile './"script space.sh"' | "wc" > outfile
 	```
   - 10번
 	```
 	./pipex infile './"script\\"quote.sh"' "wc" outfile
-
+	```
+	```
 	< infile './"script\\"quote.sh"' | "wc" > outfile
 	```
-  - 18번
+  - 11번
 	```
-	./pipex infile './no_x_script.sh' "wc" outfile
-
-	< infile './no_x_script.sh' | "wc" > outfile
+	./pipex infile "./'script space.sh'" 'wc' outfile
 	```
-  - 19번
 	```
-	./pipex infile 'cat' './no_x_script.sh' outfile
-
-	< infile 'cat' | './no_x_script.sh' > outfile
+	< infile "./'script space.sh'" | 'wc' > outfile
 	```
   - 22번
 	```
 	./pipex infile './script.sh' './script.sh' outfile
-
+	```
+	```
 	< infile './script.sh' | './script.sh' > outfile
 	```
   - 26번
 	```
 	./pipex infile 'cat' 'script.sh' outfile
-
+	```
+	```
 	< infile 'cat' | 'script.sh' > outfile
 	```
 - [pipex-tester](https://github.com/vfurmane/pipex-tester)

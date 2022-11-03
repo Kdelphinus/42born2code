@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 20:31:00 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 20:57:09 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef enum s_erroridx {
 	ARGC_ERROR = 0,
 	COMMAND_ERROR = 1,
 	ERROR = 2,
+	PERMISSION_ERROR = 3,
 	EXIT_COMMAND_ERROR = 127,
 }	t_erroridx;
 

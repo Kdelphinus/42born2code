@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:08:04 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 17:55:44 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 20:59:13 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ int	error(int errnum, char *problem)
 		problem = ft_strjoin(problem, ": command not found\n");
 		write(STDERR_FILENO, problem, ft_strlen(problem));
 		exit(EXIT_COMMAND_ERROR);
+	}
+	else if (errnum == PERMISSION_ERROR)
+	{
+		problem = ft_strjoin(problem, ": permission denied\n");
+		write(STDERR_FILENO, problem, ft_strlen(problem));
+		exit(126);
 	}
 	else
 		perror(problem);

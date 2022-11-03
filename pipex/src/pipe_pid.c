@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 18:45:00 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 21:00:41 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ static char	**exception(int i, t_envp tenvp, char *cmd)
 	new_argv[0] = ft_strdup(cmd);
 	new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
 	new_argv[1] = ft_strtrim(new_argv[1], " ");
+	if (ft_strncmp(cmd, "sh", 2) == 0)
+	{
+		if (access(new_argv[1], X_OK) == -1)
+			error(PERMISSION_ERROR, tenvp.argv[i]);
+	}
 	new_argv[2] = NULL;
 	check_str(new_argv);
 	return (new_argv);
