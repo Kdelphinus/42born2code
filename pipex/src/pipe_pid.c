@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 17:03:35 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 17:33:13 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static char	**exception(int i, t_envp tenvp, char *cmd)
 	new_argv = (char **)malloc(sizeof(char *) * 3);
 	new_argv[0] = ft_strdup(cmd);
 	new_argv[1] = ft_strdup(tenvp.argv[i] + 4);
+	new_argv[1] = ft_strtrim(new_argv[1], " ");
 	new_argv[2] = NULL;
 	check_str(new_argv);
 	return (new_argv);
