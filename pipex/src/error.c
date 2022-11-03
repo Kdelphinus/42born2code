@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:08:04 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 02:13:00 by delphinu         ###   ########.fr       */
+/*   Updated: 2022/11/03 17:55:44 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	error(int errnum, char *problem)
 {
 	problem = ft_strjoin("pipex: ", problem);
 	if (errnum == ARGC_ERROR)
-		write(STDERR_FILENO, "The number of arguments \
-					does not match.\n", 41);
+		write(STDERR_FILENO, "pipex: Invaild argument\n", 24);
 	else if (errnum == COMMAND_ERROR)
 	{
 		problem = ft_strjoin(problem, ": command not found\n");

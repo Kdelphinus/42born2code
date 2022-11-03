@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 17:33:13 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 18:45:00 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	**exception(int i, t_envp tenvp, char *cmd)
 
 	new_argv = (char **)malloc(sizeof(char *) * 3);
 	new_argv[0] = ft_strdup(cmd);
-	new_argv[1] = ft_strdup(tenvp.argv[i] + 4);
+	new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
 	new_argv[1] = ft_strtrim(new_argv[1], " ");
 	new_argv[2] = NULL;
 	check_str(new_argv);
@@ -58,6 +58,8 @@ void	child_pid(int fds2[], t_envp tenvp)
 		new_argv = exception(2, tenvp, "awk");
 	else if (ft_strncmp(tenvp.argv[2], "sed", 3) == 0)
 		new_argv = exception(2, tenvp, "sed");
+	else if (ft_strncmp(tenvp.argv[2], "./", 2) == 0)
+		new_argv = exception(2, tenvp, "sh");
 	else
 	{
 		new_argv = ft_split(tenvp.argv[2], ' ');
@@ -69,6 +71,7 @@ void	child_pid(int fds2[], t_envp tenvp)
 	if (execve(path, new_argv, tenvp.envp) == -1)
 		error(ERROR, new_argv[0]);
 }
+
 
 void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 {
@@ -90,6 +93,8 @@ void	parent_pid(int fds[], int fds2[], t_envp tenvp)
 		new_argv = exception(3, tenvp, "awk");
 	else if (ft_strncmp(tenvp.argv[3], "sed", 3) == 0)
 		new_argv = exception(3, tenvp, "sed");
+	else if (ft_strncmp(tenvp.argv[3], "./", 2) == 0)
+		new_argv = exception(3, tenvp, "sh");
 	else
 	{
 		new_argv = ft_split(tenvp.argv[3], ' ');

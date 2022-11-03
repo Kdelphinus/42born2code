@@ -509,23 +509,11 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
 
 # Tester
 - [francinette](https://github.com/xicodomingues/francinette)
-  - 3번
-	```
-	./pipex infile 'sed    "s/And/But/"' 'grep But' outfile
-
-	< infile sed	"s/And/But/" | grep But > outfile
-	```
   - 6번
 	```
 	./pipex infile 'sed "s/And/But/"' 'awk "{count++} END {printf \\"count: %i\\" , count}"' outfile
 
 	< infile sed "s/And/But/" | awk "{count++} END {printf \\"count: %i\\" , count}" > outfile
-	```
-  - 9번
-	```
-	./pipex infile './"script space.sh"' 'wc' outfile
-
-	< infile './"script space.sh"' | 'wc' > outfile
 	```
   - 10번
 	```
@@ -533,11 +521,11 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
 
 	< infile './"script\\"quote.sh"' | "wc" > outfile
 	```
-  - 11번
+  - 18번
 	```
-	./pipex infile "./'script space.sh'" "wc" outfile
+	./pipex infile './no_x_script.sh' "wc" outfile
 
-	< infile "./'script space.sh'" | "wc" > outfile
+	< infile './no_x_script.sh' | "wc" > outfile
 	```
   - 19번
 	```
@@ -545,17 +533,17 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
 
 	< infile 'cat' | './no_x_script.sh' > outfile
 	```
+  - 22번
+	```
+	./pipex infile './script.sh' './script.sh' outfile
+
+	< infile './script.sh' | './script.sh' > outfile
+	```
   - 26번
 	```
 	./pipex infile 'cat' 'script.sh' outfile
 
 	< infile 'cat' | 'script.sh' > outfile
-	```
-  - 30번
-	```
-	./pipex infile 'cat' 'wc' outfile
-
-	< infile 'cat' | 'wc' > outfile
 	```
 - [pipex-tester](https://github.com/vfurmane/pipex-tester)
 - [pipexMedic](https://github.com/gmarcha/pipexMedic)

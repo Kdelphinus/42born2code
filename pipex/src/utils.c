@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:05:31 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 02:15:11 by delphinu         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:26:25 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*ft_path(char *filename, char **path)
 	{
 		if (path[i][ft_strlen(path[i]) - 1] != '/')
 			tmp = ft_strjoin(path[i], "/");
+		else
+			tmp = ft_strdup(path[i]);
 		tmp = ft_strjoin(tmp, filename);
 		if (access(tmp, F_OK) == 0)
 			return (tmp);
