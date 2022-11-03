@@ -509,16 +509,56 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
 
 # Tester
 - [francinette](https://github.com/xicodomingues/francinette)
+  - 3번
+	```
+	./pipex infile 'sed    "s/And/But/"' 'grep But' outfile
+
+	< infile sed	"s/And/But/" | grep But > outfile
+	```
+  - 6번
+	```
+	./pipex infile 'sed "s/And/But/"' 'awk "{count++} END {printf \\"count: %i\\" , count}"' outfile
+
+	< infile sed "s/And/But/" | awk "{count++} END {printf \\"count: %i\\" , count}" > outfile
+	```
+  - 9번
+	```
+	./pipex infile './"script space.sh"' 'wc' outfile
+
+	< infile './"script space.sh"' | 'wc' > outfile
+	```
+  - 10번
+	```
+	./pipex infile './"script\\"quote.sh"' "wc" outfile
+
+	< infile './"script\\"quote.sh"' | "wc" > outfile
+	```
+  - 11번
+	```
+	./pipex infile "./'script space.sh'" "wc" outfile
+
+	< infile "./'script space.sh'" | "wc" > outfile
+	```
+  - 19번
+	```
+	./pipex infile 'cat' './no_x_script.sh' outfile
+
+	< infile 'cat' | './no_x_script.sh' > outfile
+	```
+  - 26번
+	```
+	./pipex infile 'cat' 'script.sh' outfile
+
+	< infile 'cat' | 'script.sh' > outfile
+	```
+  - 30번
+	```
+	./pipex infile 'cat' 'wc' outfile
+
+	< infile 'cat' | 'wc' > outfile
+	```
 - [pipex-tester](https://github.com/vfurmane/pipex-tester)
-  - 31번(Time Out)
 - [pipexMedic](https://github.com/gmarcha/pipexMedic)
-  - 8번
-	```
-	< input grep Hello | awk "'{conut++} END {printf count}'" > output
-	```
-	```
-	./pipex input "grep Hello" "awk \"'{count++} END {printf count}'\"" output
-	```
 
 # 참고 자료
 - [42 Seoul, Pipex](https://cdn.intra.42.fr/pdf/pdf/49390/en.subject.pdf)
