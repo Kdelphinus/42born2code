@@ -6,14 +6,14 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 13:45:22 by myko              #+#    #+#              #
-#    Updated: 2022/10/28 19:01:20 by myko             ###   ########.fr        #
+#    Updated: 2022/11/03 20:35:08 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 CC = gcc
-FLAG = -Wall -Wextra -Werror -g
-FTPRINTF_FLAG = -Lftprintf -lftprintf
+FLAG = -Wall -Wextra -Werror
+LIBFT_FLAG = -Llib -lft
 
 SRC_DIR = ./src/
 SRC_NAME = main.c \
@@ -25,24 +25,24 @@ OBJ_DIR = ./obj/
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_DIR), $(OBJ_NAME))
 INC = ./include/
-FTPRINTF_DIR = ./ftprintf/
+LIBFT_DIR = ./lib/
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C $(FTPRINTF_DIR)
-	$(CC) $(OBJ) $(FTPRINTF_FLAG) $(FLAG) -o $(NAME)
+	make -C $(LIBFT_DIR)
+	$(CC) $(OBJ) $(LIBFT_FLAG) $(FLAG) -o $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	mkdir -p $(OBJ_DIR)
 	$(CC) $(FLAG) -c $< -I $(INC) -o $@
 
 clean:
-	make -C $(FTPRINTF_DIR) clean
+	make -C $(LIBFT_DIR) clean
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	make -C $(FTPRINTF_DIR) fclean
+	make -C $(LIBFT_DIR) fclean
 	rm -rf $(NAME)
 
 re:

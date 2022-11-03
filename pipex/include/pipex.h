@@ -6,14 +6,14 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 02:47:33 by delphinu         ###   ########.fr       */
+/*   Updated: 2022/11/03 20:31:00 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include "../ftprintf/includes/ft_printf.h"
+# include "../lib/libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
