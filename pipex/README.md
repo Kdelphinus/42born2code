@@ -516,26 +516,12 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
 	```
 	< infile sed "s/And/But/" | awk "{count++} END {printf \\"count: %i\\" , count}" > outfile
 	```
-  - 9번
-	```
-	./pipex infile './"script space.sh"' "wc" outfile
-	```
-	```
-	< infile './"script space.sh"' | "wc" > outfile
-	```
   - 10번
 	```
 	./pipex infile './"script\\"quote.sh"' "wc" outfile
 	```
 	```
 	< infile './"script\\"quote.sh"' | "wc" > outfile
-	```
-  - 11번
-	```
-	./pipex infile "./'script space.sh'" 'wc' outfile
-	```
-	```
-	< infile "./'script space.sh'" | 'wc' > outfile
 	```
   - 22번
 	```

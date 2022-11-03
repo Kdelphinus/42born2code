@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 20:57:09 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 21:38:25 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int		main(int argc, char **argv, char **envp);
 int		error(int errnum, char *problem);
 
 // pipe_pid.c
-void	child_pid(int fds2[], t_envp envp);
-void	parent_pid(int fds[], int fds2[], t_envp tenvp);
+void	child_pid(int fds[], t_envp envp);
+void	parent_pid(int fds[], t_envp tenvp);
 
 //utils.c
 char	**envp_path(char **envp);

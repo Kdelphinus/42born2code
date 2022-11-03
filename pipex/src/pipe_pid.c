@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/03 21:00:41 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/03 21:41:25 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ static char	**exception(int i, t_envp tenvp, char *cmd)
 	new_argv[1] = ft_strtrim(new_argv[1], " ");
 	if (ft_strncmp(cmd, "sh", 2) == 0)
 	{
-		if (access(new_argv[1], X_OK) == -1)
-			error(PERMISSION_ERROR, tenvp.argv[i]);
+		if (access(new_argv[1], X_OK) == -1 && access(new_argv[1], F_OK) == 0)
+			error(PERMISSION_ERROR, new_argv[1]);
 	}
 	new_argv[2] = NULL;
 	check_str(new_argv);
 	return (new_argv);
 }
 
-void	child_pid(int fds2[], t_envp tenvp)
+void	child_pid(int fds[], t_envp tenvp)
 {
 	char	*path;
 	char	**new_argv;
@@ -56,9 +56,9 @@ void	child_pid(int fds2[], t_envp tenvp)
 		error(ERROR, tenvp.argv[1]);
 	if (dup2(fd, STDIN_FILENO) == -1)
 		error(ERROR, "fd");
-	if (dup2(fds2[1], STDOUT_FILENO) == -1)
+	if (dup2(fds[1], STDOUT_FILENO) == -1)
 		error(ERROR, "fd");
-	close(fds2[0]);
+	close(fds[0]);
 	if (ft_strncmp(tenvp.argv[2], "awk", 3) == 0)
 		new_argv = exception(2, tenvp, "awk");
 	else if (ft_strncmp(tenvp.argv[2], "sed", 3) == 0)
@@ -78,22 +78,20 @@ void	child_pid(int fds2[], t_envp tenvp)
 }
 
 
-void	parent_pid(int fds[], int fds2[], t_envp tenvp)
+void	parent_pid(int fds[], t_envp tenvp)
 {
-	int		status;
+	int		fd;
 	char	*path;
 	char	**new_argv;
 
-	if (dup2(fds2[0], STDIN_FILENO) == -1)
+	fd = open(tenvp.argv[4], O_RDWR | O_CREAT | O_TRUNC, 420);
+	if (fd == -1)
 		error(ERROR, "fd");
-	if (dup2(fds[1], STDOUT_FILENO) == -1)
+	if (dup2(fds[0], STDIN_FILENO) == -1)
 		error(ERROR, "fd");
-	close(fds2[1]);
-	close(fds[0]);
-	status = 0;
-	waitpid(-1, &status, WNOHANG);
-	if (status != 0)
-		error(ERROR, "");
+	if (dup2(fd, STDOUT_FILENO) == -1)
+		error(ERROR, "fd");
+	close(fds[1]);
 	if (ft_strncmp(tenvp.argv[3], "awk", 3) == 0)
 		new_argv = exception(3, tenvp, "awk");
 	else if (ft_strncmp(tenvp.argv[3], "sed", 3) == 0)
