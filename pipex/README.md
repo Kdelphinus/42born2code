@@ -530,13 +530,6 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
 	```
 	< infile './script.sh' | './script.sh' > outfile
 	```
-  - 26번
-	```
-	./pipex infile 'cat' 'script.sh' outfile
-	```
-	```
-	< infile 'cat' | 'script.sh' > outfile
-	```
 - [pipex-tester](https://github.com/vfurmane/pipex-tester)
 - [pipexMedic](https://github.com/gmarcha/pipexMedic)
 
