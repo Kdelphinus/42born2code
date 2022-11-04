@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 13:45:22 by myko              #+#    #+#              #
-#    Updated: 2022/11/03 20:35:08 by myko             ###   ########.fr        #
+#    Updated: 2022/11/04 09:50:03 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC_DIR = ./src/
 SRC_NAME = main.c \
 			error.c \
 			pipe_pid.c \
-			utils.c
+			utils.c \
+			ft_split_set.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
 OBJ_DIR = ./obj/
 OBJ_NAME = $(SRC_NAME:.c=.o)

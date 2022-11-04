@@ -1,1 +1,20 @@
-count: 4
+total 224
+drwxr-xr-x  19 myko  2022_seoul    646 11  4 09:50 .
+drwxr-xr-x  14 myko  2022_seoul    476 11  4 02:09 ..
+-rw-r--r--   1 myko  2022_seoul   1592 11  4 09:50 Makefile
+-rw-r--r--   1 myko  2022_seoul  23338 11  4 09:00 README.md
+-rw-r--r--   1 myko  2022_seoul      0 11  4 08:43 cat
+drwxr-xr-x   3 myko  2022_seoul    102 11  4 01:43 include
+-rw-r--r--   1 myko  2022_seoul     99 11  3 16:32 infile
+-rw-r--r--   1 myko  2022_seoul     48 11  4 08:34 input
+drwxr-xr-x  82 myko  2022_seoul   2788 11  4 09:49 lib
+-rwxr-xr-x   1 myko  2022_seoul    144 11  3 17:39 middle_fail.sh
+-rw-r--r--   1 myko  2022_seoul     74 11  3 17:39 no_x_script.sh
+drwxr-xr-x   7 myko  2022_seoul    238 11  4 09:50 obj
+-rw-r--r--   1 myko  2022_seoul      0 11  4 09:50 outfile
+-rw-r--r--   1 myko  2022_seoul     10 11  4 08:43 output
+-rwxr-xr-x   1 myko  2022_seoul  51024 11  4 09:50 pipex
+-rwxr-xr-x   1 myko  2022_seoul     57 11  3 17:39 script space.sh
+-rwxr-xr-x   1 myko  2022_seoul     57 11  3 17:39 script"quote.sh
+-rwxr-xr-x   1 myko  2022_seoul     91 11  3 17:39 script.sh
+drwxr-xr-x   7 myko  2022_seoul    238 11  4 09:03 src

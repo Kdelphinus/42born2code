@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/04 03:25:09 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/04 09:53:39 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	**exception(int i, t_envp tenvp, char *cmd)
 	new_argv = (char **)malloc(sizeof(char *) * 3);
 	new_argv[0] = ft_strdup(cmd);
 	new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
-	new_argv[1] = ft_strtrim(new_argv[1], " ");
+	new_argv[1] = ft_strtrim(new_argv[1], " 	");
 	new_argv[2] = NULL;
 	if (ft_strncmp(cmd, "sh", 2) == 0)
 	{
@@ -60,7 +60,7 @@ static char	**argv_init(int i, t_envp tenvp)
 		new_argv = exception(i, tenvp, "grep");
 	else
 	{
-		new_argv = ft_split(tenvp.argv[i], ' ');
+		new_argv = ft_split_set(tenvp.argv[i], " 	");
 		check_str(new_argv);
 	}
 	return (new_argv);
@@ -103,8 +103,5 @@ void	parent_pid(int fds[], t_envp tenvp)
 	if (!path)
 		error(COMMAND_ERROR, new_argv[0]);
 	if (execve(path, new_argv, tenvp.envp) == -1)
-	{
-		write(2, "error\n", 6);
 		error(ERROR, new_argv[0]);
-	}
 }
