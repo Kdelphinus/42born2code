@@ -33,3 +33,6 @@
 - rrb : reverse rotate b - 스택 b의 모든 원소들을 아래로 1 인덱스 만큼 내린다. 마지막 원소(바텀)는 첫 번째 원소(탑)가 된다.
 
 - rrr : rra와 rrb를 동시에 실행한다.
+
+# 참고 문헌
+- [42 seoul, push_swap](https://cdn.intra.42.fr/pdf/pdf/49387/en.subject.pdf)
