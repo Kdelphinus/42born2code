@@ -558,7 +558,7 @@ $ sudo vi /etc/ssh/sshd_config
 
 ## 7.4 SSH를 이용해 새 user로 login하기
 ```
-$ sudo <NEW_USER>@<MAC_IP> -p <HOST_PORT>
+$ ssh <NEW_USER>@<MAC_IP> -p <HOST_PORT>
 ```
 
 ## 7.5 SSH를 통해 root로 login 할 수 없는가?
