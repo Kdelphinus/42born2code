@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/04 09:53:39 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/04 15:53:06 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	**exception(int i, t_envp tenvp, char *cmd)
 	new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
 	new_argv[1] = ft_strtrim(new_argv[1], " 	");
 	new_argv[2] = NULL;
-	if (ft_strncmp(cmd, "sh", 2) == 0)
+	if (ft_strncmp(cmd, "./", 2) == 0)
 	{
 		if (access(new_argv[1], X_OK) == -1 \
 			&& access(new_argv[1], F_OK) == 0)
@@ -55,7 +55,7 @@ static char	**argv_init(int i, t_envp tenvp)
 	else if (ft_strncmp(tenvp.argv[i], "sed", 3) == 0)
 		new_argv = exception(i, tenvp, "sed");
 	else if (ft_strncmp(tenvp.argv[i], "./", 2) == 0)
-		new_argv = exception(i, tenvp, "sh");
+		new_argv = exception(i, tenvp, "./");
 	else if (ft_strncmp(tenvp.argv[i], "grep", 4) == 0)
 		new_argv = exception(i, tenvp, "grep");
 	else
