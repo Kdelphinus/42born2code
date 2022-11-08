@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/04 15:58:24 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/08 17:10:32 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,33 @@ static char	**exception(int i, t_envp tenvp, char *cmd)
 	char	**new_argv;
 
 	new_argv = (char **)malloc(sizeof(char *) * 3);
-	new_argv[0] = ft_strdup(cmd);
-	new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
-	new_argv[1] = ft_strtrim(new_argv[1], " 	");
-	new_argv[2] = NULL;
 	if (ft_strncmp(cmd, "./", 2) == 0)
 	{
+		new_argv[0] = ft_strdup("/bin/bash");
+		new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
+		new_argv[1] = ft_strtrim(new_argv[1], " 	");
+		new_argv[2] = NULL;
 		if (access(new_argv[1], X_OK) == -1 \
 			&& access(new_argv[1], F_OK) == 0)
 			error(PERMISSION_ERROR, new_argv[1]);
 	}
+	else
+	{
+		new_argv[0] = ft_strdup(cmd);
+		new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
+		new_argv[1] = ft_strtrim(new_argv[1], " 	");
+		new_argv[2] = NULL;
+	}
+	// new_argv[0] = ft_strdup(cmd);
+	// new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
+	// new_argv[1] = ft_strtrim(new_argv[1], " 	");
+	// new_argv[2] = NULL;
+	// if (ft_strncmp(cmd, "./", 2) == 0)
+	// {
+	// 	if (access(new_argv[1], X_OK) == -1 \
+	// 		&& access(new_argv[1], F_OK) == 0)
+	// 		error(PERMISSION_ERROR, new_argv[1]);
+	// }
 	check_str(new_argv);
 	return (new_argv);
 }
