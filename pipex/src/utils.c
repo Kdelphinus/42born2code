@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:05:31 by myko              #+#    #+#             */
-/*   Updated: 2022/11/08 18:53:04 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/08 20:11:03 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,15 @@ void	check_str(char **new_argv)
 	i = -1;
 	while (new_argv[++i])
 	{
-		if (new_argv[i][0] == '\'' || new_argv[i][0] == '"')
+		if (new_argv[i][0] == '\'' && new_argv[i][ft_strlen(new_argv[i]) - 1] == '\'')
+		{
 			new_argv[i]++;
-		if (new_argv[i][ft_strlen(new_argv[i]) - 1] == '\'' || \
-			new_argv[i][ft_strlen(new_argv[i]) - 1] == '"')
 			new_argv[i][ft_strlen(new_argv[i]) - 1] = 0;
+		}
+		else if (new_argv[i][0] == '"' && new_argv[i][ft_strlen(new_argv[i]) - 1] == '"')
+		{
+			new_argv[i]++;
+			new_argv[i][ft_strlen(new_argv[i]) - 1] = 0;
+		}
 	}
 }
