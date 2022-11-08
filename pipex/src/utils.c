@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:05:31 by myko              #+#    #+#             */
-/*   Updated: 2022/11/04 02:54:07 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/08 17:25:52 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,19 @@ char	*ft_path(char *filename, char **path)
 	if (access(filename, F_OK) == 0 && ft_strchr(filename, '/'))
 		return (filename);
 	return (NULL);
+}
+
+void	check_str(char **new_argv)
+{
+	int	i;
+
+	i = -1;
+	while (new_argv[++i])
+	{
+		if (new_argv[i][0] == '\'' || new_argv[i][0] == '"')
+			new_argv[i]++;
+		if (new_argv[i][ft_strlen(new_argv[i]) - 1] == '\'' || \
+			new_argv[i][ft_strlen(new_argv[i]) - 1] == '"')
+			new_argv[i][ft_strlen(new_argv[i]) - 1] = 0;
+	}
 }

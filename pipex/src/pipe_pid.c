@@ -6,25 +6,26 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/08 17:10:32 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/08 17:25:23 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-static void	check_str(char **new_argv)
+static char	**exception2(int i, t_envp tenvp)
 {
-	int	i;
+	char	**new_argv;
 
-	i = -1;
-	while (new_argv[++i])
-	{
-		if (new_argv[i][0] == '\'' || new_argv[i][0] == '"')
-			new_argv[i]++;
-		if (new_argv[i][ft_strlen(new_argv[i]) - 1] == '\'' || \
-			new_argv[i][ft_strlen(new_argv[i]) - 1] == '"')
-			new_argv[i][ft_strlen(new_argv[i]) - 1] = 0;
-	}
+	new_argv = (char **)malloc(sizeof(char *) * 3);
+	new_argv[0] = ft_strdup("/bin/bash");
+	new_argv[1] = ft_strdup(tenvp.argv[i] + 2);
+	new_argv[1] = ft_strtrim(new_argv[1], " 	");
+	new_argv[2] = NULL;
+	if (access(new_argv[1], X_OK) == -1 \
+		&& access(new_argv[1], F_OK) == 0)
+		error(PERMISSION_ERROR, new_argv[1]);
+	check_str(new_argv);
+	return (new_argv);
 }
 
 static char	**exception(int i, t_envp tenvp, char *cmd)
@@ -32,33 +33,10 @@ static char	**exception(int i, t_envp tenvp, char *cmd)
 	char	**new_argv;
 
 	new_argv = (char **)malloc(sizeof(char *) * 3);
-	if (ft_strncmp(cmd, "./", 2) == 0)
-	{
-		new_argv[0] = ft_strdup("/bin/bash");
-		new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
-		new_argv[1] = ft_strtrim(new_argv[1], " 	");
-		new_argv[2] = NULL;
-		if (access(new_argv[1], X_OK) == -1 \
-			&& access(new_argv[1], F_OK) == 0)
-			error(PERMISSION_ERROR, new_argv[1]);
-	}
-	else
-	{
-		new_argv[0] = ft_strdup(cmd);
-		new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
-		new_argv[1] = ft_strtrim(new_argv[1], " 	");
-		new_argv[2] = NULL;
-	}
-	// new_argv[0] = ft_strdup(cmd);
-	// new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
-	// new_argv[1] = ft_strtrim(new_argv[1], " 	");
-	// new_argv[2] = NULL;
-	// if (ft_strncmp(cmd, "./", 2) == 0)
-	// {
-	// 	if (access(new_argv[1], X_OK) == -1 \
-	// 		&& access(new_argv[1], F_OK) == 0)
-	// 		error(PERMISSION_ERROR, new_argv[1]);
-	// }
+	new_argv[0] = ft_strdup(cmd);
+	new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
+	new_argv[1] = ft_strtrim(new_argv[1], " 	");
+	new_argv[2] = NULL;
 	check_str(new_argv);
 	return (new_argv);
 }
@@ -72,7 +50,7 @@ static char	**argv_init(int i, t_envp tenvp)
 	else if (ft_strncmp(tenvp.argv[i], "sed", 3) == 0)
 		new_argv = exception(i, tenvp, "sed");
 	else if (ft_strncmp(tenvp.argv[i], "./", 2) == 0)
-		new_argv = exception(i, tenvp, "./");
+		new_argv = exception2(i, tenvp);
 	else if (ft_strncmp(tenvp.argv[i], "grep", 4) == 0)
 		new_argv = exception(i, tenvp, "grep");
 	else
