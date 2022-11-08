@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:05:31 by myko              #+#    #+#             */
-/*   Updated: 2022/11/08 20:11:03 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/08 21:32:41 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,29 @@ char	*ft_path(char *filename, char **path)
 	return (NULL);
 }
 
-void	check_str(char **new_argv)
+void	check_str(int flag, char **new_argv)
 {
-	int	i;
+	int		i;
+	char	**tmp;
 
 	i = -1;
 	while (new_argv[++i])
 	{
-		if (new_argv[i][0] == '\'' && new_argv[i][ft_strlen(new_argv[i]) - 1] == '\'')
+		if ((new_argv[i][0] == '\'' \
+			&& new_argv[i][ft_strlen(new_argv[i]) - 1] == '\'') \
+			|| (new_argv[i][0] == '"' \
+			&& new_argv[i][ft_strlen(new_argv[i]) - 1] == '"'))
 		{
 			new_argv[i]++;
 			new_argv[i][ft_strlen(new_argv[i]) - 1] = 0;
 		}
-		else if (new_argv[i][0] == '"' && new_argv[i][ft_strlen(new_argv[i]) - 1] == '"')
-		{
-			new_argv[i]++;
-			new_argv[i][ft_strlen(new_argv[i]) - 1] = 0;
-		}
+	}
+	if (flag)
+	{
+		tmp = ft_split(new_argv[1], '\\');
+		i = -1;
+		new_argv[1] = ft_strdup("");
+		while (tmp[++i])
+			new_argv[1] = ft_strjoin(new_argv[1], tmp[i]);
 	}
 }

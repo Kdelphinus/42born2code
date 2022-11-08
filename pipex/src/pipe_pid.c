@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/08 19:03:26 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/08 21:35:15 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	**exception2(int i, t_envp tenvp)
 	if (access(new_argv[1], X_OK) == -1 \
 		&& access(new_argv[1], F_OK) == 0)
 		error(PERMISSION_ERROR, new_argv[1]);
-	check_str(new_argv);
+	check_str(1, new_argv);
 	return (new_argv);
 }
 
@@ -37,7 +37,7 @@ static char	**exception(int i, t_envp tenvp, char *cmd)
 	new_argv[1] = ft_strdup(tenvp.argv[i] + ft_strlen(cmd));
 	new_argv[1] = ft_strtrim(new_argv[1], " 	");
 	new_argv[2] = NULL;
-	check_str(new_argv);
+	check_str(1, new_argv);
 	return (new_argv);
 }
 
@@ -56,7 +56,7 @@ static char	**argv_init(int i, t_envp tenvp)
 	else
 	{
 		new_argv = ft_split_set(tenvp.argv[i], " 	");
-		check_str(new_argv);
+		check_str(0, new_argv);
 	}
 	return (new_argv);
 }

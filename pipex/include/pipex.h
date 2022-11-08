@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/08 18:53:09 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/08 21:32:50 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	parent_pid(int fds[], t_envp tenvp);
 //utils.c
 char	**envp_path(char **envp);
 char	*ft_path(char *filename, char **path_option);
-void	check_str(char **new_argv);
+void	check_str(int flag, char **new_argv);
 
 //ft_split_set.c
 char	**ft_split_set(char *str, char *charset);
