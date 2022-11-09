@@ -509,20 +509,6 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
 
 # Tester
 - [francinette](https://github.com/xicodomingues/francinette)
-  - 6번
-	```
-	./pipex infile 'sed "s/And/But/"' 'awk "{count++} END {printf \\"count: %i\\" , count}"' outfile
-	```
-	```
-	< infile sed "s/And/But/" | awk "{count++} END {printf \\"count: %i\\" , count}" > outfile
-	```
-  - 10번
-	```
-	./pipex infile './"script\\"quote.sh"' "wc" outfile
-	```
-	```
-	< infile './"script\\"quote.sh"' | "wc" > outfile
-	```
 - [pipex-tester](https://github.com/vfurmane/pipex-tester)
 - [pipexMedic](https://github.com/gmarcha/pipexMedic)
 
