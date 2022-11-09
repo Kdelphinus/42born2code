@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/11/04 08:31:05 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/09 13:06:16 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_envp	tenvp;
 
-	if (argc < 5)
+	if (argc != 5)
 		error(ARGC_ERROR, "");
 	tenvp.argc = argc;
 	tenvp.argv = argv;
