@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:05:31 by myko              #+#    #+#             */
-/*   Updated: 2022/11/08 21:32:41 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/09 13:24:34 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static char	**path_init(void)
 	char	**paths;
 
 	paths = malloc(sizeof(char *) * 6);
+	if (!paths)
+		error(MALLOC_ERROR, "malloc");
 	paths[0] = ft_strdup("/usr/local/bin");
 	paths[1] = ft_strdup("/usr/bin");
 	paths[2] = ft_strdup("/bin");
