@@ -511,7 +511,7 @@ myvar="foo"; echo $myvar | tr '[:lower:]' '[:upper:]'
 - [francinette](https://github.com/xicodomingues/francinette)
 - [pipex-tester](https://github.com/vfurmane/pipex-tester)
 - [pipexMedic](https://github.com/gmarcha/pipexMedic)
-
+- sleep 커맨드를 실행할 때, outfile에 내용이 사라지지 않음
 # 참고 자료
 - [42 Seoul, Pipex](https://cdn.intra.42.fr/pdf/pdf/49390/en.subject.pdf)
 - [tseo.log, [C]](https://velog.io/@t1won/C-C-yee43s5w)

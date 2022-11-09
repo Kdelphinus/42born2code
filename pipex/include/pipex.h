@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/08 21:32:50 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/09 13:11:05 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-# include <sys/wait.h>
-
 typedef enum s_erroridx {
 	ARGC_ERROR = 0,
 	COMMAND_ERROR = 1,
 	ERROR = 2,
 	PERMISSION_ERROR = 3,
+	EXIT_PERMOSSION_ERROR = 126,
 	EXIT_COMMAND_ERROR = 127,
 }	t_erroridx;
 

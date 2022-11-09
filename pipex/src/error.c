@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:08:04 by myko              #+#    #+#             */
-/*   Updated: 2022/11/09 13:05:47 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/09 13:11:19 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	error(int errnum, char *problem)
 	{
 		problem = ft_strjoin(problem, ": permission denied\n");
 		ft_putstr_fd(problem, STDERR_FILENO);
-		exit(126);
+		exit(EXIT_PERMOSSION_ERROR);
 	}
 	else
 		perror(problem);
