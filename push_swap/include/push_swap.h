@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/11/09 14:49:57 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/14 15:16:07 by delphinu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,5 @@
 # define PUSH_SWAP_H
 
 # include "../lib/libft.h"
-
-typedef struct	s_arg{
-	
-}
 
 #endif
