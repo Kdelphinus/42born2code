@@ -149,4 +149,7 @@ pipex/pipex
 pipex/pipex-tester/
 pipex/pipexMedic/
 
+# push_swap
+push_swap/push_swap
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
