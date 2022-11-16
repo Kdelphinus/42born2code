@@ -49,7 +49,7 @@ char	c;
 
 **size_t**는 기본적으론 unsigned int와 같이 부호가 없는 양수의 수를 의미한다. 그러나 size_t는 운영체제에 따라 64bit에선 부호 없는 64bit의 정수, 32bit에선 부호 없는 32bit의 정수임에 반해 unsigned int는 이것이 항상 보장되지 않습니다. 그렇기에 메모리나 문자열의 길이를 구할 땐, unsigned int가 아닌 size_t로 길이가 반환됩니다. 
   
-size_t는 unistd.h, stdlib.h 등 여러 헤더파일에 정의되어있습니다.
+size_t는 unistd.h, stdlib.h, stdio.h 등 여러 헤더파일에 정의되어있습니다.
   
  ```
 #ifdef _WIN64    // 64비트일 때  
