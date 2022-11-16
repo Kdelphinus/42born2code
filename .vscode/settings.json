@@ -4,6 +4,7 @@
         "pipex.h": "c",
         "algorithm": "c",
         "ft_printf.h": "c",
-        "cstdio": "c"
+        "cstdio": "c",
+        "libft.h": "c"
     }
 }
