@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/16 17:48:28 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/16 21:42:36 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	ft_error(void)
 	return (1);
 }
 
-int	ft_charp_len(char **charpoint)
+long long	ft_charp_len(char **charpoint)
 {
-	int	i;
+	long long	i;
 
 	i = 0;
 	while (charpoint[i])
@@ -28,14 +28,13 @@ int	ft_charp_len(char **charpoint)
 	return (i);
 }
 
-#include <stdio.h>
 int	main(int argc, char **argv)
 {
-	int			i;
-	int			len;
-	int			*numbers;
+	t_stack		stack;
 	char		**tmp;
 	long long	tmpn;
+	long long	i;
+	long long	len;
 
 	if (argc == 1)
 		return (0);
@@ -43,30 +42,38 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		tmp = ft_split(argv[1], ' ');
-		if (ft_strncmp(tmp[0], argv[1], ft_strlen(argv[1])) == 0)
+		if (ft_atoi_int(argv[1]) != INT_ERROR)
 			return (0);
 		len = ft_charp_len(tmp);
-		numbers = (int *)malloc(sizeof(int) * len);
+		stack.a = (long long *)malloc(sizeof(long long) * len);
+		if (!stack.a)
+			return (ft_error());
+		stack.a_len = len;
 		while (++i < len)
 		{
 			tmpn = ft_atoi_int(tmp[i]);
 			if (tmpn == INT_ERROR)
 				return (ft_error());
-			numbers[i] = tmpn;
+			stack.a[i] = tmpn;
 		}
 	}
 	else
 	{
-		numbers = (int *)malloc(sizeof(int) * (argc - 1));
-		if (!numbers)
+		stack.a = (long long *)malloc(sizeof(long long) * (argc - 1));
+		if (!stack.a)
 			return (ft_error());
+		stack.a_len = argc - 1;
 		while (++i < argc - 1)
 		{
 			tmpn = ft_atoi_int(argv[i + 1]);
 			if (tmpn == INT_ERROR)
 				return (ft_error());
-			numbers[i] = tmpn;
+			stack.a[i] = tmpn;
 		}
 	}
+	stack.b = (long long *)malloc(sizeof(long long) * i);
+	if (!stack.b)
+		return (1);
+	stack.b_len = 0;
 	return (0);
 }

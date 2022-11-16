@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 14:05:24 by myko              #+#    #+#              #
-#    Updated: 2022/11/15 21:45:01 by myko             ###   ########.fr        #
+#    Updated: 2022/11/16 21:37:26 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ LIBFT_FLAG = -Llib -lft
 
 SRC_DIR = ./src/
 SRC_NAME = main.c \
-			ft_atoi_int.c
+		   ft_atoi_int.c \
+		   order.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
 OBJ_DIR = ./obj/
 OBJ_NAME = $(SRC_NAME:.c=.o)
