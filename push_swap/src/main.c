@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/15 21:43:17 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/16 17:48:28 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,5 @@ int	main(int argc, char **argv)
 			numbers[i] = tmpn;
 		}
 	}
-	i = -1;
-	while (numbers[++i])
-		printf("%d\n", numbers[i]);
 	return (0);
 }

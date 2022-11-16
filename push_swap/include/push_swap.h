@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/11/15 21:36:54 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/16 17:37:47 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include "../lib/libft.h"
 
-typedef enum s_erroridx {
-	INT_ERROR = 2147483648,
-}	t_erroridx;
+# define INT_ERROR 2147483648
+// typedef enum s_erroridx {
+// 	INT_ERROR = 2147483648,
+// }	t_erroridx;
 
 // main.c
 
