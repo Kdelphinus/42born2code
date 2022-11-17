@@ -6,21 +6,21 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:58:44 by myko              #+#    #+#             */
-/*   Updated: 2022/11/17 15:34:17 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/17 17:53:11 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	s_order(long long *stack, long long len)
+void	s_order(int *stack, long long len)
 {
 	long long	tmp;
 
 	if (len > 1)
 	{
-		tmp = stack[0];
-		stack[0] = stack[1];
-		stack[1] = tmp;
+		tmp = stack[len - 1];
+		stack[len - 1] = stack[len - 2];
+		stack[len - 2] = tmp;
 	}
 }
 
@@ -44,22 +44,7 @@ void	p_order(t_stack *stack, long long goal)
 	}
 }
 
-void	r_order(long long *stack, long long len)
-{
-	long long	i;
-	long long	tmp;
-
-	i = -1;
-	if (len > 2)
-	{
-		tmp = stack[0];
-		while (++i < len - 1)
-			stack[i] = stack[i + 1];
-		stack[len - 1] = tmp;
-	}
-}
-
-void	rr_order(long long *stack, long long len)
+void	r_order(int *stack, long long len)
 {
 	long long	i;
 	long long	tmp;
@@ -71,5 +56,20 @@ void	rr_order(long long *stack, long long len)
 		while (--i >= 0)
 			stack[i + 1] = stack[i];
 		stack[0] = tmp;
+	}
+}
+
+void	rr_order(int *stack, long long len)
+{
+	long long	i;
+	long long	tmp;
+
+	i = -1;
+	if (len > 2)
+	{
+		tmp = stack[0];
+		while (++i < len - 1)
+			stack[i] = stack[i + 1];
+		stack[len - 1] = tmp;
 	}
 }
