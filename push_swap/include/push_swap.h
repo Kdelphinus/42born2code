@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/11/16 21:41:19 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/17 17:04:41 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_stack {
 	long long	b_len;
 	long long	*a;
 	long long	*b;
-} 	t_stack;
+}	t_stack;
 
 typedef enum s_stack_num {
 	STACK_A = 0,
@@ -33,9 +33,9 @@ typedef enum s_stack_num {
 long long	ft_atoi_int(const char *str);
 
 // order.c
-void	s_order(long long *stack, long long len);
-void	p_order(t_stack *stack, long long goal);
-void	r_order(long long *stack, long long len);
-void	rr_order(long long *stack, long long len);
+void		s_order(long long *stack, long long len);
+void		p_order(t_stack *stack, long long goal);
+void		r_order(long long *stack, long long len);
+void		rr_order(long long *stack, long long len);
 
 #endif
