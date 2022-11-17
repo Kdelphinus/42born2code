@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:58:44 by myko              #+#    #+#             */
-/*   Updated: 2022/11/16 21:38:22 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/17 15:34:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void	rr_order(long long *stack, long long len)
 	long long	i;
 	long long	tmp;
 
-	i = -1;
+	i = len;
 	if (len > 2)
 	{
 		tmp = stack[len - 1];
-		while (++i < len - 1)
+		while (--i >= 0)
 			stack[i + 1] = stack[i];
 		stack[0] = tmp;
 	}

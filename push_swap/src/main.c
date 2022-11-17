@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/16 21:42:36 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/17 16:10:27 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 			tmpn = ft_atoi_int(tmp[i]);
 			if (tmpn == INT_ERROR)
 				return (ft_error());
-			stack.a[i] = tmpn;
+			stack.a[len - i - 1] = tmpn;
 		}
 	}
 	else
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 			tmpn = ft_atoi_int(argv[i + 1]);
 			if (tmpn == INT_ERROR)
 				return (ft_error());
-			stack.a[i] = tmpn;
+			stack.a[stack.a_len - i - 1] = tmpn;
 		}
 	}
 	stack.b = (long long *)malloc(sizeof(long long) * i);
