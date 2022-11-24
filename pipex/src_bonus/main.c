@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/11/22 17:30:06 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/24 19:28:26 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@ static void	working_pid(t_envp tenvp)
 {
 	int		fds[2];
 	pid_t	pid;
+	int		i;
 
-	if (pipe(fds) == -1)
-		error(PIPE_ERROR, "pipe");
-	pid = fork();
-	if (pid == -1)
-		error(FORK_ERROR, "fork");
-	if (pid == 0)
-		child_pid(fds, tenvp);
-	else
-		parent_pid(fds, tenvp);
+	i = -1;
+	while (++i < tenvp.argc - 2)
+	{
+		if (pipe(fds) == -1)
+			error(PIPE_ERROR, "pipe");
+		pid = fork();
+		if (pid == -1)
+			error(FORK_ERROR, "fork");
+		if (pid == 0)
+			child_pid(fds, tenvp);
+		else
+			parent_pid(fds, tenvp);
+	}
 }
 
 int	main(int argc, char **argv, char **envp)
