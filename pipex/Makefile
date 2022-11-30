@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/11 13:45:22 by myko              #+#    #+#              #
-#    Updated: 2022/11/22 17:35:08 by myko             ###   ########.fr        #
+#    Updated: 2022/11/30 17:41:42 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,22 @@ LIBFT_FLAG = -Llib -lft
 
 ifdef WITH_BONUS
 	SRC_DIR = ./src_bonus/
+	SRC_NAME = main_bonus.c \
+			error_bonus.c \
+			pipe_pid_bonus.c \
+			utils_bonus.c \
+			ft_split_set_bonus.c
 	OBJ_DIR = ./obj_bonus/
 else
 	SRC_DIR = ./src/
-	OBJ_DIR = ./obj/
-endif
-
-SRC_NAME = main.c \
+	SRC_NAME = main.c \
 			error.c \
 			pipe_pid.c \
 			utils.c \
 			ft_split_set.c
+	OBJ_DIR = ./obj/
+endif
+
 SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_DIR), $(OBJ_NAME))

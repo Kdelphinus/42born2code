@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/22 17:07:01 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/30 17:38:30 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ static char	**argv_init(int i, t_envp tenvp)
 	return (new_argv);
 }
 
-void	child_pid(int fds[], t_envp tenvp)
+void	start_pid(int fds[], t_envp tenvp)
 {
+	int		fd;
 	char	*path;
 	char	**new_argv;
-	int		fd;
 
 	fd = open(tenvp.argv[1], O_RDONLY);
 	if (fd == -1)
@@ -85,7 +85,27 @@ void	child_pid(int fds[], t_envp tenvp)
 		error(RUN_ERROR, new_argv[0]);
 }
 
-void	parent_pid(int fds[], t_envp tenvp)
+void	working_pid(int fds1[], int fds2[], int argc, t_envp tenvp)
+{
+	int		fd;
+	char	*path;
+	char	**new_argv;
+
+	if (dup2(fds1[0], STDIN_FILENO) == -1 || dup2(fds2[1], STDOUT_FILENO) == -1)
+		error(FD_ERROR, "fd");
+	close(fds2[0]);
+	close(fds1[1]);
+	new_argv = argv_init(argc, tenvp);
+	if (!new_argv)
+		error(MALLOC_ERROR, "malloc");
+	path = ft_path(new_argv[0], tenvp.paths);
+	if (!path)
+		error(COMMAND_ERROR, new_argv[0]);
+	if (execve(path, new_argv, tenvp.envp) == -1)
+		error(RUN_ERROR, new_argv[0]);
+}
+
+void	end_pid(int fds[], t_envp tenvp)
 {
 	int		fd;
 	char	*path;
@@ -97,7 +117,7 @@ void	parent_pid(int fds[], t_envp tenvp)
 	if (dup2(fds[0], STDIN_FILENO) == -1 || dup2(fd, STDOUT_FILENO) == -1)
 		error(FD_ERROR, "fd");
 	close(fds[1]);
-	new_argv = argv_init(3, tenvp);
+	new_argv = argv_init(tenvp.argc - 1, tenvp);
 	if (!new_argv)
 		error(MALLOC_ERROR, "malloc");
 	path = ft_path(new_argv[0], tenvp.paths);
