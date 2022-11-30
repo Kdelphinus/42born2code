@@ -5,6 +5,8 @@
         "algorithm": "c",
         "ft_printf.h": "c",
         "cstdio": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "__locale": "c",
+        "cstring": "c"
     }
 }
