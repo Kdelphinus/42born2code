@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe_pid.c                                         :+:      :+:    :+:   */
+/*   pipe_pid_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 14:06:53 by myko              #+#    #+#             */
-/*   Updated: 2022/11/30 17:38:30 by myko             ###   ########.fr       */
+/*   Updated: 2022/11/30 21:39:36 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,15 @@ void	start_pid(int fds[], t_envp tenvp)
 		error(RUN_ERROR, new_argv[0]);
 }
 
-void	working_pid(int fds1[], int fds2[], int argc, t_envp tenvp)
+void	mid_pid(int fds[], int fds2[], int argc, t_envp tenvp)
 {
-	int		fd;
 	char	*path;
 	char	**new_argv;
 
-	if (dup2(fds1[0], STDIN_FILENO) == -1 || dup2(fds2[1], STDOUT_FILENO) == -1)
+	if (dup2(fds[0], STDIN_FILENO) == -1 || dup2(fds2[1], STDOUT_FILENO) == -1)
 		error(FD_ERROR, "fd");
 	close(fds2[0]);
-	close(fds1[1]);
+	close(fds[1]);
 	new_argv = argv_init(argc, tenvp);
 	if (!new_argv)
 		error(MALLOC_ERROR, "malloc");
@@ -111,13 +110,13 @@ void	end_pid(int fds[], t_envp tenvp)
 	char	*path;
 	char	**new_argv;
 
-	fd = open(tenvp.argv[4], O_RDWR | O_CREAT | O_TRUNC, 420);
+	fd = open(tenvp.argv[tenvp.argc - 1], O_RDWR | O_CREAT | O_TRUNC, 420);
 	if (fd == -1)
-		error(FD_ERROR, "fd");
+		error(FD_ERROR, tenvp.argv[tenvp.argc - 1]);
 	if (dup2(fds[0], STDIN_FILENO) == -1 || dup2(fd, STDOUT_FILENO) == -1)
 		error(FD_ERROR, "fd");
 	close(fds[1]);
-	new_argv = argv_init(tenvp.argc - 1, tenvp);
+	new_argv = argv_init(tenvp.argc - 2, tenvp);
 	if (!new_argv)
 		error(MALLOC_ERROR, "malloc");
 	path = ft_path(new_argv[0], tenvp.paths);
