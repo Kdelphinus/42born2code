@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 15:06:02 by myko              #+#    #+#             */
-/*   Updated: 2022/12/01 15:23:27 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/01 17:55:38 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ void	check_str(int flag, char **new_argv);
 //ft_split_set.c
 char	**ft_split_set(char *str, char *charset);
 
-// pipe_pid
-void	start_pid(int fds[], t_envp tenvp);
-void	mid_pid(int fds[], int fds2[], int argc, t_envp tenvp);
-void	end_pid(int fds[], t_envp tenvp);
+// pipe_pid_bonus.c
+void	work_pid(int argc, t_envp tenvp);
 
 #endif
