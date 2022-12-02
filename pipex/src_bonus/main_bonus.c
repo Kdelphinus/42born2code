@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/12/01 17:55:26 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/02 18:05:19 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,10 @@ int	main(int argc, char **argv, char **envp)
 	tenvp.paths = envp_path(envp);
 	infile = open(argv[1], O_RDONLY);
 	outfile = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 420);
-	if (infile == -1 || outfile == -1)
+	if (outfile == -1)
 		error(FD_ERROR, "fd");
-	dup2(infile, STDIN_FILENO);
+	if (infile != -1)
+		dup2(infile, STDIN_FILENO);
 	dup2(outfile, STDOUT_FILENO);
 	working_pid(tenvp);
 	return (EXIT_SUCCESS);
