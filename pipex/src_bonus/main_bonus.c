@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:45:17 by myko              #+#    #+#             */
-/*   Updated: 2022/12/02 18:05:19 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/06 17:23:03 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void	working_pid(t_envp tenvp)
 				error(RUN_ERROR, "pid");
 			dup2(fds[0], STDIN_FILENO);
 			close(fds[1]);
-
 		}
 	}
 	work_pid(i, tenvp);
