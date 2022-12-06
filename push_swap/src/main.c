@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2022/11/17 17:52:20 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/06 17:26:32 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	stack_init1(int argc, char **argv, t_stack *stack)
 	}
 	return (0);
 }
-#include <stdio.h>
+
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
@@ -93,44 +93,5 @@ int	main(int argc, char **argv)
 	if (!stack.b)
 		return (1);
 	stack.b_len = 0;
-	printf("basic\na: ");
-	for (int i = 0; i < stack.a_len; i++)
-		printf("%d ", stack.a[i]);
-	printf("\n\ns_order\na: ");
-	s_order(stack.a, stack.a_len);
-	for (int i = 0; i < stack.a_len; i++)
-		printf("%d ", stack.a[i]);
-	printf("\n\ns_order\na: ");
-	s_order(stack.a, stack.a_len);
-	for (int i = 0; i < stack.a_len; i++)
-		printf("%d ", stack.a[i]);
-	printf("\n\np_order\na: ");
-	p_order(&stack, STACK_B);
-	p_order(&stack, STACK_B);
-	p_order(&stack, STACK_B);
-	for (int i = 0; i < stack.a_len; i++)
-		printf("%d ", stack.a[i]);
-	printf("\nb: ");
-	for (int i = 0; i < stack.b_len; i++)
-		printf("%d ", stack.b[i]);
-	printf("\n");
-	printf("\nr_order\na: ");
-	r_order(stack.a, stack.a_len);
-	r_order(stack.b, stack.b_len);
-	for (int i = 0; i < stack.a_len; i++)
-		printf("%d ", stack.a[i]);
-	printf("\nb: ");
-	for (int i = 0; i < stack.b_len; i++)
-		printf("%d ", stack.b[i]);
-	printf("\n");
-	printf("\nrr_order\na: ");
-	rr_order(stack.a, stack.a_len);
-	rr_order(stack.b, stack.b_len);
-	for (int i = 0; i < stack.a_len; i++)
-		printf("%d ", stack.a[i]);
-	printf("\nb: ");
-	for (int i = 0; i < stack.b_len; i++)
-		printf("%d ", stack.b[i]);
-	printf("\n");
 	return (0);
 }

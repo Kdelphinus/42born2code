@@ -55,4 +55,4 @@
 	![checker](img/checker.png)
 
 # 참고 문헌
-- [42 seoul, push_swap](https://cdn.intra.42.fr/pdf/pdf/49387/en.subject.pdf)
+- [42 seoul, push_swap](https://cdn.intra.42.fr/pdf/pdf/67975/en.subject.pdf)
