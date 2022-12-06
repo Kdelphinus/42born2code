@@ -56,3 +56,4 @@
 
 # 참고 문헌
 - [42 seoul, push_swap](https://cdn.intra.42.fr/pdf/pdf/67975/en.subject.pdf)
+- [팔만코딩경, Push Swap 병합 정렬로 해결하기](https://80000coding.oopy.io/402024b2-13ba-447a-ac0f-0eeaf91f0e5f#402024b2-13ba-447a-ac0f-0eeaf91f0e5f)
