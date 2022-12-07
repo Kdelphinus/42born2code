@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2022/12/06 20:56:47 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/07 17:26:31 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	stack_init1(int argc, char **argv, t_stack *stack)
 	}
 	return (0);
 }
-
+#include <stdio.h>
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
