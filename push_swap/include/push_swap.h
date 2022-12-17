@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/11/17 17:52:39 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/17 16:22:58 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ typedef enum s_stack_num {
 	STACK_A = 0,
 	STACK_B,
 }	t_stack_num;
+
+// utils.c
+int			ft_error(void);
+long long	ft_charp_len(char **charpoint);
+
+// stack_init.c
+void		stack_init1(int argc, char **argv, t_stack *stack);
+void		stack_init2(char **argv, t_stack *stack);
 
 // ft_atoi_int.c
 long long	ft_atoi_int(const char *str);
