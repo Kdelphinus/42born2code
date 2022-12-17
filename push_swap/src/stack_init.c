@@ -6,18 +6,20 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:20:45 by myko              #+#    #+#             */
-/*   Updated: 2022/12/17 16:21:58 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/17 20:14:51 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	stack_init1(int argc, char **argv, t_stack *stack)
+int	stack_init1(int argc, char **argv, t_stack *stack)
 {
+	int			flag;
 	long long	tmpn;
 	long long	i;
 
 	i = -1;
+	flag = 1;
 	stack->a = (int *)malloc(sizeof(int) * (argc - 1));
 	if (!stack->a)
 		ft_error();
@@ -28,21 +30,23 @@ void	stack_init1(int argc, char **argv, t_stack *stack)
 		if (tmpn == INT_ERROR)
 			ft_error();
 		stack->a[stack->a_len - i - 1] = tmpn;
+		if (i > 0 && stack->a[stack->a_len - i] > tmpn)
+			flag = 0;
 	}
-	return ;
+	return (flag);
 }
 
-void	stack_init2(char **argv, t_stack *stack)
+int	stack_init2(char **argv, t_stack *stack)
 {
+	int			flag;
 	char		**tmp;
 	long long	tmpn;
 	long long	i;
 	long long	len;
 
 	i = -1;
+	flag = 1;
 	tmp = ft_split(argv[1], ' ');
-	if (ft_atoi_int(argv[1]) != INT_ERROR)
-		return ;
 	len = ft_charp_len(tmp);
 	stack->a = (int *)malloc(sizeof(int) * len);
 	if (!stack->a)
@@ -54,6 +58,8 @@ void	stack_init2(char **argv, t_stack *stack)
 		if (tmpn == INT_ERROR)
 			ft_error();
 		stack->a[len - i - 1] = tmpn;
+		if (i > 0 && stack->a[stack->a_len - i] > tmpn)
+			flag = 0;
 	}
-	return ;
+	return (flag);
 }
