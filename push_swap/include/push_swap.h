@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/12/17 17:20:32 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/17 17:22:42 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack {
 typedef struct s_llist {
 	char			order[3];
 	struct s_llist	*next;
-} t_llist;
+}	t_llist;
 
 typedef enum s_stack_num {
 	STACK_A = 0,
