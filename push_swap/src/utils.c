@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:20:33 by myko              #+#    #+#             */
-/*   Updated: 2022/12/17 17:25:38 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/19 03:30:13 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ long long	ft_charp_len(char **charpoint)
 	return (i);
 }
 
+// TODO 명령을 합쳤으면 다음 명령어는 건너뛰어야 하는데 이 함수는 건너뛰지 않음
 void	print_command(t_llist *orders)
 {
 	while (orders->order)
