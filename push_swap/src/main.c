@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2022/12/20 21:18:43 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/20 21:34:09 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	}
 	if (stack.a_len == 1)
 		return (0);
+	printf("stack init done\n");
 	stack.b = (int *)malloc(sizeof(int) * stack.a_len);
 	if (!stack.b)
 		ft_error();
@@ -40,6 +41,11 @@ int	main(int argc, char **argv)
 	for (int i = 0; i < stack.a_len; i++)
 		printf("%d ", stack.a[i]);
 	printf("\n");
-	stack_sort(&stack);
+	printf("sort start\n");
+	stack_sort(&stack, 0, stack.a_len - 1);
+	printf("\n정렬 후\n");
+	for (int i = 0; i < stack.a_len; i++)
+		printf("%d ", stack.a[i]);
+	printf("\n");
 	return (0);
 }
