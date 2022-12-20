@@ -6,14 +6,14 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:17:18 by myko              #+#    #+#             */
-/*   Updated: 2022/11/15 21:24:52 by myko             ###   ########.fr       */
+/*   Updated: 2022/07/13 16:07:50 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int	overflow_up_check(long long result, char num)
-{
+{	
 	if (result == 922337203685477580 && num > '7')
 		return (0);
 	if (result > 922337203685477580)

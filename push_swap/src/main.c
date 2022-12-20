@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2022/12/17 20:22:55 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/20 16:18:58 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	main(int argc, char **argv)
 	if (!stack.b)
 		ft_error();
 	stack.b_len = 0;
-	orders = stack_sort(&stack);
-	print_command(&orders);
+	stack_sort(&stack);
 	return (0);
 }

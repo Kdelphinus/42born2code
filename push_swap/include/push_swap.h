@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/12/17 20:14:32 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/20 16:19:28 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			stack_init1(int argc, char **argv, t_stack *stack);
 int			stack_init2(char **argv, t_stack *stack);
 
 // stack_sort.c
-t_llist		stack_sort(t_stack *stack);
+void		stack_sort(t_stack *stack);
 
 // ft_atoi_int.c
 long long	ft_atoi_int(const char *str);
