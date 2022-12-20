@@ -137,6 +137,9 @@ tags
 # Ignore code-workspaces
 *.code-workspace
 
+# obj
+obj/*
+
 # practice
 practice.c
 
