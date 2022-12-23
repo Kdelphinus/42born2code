@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 14:05:24 by myko              #+#    #+#              #
-#    Updated: 2022/12/17 20:19:25 by myko             ###   ########.fr        #
+#    Updated: 2022/12/23 19:54:06 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC_NAME = main.c \
 		   ft_atoi_int.c \
 		   order.c \
 		   stack_init.c \
-		   stack_sort.c \
+		   quick_sort.c \
 		   utils.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
 OBJ_DIR = ./obj/

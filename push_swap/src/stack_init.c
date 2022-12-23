@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:20:45 by myko              #+#    #+#             */
-/*   Updated: 2022/12/20 21:33:20 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/23 19:34:16 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,16 @@ int	stack_init2(char **argv, t_stack *stack)
 			flag = 0;
 	}
 	return (flag);
+}
+
+void	arr_init(t_stack *stack)
+{
+	int	i;
+
+	stack->arr = (int *)malloc(sizeof(int *) * stack->a_len);
+	if (!stack->arr)
+		ft_error();
+	i = -1;
+	while (++i < stack->a_len)
+		stack->arr[i] = stack->a[i];
 }

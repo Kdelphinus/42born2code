@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/12/20 21:25:16 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/23 19:53:47 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_stack {
 	long long	b_len;
 	int			*a;
 	int			*b;
+	int			*arr;
 }	t_stack;
 
 typedef struct s_llist {
@@ -42,9 +43,10 @@ long long	ft_charp_len(char **charpoint);
 // stack_init.c
 int			stack_init1(int argc, char **argv, t_stack *stack);
 int			stack_init2(char **argv, t_stack *stack);
+void		arr_init(t_stack *stack);
 
-// stack_sort.c
-void		stack_sort(t_stack *stack, int left, int right);
+// merge_sort.c
+void		quick_sort(int *arr, int left, int right);
 
 // ft_atoi_int.c
 long long	ft_atoi_int(const char *str);

@@ -1,45 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_sort.c                                       :+:      :+:    :+:   */
+/*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:24:46 by myko              #+#    #+#             */
-/*   Updated: 2022/12/20 21:45:05 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/23 20:04:29 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-#include <stdio.h> // TODO debug
 
-void	stack_sort(t_stack *stack, int left, int right)
+static void	swap_arg(int *arr, int *i, int *j)
+{
+	int	tmp;
+
+	tmp = arr[*i];
+	arr[*i] = arr[*j];
+	arr[*j] = tmp;
+	(*i)++;
+	(*j)--;
+}
+
+void	quick_sort(int *arr, int left, int right)
 {
 	int	pivot;
 	int	l;
 	int r;
-	int	tmp;
 
 	l = left;
 	r = right;
-	pivot = stack->a[(l + r) / 2];
+	pivot = arr[(l + r) / 2];
 	while (l <= r)
 	{
-		while (stack->a[l] > pivot)
+		while (arr[l] > pivot)
 			l++;
-		while (stack->a[r] < pivot)
+		while (arr[r] < pivot)
 			r--;
 		if (l <= r)
-		{
-			tmp = stack->a[l];
-			stack->a[l] = stack->a[r];
-			stack->a[r] = tmp;
-			l++;
-			r--;
-		}
+			swap_arg(arr, &l, &r);
 	}
 	if (left < r)
-		stack_sort(stack, left, r);
+		quick_sort(arr, left, r);
 	if (l < right)
-		stack_sort(stack, l, right);
+		quick_sort(arr, l, right);
 }
