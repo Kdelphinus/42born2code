@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/12/23 19:53:47 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/23 21:45:09 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_stack {
 	long long	a_len;
 	long long	b_len;
+	long long	arr_len;
 	int			*a;
 	int			*b;
 	int			*arr;
@@ -37,7 +38,7 @@ typedef enum s_stack_num {
 
 // utils.c
 int			ft_error(void);
-void		print_command(t_llist *orders);
+int			is_duplication(int *arr, int num);
 long long	ft_charp_len(char **charpoint);
 
 // stack_init.c
@@ -45,7 +46,10 @@ int			stack_init1(int argc, char **argv, t_stack *stack);
 int			stack_init2(char **argv, t_stack *stack);
 void		arr_init(t_stack *stack);
 
-// merge_sort.c
+// find_order.c
+void		find_order(t_stack *stack);
+
+// quick_sort.c
 void		quick_sort(int *arr, int left, int right);
 
 // ft_atoi_int.c

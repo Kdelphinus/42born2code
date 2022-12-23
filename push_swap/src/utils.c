@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:20:33 by myko              #+#    #+#             */
-/*   Updated: 2022/12/20 21:45:44 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/23 20:19:27 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,17 @@ long long	ft_charp_len(char **charpoint)
 	while (charpoint[i])
 		i++;
 	return (i);
+}
+
+int	is_duplication(int *arr, int num)
+{
+	int	i;
+
+	i = -1;
+	while (++i < num - 1)
+	{
+		if (arr[i] == arr[i + 1])
+			return (1);
+	}
+	return (0);
 }
