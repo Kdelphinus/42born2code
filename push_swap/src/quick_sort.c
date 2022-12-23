@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:24:46 by myko              #+#    #+#             */
-/*   Updated: 2022/12/23 20:04:29 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/23 20:07:32 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	swap_arg(int *arr, int *i, int *j)
 
 void	quick_sort(int *arr, int left, int right)
 {
-	int	pivot;
 	int	l;
-	int r;
+	int	r;
+	int	pivot;
 
 	l = left;
 	r = right;
