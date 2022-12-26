@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 00:32:58 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/27 01:34:37 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_stack {
 
 typedef struct s_pivots {
 	int	one;
-	int two;
+	int	two;
 	int	ra;
 	int	rb;
 	int	pa;
@@ -69,6 +69,12 @@ void		quick_sort(int *arr, int left, int right);
 
 // ft_atoi_int.c
 long long	ft_atoi_int(const char *str);
+
+// sort_utils.c
+void		basic_sort_a(t_stack *stack, int len);
+void		basic_sort_b(int len, t_stack *stack, t_pivots *pivots);
+t_pivots	set_pivot(t_stack *stack, int goal);
+int			min(int a, int b);
 
 // order.c
 void		s_order(int *stack, long long len, int flag);

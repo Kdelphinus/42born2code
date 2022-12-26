@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:58:44 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 00:51:24 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/27 01:27:46 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	double_order(t_stack *stack, int order, t_pivots *pivots)
 		r_order(stack->b, stack->b_len, DOUBLE_ORDER, pivots);
 		ft_putstr_fd("rr\n", STDOUT_FILENO);
 	}
-	else if(order == RR_ORDER)
+	else if (order == RR_ORDER)
 	{
 		rr_order(stack->a, stack->a_len, DOUBLE_ORDER);
 		rr_order(stack->b, stack->b_len, DOUBLE_ORDER);
