@@ -6,20 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 07:24:02 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/27 07:41:07 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-0 1 2
------
-
-1 3 2
-2 1 3
-2 3 1
-3 1 2
-3 2 1
 
 static int	hard_sort(t_stack *stack)
 {
@@ -29,12 +20,22 @@ static int	hard_sort(t_stack *stack)
 	{
 		if (stack->a[0] < stack->a[1] && stack->a[1] < stack->a[2])
 		{
+			ft_putstr_fd("sa\n", STDOUT_FILENO);
+			ft_putstr_fd("rra\n", STDOUT_FILENO);
+		}
+		else if (stack->a[1] < stack->a[2] && stack->a[2] < stack->a[0])
+			ft_putstr_fd("sa\n", STDOUT_FILENO);
+		else if (stack->a[0] > stack->a[1] && stack->a[2] > stack->a[0])
 			ft_putstr_fd("ra\n", STDOUT_FILENO);
+		else if (stack->a[0] < stack->a[1] && stack->a[0] > stack->a[2])
+		{
+			ft_putstr_fd("sa\n", STDOUT_FILENO);
 			ft_putstr_fd("ra\n", STDOUT_FILENO);
 		}
-		else if (stack->a[0] > stack->a[1])
-		{}
+		else if (stack->a[0] < stack->a[2] && stack->a[2] < stack->a[1])
+			ft_putstr_fd("rra\n", STDOUT_FILENO);
 	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
