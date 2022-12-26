@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 00:07:43 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/27 00:55:09 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	main(int argc, char **argv)
 	if (is_duplication(stack.arr, stack.a_len))
 		ft_error();
 	find_order(&stack);
-	printf("a: ");
-	for (int i = stack.a_len - 1; i >= 0; i--)
-		printf("%d ", stack.a[i]);
-	printf("\n");
+	// printf("a: ");
+	// for (int i = stack.a_len - 1; i >= 0; i--)
+	// 	printf("%d ", stack.a[i]);
+	// printf("\n");
 	return (0);
 }

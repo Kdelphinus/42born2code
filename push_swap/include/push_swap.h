@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 00:01:36 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/27 00:32:58 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct s_pivots {
 	int two;
 	int	ra;
 	int	rb;
-	int	p;
+	int	pa;
+	int	pb;
 }	t_pivots;
 
 typedef struct s_llist {
@@ -71,9 +72,9 @@ long long	ft_atoi_int(const char *str);
 
 // order.c
 void		s_order(int *stack, long long len, int flag);
-void		p_order(t_stack *stack, long long goal);
-void		r_order(int *stack, long long len, int flag);
+void		p_order(t_stack *stack, long long goal, t_pivots *pivots);
+void		r_order(int *stack, long long len, int flag, t_pivots *pivots);
 void		rr_order(int *stack, long long len, int flag);
-void		double_order(t_stack *stack, int order);
+void		double_order(t_stack *stack, int order, t_pivots *pivots);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:58:44 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 00:04:18 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/27 00:51:24 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	s_order(int *stack, long long len, int flag)
 	}
 }
 
-void	p_order(t_stack *stack, long long goal)
+void	p_order(t_stack *stack, long long goal, t_pivots *pivots)
 {
 	long long	tmp;
 
@@ -38,6 +38,7 @@ void	p_order(t_stack *stack, long long goal)
 		stack->b_len--;
 		stack->a[stack->a_len] = tmp;
 		stack->a_len++;
+		pivots->pa++;
 		ft_putstr_fd("pa\n", STDOUT_FILENO);
 	}
 	else if (goal == STACK_B && stack->a_len > 0)
@@ -46,11 +47,12 @@ void	p_order(t_stack *stack, long long goal)
 		stack->a_len--;
 		stack->b[stack->b_len] = tmp;
 		stack->b_len++;
+		pivots->pb++;
 		ft_putstr_fd("pb\n", STDOUT_FILENO);
 	}
 }
 
-void	r_order(int *stack, long long len, int flag)
+void	r_order(int *stack, long long len, int flag, t_pivots *pivots)
 {
 	long long	i;
 	long long	tmp;
@@ -62,10 +64,18 @@ void	r_order(int *stack, long long len, int flag)
 		while (--i >= 0)
 			stack[i + 1] = stack[i];
 		stack[0] = tmp;
-		if (flag == STACK_A)
+	}
+	if (flag == STACK_A)
+	{
+		if (len > 1)
 			ft_putstr_fd("ra\n", STDOUT_FILENO);
-		else if (flag == STACK_B)
+		pivots->ra++;
+	}
+	else if (flag == STACK_B)
+	{
+		if (len > 1)
 			ft_putstr_fd("rb\n", STDOUT_FILENO);
+		pivots->rb++;
 	}
 }
 
@@ -88,7 +98,7 @@ void	rr_order(int *stack, long long len, int flag)
 	}
 }
 
-void	double_order(t_stack *stack, int order)
+void	double_order(t_stack *stack, int order, t_pivots *pivots)
 {
 	if (order == S_ORDER)
 	{
@@ -98,8 +108,8 @@ void	double_order(t_stack *stack, int order)
 	}
 	else if (order == R_ORDER)
 	{
-		r_order(stack->a, stack->a_len, DOUBLE_ORDER);
-		r_order(stack->b, stack->b_len, DOUBLE_ORDER);
+		r_order(stack->a, stack->a_len, DOUBLE_ORDER, pivots);
+		r_order(stack->b, stack->b_len, DOUBLE_ORDER, pivots);
 		ft_putstr_fd("rr\n", STDOUT_FILENO);
 	}
 	else if(order == RR_ORDER)
