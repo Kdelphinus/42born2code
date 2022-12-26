@@ -26,6 +26,14 @@
             "externalConsole": false,
             "MIMode": "lldb",
             "preLaunchTask": "C/C++: clang 활성 파일 빌드"
-        }
+        },
+        {
+			"type": "lldb",
+			"request": "launch",
+			"name": "Launch",
+			"program": "${workspaceFolder}/${fileBasenameNoExtension}",
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		}
     ]
 }
