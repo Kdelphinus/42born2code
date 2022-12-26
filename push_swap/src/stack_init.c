@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:20:45 by myko              #+#    #+#             */
-/*   Updated: 2022/12/23 21:45:44 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/26 22:43:36 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,23 @@ int	stack_init2(char **argv, t_stack *stack)
 	return (flag);
 }
 
-void	arr_init(t_stack *stack)
+void	arr_init(t_stack *stack, int len, int flag)
 {
 	int	i;
 
-	stack->arr_len = stack->a_len;
-	stack->arr = (int *)malloc(sizeof(int *) * stack->arr_len);
+	stack->arr_len = len;
+	stack->arr = (int *)malloc(sizeof(int *) * len);
 	if (!stack->arr)
 		ft_error();
 	i = -1;
-	while (++i < stack->arr_len)
-		stack->arr[i] = stack->a[i];
+	if (flag == STACK_A)
+	{
+		while (++i < len)
+			stack->arr[i] = stack->a[i];
+	}
+	else
+	{
+		while (++i < len)
+			stack->arr[i] = stack->b[i];
+	}
 }

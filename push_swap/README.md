@@ -56,4 +56,4 @@
 
 # 참고 문헌
 - [42 seoul, push_swap](https://cdn.intra.42.fr/pdf/pdf/67975/en.subject.pdf)
-- [hyeojung.log, [push_swap] 내맘대로 한 푸쉬스왑 정리해 봄](https://velog.io/@welloff_jj/push-swap-typeup)
+- [push_swap 가이드](https://www.notion.so/push_swap-c15e62229b9541d78fadec4d6aae8b50)
