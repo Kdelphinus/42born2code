@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 01:28:27 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 01:34:44 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/27 09:09:16 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	basic_sort_a(t_stack *stack, int len)
 
 void	basic_sort_b(int len, t_stack *stack, t_pivots *pivots)
 {
-	if (len < 1)
+	if (len == 0)
 		return ;
-	if (len == 1)
+	else if (len == 1)
 	{
 		p_order(stack, STACK_A, pivots);
 		return ;
 	}
-	if (stack->b[stack->b_len - 1] < stack->b[stack->b_len - 2])
+	else if (stack->b[stack->b_len - 1] < stack->b[stack->b_len - 2])
 		s_order(stack->b, stack->b_len, STACK_B);
 	p_order(stack, STACK_A, pivots);
 	p_order(stack, STACK_A, pivots);

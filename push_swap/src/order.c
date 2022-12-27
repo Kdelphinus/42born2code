@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:58:44 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 01:27:46 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/27 09:18:10 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,16 @@ void	p_order(t_stack *stack, long long goal, t_pivots *pivots)
 {
 	long long	tmp;
 
+	if (goal == STACK_A)
+		pivots->pa++;
+	else if (goal == STACK_B)
+		pivots->pb++;
 	if (goal == STACK_A && stack->b_len > 0)
 	{
 		tmp = stack->b[stack->b_len - 1];
 		stack->b_len--;
 		stack->a[stack->a_len] = tmp;
 		stack->a_len++;
-		pivots->pa++;
 		ft_putstr_fd("pa\n", STDOUT_FILENO);
 	}
 	else if (goal == STACK_B && stack->a_len > 0)
@@ -47,7 +50,6 @@ void	p_order(t_stack *stack, long long goal, t_pivots *pivots)
 		stack->a_len--;
 		stack->b[stack->b_len] = tmp;
 		stack->b_len++;
-		pivots->pb++;
 		ft_putstr_fd("pb\n", STDOUT_FILENO);
 	}
 }
