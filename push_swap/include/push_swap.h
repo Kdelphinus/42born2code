@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 01:34:37 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/27 09:30:13 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int			min(int a, int b);
 
 // order.c
 void		s_order(int *stack, long long len, int flag);
-void		p_order(t_stack *stack, long long goal, t_pivots *pivots);
+void		p_order(t_stack *stack, int goal, t_pivots *pivots);
 void		r_order(int *stack, long long len, int flag, t_pivots *pivots);
 void		rr_order(int *stack, long long len, int flag);
 void		double_order(t_stack *stack, int order, t_pivots *pivots);

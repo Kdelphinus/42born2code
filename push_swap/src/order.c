@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:58:44 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 09:18:10 by myko             ###   ########.fr       */
+/*   Updated: 2022/12/27 09:38:01 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	s_order(int *stack, long long len, int flag)
 	}
 }
 
-void	p_order(t_stack *stack, long long goal, t_pivots *pivots)
+void	p_order(t_stack *stack, int goal, t_pivots *pivots)
 {
-	long long	tmp;
+	int	tmp;
 
 	if (goal == STACK_A)
 		pivots->pa++;
@@ -57,7 +57,7 @@ void	p_order(t_stack *stack, long long goal, t_pivots *pivots)
 void	r_order(int *stack, long long len, int flag, t_pivots *pivots)
 {
 	long long	i;
-	long long	tmp;
+	int			tmp;
 
 	i = len;
 	if (len > 1)
@@ -84,7 +84,7 @@ void	r_order(int *stack, long long len, int flag, t_pivots *pivots)
 void	rr_order(int *stack, long long len, int flag)
 {
 	long long	i;
-	long long	tmp;
+	int			tmp;
 
 	i = -1;
 	if (len > 1)
@@ -92,7 +92,7 @@ void	rr_order(int *stack, long long len, int flag)
 		tmp = stack[0];
 		while (++i < len - 1)
 			stack[i] = stack[i + 1];
-		stack[len - 1] = tmp;
+		stack[i] = tmp;
 		if (flag == STACK_A)
 			ft_putstr_fd("rra\n", STDOUT_FILENO);
 		else if (flag == STACK_B)
