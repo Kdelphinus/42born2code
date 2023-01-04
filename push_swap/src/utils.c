@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:20:33 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 20:11:01 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 21:44:25 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	is_duplication(int *arr, int num)
 	return (0);
 }
 
-int	min(int a, int b)
+long long	min(long long a, long long b)
 {
 	if (a < b)
 		return (a);

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 20:49:25 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 22:14:37 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef enum s_stack_num {
 int			ft_error(void);
 int			is_duplication(int *arr, int num);
 long long	ft_charp_len(char **charpoint);
-int			min(int a, int b);
+long long	min(long long a, long long b);
 
 // stack_init.c
 int			stack_init1(int argc, char **argv, t_stack *stack);
@@ -62,7 +62,7 @@ void		arr_init(t_stack *stack, long long len, int flag);
 
 // hard_sort_func.c
 void		three_sort(int *stack, long long len, t_pivots *pivots);
-void		three_reverse_sort(t_stack *stack, t_pivots *pivots);
+void		three_reverse_sort(t_stack *stack, long long len, t_pivots *pivots);
 
 // hard_sort_func_2.c
 void		other_sort(t_stack *stack, long long len, t_pivots *pivots);
@@ -83,6 +83,7 @@ long long	ft_atoi_int(const char *str);
 void		basic_sort_a(t_stack *stack, long long len, t_pivots *pivots);
 void		basic_sort_b(t_stack *stack, long long len, t_pivots *pivots);
 t_pivots	set_pivot(t_stack *stack, int goal, long long r);
+void		set_one_pivot(t_stack *stack, t_pivots *pivots, int goal, long long len);
 int			is_sort(int *stack, int len);
 
 // order.c

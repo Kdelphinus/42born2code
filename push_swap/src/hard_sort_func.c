@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:23:34 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 20:54:02 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 21:55:39 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ void	three_sort(int *stack, long long len, t_pivots *pivots)
 	}
 }
 
-void	three_reverse_sort(t_stack *stack, t_pivots *pivots)
+void	three_reverse_sort(t_stack *stack, long long len, t_pivots *pivots)
 {
-	int	len;
-
-	len = stack->b_len - 1;
+	len--;
 	if (stack->b[len] > stack->b[len - 2] && stack->b[len - 2] > stack->b[len - 1])
 	{
 		p_order(stack, STACK_A, pivots);
@@ -83,7 +81,7 @@ void	three_reverse_sort(t_stack *stack, t_pivots *pivots)
 		rr_order(stack->b, stack->b_len, STACK_B);
 		p_order(stack, STACK_A, pivots);
 	}
-	else
+	else if (stack->b[len - 2] < stack->b[len - 1] && stack->b[len - 1] < stack->b[len])
 	{
 		p_order(stack, STACK_A, pivots);
 		p_order(stack, STACK_A, pivots);
