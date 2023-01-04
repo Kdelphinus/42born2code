@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:58:44 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 19:28:04 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 19:38:05 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	p_order(t_stack *stack, int goal, t_pivots *pivots)
 		ft_putstr_fd("pb\n", STDOUT_FILENO);
 	}
 }
-#include <stdio.h>
+
 void	r_order(int *stack, long long len, int flag, t_pivots *pivots)
 {
 	long long	i;

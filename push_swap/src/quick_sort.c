@@ -6,13 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:24:46 by myko              #+#    #+#             */
-/*   Updated: 2022/12/23 20:07:32 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 20:31:33 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	swap_arg(int *arr, int *i, int *j)
+static void	swap_arg(int *arr, long long *i, long long *j)
 {
 	int	tmp;
 
@@ -23,11 +23,11 @@ static void	swap_arg(int *arr, int *i, int *j)
 	(*j)--;
 }
 
-void	quick_sort(int *arr, int left, int right)
+void	quick_sort(int *arr, long long left, long long right)
 {
-	int	l;
-	int	r;
-	int	pivot;
+	long long	pivot;
+	long long	l;
+	long long	r;
 
 	l = left;
 	r = right;

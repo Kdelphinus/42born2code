@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:11:40 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 18:19:06 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 21:26:28 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,20 @@ static void	reverse_stack(t_stack *stack, t_pivots *pivots)
 		rr_order(stack->a, stack->a_len, STACK_A);
 }
 
-void	a_to_b(t_stack *stack, int r)
+void	a_to_b(t_stack *stack, long long r)
 {
 	t_pivots	pivots;
 
 	if (is_sort(stack->a, stack->a_len))
 		return ;
-	pivots = set_pivot(stack, STACK_A);
-	if (r <= 3)
+	pivots = set_pivot(stack, STACK_A, r);
+	if (r <= 5)
 	{
+		ft_putstr_fd("min 5 a\n", STDOUT_FILENO);
 		basic_sort_a(stack, r, &pivots);
 		return ;
 	}
-	while (r--)
+	while (--r >= 0)
 	{
 		if (stack->a[stack->a_len - 1] >= pivots.two)
 			r_order(stack->a, stack->a_len, STACK_A, &pivots);
@@ -56,17 +57,18 @@ void	a_to_b(t_stack *stack, int r)
 	b_to_a(stack, pivots.pb - pivots.rb);
 }
 
-void	b_to_a(t_stack *stack, int r)
+void	b_to_a(t_stack *stack, long long r)
 {
 	t_pivots	pivots;
 
-	pivots = set_pivot(stack, STACK_B);
-	if (r <= 3)
+	pivots = set_pivot(stack, STACK_B, r);
+	if (r <= 5)
 	{
-		basic_sort_b(r, stack, &pivots);
+		ft_putstr_fd("min 5 b\n", STDOUT_FILENO);
+		basic_sort_b(stack, r, &pivots);
 		return ;
 	}
-	while (r--)
+	while (--r >= 0)
 	{
 		if (stack->b[stack->b_len - 1] < pivots.one)
 			r_order(stack->b, stack->b_len, STACK_B, &pivots);

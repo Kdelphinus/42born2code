@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:25:32 by myko              #+#    #+#             */
-/*   Updated: 2022/12/17 16:16:57 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 19:46:49 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ static int	overflow_down_check(long long result, char num)
 	return (1);
 }
 
+static void	over_check(long long result, char c)
+{
+	if (!overflow_up_check(result, c))
+		ft_error();
+	if (!overflow_down_check(result, c))
+		ft_error();
+}
+
 long long	ft_atoi_int(const char *str)
 {
 	int			i;
@@ -45,12 +53,11 @@ long long	ft_atoi_int(const char *str)
 			sign *= -1;
 		i++;
 	}
+	if (!ft_isdigit(str[i]))
+		ft_error();
 	while (ft_isdigit(str[i]))
 	{
-		if (!overflow_up_check(result, str[i]))
-			ft_error();
-		if (!overflow_down_check(result, str[i]))
-			ft_error();
+		over_check(result, str[i]);
 		result = result * 10 + (str[i] - '0') * sign;
 		i++;
 	}

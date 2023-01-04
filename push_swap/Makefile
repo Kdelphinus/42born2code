@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 14:05:24 by myko              #+#    #+#              #
-#    Updated: 2023/01/04 12:33:04 by myko             ###   ########.fr        #
+#    Updated: 2023/01/04 20:52:31 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC_NAME = main.c \
 		   find_order.c \
 		   sort_utils.c \
 		   hard_sort_func.c \
+		   hard_sort_func_2.c \
 		   utils.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
 OBJ_DIR = ./obj/

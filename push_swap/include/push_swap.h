@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 18:17:55 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 20:49:25 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,32 +53,36 @@ typedef enum s_stack_num {
 int			ft_error(void);
 int			is_duplication(int *arr, int num);
 long long	ft_charp_len(char **charpoint);
+int			min(int a, int b);
 
 // stack_init.c
 int			stack_init1(int argc, char **argv, t_stack *stack);
 int			stack_init2(char **argv, t_stack *stack);
-void		arr_init(t_stack *stack, int len, int flag);
+void		arr_init(t_stack *stack, long long len, int flag);
 
 // hard_sort_func.c
 void		three_sort(int *stack, long long len, t_pivots *pivots);
 void		three_reverse_sort(t_stack *stack, t_pivots *pivots);
 
+// hard_sort_func_2.c
+void		other_sort(t_stack *stack, long long len, t_pivots *pivots);
+void		other_reverse_sort(t_stack *stack, long long len, t_pivots *pivots);
+
 // find_order.c
 void		find_order(t_stack *stack);
-void		a_to_b(t_stack *stack, int r);
-void		b_to_a(t_stack *stack, int r);
+void		a_to_b(t_stack *stack, long long r);
+void		b_to_a(t_stack *stack, long long r);
 
 // quick_sort.c
-void		quick_sort(int *arr, int left, int right);
+void		quick_sort(int *arr, long long left, long long right);
 
 // ft_atoi_int.c
 long long	ft_atoi_int(const char *str);
 
 // sort_utils.c
-void		basic_sort_a(t_stack *stack, int len, t_pivots *pivots);
-void		basic_sort_b(int len, t_stack *stack, t_pivots *pivots);
-t_pivots	set_pivot(t_stack *stack, int goal);
-int			min(int a, int b);
+void		basic_sort_a(t_stack *stack, long long len, t_pivots *pivots);
+void		basic_sort_b(t_stack *stack, long long len, t_pivots *pivots);
+t_pivots	set_pivot(t_stack *stack, int goal, long long r);
 int			is_sort(int *stack, int len);
 
 // order.c
