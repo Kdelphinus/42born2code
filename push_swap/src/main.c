@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 13:10:14 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 16:56:26 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,24 @@ static int	hard_sort(t_stack *stack)
 	if (stack->a_len == 2)
 		ft_putstr_fd("sa\n", STDOUT_FILENO);
 	else if (stack->a_len == 3)
-		three_sort(stack->a, 3);
-	else if (stack->a_len == 4)
-		four_sort(stack->a, 4);
+	{
+		if (stack->a[0] < stack->a[1] && stack->a[1] < stack->a[2])
+		{
+			ft_putstr_fd("sa\n", STDOUT_FILENO);
+			ft_putstr_fd("rra\n", STDOUT_FILENO);
+		}
+		else if (stack->a[1] < stack->a[2] && stack->a[2] < stack->a[0])
+			ft_putstr_fd("sa\n", STDOUT_FILENO);
+		else if (stack->a[0] > stack->a[1] && stack->a[2] > stack->a[0])
+			ft_putstr_fd("ra\n", STDOUT_FILENO);
+		else if (stack->a[0] < stack->a[1] && stack->a[0] > stack->a[2])
+		{
+			ft_putstr_fd("sa\n", STDOUT_FILENO);
+			ft_putstr_fd("ra\n", STDOUT_FILENO);
+		}
+		else if (stack->a[0] < stack->a[2] && stack->a[2] < stack->a[1])
+			ft_putstr_fd("rra\n", STDOUT_FILENO);
+	}
 	return (0);
 }
 

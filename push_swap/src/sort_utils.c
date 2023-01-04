@@ -6,20 +6,20 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 01:28:27 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 13:08:48 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 17:12:44 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	basic_sort_a(t_stack *stack, int len)
+void	basic_sort_a(t_stack *stack, int len, t_pivots *pivots)
 {
 	if (len <= 1)
 		return ;
-	if (len == 2 && stack->a[stack->a_len - 1] > stack->a[stack->a_len - 2])
+	else if (len == 2 && stack->a[stack->a_len - 1] > stack->a[stack->a_len - 2])
 		s_order(stack->a, stack->a_len, STACK_A);
-	if (len == 3)
-		three_sort(stack->a, 3);
+	else if (len == 3)
+		three_sort(stack->a, stack->a_len, pivots);
 	return ;
 }
 
@@ -28,14 +28,16 @@ void	basic_sort_b(int len, t_stack *stack, t_pivots *pivots)
 	if (len == 0)
 		return ;
 	else if (len == 1)
-	{
 		p_order(stack, STACK_A, pivots);
-		return ;
+	else if (len == 2)
+	{
+		if (stack->b[stack->b_len - 1] < stack->b[stack->b_len - 2])
+			s_order(stack->b, stack->b_len, STACK_B);
+		p_order(stack, STACK_A, pivots);
+		p_order(stack, STACK_A, pivots);
 	}
-	else if (stack->b[stack->b_len - 1] < stack->b[stack->b_len - 2])
-		s_order(stack->b, stack->b_len, STACK_B);
-	p_order(stack, STACK_A, pivots);
-	p_order(stack, STACK_A, pivots);
+	else if (len == 3)
+		three_reverse_sort(stack, pivots);
 	return ;
 }
 

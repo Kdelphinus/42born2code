@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 13:09:34 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 17:12:18 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,8 @@ int			stack_init2(char **argv, t_stack *stack);
 void		arr_init(t_stack *stack, int len, int flag);
 
 // hard_sort_func.c
-void		three_sort(int *stack, int len);
-void		four_sort(int *stack, int len);
-// void		five_sort(int *stack, int len);
+void		three_sort(int *stack, long long len, t_pivots *pivots);
+void		three_reverse_sort(t_stack *stack, t_pivots *pivots);
 
 // find_order.c
 void		find_order(t_stack *stack);
@@ -76,7 +75,7 @@ void		quick_sort(int *arr, int left, int right);
 long long	ft_atoi_int(const char *str);
 
 // sort_utils.c
-void		basic_sort_a(t_stack *stack, int len);
+void		basic_sort_a(t_stack *stack, int len, t_pivots *pivots);
 void		basic_sort_b(int len, t_stack *stack, t_pivots *pivots);
 t_pivots	set_pivot(t_stack *stack, int goal);
 int			min(int a, int b);
