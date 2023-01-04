@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:58:44 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 17:19:54 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 19:28:04 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ void	p_order(t_stack *stack, int goal, t_pivots *pivots)
 		ft_putstr_fd("pb\n", STDOUT_FILENO);
 	}
 }
-
+#include <stdio.h>
 void	r_order(int *stack, long long len, int flag, t_pivots *pivots)
 {
 	long long	i;
 	int			tmp;
 
-	i = len;
+	i = len - 1;
 	if (len > 1)
 	{
 		tmp = stack[len - 1];
@@ -86,18 +86,17 @@ void	rr_order(int *stack, long long len, int flag)
 	long long	i;
 	int			tmp;
 
+	if (len <= 1)
+		return ;
 	i = -1;
-	if (len > 1)
-	{
-		tmp = stack[0];
-		while (++i < len - 1)
-			stack[i] = stack[i + 1];
-		stack[i] = tmp;
-		if (flag == STACK_A)
-			ft_putstr_fd("rra\n", STDOUT_FILENO);
-		else if (flag == STACK_B)
-			ft_putstr_fd("rrb\n", STDOUT_FILENO);
-	}
+	tmp = stack[0];
+	while (++i < len - 1)
+		stack[i] = stack[i + 1];
+	stack[len - 1] = tmp;
+	if (flag == STACK_A)
+		ft_putstr_fd("rra\n", STDOUT_FILENO);
+	else if (flag == STACK_B)
+		ft_putstr_fd("rrb\n", STDOUT_FILENO);
 }
 
 void	double_order(t_stack *stack, int order, t_pivots *pivots)
