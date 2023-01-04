@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 01:28:27 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 17:30:47 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 18:22:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,20 @@ int	min(int a, int b)
 	if (a < b)
 		return (a);
 	return (b);
+}
+
+int	is_sort(int *stack, int len)
+{
+	int	i;
+	int	tmp;
+
+	i = 0;
+	tmp = stack[i];
+	while (++i < len)
+	{
+		if (stack[i] > tmp)
+			return (0);
+		tmp = stack[i];
+	}
+	return (1);
 }

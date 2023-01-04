@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:11:40 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 17:23:05 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 18:19:06 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	a_to_b(t_stack *stack, int r)
 {
 	t_pivots	pivots;
 
+	if (is_sort(stack->a, stack->a_len))
+		return ;
 	pivots = set_pivot(stack, STACK_A);
 	if (r <= 3)
 	{

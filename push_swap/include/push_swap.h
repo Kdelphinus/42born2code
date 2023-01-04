@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 17:12:18 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 18:17:55 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void		basic_sort_a(t_stack *stack, int len, t_pivots *pivots);
 void		basic_sort_b(int len, t_stack *stack, t_pivots *pivots);
 t_pivots	set_pivot(t_stack *stack, int goal);
 int			min(int a, int b);
+int			is_sort(int *stack, int len);
 
 // order.c
 void		s_order(int *stack, long long len, int flag);
