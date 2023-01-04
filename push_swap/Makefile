@@ -6,12 +6,12 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 14:05:24 by myko              #+#    #+#              #
-#    Updated: 2022/12/27 01:30:38 by myko             ###   ########.fr        #
+#    Updated: 2023/01/04 12:33:04 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-FLAG = -Wall -Wextra -Werror -g
+FLAG = -Wall -Wextra -Werror
 LIBFT_FLAG = -Llib -lft
 
 SRC_DIR = ./src/
@@ -22,6 +22,7 @@ SRC_NAME = main.c \
 		   quick_sort.c \
 		   find_order.c \
 		   sort_utils.c \
+		   hard_sort_func.c \
 		   utils.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
 OBJ_DIR = ./obj/

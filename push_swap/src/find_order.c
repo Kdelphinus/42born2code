@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:11:40 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 09:40:34 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 12:45:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	a_to_b(t_stack *stack, int r)
 	t_pivots	pivots;
 
 	pivots = set_pivot(stack, STACK_A);
-	if (r < 3)
+	if (r <= 3)
 	{
 		basic_sort_a(stack, r);
 		return ;
@@ -59,7 +59,7 @@ void	b_to_a(t_stack *stack, int r)
 	t_pivots	pivots;
 
 	pivots = set_pivot(stack, STACK_B);
-	if (r < 3)
+	if (r <= 3)
 	{
 		basic_sort_b(r, stack, &pivots);
 		return ;

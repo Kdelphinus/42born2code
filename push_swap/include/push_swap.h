@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 09:30:13 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 13:09:34 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ long long	ft_charp_len(char **charpoint);
 int			stack_init1(int argc, char **argv, t_stack *stack);
 int			stack_init2(char **argv, t_stack *stack);
 void		arr_init(t_stack *stack, int len, int flag);
+
+// hard_sort_func.c
+void		three_sort(int *stack, int len);
+void		four_sort(int *stack, int len);
+// void		five_sort(int *stack, int len);
 
 // find_order.c
 void		find_order(t_stack *stack);

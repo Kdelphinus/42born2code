@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 01:28:27 by myko              #+#    #+#             */
-/*   Updated: 2022/12/27 09:31:15 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/04 13:08:48 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 void	basic_sort_a(t_stack *stack, int len)
 {
-	if (len > 1 && stack->a[stack->a_len - 1] > stack->a[stack->a_len - 2])
+	if (len <= 1)
+		return ;
+	if (len == 2 && stack->a[stack->a_len - 1] > stack->a[stack->a_len - 2])
 		s_order(stack->a, stack->a_len, STACK_A);
+	if (len == 3)
+		three_sort(stack->a, 3);
 	return ;
 }
 

@@ -1,5 +1,10 @@
 # Push_swap
 
+## Index
+0. [Mandatory 개요](#0-mandatory-개요)  
+1. [Quick sort](#1-quick-sort)  
+2. [Logic](#2-logic)  
+
 ## 0. Mandatory 개요
 
 ### 0.1 목표
@@ -46,17 +51,96 @@
 - 최소 작업으로 정렬이 수행되도록 만들어야 한다.
 - 매개변수가 입력되지 않은 경우, 프로그램은 아무 것도 표시하지 않고 프롬프트를 반환
 - 오류의 경우, 표준 오류에 "Error"를 표시한 다음 "\n"을 표시해야 한다. 
-	- 정수가 아닌 인자가 들어올 경우
-	- 정수의 범위를 넘어가는 경우
-	- 중복된 인자가 있는 경우
+    - 정수가 아닌 인자가 들어올 경우
+    - 정수의 범위를 넘어가는 경우
+    - 중복된 인자가 있는 경우
 - 올바른 인자와 잘못된 인자가 들어왔을 때  
-	![error](img/error.png)
+    ![error](img/error.png)
 - checker를 사용했을 때  
-	![checker](img/checker.png)
+    ![checker](img/checker.png)
+
+## 1. Quick sort
+
+**Quick sort**는 평균적인 상황에서 최고의 성능을 나타내는 정렬 방법 중 하나이다.
+병합 정렬, 힙 정렬과 마찬가지로 $O(n \log n)$ 의 시간복잡도가 소요된다.
+
+방식은 간단한데 적절한 피벗(원소) 하나를 정하고 피벗보다 작은 것은 피벗 앞으로, 큰 것은 피벗 뒤로 빼내어 피벗보다 큰 것과 작은 것으로 나눈다.
+그렇게 정렬해야 할 원소들의 개수가 0 또는 1이 될 때까지 나누며 반복하는 것이다.
+
+![퀵 정렬](https://github.com/Kdelphinus/Python_study/blob/main/Baekjoon/solve_step_by_step/10_sort/image/quick_sort.png?raw=true)
+
+위와 같은 방식으로 진행된다고 할 수 있다.
+그런데 이러한 퀵 정렬은 피벗이 최소값이나 최대값으로 결정되면 성능이 $O(n^2)$ 까지 안 좋아질 수 있다.
+그렇기에 최대한 중간값을 피벗으로 정하는 것이 퀵 정렬을 효율적으로 사용하는 방법이다.
+
+그러나 퀵 정렬을 하는 데이터들은 정렬이 되어 있지 않아 중간값을 찾기 어려우므로 양쪽 끝 값 중 하나나 중간에 있는 값, 혹은 랜덤으로 피벗을 정해서 사용한다.
+
+더 자세한 내용은 [나무위키](https://namu.wiki/w/%EC%A0%95%EB%A0%AC%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98#s-2.2.3)나 [짧게 정리한 것](https://github.com/Kdelphinus/Python_study/tree/main/Baekjoon/solve_step_by_step/10_sort#323-%ED%80%B5-%EC%A0%95%EB%A0%ACquick-sort)을 참고하면 된다.
+
+## 2. Logic
+
+지금부터 나오는 로직은 [minckim 님의 로직](https://www.notion.so/push_swap-c15e62229b9541d78fadec4d6aae8b50)을 정리한 것이다.
+고민고민 해봤으나 마땅한 해결책을 구하지 못하고 다른 이의 로직을 보고 공부하며 풀게 되었다.
+제꺼보다 원본글을 보는 것이 더 이해하기 편합니다.
+
+### 2.1 피벗을 이용하여 두 그룹으로 나누기
+
+![두 스택으로 나누기](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa38281a9-58c0-49e1-bd36-20bdf8ba00ae%2FUntitled.png?id=2403c0ad-f324-479e-930b-653f63484414&table=block&spaceId=b6810e4f-c754-428d-956f-6e3d22679454&width=1620&userId=&cache=v2)
+
+퀵 소트를 푸쉬 스왑에 이용한다면 가장 먼저 생각나는건 하나의 스택은 피벗보다 같거나 큰 수, 다른 하나의 스택은 피벗보다 작은 수를 넣는 방법이 떠오른다.
+
+이때 우리는 명령어를 최대한 최소화해야 한다. 그렇기에 먼저 정렬을 하여 중간값을 알아낸 후, 그 값을 피벗으로 잡고 나누는 상태로 진행하고자 한다.
+
+### 2.2 특정 영역을 수정하지 않으면서 두 그룹으로 나누기
+
+첫 피벗을 통해 나누는 것은 구상이 간단하다. 허나 여러 배열을 만들 수 없고 두 개의 스택만 사용하여 정렬해야 하기에 필연적으로 특정 구간의 배열은 고정해야한다.
+이를 위해 스택에 들어간 전체 개수가 아닌, 정렬해야 하는 원소의 개수만 정렬하면 된다.
+
+#### 2.2.1 스택 A에서
+
+![A에서 두 그룹 나누기](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F30da0ea7-0be6-4ae2-989a-4009f48b7309%2FUntitled.png?id=1a19cb6b-e426-494f-917e-6cac282bfec7&table=block&spaceId=b6810e4f-c754-428d-956f-6e3d22679454&width=1600&userId=&cache=v2)
+
+스택 A에서는 피벗보다 큰 수는 A의 뒤로, 작은 수는 B에 쌓은 뒤, A에서 뒤로 넘긴 횟수만큼 다시 앞으로 넘겨주면 정렬된 원소들은 고정된 상태에서 피벗을 이용하여 두 그룹으로 나눌 수 있다.
+
+#### 2.2.2 스택 B에서
+
+![B에서 두 그룹 나누기](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fac9ea105-b7af-4111-9527-ba3fd5f10de0%2FUntitled.png?id=db1370c7-1d2b-4200-8ba2-19f621ca12c9&table=block&spaceId=b6810e4f-c754-428d-956f-6e3d22679454&width=1550&userId=&cache=v2)
+
+스택 B에서는 A와 반대로 작은 수를 B의 뒤로, 큰 수를 A에 쌓은 뒤, B에서 뒤로 넘긴 횟수만큼 다시 앞으로 넘겨주면 정렬된 원소들은 고정된 상태에서 피벗을 이용하여 두 그룹으로 나눌 수 있다.
+
+### 2.3 피벗들을 이용하여 세 그룹으로 나누기
+
+![세 그룹 나누기](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F513ef834-bef8-445b-b972-77cbde91c492%2FUntitled.png?id=da87a452-ec47-4cee-9cdb-4935743bddad&table=block&spaceId=b6810e4f-c754-428d-956f-6e3d22679454&width=1600&userId=&cache=v2)
+
+만약 피벗을 두 개 잡는다면 숫자들을 세 그룹으로 나눌 수 있을 것이다.
+스택 A에서 나눈다고 가정했을 때, 두 개의 피벗보다 큰 값은 A의 뒤로, 나머지 값들은 B로 넘기는데 여기서도 작은 피벗보다 작은 값은 B 뒤로 넘기면 세 개의 그룹으로 나눠진다.
+
+### 2.4 특정 영역을 수정하지 않으면서 세 그룹으로 나누기
+
+이제 2.3을 토대로 세 그룹으로 나누며 스택 A와 B를 이동할 수 있다.
+여기서 그룹이 나눠지면서 [3] > [2] > [1] 순으로 그룹이 묶여진다.
+
+#### 2.4.1 스택 A에서
+
+![a를 세 그룹으로 나누기](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd829276f-66bd-470b-ae30-91c7ffc51a20%2FUntitled.png?id=bbc2615d-a359-40d8-a38c-ebcfa692c917&table=block&spaceId=b6810e4f-c754-428d-956f-6e3d22679454&width=1560&userId=&cache=v2)
+
+위를 보면 가장 큰 그룹인 [3]은 A의 뒤로 빠지고 [2]와 [1]은 우선 B로 넘어간 뒤, 중간 크기 그룹인 [2]가 먼저 정렬되어 A에 쌓일 수 있도록 B 위에 위치함을 확인할 수 있다. 이를 위해 [2] 그룹에 포함되는, 즉 첫번째 피벗보단 큰 수들을 B에 뒤에 쌓고 다시 앞으로 가져오는 과정을 거친다.
+
+#### 2.4.2 스택 B에서
+
+![b를 세 그룹으로 나누기](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4c9b978f-8b02-4418-a1b2-6c3767f7a8c8%2FUntitled.png?id=69e6996d-af11-44b7-b992-77450c48994f&table=block&spaceId=b6810e4f-c754-428d-956f-6e3d22679454&width=1550&userId=&cache=v2)
+
+2.4.1과 거의 유사하다.
+이번엔 가장 작은 그룹이 B에 남고 A에 [2], [3]으로 쌓이는 과정이 진행되는 것을 볼 수 있다.
+이때, [2]가 이동되기 전에 [3]을 먼저 정렬해야 정렬이 순차적으로 쌓일 수 있음을 유의해야 한다.
+
+### 2.5 최적화
+
+- 범위가 2, 3일 때는 하드코딩으로
+- 특정 인덱스 이후로 피벗보다 큰 값만 있다면 ra를 더 이상 호출하지 않는다.
+- 스택 A가 이미 정렬되어있다면 넘어가기
 
 # 참고 문헌
 - [42 seoul, push_swap](https://cdn.intra.42.fr/pdf/pdf/67975/en.subject.pdf)
-- [push_swap 가이드](https://www.notion.so/push_swap-c15e62229b9541d78fadec4d6aae8b50)
+- [minckim님의 push_swap 가이드](https://www.notion.so/push_swap-c15e62229b9541d78fadec4d6aae8b50)
 - [push_swap_tester](https://github.com/minckim42/push_swap_tester)
-
-퍼가요 ^^
