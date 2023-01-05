@@ -796,8 +796,8 @@ $ crontab -r
 // 예시1) 5일에서 6일까지 2시,3시,4시에 매 10분마다 test.sh 를 실행
 */10 2,3,4 5-6 * * /home/script/test.sh
 
-// 10분마다 monitoring.sh를 싱행
-*/10 * * * * /monitoring.sh
+// 10분마다 monitoring.sh를 실행, wall명령어를 통해 전체로 보냄
+*/10 * * * * /monitoring.sh | wall
 ```
 
 ```
