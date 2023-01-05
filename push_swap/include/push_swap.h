@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 22:14:37 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 16:40:25 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../lib/libft.h"
+#include <stdio.h> // TODO
 
 # define INT_ERROR 2147483648
 

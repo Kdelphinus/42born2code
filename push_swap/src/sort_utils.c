@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 01:28:27 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 22:14:10 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 16:46:58 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,14 @@ void	set_one_pivot(t_stack *stack, t_pivots *pivots, int goal, long long len)
 {
 	free(stack->arr);
 	if (goal == STACK_A)
-	{
 		arr_init(stack, len, STACK_A);
-		quick_sort(stack->arr, 0, stack->arr_len - 1);
-	}
 	else
-	{
 		arr_init(stack, len, STACK_B);
-		quick_sort(stack->arr, 0, stack->arr_len - 1);
-	}
-	pivots->one = stack->arr[stack->arr_len / 2];
+	quick_sort(stack->arr, 0, stack->arr_len - 1);
+	if (stack->arr_len % 2)
+		pivots->one = stack->arr[stack->arr_len / 2];
+	else
+		pivots->one = stack->arr[stack->arr_len / 2 - 1];
 	pivots->two = 0;
 	pivots->ra = 0;
 	pivots->rb = 0;
@@ -105,3 +103,5 @@ int	is_sort(int *stack, int len)
 	}
 	return (1);
 }
+
+// 9 0 2 3 10 13 4 6 11 7 5 8 12 1
