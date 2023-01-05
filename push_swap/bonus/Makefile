@@ -5,29 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/09 14:05:24 by myko              #+#    #+#              #
-#    Updated: 2023/01/05 21:45:25 by myko             ###   ########.fr        #
+#    Created: 2023/01/05 21:46:03 by myko              #+#    #+#              #
+#    Updated: 2023/01/05 21:47:33 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = checker
 FLAG = -Wall -Wextra -Werror
 LIBFT_FLAG = -Llib -lft
 
 SRC_DIR = ./src/
-SRC_NAME = main.c \
-		   order.c \
-		   ft_atoi_int.c \
-		   stack_init.c \
-		   quick_sort.c \
-		   find_order.c \
-		   hard_sort_func_1.c \
-		   hard_sort_func_2.c \
-		   hard_sort_func_3.c \
-		   utils.c \
-		   sort_utils.c \
-		   three_sort_utils.c \
-		   three_reverse_sort_utils.c
+SRC_NAME = main_bonus.c \
+		   order_bonus.c \
 SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
 OBJ_DIR = ./obj/
 OBJ_NAME = $(SRC_NAME:.c=.o)
