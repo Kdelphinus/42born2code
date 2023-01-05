@@ -6,35 +6,50 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:23:34 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 21:55:39 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 18:16:02 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	three_sort(int *stack, long long len, t_pivots *pivots)
+void	three_sort(t_stack *stack, long long len, t_pivots *pivots)
 {
 	len--;
-	if (stack[len - 2] < stack[len - 1] && stack[len - 1] < stack[len])
+	if (stack->a[len - 2] < stack->a[len - 1] && stack->a[len - 1] < stack->a[len])
 	{
-		s_order(stack, 3, STACK_A);
-		rr_order(stack, 3, STACK_A);
+		p_order(stack, STACK_B, pivots);
+		s_order(stack->a, stack->a_len, STACK_A);
+		r_order(stack->a, stack->a_len, STACK_A, pivots);
+		r_order(stack->a, stack->a_len, STACK_A, pivots);
+		p_order(stack, STACK_A, pivots);
+		rr_order(stack->a, stack->a_len, STACK_A);
+		rr_order(stack->a, stack->a_len, STACK_A);
 	}
-	else if (stack[len - 1] < stack[len] && stack[len] < stack[len - 2])
-		s_order(stack, 3, STACK_A);
-	else if (stack[len - 2] > stack[len - 1] && stack[len] > stack[len - 2])
-		r_order(stack, 3, STACK_A, pivots);
-	else if (stack[len - 2] < stack[len - 1] && stack[len - 2] > stack[len])
+	else if (stack->a[len - 1] < stack->a[len] && stack->a[len] < stack->a[len - 2])
+		s_order(stack->a, stack->a_len, STACK_A);
+	else if (stack->a[len - 2] > stack->a[len - 1] && stack->a[len] > stack->a[len - 2])
 	{
-		s_order(stack, 3, STACK_A);
-		r_order(stack, 3, STACK_A, pivots);
+		p_order(stack, STACK_B, pivots);
+		r_order(stack->a, stack->a_len, STACK_A, pivots);
+		r_order(stack->a, stack->a_len, STACK_A, pivots);
+		p_order(stack, STACK_A, pivots);
+		rr_order(stack->a, stack->a_len, STACK_A);
+		rr_order(stack->a, stack->a_len, STACK_A);
 	}
-	else if (stack[len - 2] < stack[len] && stack[len] < stack[len - 1])
+	else if (stack->a[len - 2] < stack->a[len - 1] && stack->a[len - 2] > stack->a[len])
 	{
-		r_order(stack, len, STACK_A, pivots);
-		s_order(stack, len, STACK_A);
-		rr_order(stack, len, STACK_A);
-		s_order(stack, len, STACK_A);
+		r_order(stack->a, stack->a_len, STACK_A, pivots);
+		s_order(stack->a, stack->a_len, STACK_A);
+		rr_order(stack->a, stack->a_len, STACK_A);
+	}
+	else if (stack->a[len - 2] < stack->a[len] && stack->a[len] < stack->a[len - 1])
+	{
+		r_order(stack->a, len, STACK_A, pivots);
+		r_order(stack->a, len, STACK_A, pivots);
+		p_order(stack, STACK_B, pivots);
+		rr_order(stack->a, stack->a_len, STACK_A);
+		rr_order(stack->a, stack->a_len, STACK_A);
+		p_order(stack, STACK_A, pivots);
 	}
 }
 

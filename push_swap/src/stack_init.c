@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:20:45 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 16:24:49 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 18:46:55 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	stack_init2(char **argv, t_stack *stack)
 	flag = 1;
 	tmp = ft_split(argv[1], ' ');
 	len = ft_charp_len(tmp);
+	if (len == 0)
+		ft_error();
 	stack->a = (int *)malloc(sizeof(int) * len);
 	if (!stack->a)
 		ft_error();

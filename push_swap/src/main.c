@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 19:06:05 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 18:23:43 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	hard_sort(t_stack *stack)
 		else if (stack->a[0] < stack->a[2] && stack->a[2] < stack->a[1])
 			ft_putstr_fd("rra\n", STDOUT_FILENO);
 	}
+	else
+		hard_other_sort(stack);
 	return (0);
 }
 
@@ -60,9 +62,11 @@ int	main(int argc, char **argv)
 	quick_sort(stack.arr, 0, stack.a_len - 1);
 	if (is_duplication(stack.arr, stack.a_len))
 		ft_error();
-	if (stack.a_len < 4)
+	if (stack.a_len <= 5)
 		return (hard_sort(&stack));
 	else
 		find_order(&stack);
+	free(stack.b);
+	free(stack.arr);
 	return (0);
 }

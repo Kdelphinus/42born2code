@@ -6,11 +6,23 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:36:42 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 16:44:50 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 18:39:52 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+void    hard_other_sort(t_stack *stack)
+{
+    t_pivots    pivots;
+
+    stack->b = (int *)malloc(sizeof(int) * stack->a_len);
+    if (!stack->b)
+		ft_error();
+    stack->b_len = 0;
+    pivots = set_pivot(stack, STACK_A, stack->a_len);
+    other_sort(stack, stack->a_len, &pivots);
+}
 
 void    other_sort(t_stack *stack, long long len, t_pivots *pivots)
 {
@@ -20,15 +32,18 @@ void    other_sort(t_stack *stack, long long len, t_pivots *pivots)
     while (--len >= 0)
     {
         if (stack->a[stack->a_len - 1] < pivots->one)
-            r_order(stack->a, stack->a_len, STACK_A, pivots);
-        else
             p_order(stack, STACK_B, pivots);
+            // r_order(stack->a, stack->a_len, STACK_A, pivots);
+        else
+            r_order(stack->a, stack->a_len, STACK_A, pivots);
+            // p_order(stack, STACK_B, pivots);
     }
-    basic_sort_b(stack, pivots->pb, pivots);
+    // basic_sort_b(stack, pivots->pb, pivots);
     tmp = pivots->ra;
     while (--tmp >= 0)
         rr_order(stack->a, stack->a_len, STACK_A);
     basic_sort_a(stack, pivots->ra, pivots);
+    basic_sort_b(stack, pivots->pb, pivots);
 }
 
 void    other_reverse_sort(t_stack *stack, long long len, t_pivots *pivots)

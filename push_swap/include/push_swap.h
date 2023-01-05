@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 16:40:25 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 18:23:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "../lib/libft.h"
-#include <stdio.h> // TODO
 
 # define INT_ERROR 2147483648
 
@@ -62,10 +61,11 @@ int			stack_init2(char **argv, t_stack *stack);
 void		arr_init(t_stack *stack, long long len, int flag);
 
 // hard_sort_func.c
-void		three_sort(int *stack, long long len, t_pivots *pivots);
+void		three_sort(t_stack *stack, long long len, t_pivots *pivots);
 void		three_reverse_sort(t_stack *stack, long long len, t_pivots *pivots);
 
 // hard_sort_func_2.c
+void    	hard_other_sort(t_stack *stack);
 void		other_sort(t_stack *stack, long long len, t_pivots *pivots);
 void		other_reverse_sort(t_stack *stack, long long len, t_pivots *pivots);
 
