@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 01:28:27 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 18:30:08 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 20:13:01 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	basic_sort_a(t_stack *stack, long long len, t_pivots *pivots)
 {
 	if (len <= 1)
 		return ;
-	else if (len == 2 && stack->a[stack->a_len - 1] > stack->a[stack->a_len - 2])
+	else if (len == 2 \
+	&& stack->a[stack->a_len - 1] > stack->a[stack->a_len - 2])
 		s_order(stack->a, stack->a_len, STACK_A);
 	else if (len == 3)
 		three_sort(stack, stack->a_len, pivots);
@@ -69,7 +70,7 @@ t_pivots	set_pivot(t_stack *stack, int goal, long long len)
 	return (pivots);
 }
 
-void	set_one_pivot(t_stack *stack, t_pivots *pivots, int goal, long long len)
+void	o_pivot(t_stack *stack, t_pivots *pivots, int goal, long long len)
 {
 	free(stack->arr);
 	if (goal == STACK_A)

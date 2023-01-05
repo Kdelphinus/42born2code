@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 18:23:17 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 20:09:46 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,12 @@ void		three_sort(t_stack *stack, long long len, t_pivots *pivots);
 void		three_reverse_sort(t_stack *stack, long long len, t_pivots *pivots);
 
 // hard_sort_func_2.c
-void    	hard_other_sort(t_stack *stack);
 void		other_sort(t_stack *stack, long long len, t_pivots *pivots);
 void		other_reverse_sort(t_stack *stack, long long len, t_pivots *pivots);
+
+// hard_sort_func_3.c
+void		four_five_hard_sort(t_stack *stack);
+void		three_hard_sort(t_stack *stack, t_pivots *pivots);
 
 // find_order.c
 void		find_order(t_stack *stack);
@@ -84,7 +87,7 @@ long long	ft_atoi_int(const char *str);
 void		basic_sort_a(t_stack *stack, long long len, t_pivots *pivots);
 void		basic_sort_b(t_stack *stack, long long len, t_pivots *pivots);
 t_pivots	set_pivot(t_stack *stack, int goal, long long r);
-void		set_one_pivot(t_stack *stack, t_pivots *pivots, int goal, long long len);
+void		o_pivot(t_stack *stack, t_pivots *pivots, int goal, long long len);
 int			is_sort(int *stack, int len);
 
 // order.c

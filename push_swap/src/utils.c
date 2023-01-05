@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:20:33 by myko              #+#    #+#             */
-/*   Updated: 2023/01/04 21:44:25 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 20:14:03 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ long long	ft_charp_len(char **charpoint)
 	i = 0;
 	while (charpoint[i])
 		i++;
+	if (i == 0)
+		ft_error();
 	return (i);
 }
 

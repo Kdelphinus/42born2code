@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 18:23:43 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 20:12:21 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	hard_sort(t_stack *stack)
 			ft_putstr_fd("rra\n", STDOUT_FILENO);
 	}
 	else
-		hard_other_sort(stack);
+		four_five_hard_sort(stack);
 	return (0);
 }
 
