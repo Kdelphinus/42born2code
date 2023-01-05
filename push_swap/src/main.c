@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 21:12:38 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 21:17:06 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,11 @@ static void	p_sort(t_stack *stack)
 	free(stack->a);
 }
 
-// TODO
-void	check(void)
-{
-	system("leaks push_swap");
-}
-
 int	main(int argc, char **argv)
 {
 	int		flag;
 	t_stack	stack;
 
-	atexit(check); // TODO
 	if (argc == 1)
 		return (0);
 	if (argc == 2)
