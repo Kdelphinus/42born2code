@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:20:45 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 20:14:08 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 21:11:35 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,14 @@ int	stack_init1(int argc, char **argv, t_stack *stack)
 	return (flag);
 }
 
-int	stack_init2(char **argv, t_stack *stack)
+int	stack_init2(char **argv, int flag, t_stack *stack)
 {
-	int			flag;
 	char		**tmp;
 	long long	tmpn;
 	long long	i;
 	long long	len;
 
 	i = -1;
-	flag = 1;
 	tmp = ft_split(argv[1], ' ');
 	len = ft_charp_len(tmp);
 	stack->a = (int *)malloc(sizeof(int) * len);
@@ -55,12 +53,14 @@ int	stack_init2(char **argv, t_stack *stack)
 	while (++i < len)
 	{
 		tmpn = ft_atoi_int(tmp[i]);
+		free(tmp[i]);
 		if (tmpn == INT_ERROR)
 			ft_error();
 		stack->a[len - i - 1] = tmpn;
 		if (i > 0 && stack->a[stack->a_len - i] > tmpn)
 			flag = 0;
 	}
+	free(tmp);
 	return (flag);
 }
 

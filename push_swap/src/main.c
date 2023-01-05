@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 20:51:10 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 21:12:38 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,21 @@ void	check(void)
 
 int	main(int argc, char **argv)
 {
+	int		flag;
 	t_stack	stack;
 
 	atexit(check); // TODO
 	if (argc == 1)
 		return (0);
-	else if (argc == 2)
-	{
-		if (stack_init2(argv, &stack))
-			return (0);
-	}
+	if (argc == 2)
+		flag = stack_init2(argv, 1, &stack);
 	else
+		flag = stack_init1(argc, argv, &stack);
+	if (stack.a_len == 1 || flag)
 	{
-		if (stack_init1(argc, argv, &stack))
-			return (0);
-	}
-	if (stack.a_len == 1)
+		free(stack.a);
 		return (0);
+	}
 	arr_init(&stack, stack.a_len, STACK_A);
 	quick_sort(stack.arr, 0, stack.a_len - 1);
 	if (is_duplication(stack.arr, stack.a_len))

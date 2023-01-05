@@ -6,12 +6,12 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 14:05:24 by myko              #+#    #+#              #
-#    Updated: 2023/01/05 20:20:36 by myko             ###   ########.fr        #
+#    Updated: 2023/01/05 21:00:53 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror -g
 LIBFT_FLAG = -Llib -lft
 
 SRC_DIR = ./src/
