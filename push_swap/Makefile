@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 14:05:24 by myko              #+#    #+#              #
-#    Updated: 2023/01/05 19:38:54 by myko             ###   ########.fr        #
+#    Updated: 2023/01/05 20:20:36 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,18 @@ LIBFT_FLAG = -Llib -lft
 
 SRC_DIR = ./src/
 SRC_NAME = main.c \
-		   ft_atoi_int.c \
 		   order.c \
+		   ft_atoi_int.c \
 		   stack_init.c \
 		   quick_sort.c \
 		   find_order.c \
-		   sort_utils.c \
-		   hard_sort_func.c \
+		   hard_sort_func_1.c \
 		   hard_sort_func_2.c \
 		   hard_sort_func_3.c \
-		   utils.c
+		   utils.c \
+		   sort_utils.c \
+		   three_sort_utils.c \
+		   three_reverse_sort_utils.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
 OBJ_DIR = ./obj/
 OBJ_NAME = $(SRC_NAME:.c=.o)

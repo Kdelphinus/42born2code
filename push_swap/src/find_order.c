@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:11:40 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 16:46:19 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 20:37:29 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,4 @@ void	b_to_a(t_stack *stack, long long r)
 	reverse_stack(stack, &pivots);
 	a_to_b(stack, pivots.ra);
 	b_to_a(stack, pivots.rb);
-}
-
-void	find_order(t_stack *stack)
-{
-	stack->b = (int *)malloc(sizeof(int) * stack->a_len);
-	if (!stack->b)
-		ft_error();
-	stack->b_len = 0;
-	a_to_b(stack, stack->a_len);
 }

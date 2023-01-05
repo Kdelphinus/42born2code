@@ -6,44 +6,47 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 20:12:21 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/05 20:51:10 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static int	hard_sort(t_stack *stack)
+static void	p_sort(t_stack *stack)
 {
+	t_pivots	pivots;
+
+	pivots = set_pivot(stack, STACK_A, stack->a_len);
+	stack->b = (int *)malloc(sizeof(int) * stack->a_len);
+	if (!stack->b)
+		ft_error();
+	stack->b_len = 0;
 	if (stack->a_len == 2)
 		ft_putstr_fd("sa\n", STDOUT_FILENO);
 	else if (stack->a_len == 3)
-	{
-		if (stack->a[0] < stack->a[1] && stack->a[1] < stack->a[2])
-		{
-			ft_putstr_fd("sa\n", STDOUT_FILENO);
-			ft_putstr_fd("rra\n", STDOUT_FILENO);
-		}
-		else if (stack->a[1] < stack->a[2] && stack->a[2] < stack->a[0])
-			ft_putstr_fd("sa\n", STDOUT_FILENO);
-		else if (stack->a[0] > stack->a[1] && stack->a[2] > stack->a[0])
-			ft_putstr_fd("ra\n", STDOUT_FILENO);
-		else if (stack->a[0] < stack->a[1] && stack->a[0] > stack->a[2])
-		{
-			ft_putstr_fd("sa\n", STDOUT_FILENO);
-			ft_putstr_fd("ra\n", STDOUT_FILENO);
-		}
-		else if (stack->a[0] < stack->a[2] && stack->a[2] < stack->a[1])
-			ft_putstr_fd("rra\n", STDOUT_FILENO);
-	}
+		three_hard_sort(stack, &pivots);
+	else if (stack->a_len == 4)
+		four_hard_sort(stack, 4, &pivots);
+	else if (stack->a_len == 5)
+		five_hard_sort(stack, 5, &pivots);
 	else
-		four_five_hard_sort(stack);
-	return (0);
+		a_to_b(stack, stack->a_len);
+	free(stack->arr);
+	free(stack->b);
+	free(stack->a);
+}
+
+// TODO
+void	check(void)
+{
+	system("leaks push_swap");
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	stack;
 
+	atexit(check); // TODO
 	if (argc == 1)
 		return (0);
 	else if (argc == 2)
@@ -62,11 +65,6 @@ int	main(int argc, char **argv)
 	quick_sort(stack.arr, 0, stack.a_len - 1);
 	if (is_duplication(stack.arr, stack.a_len))
 		ft_error();
-	if (stack.a_len <= 5)
-		return (hard_sort(&stack));
-	else
-		find_order(&stack);
-	free(stack.b);
-	free(stack.arr);
+	p_sort(&stack);
 	return (0);
 }
