@@ -592,10 +592,10 @@ printf "#Architecture: "
 uname -a
 
 printf "#CPU physical : "
-nproc --all
+lscpu | grep -E '^Core|^Socket' | rev | cut -d ' ' -f1 | rev | awk 'BEGIN {mul = 1} {mul *= $1} END {print mul}'
 
 printf "#vCPU : "
-cat /proc/cpuinfo | grep processor | wc -l
+lscpu | grep -E '^CPU\(s\):' | rev | cut -d ' ' -f1 | rev
 
 printf "#Memory Usage: "
 free -m | grep Mem | awk '{printf"%d/%dMiB (%.2f%%)\n", $3, $2, $3/$2 * 100}' 
@@ -605,7 +605,7 @@ udisk=`df -BM | grep -v ^Filesystem | awk '{sum += $3} END {printf sum}'`
 echo $udisk $tdisk | awk '{printf "#Disk Usage: %d/%dMiB (%d%%)\n", $1, $2, $1/$2*100}'
 
 printf "#CPU load: "
-mpstat | grep all | awk '{printf "%.2f%%\n", 100-$13}'
+mpstat | grep all | rev | cut -d ' ' -f1 | rev | awk '{printf "%.2f%%\n", 100-$1}'
 
 printf "#Last boot: " 
 who -b | awk '{printf $3" "$4"\n"}'
@@ -639,11 +639,12 @@ printf " cmd\n"
 - -a: 시스템의 모든 정보를 가져온다.
 - uname만 하면 os만 가져온다.
 
-### 8.0.2 nproc --all
+### 8.0.2 lscpu
 
-- nproc: 사용가능한 프로세싱 유닛의 개수 출력
-- --all: 설치된 프로세서들의 개수 출력
-- 물리적 cpu의 개수
+- lscpu: cpu에 관련된 내용 출력
+- grep -E '^내용' : 내용으로 시작하는 행 grep
+- awk 'BEGIN {mul = 1} {mul *= $1} END {print mul}': 소켓당 코어 * 소켓 수 = physical CPU수
+- vCPU의 개수 : 코어당 스레드 수 * 소켓당 코어 * 소켓 수 
 
 ### 8.0.3 cat /proc/cpuinfo
 
