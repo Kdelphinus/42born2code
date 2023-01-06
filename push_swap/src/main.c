@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 21:17:06 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/06 19:08:18 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	arr_init(&stack, stack.a_len, STACK_A);
-	quick_sort(stack.arr, 0, stack.a_len - 1);
-	if (is_duplication(stack.arr, stack.a_len))
+	quick_sort(stack.arr, 0, stack.arr_len - 1);
+	if (is_duplication(stack.arr, stack.arr_len))
 		ft_error();
 	p_sort(&stack);
 	return (0);

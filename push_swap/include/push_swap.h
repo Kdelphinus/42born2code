@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 21:10:50 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/06 16:58:32 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ typedef struct s_pivots {
 	int	pa;
 	int	pb;
 }	t_pivots;
-
-typedef struct s_llist {
-	char			*order;
-	struct s_llist	*next;
-}	t_llist;
 
 typedef enum s_stack_num {
 	STACK_A = 0,

@@ -8,6 +8,7 @@
         "libft.h": "c",
         "__locale": "c",
         "cstring": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "checker.h": "c"
     }
 }
