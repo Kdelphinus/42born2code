@@ -7,6 +7,7 @@
         "cstdio": "c",
         "libft.h": "c",
         "__locale": "c",
-        "cstring": "c"
+        "cstring": "c",
+        "unistd.h": "c"
     }
 }
