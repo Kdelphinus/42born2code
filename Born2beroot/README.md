@@ -832,6 +832,12 @@ $ sudo systemctl enable cron
 * * * 5 5 /home/script/test.sh
 ```
 
+```
+# 실행이 안될 때
+- monitoring.sh 절대경로인지 확인
+- 파일 권한 확인
+```
+
 ### 8.1.4 crontab off
 
 ```
