@@ -162,4 +162,4 @@ c언어는 운영체제와 관계없이, 파일의 끝에 도달했을 때 언�
 # 참고 문헌
 - [42 seoul, push_swap](https://cdn.intra.42.fr/pdf/pdf/67975/en.subject.pdf)
 - [minckim님의 push_swap 가이드](https://www.notion.so/push_swap-c15e62229b9541d78fadec4d6aae8b50)
-- [push_swap_tester](https://github.com/LeoFu9487/push_swap_tester)
+- [push_swap_tester](https://github.com/laisarena/push_swap_tester)
