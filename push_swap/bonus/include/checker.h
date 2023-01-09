@@ -6,15 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:00:01 by myko              #+#    #+#             */
-/*   Updated: 2023/01/06 19:32:39 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 15:09:24 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-#include <stdlib.h>
-#include <unistd.h>
 #include "../../lib/libft.h"
 
 # define BUFFER_SIZE 1024

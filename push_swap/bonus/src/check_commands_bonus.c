@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:22:19 by myko              #+#    #+#             */
-/*   Updated: 2023/01/06 19:28:31 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 15:08:42 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 static void	run_command(char *str, t_stack *stack)
 {
-	if (ft_strncmp("sa", str, 3) == 0)
+	if (ft_strncmp("sa\n", str, 3) == 0)
 		s_command(stack->a, stack->a_len);
-	else if (ft_strncmp("sb", str, 3) == 0)
+	else if (ft_strncmp("sb\n", str, 3) == 0)
 		s_command(stack->b, stack->b_len);
-	else if (ft_strncmp("ss", str, 3) == 0)
+	else if (ft_strncmp("ss\n", str, 3) == 0)
 		double_command(stack, S_COMMAND);
-	else if (ft_strncmp("pa", str, 3) == 0)
+	else if (ft_strncmp("pa\n", str, 3) == 0)
 		p_command(stack, STACK_A);
-	else if (ft_strncmp("pb", str, 3) == 0)
+	else if (ft_strncmp("pb\n", str, 3) == 0)
 		p_command(stack, STACK_B);
-	else if (ft_strncmp("ra", str, 3) == 0)
+	else if (ft_strncmp("ra\n", str, 3) == 0)
 		r_command(stack->a, stack->a_len);
-	else if (ft_strncmp("rb", str, 3) == 0)
+	else if (ft_strncmp("rb\n", str, 3) == 0)
 		r_command(stack->b, stack->b_len);
-	else if (ft_strncmp("rr", str, 3) == 0)
+	else if (ft_strncmp("rr\n", str, 3) == 0)
 		double_command(stack, R_COMMAND);
-	else if (ft_strncmp("rra", str, 4) == 0)
+	else if (ft_strncmp("rra\n", str, 4) == 0)
 		rr_command(stack->a, stack->a_len);
-	else if (ft_strncmp("rrb", str, 4) == 0)
+	else if (ft_strncmp("rrb\n", str, 4) == 0)
 		rr_command(stack->b, stack->b_len);
-	else if (ft_strncmp("rrr", str, 4) == 0)
+	else if (ft_strncmp("rrr\n", str, 4) == 0)
 		double_command(stack, RR_COMMAND);
 	else
 		ft_error_checker();
