@@ -4,6 +4,7 @@
 0. [Mandatory 개요](#0-mandatory-개요)  
 1. [Quick sort](#1-quick-sort)  
 2. [Logic](#2-logic)  
+3. [Checker](#3-checker)  
 
 ## 0. Mandatory 개요
 
@@ -139,6 +140,24 @@
 - 범위가 2, 3일 때는 하드코딩으로
 - 특정 인덱스 이후로 피벗보다 큰 값만 있다면 ra를 더 이상 호출하지 않는다.
 - 스택 A가 이미 정렬되어있다면 넘어가기
+
+## 3. Checker
+
+### 3.1 bonus 폴더
+
+새로운 프로그램인 checker를 만들어야 하고 하나의 makefile에서 두 개의 타겟을 입력마다 다르게 만드는 것을 확실히 모르기에 폴더를 하나 더 파서 makefile을 하나 더 만드는 방식으로 진행했다.
+
+### 3.2 명령어 가져오기
+
+gnl로 명령어를 가져오는 과정에서 gnl은 \n까지 가져오므로 NULL까지 확인하기 위해선 \n을 포함해서 체크를 해야 한다.
+
+### 3.3 EOF(End of File)
+
+c언어는 운영체제와 관계없이, 파일의 끝에 도달했을 때 언제나 특별한 값을 반환하며 이를 EOF라고 한다.
+실제로 이 값은 -1을 나타낸다.
+
+우리가 만드는 checker는 명령어를 직접 입력 받을 수도 있다.
+이때는 UNIX에선 라인의 시작 위치에서 Ctrl + D, 윈도우에선 라인의 어디서든 Ctrl + Z를 누르고 Enter를 누르면 EOF를 발생시킬 수 있다.
 
 # 참고 문헌
 - [42 seoul, push_swap](https://cdn.intra.42.fr/pdf/pdf/67975/en.subject.pdf)
