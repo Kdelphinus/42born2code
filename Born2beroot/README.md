@@ -604,6 +604,13 @@ tdisk=`df -BM | grep -v ^Filesystem | awk '{sum += $2} END {printf sum}'`
 udisk=`df -BM | grep -v ^Filesystem | awk '{sum += $3} END {printf sum}'`
 echo $udisk $tdisk | awk '{printf "#Disk Usage: %d/%dMiB (%d%%)\n", $1, $2, $1/$2*100}'
 
+###
+printf "#Disk Usage: "
+used=`df -BMB | grep '/dev/mapper/' | awk '{sum+=$3} END {print sum}'`
+total=`df -BMB | grep '/dev/mapper/' | awk '{sum+=($3+$4)} END {print sum}'`
+echo $used $total | awk '{printf"%d/%dMB (%d%%)\n", $1, $2, $1/$2*100}'
+###
+
 printf "#CPU load: "
 mpstat | grep all | rev | cut -d ' ' -f1 | rev | awk '{printf "%.2f%%\n", 100-$1}'
 
@@ -746,6 +753,7 @@ printf " cmd\n"
 - 리눅스 시스템 관리자가 알아야 하는 네트워크 인터페이스를 구성하기 위한 명령어
 - link: 네트워크 인터페이스를 표시하고 수정
 - link/ether에 있는 MAC 주소를 가져옴
+- ether가 여러개 나올 경우를 대비하여 sed '2, $d'로 2번째 줄 지우기
 
 ### 8.0.13 sudo 로그
 
