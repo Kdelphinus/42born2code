@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:00:01 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 15:11:27 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 19:32:45 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef enum s_checker_num {
 }	t_checker_num;
 
 // stack_init_bonus.c
-int			stack_init_checker1(int argc, char **argv, t_stack *stack);
-int			stack_init_checker2(char **argv, int flag, t_stack *stack);
+void		stack_init_checker1(int argc, char **argv, t_stack *stack);
+void		stack_init_checker2(char **argv, t_stack *stack);
 void		arr_init_checekr(t_stack *stack, long long len, int flag);
 
 // quick_sort_bonus.c

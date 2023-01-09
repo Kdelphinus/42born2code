@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:59:38 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 15:29:01 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 19:32:47 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,14 @@ static int	check_sort(t_stack *stack)
 
 int	main(int argc, char **argv)
 {
-	int		flag;
 	t_stack	stack;
 
 	if (argc == 1)
 		return (0);
 	if (argc == 2)
-		flag = stack_init_checker2(argv, 1, &stack);
+		stack_init_checker2(argv, &stack);
 	else
-		flag = stack_init_checker1(argc, argv, &stack);
-	if (stack.a_len == 1 || flag)
-	{
-		free(stack.a);
-		return (print_ok());
-	}
+		stack_init_checker1(argc, argv, &stack);
 	arr_init_checekr(&stack, stack.a_len, STACK_A);
 	quick_sort_checker(stack.arr, 0, stack.arr_len - 1);
 	if (is_duplication_checker(stack.arr, stack.arr_len))
