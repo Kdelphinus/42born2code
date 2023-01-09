@@ -6,16 +6,16 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:20:33 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 20:14:03 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 15:37:31 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	ft_error(void)
+void	ft_error(void)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 long long	ft_charp_len(char **charpoint)

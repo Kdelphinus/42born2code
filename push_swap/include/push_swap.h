@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2023/01/06 16:58:32 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 15:37:23 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		four_hard_sort(t_stack *stack, long long len, t_pivots *pivots);
 void		five_hard_sort(t_stack *stack, long long len, t_pivots *pivots);
 
 // utils.c
-int			ft_error(void);
+void		ft_error(void);
 int			is_duplication(int *arr, int num);
 long long	ft_charp_len(char **charpoint);
 long long	min(long long a, long long b);

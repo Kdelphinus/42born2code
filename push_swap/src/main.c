@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 15:00:34 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 16:23:51 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int	main(int argc, char **argv)
 	t_stack	stack;
 
 	if (argc == 1)
-		return (0);
+		exit(EXIT_FAILURE);
 	if (argc == 2)
 		flag = stack_init2(argv, 1, &stack);
 	else
 		flag = stack_init1(argc, argv, &stack);
-	if (stack.a_len == 1 || flag)
+	if (stack.a_len <= 1 || flag)
 	{
 		free(stack.a);
 		return (0);
