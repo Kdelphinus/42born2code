@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 16:23:51 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 22:03:38 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	p_sort(t_stack *stack)
 
 	pivots = set_pivot(stack, STACK_A, stack->a_len);
 	stack->b = (int *)malloc(sizeof(int) * stack->a_len);
-	if (!stack->b)
+	stack->orders = ft_lstnew("start");
+	if (!stack->b || !stack->orders)
 		ft_error();
 	stack->b_len = 0;
 	if (stack->a_len == 2)

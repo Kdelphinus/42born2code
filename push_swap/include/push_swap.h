@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 15:37:23 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 22:19:09 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define INT_ERROR 2147483648
 
 typedef struct s_stack {
+	t_list		*orders;
 	long long	a_len;
 	long long	b_len;
 	long long	arr_len;
@@ -41,14 +42,15 @@ typedef enum s_stack_num {
 	S_ORDER,
 	R_ORDER,
 	RR_ORDER,
-	DOUBLE_ORDER,
+	DOUBLE,
+	NOT_DOUBLE,
 }	t_stack_num;
 
 // order.c
-void		s_order(int *stack, long long len, int flag);
+void		s_order(t_stack *stack, int flag);
 void		p_order(t_stack *stack, int goal, t_pivots *pivots);
-void		r_order(int *stack, long long len, int flag, t_pivots *pivots);
-void		rr_order(int *stack, long long len, int flag);
+void		r_order(t_stack *stack, int flag, t_pivots *pivots);
+void		rr_order(t_stack *stack, int flag);
 void		double_order(t_stack *stack, int order, t_pivots *pivots);
 
 // ft_atoi_int.c

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:11:40 by myko              #+#    #+#             */
-/*   Updated: 2023/01/05 20:37:29 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 22:16:56 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,16 @@ static void	reverse_stack(t_stack *stack, t_pivots *pivots)
 		double_order(stack, RR_ORDER, pivots);
 	i = -1;
 	while (++i < pivots->rb - pivots->ra)
-		rr_order(stack->b, stack->b_len, STACK_B);
+	{
+		rr_order(stack, STACK_B);
+		// ft_lstadd_back(&(stack->orders), ft_lstnew("rrb\n"));
+	}
 	i = -1;
 	while (++i < pivots->ra - pivots->rb)
-		rr_order(stack->a, stack->a_len, STACK_A);
+	{
+		rr_order(stack, STACK_A);
+		// ft_lstadd_back(&(stack->orders), ft_lstnew("rrb\n"));
+	}
 }
 
 void	a_to_b(t_stack *stack, long long r)
@@ -42,12 +48,12 @@ void	a_to_b(t_stack *stack, long long r)
 	while (--r >= 0)
 	{
 		if (stack->a[stack->a_len - 1] >= pivots.two)
-			r_order(stack->a, stack->a_len, STACK_A, &pivots);
+			r_order(stack, STACK_A, &pivots);
 		else
 		{
 			p_order(stack, STACK_B, &pivots);
 			if (stack->b[stack->b_len - 1] >= pivots.one)
-				r_order(stack->b, stack->b_len, STACK_B, &pivots);
+				r_order(stack, STACK_B, &pivots);
 		}
 	}
 	reverse_stack(stack, &pivots);
@@ -69,12 +75,12 @@ void	b_to_a(t_stack *stack, long long r)
 	while (--r >= 0)
 	{
 		if (stack->b[stack->b_len - 1] < pivots.one)
-			r_order(stack->b, stack->b_len, STACK_B, &pivots);
+			r_order(stack, STACK_B, &pivots);
 		else
 		{
 			p_order(stack, STACK_A, &pivots);
 			if (stack->a[stack->a_len - 1] < pivots.two)
-				r_order(stack->a, stack->a_len, STACK_A, &pivots);
+				r_order(stack, STACK_A, &pivots);
 		}
 	}
 	a_to_b(stack, pivots.pa - pivots.ra);

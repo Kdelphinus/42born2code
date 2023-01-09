@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 14:05:24 by myko              #+#    #+#              #
-#    Updated: 2023/01/06 19:39:26 by myko             ###   ########.fr        #
+#    Updated: 2023/01/09 19:45:23 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ BONUS_DIR = ./bonus/
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR) bonus
 	$(CC) $(OBJ) $(LIBFT_FLAG) $(FLAG) -o $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c

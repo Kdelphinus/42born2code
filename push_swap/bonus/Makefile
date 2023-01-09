@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:55:13 by myko              #+#    #+#              #
-#    Updated: 2023/01/06 19:32:54 by myko             ###   ########.fr        #
+#    Updated: 2023/01/09 19:45:30 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ LIBFT_DIR = ../lib/
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR) bonus
 	$(CC) $(OBJ) $(LIBFT_FLAG) $(FLAG) -o $(NAME)
 	mv $(NAME) ../
 
