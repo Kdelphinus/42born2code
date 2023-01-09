@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:22:19 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 15:08:42 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 15:11:03 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	check_commands(t_stack *stack)
 	{
 		str = get_next_line(STDIN_FILENO);
 		if (!str)
-			break;
+			break ;
 		run_command(str, stack);
 		free(str);
 	}

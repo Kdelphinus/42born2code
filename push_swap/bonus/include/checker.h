@@ -6,14 +6,14 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:00:01 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 15:09:24 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/09 15:11:27 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-#include "../../lib/libft.h"
+# include "../../lib/libft.h"
 
 # define BUFFER_SIZE 1024
 # define INT_ERROR 2147483648
@@ -22,9 +22,9 @@ typedef struct s_stack {
 	long long	a_len;
 	long long	b_len;
 	long long	arr_len;
-	int				*a;
-	int				*b;
-	int				*arr;
+	int			*a;
+	int			*b;
+	int			*arr;
 }	t_stack;
 
 typedef enum s_checker_num {
