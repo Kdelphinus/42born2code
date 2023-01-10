@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:02:24 by myko              #+#    #+#             */
-/*   Updated: 2023/01/06 19:33:07 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 16:42:39 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_error_checker(void)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 int	print_ok(void)
