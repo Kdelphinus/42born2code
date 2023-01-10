@@ -5,6 +5,7 @@
 1. [Quick sort](#1-quick-sort)  
 2. [Logic](#2-logic)  
 3. [Checker](#3-checker)  
+4. [참고 문헌](#참고-문헌)  
 
 ## 0. Mandatory 개요
 
