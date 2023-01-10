@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2023/01/10 15:46:35 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 16:30:41 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	t_stack	stack;
 
 	if (argc == 1)
-		exit(EXIT_FAILURE);
+		return (0);
 	if (argc == 2)
 		flag = stack_init2(argv, 1, &stack);
 	else
