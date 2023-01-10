@@ -613,6 +613,7 @@ echo $used $total | awk '{printf"%d/%dMB (%d%%)\n", $1, $2, $1/$2*100}'
 
 printf "#CPU load: "
 mpstat | grep all | rev | cut -d ' ' -f1 | rev | awk '{printf "%.2f%%\n", 100-$1}'
+(for Debian : mpstat | grep all | awk '{printf"%.2f%%\n", 100-$13}')
 
 printf "#Last boot: " 
 who -b | awk '{printf $3" "$4"\n"}'
