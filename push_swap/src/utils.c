@@ -6,11 +6,16 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:20:33 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 15:37:31 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 15:43:19 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+void	char_null(void *s)
+{
+	s = 0;
+}
 
 void	ft_error(void)
 {

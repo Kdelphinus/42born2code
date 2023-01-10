@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:02 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 22:03:38 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 15:46:35 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	p_sort(t_stack *stack)
 		ft_error();
 	stack->b_len = 0;
 	if (stack->a_len == 2)
-		ft_putstr_fd("sa\n", STDOUT_FILENO);
+		s_order(stack, STACK_A);
 	else if (stack->a_len == 3)
 		three_hard_sort(stack, &pivots);
 	else if (stack->a_len == 4)
@@ -32,6 +32,7 @@ static void	p_sort(t_stack *stack)
 		five_hard_sort(stack, 5, &pivots);
 	else
 		a_to_b(stack, stack->a_len);
+	print_order(stack->orders);
 	free(stack->arr);
 	free(stack->b);
 	free(stack->a);

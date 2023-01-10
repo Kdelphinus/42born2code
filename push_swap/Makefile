@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 14:05:24 by myko              #+#    #+#              #
-#    Updated: 2023/01/09 19:45:23 by myko             ###   ########.fr        #
+#    Updated: 2023/01/10 15:02:06 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ LIBFT_FLAG = -Llib -lft
 SRC_DIR = ./src/
 SRC_NAME = main.c \
 		   order.c \
+		   print_order.c \
 		   ft_atoi_int.c \
 		   stack_init.c \
 		   quick_sort.c \

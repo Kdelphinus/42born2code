@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:36:42 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 22:04:30 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 15:52:47 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	other_sort(t_stack *stack, long long len, t_pivots *pivots)
 	while (--len >= 0)
 	{
 		if (stack->a[stack->a_len - 1] < pivots->one)
-			r_order(stack, STACK_A, pivots);
+			r_order(stack, STACK_A, pivots, stack->a_len - 1);
 		else
 			p_order(stack, STACK_B, pivots);
 	}
@@ -39,7 +39,7 @@ void	other_reverse_sort(t_stack *stack, long long len, t_pivots *pivots)
 	while (--len >= 0)
 	{
 		if (stack->b[stack->b_len - 1] < pivots->one)
-			r_order(stack, STACK_B, pivots);
+			r_order(stack, STACK_B, pivots, stack->b_len - 1);
 		else
 			p_order(stack, STACK_A, pivots);
 	}

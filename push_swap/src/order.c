@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:58:44 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 22:19:16 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 15:57:12 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	s_order(t_stack *stack, int flag)
 		tmp = stack->a[stack->a_len - 1];
 		stack->a[stack->a_len - 1] = stack->a[stack->a_len - 2];
 		stack->a[stack->a_len - 2] = tmp;
-		ft_putstr_fd("sa\n", STDOUT_FILENO);
+		ft_lstadd_back(&(stack->orders), ft_lstnew("sa\n"));
 	}
 	else if (flag == STACK_B && stack->b_len > 1)
 	{
 		tmp = stack->b[stack->b_len - 1];
 		stack->b[stack->b_len - 1] = stack->b[stack->b_len - 2];
 		stack->b[stack->b_len - 2] = tmp;
-		ft_putstr_fd("sb\n", STDOUT_FILENO);
+		ft_lstadd_back(&(stack->orders), ft_lstnew("sb\n"));
 	}
 }
 
@@ -46,7 +46,7 @@ void	p_order(t_stack *stack, int goal, t_pivots *pivots)
 		stack->b_len--;
 		stack->a[stack->a_len] = tmp;
 		stack->a_len++;
-		ft_putstr_fd("pa\n", STDOUT_FILENO);
+		ft_lstadd_back(&(stack->orders), ft_lstnew("pa\n"));
 	}
 	else if (goal == STACK_B && stack->a_len > 0)
 	{
@@ -54,40 +54,33 @@ void	p_order(t_stack *stack, int goal, t_pivots *pivots)
 		stack->a_len--;
 		stack->b[stack->b_len] = tmp;
 		stack->b_len++;
-		ft_putstr_fd("pb\n", STDOUT_FILENO);
+		ft_lstadd_back(&(stack->orders), ft_lstnew("pb\n"));
 	}
 }
 
-void	r_order(t_stack *stack, int flag, t_pivots *pivots)
+void	r_order(t_stack *stack, int flag, t_pivots *pivots, long long i)
 {
-	long long	i;
 	int			tmp;
 
 	if (flag == STACK_A)
 	{
 		pivots->ra++;
+		tmp = stack->a[i];
+		while (--i >= 0)
+			stack->a[i + 1] = stack->a[i];
+		stack->a[0] = tmp;
 		if (stack->a_len > 1)
-		{
-			i = stack->a_len - 1;
-			tmp = stack->a[i];
-			while (--i >= 0)
-				stack->a[i + 1] = stack->a[i];
-			stack->a[0] = tmp;
-			ft_putstr_fd("ra\n", STDOUT_FILENO);
-		}
+			ft_lstadd_back(&(stack->orders), ft_lstnew("ra\n"));
 	}
 	else if (flag == STACK_B)
 	{
 		pivots->rb++;
+		tmp = stack->b[i];
+		while (--i >= 0)
+			stack->b[i + 1] = stack->b[i];
+		stack->b[0] = tmp;
 		if (stack->b_len > 1)
-		{
-			i = stack->b_len - 1;
-			tmp = stack->b[i];
-			while (--i >= 0)
-				stack->b[i + 1] = stack->b[i];
-			stack->b[0] = tmp;
-			ft_putstr_fd("rb\n", STDOUT_FILENO);
-		}
+			ft_lstadd_back(&(stack->orders), ft_lstnew("rb\n"));
 	}
 }
 
@@ -103,7 +96,7 @@ void	rr_order(t_stack *stack, int flag)
 		while (++i < stack->a_len - 1)
 			stack->a[i] = stack->a[i + 1];
 		stack->a[stack->a_len - 1] = tmp;
-		ft_putstr_fd("rra\n", STDOUT_FILENO);
+		ft_lstadd_back(&(stack->orders), ft_lstnew("rra\n"));
 	}
 	else if (flag == STACK_B && stack->b_len > 1)
 	{
@@ -111,7 +104,7 @@ void	rr_order(t_stack *stack, int flag)
 		while (++i < stack->b_len - 1)
 			stack->b[i] = stack->b[i + 1];
 		stack->b[stack->b_len - 1] = tmp;
-		ft_putstr_fd("rrb\n", STDOUT_FILENO);
+		ft_lstadd_back(&(stack->orders), ft_lstnew("rrb\n"));
 	}
 }
 
@@ -121,18 +114,15 @@ void	double_order(t_stack *stack, int order, t_pivots *pivots)
 	{
 		s_order(stack, STACK_A);
 		s_order(stack, STACK_B);
-		ft_putstr_fd("ss\n", STDOUT_FILENO);
 	}
 	else if (order == R_ORDER)
 	{
-		r_order(stack, STACK_A, pivots);
-		r_order(stack, STACK_B, pivots);
-		ft_putstr_fd("rr\n", STDOUT_FILENO);
+		r_order(stack, STACK_A, pivots, stack->a_len - 1);
+		r_order(stack, STACK_B, pivots, stack->b_len - 1);
 	}
 	else if (order == RR_ORDER)
 	{
 		rr_order(stack, STACK_A);
 		rr_order(stack, STACK_B);
-		ft_putstr_fd("rrr\n", STDOUT_FILENO);
 	}
 }

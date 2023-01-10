@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:01:14 by myko              #+#    #+#             */
-/*   Updated: 2023/01/09 22:19:09 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 15:51:02 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,12 @@ typedef enum s_stack_num {
 // order.c
 void		s_order(t_stack *stack, int flag);
 void		p_order(t_stack *stack, int goal, t_pivots *pivots);
-void		r_order(t_stack *stack, int flag, t_pivots *pivots);
+void		r_order(t_stack *stack, int flag, t_pivots *pivots, long long i);
 void		rr_order(t_stack *stack, int flag);
 void		double_order(t_stack *stack, int order, t_pivots *pivots);
+
+// print_order.c
+void		print_order(t_list *orders);
 
 // ft_atoi_int.c
 long long	ft_atoi_int(const char *str);
@@ -82,6 +85,7 @@ void		four_hard_sort(t_stack *stack, long long len, t_pivots *pivots);
 void		five_hard_sort(t_stack *stack, long long len, t_pivots *pivots);
 
 // utils.c
+void		char_null(void *s);
 void		ft_error(void);
 int			is_duplication(int *arr, int num);
 long long	ft_charp_len(char **charpoint);
