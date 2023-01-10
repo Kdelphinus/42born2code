@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:55:31 by myko              #+#    #+#             */
-/*   Updated: 2023/01/06 18:58:57 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 17:06:05 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
+#include "../include/checker_bonus.h"
 
 int	gnl_strlen(const char *s)
 {

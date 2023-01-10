@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:36:15 by myko              #+#    #+#             */
-/*   Updated: 2023/01/06 18:59:28 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 17:06:02 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
+#include "../include/checker_bonus.h"
 
 static int	gnl_read(int fd, char **c_line, char **buff)
 {

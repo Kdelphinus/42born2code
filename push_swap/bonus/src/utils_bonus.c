@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:02:24 by myko              #+#    #+#             */
-/*   Updated: 2023/01/10 16:42:39 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 17:06:18 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
+#include "../include/checker_bonus.h"
 
 int	ft_error_checker(void)
 {

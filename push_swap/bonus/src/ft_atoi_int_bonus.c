@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 21:25:32 by myko              #+#    #+#             */
-/*   Updated: 2023/01/06 19:34:00 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 17:05:59 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
+#include "../include/checker_bonus.h"
 
 static int	overflow_up_check(long long result, char num)
 {

@@ -6,11 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 16:24:46 by myko              #+#    #+#             */
-/*   Updated: 2023/01/06 19:29:43 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 17:06:12 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/checker.h"
+#include "../include/checker_bonus.h"
 
 static void	swap_arg(int *arr, long long *i, long long *j)
 {
