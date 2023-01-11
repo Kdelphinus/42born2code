@@ -20,6 +20,7 @@
 - [05. fract-ol](#05-fract-ol)
 - [06. pipex](#06-pipex)
 - [07. push_swap](#07-push_swap)
+- [08. Philsophers](#08-philosophers)
 
 ## 01. Libft
 - 기간: 2022.07.05 ~ 2022.07.14
