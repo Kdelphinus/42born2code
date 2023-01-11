@@ -6,12 +6,12 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:00:01 by myko              #+#    #+#             */
-/*   Updated: 2023/01/10 17:05:43 by myko             ###   ########.fr       */
+/*   Updated: 2023/01/10 19:08:31 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # include "../../lib/libft.h"
 
