@@ -1,9 +1,13 @@
 # Operating System
 
+## Index
+- [0. 개요]
+- [1. OS의 발전 이야기]
+
 ## 0. 개요
 이 문서는 [이 곳](https://letsmakemyselfprogrammer.tistory.com/category/CS/Operating%20System?page=2)의 정리들을 토대로 다시 정리한 것이며 원본글을 보는 것이 이해가 더 쉬울 수 있다.
 
-## 1 OS의 발전 이야기
+## 1. OS의 발전 이야기
 
 ### OS의 목적
 OS는 **자원관리자**로서의 성격이 강하다.
@@ -62,3 +66,8 @@ Single Batch System에서는 메모리에 OS와 사용자 프로그램 단 두 �
 따라서 OS뿐만 아니라 **사용자 프로그램끼리의 메모리 보호 문제가 대두되면서 MMU(Memory Management Unit)와 같은 하드웨어의 지원을 받기 시작**한다.
 
 #### 4) Time Sharing System
+
+
+## 참고문헌
+- [개발자가 되어보자, CS/Operation System](https://letsmakemyselfprogrammer.tistory.com/category/CS/Operating%20System?page=2)
+- [Evans Libray](https://evan-moon.github.io/2019/09/19/sync-async-blocking-non-blocking/)
