@@ -1,8 +1,8 @@
 # Operating System
 
 ## Index
-- [0. 개요]
-- [1. OS의 발전 이야기]
+- [0. 개요](#0-개요)
+- [1. OS의 발전 이야기](#1-os의-발전-이야기)
 
 ## 0. 개요
 이 문서는 [이 곳](https://letsmakemyselfprogrammer.tistory.com/category/CS/Operating%20System?page=2)의 정리들을 토대로 다시 정리한 것이며 원본글을 보는 것이 이해가 더 쉬울 수 있다.
