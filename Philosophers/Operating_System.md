@@ -338,6 +338,31 @@ PCB는 복제 후, pid와 ppid를 자식 프로세스에 맞게 수정하고 대
 - clock interrupt, IO interrupt, signals, system call 등의 경우, 발생할 수 있다.
 
 ### Scheduling Algorithms
+이 챕터에선 short-term sechduling을 다룬다.
+즉, multi-process 환경에서 cpu를 얼마나 공정하고 효과적으로 분배할 수 있는가에 대한 솔루션이다.
+아래는 알고리즘을 설명하기 위한 용어이다.
+
+- decision mode: preemptiv(선점형) 또는 nonpreemptive(비선점형)
+- selection function: 다음 프로세스를 고르기 위한 우선순위 계산 함수
+- turnarround time: 프로그램이 제출된 이후 완료될 때까지 걸린 시간
+- response time
+  - 프로그램이 제출된 이후, 처음으로 반응하기까지 걸린 시간
+  - 편의상 처음 cpu를 점유하기까지 걸린 시간으로 계산하기도 한다.
+  - 유저 입장에선 turnarround time보다 더 중요한 요소로 여겨진다.
+- deadline
+  - 사용자가 제출한 예상시간 내에 얼마나 잘 처리했는지를 나타냄
+  - real time system에서 중요
+- throughput: 단위시간 당 처리하는 프로세스의 개수
+- utilization: 자원(cpu, io, device)을 얼마나 효율적으로 사용하는지 나타낸 지표
+- fairness: 얼마나 공정하게 자원을 배분했는지 나타낸 지표
+
+![scheduling algorithms](img/scheduling_algorithms.png)
+
+#### 1) FCFS
+
+- **First Come First Service**의 준말로 가장 간단한 방식
+- FIFO와 동일
+- 
 
 ## 참고문헌
 - [개발자가 되어보자, CS/Operation System](https://letsmakemyselfprogrammer.tistory.com/category/CS/Operating%20System?page=2)
