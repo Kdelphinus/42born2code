@@ -7,6 +7,7 @@
   - [0.3 Global rules](#03-global-rules)
   - [0.4 Mandatory part](#04-mandatory-part)
   - [0.5 Bonus part](#05-bonus-part)
+- [1. OS 개념 정리](#1-os-개념-정리)
 - [참고 문헌](#참고-문헌)
 
 ## 0. Subject
@@ -83,7 +84,7 @@
 - Mandatory part directory: **philo/**
 - Bonus part directory: **philo_bonus/**
 
-## 1. 개념 정리
+## 1. OS 개념 정리
 길어서 문서를 나눴다. [이 곳](https://github.com/Kdelphinus/42born2code/blob/main/Philosophers/Operating_System.md)에 있으며 OS에 대해 알고 있다면 안 읽어도 된다.
 
 ## 참고 문헌
