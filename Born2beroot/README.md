@@ -263,12 +263,11 @@ $ sudo apt install libpam-pwquality // 패키지 설치
 $ sudo vi /etc/pam.d/common-password // 이 파일에서 비밀번호 정책 수정
 
 /// common-passwrod 파일 수정
-# retry=3 // 암호 재입력은 최대 3회까지, ver2에선 명시되어있지 않음
 minlen=10 // 최소 길이 10
 difok=7 // 기존 패스워드와 달라야 하는 문자 수 7
 maxrepeat=3 // 동일한 문자를 반복 가능한 최대 횟수 3
 ucredit=-1 // 대문자 한개 이상 포함
-lcredit=0 // 소문자를 한 개 이상 포함하라는 말이 없다.
+lcredit=-1 // 소문자 한개 이상 포함
 dcredit=-1 // digit 한개 이상 포함
 reject_username // username이 그대로 혹은 reversed 된 문자는 패스워드로 사용 불가
 enforce_for_root // root 계정도 위의 정책들 적용
