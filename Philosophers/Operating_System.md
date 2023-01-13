@@ -167,6 +167,8 @@ PCB의 state information에 저장된 정보들은 pc, psw, sp, bp 등의 특수
 > 어떤 프로세스에게 자원을 할당할지를 결정하는 운영체제 커널의 모듈을 지칭한다.
 > 스케줄러에 프로세스 상태가 바뀌게 된다.
 >
+> [챕터 3](#3-프로세스-스케줄링feat-알고리즘-장단점-비교)에서도 자세히 설명이 나온다.
+>
 > 이때 단기 스케줄러(short-term scheduler)란 CPU 스케줄러라고도 하며 준비상태의 프로세스 중에서 어떤 것을 실행 상태로 바꿀지 결정하는 스케줄러이다.
 
 #### 2) 5-state model
@@ -221,11 +223,12 @@ swap out되는 victim 프로세스를 선정할 때, 메모리에 있으면서 b
     - suspended ready: ready 상태에 있던 프로세스가 디스크로 swap out
     - suspended blocked: block 상태에 있던 프로세스가 디스크로 swap out
 
-> blocked와 suspended의 차이
->
+> #### blocked와 suspended의 차이
 > - blocked: 잠시 중지되어있다가(blocked) 끝나면 다시 ready 상태로 돌아옴
 > - suspended: 잠시 중지되어있다가(suspended) 누군가가 재개시켜줘야 다시 ready 상태로 돌아옴
 
+> #### interrupt란
+> cpu가 프로그램을 실행하고 있을 때, 입출력하드웨어 등의 장치에 예외상황이 발생하여 처리가 필요할 경우, cpu에게 알려 처리할 수 있도록 하는 것을 말한다.
 ### Process Image
 ![process image](img/process_image.png)
 
@@ -309,6 +312,33 @@ PCB는 복제 후, pid와 ppid를 자식 프로세스에 맞게 수정하고 대
 
 자세한 메커니즘은 [IPC - signal 처리](https://velog.io/@tank3a/IPC-SIGNAL)를 확인하면 된다.
 
+## 3. 프로세스 스케줄링(feat. 알고리즘 장단점 비교)
+
+### Scheduling 분류 3가지
+![7-state scheduling](img/7-state_scheduling.png)
+
+#### 1) Long-term schedule
+- **job scheduler**라고도 한다.
+- 제출된 프로그램 실행 요청 중에서 <U>어떤 것을 프로세스로 실행시킬 지 결정</U>하는 스케줄링이다.
+- 사용자가 OS에 프로그램 실행 요청을 제출한다. -> **요청 대기큐**
+- OS는 **요청 대키큐** 중 어떤 프로그램을 **ready state 큐**로 넣을지 결정한다.
+- 큐에 넣어져서 실행 가능한 대기 상태가 되면, 프로그램에 대한 PCB가 만들어져서 프로세스가 된다.
+
+#### 2) Mid-term schedule
+- **swapper**라고도 하며, 보통 swap function을 가리키는 말
+- multiprogramming의 정도를 결정하는 요인이 된다.
+- <U>swap out, swap in 할 대상의 프로세스를 결정</U>한다.
+
+> #### multiprogramming
+> 프로세서의 자원 낭비를 최소화하기 위해 낭비되는 시간을 다른 프로세스 수행에 쓰게 하여 하나의 프로세서에서 여러 프로세스를 교대로 수행할 수 있게 하는 것
+
+#### 3) Short-term schedule
+- **cpu scheduler** 또는 **dispatcher**라고도 하며, 흔히 cpu 관점에서 말하는 스케줄링에 해당한다.
+- <U>cpu를 점유할 프로세스를 결정</U>한다.
+- clock interrupt, IO interrupt, signals, system call 등의 경우, 발생할 수 있다.
+
+### Scheduling Algorithms
+
 ## 참고문헌
 - [개발자가 되어보자, CS/Operation System](https://letsmakemyselfprogrammer.tistory.com/category/CS/Operating%20System?page=2)
 - [Evans Libray](https://evan-moon.github.io/2019/09/19/sync-async-blocking-non-blocking/)
@@ -324,3 +354,5 @@ PCB는 복제 후, pid와 ppid를 자식 프로세스에 맞게 수정하고 대
 - [박연호의 개발 블로그, [운영체제]커널 모드, 사용자 모드](https://kosaf04pyh.tistory.com/196)
 - [You Are Right, TLB란? (page table, 48bit 가상 공간, virtual memory, ASID, TTBR, arm)](https://wpaud16.tistory.com/304)
 - [Jongwon의 velog, IPC - SIGNAL](https://velog.io/@tank3a/IPC-SIGNAL)
+- [개발자를 꿈꾸는 프로그래머, Multiprocessing과 Multiprogramming, Multithreading의 차이](https://jwprogramming.tistory.com/19)
+- [위키백과, 인터럽트](https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%84%B0%EB%9F%BD%ED%8A%B8)
