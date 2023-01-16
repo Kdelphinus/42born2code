@@ -12,6 +12,11 @@
   - [Process Image](#process-image)
   - [Mode switch vs Context switch](#mode-switch-vs-context-switch)
   - [Process 생성 및 종료](#process-생성-및-종료)
+- [3. 프로세스 스케줄링(feat. 알고리즘 장단점 비교)](#3-프로세스-스케줄링feat-알고리즘-장단점-비교)
+  - [Scheduling 분류 3가지](#scheduling-분류-3가지)
+  - [Scheduling Algorithms](#scheduling-algorithms)
+  - [시뮬레이션 결과](#시뮬레이션-결과)
+  - [Round Robin 심화](#round-robin-심화)
 
 ## 0. 개요
 이 문서는 [이 곳](https://letsmakemyselfprogrammer.tistory.com/category/CS/Operating%20System?page=2)의 정리들을 토대로 다시 정리한 것이며 원본글을 보는 것이 이해가 더 쉬울 수 있다.
@@ -359,10 +364,45 @@ PCB는 복제 후, pid와 ppid를 자식 프로세스에 맞게 수정하고 대
 ![scheduling algorithms](img/scheduling_algorithms.png)
 
 #### 1) FCFS
-
 - **First Come First Service**의 준말로 가장 간단한 방식
 - FIFO와 동일
-- 
+- Selection function = max[w], w=total waiting time
+- decision mode: non preemptive
+- 장점
+  - 구현이 가장 간단하다.
+  - starvation(기아 상태, 특정 프로세스의 우선 순위가 낮아서 원하는 자원을 계속 할당받지 못하는 상태)이 발생하지 않는다.
+- 단점
+  - convoy effect(짧은 작업을 수행하기 위해 오랫동안 기다려야하는 현상) 발생
+  - cpu bound job(상대적으로 cpu를 많이 소비하는 작업)이 IO bound job(상대적으로 cpu를 적게 사용하지만 시간이 많이 걸림)에 비해 더 유리하다.
+  - 작업시간이 긴 프로세스일수록 더 유리하다.
+
+#### 2) Round Robin
+- FCFS에서 convoy effect를 보완한 형태
+- FIFO 기반은 동일하지만, 일정한 time quantum 이상 cpu를 점유하는 것을 방지한다.
+- time quantum 결정 문제가 굉장히 중요하다.
+- 장점
+  - 구현이 가장 간단하다.
+  - starvation이 발생하지 않는다.
+- 단점
+  - time quantum 결정 문제 존재
+  - cpu bound job이 IO bound job에 비해 더 유리하다.
+
+#### 3) SPN
+- Shortest Process Next
+- <U>예상 실행 시간이 가장 짧은 프로세스</U>부터 작업하는 방식
+- 최적에 가깝다.
+- selection function = min[s], s=프로세스들이 요구하는 total service time
+- decision mode: non preemptive
+- 장점
+  - turnarround time이 최적에 가깝다. -> throughput이 높다.
+- 단점
+  - 예상 실행 시간을 예측하는 것이 어렵다.
+  - workload에 따라서 starvation이 발생할 수 있다.
+
+#### 4) SRT
+- Shortest Remaining Time
+- SPN의 preemption 버전
+- 새로운 프로세스가 제출되는 순간에 preemption 발생, <U>남은 시간이 가장 짧은 순서대로 작업</U>
 
 ## 참고문헌
 - [개발자가 되어보자, CS/Operation System](https://letsmakemyselfprogrammer.tistory.com/category/CS/Operating%20System?page=2)
@@ -381,3 +421,4 @@ PCB는 복제 후, pid와 ppid를 자식 프로세스에 맞게 수정하고 대
 - [Jongwon의 velog, IPC - SIGNAL](https://velog.io/@tank3a/IPC-SIGNAL)
 - [개발자를 꿈꾸는 프로그래머, Multiprocessing과 Multiprogramming, Multithreading의 차이](https://jwprogramming.tistory.com/19)
 - [위키백과, 인터럽트](https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%84%B0%EB%9F%BD%ED%8A%B8)
+- [woga.log, Starvation(기아 상태)란?](https://velog.io/@woga1999/Starvation-%EA%B8%B0%EC%95%84-%EC%83%81%ED%83%9C-%EB%9E%80)
