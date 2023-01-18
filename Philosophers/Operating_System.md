@@ -20,6 +20,20 @@
   - [Concurrency vs Parallelism](#concurrency-vs-parallelism)
   - [Multi-Threading](#multi-threading)
   - [Race condition](#race-condition)
+- [5. 동기화 - (1) 용어 및 개념정리](#5-동기화---1-용어-및-개념정리)
+  - [동기화 관련 용어](#동기화-관련-용어)
+  - [Critical Section Problem](#critical-section-problem)
+- [6. 동기화 - (2) 상호배제 전략(Mutex)](#6-동기화---2-상호배제-전략mutex)
+  - [SW approach](#sw-approach)
+  - [HW approach](#hw-support)
+  - [pthread.h 예시](#pthreadh-예시)
+  - [semaphore.h 예시](#semaphoreh-예시)
+- [7. 동기화 - (3) 조건동기화](#7-동기화---3-조건동기화)
+  - [조건 동기화](#조건-동기화)
+  - [Condition Variable](#condition-variables)
+  - [Condition Operation](#condition-operation)
+  - [pthread.h API 예시](#pthreadh-api-예시)
+  - [join() 구현 예제](#join-구현-예제)
 - [참고 문헌](#참고문헌)
 
 ## 0. 개요
@@ -458,7 +472,7 @@ Single-threaded process image는 PCB, User stack, Kernel stack, User address spa
 
 위 3가지 코드가 중간에 끊기지 않고 실행되어야 한다. 그런데 2번을 수행하고 나서 time-out interrupt가 발생해 context switch가 진행되고, 다시 원래 스레드로 돌아왔을 때, 3번 명령을 실행한다. 즉, 최신화된 x 값을 load하면서 시작하는 것이 아니라 예전에 저장되어 있던 예전의 x값을 덮어쓰면서 시작한다. 이런 상황 때문에 공유 변수에 대한 동기화 문제가 발생한다. 동시에 접근하는 것이 문제인 것이다.
 
-## 5. 동기화 - (1) 용어 및 개념정릴
+## 5. 동기화 - (1) 용어 및 개념정리
 
 ### 동기화 관련 용어
 
