@@ -943,7 +943,161 @@ void * thr_exit() {
 
 조건동기화는 condition을 만족시킬 때, critical section에 들어가고, 만족시키지 못하면 대기하도록 하는 기법이다. 조건 동기화를 위해서는 1) 상태변수, 2) lock, 3) loop checking 이 필요함을 알고 있어야 한다.
 
+## 8. 동기화 - (4) 생산자 소비자 문제
 
+동기화를 해결하기 위해서 **상호배제** 전략과 **조건 동기화** 전략을 살펴보았다. 상호배제는 공유자원을 한 번에 하나씩 사용하는데 집중한다. 비슷하지만 조건 동기화는 다수의 실행흐름을 제어하는데 더 유리하다. critical section에 대시하는 프로세스나 스레드를 ordering하는 전략이다.
+
+### 생산자-소비자 문제
+
+조건동기화는 대기 큐를 사용한다. Critical section에 들어가기 전에 조건을 만족하지 않는 모든 스레드들이 대기하는 장소이다. 이 대기큐의 길이가 한정되어있기에 발생하는 문제가 있다. 이를 **Bounded Buffer problem** 또는 **Producer-Consumer problem** 이라고 한다.
+
+가장 흔한 예시는 웹 서버를 예로 들 수 있다. 멀티 스레드 기반의 웹 서버를 생각한다면 웹 서버는 다수의 요청을 처리해야 한다.따라서 요청을 받기 위해 대기(listen)하는 스레드가 다수 존재한다. 요청이 들어오면 해당 요청을 받은 스레드가 그 요청(httpRequest)을 대기큐에 쌓아둔다. 또 요청을 처리하기 위한 다수의 스레드가 존재해서 대기큐에 있는 요청을 하나씩 꺼내서 처리한다.
+
+대기큐에 요청을 집어넣는 스레드를 **생산자** , 대기큐에서 요청을 꺼내 처리하는 스레드를 **소비자** 라고 할 수 있다.
+
+- **생산자** : 웹 서버에서 요청을 받기 위해 대기(listen) 하면서, 요청이 발생하면 대기큐에 해당 요청을 집어넣는 스레드
+- **소비자** : 요청을 처리하기 위해 기다리면서, 대기큐에 요청이 있으면 하니씩 꺼내는 스레드
+
+이런 상황이 문제가 되는 이유는 바로 **대기큐가 공유자원이고 race condition이 발생할 수 있기 때문** 이다. 생산자는 대기큐가 가득 차 있는지 확인해야하고, 소비자는 대기큐에 요청이 하나라도 있는지 계속 확인해야한다. 다수의 소비자와 다수의 생산자가 존재하는 대규모 소프트웨어 환경에서는 빈번하게 발생하는 상황이다. 이 문제를 해결하기 위해서는 상호배제 측면의 동기화보다는 대기큐의 상태를 고려하는 조건 동기화 측면으로 접근해야한다.
+
+이제부터 condition variable을 이용하여 생산자 - 소비자 문제를 해결하는 코드를 설명한다. pthread 라이브러리를 사용하는 버전과 semaphore를 사용하는 버전이 있다.
+
+### pthread를 이용하는 버전
+
+처음부터 완성된 솔루션을 보면 이해하기가 힘들기 때문에 점진적으로 설명한다.
+
+#### 1) Infinite Buffer
+
+대기큐의 크기가 무한일 때는 put() 할 때는 신경쓰지 않아도 된다. get() 할 때만 버퍼가 비어있는지 확인하면 된다. 이전 파트에서 확인했듯이 조건 동기화를 위해선 1) 상태변수, 2) 상태변수에 대한 lock 3) loop checking 이 필요하다. 이 필요에 따라 count라는 상태변수를 선언하고, lock을 설정한 것을 볼 수 있다.
+
+다만 아래의 코드에서는 while 대신 if를 사용했는제, loop checking의 필요성을 추후 설명하기 위함이다.
+
+```c
+void producer() {
+    while (1) {
+        pthread_mutex_lock(&m);  // 대기큐c 에 대한 lock (상호배제)
+        put(value);
+        pthread_cond_signal(&c);    // 대기하는 consumer 가 있으면 깨운다.
+        pthread_mutex_unlock(&m);// 대기큐c 에 대한 lock (상호배제)
+    }
+}
+void consumer() {
+    while (1) {
+        pthread_mutex_lock(&m);    // 대기큐c 와 count 변수 에 대한 lock (상호배제)
+        if (count == 0)
+    		pthread_cond_wait(&c, &m); // 소비할 것이 없으면 대기큐 c에서 대기한다.
+        get();
+        pthread_mutex_unlock(&m);  // 대기큐c 와 count 변수 에 대한 lock (상호배제)
+    }
+}
+```
+
+#### 2) 크기가 고정된 버퍼
+
+버퍼의 크기가 고정된다면, 가득 찼을 때 더 넣을 수 없다. 따라서 producer에서 공유변수 count가 MAX인지 확인하는 코드를 추가해야 한다.
+
+또 생산자가 대기하고 있고 누군가 소비해서 공간이 생겨난다면, 대기 중인 생산자를 깨워야한다. 따라서 소비자가 소비한 이후에 생산자를 깨우는 코드를 추가해야한다.
+
+```c
+void producer() {
+    while (1) {
+/*p1*/    pthread_mutex_lock(&m);  // 대기큐c 와 count 변수 에 대한 lock (상호배제)
+/*p2*/    if (count == MAX)              // 추가된 코드
+/*p3*/        pthread_cond_wait(&c, &m);    // 추가된 코드
+/*p4*/    put(value);
+/*p5*/    pthread_cond_signal(&c);
+/*p6*/    pthread_mutex_unlock(&m);// 대기큐c 와 count 변수 에 대한 lock (상호배제)
+    }
+}
+void consumer() {
+    while (1) {
+/*c1*/    pthread_mutex_lock(&m);    // 대기큐c 와 count 변수 에 대한 lock (상호배제)
+/*c2*/    if (count == 0)
+/*c3*/        pthread_cond_wait(&c, &m);
+/*c4*/    get();
+/*c5*/    pthread_cond_signal(&c);       // 추가된 코드, 대기하는 생산자가 있으면 깨운다.
+/*c6*/    pthread_mutex_unlock(&m);  // 대기큐c 와 count 변수 에 대한 lock (상호배제)
+    }
+}
+```
+
+허나 위의 코드는 두 가지의 문제점이 있다.
+
+#### 문제점 1
+
+- 생산자 1명, 소비자 2명, 버퍼 크기가 1개라고 가정
+- 생산자가 소비자A를 깨웠는데, os 스케줄러에 의해 소비자B가 선점하게 되면 발생
+  - signal은 스레드의 상태를 변경시킬 뿐, 누가 실행될지는 os가 실행가능한 상태의 스레드들 중에서 결정한다.
+
+1. 버퍼가 비어있을 때, 소비자A가 소비 시도 -> c3 코드에서 wait()
+2. 생산자가 1개를 생산하고 signal을 보내서 소비자A가 ready 상태로 변경
+    - 여기서 즉시 실행되지 않는데 이것이 문제의 원인이 된다.
+3. 생산자가 하나 더 생산하려는데 버퍼가 가득참 -> p3에서 wait()
+4. 소비자A, 소비자B 중에서 os가 소비자B를 실행 -> 1개 소비 후, 버퍼가 비어서 wait()
+5. 마침내 소비자A가 실행
+    - c3 코드라인에서 대기했으니, c3 이후부터 실행한다.
+    - get()을 호출하는데 버퍼가 비어있으므로 오류 발생
+
+문제가 되는 근본적인 이유는 생산자가 소비자A를 깨웠는데, OS 스케줄러에 의해 소비자B가 먼저 실행된 것이다. 이를 해결하는 방법은 두 가지가 있다.
+
+- Mesa Sementics: 5번에서 깨어났을 때, 즉시 get()을 하지 않고 다시 한 번 버퍼(count)를 확인하는 방법 -> if 대신 while을 사용
+- Hoare Sementics: 시그널을 통해 깨어난 스레드를 즉시 실행시킨다. -> os를 수정해야 함
+
+대부분의 os는 Mesa Sementic으로 구현되어있기 때문에 if 대신 무조건 while을 사용하는 것이 좋다. 그렇기에 위의 코드를 if에서 while로 바꾸면 된다.
+
+#### 문제점 2
+
+- 생산자 1명, 소비자 2명, 버퍼 크기가 1개라고 가정
+- 생산자와 소비자가 사용하는 condition variable이 같기 때문에 발생
+
+1. 소비자A가 실행할 차례이고, 소비자B와 생산자가 wait()으로 sleep 상태에 있다고 가정
+2. 소비자A가 성공적으로 버퍼에서 데이터를 소비
+    - 이때 생산자가 깨어날 것을 기대하고, 데이터를 소비했다는 시그널을 보낸다.
+3. 소비자A가 한번 더 수행하려다 버퍼가 비어있어서 sleep한다.
+4. condition variable을 생산자와 소비자가 같은 것을 사용하기에 해당 시그널을 생산자가 아닌 소비자B가 받아서 깨어난다.
+    - 소비자A와 생산자는 sleep
+5. 소비자B도 버퍼가 비어있어서 sleep
+6. 결과적으로 모든 스레드가 sleep
+
+이때 생산자와 소비자가 기다리는 이벤트는 엄연히 다르다.
+
+- 생산자
+  - (기다림) 버퍼에 잔여공간이 생겨났다는 이벤트를 기다림 (empty 이벤트)
+  - (발생) 버퍼에 새로운 데이터를 넣었다는 이벤트를 발생시킴 (fill 이벤트)
+- 소비자
+  - (기다림) 버퍼에 소비가능한 데이터가 생겼다는 이벤트 (fill 이벤트)
+  - (발생) 버퍼에서 데이터를 소비했다는 이벤트를 발생시킴 (empty 이벤트)
+
+그렇기에 condition variable을 구별해서 사용해야 한다.
+
+위 두가지 문제를 해결한 코드는 다음과 같다.
+
+```c
+void producer() {
+    while (1) {
+        pthread_mutex_lock(&m);  // 대기큐 empty,fill 와 count 변수에 대한 lock (상호배제)
+        while (count == MAX)              
+    		pthread_cond_wait(&empty, &m);    // 수정된 부분 (소비이벤트를 기다림)
+        put(value);
+        pthread_cond_signal(&fill);           // 수정된 부분 (생산이벤트 발생시킴)
+        pthread_mutex_unlock(&m);// 대기큐 empty,fill 와 count 변수에 대한 lock (상호배제)
+    }
+}
+void consumer() {
+    while (1) {
+        pthread_mutex_lock(&m);    // 대기큐 empty,fill 와 count 변수에 대한 lock (상호배제)
+        while (count == 0)
+        	pthread_cond_wait(&fill, &m);  // 수정된 부분 (생산이벤트 기다림)
+        get();
+        pthread_cond_signal(&empty);       // 수정된 부분 (소비이벤트 발생시킴)
+        pthread_mutex_unlock(&m);  // 대기큐 empty,fill 와 count 변수에 대한 lock (상호배제)
+    }
+}
+```
+
+### Semaphore를 이용하는 버전
+
+세마포어는 상호배제와 조건동기화에 모두 적용할 수 있는 일반화된 동기화 방법이다. 상호배제의 측면으로 보면 
 
 ## 참고문헌
 - [개발자가 되어보자, CS/Operation System](https://letsmakemyselfprogrammer.tistory.com/category/CS/Operating%20System?page=2)
