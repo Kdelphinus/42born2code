@@ -12,9 +12,14 @@
   - [Process Image](#process-image)
   - [Mode switch vs Context switch](#mode-switch-vs-context-switch)
   - [Process 생성 및 종료](#process-생성-및-종료)
-- [3. 프로세스 스케줄링](#3-프로세스-스케줄링feat-알고리즘-장단점-비교)
+- [3. 프로세스 스케줄링](#3-프로세스-스케줄링)
   - [Scheduling 분류 3가지](#scheduling-분류-3가지)
   - [Scheduling Algorithms](#scheduling-algorithms)
+- [4. 쓰레드(Thread)와 동기화 문제](#4-쓰레드thread와-동기화-문제)
+  - [쓰레드의 의미](#쓰레드의-의미)
+  - [Concurrency vs Parallelism](#concurrency-vs-parallelism)
+  - [Multi-Threading](#multi-threading)
+  - [Race condition](#race-condition)
 - [참고 문헌](#참고문헌)
 
 ## 0. 개요
@@ -316,7 +321,7 @@ PCB는 복제 후, pid와 ppid를 자식 프로세스에 맞게 수정하고 대
 
 자세한 메커니즘은 [IPC - signal 처리](https://velog.io/@tank3a/IPC-SIGNAL)를 확인하면 된다.
 
-## 3. 프로세스 스케줄링(feat. 알고리즘 장단점 비교)
+## 3. 프로세스 스케줄링
 
 ### Scheduling 분류 3가지
 ![7-state scheduling](img/7-state_scheduling.png)
@@ -452,6 +457,477 @@ Single-threaded process image는 PCB, User stack, Kernel stack, User address spa
 3. 전역변수 x의 메모리 주소에 저장
 
 위 3가지 코드가 중간에 끊기지 않고 실행되어야 한다. 그런데 2번을 수행하고 나서 time-out interrupt가 발생해 context switch가 진행되고, 다시 원래 스레드로 돌아왔을 때, 3번 명령을 실행한다. 즉, 최신화된 x 값을 load하면서 시작하는 것이 아니라 예전에 저장되어 있던 예전의 x값을 덮어쓰면서 시작한다. 이런 상황 때문에 공유 변수에 대한 동기화 문제가 발생한다. 동시에 접근하는 것이 문제인 것이다.
+
+## 5. 동기화 - (1) 용어 및 개념정릴
+
+### 동기화 관련 용어
+
+#### 1) Race Condition
+
+멀티쓰레드 또는 멀티 프로세스 환경에서 공유자원에 동시에 접근할 때, 의도치 않은 결과를 낳는 것을 race condition이라고 하고 다음과 같은 특성을 갖는다.
+
+- Non-Deterministic: 의도하지 않은 결과를 냄, 결과를 예측할 수 없다.
+- Reproducible: 재현 가능하다.
+
+근본적으로는 [cpu 스케줄링 + 캐시(레지스터 포함) + non-atomic instruction] 때문에 발생하며, 이를 방지하기 위해서는 공유자원에 대한 동기화가 필요하다.
+
+#### 2) Critical Section
+
+공유자원에 접근하는 코드 영역이다. 동기화 문제는 결국 이 critical section을 어떻게 다루는가에 대한 문제로 볼 수 있다. 크게는 상호배제(mutual exclusion) 전략과 조건동기화(conditional synchronization) 전략 두가지로 나눌 수 있다. 참고로 공유자원에 대해서 read-only만 수행한다면 race condition은 발생하지 않는다.
+
+#### 3) Mutual Exclusion
+
+상호 배제라는 뜻으로, critical section을 수행하는 실행흐름(thread or process)은 단 한 개로 한정되어야 한다는 뜻이다. 다른 말로는 공유자원에 접근할 때, 동시에 여러 개의 프로세스나 스레드가 접근할 수 없도록 제한하는 방식이다.
+
+#### 4) Conditional Synchronization
+
+조건부 동기화 방식으로 특정 조건에서만 공유자원에 접근할 수 있도록 제한하는 방식이다.
+
+### Critical Section Problem
+
+동기화 문제를 해결한다는 것은, 임계영역에 대한 접근을 잘 제어한다는 것이다. 구체적으로는 아래의 3가지를 만족시켜야 한다.
+
+1. Mutual Exclusion(상호 배제)
+    - 임계 영역에 접근하는 실행흐름(process/thread)은 동시에 둘 이상이 될 수 없다.
+2. Progress(진행)
+    - 임계 영역을 아무도 실행하고 있지 않을 때, 무제한 대기하지 않고 임계영역으로 들어갈 수 있어야 한다.
+    - deadlock 상황을 예로 들 수 있다.
+3. Bounded Waiting(한정 대기)
+    - starvation이 발생하면 안 된다.
+    - 즉 공유자원에 대한 access 요청을 했는데, 다른 프로세스들은 계속 접근하면서, 특정 프로세스만 무한정 대기하고 있으면 안 된다.
+    - 공유자원 요청을 하면 언제가는 해당 자원을 할당 받을 수 있어야 한다.
+
+## 6. 동기화 - (2) 상호배제 전략(Mutex)
+
+상호배제 전략은 SW 방식과 HW 방식으로 나눌 수 있다.
+
+### SW approach
+
+SW 방식은 다시 1) Peterson의 알고리즘과 2) Interrupt 차단방식으로 예를 들 수 있다. 결론부터 이야기하자면, SW 방식은 효과적이지 못하며 HW의 도움을 받아야 한다.
+
+#### 1) Peterson's Algorithm
+
+3가지 단계로 나눠서 설명한다.
+
+##### 1) Native approach
+
+가장 빨리 떠올릴 수 있는 간단한 방법은, flag 변수를 선언하는 것이다. 아래와 같이 critical section에 진입할 때, flag를 활성화시키고, 빠져나올 때 비활성화하는 방법이다. 그리고 critical section에 진입하기 위해 flag 변수를 busy-waiting 방식으로 계속 확인한다.
+
+```c
+while (1) // critical section start
+{
+  if (!occupied)
+  {
+    occupied = ture;
+    break;
+  }
+}
+
+// access shared resource here!
+
+occupied = false // critical section end
+```
+
+하지만 이 방법은 옳은 방법이 아니다. occupied라는 flag 변수 역시 공유변수이기 때문에, 상호배제 시켜야 한다. 구체적으로 문제가 되는 곳은 <if 블럭에 진입한 후> ~ <occupied가 true로 변하기 전>에 스케줄링 되는 상황이다.
+
+1. Process A가 if 블럭에 진입, 즉시 스케줄링 되어 occupied가 true로 변경되지 않고 false임
+2. Process B가 critical section에 진입하여 공유자원에 wirte 작업을 수행하던 중 스케줄링
+3. Process A가 if문 내부에서 재실행되면서 공유자원 접근
+    - 원래 의도는 Process B가 critical section에 있기 때문에 occupied가 true인 것을 확인하고 block 되어야 한다.
+    - 공유자원의 변경값이 메모리에 적용되기 전에 다중쓰기가 되므로 동기화 실패
+
+##### 2) Better approach
+
+위의 상황에서 문제는 flag 변수 또한 공유변수라는 점이다. 그러면 flag 변수를 공유변수가 아닌, 프로세스마다 개별적으로 사용하게끔 해서 좀 더 나은 방법을 만들 수 있다.
+
+아래의 예시는 두 개의 프로세스가 있을 때, flag 변수를 프로세스 하나당 할당하는 예제이다.
+
+```c
+/* 0번 Process */
+do {
+    accupied[0] = true;
+    while (accupied[1]); // 1번 Process 가 점유중이면 기다림.
+    
+        /* Critical Section */
+        
+    accupied[0] = false;
+    
+// Remainder Section
+    
+} while(1)
+```
+
+```c
+/* 1번 Process */
+do {
+    accupied[1] = true;
+    while (accupied[0]); // 0번 Process 가 점유중이면 기다림.
+    
+        /* Critical Section */
+        
+    accupied[1] = false;
+    
+// Remainder Section
+    
+} while(1)
+```
+
+하지만 아직도 문제가 존재하는데, 0번 프로세스가 critical section 밖에 존재하고, 1번 프로세스가 flag[1] = true;를 수행한 뒤 while 전에 스케줄링 되는 상황을 생각해보자.
+
+1. 1번 프로세스가 accupied[1] = true; 를 수행한 뒤, while 전에 스케줄링
+2. 0번 프로세스가 accupied[0] = true; 를 수행함. while (accupied[1]); 에서 block
+3. 1번 프로세스도 while (accupied[0]); 에서 block
+4. 둘 다 block -> deadlock
+
+두 프로세스 모두 공유자원에 접근할 수 없는 **deadlock** 이 발생한다. Progress requirement를 만족시키지 못하는 상황이다.
+
+즉, 공유자원인 flag 변수를 분리함으로써 mutual exclusion requirement를 위배하는 상황은 해결했지만, Progress requirement를 만족시키지 못했기에 critical section에 대한 접근제어를 적절히 했다고 평가할 수 없다.
+
+##### 3) Peterson's solution
+
+위에서의 문제인 progress requirement를 해결하기 위해, 공통된 flag를 하나 더 도입하는 방법이다. 즉, (분리된 flag 2개) + (공유 flag 1개) 를 사용한다.
+
+```c
+/* 0번 Process */
+do {
+    accupied[0] = true;
+    turn = 1;  // 1번 프로세스가 실행할 의사가 있으면 양보.
+    while (accupied[1] && turn==1); // 1번 Process 가 점유중이면 기다림.
+    
+        /* Critical Section */
+        
+    accupied[0] = false;
+    
+// Remainder Section
+    
+} while(1)
+```
+
+```c
+/* 1번 Process */
+do {
+    accupied[1] = true;
+    turn = 0; // 0번 프로세스가 실행할 의사가 있으면 양보.
+    while (accupied[0] && turn==0); // 0번 Process 가 점유중이면 기다림.
+    
+        /* Critical Section */
+        
+    accupied[1] = false;
+    
+// Remainder Section
+    
+} while(1)
+```
+
+위와 같은 상황에서 1번 프로세스가 accupied[1] = true를 실행하고 스케줄링 되었다고 생각해보자.
+
+1. 1번 프로세스가 accupied[1] = true를 실행하고 스케줄링
+2. 0번 프로세스가 accupied[0] = true; turn = 1; 를 실행하고 while 에서 기다림
+3. 1번 프로세스가 turn = 0;를 실행하고 while 에서 기다림
+4. 0번 프로세스가 while을 지나치고 실행됨
+
+이 방법은 두 프로세스(또는 스레드)에서 동기화 문제를 잘 해결했지만, 너무 복잡하다는 문제가 있다. 프로세스 개수가 3개 이상부터는 기하급수적으로 복잡해진다.
+
+또 현대 OS에서는 적용할 수 없는데, compiler에 의해 instruction reordering이 발생하기 때문이다. low level에서 명령어들의 순서가 바뀔 수 있어서 결국 accupied[i] = true; turn = i;의 실행 순서가 보장되지 않아 적용할 수 없다.
+
+#### 2) Disabling Interrupts
+
+초창기 OS에서 사용하던 방식이다. single-processor system에서 고안되었다. Critical section에 진입하면 모든 인터럽트를 끄는 방식이다. 이는 3가지 단점이 있었다.
+
+1. 인터럽트 신호를 잃어버릴 수 있다.
+2. 악의적으로 cpu를 독점할 수 있다.
+3. 멀티 프로세서 시스템에서는 더더욱 비효율적이다.
+
+이는 마치 횡단보도 하나를 건너기 위해 전국의 횡단보도를 끄는 셈이다. system timer interrupt, io interrupt 등을 다 비활성화 시키기 때문에, 스케줄링이 원칙적으로 금지된다.
+
+### HW support
+
+![hw support](img/hw_support.png)
+
+위에서 봤듯이, 소프트웨어의 구현만으로는 동기화 문제를 처리할 수 없다. 왜냐하면 동기화 문제는 근본적으로 하드웨어의 구조적 문제로 발생하기 때문이다.
+
+1. main 메모리와 캐시메모리의 분리
+2. 데이터를 수정할 때, 하드웨어에서는 여러 단계의 작업이 필요
+3. 중간 단계에서 갑자기 스케줄링
+4. race condition
+
+따라서 하드웨어 수준에서 다음과 같은 조치를 취한다면, race condition을 방지할 수 있다.
+
+1. 여러 단계의 하드웨어 작업을 atomic 하게 수행할 수 있도록 묶어서 instruction(지침)을 만든다.
+2. 하나의 instruction을 수행하는 도중에는 스케줄링이 될 수 없으므로(물리적으로 불가능) race condition이 발생하지 않는다.
+
+HW의 도움을 받는다는 것은 결국 single atomic operation을 지원받는 것을 의미한다. 아래의 예시는 실제 HW 수준에서 제공하는 atomic한 단일 instruction을 c언어 수준에서 설명한다.
+
+#### 1) Test-And-Set (TAS)
+
+다음 psuedo code와 같은 instruction을 HW에서 제공한다.
+
+```c
+/**
+ * 아래의 TestAndSet 함수는 low-level 에서의 machine code 를 c언어로 표현한 것이다.
+ * 하드웨어 수준에서 atomic 한 instruction을 제공한다.
+ */
+int TestAndSet(int *old_ptr, int new) {
+    int old = *old_ptr;
+    *old_ptr = new;
+    return old;
+}
+
+void unlock(lock_t *lock) {
+    lock->flag = 0;
+}
+
+void lock(lock_t *lock) {
+    // 공유변수 lock 을 다른 프로세스가 선점하고 있다면, *old_ptr == 1
+    // 즉 1을 리턴하고 busy waiting
+    // 공유변수 lock 을 아무도 점유하고 있지 않다면, *old_ptr == 0
+    // lock 을 점유하고 빠져나감!
+    while(TestAndSet(&lock->flag, 1) == 1);
+}
+```
+
+#### 2) Compare-And-Swap (CAS)
+
+TAS와 동일한 기능을 제공한다. 다만 TAS는 매번 변수에 new value를 대입하지만, CAS는 기존값이 expected value와 동일할 때만 변경해준다.
+
+```c
+/**
+ * 아래의 CompareAndSet 함수는 low-level 에서의 machine code 를 c언어로 표현한 것이다.
+ * 하드웨어 수준에서 atomic 한 instruction을 제공한다.
+ */
+int CompareAndSet(int *old_ptr, int expected, int new) {
+    int old = *old_ptr;
+    if (old == expected) // TAS 에 비교해서 추가된 기능
+        *old_ptr = new;
+    return old;
+}
+
+void unlock(lock_t *lock) {
+    lock->flag = 0;
+}
+
+void lock(lock_t *lock) {
+    // 공유변수 lock 을 다른 프로세스가 선점하고 있다면, *old_ptr == 1
+    // 즉 1을 리턴하고 busy waiting
+    // 공유변수 lock 을 아무도 점유하고 있지 않다면, *old_ptr == 0
+    // lock 을 점유하고 빠져나감!
+    while(CompareAndSet(&lock->flag, 0, 1) == 1);
+}
+```
+위와 같은 wait 방식을 **busy-waiting** 또는 **spin-waiting** 이라고 한다. 이는 기다리는동안 cpu를 계속 사용하면서 조건을 확인하는 방식이다. 매우 짧은 시간동안만 기다릴 것으로 예측되는 경우에는 효과적이다. Scheduling 시에 타이밍에 기대기 때문에, cpu 관점에서는 공평하진 않다.
+
+반면 프린트 출력 작업과 같이 오랜시간동안 기다릴 것으로 예상될 때에는 sleep하고 다른 프로세스를 실행시키는 것이 효과적이다. 이때 사용되는 것이 **semaphore** 이다. 세마포는 상호배제 측면 뿐만 아니라 조건동기화 측면에서도 사용될 수 있다.
+
+### pthread.h 예시
+
+pthread는 UNIX 계열 OS에서 제공하는 스레드 라이브러리이다. 전역변수 x를 두 개의 child threads가 각각 1000번씩 더하고 빼는 예시이다. 코드에 있는 pthread_mutex_lock, pthread_mutex_unlock 함수는 위의 설명처럼 HW의 도움을 받아 상호배제 전략의 동기화를 제공한다.
+
+```c
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#define ITER 1000
+
+void *thread_increment(void *arg); 
+void *thread_decrement(void *arg); 
+int x;  
+pthread_mutex_t m; 
+
+int main() {
+
+    pthread_t tid1, tid2; 
+    pthread_mutex_init(&m, NULL); 
+    pthread_create(&tid1, NULL, thread_increment, NULL); 
+    pthread_create(&tid2, NULL, thread_decrement, NULL); 
+    pthread_join(tid1, NULL); 
+    pthread_join(tid2, NULL); 
+    
+    if (x != 0)
+    	printf("BOOM! counter=%d\n", x);
+    else
+    	printf("OK counter=%d\n", x);
+        
+    pthread_mutex_destroy(&m);
+}
+
+void *thread_increment (void *arg) {
+
+    int i, val;
+    for (i=0; i< ITER ; i++) {
+    	pthread_mutex_lock(&m);
+    	val = x;
+    	printf("%u:%d\n",(unsigned int) pthread_self(), val);
+    	x = val + 1;
+    	pthread_mutex_unlock(&m);
+    }
+    
+	pthread_exit(NULL);
+}
+
+void *thread_decrement (void *arg) {
+
+    int i, val;
+    for (i=0; i< ITER ; i++) {
+        pthread_mutex_lock(&m);
+        val = x;
+        printf("%u: %d\n", (unsigned int) pthread_self(), val);
+        x = val - 1;
+        pthread_mutex_unlock(&m);
+    }
+    
+	pthread_exit(NULL);
+}
+```
+
+### semaphore.h 예시
+
+세마포어는 위에서 소개된 동기화 방식의 일반화한 방식이다. 상호배제 전략과 조건동기화 전략에 모두 사용될 수 있다. 위에서 설명했던 상호배제에서는 flag = 1이면 자원이 사용중이라 대기해야하고, flag = 0이면 바로 사용가능한 상태였다. 즉, critical section에 들어갈 수 있는 실행흐름이 단 한 개였다. 근데 세마포어는 critical section에 들어갈 수 있는 실행흐름의 개수를 여러 개로 설정할 수 있다. 상호배제의 측면에서는 자원의 개수로 볼 수 있고, 조건동기화 측면에서는 조건(상태)로 볼 수 있다. 
+
+![semaphore](img/semaphore.png)
+
+semWait 함수를 통해서 lock을 얻을 수 있는지 확인하는데, lock이 1 이상이면 lock을 얻고 critical section으로 진입한다. 이때, lock 습득 유무에 상관없이 semWait 함수 마지막에 lock 값을 1씩 감소시킨다. 또한 자원에 접근하지 못할 때에는 대기큐에 들어가서 sleep한다.
+
+자원을 다 사용하면 semSignal 함수를 통해서 lock을 1개 relase한다. 이 때 lock이 0 이하면, sleep하고 있는 다른 프로세스가 있다는 의미이므로, signal을 발생시켜서 대기중인 다른 프로세스를 깨운다. 시그널 발생 유무와 상관없이 semSignal 함수 마지막에는 lock 값을 1씩 증가시킨다.
+
+## 7. 동기화 - (3) 조건동기화
+
+앞선 파트에서 계속 설명했듯이, 멀티프로세스 또는 멀티쓰레드 환경에서 공유자원을 사용하다보면 race condition이 발생할 수 있고 이를 해결하기 위해서는 동기화가 필요하다. 동기화에는 상호배제 전략과 조건 동기화 전략이 있다. 앞서 봤듯이 상호배제는 공유자원이 한 번에 하나씩 사용하는데 집중한다. 비슷하지만 조건동기화는 critical section에 대기하는 프로세스 (또는 쓰레드)를 ordering 하는 전략이다.
+
+![semaphore condition](img/semaphore_condition.png)
+
+### 조건 동기화
+
+조건동기화는 특정 조건을 만족할 때까지 스레드(또는 프로세스)를 대기시킨다. 그리고 조건이 만족될 때, 해당 스레드를 깨워서 실행시키는 방법이다. 조건 변수(conditional variable)를 통해서 작동한다. 조건 변수에 대한 특정 조건을 만족시킬 때, 실행하도록 하고 아니면 대기할 수 있도록 wait(), signal() 등의 연산이 존재한다.
+
+### Condition Variables
+
+아래와 같이 자식이 다 수행되기를 기다려야하는 상황을 생각해보자.
+
+```c
+//[Thread-1] 
+int main(int argc, char *argv[]) { 
+
+    pthread_t c; 
+    printf("parent: begin\n"); 
+    pthread_create(&c, NULL, child, NULL); 
+    
+    while (done == 0) { } // condition variable! 자식 스레드가 변경하기를 기다림!
+     
+    printf("parent: end\n"); 
+    return 0; 
+}
+ 
+//[Thread-2]
+void * child (void *arg) { 
+
+    printf("child\n"); 
+     
+    pthread_mutex_lock(&m); 
+    done = 1; // condition variable! 
+    pthread_mutex_unlock(&m); 
+     
+    return NULL; 
+}
+```
+
+자식이 언제 다 수행되었는지 알기 위해서 특정 상태변수(done)를 두어서 알아낼 수 있다. 이 때 done과 같은 상태변수를 **condition variable** 이라고 한다. condition variable은 다음과 같은 특성을 갖는다.
+
+- event(진행조건이 만족될 때 발생)가 발생하기 전까지 대기시키는 역할을 한다.
+- waiting queue와 같은 역할이다.
+- 공유변수이기 때문에 동기화(상호 배제)가 필수적이다.
+
+### Condition Operation
+
+- wait(): critical section에 진입할 때 조건을 만족하지 않으면 대기큐로 이동해서 대기한다.
+- signal(): 대기큐에 있는 스레드(프로세스) 중 하나를 깨운다. 모든 대기 스레드를 꺠우는 연산도 있다.
+
+### pthread.h API 예시
+
+```c
+#include <pthread.h>
+
+int pthread_cond_wait(pthread_cond_t *c, pthread_mutex_t *m);
+int pthread_cond_signal(pthread_cond_t *c);
+
+    // Returns: 0 if OK, error number on error
+```
+
+c에서 제공하는 pthread 라이브러리를 보면 위와 같은 조건 동기화 함수를 제공한다.
+
+- **pthread_cond_t \***
+  - 일종의 대기큐를 의미
+- **pthread_mutex_t \***
+  - lock 변수
+  - wait() 함수에 인자로 전달되어야 한다.
+  - 조건변수도 공유변수이기 때문에 상호배제되어야 한다.
+  - 그렇기에 조건동기화의 wait() 함수에는 mutex가 항상 붙어다녀야한다고 생각하면 된다.
+
+### join() 구현 예제
+
+join() 함수는 보통 부모 스레드가 자식 스레드를 기다릴 때 사용하는 함수다. 부모 스레드가 join()을 실행하게 되면, 자식 스레드가 실행 완료했다는 시그널을 보낼 때까지 대기하게 된다.
+
+조건 동기화를 구현하기 위해선 3가지 필수 요소가 존재한다.
+
+1. State Variable
+    - 상태 변수
+    - 이 예제에서는 done 변수이다.
+2. Lock for State Variable
+    - 상태변수나 조건변수도 스레드 간 공유자원이기 때문에 상호배제가 필요하다.
+3. Loop checking a condition
+    - 스케줄링 문제로 인해 if가 아닌 while loop를 이용한 확인이 필요하다.
+    - 동작 자체는 if와 동일
+
+#### 1) 부모 스레드
+
+```c
+//[Thread-1]
+int main(int argc, char *argv[]) {
+    pthread_t c;
+    pthread_create(&c, NULL, child, NULL);
+    thr_join ();
+    return 0;
+}
+
+void thr_join() {
+    pthread_mutex_lock(&m);  // done 변수에 대한 상호배제
+    while (done == 0)
+    	pthread_cond_wait(&c, &m);
+    pthread_mutex_unlock(m);  // done 변수에 대한 상호배제
+}
+```
+
+우리는 위 코드에서 **pthread_cond_wait(&c, &m)** 을 주목할 필요가 있는데 여기서 lock 변수 m을 넘겨주는 이유가 드러나기 때문이다. wait() 함수를 만나면 부모 스레드는 대기큐로 들어가서 잠든다. 하지만 **문제는 critical section 안에서 잠든다는 것** 이다. 이는 자식 스레드 중 아무도 공유변수를 사용할 수 없음을 의미한다. 그렇기에 부모 스레드가 잠들기 전, **공유변수에 대한 lock을 해제** 하고 잠들어야 한다. 그래야 자식 스레드가 done에 접근할 수 있고 부모를 깨울 수 있기 때문이다.
+
+**pthread_cond_wait(&c, &m)** 를 실행하면 다음과 같은 일이 벌어진다.
+
+1. 공유변수에 대한 lock을 release한다.
+2. 잠든다. (대기)
+3. 신호를 받고 깨어나면 다시 lock을 잡는다.
+
+정리하자면 os에서는 wait() 함수를 실행할 때, 내부에서 lock을 해제하고 잠든 다음, 깨면 다시 lock을 잡도록 되어있다.
+
+#### 2) 자식 스레드
+
+자식은 state variable을 변경하고, 대기 중인 스레드에게 시그널을 보내서 깨운다.
+
+```c
+[Thread-2]
+void * child (void *arg) {
+	// do something
+    thr_exit ();
+    return NULL;
+}
+
+void * thr_exit() {
+    pthread_mutex_lock(&m);   // done 변수에 대한 상호배제
+    done = 1;
+    pthread_cond_signal(&c);
+    pthread_mutex_unlock(&m); // done 변수에 대한 상호배제
+}
+```
+
+조건동기화는 condition을 만족시킬 때, critical section에 들어가고, 만족시키지 못하면 대기하도록 하는 기법이다. 조건 동기화를 위해서는 1) 상태변수, 2) lock, 3) loop checking 이 필요함을 알고 있어야 한다.
 
 
 
