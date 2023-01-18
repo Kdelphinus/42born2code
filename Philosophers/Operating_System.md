@@ -12,11 +12,10 @@
   - [Process Image](#process-image)
   - [Mode switch vs Context switch](#mode-switch-vs-context-switch)
   - [Process 생성 및 종료](#process-생성-및-종료)
-- [3. 프로세스 스케줄링(feat. 알고리즘 장단점 비교)](#3-프로세스-스케줄링feat-알고리즘-장단점-비교)
+- [3. 프로세스 스케줄링](#3-프로세스-스케줄링feat-알고리즘-장단점-비교)
   - [Scheduling 분류 3가지](#scheduling-분류-3가지)
   - [Scheduling Algorithms](#scheduling-algorithms)
-  - [시뮬레이션 결과](#시뮬레이션-결과)
-  - [Round Robin 심화](#round-robin-심화)
+- [참고 문헌](#참고문헌)
 
 ## 0. 개요
 이 문서는 [이 곳](https://letsmakemyselfprogrammer.tistory.com/category/CS/Operating%20System?page=2)의 정리들을 토대로 다시 정리한 것이며 원본글을 보는 것이 이해가 더 쉬울 수 있다.
@@ -363,46 +362,98 @@ PCB는 복제 후, pid와 ppid를 자식 프로세스에 맞게 수정하고 대
 
 ![scheduling algorithms](img/scheduling_algorithms.png)
 
-#### 1) FCFS
-- **First Come First Service**의 준말로 가장 간단한 방식
-- FIFO와 동일
-- Selection function = max[w], w=total waiting time
-- decision mode: non preemptive
-- 장점
-  - 구현이 가장 간단하다.
-  - starvation(기아 상태, 특정 프로세스의 우선 순위가 낮아서 원하는 자원을 계속 할당받지 못하는 상태)이 발생하지 않는다.
-- 단점
-  - convoy effect(짧은 작업을 수행하기 위해 오랫동안 기다려야하는 현상) 발생
-  - cpu bound job(상대적으로 cpu를 많이 소비하는 작업)이 IO bound job(상대적으로 cpu를 적게 사용하지만 시간이 많이 걸림)에 비해 더 유리하다.
-  - 작업시간이 긴 프로세스일수록 더 유리하다.
+알고리즘에 대해선 [본문](https://letsmakemyselfprogrammer.tistory.com/93)과 [멀티 코어 프로세스 스케줄링](https://letsmakemyselfprogrammer.tistory.com/96)을 참고하면 된다.
 
-#### 2) Round Robin
-- FCFS에서 convoy effect를 보완한 형태
-- FIFO 기반은 동일하지만, 일정한 time quantum 이상 cpu를 점유하는 것을 방지한다.
-- time quantum 결정 문제가 굉장히 중요하다.
-- 장점
-  - 구현이 가장 간단하다.
-  - starvation이 발생하지 않는다.
-- 단점
-  - time quantum 결정 문제 존재
-  - cpu bound job이 IO bound job에 비해 더 유리하다.
+## 4. 쓰레드(Thread)와 동기화 문제
 
-#### 3) SPN
-- Shortest Process Next
-- <U>예상 실행 시간이 가장 짧은 프로세스</U>부터 작업하는 방식
-- 최적에 가깝다.
-- selection function = min[s], s=프로세스들이 요구하는 total service time
-- decision mode: non preemptive
-- 장점
-  - turnarround time이 최적에 가깝다. -> throughput이 높다.
-- 단점
-  - 예상 실행 시간을 예측하는 것이 어렵다.
-  - workload에 따라서 starvation이 발생할 수 있다.
+### 쓰레드의 의미
 
-#### 4) SRT
-- Shortest Remaining Time
-- SPN의 preemption 버전
-- 새로운 프로세스가 제출되는 순간에 preemption 발생, <U>남은 시간이 가장 짧은 순서대로 작업</U>
+프로세스의 의미는 두가지 측면에서 설명할 수 있다.
+
+1. (자원 관점)자원 소유자로서의 최소 단위
+2. (제어 관점)schedule의 최소 단위 / 실행 단위
+
+![thread](img/thread.png)
+
+보통 개발할 때 하나의 실행흐름(single execution sequence)만 생각하기 쉽다. 하지만 실제로 프로세스는 실타래와 같이 여러 개의 실행흐름(multiple execution sequence)이 존재할 수 있다. 이 떄의 <u>**실행의 단위(the unit of excution sequence)**</u> 를 **thread** 라고 정의한다. 따라서 현대 os에서 **multithreading** 은 단일 프로세스 내에서 여러 개의 실행흐름을 지원할 수 있는 능력을 의미한다. 가장 중요한 점은 <u>다수의 thread는 같은 프로세스 내의 자원을 공유할 수 있다는 것</u>이다.
+
+### Concurrency vs Parallelism
+
+#### 1) Concurrency
+
+![concurrency](img/concurrency.png)
+
+- 병행성, 동시성
+- 여러 job들이 interleaving하면서 진행
+- 실제로 동시에 진행되고 있지는 않지만, 사용자 입장에서는 동시에 진행되는 듯함
+
+> #### interleaving
+> - 주기억장치(컴퓨터 메모리)를 접근하는 속도를 빠르게 하는데 사용
+> - 인접한 메모리 위치를 서로 다른 메모리 뱅크에 둠으로써 동시에 여러 곳을 접근할 수 있게 하는 것
+
+#### 2) Parallelism
+
+![parallelism](img/parallelism.png)
+
+- 병렬성
+- 여러 코어에서 실제로 동시에 실행되고 있는 것을 말함
+- concurrent하지 않아도 parallel할 수 있다.
+
+### Multi-Threading
+
+#### 1) multithread 장단점
+
+![multithread](img/multithread.png)
+
+MS/DOS의 경우 단일 프로세스-단일 스레드 구조였다. 인터넷이 발전하면서, 동시 접속자를 빠르게 처리해야하는 웹서버의 요구가 생겨났다.간단하게 프로세스를 여러 개로 fork하는 방법도 있고, 멀티 스레드를 지원하는 방법도 있다. (보통 스레들르 생성하는 것이 더 저렴하다.) One progress - Multiple threads 모델은 JVM 환경이 대표적인 예시다. 대부분의 UNIX 계열 OS는 Multiple processes - Multiple threads per process 구조이다. 멀티 스레드는 아래와 같은 장점이 있다.
+
+- **응답성** 이 좋아진다.
+  - ex. WebServer, Remote Procedure Call
+- **경제성** 이 좋아진다.
+  - 프로세스 대비 creation, switch, resource sharing, communication, memory space 등
+  - light weight process 라고도 함
+  - 멀티코어에서 **병렬적** 으로 수행할 경우, 더 좋은 성능을 낸다.
+
+> #### RPC(Remote Procedure Call)
+> 원격 프로시저 호출(RPC)란, 별도의 원격 제어를 위한 코딩 없이 다른 주소 공간에서 리모트의 함수나 프로시저를 실행할 수 있게하는 프로세스 간 통신 기술이다. 다시 말해 원격 프로시저 호출을 이용하면 프로그래머는 함수가 실행 프로그램에 로컬 위치에 있든, 원격 위치에 있든 동일한 코드를 이용할 수 있다.
+
+![thread num](img/thread_num.png)
+
+하지만 스레드가 무한정 증가한다고 성능이 무한정 증가하진 않는다. 이는 두 가지 이유 때문인데
+
+1. 스레드가 너무 많아서 스케줄링과 switch에 드는 오버헤드가 훨씬 커지기 때문
+2. 스레드를 분할하고 다시 합치는 과정에서 serial하게 작업할 수 밖에 없는 부분이 존재하기 때문(Amdahl의 법칙)
+     - 갈수록 완만하게 증가하는 이유
+
+그렇기에 멀티코어 환경에서 멀티스레딩을 하는게 좋은 상황은 다음과 같다.
+
+1. tasks가 서로 독립적이어서 병렬로 처리될 수 있는 경우 (task parallelism)
+2. 각 스레드에 동등한 workload를 분배할 수 있는 경우 (load balancing)
+3. 처리되는 data에 의존성이 없는 경우 (data parallelism, 있다면 동기화해야 함)
+
+#### 2) process image
+
+![thread process image](img/thread_process_image.png)
+
+Single-threaded process image는 PCB, User stack, Kernel stack, User address space를 포함한다. 여기에 멀티스레드에서는 각 스레드마다 State(runnung, block 등)와 stack을 따로 가져야하며, OS가 각 스레드를 관리하기 위한 Thread control block도 따로 가져야 한다.
+
+![single, multi process image](img/single,multi_process_image.png)
+
+기존의 process image에서 스레드간 공유가 가능한 것과 그렇지 않은 것을 구분할 필요가 있다. 새롭게 스레드가 생성된다고 가정하면, 텍스트 코드나 데이터들은 공유가 가능하므로 새로 복제할 필요가 없다. 하지만 스레드는 각자 다른 실행흐름을 가지므로 **배타적으로 관리해야할 정보** 들을 모아야하고, 이를 모아 구조체로 만든 것이 **TCB** 이다. 이를 반영하여 현재 OS는 오른쪽 그림과 같은 프로세스 이미지를 가진다.
+
+### Race condition
+
+만약 메인 스레드가 자식 스레드를 2개 만들고, 하나는 공유변수를 1000번 증가시키고 다른 하나는 1000번 감소하는 경우다. 그렇다면 예상되는 결과는 0이 되어야 할 것 같지만, 그렇지 않다. 결과는 보장할 수 없다.
+
+그 이유는 (x = val + 1)과 (x = val - 1) 이라는 **코드가 atomic하지 않기 때문** 이다. [바이트 코드](https://ko.wikipedia.org/wiki/%EB%B0%94%EC%9D%B4%ED%8A%B8%EC%BD%94%EB%93%9C)의 어셈블리어로 보면 3단계의 명령어로 이루어져 있다.
+
+1. 전역변수 x를 레지스터로 load
+2. 해당 레지스터의 값을 1만큼 증가 또는 감소
+3. 전역변수 x의 메모리 주소에 저장
+
+위 3가지 코드가 중간에 끊기지 않고 실행되어야 한다. 그런데 2번을 수행하고 나서 time-out interrupt가 발생해 context switch가 진행되고, 다시 원래 스레드로 돌아왔을 때, 3번 명령을 실행한다. 즉, 최신화된 x 값을 load하면서 시작하는 것이 아니라 예전에 저장되어 있던 예전의 x값을 덮어쓰면서 시작한다. 이런 상황 때문에 공유 변수에 대한 동기화 문제가 발생한다. 동시에 접근하는 것이 문제인 것이다.
+
+
 
 ## 참고문헌
 - [개발자가 되어보자, CS/Operation System](https://letsmakemyselfprogrammer.tistory.com/category/CS/Operating%20System?page=2)
@@ -422,3 +473,5 @@ PCB는 복제 후, pid와 ppid를 자식 프로세스에 맞게 수정하고 대
 - [개발자를 꿈꾸는 프로그래머, Multiprocessing과 Multiprogramming, Multithreading의 차이](https://jwprogramming.tistory.com/19)
 - [위키백과, 인터럽트](https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%84%B0%EB%9F%BD%ED%8A%B8)
 - [woga.log, Starvation(기아 상태)란?](https://velog.io/@woga1999/Starvation-%EA%B8%B0%EC%95%84-%EC%83%81%ED%83%9C-%EB%9E%80)
+- [위키백과, 메모리 인터리빙](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EB%A6%AC_%EC%9D%B8%ED%84%B0%EB%A6%AC%EB%B9%99)
+- [위키백과, 원격 프로시저 호출](https://ko.wikipedia.org/wiki/%EC%9B%90%EA%B2%A9_%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%80_%ED%98%B8%EC%B6%9C)
