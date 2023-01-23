@@ -1097,7 +1097,127 @@ void consumer() {
 
 ### Semaphore를 이용하는 버전
 
-세마포어는 상호배제와 조건동기화에 모두 적용할 수 있는 일반화된 동기화 방법이다. 상호배제의 측면으로 보면 
+세마포어는 상호배제와 조건동기화에 모두 적용할 수 있는 일반화된 동기화 방법이다. 상호배제의 측면으로 보면 가용한 자원의 수를 중심으로 자원을 guard하는 역할이고, 조건동기화에서는 다수의 스레드를 조건에 따라 대기시키면서 줄을 서게하는 역할로 볼 수 있다.
+
+이때, 세마포어의 두가지 의미를 혼용하여 코드를 작성하면 해석하기가 힘들어진다. 아래의 코드는 두가지 의미를 모두 포함한 세마포어가 사용된다.
+
+세마포어에서도 대기하는 wait(), 시그널을 보내는 post() 함수가 존재한다. wait() 함수는 실행되면서 조건변수를 1 감소시키고, post() 함수를 실행하면 조건변수를 1 증가시킨다. 조건변수가 0 이하이면 대기하거나 시그널을 보낸다.
+
+아래는 phtread 라이브러리를 사용했던 것과 동일하게 세마포어로 구현한 코드이다.
+
+```c
+/* 상호배제 */
+sem_init(&m, 0, 1); // critical section 에는 한 스레드만 들어갈 수 있다.
+
+/* 조건 동기화 조건변수 */
+sem_init(&empty, 0, MAX); // 처음에는 빈공간(생산할 수 있는 버퍼 남은 크기)이 MAX 이다.
+sem_init(&fill, 0, 0);   // (소비할 수 있는 자원, 생상된 자원)은 처음에 아무것도 없다.
+
+//[Producer]
+void producer() {
+    while (1) {
+        sem_wait(&m);          // 상호배제, 공유자원인 버퍼 guard
+        sem_wait(&empty);
+        put(value);
+        sem_post(& fill);            // 생산했다는 이벤트 발행
+        sem_post(&m);          // 상호배제, 공유자원인 버퍼 guard
+    }
+}
+
+//[Consumer]
+void consumer() {
+    while (1) {
+        sem_wait(&m);          // 상호배제, 공유자원인 버퍼 guard
+        sem_wait(& fill);            // 생산된 것이 있어야 소비가능
+        get();
+        sem_post(& empty);           // 소비했다는 이벤트 발행
+        sem_post(&m);          // 상호배제, 공유자원인 버퍼 guard
+    }
+}
+```
+
+하지만 여기엔 문제가 하나 존재한다. 상호배제에 대한 lock 변수인 m을 잡고 wait하게 되면 생산자와 소비자 모두 critical section으로 진입하지 못하는 데드락 상황이 발생한다. pthread_wait(&c, &m) 에서는 내부적으로 m에 대한 lock을 풀고 sleep했기 때문에 문제가 되지 않았지만, 세모포어는 범용적인 버전이기 때문에 그런 작업을 지원하지 않는다. 따라서 lock 변수 m을 잡고 sleep하지 않도록 아래와 같이 수정해야 한다.
+
+```c
+/* 상호배제 */
+sem_init(&m, 0, 1);    // critical section 에는 한 스레드만 들어갈 수 있다.
+
+/* 조건 동기화 조건변수 */
+sem_init(&empty, 0, MAX); // 빈공간(생산할 수 있는 버퍼 남은 크기)이 MAX 이다.
+sem_init(&fill, 0, 0);  // (소비할 수 있는 자원, 생산된 자원)는 처음에 아무것도 없다.
+
+//[Producer]
+void producer() {
+    while (1) {
+        sem_wait(&empty);
+        sem_wait(&m);          // 상호배제, 공유자원인 버퍼 guard
+        put(value);
+        sem_post(&m);          // 상호배제, 공유자원인 버퍼 guard
+        sem_post(& fill);
+    }
+}
+
+//[Consumer]
+void consumer() {
+    while (1) {
+        sem_wait(& fill);
+        sem_wait(&m);          // 상호배제, 공유자원인 버퍼 guard
+        get();
+        sem_post(&m);          // 상호배제, 공유자원인 버퍼 guard
+        sem_post(& empty);
+    }
+}
+```
+
+## 9. 동기화 - (5) Deadlock
+
+### 1. Deadlock이란?
+
+![deadlock](img/deadlock.png)
+
+다수의 스레드 혹은 프로세스가 서로 깨워주기를 기다리면서, 모두 대기하고 있는 상태를 **deadlock(교착상태)** 이라고 한다. 데드락은 실제로 자주 발생하는 문제는 아니다. 하지만 한 번 발생하면 심각한 장애를 발생시키고, 또 그 원인을 파악하기가 어렵다.
+
+### 2. Resource
+
+여태까지 동기화에 대해 이야기할 땐, 여러 실행 흐름을 제어하기 위한 관점에서 바라보았다. 허나 데드락에서는 자원의 분배 관점에서 바라보는 것이 더 유익할 듯 하다. 데드락은 Non-preemptable한 자원에 대해서 발생할 수 있다. 즉, 한 프로세스가 어떤 자원을 점유하고 있을 때 다른 프로세스가 그것을 강제로 빼앗을 수 없는 자원의 종류를 말한다. 크게 재사용 가능한 자원과 일회용 자원으로 나눌 수 있으며 두 자원 모두 non-preemptable하기 때문에 데드락이 발생할 수 있다.
+
+- Reusable Resource
+  - 한 프로세스가 사용한다고 해서 사라지지 않는 자원
+  - 한번에 한 프로세스만 사용가능한 경우가 많다.
+  - 보통 requeset -> lock -> use -> unlock 의 과정을 거친다.
+  - cpu, memory, file, database 등
+- Consumable Resource
+  - 한 번 사용하면 사라지는 일회성 자원
+  - interrupts, signals, message, IO buffers 등
+
+### 3. Resource Allocation Graph
+
+![rag](img/rag.png)
+
+Resource Allocation Graph는 데드락이 발생할 수 있는 상황인지 파악할 수 있도록 프로세스와 자원 사이의 관계를 도식화하는 방법이다. 프로세스는 원, 공유자원은 사각형으로 표현된다. 사각형 내부의 그려진 점들은 자원의 개수를 의미하며 부분젹으로 뗴어줄 수 있다는 의미이다. 화살표의 방향은 의존관계를 나타낸다.
+
+이 그래프에서 순환 의존 관계가 발생하게 되면 데드락이 발생할 수 있다. 그림 (c)는 데드락이 발생한 상황이다. 그림 (d)는 데드락 상황은 아니지만, 추후에 얼마든지 데드락이 발생할 수 있다.
+
+### 4. 데드락 발생의 4가지 필요조건
+
+1. 공유자원이 non-preemptive(비선점형)하다. 즉, 빼앗을 수 없다.
+2. 공유자원에 대한 상호배제가 이루어진다.
+3. 프로세스가 한 자원을 잡고 있으면서 다른 자원을 요청하는 Hold & Wait 상태가 발생한다.
+4. 순환 대기가 발생한다.
+
+### 5. 데드락을 해결하는 4가지
+
+1. Deadlock Prevention
+    - 4가지 조건을 모두 만족시키지 못하게 하는 방법
+    - resource의 utilization이 낮아지고, concurreny가 저하된다.
+2. Deadlock Avoidence
+    - 자원 요청이 있을 때, deadlock이 발생가능하면 거절하고, 그렇지 않으면 할당하는 방법
+    - 시스템의 모든 자원을 파악해야하고, 프로세스가 어떤 자원을 얼만큼 필요로하는지 미리 파악해야 한다.
+3. Deadlock Detection & Recovery
+    - deadlock이 발생했는지를 주기적으로 확인한다. 발생한 경우 자원을 회수하거나 프로세스를 종료하는 등의 조치를 취한다.
+    - 교착상태는 매우 드물게 발생하기 때문에 overhead가 크다.
+4. Ignore
+    - 매우 드물게 발생한다. -> 무시하는게 오히려 효율성이 좋을 수도 있다.
 
 ## 참고문헌
 - [개발자가 되어보자, CS/Operation System](https://letsmakemyselfprogrammer.tistory.com/category/CS/Operating%20System?page=2)
