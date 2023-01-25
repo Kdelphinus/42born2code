@@ -11,7 +11,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="def47abb-ed73-4a2b-8135-623fc063565a" name="Default Changelist" comment="" />
+    <list default="true" id="def47abb-ed73-4a2b-8135-623fc063565a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,11 +26,11 @@
     <session id="-1072470368">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.0" value="1" />
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -103,6 +105,11 @@
               <item name="pipex" type="b2602c69:ProjectViewProjectNode" />
               <item name="pipex" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="pipex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pipex" type="462c0819:PsiDirectoryNode" />
+              <item name="src_bonus" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -154,16 +161,17 @@
       <workItem from="1674628096162" duration="258000" />
       <workItem from="1674628363410" duration="101000" />
       <workItem from="1674644451961" duration="11000" />
+      <workItem from="1674653170405" duration="16000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="370000" />
+    <option name="totallyTimeSpent" value="386000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="527" y="42" width="1400" height="1000" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2569956" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26435935" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -178,13 +186,13 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32929516" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="CMake" order="12" visible="true" weight="0.32929516" />
-      <window_info anchor="right" id="Key Promoter X" />
+      <window_info anchor="bottom" id="CMake" order="12" visible="true" weight="0.32929516" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="make" order="4" />
+      <window_info anchor="right" id="Key Promoter X" order="5" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
