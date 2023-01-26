@@ -71,7 +71,7 @@
 - 한줄평: 꼬인 매듭이 풀리면 슬슬 흘러간다.
 
 ## 08. Philosophers
-- 기간: 2023.01.
+- 기간: 2023.01.11 ~
 - 개요: 철학자를 살려라!(what is the basic of threading a process?)
 - 보너스: 
 - 한줄평: 
