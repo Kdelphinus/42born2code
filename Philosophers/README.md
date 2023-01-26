@@ -8,6 +8,7 @@
   - [0.4 Mandatory part](#04-mandatory-part)
   - [0.5 Bonus part](#05-bonus-part)
 - [1. OS 개념 정리](#1-os-개념-정리)
+- [2. 함수 정리](#2-함수-정)
 - [참고 문헌](#참고-문헌)
 
 ## 0. Subject
@@ -86,6 +87,42 @@
 
 ## 1. OS 개념 정리
 길어서 문서를 나눴다. [이 곳](https://github.com/Kdelphinus/42born2code/blob/main/Philosophers/Operating_System.md)에 있으며 OS에 대해 알고 있다면 안 읽어도 된다.
+
+## 2. 함수 정리
+
+### 1) usleep
+
+```c
+#include <unistd.h>
+
+int sleep(useconds_t usec);
+```
+
+마이크로초 단위로 sleep한다. 100000ms = 1s이다.
+
+### 2) gettimeofday
+
+```c
+#include <sys/time.h>
+
+int gettimeofday(struct timeval *tv, void *tzp)
+```
+
+현재 시간을 가져오고 시스템의 시간값을 설정하는 함수이다. 
+
+첫번째 인자인 **tv**는 현재 시스템 시간을 저장하기 위한 구조체로 다음과 같이 정의되어 있다.
+
+```c
+struct timeval
+{
+    long    tv_sec;   // 초
+    long    tv_usec;  // 마이크로초
+}
+```
+
+두번째 인자인 tz는 타임존을 설정하기 위해 사용되지만 현재는 사용되지 않으며 앞으로도 지원되지 않을 계획이다.
+간혹 커널 소스 등에서 이 필드가 사용되는 경우가 있는데, 모든 경우 버그로 판단되어 무시한다.
+그렇기에  
 
 ## 참고 문헌
 - [42, Philosophers](https://cdn.intra.42.fr/pdf/pdf/67985/en.subject.pdf)
