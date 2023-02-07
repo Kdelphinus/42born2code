@@ -110,20 +110,52 @@ int gettimeofday(struct timeval *tv, void *tzp)
 
 현재 시간을 가져오고 시스템의 시간값을 설정하는 함수이다. 
 
-첫번째 인자인 **tv**는 현재 시스템 시간을 저장하기 위한 구조체로 다음과 같이 정의되어 있다.
+### 3) pthread_create
 
 ```c
-struct timeval
-{
-    long    tv_sec;   // 초
-    long    tv_usec;  // 마이크로초
-}
+#include <pthread.h>
+
+int pthread_create(pthread_t *thread, pthread_attr_t *attr, void *(*start_routine)(void *), void *arg);
 ```
 
-두번째 인자인 tz는 타임존을 설정하기 위해 사용되지만 현재는 사용되지 않으며 앞으로도 지원되지 않을 계획이다.
-간혹 커널 소스 등에서 이 필드가 사용되는 경우가 있는데, 모든 경우 버그로 판단되어 무시한다.
-그렇기에  
+**pthread_create** 는 새로운 쓰레드를 생성한다. 새로운 쓰레드는 **start_rutine** 함수를 **arg** 인자로 실행시키면서 생성된다. 생성된 쓰레드는 pthread_exit을 호출하거나 start_rutin에서 return 할 경우 제거된다.
+
+**attr** 인자는 쓰레드와 관련된 특성을 지정하기 위한 용도로 사용된다. 이에 대해선 pthread_attr_init을 참고해야 한다. attr을 NULL로 지정하면 기본 특성으로 지정된다. 리눅스에서 쓰레드는 joinable과 non real-time 스케쥴 정책을 기본 특성으로 가진다.
+
+return 값은 성공할 경우, **thread** 에 쓰레드 식별번호를 저장하고, 0을 리턴한다. 반대로 실패했을 경우는 0이 아닌 에러코드를 반환한다. 에러는 쓰레드 생성을 위한 자원이 부족하거나, PTHREAD_THREADS_MAX를 초과해서 쓰레드 생성을 요청할 경우, 발생한다.
+
+### 4) pthread_detach
+
+```c
+#include <pthread.h>
+
+int pthread_detach(pthread_t th);
+```
+
+**pthread_detach** 는 실행 중인 쓰레드를 detached(분리) 상태로 만든다. 쓰레드 식별자 **th** 를 가지는 쓰레드를 메인쓰레드에서 분리시킨다. 이를 통해 th를 가지는 쓰레드가 종료되는 즉시, 쓰레드의 모든 자원을 되돌려 줄 것을 보장한다. 만약 분리되지 않았다면 쓰레드가 종료되어도 pthread_join을 호출하지 않는 한 자원을 되돌려주지 않는다.
+
+pthread_detach 함수를 호출하는 대신, pthread_create 시, pthread_attr_t에 detachstate를 지정해 줌으로써 detach상태로 생성할 수도 있다. pthread_attr_t는 pthread_attr_init 함수를 이용해서 변경할 수 있다.
+
+return 값은 성공할 경우 0, 실패할 경우 0이 아닌 값을 리턴한다. 실패할 경우는 th식별자를 가진 쓰레드가 존재하지 않거나 이미 detach 상태인 경우이다.
+
+### 5) pthread_join
+
+```c
+#include <pthread.h>
+
+int pthread_join(pthread_t th, void **thread_return);
+```
+
+**pthread_join** 은 **th** 로 시작되는 쓰레드가 종료되는 것을 기다린다. 이러한 쓰레드의 종료는 **pthread_exit** 로 종료되거나 혹은 리턴되는 경우 발생한다.
+
+**thread_return** 값이 NULL이 아니라면, th의 리턴값이 저장된 영역이 전달되게 된다.
+
+th 식별번호를 가지는 쓰레드가 join되기 위해서는 반드시 joinable 상태의 쓰레드로 작동하고 있어야지만 한다. 만약 기다리는 쓰레드가 pthread_detach 함수를 통해서 detached 상태가 되었거나 pthread_create로 실행될 때, PTHREAD_CREATE_DETACHED 특성으로 실행되었다면 join으로 기다릴 수 없게 된다.
+
+joinable 쓰레드는 종료된다해도 즉시 메모리 자원 등이 해제되지 않는다. 이러한 쓰레드는 pthread_join 함수를 만나야지만 자원을 해제한다. 그럼으로 모든 joinable 쓰레드에 대해서는 반드시 pthread_join을 호출해주어야 한다. 그렇지 않으면 누수가 발생한다.
+
+return 값은 성공할 경우, 쓰레드 식별자인 th에 식별번호를 저장하고 0을 리턴한다. 만약 실패한다면 0이 아닌 에러코드 값을 반환한다. 이때 실패 경우로 th가 잘못된 경우나 th가 detached 상태일 때가 있다.
 
 ## 참고 문헌
 - [42, Philosophers](https://cdn.intra.42.fr/pdf/pdf/67985/en.subject.pdf)
-
+- [JOINC, 시스템 라이브러리 함수](https://www.joinc.co.kr/w/man/3)
