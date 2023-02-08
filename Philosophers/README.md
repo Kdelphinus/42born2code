@@ -8,7 +8,7 @@
   - [0.4 Mandatory part](#04-mandatory-part)
   - [0.5 Bonus part](#05-bonus-part)
 - [1. OS 개념 정리](#1-os-개념-정리)
-- [2. 함수 정리](#2-함수-정)
+- [2. 함수 정리](#2-함수-정리)
 - [참고 문헌](#참고-문헌)
 
 ## 0. Subject
@@ -155,6 +155,67 @@ th 식별번호를 가지는 쓰레드가 join되기 위해서는 반드시 join
 joinable 쓰레드는 종료된다해도 즉시 메모리 자원 등이 해제되지 않는다. 이러한 쓰레드는 pthread_join 함수를 만나야지만 자원을 해제한다. 그럼으로 모든 joinable 쓰레드에 대해서는 반드시 pthread_join을 호출해주어야 한다. 그렇지 않으면 누수가 발생한다.
 
 return 값은 성공할 경우, 쓰레드 식별자인 th에 식별번호를 저장하고 0을 리턴한다. 만약 실패한다면 0이 아닌 에러코드 값을 반환한다. 이때 실패 경우로 th가 잘못된 경우나 th가 detached 상태일 때가 있다.
+
+### 6) pthread_mutex_init
+
+```c
+#include <pthread.h>
+
+int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutex_attr *attr);
+```
+
+**pthread_mutex_init** 은 mutex를 초기화시키는 함수이다. 
+
+첫번째 인자인 **mutex** 는 초기화시킬 mutex 객체이고, 두번째 인자인 **attr** 은 특징을 정의한다. mutex는 fast(기본), recursive, error checking에 세 가지 특징을 가지고 있다. attr이 NULL이면 기본 특성이 선택된다.
+
+return 값은 성공할 경우 0, 실패할 경우는 -1을 반환하며 이땐 적당한 errno값을 설정한다. 실패할 경우는 뮤텍스가 제대로 초기화되지 않았거나 (attr이 error checking일 때 한정하여) 뮤텍스가 이미 잠겨있을 때 발생한다.
+
+> ### mutex란?
+> 
+> mutex는 MUTual EXclusion(상호 배제) devide의 줄임말로 쓰레드간 공유하는 데이터 영역을 보호하기 위해서 사용한다. 이때, 데이터 영역의 보호는 critical section(임계 영역)을 만들고 임계 영역 내, 단 하나의 쓰레드만 진입 가능하도록 한다.
+> 
+> mutex는 unlock과 lock이란 행동만 가능하다. lock은 임계영역에 진입하기 위한 요청, unlock은 임계영역을 나오면서 다른 쓰레드에게 임계영역을 돌려주기 위한 요청이다. 만약 쓰레드가 임계영역에 진입하기 위해 lock을 요청했는데 이미 다른 쓰레드가 임계영역에 있다면 해당 쓰레드가 unlock으로 임계영역에서 나올 때까지 기다린다.
+>
+> mutex의 특징인 fast와 recursive는 lock을 얻은 쓰레드가 다시 lock을 얻을 수 있도록 할 지, 결정하는 용도로 사용된다. 특성을 따로 지정하지 않으면 fast가 자동으로 선택된다.
+>
+> fast: 하나만 lock이 되도록
+> recursive: 중첩되어 lock을 걸 수 있다.
+
+### 7) pthread_mutex_destroy
+
+```c
+#include <pthread.h>
+
+int pthread_mutex_destroy(pthread_mutex_t *mutex);
+```
+
+**pthread_mutex_destroy** 는 mutex 객체를 삭제하고 자원을 되돌려준다. 그렇기에 더 이상 사용되지 않는 mutex는 반드시 이 함수를 이용해 지워주는 것이 권장된다. 왜냐하면 (리눅스 기준으로) 쓰레드가 종료되었어도 mutex 객체는 여전히 남아있기 때문이다.
+
+return 값은 성공 시 0, 실패 시 그에 맞는 error 번호를 반환한다. 에러의 종류는 mutex가 lock 상태거나 유효하지 않은(즉, 잘못 초기화된 것일 때) mutex일 때, 발생한다.
+
+### 8) pthread_mutex_lock
+
+```c
+#include <pthread.h>
+
+int pthread_mutex_lock(pthread_mutex_t *mutex);
+```
+
+**pthread_mutex_lock** 은 임계영역에 진입하기 위해 mutex에게 lock을 요청하는 함수다. 만약 mutex가 unlock 상태라면 쓰레드는 잠금을 얻고 임계영역에 진입하게 된다. 다른 쓰레드가 이미 lock 상태라면 lock 상태가 될 수 있을 때까지 대기하다가 lock 상태가 된다.
+
+return 값은 성공 시 0, 실패 시 그에 맞는 error 번호를 반환한다. 에러의 종류는 mutex가 lock 상태거나 유효하지 않은(즉, 잘못 초기화된 것일 때) mutex일 때, 발생한다.
+
+### 9) pthread_mutex_unlock
+
+```c
+#include <pthread.h>
+
+int pthread_mutex_unlock(pthread_mutex_t *mutex);
+```
+
+**pthread_mutex_unlock** 은 mutex의 lock 상태를 해제시킨다. 만약 fast mutex라면 언제나 unlock 상태를 되돌려준다. 만약 recursive mutex라면 잠겨있는 mutex의 수를 감소시키고 이 수가 0이 된다면 mutex 잠금을 되돌려주게 된다.
+
+return 값은 성공 시 0, 실패 시 그에 맞는 error 번호를 반환한다. 에러의 종류는 mutex가 lock 상태거나 유효하지 않은(즉, 잘못 초기화된 것일 때) mutex일 때, 발생한다.
 
 ## 참고 문헌
 - [42, Philosophers](https://cdn.intra.42.fr/pdf/pdf/67985/en.subject.pdf)
