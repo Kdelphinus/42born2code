@@ -9,6 +9,15 @@
   - [0.5 Bonus part](#05-bonus-part)
 - [1. OS 개념 정리](#1-os-개념-정리)
 - [2. 함수 정리](#2-함수-정리)
+  - [1) usleep](#1-usleep)
+  - [2) gettimeofday](#2-gettimeofday)
+  - [3) pthread_create](#3-pthread_create)
+  - [4) pthread_detach](#4-pthread_detach)
+  - [5) pthread_join](#5-pthread_join)
+  - [6) pthread_mutex_init](#6-pthread_mutex_init)
+  - [7) pthread_mutex_destroy](#7-pthread_mutex_destroy)
+  - [8) pthread_mutex_lock](#8-pthread_mutex_lock)
+  - [9) pthread_mutex_unlock](#9-pthread_mutex_unlock)
 - [참고 문헌](#참고-문헌)
 
 ## 0. Subject
