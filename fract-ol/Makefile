@@ -6,7 +6,7 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 16:07:52 by myko              #+#    #+#              #
-#    Updated: 2022/10/12 22:38:10 by myko             ###   ########.fr        #
+#    Updated: 2023/02/08 16:47:26 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS_NAME = main.c \
 			mandelbox.c \
 			multicron.c \
 			burning_ship.c \
+			spider_set.c \
 			key_hook.c \
 			utils_1.c \
 			utils_2.c \

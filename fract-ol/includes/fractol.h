@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2022/10/13 21:25:17 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/08 16:57:58 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	multibrot_draw(t_frac *frac);
 void	mandelbox_draw(t_frac *frac);
 void	multicron_draw(t_frac *frac);
 void	burning_draw(t_frac *frac);
+void	spider_draw(t_frac *frac);
 void	coloring(int coor, int value, t_frac *frac);
 
 // key_hook.c

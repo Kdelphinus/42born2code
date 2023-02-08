@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot_set.c                                   :+:      :+:    :+:   */
+/*   spider_set.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2023/02/08 17:00:59 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/08 17:09:23 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	comp_init(t_frac *frac)
 	frac->comp->c_i = -frac->c_bd + frac->move_ud;
 }
 
-static int	mandelbrot_calculation(t_comp *comp, int max_r)
+static int	spider_calculation(t_comp *comp, int max_r)
 {
 	double	x;
 	double	y;
@@ -38,6 +38,8 @@ static int	mandelbrot_calculation(t_comp *comp, int max_r)
 			return (n);
 		comp->z_r = x;
 		comp->z_i = y;
+		comp->c_r = comp->c_r / 2 + comp->z_r;
+		comp->c_i = comp->c_i / 2 + comp->z_i;
 	}
 	return (max_r);
 }
@@ -53,7 +55,7 @@ static int	coor_calculation(t_frac *frac, double fix)
 	return (coor);
 }
 
-void	mandelbrot_draw(t_frac *frac)
+void	spider_draw(t_frac *frac)
 {
 	int		value;
 	int		coor;
@@ -66,7 +68,7 @@ void	mandelbrot_draw(t_frac *frac)
 		while (frac->comp->c_r <= frac->c_bd + frac->move_rl)
 		{
 			coor = coor_calculation(frac, fix);
-			value = mandelbrot_calculation(frac->comp, frac->max_r);
+			value = spider_calculation(frac->comp, frac->max_r);
 			coloring(coor, value, frac);
 			frac->comp->c_r += fix / SIDE;
 			frac->comp->z_r = 0;

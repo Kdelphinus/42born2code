@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:01:05 by myko              #+#    #+#             */
-/*   Updated: 2022/10/07 19:15:09 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/08 16:49:41 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ static int	kind_fractal(t_frac *frac)
 		frac->kind = 4;
 	else if (ft_strcmp(frac->c_argv[1], "burning"))
 		frac->kind = 5;
+	else if (ft_strcmp(frac->c_argv[1], "spider"))
+		frac->kind = 6;
 	else
 		return (0);
 	return (1);
@@ -89,5 +91,7 @@ int	fractal_draw(t_frac *frac)
 		multicron_draw(frac);
 	else if (frac->kind == 5)
 		burning_draw(frac);
+	else if (frac->kind == 6)
+		spider_draw(frac);
 	return (1);
 }
