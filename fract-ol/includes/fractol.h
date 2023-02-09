@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2023/02/08 16:57:58 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/09 13:36:06 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 // use to calculate fractal
 # define BOUNDARY			2
-# define SIDE				700
+# define SIDE				1400
 
 typedef struct s_comp
 {

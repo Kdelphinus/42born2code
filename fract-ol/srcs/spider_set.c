@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:48 by myko              #+#    #+#             */
-/*   Updated: 2023/02/08 17:09:23 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/09 13:39:43 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,31 @@ static void	comp_init(t_frac *frac)
 	frac->comp->c_i = -frac->c_bd + frac->move_ud;
 }
 
-static int	spider_calculation(t_comp *comp, int max_r)
+static int	spider_calculation(t_comp *comp, int max_r, int n)
 {
 	double	x;
 	double	y;
-	int		n;
+	double	cc_r;
+	double	cc_i;
 
 	x = 0;
 	y = 0;
-	n = -1;
+	cc_r = comp->c_r;
+	cc_i = comp->c_i;
 	while (++n <= max_r)
 	{
 		x = pow(comp->z_r, 2) - pow(comp->z_i, 2) + comp->c_r;
 		y = 2 * comp->z_r * comp->z_i + comp->c_i;
 		if ((pow(x, 2) + pow(y, 2)) > pow(BOUNDARY, 2))
-			return (n);
+			break ;
 		comp->z_r = x;
 		comp->z_i = y;
 		comp->c_r = comp->c_r / 2 + comp->z_r;
 		comp->c_i = comp->c_i / 2 + comp->z_i;
 	}
-	return (max_r);
+	comp->c_i = cc_i;
+	comp->c_r = cc_r;
+	return (n);
 }
 
 static int	coor_calculation(t_frac *frac, double fix)
@@ -68,7 +72,7 @@ void	spider_draw(t_frac *frac)
 		while (frac->comp->c_r <= frac->c_bd + frac->move_rl)
 		{
 			coor = coor_calculation(frac, fix);
-			value = spider_calculation(frac->comp, frac->max_r);
+			value = spider_calculation(frac->comp, frac->max_r, -1);
 			coloring(coor, value, frac);
 			frac->comp->c_r += fix / SIDE;
 			frac->comp->z_r = 0;
