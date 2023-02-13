@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 19:14:44 by myko              #+#    #+#             */
-/*   Updated: 2023/02/09 14:43:53 by myko             ###   ########.fr       */
+/*   Created: 2023/02/13 20:59:45 by myko              #+#    #+#             */
+/*   Updated: 2023/02/13 21:54:38 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,6 @@ int main(int argc, char **argv)
 
 	if (argc < 5 || argc > 6)
 		return (EXIT_FAILURE);
-	if (argc == 5)
-	{
-		argv[5] = "INF";
-		argv[6] = 0;
-	}
 	i = -1;
 	philos.num = ft_atoi(argv[1]);
 	philos.men = (pthread_t *)malloc(sizeof(pthread_t) * philos.num);

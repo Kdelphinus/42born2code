@@ -229,3 +229,4 @@ return 값은 성공 시 0, 실패 시 그에 맞는 error 번호를 반환한�
 ## 참고 문헌
 - [42, Philosophers](https://cdn.intra.42.fr/pdf/pdf/67985/en.subject.pdf)
 - [JOINC, 시스템 라이브러리 함수](https://www.joinc.co.kr/w/man/3)
+- [saeyeong tistory, c로 식사하는 철학자 문제 풀기](https://saeyeong.tistory.com/8)
