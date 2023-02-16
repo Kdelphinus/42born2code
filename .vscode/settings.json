@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"philo.h": "c",
-		"__threading_support": "c"
+		"__threading_support": "c",
+		"_pthread_types.h": "c"
 	}
 }
