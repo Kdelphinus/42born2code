@@ -45,6 +45,7 @@
   - **number_of_philosophers**: 철학자의 수이자 포크의 개수
   - **time_to_die**(in millisecond): 마지막 식사나 시뮬레이션이 시작된 지 **time_to_die** ms지날만큼 먹지 않으면 철학자는 죽는다.
   - **time_to_eat**(in millisecond): 철학자가 식사하는데 걸리는 시간, 이 시간동안 그들은 두 개의 포크를 사용한다.
+  - **time_to_sleep**(in millisecond): 철학자가 잠자는 시간
   - **number_of_times_each_philosopher_must_eat**(optional argument): 만약 철학자들이 최소한 **number_of_times_each_philosopher_must_eat**만큼 먹었다면 시뮬레이션을 종료한다. 만약 인자가 주어지지 않으면 철학자가 죽을 때, 시뮬레이션을 종료한다.
 - 각각의 철학자는 1 ~ **number_of_philosophers** 사이의 번호를 가진다.
 - 철학자 1은 **number_of_philosophers** 옆에 앉는다. 다른 철학자 N은 철학자 N - 1과 철학자 N + 1 사이에 앉는다.
@@ -230,3 +231,5 @@ return 값은 성공 시 0, 실패 시 그에 맞는 error 번호를 반환한�
 - [42, Philosophers](https://cdn.intra.42.fr/pdf/pdf/67985/en.subject.pdf)
 - [JOINC, 시스템 라이브러리 함수](https://www.joinc.co.kr/w/man/3)
 - [saeyeong tistory, c로 식사하는 철학자 문제 풀기](https://saeyeong.tistory.com/8)
+- [팔만코딩경, Philosophers](https://80000coding.oopy.io/d098a24a-eada-4d4b-84f6-34b48fd37af8)
+- [philosophers-visualizer](https://nafuka11.github.io/philosophers-visualizer/)
