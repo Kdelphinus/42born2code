@@ -51,9 +51,7 @@ void pickup_forks(t_info *pinfo, int philosophers_id, int forks_id)
     pthread_mutex_lock(&pinfo->print);
     gettimeofday(&pinfo->current_time, NULL);
 	printf("%d %d has taken a fork\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id);
-    // printf("%dms %d has taken a fork %d\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id, forks_id % pinfo->number_of_philosophers);
     pthread_mutex_unlock(&pinfo->print);
-
     if(philosophers_id - forks_id)
         pinfo->philosophers[philosophers_id].right_fork = 1;
     else
@@ -68,7 +66,6 @@ void return_forks(t_info *pinfo, int philosophers_id)
     pinfo->philosophers[philosophers_id].right_fork = 0;
 }
 
-// lock setting plz
 void dinning(t_info *pinfo, int philosophers_id)
 {
     pthread_mutex_lock(&pinfo->lock);
@@ -99,7 +96,6 @@ void    sleeping_and_thinking(t_info *pinfo, int philosophers_id)
 
 void    *death_monitoring(void *arg)
 {
-	int		flag;
     int     i;
     t_info	*info;
 
@@ -130,19 +126,19 @@ void    *basic_routine(void *arg)
 
 	info = (t_info *)arg;
 	myid = info->id;
-    // I don't know anything about this part (incomplete)
-    // if (info->id % 2)
-	// 	usleep(1000);
     while (info->flag_die)
     {
 		pickup_forks(info, myid, myid);
         pickup_forks(info, myid, (myid + 1) % info->number_of_philosophers);
         dinning(info, myid);
-        sleeping_and(info, myid);
+        if (!info->flag_die)
+            break;
+        sleeping_and_thinking(info, myid);
+        if (!info->flag_die)
+            break;
     }
 	return (NULL);
 }
-
 
 int main(int argc, char *argv[])
 {
@@ -163,8 +159,8 @@ int main(int argc, char *argv[])
 
     if (info.number_of_philosophers == 1)
     {
-        printf("0ms 0 has taken a fork\n");
-        printf("%dms 0 died\n", info.time_to_die);
+        printf("0 0 has taken a fork\n");
+        printf("%d 0 died\n", info.time_to_die);
         return 0;
     }
 

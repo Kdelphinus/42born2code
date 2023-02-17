@@ -1,14 +1,15 @@
 NAME = example
+FLAG = -Wall -Wextra -Werror
 SRC = my_example.c
 OBJ = my_example.o
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc $(OBJ) -o $(NAME)
+	gcc $(FLAG) $(OBJ) -o $(NAME)
 
 $(OBJ): $(SRC)
-	gcc -c $< -o $@
+	gcc $(FLAG) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)
