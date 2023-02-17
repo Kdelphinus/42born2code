@@ -69,20 +69,22 @@ void return_forks(t_info *pinfo, int philosophers_id)
 }
 
 // lock setting plz
-void dinning_and_sleep(t_info *pinfo, int philosophers_id)
+void dinning(t_info *pinfo, int philosophers_id)
 {
     pthread_mutex_lock(&pinfo->lock);
     gettimeofday(&pinfo->philosophers->last_dinning_start_time, NULL);
-    pinfo->philosophers->eating_time++;
+    pinfo->philosophers[philosophers_id].eating_time++;
     pthread_mutex_lock(&pinfo->print);
     gettimeofday(&pinfo->current_time, NULL);
     printf("%d %d is eating\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id);
     pthread_mutex_unlock(&pinfo->print);
     pthread_mutex_unlock(&pinfo->lock);
-    usleep(pinfo->time_to_eat*1000);
-
     return_forks(pinfo, philosophers_id);
+    usleep(pinfo->time_to_eat*1000);
+}
 
+void    sleeping_and_thinking(t_info *pinfo, int philosophers_id)
+{
     pthread_mutex_lock(&pinfo->print);
     gettimeofday(&pinfo->current_time, NULL);
     printf("%d %d is sleeping\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id);
@@ -104,19 +106,18 @@ void    *death_monitoring(void *arg)
 	info = (t_info *)arg;
 	while (info->flag_die)
 	{
-        printf("must_eat: %d\n", info->number_of_times_each_philosopher_must_eat);
 		if (info->number_of_times_each_philosopher_must_eat > -1)
 		{
-			// pthread_mutex_lock(&info->lock);
+			pthread_mutex_lock(&info->lock);
 			i = -1;
 			while (++i < info->number_of_philosophers)
 			{
-				if (info->philosophers[info->id].eating_time < info->number_of_times_each_philosopher_must_eat)
+				if (info->philosophers[i].eating_time < info->number_of_times_each_philosopher_must_eat)
 					break;
 			}
 			if (i == info->number_of_philosophers)
 				info->flag_die = 0;
-			// pthread_mutex_unlock(&info->lock);
+			pthread_mutex_unlock(&info->lock);
 		}
 	}
 	return (NULL);
@@ -128,7 +129,7 @@ void    *basic_routine(void *arg)
 	int		myid;
 
 	info = (t_info *)arg;
-	myid = info->id + 1;
+	myid = info->id;
     // I don't know anything about this part (incomplete)
     // if (info->id % 2)
 	// 	usleep(1000);
@@ -136,10 +137,8 @@ void    *basic_routine(void *arg)
     {
 		pickup_forks(info, myid, myid);
         pickup_forks(info, myid, (myid + 1) % info->number_of_philosophers);
-        dinning_and_sleep(info, myid);
-        // pickup_forks(info, info->id, info->id);
-        // pickup_forks(info, info->id, (info->id+1) % info->number_of_philosophers);
-        // dinning_and_sleep(info, info->id);
+        dinning(info, myid);
+        sleeping_and(info, myid);
     }
 	return (NULL);
 }
