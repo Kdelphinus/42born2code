@@ -64,12 +64,12 @@ void	return_forks(t_info *pinfo, int philosophers_id)
 	pinfo->philosophers[philosophers_id].right_fork = 0;
 }
 
-void	dinning(t_info *pinfo, int philosophers_id)
+void	dinning(t_info *pinfo, t_philosophers *ppinfo, int philosophers_id)
 {
 	pthread_mutex_lock(&pinfo->lock);
-	gettimeofday(&pinfo->philosophers->last_dinning_start_time, NULL);
-	pinfo->philosophers[philosophers_id].eating_time++;
+	ppinfo->eating_time++;
 	pthread_mutex_lock(&pinfo->print);
+	gettimeofday(&ppinfo->last_dinning_start_time, NULL);
 	gettimeofday(&pinfo->current_time, NULL);
 	printf("%d %d is eating\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id);
 	pthread_mutex_unlock(&pinfo->print);
@@ -100,6 +100,21 @@ void	*death_monitoring(void *arg)
 	info = (t_info *)arg;
 	while (info->flag_die)
 	{
+		pthread_mutex_lock(&info->lock);
+		i = -1;
+		while (++i < info->number_of_philosophers)
+		{
+			pthread_mutex_lock(&info->print);
+			gettimeofday(&info->current_time, NULL);
+			if (timestamp_in_ms(info->current_time, info->philosophers[i].last_dinning_start_time) > info->time_to_die)
+			{
+				info->flag_die = 0;
+				printf("%d %d died(%d)\n", timestamp_in_ms(info->current_time, info->starting_time), i, timestamp_in_ms(info->current_time, info->philosophers[i].last_dinning_start_time));
+				// break;
+			}
+			pthread_mutex_unlock(&info->print);
+		}
+		pthread_mutex_unlock(&info->lock);
 		if (info->number_of_times_each_philosopher_must_eat > -1)
 		{
 			pthread_mutex_lock(&info->lock);
@@ -128,9 +143,15 @@ void	*basic_routine(void *arg)
 	{
 		pickup_forks(info, myid, myid);
 		pickup_forks(info, myid, (myid + 1) % info->number_of_philosophers);
-		dinning(info, myid);
+		pthread_mutex_lock(&info->lock);
 		if (!info->flag_die)
 			break;
+		pthread_mutex_unlock(&info->lock);
+		dinning(info, &(info->philosophers[myid]), myid);
+		pthread_mutex_lock(&info->lock);
+		if (!info->flag_die)
+			break;
+		pthread_mutex_unlock(&info->lock);
 		sleeping_and_thinking(info, myid);
 	}
 	return (NULL);
@@ -152,19 +173,13 @@ int	main(int argc, char *argv[])
 		info.number_of_times_each_philosopher_must_eat = atoi(argv[5]);
 	else
 		info.number_of_times_each_philosopher_must_eat = -1;
-
-	// if (info.number_of_philosophers == 1)
-	// {
-	// 	printf("0 0 has taken a fork\n");
-	// 	printf("%d 0 died\n", info.time_to_die);
-	// 	return 0;
-	// }
-
 	init_info(&info, info.number_of_philosophers);
 
 	if (pthread_mutex_init(&info.lock, NULL))
 		exit(1);
 	if (pthread_mutex_init(&info.print, NULL))
+		exit(1);
+	if (pthread_create(&info.tid_of_death, NULL, death_monitoring, (void *)&info))
 		exit(1);
 	info.id = -1;
 	while (++info.id < info.number_of_philosophers)
@@ -173,13 +188,12 @@ int	main(int argc, char *argv[])
 			exit(1);
 	}
 
-	if (pthread_create(&info.tid_of_death, NULL, death_monitoring, (void *)&info))
-		exit(1);
 	info.id = -1;
 	while (++info.id < info.number_of_philosophers)
 	{
 		usleep(1000);
 		info.philosophers[info.id].eating_time = 0;
+		gettimeofday(&info.philosophers[info.id].last_dinning_start_time, NULL);
 		pthread_create(&info.philosophers[info.id].tid, NULL, basic_routine, (void *)&info);
 	}
 	info.id = -1;
