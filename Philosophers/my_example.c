@@ -74,8 +74,8 @@ void	dinning(t_info *pinfo, int philosophers_id)
 	printf("%d %d is eating\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id);
 	pthread_mutex_unlock(&pinfo->print);
 	pthread_mutex_unlock(&pinfo->lock);
-	return_forks(pinfo, philosophers_id);
 	usleep(pinfo->time_to_eat*1000);
+	return_forks(pinfo, philosophers_id);
 }
 
 void	sleeping_and_thinking(t_info *pinfo, int philosophers_id)
@@ -173,7 +173,8 @@ int	main(int argc, char *argv[])
 			exit(1);
 	}
 
-
+	if (pthread_create(&info.tid_of_death, NULL, death_monitoring, (void *)&info))
+		exit(1);
 	info.id = -1;
 	while (++info.id < info.number_of_philosophers)
 	{
@@ -181,8 +182,6 @@ int	main(int argc, char *argv[])
 		info.philosophers[info.id].eating_time = 0;
 		pthread_create(&info.philosophers[info.id].tid, NULL, basic_routine, (void *)&info);
 	}
-	if (pthread_create(&info.tid_of_death, NULL, death_monitoring, (void *)&info))
-		exit(1);
 	info.id = -1;
 	while (++info.id < info.number_of_philosophers)
 	{
