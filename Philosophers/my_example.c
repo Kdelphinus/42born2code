@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:04:24 by myko              #+#    #+#             */
-/*   Updated: 2023/02/21 14:20:17 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/21 16:58:26 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,9 @@ int	timestamp_in_ms(struct timeval current_t, struct timeval starting_t)
 	return (int)(current_t.tv_sec - starting_t.tv_sec) * 1000 + (int)(current_t.tv_usec - starting_t.tv_usec) / 1000;
 }
 
-int	zero_in_ms(struct timeval current_t)
-{
-	return (int)(current_t.tv_sec) * 1000 + (int)(current_t.tv_usec) / 1000;
-}
-
 void	pickup_forks(t_info *pinfo, int philosophers_id, int forks_id)
 {
 	pthread_mutex_lock(&pinfo->forks[forks_id]);
-
 	pthread_mutex_lock(&pinfo->print);
 	gettimeofday(&pinfo->current_time, NULL);
 	printf("%d %d has taken a fork\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id);
@@ -127,7 +121,6 @@ void	*death_monitoring(void *arg)
 			{
 				info->flag_die = 0;
 				printf("%d %d died\n", timestamp_in_ms(info->current_time, info->starting_time), i);
-				// break;
 			}
 			pthread_mutex_unlock(&info->print);
 		}
@@ -136,7 +129,7 @@ void	*death_monitoring(void *arg)
 		{
 			pthread_mutex_lock(&info->lock);
 			i = -1;
-			while (++i < info->number_of_philosophers)
+			while (info->flag_die && ++i < info->number_of_philosophers)
 			{
 				if (info->philosophers[i].eating_time < info->number_of_times_each_philosopher_must_eat)
 					break;
@@ -178,7 +171,6 @@ int	main(int argc, char *argv[])
 {
 	t_info info;
 	info.flag_die = 1;
-	gettimeofday(&info.starting_time, NULL);
 
 //	if (5 > argc || 6 < argc)
 //		exit(1);
@@ -193,10 +185,11 @@ int	main(int argc, char *argv[])
 	(void)argc;
 	(void)argv;
 	info.number_of_philosophers = 5;
-	info.time_to_die = 410;
+	info.time_to_die = 610;
 	info.time_to_eat = 200;
 	info.time_to_sleep = 200;
 	info.number_of_times_each_philosopher_must_eat = -1;
+
 	init_info(&info, info.number_of_philosophers);
 
 	if (pthread_mutex_init(&info.lock, NULL))
@@ -211,6 +204,7 @@ int	main(int argc, char *argv[])
 	}
 
 	info.id = -1;
+	gettimeofday(&info.starting_time, NULL);
 	while (++info.id < info.number_of_philosophers)
 	{
 		usleep(1000);
