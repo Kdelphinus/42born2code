@@ -89,7 +89,6 @@ void	dinning(t_info *pinfo, t_philosophers *ppinfo, int philosophers_id)
 	gettimeofday(&ppinfo->last_dinning_start_time, NULL);
 	gettimeofday(&pinfo->current_time, NULL);
 	printf("%d %d is eating\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id);
-	printf("zero: %d\n", zero_in_ms(ppinfo->last_dinning_start_time));
 	pthread_mutex_unlock(&pinfo->print);
 	pthread_mutex_unlock(&pinfo->lock);
 	usleep(pinfo->time_to_eat*1000);
@@ -127,7 +126,7 @@ void	*death_monitoring(void *arg)
 			if (timestamp_in_ms(info->current_time, info->philosophers[i].last_dinning_start_time) > info->time_to_die)
 			{
 				info->flag_die = 0;
-				printf("%d %d died(%d)\n", timestamp_in_ms(info->current_time, info->starting_time), i, timestamp_in_ms(info->current_time, info->philosophers[i].last_dinning_start_time));
+				printf("%d %d died\n", timestamp_in_ms(info->current_time, info->starting_time), i);
 				// break;
 			}
 			pthread_mutex_unlock(&info->print);
