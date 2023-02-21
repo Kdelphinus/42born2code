@@ -20,7 +20,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44dc61e3-aefc-4ed7-b7d2-330ef96500fc" name="Default Changelist" comment="" />
+    <list default="true" id="44dc61e3-aefc-4ed7-b7d2-330ef96500fc" name="Default Changelist" comment="Default Changelist">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example" beforeDir="false" afterPath="$PROJECT_DIR$/example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_example.c" beforeDir="false" afterPath="$PROJECT_DIR$/my_example.c" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,7 +144,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;//wsl$/Ubuntu-22.04/home/delphinus/42born2code/Philosophers&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
   }
 }</component>
@@ -191,7 +196,9 @@
       <workItem from="1676573592928" duration="590000" />
       <workItem from="1676946647387" duration="9192000" />
       <workItem from="1676963133560" duration="3215000" />
-      <workItem from="1676967572565" duration="1190000" />
+      <workItem from="1676967572565" duration="5010000" />
+      <workItem from="1676974501483" duration="625000" />
+      <workItem from="1676977189569" duration="270000" />
     </task>
     <servers />
   </component>
@@ -235,6 +242,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/Makefile">
