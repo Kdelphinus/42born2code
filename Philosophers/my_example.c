@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   my_example.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 13:04:24 by myko              #+#    #+#             */
+/*   Updated: 2023/02/21 13:04:27 by myko             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <pthread.h>
 #include <unistd.h>
@@ -163,16 +175,23 @@ int	main(int argc, char *argv[])
 	info.flag_die = 1;
 	gettimeofday(&info.starting_time, NULL);
 
-	if (5 > argc || 6 < argc)
-		exit(1);
-	info.number_of_philosophers = atoi(argv[1]);
-	info.time_to_die = atoi(argv[2]);
-	info.time_to_eat = atoi(argv[3]);
-	info.time_to_sleep = atoi(argv[4]);
-	if (argc == 6)
-		info.number_of_times_each_philosopher_must_eat = atoi(argv[5]);
-	else
-		info.number_of_times_each_philosopher_must_eat = -1;
+//	if (5 > argc || 6 < argc)
+//		exit(1);
+//	info.number_of_philosophers = atoi(argv[1]);
+//	info.time_to_die = atoi(argv[2]);
+//	info.time_to_eat = atoi(argv[3]);
+//	info.time_to_sleep = atoi(argv[4]);
+//	if (argc == 6)
+//		info.number_of_times_each_philosopher_must_eat = atoi(argv[5]);
+//	else
+//		info.number_of_times_each_philosopher_must_eat = -1;
+	(void)argc;
+	(void)argv;
+	info.number_of_philosophers = 5;
+	info.time_to_die = 410;
+	info.time_to_eat = 200;
+	info.time_to_sleep = 200;
+	info.number_of_times_each_philosopher_must_eat = -1;
 	init_info(&info, info.number_of_philosophers);
 
 	if (pthread_mutex_init(&info.lock, NULL))
