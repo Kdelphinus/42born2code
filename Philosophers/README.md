@@ -233,3 +233,4 @@ return 값은 성공 시 0, 실패 시 그에 맞는 error 번호를 반환한�
 - [saeyeong tistory, c로 식사하는 철학자 문제 풀기](https://saeyeong.tistory.com/8)
 - [팔만코딩경, Philosophers](https://80000coding.oopy.io/d098a24a-eada-4d4b-84f6-34b48fd37af8)
 - [philosophers-visualizer](https://nafuka11.github.io/philosophers-visualizer/)
+- [stack overflow, ticket_lock 구현](https://stackoverflow.com/questions/5385777/implementing-a-fifo-mutex-in-pthreads)
