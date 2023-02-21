@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:04:24 by myko              #+#    #+#             */
-/*   Updated: 2023/02/21 13:04:27 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/21 14:20:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ int	timestamp_in_ms(struct timeval current_t, struct timeval starting_t)
 	return (int)(current_t.tv_sec - starting_t.tv_sec) * 1000 + (int)(current_t.tv_usec - starting_t.tv_usec) / 1000;
 }
 
+int	zero_in_ms(struct timeval current_t)
+{
+	return (int)(current_t.tv_sec) * 1000 + (int)(current_t.tv_usec) / 1000;
+}
+
 void	pickup_forks(t_info *pinfo, int philosophers_id, int forks_id)
 {
 	pthread_mutex_lock(&pinfo->forks[forks_id]);
@@ -84,6 +89,7 @@ void	dinning(t_info *pinfo, t_philosophers *ppinfo, int philosophers_id)
 	gettimeofday(&ppinfo->last_dinning_start_time, NULL);
 	gettimeofday(&pinfo->current_time, NULL);
 	printf("%d %d is eating\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id);
+	printf("zero: %d\n", zero_in_ms(ppinfo->last_dinning_start_time));
 	pthread_mutex_unlock(&pinfo->print);
 	pthread_mutex_unlock(&pinfo->lock);
 	usleep(pinfo->time_to_eat*1000);
@@ -198,8 +204,6 @@ int	main(int argc, char *argv[])
 		exit(1);
 	if (pthread_mutex_init(&info.print, NULL))
 		exit(1);
-	if (pthread_create(&info.tid_of_death, NULL, death_monitoring, (void *)&info))
-		exit(1);
 	info.id = -1;
 	while (++info.id < info.number_of_philosophers)
 	{
@@ -215,6 +219,8 @@ int	main(int argc, char *argv[])
 		gettimeofday(&info.philosophers[info.id].last_dinning_start_time, NULL);
 		pthread_create(&info.philosophers[info.id].tid, NULL, basic_routine, (void *)&info);
 	}
+	if (pthread_create(&info.tid_of_death, NULL, death_monitoring, (void *)&info))
+		exit(1);
 	info.id = -1;
 	while (++info.id < info.number_of_philosophers)
 	{
