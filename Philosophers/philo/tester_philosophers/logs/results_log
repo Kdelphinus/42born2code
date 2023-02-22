@@ -1,0 +1,959 @@
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '15', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '200', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '15', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '200', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '15', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '200', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '15', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '200', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '15', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '200', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '410', '200', '200']
+  log.py: at 202, philosopher 2 ate 1ms longer
+  log.py: at 211, philosopher 1 ate 5ms longer
+  log.py: at 407, philosopher 2 slept 5ms longer
+  log.py: at 407, philosopher 3 slept 5ms longer
+  log.py: at 407, philosopher 4 slept 4ms longer
+  log.py: at 407, philosopher 5 slept 3ms longer
+  log.py: at 416, philosopher 1 slept 5ms longer
+  log.py: at 610, philosopher 3 ate 3ms longer
+  log.py: at 610, philosopher 4 ate 3ms longer
+  log.py: at 610, philosopher 2 ate 3ms longer
+  log.py: at 610, philosopher 5 ate 3ms longer
+  log.py: at 617, philosopher 1 ate 1ms longer
+  log.py: at 820, philosopher 1 slept 3ms longer
+  log.py: at 1022, philosopher 1 ate 2ms longer
+  log.py: at 1225, philosopher 1 slept 3ms longer
+  log.py: at 1411, philosopher 4 ate 1ms longer
+  log.py: at 1427, philosopher 1 ate 2ms longer
+  log.py: at 1611, philosopher 5 slept 1ms longer
+  log.py: at 1614, philosopher 4 slept 3ms longer
+  log.py: at 1811, philosopher 3 ate 1ms longer
+  log.py: at 1811, philosopher 2 ate 1ms longer
+  log.py: at 1817, philosopher 4 ate 3ms longer
+  log.py: at 1829, philosopher 1 ate 2ms longer
+  log.py: at 2022, philosopher 4 slept 5ms longer
+  log.py: at 2032, philosopher 1 slept 3ms longer
+  log.py: at 2216, philosopher 3 ate 5ms longer
+  log.py: at 2216, philosopher 2 ate 5ms longer
+  log.py: at 2216, philosopher 5 ate 5ms longer
+  log.py: at 2237, philosopher 1 ate 5ms longer
+  log.py: at 2425, philosopher 4 slept 3ms longer
+  log.py: at 2442, philosopher 1 slept 5ms longer
+  log.py: at 2622, philosopher 3 ate 6ms longer
+  log.py: at 2622, philosopher 2 ate 6ms longer
+  log.py: at 2622, philosopher 5 ate 5ms longer
+  log.py: at 2630, philosopher 4 ate 5ms longer
+  log.py: at 2644, philosopher 1 ate 2ms longer
+  log.py: at 2823, philosopher 3 slept 1ms longer
+  log.py: at 2823, philosopher 5 slept 1ms longer
+  log.py: at 2823, philosopher 2 slept 1ms longer
+  log.py: at 2836, philosopher 4 slept 6ms longer
+  log.py: at 2845, philosopher 1 slept 1ms longer
+  log.py: at 3028, philosopher 2 ate 5ms longer
+  log.py: at 3041, philosopher 4 ate 5ms longer
+  log.py: at 3050, philosopher 1 ate 5ms longer
+  log.py: at 3228, philosopher 5 slept 5ms longer
+  log.py: at 3228, philosopher 3 slept 5ms longer
+  log.py: at 3233, philosopher 2 slept 5ms longer
+  log.py: at 2, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3, the fork philosopher 4 grabbed was not yet released
+  log.py: at 4, the fork philosopher 5 grabbed was not yet released
+  log.py: at 6, the fork philosopher 1 grabbed was not yet released
+  log.py: at 6, the fork philosopher 1 grabbed was not yet released
+  log.py: at 407, the fork philosopher 3 grabbed was not yet released
+  log.py: at 407, the fork philosopher 4 grabbed was not yet released
+  log.py: at 407, the fork philosopher 5 grabbed was not yet released
+  log.py: at 416, the fork philosopher 1 grabbed was not yet released
+  log.py: at 416, the fork philosopher 1 grabbed was not yet released
+  log.py: at 810, the fork philosopher 4 grabbed was not yet released
+  log.py: at 810, the fork philosopher 2 grabbed was not yet released
+  log.py: at 810, the fork philosopher 5 grabbed was not yet released
+  log.py: at 820, the fork philosopher 1 grabbed was not yet released
+  log.py: at 820, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1210, the fork philosopher 5 grabbed was not yet released
+  log.py: at 1210, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1210, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1225, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1225, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1610, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1614, the fork philosopher 4 grabbed was not yet released
+  log.py: at 1614, the fork philosopher 4 grabbed was not yet released
+  log.py: at 1627, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1627, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2011, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2022, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2022, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2032, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2032, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2416, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2425, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2425, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2442, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2442, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2823, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2836, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2836, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2845, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2845, the fork philosopher 1 grabbed was not yet released
+  log.py: operation after death
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '610', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '610', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '410', '200', '200']
+  log.py: at 202, philosopher 2 ate 1ms longer
+  log.py: at 206, philosopher 3 ate 4ms longer
+  log.py: at 208, philosopher 4 ate 5ms longer
+  log.py: at 208, philosopher 5 ate 4ms longer
+  log.py: at 208, philosopher 1 ate 2ms longer
+  log.py: at 404, philosopher 2 slept 2ms longer
+  log.py: at 411, philosopher 3 slept 5ms longer
+  log.py: at 411, philosopher 4 slept 3ms longer
+  log.py: at 411, philosopher 5 slept 3ms longer
+  log.py: at 411, philosopher 1 slept 3ms longer
+  log.py: at 609, philosopher 2 ate 5ms longer
+  log.py: at 810, philosopher 2 slept 1ms longer
+  log.py: at 812, philosopher 1 slept 1ms longer
+  log.py: at 812, philosopher 5 slept 1ms longer
+  log.py: at 812, philosopher 4 slept 1ms longer
+  log.py: at 813, philosopher 3 slept 2ms longer
+  log.py: at 1012, philosopher 3 ate -1ms longer
+  log.py: at 1212, philosopher 2 slept 2ms longer
+  log.py: at 1217, philosopher 3 slept 5ms longer
+  log.py: at 1422, philosopher 3 ate 5ms longer
+  log.py: at 1627, philosopher 3 slept 5ms longer
+  log.py: at 1813, philosopher 1 ate 1ms longer
+  log.py: at 1813, philosopher 2 ate 1ms longer
+  log.py: at 1814, philosopher 5 ate 2ms longer
+  log.py: at 1814, philosopher 4 ate 2ms longer
+  log.py: at 1829, philosopher 3 ate 2ms longer
+  log.py: at 2012, philosopher 1 slept -1ms longer
+  log.py: at 2012, philosopher 2 slept -1ms longer
+  log.py: at 2018, philosopher 5 slept 4ms longer
+  log.py: at 2018, philosopher 4 slept 4ms longer
+  log.py: at 2028, philosopher 3 slept -1ms longer
+  log.py: at 2217, philosopher 2 ate 5ms longer
+  log.py: at 2217, philosopher 1 ate 5ms longer
+  log.py: at 2219, philosopher 4 ate 1ms longer
+  log.py: at 2219, philosopher 5 ate 1ms longer
+  log.py: at 2419, philosopher 2 slept 2ms longer
+  log.py: at 2419, philosopher 1 slept 2ms longer
+  log.py: at 2634, philosopher 3 ate 5ms longer
+  log.py: at 2825, philosopher 1 slept 6ms longer
+  log.py: at 2825, philosopher 5 slept 6ms longer
+  log.py: at 2825, philosopher 4 slept 6ms longer
+  log.py: at 2825, philosopher 2 slept 6ms longer
+  log.py: at 2838, philosopher 3 slept 4ms longer
+  log.py: at 3029, philosopher 1 ate 4ms longer
+  log.py: at 3029, philosopher 2 ate 4ms longer
+  log.py: at 3029, philosopher 5 ate 4ms longer
+  log.py: at 3029, philosopher 4 ate 4ms longer
+  log.py: at 3042, philosopher 3 ate 4ms longer
+  log.py: at 3246, philosopher 3 slept 4ms longer
+  log.py: at 3431, philosopher 2 ate 2ms longer
+  log.py: at 3431, philosopher 4 ate 2ms longer
+  log.py: at 3431, philosopher 5 ate 2ms longer
+  log.py: at 3431, philosopher 1 ate 2ms longer
+  log.py: at 3636, philosopher 5 slept 5ms longer
+  log.py: at 3636, philosopher 2 slept 5ms longer
+  log.py: at 3636, philosopher 4 slept 5ms longer
+  log.py: at 3636, philosopher 1 slept 5ms longer
+  log.py: at 3647, philosopher 3 slept 1ms longer
+  log.py: at 3842, philosopher 2 ate 6ms longer
+  log.py: at 3842, philosopher 4 ate 6ms longer
+  log.py: at 3842, philosopher 1 ate 6ms longer
+  log.py: at 3842, philosopher 5 ate 6ms longer
+  log.py: at 4046, philosopher 2 slept 4ms longer
+  log.py: at 4046, philosopher 4 slept 4ms longer
+  log.py: at 4046, philosopher 1 slept 4ms longer
+  log.py: at 4046, philosopher 5 slept 4ms longer
+  log.py: at 4046, philosopher 3 slept -1ms longer
+  log.py: at 4252, philosopher 3 ate 6ms longer
+  log.py: at 4456, philosopher 3 slept 4ms longer
+  log.py: at 4648, philosopher 4 ate 2ms longer
+  log.py: at 4648, philosopher 5 ate 2ms longer
+  log.py: at 4648, philosopher 2 ate 2ms longer
+  log.py: at 4648, philosopher 1 ate 2ms longer
+  log.py: at 4658, philosopher 3 ate 2ms longer
+  log.py: at 4853, philosopher 4 slept 5ms longer
+  log.py: at 4853, philosopher 5 slept 5ms longer
+  log.py: at 4853, philosopher 2 slept 5ms longer
+  log.py: at 4853, philosopher 1 slept 5ms longer
+  log.py: at 4863, philosopher 3 slept 5ms longer
+  log.py: at 5052, philosopher 5 ate -1ms longer
+  log.py: at 5052, philosopher 2 ate -1ms longer
+  log.py: at 5052, philosopher 1 ate -1ms longer
+  log.py: at 5056, philosopher 4 ate 3ms longer
+  log.py: at 5257, philosopher 5 slept 5ms longer
+  log.py: at 5257, philosopher 2 slept 5ms longer
+  log.py: at 5257, philosopher 1 slept 5ms longer
+  log.py: at 5257, philosopher 4 slept 1ms longer
+  log.py: at 5459, philosopher 2 ate 2ms longer
+  log.py: at 5459, philosopher 1 ate 2ms longer
+  log.py: at 5459, philosopher 4 ate 2ms longer
+  log.py: at 5459, philosopher 5 ate 2ms longer
+  log.py: at 5468, philosopher 3 ate 5ms longer
+  log.py: at 5664, philosopher 1 slept 5ms longer
+  log.py: at 5664, philosopher 5 slept 5ms longer
+  log.py: at 5664, philosopher 4 slept 5ms longer
+  log.py: at 5664, philosopher 2 slept 5ms longer
+  log.py: at 5669, philosopher 3 slept 1ms longer
+  log.py: at 5869, philosopher 4 ate 5ms longer
+  log.py: at 5869, philosopher 2 ate 5ms longer
+  log.py: at 6073, philosopher 4 slept 4ms longer
+  log.py: at 6073, philosopher 2 slept 4ms longer
+  log.py: at 6073, philosopher 3 slept 4ms longer
+  log.py: at 6267, philosopher 5 ate 3ms longer
+  log.py: at 6267, philosopher 1 ate 3ms longer
+  log.py: at 6274, philosopher 4 ate 1ms longer
+  log.py: at 6274, philosopher 3 ate 1ms longer
+  log.py: at 6274, philosopher 2 ate 1ms longer
+  log.py: at 6472, philosopher 5 slept 5ms longer
+  log.py: at 6472, philosopher 1 slept 5ms longer
+  log.py: at 6479, philosopher 4 slept 5ms longer
+  log.py: at 6479, philosopher 3 slept 5ms longer
+  log.py: at 6479, philosopher 2 slept 5ms longer
+  log.py: at 6673, philosopher 5 ate 1ms longer
+  log.py: at 6673, philosopher 1 ate 1ms longer
+  log.py: at 6680, philosopher 4 ate 1ms longer
+  log.py: at 6680, philosopher 3 ate 1ms longer
+  log.py: at 6680, philosopher 2 ate 1ms longer
+  log.py: at 6876, philosopher 5 slept 3ms longer
+  log.py: at 6876, philosopher 1 slept 3ms longer
+  log.py: at 6881, philosopher 4 slept 1ms longer
+  log.py: at 6881, philosopher 2 slept 1ms longer
+  log.py: at 6881, philosopher 3 slept 1ms longer
+  log.py: at 7079, philosopher 1 ate 3ms longer
+  log.py: at 7079, philosopher 5 ate 3ms longer
+  log.py: at 7281, philosopher 1 slept 2ms longer
+  log.py: at 7281, philosopher 5 slept 2ms longer
+  log.py: at 7685, philosopher 1 slept 4ms longer
+  log.py: at 7685, philosopher 5 slept 4ms longer
+  log.py: at 7685, philosopher 3 slept 4ms longer
+  log.py: at 7685, philosopher 2 slept 4ms longer
+  log.py: at 7685, philosopher 4 slept 4ms longer
+  log.py: at 7888, philosopher 5 ate 3ms longer
+  log.py: at 7888, philosopher 3 ate 3ms longer
+  log.py: at 7888, philosopher 1 ate 3ms longer
+  log.py: at 7888, philosopher 4 ate 3ms longer
+  log.py: at 7888, philosopher 2 ate 3ms longer
+  log.py: at 8092, philosopher 5 slept 4ms longer
+  log.py: at 8092, philosopher 3 slept 4ms longer
+  log.py: at 8092, philosopher 1 slept 4ms longer
+  log.py: at 8092, philosopher 2 slept 4ms longer
+  log.py: at 8092, philosopher 4 slept 4ms longer
+  log.py: at 8295, philosopher 5 ate 3ms longer
+  log.py: at 8295, philosopher 1 ate 3ms longer
+  log.py: at 8295, philosopher 4 ate 3ms longer
+  log.py: at 8295, philosopher 3 ate 3ms longer
+  log.py: at 8295, philosopher 2 ate 3ms longer
+  log.py: at 8498, philosopher 1 slept 3ms longer
+  log.py: at 8498, philosopher 3 slept 3ms longer
+  log.py: at 8498, philosopher 5 slept 3ms longer
+  log.py: at 8498, philosopher 4 slept 3ms longer
+  log.py: at 8498, philosopher 2 slept 3ms longer
+  log.py: at 8699, philosopher 1 ate 1ms longer
+  log.py: at 8699, philosopher 3 ate 1ms longer
+  log.py: at 8699, philosopher 5 ate 1ms longer
+  log.py: at 8699, philosopher 2 ate 1ms longer
+  log.py: at 8699, philosopher 4 ate 1ms longer
+  log.py: at 8904, philosopher 1 slept 5ms longer
+  log.py: at 8904, philosopher 3 slept 5ms longer
+  log.py: at 8904, philosopher 2 slept 5ms longer
+  log.py: at 8904, philosopher 5 slept 5ms longer
+  log.py: at 8904, philosopher 4 slept 5ms longer
+  log.py: at 9105, philosopher 4 ate 1ms longer
+  log.py: at 9105, philosopher 1 ate 1ms longer
+  log.py: at 9105, philosopher 2 ate 1ms longer
+  log.py: at 9105, philosopher 3 ate 1ms longer
+  log.py: at 9105, philosopher 5 ate 1ms longer
+  log.py: at 9309, philosopher 4 slept 4ms longer
+  log.py: at 9309, philosopher 1 slept 4ms longer
+  log.py: at 9309, philosopher 2 slept 4ms longer
+  log.py: at 9309, philosopher 3 slept 4ms longer
+  log.py: at 9309, philosopher 5 slept 4ms longer
+  log.py: at 9513, philosopher 5 ate 4ms longer
+  log.py: at 9513, philosopher 1 ate 4ms longer
+  log.py: at 9513, philosopher 3 ate 4ms longer
+  log.py: at 9513, philosopher 4 ate 4ms longer
+  log.py: at 9513, philosopher 2 ate 4ms longer
+  log.py: at 9715, philosopher 5 slept 2ms longer
+  log.py: at 9715, philosopher 1 slept 2ms longer
+  log.py: at 9715, philosopher 3 slept 2ms longer
+  log.py: at 9715, philosopher 2 slept 2ms longer
+  log.py: at 9715, philosopher 4 slept 2ms longer
+  log.py: at 9916, philosopher 1 ate 1ms longer
+  log.py: at 9916, philosopher 4 ate 1ms longer
+  log.py: at 9916, philosopher 5 ate 1ms longer
+  log.py: at 9916, philosopher 2 ate 1ms longer
+  log.py: at 9916, philosopher 3 ate 1ms longer
+  log.py: at 10115, philosopher 1 slept -1ms longer
+  log.py: at 10115, philosopher 4 slept -1ms longer
+  log.py: at 10115, philosopher 5 slept -1ms longer
+  log.py: at 10115, philosopher 2 slept -1ms longer
+  log.py: at 10115, philosopher 3 slept -1ms longer
+  log.py: at 10318, philosopher 4 ate 3ms longer
+  log.py: at 10318, philosopher 1 ate 3ms longer
+  log.py: at 10318, philosopher 5 ate 3ms longer
+  log.py: at 10318, philosopher 3 ate 3ms longer
+  log.py: at 10318, philosopher 2 ate 3ms longer
+  log.py: at 10521, philosopher 4 slept 3ms longer
+  log.py: at 10521, philosopher 1 slept 3ms longer
+  log.py: at 10521, philosopher 5 slept 3ms longer
+  log.py: at 10521, philosopher 3 slept 3ms longer
+  log.py: at 10521, philosopher 2 slept 3ms longer
+  log.py: at 10727, philosopher 1 ate 6ms longer
+  log.py: at 10727, philosopher 3 ate 6ms longer
+  log.py: at 10727, philosopher 4 ate 6ms longer
+  log.py: at 10727, philosopher 2 ate 6ms longer
+  log.py: at 10727, philosopher 5 ate 6ms longer
+  log.py: at 10929, philosopher 1 slept 2ms longer
+  log.py: at 10929, philosopher 3 slept 2ms longer
+  log.py: at 10929, philosopher 4 slept 2ms longer
+  log.py: at 10929, philosopher 2 slept 2ms longer
+  log.py: at 10929, philosopher 5 slept 2ms longer
+  log.py: at 11132, philosopher 1 ate 3ms longer
+  log.py: at 11132, philosopher 5 ate 3ms longer
+  log.py: at 11132, philosopher 3 ate 3ms longer
+  log.py: at 11132, philosopher 4 ate 3ms longer
+  log.py: at 11132, philosopher 2 ate 3ms longer
+  log.py: at 11536, philosopher 5 ate 4ms longer
+  log.py: at 11536, philosopher 3 ate 4ms longer
+  log.py: at 11536, philosopher 2 ate 4ms longer
+  log.py: at 11536, philosopher 1 ate 4ms longer
+  log.py: at 11536, philosopher 4 ate 4ms longer
+  log.py: at 11743, philosopher 5 slept 7ms longer
+  log.py: at 11743, philosopher 3 slept 7ms longer
+  log.py: at 11743, philosopher 2 slept 7ms longer
+  log.py: at 11743, philosopher 1 slept 7ms longer
+  log.py: at 11743, philosopher 4 slept 7ms longer
+  log.py: at 11947, philosopher 4 ate 4ms longer
+  log.py: at 11947, philosopher 3 ate 4ms longer
+  log.py: at 11947, philosopher 2 ate 4ms longer
+  log.py: at 11947, philosopher 1 ate 4ms longer
+  log.py: at 11947, philosopher 5 ate 4ms longer
+  log.py: at 12149, philosopher 4 slept 2ms longer
+  log.py: at 12149, philosopher 3 slept 2ms longer
+  log.py: at 12149, philosopher 2 slept 2ms longer
+  log.py: at 12149, philosopher 1 slept 2ms longer
+  log.py: at 12149, philosopher 5 slept 2ms longer
+  log.py: at 12354, philosopher 3 ate 5ms longer
+  log.py: at 12354, philosopher 5 ate 5ms longer
+  log.py: at 12354, philosopher 2 ate 5ms longer
+  log.py: at 12354, philosopher 4 ate 5ms longer
+  log.py: at 12354, philosopher 1 ate 5ms longer
+  log.py: at 12556, philosopher 3 slept 2ms longer
+  log.py: at 12557, philosopher 5 slept 3ms longer
+  log.py: at 12557, philosopher 2 slept 3ms longer
+  log.py: at 12557, philosopher 1 slept 3ms longer
+  log.py: at 12557, philosopher 4 slept 3ms longer
+  log.py: at 12763, philosopher 2 ate 6ms longer
+  log.py: at 12763, philosopher 3 ate 6ms longer
+  log.py: at 12763, philosopher 1 ate 6ms longer
+  log.py: at 12763, philosopher 4 ate 6ms longer
+  log.py: at 12763, philosopher 5 ate 6ms longer
+  log.py: at 12966, philosopher 2 slept 3ms longer
+  log.py: at 12966, philosopher 3 slept 3ms longer
+  log.py: at 12966, philosopher 1 slept 3ms longer
+  log.py: at 12966, philosopher 5 slept 3ms longer
+  log.py: at 12966, philosopher 4 slept 3ms longer
+  log.py: at 13165, philosopher 3 ate -1ms longer
+  log.py: at 13165, philosopher 2 ate -1ms longer
+  log.py: at 13165, philosopher 5 ate -1ms longer
+  log.py: at 13165, philosopher 1 ate -1ms longer
+  log.py: at 13368, philosopher 3 slept 3ms longer
+  log.py: at 13368, philosopher 2 slept 3ms longer
+  log.py: at 13368, philosopher 5 slept 3ms longer
+  log.py: at 13368, philosopher 4 slept 2ms longer
+  log.py: at 13368, philosopher 1 slept 3ms longer
+  log.py: at 13570, philosopher 3 ate 2ms longer
+  log.py: at 13570, philosopher 5 ate 2ms longer
+  log.py: at 13570, philosopher 4 ate 2ms longer
+  log.py: at 13570, philosopher 1 ate 2ms longer
+  log.py: at 13570, philosopher 2 ate 2ms longer
+  log.py: at 13774, philosopher 3 slept 4ms longer
+  log.py: at 13774, philosopher 1 slept 4ms longer
+  log.py: at 13774, philosopher 5 slept 4ms longer
+  log.py: at 13774, philosopher 4 slept 4ms longer
+  log.py: at 13774, philosopher 2 slept 4ms longer
+  log.py: at 13975, philosopher 1 ate 1ms longer
+  log.py: at 13975, philosopher 3 ate 1ms longer
+  log.py: at 13975, philosopher 2 ate 1ms longer
+  log.py: at 13975, philosopher 5 ate 1ms longer
+  log.py: at 13979, philosopher 4 ate 5ms longer
+  log.py: at 14177, philosopher 1 slept 2ms longer
+  log.py: at 14177, philosopher 3 slept 2ms longer
+  log.py: at 14177, philosopher 2 slept 2ms longer
+  log.py: at 14177, philosopher 5 slept 2ms longer
+  log.py: at 14182, philosopher 4 slept 3ms longer
+  log.py: at 14381, philosopher 2 ate 4ms longer
+  log.py: at 14381, philosopher 5 ate 4ms longer
+  log.py: at 14381, philosopher 1 ate 4ms longer
+  log.py: at 14381, philosopher 3 ate 4ms longer
+  log.py: at 14383, philosopher 4 ate 1ms longer
+  log.py: at 14582, philosopher 2 slept 1ms longer
+  log.py: at 14582, philosopher 5 slept 1ms longer
+  log.py: at 14582, philosopher 1 slept 1ms longer
+  log.py: at 14582, philosopher 3 slept 1ms longer
+  log.py: at 14784, philosopher 5 ate 2ms longer
+  log.py: at 14784, philosopher 2 ate 2ms longer
+  log.py: at 14784, philosopher 1 ate 2ms longer
+  log.py: at 14784, philosopher 3 ate 2ms longer
+  log.py: at 14789, philosopher 4 ate 6ms longer
+  log.py: at 14994, philosopher 4 slept 5ms longer
+  log.py: at 2, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3, the fork philosopher 4 grabbed was not yet released
+  log.py: at 4, the fork philosopher 5 grabbed was not yet released
+  log.py: at 6, the fork philosopher 1 grabbed was not yet released
+  log.py: at 6, the fork philosopher 1 grabbed was not yet released
+  log.py: at 411, the fork philosopher 3 grabbed was not yet released
+  log.py: at 411, the fork philosopher 4 grabbed was not yet released
+  log.py: at 411, the fork philosopher 5 grabbed was not yet released
+  log.py: at 411, the fork philosopher 1 grabbed was not yet released
+  log.py: at 411, the fork philosopher 1 grabbed was not yet released
+  log.py: at 812, the fork philosopher 1 grabbed was not yet released
+  log.py: at 812, the fork philosopher 5 grabbed was not yet released
+  log.py: at 812, the fork philosopher 4 grabbed was not yet released
+  log.py: at 813, the fork philosopher 3 grabbed was not yet released
+  log.py: at 813, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1212, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1212, the fork philosopher 5 grabbed was not yet released
+  log.py: at 1212, the fork philosopher 5 grabbed was not yet released
+  log.py: at 1217, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1217, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1612, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1612, the fork philosopher 5 grabbed was not yet released
+  log.py: at 1612, the fork philosopher 4 grabbed was not yet released
+  log.py: at 1627, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1627, the fork philosopher 3 grabbed was not yet released
+  log.py: at 2012, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2018, the fork philosopher 5 grabbed was not yet released
+  log.py: at 2018, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2028, the fork philosopher 3 grabbed was not yet released
+  log.py: at 2028, the fork philosopher 3 grabbed was not yet released
+  log.py: at 2419, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2419, the fork philosopher 5 grabbed was not yet released
+  log.py: at 2419, the fork philosopher 5 grabbed was not yet released
+  log.py: at 2429, the fork philosopher 3 grabbed was not yet released
+  log.py: at 2429, the fork philosopher 3 grabbed was not yet released
+  log.py: at 2825, the fork philosopher 5 grabbed was not yet released
+  log.py: at 2825, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2825, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2838, the fork philosopher 3 grabbed was not yet released
+  log.py: at 2838, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3229, the fork philosopher 2 grabbed was not yet released
+  log.py: at 3229, the fork philosopher 5 grabbed was not yet released
+  log.py: at 3229, the fork philosopher 4 grabbed was not yet released
+  log.py: at 3246, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3246, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3636, the fork philosopher 4 grabbed was not yet released
+  log.py: at 3636, the fork philosopher 1 grabbed was not yet released
+  log.py: at 3636, the fork philosopher 1 grabbed was not yet released
+  log.py: at 3647, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3647, the fork philosopher 3 grabbed was not yet released
+  log.py: at 4046, the fork philosopher 1 grabbed was not yet released
+  log.py: at 4046, the fork philosopher 5 grabbed was not yet released
+  log.py: at 4046, the fork philosopher 5 grabbed was not yet released
+  log.py: at 4046, the fork philosopher 3 grabbed was not yet released
+  log.py: at 4046, the fork philosopher 3 grabbed was not yet released
+  log.py: at 4446, the fork philosopher 5 grabbed was not yet released
+  log.py: at 4446, the fork philosopher 5 grabbed was not yet released
+  log.py: at 4446, the fork philosopher 2 grabbed was not yet released
+  log.py: at 4456, the fork philosopher 3 grabbed was not yet released
+  log.py: at 4456, the fork philosopher 3 grabbed was not yet released
+  log.py: at 4853, the fork philosopher 5 grabbed was not yet released
+  log.py: at 4853, the fork philosopher 1 grabbed was not yet released
+  log.py: at 4853, the fork philosopher 1 grabbed was not yet released
+  log.py: at 4863, the fork philosopher 3 grabbed was not yet released
+  log.py: at 4863, the fork philosopher 3 grabbed was not yet released
+  log.py: at 5257, the fork philosopher 1 grabbed was not yet released
+  log.py: at 5257, the fork philosopher 1 grabbed was not yet released
+  log.py: at 5257, the fork philosopher 4 grabbed was not yet released
+  log.py: at 5263, the fork philosopher 3 grabbed was not yet released
+  log.py: at 5263, the fork philosopher 3 grabbed was not yet released
+  log.py: at 5664, the fork philosopher 5 grabbed was not yet released
+  log.py: at 5664, the fork philosopher 4 grabbed was not yet released
+  log.py: at 5664, the fork philosopher 2 grabbed was not yet released
+  log.py: at 5669, the fork philosopher 3 grabbed was not yet released
+  log.py: at 5669, the fork philosopher 3 grabbed was not yet released
+  log.py: at 6064, the fork philosopher 1 grabbed was not yet released
+  log.py: at 6073, the fork philosopher 4 grabbed was not yet released
+  log.py: at 6073, the fork philosopher 2 grabbed was not yet released
+  log.py: at 6073, the fork philosopher 3 grabbed was not yet released
+  log.py: at 6073, the fork philosopher 3 grabbed was not yet released
+  log.py: at 6472, the fork philosopher 1 grabbed was not yet released
+  log.py: at 6479, the fork philosopher 4 grabbed was not yet released
+  log.py: at 6479, the fork philosopher 3 grabbed was not yet released
+  log.py: at 6479, the fork philosopher 2 grabbed was not yet released
+  log.py: at 6479, the fork philosopher 2 grabbed was not yet released
+  log.py: at 6876, the fork philosopher 1 grabbed was not yet released
+  log.py: at 6881, the fork philosopher 4 grabbed was not yet released
+  log.py: at 6881, the fork philosopher 2 grabbed was not yet released
+  log.py: at 6881, the fork philosopher 3 grabbed was not yet released
+  log.py: at 6881, the fork philosopher 3 grabbed was not yet released
+  log.py: at 7281, the fork philosopher 5 grabbed was not yet released
+  log.py: at 7281, the fork philosopher 2 grabbed was not yet released
+  log.py: at 7281, the fork philosopher 3 grabbed was not yet released
+  log.py: at 7281, the fork philosopher 4 grabbed was not yet released
+  log.py: at 7281, the fork philosopher 4 grabbed was not yet released
+  log.py: at 7685, the fork philosopher 5 grabbed was not yet released
+  log.py: at 7685, the fork philosopher 2 grabbed was not yet released
+  log.py: at 7685, the fork philosopher 2 grabbed was not yet released
+  log.py: at 7685, the fork philosopher 4 grabbed was not yet released
+  log.py: at 7685, the fork philosopher 4 grabbed was not yet released
+  log.py: at 8092, the fork philosopher 1 grabbed was not yet released
+  log.py: at 8092, the fork philosopher 2 grabbed was not yet released
+  log.py: at 8092, the fork philosopher 2 grabbed was not yet released
+  log.py: at 8092, the fork philosopher 4 grabbed was not yet released
+  log.py: at 8092, the fork philosopher 4 grabbed was not yet released
+  log.py: at 8498, the fork philosopher 5 grabbed was not yet released
+  log.py: at 8498, the fork philosopher 2 grabbed was not yet released
+  log.py: at 8498, the fork philosopher 2 grabbed was not yet released
+  log.py: at 8498, the fork philosopher 4 grabbed was not yet released
+  log.py: at 8498, the fork philosopher 4 grabbed was not yet released
+  log.py: at 8904, the fork philosopher 2 grabbed was not yet released
+  log.py: at 8904, the fork philosopher 2 grabbed was not yet released
+  log.py: at 8904, the fork philosopher 5 grabbed was not yet released
+  log.py: at 8904, the fork philosopher 4 grabbed was not yet released
+  log.py: at 8904, the fork philosopher 4 grabbed was not yet released
+  log.py: at 9309, the fork philosopher 2 grabbed was not yet released
+  log.py: at 9309, the fork philosopher 3 grabbed was not yet released
+  log.py: at 9309, the fork philosopher 3 grabbed was not yet released
+  log.py: at 9309, the fork philosopher 5 grabbed was not yet released
+  log.py: at 9309, the fork philosopher 5 grabbed was not yet released
+  log.py: at 9715, the fork philosopher 1 grabbed was not yet released
+  log.py: at 9715, the fork philosopher 4 grabbed was not yet released
+  log.py: at 9715, the fork philosopher 4 grabbed was not yet released
+  log.py: at 9715, the fork philosopher 2 grabbed was not yet released
+  log.py: at 9715, the fork philosopher 2 grabbed was not yet released
+  log.py: at 10115, the fork philosopher 5 grabbed was not yet released
+  log.py: at 10115, the fork philosopher 5 grabbed was not yet released
+  log.py: at 10115, the fork philosopher 2 grabbed was not yet released
+  log.py: at 10115, the fork philosopher 3 grabbed was not yet released
+  log.py: at 10115, the fork philosopher 3 grabbed was not yet released
+  log.py: at 10521, the fork philosopher 5 grabbed was not yet released
+  log.py: at 10521, the fork philosopher 5 grabbed was not yet released
+  log.py: at 10521, the fork philosopher 3 grabbed was not yet released
+  log.py: at 10521, the fork philosopher 2 grabbed was not yet released
+  log.py: at 10521, the fork philosopher 2 grabbed was not yet released
+  log.py: at 10929, the fork philosopher 4 grabbed was not yet released
+  log.py: at 10929, the fork philosopher 2 grabbed was not yet released
+  log.py: at 10929, the fork philosopher 2 grabbed was not yet released
+  log.py: at 10929, the fork philosopher 5 grabbed was not yet released
+  log.py: at 10929, the fork philosopher 5 grabbed was not yet released
+  log.py: at 11332, the fork philosopher 5 grabbed was not yet released
+  log.py: at 11332, the fork philosopher 4 grabbed was not yet released
+  log.py: at 11332, the fork philosopher 3 grabbed was not yet released
+  log.py: at 11332, the fork philosopher 2 grabbed was not yet released
+  log.py: at 11332, the fork philosopher 2 grabbed was not yet released
+  log.py: at 11743, the fork philosopher 2 grabbed was not yet released
+  log.py: at 11743, the fork philosopher 1 grabbed was not yet released
+  log.py: at 11743, the fork philosopher 1 grabbed was not yet released
+  log.py: at 11743, the fork philosopher 4 grabbed was not yet released
+  log.py: at 11743, the fork philosopher 4 grabbed was not yet released
+  log.py: at 12149, the fork philosopher 3 grabbed was not yet released
+  log.py: at 12149, the fork philosopher 2 grabbed was not yet released
+  log.py: at 12149, the fork philosopher 1 grabbed was not yet released
+  log.py: at 12149, the fork philosopher 5 grabbed was not yet released
+  log.py: at 12149, the fork philosopher 5 grabbed was not yet released
+  log.py: at 12557, the fork philosopher 2 grabbed was not yet released
+  log.py: at 12557, the fork philosopher 1 grabbed was not yet released
+  log.py: at 12557, the fork philosopher 1 grabbed was not yet released
+  log.py: at 12557, the fork philosopher 4 grabbed was not yet released
+  log.py: at 12557, the fork philosopher 4 grabbed was not yet released
+  log.py: at 12966, the fork philosopher 3 grabbed was not yet released
+  log.py: at 12966, the fork philosopher 1 grabbed was not yet released
+  log.py: at 12966, the fork philosopher 5 grabbed was not yet released
+  log.py: at 12966, the fork philosopher 4 grabbed was not yet released
+  log.py: at 12966, the fork philosopher 4 grabbed was not yet released
+  log.py: at 13368, the fork philosopher 2 grabbed was not yet released
+  log.py: at 13368, the fork philosopher 1 grabbed was not yet released
+  log.py: at 13368, the fork philosopher 1 grabbed was not yet released
+  log.py: at 13368, the fork philosopher 4 grabbed was not yet released
+  log.py: at 13368, the fork philosopher 4 grabbed was not yet released
+  log.py: at 13774, the fork philosopher 5 grabbed was not yet released
+  log.py: at 13774, the fork philosopher 2 grabbed was not yet released
+  log.py: at 13774, the fork philosopher 2 grabbed was not yet released
+  log.py: at 13774, the fork philosopher 4 grabbed was not yet released
+  log.py: at 13774, the fork philosopher 4 grabbed was not yet released
+  log.py: at 14177, the fork philosopher 2 grabbed was not yet released
+  log.py: at 14177, the fork philosopher 2 grabbed was not yet released
+  log.py: at 14177, the fork philosopher 5 grabbed was not yet released
+  log.py: at 14182, the fork philosopher 4 grabbed was not yet released
+  log.py: at 14182, the fork philosopher 4 grabbed was not yet released
+  log.py: at 14582, the fork philosopher 1 grabbed was not yet released
+  log.py: at 14582, the fork philosopher 1 grabbed was not yet released
+  log.py: at 14582, the fork philosopher 3 grabbed was not yet released
+  log.py: at 14583, the fork philosopher 4 grabbed was not yet released
+  log.py: at 14583, the fork philosopher 4 grabbed was not yet released
+  log.py: at 14984, the fork philosopher 1 grabbed was not yet released
+  log.py: at 14984, the fork philosopher 1 grabbed was not yet released
+  log.py: at 14984, the fork philosopher 3 grabbed was not yet released
+  log.py: operation after death
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '12', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '410', '200', '200']
+  log.py: at 204, philosopher 2 ate 3ms longer
+  log.py: at 204, philosopher 3 ate 2ms longer
+  log.py: at 209, philosopher 4 ate 6ms longer
+  log.py: at 209, philosopher 1 ate 5ms longer
+  log.py: at 405, philosopher 2 slept 1ms longer
+  log.py: at 405, philosopher 3 slept 1ms longer
+  log.py: at 414, philosopher 4 slept 5ms longer
+  log.py: at 414, philosopher 1 slept 5ms longer
+  log.py: at 609, philosopher 3 ate 4ms longer
+  log.py: at 609, philosopher 2 ate 4ms longer
+  log.py: at 620, philosopher 4 ate 6ms longer
+  log.py: at 620, philosopher 1 ate 6ms longer
+  log.py: at 1013, philosopher 3 ate 4ms longer
+  log.py: at 1013, philosopher 2 ate 4ms longer
+  log.py: at 1025, philosopher 1 ate 5ms longer
+  log.py: at 1025, philosopher 4 ate 5ms longer
+  log.py: at 1218, philosopher 3 slept 5ms longer
+  log.py: at 1218, philosopher 2 slept 5ms longer
+  log.py: at 1228, philosopher 4 slept 3ms longer
+  log.py: at 1228, philosopher 1 slept 3ms longer
+  log.py: at 1424, philosopher 2 ate 6ms longer
+  log.py: at 1424, philosopher 3 ate 6ms longer
+  log.py: at 1625, philosopher 2 slept 1ms longer
+  log.py: at 1625, philosopher 3 slept 1ms longer
+  log.py: at 1629, philosopher 1 slept 1ms longer
+  log.py: at 1629, philosopher 4 slept 1ms longer
+  log.py: at 1826, philosopher 2 ate 1ms longer
+  log.py: at 1826, philosopher 3 ate 1ms longer
+  log.py: at 1830, philosopher 4 ate 1ms longer
+  log.py: at 2028, philosopher 3 slept 2ms longer
+  log.py: at 2030, philosopher 2 slept 4ms longer
+  log.py: at 2030, philosopher 1 slept 1ms longer
+  log.py: at 2430, philosopher 3 slept 2ms longer
+  log.py: at 2435, philosopher 1 slept 5ms longer
+  log.py: at 2632, philosopher 3 ate 2ms longer
+  log.py: at 2632, philosopher 4 ate 2ms longer
+  log.py: at 2633, philosopher 2 ate 3ms longer
+  log.py: at 2640, philosopher 1 ate 5ms longer
+  log.py: at 2836, philosopher 3 slept 4ms longer
+  log.py: at 2836, philosopher 4 slept 4ms longer
+  log.py: at 2836, philosopher 2 slept 3ms longer
+  log.py: at 2842, philosopher 1 slept 2ms longer
+  log.py: at 3035, philosopher 2 ate -1ms longer
+  log.py: at 3035, philosopher 3 ate -1ms longer
+  log.py: at 3039, philosopher 4 ate 3ms longer
+  log.py: at 3041, philosopher 1 ate -1ms longer
+  log.py: at 3236, philosopher 2 slept 1ms longer
+  log.py: at 3236, philosopher 3 slept 1ms longer
+  log.py: at 3240, philosopher 4 slept 1ms longer
+  log.py: at 3441, philosopher 4 ate 1ms longer
+  log.py: at 3441, philosopher 2 ate 5ms longer
+  log.py: at 3441, philosopher 3 ate 4ms longer
+  log.py: at 3642, philosopher 4 slept 1ms longer
+  log.py: at 3642, philosopher 1 slept 1ms longer
+  log.py: at 3642, philosopher 2 slept 1ms longer
+  log.py: at 3643, philosopher 3 slept 2ms longer
+  log.py: at 3847, philosopher 1 ate 5ms longer
+  log.py: at 3848, philosopher 2 ate 6ms longer
+  log.py: at 3848, philosopher 3 ate 5ms longer
+  log.py: at 4044, philosopher 4 slept 2ms longer
+  log.py: at 4051, philosopher 3 slept 3ms longer
+  log.py: at 4052, philosopher 1 slept 5ms longer
+  log.py: at 4052, philosopher 2 slept 4ms longer
+  log.py: at 4247, philosopher 4 ate 3ms longer
+  log.py: at 4257, philosopher 3 ate 6ms longer
+  log.py: at 4257, philosopher 1 ate 5ms longer
+  log.py: at 4257, philosopher 2 ate 5ms longer
+  log.py: at 4451, philosopher 4 slept 4ms longer
+  log.py: at 4458, philosopher 1 slept 1ms longer
+  log.py: at 4458, philosopher 2 slept 1ms longer
+  log.py: at 4458, philosopher 3 slept 1ms longer
+  log.py: at 4657, philosopher 4 ate 6ms longer
+  log.py: at 4661, philosopher 3 ate 3ms longer
+  log.py: at 4664, philosopher 2 ate 6ms longer
+  log.py: at 4664, philosopher 1 ate 6ms longer
+  log.py: at 4862, philosopher 4 slept 5ms longer
+  log.py: at 4862, philosopher 3 slept 1ms longer
+  log.py: at 4866, philosopher 2 slept 2ms longer
+  log.py: at 4866, philosopher 1 slept 2ms longer
+  log.py: at 2, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3, the fork philosopher 4 grabbed was not yet released
+  log.py: at 4, the fork philosopher 1 grabbed was not yet released
+  log.py: at 4, the fork philosopher 1 grabbed was not yet released
+  log.py: at 405, the fork philosopher 3 grabbed was not yet released
+  log.py: at 414, the fork philosopher 4 grabbed was not yet released
+  log.py: at 414, the fork philosopher 1 grabbed was not yet released
+  log.py: at 414, the fork philosopher 1 grabbed was not yet released
+  log.py: at 809, the fork philosopher 2 grabbed was not yet released
+  log.py: at 820, the fork philosopher 4 grabbed was not yet released
+  log.py: at 820, the fork philosopher 1 grabbed was not yet released
+  log.py: at 820, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1218, the fork philosopher 2 grabbed was not yet released
+  log.py: at 1228, the fork philosopher 4 grabbed was not yet released
+  log.py: at 1228, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1228, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1625, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1629, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1629, the fork philosopher 4 grabbed was not yet released
+  log.py: at 1629, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2030, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2030, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2030, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2030, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2430, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2430, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2435, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2435, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2836, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2836, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2842, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2842, the fork philosopher 1 grabbed was not yet released
+  log.py: at 3236, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3240, the fork philosopher 4 grabbed was not yet released
+  log.py: at 3241, the fork philosopher 1 grabbed was not yet released
+  log.py: at 3241, the fork philosopher 1 grabbed was not yet released
+  log.py: at 3642, the fork philosopher 1 grabbed was not yet released
+  log.py: at 3642, the fork philosopher 2 grabbed was not yet released
+  log.py: at 3643, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3643, the fork philosopher 3 grabbed was not yet released
+  log.py: at 4051, the fork philosopher 3 grabbed was not yet released
+  log.py: at 4052, the fork philosopher 1 grabbed was not yet released
+  log.py: at 4052, the fork philosopher 2 grabbed was not yet released
+  log.py: at 4052, the fork philosopher 2 grabbed was not yet released
+  log.py: at 4458, the fork philosopher 1 grabbed was not yet released
+  log.py: at 4458, the fork philosopher 2 grabbed was not yet released
+  log.py: at 4458, the fork philosopher 3 grabbed was not yet released
+  log.py: at 4458, the fork philosopher 3 grabbed was not yet released
+  log.py: the philosopher 1 died at wrong time.
+          philosopher 1 was supposed to die at 4868, but died at 4862; 6ms early
+  log.py: operation after death
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '410', '200', '200']
+  log.py: at 206, philosopher 2 ate 5ms longer
+  log.py: at 206, philosopher 3 ate 4ms longer
+  log.py: at 206, philosopher 4 ate 3ms longer
+  log.py: at 206, philosopher 5 ate 2ms longer
+  log.py: at 206, philosopher 1 ate 1ms longer
+  log.py: at 407, philosopher 2 slept 1ms longer
+  log.py: at 407, philosopher 3 slept 1ms longer
+  log.py: at 407, philosopher 4 slept 1ms longer
+  log.py: at 407, philosopher 5 slept 1ms longer
+  log.py: at 407, philosopher 1 slept 1ms longer
+  log.py: at 608, philosopher 2 ate 1ms longer
+  log.py: at 609, philosopher 5 ate 2ms longer
+  log.py: at 609, philosopher 3 ate 2ms longer
+  log.py: at 609, philosopher 1 ate 2ms longer
+  log.py: at 609, philosopher 4 ate 2ms longer
+  log.py: at 813, philosopher 2 slept 5ms longer
+  log.py: at 813, philosopher 5 slept 4ms longer
+  log.py: at 813, philosopher 1 slept 4ms longer
+  log.py: at 813, philosopher 3 slept 4ms longer
+  log.py: at 813, philosopher 4 slept 4ms longer
+  log.py: at 1012, philosopher 5 ate -1ms longer
+  log.py: at 1215, philosopher 4 slept 1ms longer
+  log.py: at 1215, philosopher 5 slept 3ms longer
+  log.py: at 1215, philosopher 2 slept 2ms longer
+  log.py: at 1215, philosopher 1 slept 2ms longer
+  log.py: at 1215, philosopher 3 slept 2ms longer
+  log.py: at 1416, philosopher 3 ate 1ms longer
+  log.py: at 1420, philosopher 5 ate 5ms longer
+  log.py: at 1420, philosopher 2 ate 5ms longer
+  log.py: at 1420, philosopher 1 ate 5ms longer
+  log.py: at 1616, philosopher 4 slept 1ms longer
+  log.py: at 1617, philosopher 3 slept 1ms longer
+  log.py: at 1621, philosopher 1 slept 1ms longer
+  log.py: at 1621, philosopher 5 slept 1ms longer
+  log.py: at 1621, philosopher 2 slept 1ms longer
+  log.py: at 1817, philosopher 4 ate 1ms longer
+  log.py: at 1824, philosopher 1 ate 3ms longer
+  log.py: at 1824, philosopher 2 ate 2ms longer
+  log.py: at 1824, philosopher 5 ate 3ms longer
+  log.py: at 2016, philosopher 4 slept -1ms longer
+  log.py: at 2028, philosopher 1 slept 4ms longer
+  log.py: at 2028, philosopher 2 slept 4ms longer
+  log.py: at 2028, philosopher 5 slept 4ms longer
+  log.py: at 2222, philosopher 3 ate 5ms longer
+  log.py: at 2232, philosopher 1 ate 4ms longer
+  log.py: at 2232, philosopher 2 ate 4ms longer
+  log.py: at 2233, philosopher 5 ate 5ms longer
+  log.py: at 2427, philosopher 3 slept 5ms longer
+  log.py: at 2437, philosopher 1 slept 5ms longer
+  log.py: at 2437, philosopher 2 slept 5ms longer
+  log.py: at 2437, philosopher 5 slept 4ms longer
+  log.py: at 2617, philosopher 4 ate 1ms longer
+  log.py: at 2633, philosopher 3 ate 6ms longer
+  log.py: at 2638, philosopher 2 ate 1ms longer
+  log.py: at 2643, philosopher 5 ate 6ms longer
+  log.py: at 2643, philosopher 1 ate 6ms longer
+  log.py: at 2838, philosopher 3 slept 5ms longer
+  log.py: at 2843, philosopher 2 slept 5ms longer
+  log.py: at 3017, philosopher 4 ate -1ms longer
+  log.py: at 3037, philosopher 3 ate -1ms longer
+  log.py: at 3042, philosopher 2 ate -1ms longer
+  log.py: at 3042, philosopher 5 ate -1ms longer
+  log.py: at 3042, philosopher 1 ate -1ms longer
+  log.py: at 3242, philosopher 3 slept 5ms longer
+  log.py: at 3247, philosopher 2 slept 5ms longer
+  log.py: at 3247, philosopher 5 slept 5ms longer
+  log.py: at 3247, philosopher 1 slept 5ms longer
+  log.py: at 3422, philosopher 4 ate 5ms longer
+  log.py: at 3450, philosopher 2 ate 3ms longer
+  log.py: at 3450, philosopher 5 ate 3ms longer
+  log.py: at 3450, philosopher 1 ate 3ms longer
+  log.py: at 3628, philosopher 4 slept 6ms longer
+  log.py: at 3647, philosopher 3 slept 5ms longer
+  log.py: at 3651, philosopher 2 slept 1ms longer
+  log.py: at 3651, philosopher 5 slept 1ms longer
+  log.py: at 3651, philosopher 1 slept 1ms longer
+  log.py: at 2, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3, the fork philosopher 4 grabbed was not yet released
+  log.py: at 4, the fork philosopher 5 grabbed was not yet released
+  log.py: at 5, the fork philosopher 1 grabbed was not yet released
+  log.py: at 5, the fork philosopher 1 grabbed was not yet released
+  log.py: at 407, the fork philosopher 3 grabbed was not yet released
+  log.py: at 407, the fork philosopher 4 grabbed was not yet released
+  log.py: at 407, the fork philosopher 5 grabbed was not yet released
+  log.py: at 407, the fork philosopher 1 grabbed was not yet released
+  log.py: at 407, the fork philosopher 1 grabbed was not yet released
+  log.py: at 813, the fork philosopher 1 grabbed was not yet released
+  log.py: at 813, the fork philosopher 1 grabbed was not yet released
+  log.py: at 813, the fork philosopher 3 grabbed was not yet released
+  log.py: at 813, the fork philosopher 4 grabbed was not yet released
+  log.py: at 813, the fork philosopher 4 grabbed was not yet released
+  log.py: at 1215, the fork philosopher 5 grabbed was not yet released
+  log.py: at 1215, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1215, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1215, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1215, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1617, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1621, the fork philosopher 5 grabbed was not yet released
+  log.py: at 1621, the fork philosopher 5 grabbed was not yet released
+  log.py: at 1621, the fork philosopher 2 grabbed was not yet released
+  log.py: at 1621, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2017, the fork philosopher 3 grabbed was not yet released
+  log.py: at 2028, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2028, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2028, the fork philosopher 5 grabbed was not yet released
+  log.py: at 2028, the fork philosopher 5 grabbed was not yet released
+  log.py: at 2427, the fork philosopher 3 grabbed was not yet released
+  log.py: at 2437, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2437, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2437, the fork philosopher 5 grabbed was not yet released
+  log.py: at 2437, the fork philosopher 5 grabbed was not yet released
+  log.py: at 2838, the fork philosopher 3 grabbed was not yet released
+  log.py: at 2843, the fork philosopher 2 grabbed was not yet released
+  log.py: at 2843, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2843, the fork philosopher 5 grabbed was not yet released
+  log.py: at 2843, the fork philosopher 5 grabbed was not yet released
+  log.py: at 3242, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3247, the fork philosopher 2 grabbed was not yet released
+  log.py: at 3247, the fork philosopher 5 grabbed was not yet released
+  log.py: at 3247, the fork philosopher 1 grabbed was not yet released
+  log.py: at 3247, the fork philosopher 1 grabbed was not yet released
+  log.py: the philosopher 1 died at wrong time.
+          philosopher 1 was supposed to die at 3657, but died at 3628; 29ms early
+  log.py: operation after death
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '1', '610', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '610', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '610', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '100', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 203, philosopher 1 ate 1ms longer
+  log.py: at 405, philosopher 2 slept 4ms longer
+  log.py: at 405, philosopher 1 slept 2ms longer
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: operation after death
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 202, philosopher 2 ate 1ms longer
+  log.py: at 407, philosopher 1 slept 5ms longer
+  log.py: at 407, philosopher 2 slept 5ms longer
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: operation after death
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 202, philosopher 2 ate 1ms longer
+  log.py: at 407, philosopher 2 slept 5ms longer
+  log.py: at 407, philosopher 1 slept 5ms longer
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: operation after death
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 202, philosopher 2 ate 1ms longer
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: operation after death
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 403, philosopher 2 slept 2ms longer
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: operation after death
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 203, philosopher 2 ate 2ms longer
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: operation after death
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 403, philosopher 2 slept 2ms longer
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: operation after death
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '2', '200', '200', '200']
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
+  log.py: at 2, the fork philosopher 1 grabbed was not yet released
