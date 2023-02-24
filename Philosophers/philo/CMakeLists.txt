@@ -1,0 +1,1 @@
+ADD_EXECUTABLE(philo src/main.c)

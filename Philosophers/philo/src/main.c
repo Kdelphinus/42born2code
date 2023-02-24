@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 19:49:13 by myko              #+#    #+#             */
-/*   Updated: 2023/02/22 20:38:46 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/24 18:45:08 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,42 @@ int timestamp_in_ms(struct timeval current_t, struct timeval starting_t)
 
 void pickup_forks(t_info *pinfo, int philosophers_id)
 {
-	// while (pthread_mutex_lock(&pinfo->forks[philosophers_id]) ||
-	// 	   pthread_mutex_lock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]))
-	// {
-	// 	pthread_mutex_unlock(&pinfo->forks[philosophers_id]);
-	// 	pthread_mutex_unlock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
-	// }
-	pthread_mutex_lock(&pinfo->forks[philosophers_id]);
-	pthread_mutex_lock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
+	if (philosophers_id % 2)
+	{
+		pthread_mutex_lock(&pinfo->forks[philosophers_id]);
+		pthread_mutex_lock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
+	}
+	else
+	{
+		pthread_mutex_lock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
+		pthread_mutex_lock(&pinfo->forks[philosophers_id]);
+	}
 	pthread_mutex_lock(&pinfo->print);
 	gettimeofday(&pinfo->current_time, NULL);
-	printf("%d %d has taken a fork\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id + 1);
-	printf("%d %d has taken a fork\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id + 1);
+	if (pinfo->flag_die)
+	{
+		printf("%d %d has taken a fork\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time),
+			   philosophers_id + 1);
+		printf("%d %d has taken a fork\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time),
+			   philosophers_id + 1);
+	}
 	pthread_mutex_unlock(&pinfo->print);
 	pinfo->philosophers[philosophers_id].right_fork = 1;
 	pinfo->philosophers[philosophers_id].left_fork = 1;
-	pthread_mutex_unlock(&pinfo->forks[philosophers_id]);
-	pthread_mutex_unlock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
 }
 
 void return_forks(t_info *pinfo, int philosophers_id)
 {
-	pthread_mutex_unlock(&pinfo->forks[philosophers_id]);
-	pthread_mutex_unlock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
+	if (philosophers_id % 2)
+	{
+		pthread_mutex_unlock(&pinfo->forks[philosophers_id]);
+		pthread_mutex_unlock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
+	}
+	else
+	{
+		pthread_mutex_unlock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
+		pthread_mutex_unlock(&pinfo->forks[philosophers_id]);
+	}
 	pinfo->philosophers[philosophers_id].left_fork = 0;
 	pinfo->philosophers[philosophers_id].right_fork = 0;
 }
@@ -92,7 +105,8 @@ void dinning(t_info *pinfo, t_philosophers *ppinfo, int philosophers_id)
 	pthread_mutex_lock(&pinfo->print);
 	gettimeofday(&pinfo->current_time, NULL);
 	gettimeofday(&ppinfo->last_dinning_start_time, NULL);
-	printf("%d %d is eating\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id + 1);
+	if (pinfo->flag_die)
+		printf("%d %d is eating\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id + 1);
 	pthread_mutex_unlock(&pinfo->print);
 	pthread_mutex_unlock(&pinfo->lock);
 	usleep(pinfo->time_to_eat * 1000);
@@ -103,13 +117,15 @@ void sleeping_and_thinking(t_info *pinfo, int philosophers_id)
 {
 	pthread_mutex_lock(&pinfo->print);
 	gettimeofday(&pinfo->current_time, NULL);
-	printf("%d %d is sleeping\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id + 1);
+	if (pinfo->flag_die)
+		printf("%d %d is sleeping\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id + 1);
 	pthread_mutex_unlock(&pinfo->print);
 	usleep(pinfo->time_to_sleep * 1000);
 
 	pthread_mutex_lock(&pinfo->print);
 	gettimeofday(&pinfo->current_time, NULL);
-	printf("%d %d is thinking\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id + 1);
+	if (pinfo->flag_die)
+		printf("%d %d is thinking\n", timestamp_in_ms(pinfo->current_time, pinfo->starting_time), philosophers_id + 1);
 	pthread_mutex_unlock(&pinfo->print);
 }
 
@@ -160,6 +176,9 @@ void *basic_routine(void *arg)
 
 	info = (t_info *) arg;
 	myid = info->id;
+	pthread_mutex_lock(&info->print);
+	printf("my name is %d\n", myid);
+	pthread_mutex_unlock(&info->print);
 	while (info->flag_die)
 	{
 		pickup_forks(info, myid);
@@ -193,7 +212,7 @@ int main(int argc, char *argv[])
 	else
 		info.number_of_times_each_philosopher_must_eat = -1;
 	if (info.number_of_philosophers <= 0 || info.time_to_die <= 0 || info.time_to_eat <= 0 || info.time_to_sleep <= 0)
-		exit(1);
+		return (1);
 	// (void) argc;
 	// (void) argv;
 	// info.number_of_philosophers = 5;
@@ -203,7 +222,6 @@ int main(int argc, char *argv[])
 	// info.number_of_times_each_philosopher_must_eat = -1;
 
 	init_info(&info, info.number_of_philosophers);
-	// printf("=============%d %s=============\n", info.number_of_philosophers, argv[1]);
 
 	if (pthread_mutex_init(&info.lock, NULL))
 		exit(1);
@@ -212,8 +230,9 @@ int main(int argc, char *argv[])
 	info.id = -1;
 	while (++info.id < info.number_of_philosophers)
 	{
+		usleep(1000);
 		if (pthread_mutex_init(&info.forks[info.id], NULL))
-			exit(1);
+			return (1);
 	}
 
 	info.id = -1;
@@ -222,6 +241,8 @@ int main(int argc, char *argv[])
 	{
 		usleep(1000);
 		info.philosophers[info.id].eating_time = 0;
+		info.philosophers[info.id].left_fork = 0;
+		info.philosophers[info.id].right_fork = 0;
 		gettimeofday(&info.philosophers[info.id].last_dinning_start_time, NULL);
 		pthread_create(&info.philosophers[info.id].tid, NULL, basic_routine, (void *) &info);
 	}
