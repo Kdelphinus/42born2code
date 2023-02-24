@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 19:49:13 by myko              #+#    #+#             */
-/*   Updated: 2023/02/24 18:45:08 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/24 19:32:57 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ typedef struct s_info
 	pthread_mutex_t print;
 	t_philosophers *philosophers;
 	pthread_mutex_t *forks;
+	int *fork_num;
 } t_info;
 
 void init_info(t_info *pinfo, int num)
 {
 	pinfo->philosophers = malloc(sizeof(t_philosophers) * num);
 	pinfo->forks = malloc(sizeof(pthread_mutex_t) * num);
+	pinfo->fork_num = malloc(sizeof(int) * num);
 	if (!(pinfo->philosophers && pinfo->forks))
 		exit(1);
 }
@@ -58,16 +60,24 @@ int timestamp_in_ms(struct timeval current_t, struct timeval starting_t)
 
 void pickup_forks(t_info *pinfo, int philosophers_id)
 {
-	if (philosophers_id % 2)
+//	if (philosophers_id % 2)
+//	{
+//		pthread_mutex_lock(&pinfo->forks[philosophers_id]);
+//		pthread_mutex_lock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
+//	}
+//	else
+//	{
+//		pthread_mutex_lock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
+//		pthread_mutex_lock(&pinfo->forks[philosophers_id]);
+//	}
+	while (pinfo->fork_num[philosophers_id] || pinfo->fork_num[(philosophers_id + 1) % pinfo->number_of_philosophers])
 	{
-		pthread_mutex_lock(&pinfo->forks[philosophers_id]);
-		pthread_mutex_lock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
+		;
 	}
-	else
-	{
-		pthread_mutex_lock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
-		pthread_mutex_lock(&pinfo->forks[philosophers_id]);
-	}
+	pthread_mutex_lock(&pinfo->forks[philosophers_id]);
+	pthread_mutex_lock(&pinfo->forks[(philosophers_id + 1) % pinfo->number_of_philosophers]);
+	pinfo->fork_num[philosophers_id] = 1;
+	pinfo->fork_num[(philosophers_id + 1) % pinfo->number_of_philosophers] = 1;
 	pthread_mutex_lock(&pinfo->print);
 	gettimeofday(&pinfo->current_time, NULL);
 	if (pinfo->flag_die)
@@ -78,8 +88,10 @@ void pickup_forks(t_info *pinfo, int philosophers_id)
 			   philosophers_id + 1);
 	}
 	pthread_mutex_unlock(&pinfo->print);
+	pthread_mutex_lock(&pinfo->lock);
 	pinfo->philosophers[philosophers_id].right_fork = 1;
 	pinfo->philosophers[philosophers_id].left_fork = 1;
+	pthread_mutex_unlock(&pinfo->lock);
 }
 
 void return_forks(t_info *pinfo, int philosophers_id)
@@ -96,6 +108,10 @@ void return_forks(t_info *pinfo, int philosophers_id)
 	}
 	pinfo->philosophers[philosophers_id].left_fork = 0;
 	pinfo->philosophers[philosophers_id].right_fork = 0;
+	pthread_mutex_lock(&pinfo->lock);
+	pinfo->fork_num[philosophers_id] = 0;
+	pinfo->fork_num[(philosophers_id + 1) % pinfo->number_of_philosophers] = 0;
+	pthread_mutex_unlock(&pinfo->lock);
 }
 
 void dinning(t_info *pinfo, t_philosophers *ppinfo, int philosophers_id)
@@ -174,11 +190,8 @@ void *basic_routine(void *arg)
 	t_info *info;
 	int myid;
 
-	info = (t_info *) arg;
+	info = (t_info *)arg;
 	myid = info->id;
-	pthread_mutex_lock(&info->print);
-	printf("my name is %d\n", myid);
-	pthread_mutex_unlock(&info->print);
 	while (info->flag_die)
 	{
 		pickup_forks(info, myid);
@@ -213,13 +226,6 @@ int main(int argc, char *argv[])
 		info.number_of_times_each_philosopher_must_eat = -1;
 	if (info.number_of_philosophers <= 0 || info.time_to_die <= 0 || info.time_to_eat <= 0 || info.time_to_sleep <= 0)
 		return (1);
-	// (void) argc;
-	// (void) argv;
-	// info.number_of_philosophers = 5;
-	// info.time_to_die = 610;
-	// info.time_to_eat = 200;
-	// info.time_to_sleep = 200;
-	// info.number_of_times_each_philosopher_must_eat = -1;
 
 	init_info(&info, info.number_of_philosophers);
 
@@ -231,6 +237,7 @@ int main(int argc, char *argv[])
 	while (++info.id < info.number_of_philosophers)
 	{
 		usleep(1000);
+		info.fork_num[info.id] = 0;
 		if (pthread_mutex_init(&info.forks[info.id], NULL))
 			return (1);
 	}
@@ -269,6 +276,7 @@ int main(int argc, char *argv[])
 
 	free(info.philosophers);
 	free(info.forks);
+	free(info.fork_num);
 
 	return (0);
 }
