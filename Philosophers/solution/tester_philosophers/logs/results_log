@@ -1161,3 +1161,49 @@
   log.py: at 201, the fork philosopher 146 grabbed was not yet released
   log.py: at 201, the fork philosopher 144 grabbed was not yet released
   log.py: at 201, the fork philosopher 134 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 1, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 1, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '610', '200', '200', '5']
+  log.py: at 0, the fork philosopher 5 grabbed was not yet released
+  log.py: at 200, the fork philosopher 5 grabbed was not yet released
+  log.py: at 200, the fork philosopher 2 grabbed was not yet released
+  log.py: at 200, the fork philosopher 2 grabbed was not yet released
+  log.py: at 600, the fork philosopher 2 grabbed was not yet released
+  log.py: at 600, the fork philosopher 5 grabbed was not yet released
+  log.py: at 600, the fork philosopher 5 grabbed was not yet released
+  log.py: at 1000, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1400, the fork philosopher 1 grabbed was not yet released
+  log.py: at 1400, the fork philosopher 3 grabbed was not yet released
+  log.py: at 1800, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2200, the fork philosopher 4 grabbed was not yet released
+  log.py: at 2600, the fork philosopher 5 grabbed was not yet released
+  log.py: at 2600, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3000, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3000, the fork philosopher 3 grabbed was not yet released
+  log.py: at 3000, the fork philosopher 5 grabbed was not yet released
+  log.py: at 3200, the fork philosopher 5 grabbed was not yet released
+  log.py: philosopher 5 only ate 7 times

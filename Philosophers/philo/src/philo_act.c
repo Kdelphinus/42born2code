@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:39:26 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 20:24:02 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/27 21:30:55 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ int	dining_start(t_dining *dining)
 	i = -1;
 	while (++i < dining->p_num)
 	{
-		usleep(1000);
 		dining->philos[i].last_eat = get_time();
 		arg = (void *)&(dining->philos[i]);
 		if (pthread_create(&(dining->philos[i].tid), NULL, philo_act, arg))
