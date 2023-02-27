@@ -6,13 +6,13 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:18:16 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 17:41:17 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/27 19:58:37 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int			timestamp(long long start_time)
+int	timestamp(long long start_time)
 {
 	long long		l_time;
 	struct timeval	curr_time;

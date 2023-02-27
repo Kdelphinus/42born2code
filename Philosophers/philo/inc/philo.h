@@ -6,20 +6,20 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 19:50:03 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/27 19:57:35 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <sys/time.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <pthread.h>
+# include <sys/time.h>
 
-typedef enum	s_flags
+typedef enum s_flags
 {
 	SUCESS_FLAG = 0,
 	FAIL_FLAG,
@@ -27,7 +27,7 @@ typedef enum	s_flags
 	DIE,
 }	t_flags;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	pthread_t		tid;
 	int				id;
@@ -39,7 +39,7 @@ typedef struct	s_philo
 	struct s_dining	*dining;
 }	t_philo;
 
-typedef struct	s_dining
+typedef struct s_dining
 {
 	int				p_num;
 	int				t_die;

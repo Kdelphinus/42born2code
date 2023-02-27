@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:39:26 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 19:52:11 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/27 19:58:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,17 @@ int	dining_end(t_dining *dining)
 		if (!pthread_mutex_destroy(&(dining->forks[i])))
 			return (FAIL_FLAG);
 	}
-	if (!pthread_mutex_destroy(&(dining->lock)))
-		return (FAIL_FLAG);
-	if (!pthread_mutex_destroy(&(dining->print)))
-		return (FAIL_FLAG);
+	pthread_mutex_destroy(&(dining->lock));
+	pthread_mutex_destroy(&(dining->print));
 	free(dining->philos);
 	free(dining->forks);
 	return (SUCESS_FLAG);
 }
+// TODO 제거가 안 되었다고 해도 다음것들을 제거해야하니 조건문을 안 거는 것이 맞을듯
+// if (!pthread_mutex_destroy(&(dining->lock)))
+// 	return (FAIL_FLAG);
+// if (!pthread_mutex_destroy(&(dining->print)))
+// 	return (FAIL_FLAG);
 
 int	dining_start(t_dining *dining)
 {
