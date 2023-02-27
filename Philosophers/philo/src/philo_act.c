@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:39:26 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 19:37:27 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/27 19:52:11 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,47 @@ void	*philo_act(void *arg)
 		philo_print(dining, "is thinking", c_philo->id);
 	}
 	return (NULL);
+}
+
+void	eat_check(t_dining *dining)
+{
+	int	i;
+	int	cnt;
+
+	i = -1;
+	cnt = dining->min_eat;
+	if (cnt == 0)
+		return ;
+	while (++i < dining->p_num)
+	{
+		if (dining->philos[i].eat_cnt < cnt)
+			break ;
+	}
+	if (i == dining->p_num)
+		dining->die_flag = DIE;
+}
+
+void	philo_check(t_dining *dining)
+{
+	int			i;
+	long long	curr_time;
+
+	i = -1;
+	while (dining->die_flag == LIVE)
+	{
+		while (++i < dining->p_num)
+		{
+			pthread_mutex_lock(&(dining->lock));
+			curr_time = get_time();
+			if (curr_time - dining->philos[i].last_eat >= dining->t_die)
+			{
+				philo_print(dining, "died", i);
+				dining->die_flag = DIE;
+			}
+			pthread_mutex_unlock(&(dining->lock));
+		}
+		eat_check(dining);
+	}
 }
 
 int	dining_end(t_dining *dining)
@@ -70,6 +111,7 @@ int	dining_start(t_dining *dining)
 		if (pthread_create(&(dining->philos[i].tid), NULL, philo_act, arg))
 			return (FAIL_FLAG);
 	}
+	philo_check(dining);
 	if (dining_end(dining))
 		return (FAIL_FLAG);
 	return (SUCESS_FLAG);

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 19:11:17 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/27 19:50:03 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ int			philo_init(t_dining *dining);
 
 // philo_act.c
 void		*philo_act(void *arg);
+void		eat_check(t_dining *dining);
+void		philo_check(t_dining *dining);
+int			dining_end(t_dining *dining);
 int			dining_start(t_dining *dining);
 
 // philo_eat.c
