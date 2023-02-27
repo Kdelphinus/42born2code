@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   philo_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 16:26:08 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 19:13:44 by myko             ###   ########.fr       */
+/*   Created: 2023/02/27 17:43:37 by myko              #+#    #+#             */
+/*   Updated: 2023/02/27 19:27:05 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int	main(int argc, char **argv)
+void	philo_print(t_dining *dining, char *string, int id)
 {
-	t_dining	dining;
-
-	if (check_arg(argc, argv, &dining))
-		return (EXIT_FAILURE);
-	if (philo_init(&dining))
-		return (EXIT_FAILURE);
-	if (dining_start(&dining))
-		return (EXIT_FAILURE);
+	pthread_mutex_lock(&(dining->print));
+	if (dining->die_flag == LIVE)
+	{
+		printf("%d ", timestamp(dining->start_time));
+		printf("%d ", id + 1);
+		printf("%s\n", string);
+	}
+	pthread_mutex_unlock(&(dining->print));
 }

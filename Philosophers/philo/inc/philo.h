@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/02/13 20:59:56 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/27 19:11:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,68 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <sys/time.h>
 
-typedef struct s_fork {
-	int				value;
+typedef enum	s_flags
+{
+	SUCESS_FLAG = 0,
+	FAIL_FLAG,
+	LIVE,
+	DIE,
+}	t_flags;
+
+typedef struct	s_philo
+{
+	pthread_t		tid;
+	int				id;
+	int				eat_cnt;
+	int				left_fork;
+	int				right_fork;
+	long long		last_eat;
+	long long		start_time;
+	struct s_dining	*dining;
+}	t_philo;
+
+typedef struct	s_dining
+{
+	int				p_num;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				min_eat;
+	int				die_flag;
+	long long		start_time;
+	t_philo			*philos;
+	pthread_mutex_t	print;
 	pthread_mutex_t	lock;
-}	t_fork;
+	pthread_mutex_t	*forks;
+}	t_dining;
 
-typedef struct s_philos {
-	int			num;
-	int			name;
-	int			*states;
-	t_fork		*forks;
-	pthread_t	*men;
-} t_philos;
+// check_arg.c
+int			ft_atoi(const char *str);
+int			check_arg(int argc, char **argv, t_dining *dining);
 
-// main.c
-void	*philo_act(void *arg);
+// philo_init.c
+int			mutex_init(t_dining *dining);
+int			p_init(t_dining *dining);
+int			philo_init(t_dining *dining);
 
-// act.c
-void	thinking(int philo_num);
-void	eating(int philo_num);
-void	sleeping(int philo_num);
+// philo_act.c
+void		*philo_act(void *arg);
+int			dining_start(t_dining *dining);
 
-// ft_atoi.c
-int		ft_atoi(const char *str);
+// philo_eat.c
+void		eating(t_dining *dining);
+void		philo_eat(t_dining *dining, t_philo *philo, int id);
+
+// philo_sleep.c
+void		philo_sleep(t_dining *dining, int id);
+
+// get_time.c
+int			timestamp(long long start_time);
+long long	get_time(void);
+
+// philo_print.c
+void		philo_print(t_dining *dining, char *string, int id);
 
 #endif

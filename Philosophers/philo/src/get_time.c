@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 16:26:08 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 19:13:44 by myko             ###   ########.fr       */
+/*   Created: 2023/02/27 17:18:16 by myko              #+#    #+#             */
+/*   Updated: 2023/02/27 17:41:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int	main(int argc, char **argv)
+int			timestamp(long long start_time)
 {
-	t_dining	dining;
+	long long		l_time;
+	struct timeval	curr_time;
 
-	if (check_arg(argc, argv, &dining))
-		return (EXIT_FAILURE);
-	if (philo_init(&dining))
-		return (EXIT_FAILURE);
-	if (dining_start(&dining))
-		return (EXIT_FAILURE);
+	gettimeofday(&curr_time, NULL);
+	l_time = curr_time.tv_sec * 1000 + curr_time.tv_usec / 1000;
+	return ((int)(l_time - start_time));
+}
+
+long long	get_time(void)
+{
+	long long		l_time;
+	struct timeval	curr_time;
+
+	gettimeofday(&curr_time, NULL);
+	l_time = curr_time.tv_sec * 1000 + curr_time.tv_usec / 1000;
+	return (l_time);
 }

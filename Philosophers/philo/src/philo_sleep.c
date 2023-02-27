@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   philo_sleep.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 16:26:08 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 19:13:44 by myko             ###   ########.fr       */
+/*   Created: 2023/02/27 18:56:11 by myko              #+#    #+#             */
+/*   Updated: 2023/02/27 19:00:13 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int	main(int argc, char **argv)
+void	philo_sleep(t_dining *dining, int id)
 {
-	t_dining	dining;
-
-	if (check_arg(argc, argv, &dining))
-		return (EXIT_FAILURE);
-	if (philo_init(&dining))
-		return (EXIT_FAILURE);
-	if (dining_start(&dining))
-		return (EXIT_FAILURE);
+	long long	sleep_start;
+	long long	curr_time;
+	
+	philo_print(dining, "is sleeping", id);
+	sleep_start = get_time();
+	while (dining->die_flag == LIVE)
+	{
+		curr_time = get_time();
+		if (curr_time - sleep_start >= dining->t_sleep)
+			break ;
+		usleep(10);
+	}
 }
