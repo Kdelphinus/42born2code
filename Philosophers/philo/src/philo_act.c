@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:39:26 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 19:58:17 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/27 20:02:26 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	philo_check(t_dining *dining)
 	int			i;
 	long long	curr_time;
 
-	i = -1;
 	while (dining->die_flag == LIVE)
 	{
+		i = -1;
 		while (++i < dining->p_num)
 		{
 			pthread_mutex_lock(&(dining->lock));
@@ -67,6 +67,8 @@ void	philo_check(t_dining *dining)
 			}
 			pthread_mutex_unlock(&(dining->lock));
 		}
+		if (dining->die_flag == DIE)
+			break ;
 		eat_check(dining);
 	}
 }
