@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:28:12 by myko              #+#    #+#             */
-/*   Updated: 2023/02/28 16:59:50 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/28 17:03:25 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	check_arg(int argc, char **argv, t_dining *dining)
 	if (argc == 6)
 		dining->min_eat = ft_atoi(argv[5]);
 	if (dining->p_num <= 0 || dining->t_die <= 0 || dining->t_eat <= 0 \
-		|| dining->t_sleep <= 0)
+		|| dining->t_sleep <= 0 || (argc == 6 && dining->min_eat <= 0))
 		return (FAIL_FLAG);
 	if (dining->p_num == 1)
 	{
