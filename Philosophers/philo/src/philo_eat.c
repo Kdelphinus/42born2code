@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:47:08 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 19:32:20 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/28 16:35:40 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	eating(t_dining *dining)
 	}
 }
 
-void	philo_eat(t_dining *dining, t_philo *philo, int id)
+int	philo_eat(t_dining *dining, t_philo *philo, int id)
 {
 	pthread_mutex_lock(&(dining->forks[philo->left_fork]));
 	philo_print(dining, "has taken a fork", id);
@@ -39,6 +39,10 @@ void	philo_eat(t_dining *dining, t_philo *philo, int id)
 	pthread_mutex_unlock(&(dining->lock));
 	philo->eat_cnt++;
 	eating(dining);
-	pthread_mutex_unlock(&(dining->forks[philo->left_fork]));
 	pthread_mutex_unlock(&(dining->forks[philo->right_fork]));
+	pthread_mutex_unlock(&(dining->forks[philo->left_fork]));
+	return (dining->eat_flag);
+	// if (dining->eat_flag == ENUOGH)
+	// 	return (ENUOGH);
+	// return (NOT_ENUOGH);
 }

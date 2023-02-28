@@ -1281,3 +1281,441 @@
   log.py: at 1800, the fork philosopher 4 grabbed was not yet released
   log.py: at 2000, the fork philosopher 3 grabbed was not yet released
   log.py: at 2200, the fork philosopher 2 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: at 0, the fork philosopher 5 grabbed was not yet released
+  log.py: at 400, the fork philosopher 2 grabbed was not yet released
+  log.py: at 800, the fork philosopher 1 grabbed was not yet released
+  log.py: at 800, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '15', '200', '400', '800']
+  log.py: at 0, the fork philosopher 15 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '200', '390', '200', '200']
+  log.py: at 202, philosopher 147 ate 1ms longer
+  log.py: at 202, philosopher 111 ate 1ms longer
+  log.py: at 202, philosopher 169 ate 1ms longer
+  log.py: at 202, philosopher 131 ate 1ms longer
+  log.py: at 202, philosopher 95 ate 1ms longer
+  log.py: at 202, philosopher 141 ate 1ms longer
+  log.py: at 202, philosopher 121 ate 1ms longer
+  log.py: at 202, philosopher 189 ate 1ms longer
+  log.py: at 200, the fork philosopher 42 grabbed was not yet released
+  log.py: at 200, the fork philosopher 72 grabbed was not yet released
+  log.py: at 200, the fork philosopher 32 grabbed was not yet released
+  log.py: at 200, the fork philosopher 12 grabbed was not yet released
+  log.py: at 200, the fork philosopher 80 grabbed was not yet released
+  log.py: at 200, the fork philosopher 28 grabbed was not yet released
+  log.py: at 200, the fork philosopher 28 grabbed was not yet released
+  log.py: at 200, the fork philosopher 36 grabbed was not yet released
+  log.py: at 200, the fork philosopher 4 grabbed was not yet released
+  log.py: at 200, the fork philosopher 46 grabbed was not yet released
+  log.py: at 200, the fork philosopher 56 grabbed was not yet released
+  log.py: at 200, the fork philosopher 66 grabbed was not yet released
+  log.py: at 200, the fork philosopher 54 grabbed was not yet released
+  log.py: at 200, the fork philosopher 30 grabbed was not yet released
+  log.py: at 200, the fork philosopher 78 grabbed was not yet released
+  log.py: at 200, the fork philosopher 88 grabbed was not yet released
+  log.py: at 200, the fork philosopher 74 grabbed was not yet released
+  log.py: at 200, the fork philosopher 26 grabbed was not yet released
+  log.py: at 200, the fork philosopher 90 grabbed was not yet released
+  log.py: at 200, the fork philosopher 68 grabbed was not yet released
+  log.py: at 200, the fork philosopher 38 grabbed was not yet released
+  log.py: at 200, the fork philosopher 14 grabbed was not yet released
+  log.py: at 200, the fork philosopher 82 grabbed was not yet released
+  log.py: at 200, the fork philosopher 48 grabbed was not yet released
+  log.py: at 200, the fork philosopher 2 grabbed was not yet released
+  log.py: at 200, the fork philosopher 20 grabbed was not yet released
+  log.py: at 200, the fork philosopher 44 grabbed was not yet released
+  log.py: at 200, the fork philosopher 20 grabbed was not yet released
+  log.py: at 200, the fork philosopher 10 grabbed was not yet released
+  log.py: at 200, the fork philosopher 22 grabbed was not yet released
+  log.py: at 200, the fork philosopher 8 grabbed was not yet released
+  log.py: at 200, the fork philosopher 8 grabbed was not yet released
+  log.py: at 200, the fork philosopher 62 grabbed was not yet released
+  log.py: at 200, the fork philosopher 70 grabbed was not yet released
+  log.py: at 200, the fork philosopher 68 grabbed was not yet released
+  log.py: at 200, the fork philosopher 16 grabbed was not yet released
+  log.py: at 200, the fork philosopher 6 grabbed was not yet released
+  log.py: at 200, the fork philosopher 16 grabbed was not yet released
+  log.py: at 200, the fork philosopher 82 grabbed was not yet released
+  log.py: at 200, the fork philosopher 50 grabbed was not yet released
+  log.py: at 200, the fork philosopher 18 grabbed was not yet released
+  log.py: at 200, the fork philosopher 50 grabbed was not yet released
+  log.py: at 200, the fork philosopher 52 grabbed was not yet released
+  log.py: at 200, the fork philosopher 60 grabbed was not yet released
+  log.py: at 200, the fork philosopher 58 grabbed was not yet released
+  log.py: at 200, the fork philosopher 84 grabbed was not yet released
+  log.py: at 200, the fork philosopher 34 grabbed was not yet released
+  log.py: at 200, the fork philosopher 64 grabbed was not yet released
+  log.py: at 201, the fork philosopher 134 grabbed was not yet released
+  log.py: at 201, the fork philosopher 166 grabbed was not yet released
+  log.py: at 201, the fork philosopher 192 grabbed was not yet released
+  log.py: at 201, the fork philosopher 158 grabbed was not yet released
+  log.py: at 201, the fork philosopher 152 grabbed was not yet released
+  log.py: at 201, the fork philosopher 146 grabbed was not yet released
+  log.py: at 201, the fork philosopher 124 grabbed was not yet released
+  log.py: at 201, the fork philosopher 184 grabbed was not yet released
+  log.py: at 201, the fork philosopher 130 grabbed was not yet released
+  log.py: at 201, the fork philosopher 110 grabbed was not yet released
+  log.py: at 201, the fork philosopher 104 grabbed was not yet released
+  log.py: at 201, the fork philosopher 162 grabbed was not yet released
+  log.py: at 201, the fork philosopher 122 grabbed was not yet released
+  log.py: at 201, the fork philosopher 168 grabbed was not yet released
+  log.py: at 201, the fork philosopher 94 grabbed was not yet released
+  log.py: at 201, the fork philosopher 182 grabbed was not yet released
+  log.py: at 201, the fork philosopher 120 grabbed was not yet released
+  log.py: at 201, the fork philosopher 120 grabbed was not yet released
+  log.py: at 201, the fork philosopher 144 grabbed was not yet released
+  log.py: at 201, the fork philosopher 200 grabbed was not yet released
+  log.py: at 201, the fork philosopher 136 grabbed was not yet released
+  log.py: at 201, the fork philosopher 136 grabbed was not yet released
+  log.py: at 201, the fork philosopher 138 grabbed was not yet released
+  log.py: at 201, the fork philosopher 188 grabbed was not yet released
+  log.py: at 201, the fork philosopher 164 grabbed was not yet released
+  log.py: at 201, the fork philosopher 178 grabbed was not yet released
+  log.py: at 201, the fork philosopher 118 grabbed was not yet released
+  log.py: at 201, the fork philosopher 100 grabbed was not yet released
+  log.py: at 201, the fork philosopher 108 grabbed was not yet released
+  log.py: at 201, the fork philosopher 172 grabbed was not yet released
+  log.py: at 201, the fork philosopher 116 grabbed was not yet released
+  log.py: at 201, the fork philosopher 176 grabbed was not yet released
+  log.py: at 201, the fork philosopher 194 grabbed was not yet released
+  log.py: at 201, the fork philosopher 114 grabbed was not yet released
+  log.py: at 201, the fork philosopher 190 grabbed was not yet released
+  log.py: at 201, the fork philosopher 106 grabbed was not yet released
+  log.py: at 201, the fork philosopher 156 grabbed was not yet released
+  log.py: at 201, the fork philosopher 154 grabbed was not yet released
+  log.py: at 201, the fork philosopher 150 grabbed was not yet released
+  log.py: at 201, the fork philosopher 186 grabbed was not yet released
+  log.py: at 201, the fork philosopher 138 grabbed was not yet released
+  log.py: at 201, the fork philosopher 140 grabbed was not yet released
+  log.py: at 201, the fork philosopher 92 grabbed was not yet released
+  log.py: at 201, the fork philosopher 148 grabbed was not yet released
+  log.py: at 201, the fork philosopher 132 grabbed was not yet released
+  log.py: at 201, the fork philosopher 170 grabbed was not yet released
+  log.py: at 201, the fork philosopher 126 grabbed was not yet released
+  log.py: at 201, the fork philosopher 98 grabbed was not yet released
+  log.py: at 201, the fork philosopher 112 grabbed was not yet released
+  log.py: at 201, the fork philosopher 112 grabbed was not yet released
+  log.py: at 201, the fork philosopher 96 grabbed was not yet released
+  log.py: at 201, the fork philosopher 180 grabbed was not yet released
+  log.py: at 201, the fork philosopher 142 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: at 350, the fork philosopher 4 grabbed was not yet released
+  log.py: at 350, the fork philosopher 2 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: at 0, the fork philosopher 5 grabbed was not yet released
+  log.py: at 400, the fork philosopher 2 grabbed was not yet released
+  log.py: at 400, the fork philosopher 4 grabbed was not yet released
+  log.py: at 800, the fork philosopher 4 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '15', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: at 350, the fork philosopher 4 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: at 200, the fork philosopher 4 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: at 1, the fork philosopher 5 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '15', '200', '400', '800']
+  log.py: at 0, the fork philosopher 15 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '200', '390', '200', '200']
+  log.py: at 416, philosopher 32 ate 3ms longer
+  log.py: at 424, philosopher 118 ate 10ms longer
+  log.py: at 439, philosopher 90 ate 26ms longer
+  log.py: at 439, philosopher 26 ate 26ms longer
+  log.py: at 452, philosopher 146 ate 38ms longer
+  log.py: at 457, philosopher 116 ate 43ms longer
+  log.py: at 458, philosopher 94 ate 44ms longer
+  log.py: at 459, philosopher 52 ate 46ms longer
+  log.py: at 461, philosopher 80 ate 48ms longer
+  log.py: at 462, philosopher 144 ate 49ms longer
+  log.py: at 463, philosopher 22 ate 50ms longer
+  log.py: at 463, philosopher 8 ate 50ms longer
+  log.py: at 463, philosopher 50 ate 50ms longer
+  log.py: at 463, philosopher 150 ate 49ms longer
+  log.py: at 463, philosopher 20 ate 50ms longer
+  log.py: at 463, philosopher 198 ate 49ms longer
+  log.py: at 463, philosopher 186 ate 49ms longer
+  log.py: at 463, philosopher 170 ate 48ms longer
+  log.py: at 463, philosopher 138 ate 49ms longer
+  log.py: at 463, philosopher 140 ate 50ms longer
+  log.py: at 463, philosopher 112 ate 50ms longer
+  log.py: at 463, philosopher 110 ate 50ms longer
+  log.py: at 463, philosopher 30 ate 50ms longer
+  log.py: at 463, philosopher 74 ate 49ms longer
+  log.py: at 463, philosopher 82 ate 49ms longer
+  log.py: at 463, philosopher 84 ate 50ms longer
+  log.py: at 463, philosopher 72 ate 50ms longer
+  log.py: at 463, philosopher 184 ate 48ms longer
+  log.py: at 463, philosopher 68 ate 50ms longer
+  log.py: at 463, philosopher 48 ate 49ms longer
+  log.py: at 463, philosopher 176 ate 48ms longer
+  log.py: at 463, philosopher 128 ate 50ms longer
+  log.py: at 463, philosopher 166 ate 49ms longer
+  log.py: at 463, philosopher 136 ate 50ms longer
+  log.py: at 463, philosopher 78 ate 50ms longer
+  log.py: at 463, philosopher 66 ate 50ms longer
+  log.py: at 463, philosopher 54 ate 49ms longer
+  log.py: at 463, philosopher 62 ate 50ms longer
+  log.py: at 463, philosopher 162 ate 50ms longer
+  log.py: at 463, philosopher 108 ate 49ms longer
+  log.py: at 463, philosopher 122 ate 49ms longer
+  log.py: at 463, philosopher 154 ate 49ms longer
+  log.py: at 463, philosopher 142 ate 50ms longer
+  log.py: at 463, philosopher 88 ate 50ms longer
+  log.py: at 463, philosopher 76 ate 50ms longer
+  log.py: at 463, philosopher 190 ate 49ms longer
+  log.py: at 463, philosopher 70 ate 50ms longer
+  log.py: at 463, philosopher 36 ate 50ms longer
+  log.py: at 463, philosopher 38 ate 50ms longer
+  log.py: at 463, philosopher 86 ate 50ms longer
+  log.py: at 463, philosopher 168 ate 49ms longer
+  log.py: at 463, philosopher 152 ate 50ms longer
+  log.py: at 463, philosopher 34 ate 50ms longer
+  log.py: at 463, philosopher 180 ate 48ms longer
+  log.py: at 463, philosopher 46 ate 50ms longer
+  log.py: at 463, philosopher 56 ate 49ms longer
+  log.py: at 463, philosopher 102 ate 50ms longer
+  log.py: at 652, philosopher 26 slept 13ms longer
+  log.py: at 713, philosopher 40 slept 100ms longer
+  log.py: at 200, the fork philosopher 18 grabbed was not yet released
+  log.py: at 200, the fork philosopher 10 grabbed was not yet released
+  log.py: at 200, the fork philosopher 10 grabbed was not yet released
+  log.py: at 200, the fork philosopher 24 grabbed was not yet released
+  log.py: at 200, the fork philosopher 40 grabbed was not yet released
+  log.py: at 200, the fork philosopher 42 grabbed was not yet released
+  log.py: at 200, the fork philosopher 38 grabbed was not yet released
+  log.py: at 200, the fork philosopher 20 grabbed was not yet released
+  log.py: at 200, the fork philosopher 46 grabbed was not yet released
+  log.py: at 200, the fork philosopher 28 grabbed was not yet released
+  log.py: at 200, the fork philosopher 12 grabbed was not yet released
+  log.py: at 200, the fork philosopher 44 grabbed was not yet released
+  log.py: at 201, the fork philosopher 124 grabbed was not yet released
+  log.py: at 201, the fork philosopher 156 grabbed was not yet released
+  log.py: at 201, the fork philosopher 58 grabbed was not yet released
+  log.py: at 201, the fork philosopher 96 grabbed was not yet released
+  log.py: at 201, the fork philosopher 62 grabbed was not yet released
+  log.py: at 201, the fork philosopher 132 grabbed was not yet released
+  log.py: at 201, the fork philosopher 62 grabbed was not yet released
+  log.py: at 201, the fork philosopher 80 grabbed was not yet released
+  log.py: at 201, the fork philosopher 128 grabbed was not yet released
+  log.py: at 201, the fork philosopher 90 grabbed was not yet released
+  log.py: at 201, the fork philosopher 118 grabbed was not yet released
+  log.py: at 201, the fork philosopher 152 grabbed was not yet released
+  log.py: at 201, the fork philosopher 136 grabbed was not yet released
+  log.py: at 201, the fork philosopher 142 grabbed was not yet released
+  log.py: at 201, the fork philosopher 162 grabbed was not yet released
+  log.py: at 201, the fork philosopher 66 grabbed was not yet released
+  log.py: at 201, the fork philosopher 66 grabbed was not yet released
+  log.py: at 201, the fork philosopher 50 grabbed was not yet released
+  log.py: at 201, the fork philosopher 48 grabbed was not yet released
+  log.py: at 201, the fork philosopher 166 grabbed was not yet released
+  log.py: at 201, the fork philosopher 144 grabbed was not yet released
+  log.py: at 201, the fork philosopher 150 grabbed was not yet released
+  log.py: at 201, the fork philosopher 60 grabbed was not yet released
+  log.py: at 201, the fork philosopher 68 grabbed was not yet released
+  log.py: at 201, the fork philosopher 168 grabbed was not yet released
+  log.py: at 201, the fork philosopher 118 grabbed was not yet released
+  log.py: at 201, the fork philosopher 126 grabbed was not yet released
+  log.py: at 201, the fork philosopher 120 grabbed was not yet released
+  log.py: at 201, the fork philosopher 170 grabbed was not yet released
+  log.py: at 202, the fork philosopher 198 grabbed was not yet released
+  log.py: at 202, the fork philosopher 186 grabbed was not yet released
+  log.py: at 202, the fork philosopher 174 grabbed was not yet released
+  log.py: at 202, the fork philosopher 176 grabbed was not yet released
+  log.py: at 202, the fork philosopher 188 grabbed was not yet released
+  log.py: at 202, the fork philosopher 180 grabbed was not yet released
+  log.py: at 202, the fork philosopher 200 grabbed was not yet released
+  log.py: at 202, the fork philosopher 178 grabbed was not yet released
+  log.py: at 202, the fork philosopher 178 grabbed was not yet released
+  log.py: at 413, the fork philosopher 97 grabbed was not yet released
+  log.py: at 413, the fork philosopher 159 grabbed was not yet released
+  log.py: at 413, the fork philosopher 133 grabbed was not yet released
+  log.py: at 413, the fork philosopher 7 grabbed was not yet released
+  log.py: at 413, the fork philosopher 15 grabbed was not yet released
+  log.py: at 413, the fork philosopher 5 grabbed was not yet released
+  log.py: at 413, the fork philosopher 29 grabbed was not yet released
+  log.py: at 413, the fork philosopher 45 grabbed was not yet released
+  log.py: at 413, the fork philosopher 41 grabbed was not yet released
+  log.py: at 413, the fork philosopher 157 grabbed was not yet released
+  log.py: at 413, the fork philosopher 165 grabbed was not yet released
+  log.py: at 413, the fork philosopher 107 grabbed was not yet released
+  log.py: at 413, the fork philosopher 115 grabbed was not yet released
+  log.py: at 413, the fork philosopher 101 grabbed was not yet released
+  log.py: at 414, the fork philosopher 121 grabbed was not yet released
+  log.py: at 414, the fork philosopher 93 grabbed was not yet released
+  log.py: at 414, the fork philosopher 131 grabbed was not yet released
+  log.py: at 414, the fork philosopher 197 grabbed was not yet released
+  log.py: at 414, the fork philosopher 175 grabbed was not yet released
+  log.py: at 414, the fork philosopher 127 grabbed was not yet released
+  log.py: at 415, the fork philosopher 193 grabbed was not yet released
+  log.py: at 415, the fork philosopher 195 grabbed was not yet released
+  log.py: at 415, the fork philosopher 193 grabbed was not yet released
+  log.py: at 415, the fork philosopher 1 grabbed was not yet released
+  log.py: at 415, the fork philosopher 183 grabbed was not yet released
+  log.py: at 415, the fork philosopher 189 grabbed was not yet released
+  log.py: at 415, the fork philosopher 25 grabbed was not yet released
+  log.py: at 416, the fork philosopher 33 grabbed was not yet released
+  log.py: at 438, the fork philosopher 55 grabbed was not yet released
+  log.py: at 439, the fork philosopher 109 grabbed was not yet released
+  log.py: at 439, the fork philosopher 27 grabbed was not yet released
+  log.py: at 452, the fork philosopher 163 grabbed was not yet released
+  log.py: at 452, the fork philosopher 57 grabbed was not yet released
+  log.py: at 452, the fork philosopher 55 grabbed was not yet released
+  log.py: at 456, the fork philosopher 117 grabbed was not yet released
+  log.py: at 457, the fork philosopher 95 grabbed was not yet released
+  log.py: at 458, the fork philosopher 79 grabbed was not yet released
+  log.py: at 458, the fork philosopher 123 grabbed was not yet released
+  log.py: at 458, the fork philosopher 145 grabbed was not yet released
+  log.py: at 458, the fork philosopher 53 grabbed was not yet released
+  log.py: at 458, the fork philosopher 53 grabbed was not yet released
+  log.py: at 462, the fork philosopher 81 grabbed was not yet released
+  log.py: at 463, the fork philosopher 9 grabbed was not yet released
+  log.py: at 463, the fork philosopher 23 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: at 0, the fork philosopher 3 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: at 201, the fork philosopher 4 grabbed was not yet released
+  log.py: at 201, the fork philosopher 2 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: at 0, the fork philosopher 5 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '15', '200', '400', '800']
+  log.py: at 0, the fork philosopher 15 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '200', '390', '200', '200']
+  log.py: at 409, philosopher 79 slept 9ms longer
+  log.py: at 409, philosopher 187 slept 8ms longer
+  log.py: at 200, the fork philosopher 80 grabbed was not yet released
+  log.py: at 200, the fork philosopher 58 grabbed was not yet released
+  log.py: at 200, the fork philosopher 50 grabbed was not yet released
+  log.py: at 200, the fork philosopher 8 grabbed was not yet released
+  log.py: at 200, the fork philosopher 22 grabbed was not yet released
+  log.py: at 200, the fork philosopher 62 grabbed was not yet released
+  log.py: at 200, the fork philosopher 32 grabbed was not yet released
+  log.py: at 200, the fork philosopher 88 grabbed was not yet released
+  log.py: at 200, the fork philosopher 18 grabbed was not yet released
+  log.py: at 200, the fork philosopher 92 grabbed was not yet released
+  log.py: at 200, the fork philosopher 92 grabbed was not yet released
+  log.py: at 200, the fork philosopher 58 grabbed was not yet released
+  log.py: at 200, the fork philosopher 66 grabbed was not yet released
+  log.py: at 200, the fork philosopher 16 grabbed was not yet released
+  log.py: at 200, the fork philosopher 16 grabbed was not yet released
+  log.py: at 200, the fork philosopher 32 grabbed was not yet released
+  log.py: at 200, the fork philosopher 74 grabbed was not yet released
+  log.py: at 200, the fork philosopher 62 grabbed was not yet released
+  log.py: at 200, the fork philosopher 44 grabbed was not yet released
+  log.py: at 200, the fork philosopher 40 grabbed was not yet released
+  log.py: at 200, the fork philosopher 86 grabbed was not yet released
+  log.py: at 200, the fork philosopher 18 grabbed was not yet released
+  log.py: at 200, the fork philosopher 36 grabbed was not yet released
+  log.py: at 200, the fork philosopher 82 grabbed was not yet released
+  log.py: at 200, the fork philosopher 96 grabbed was not yet released
+  log.py: at 200, the fork philosopher 40 grabbed was not yet released
+  log.py: at 200, the fork philosopher 56 grabbed was not yet released
+  log.py: at 200, the fork philosopher 46 grabbed was not yet released
+  log.py: at 200, the fork philosopher 14 grabbed was not yet released
+  log.py: at 200, the fork philosopher 46 grabbed was not yet released
+  log.py: at 200, the fork philosopher 54 grabbed was not yet released
+  log.py: at 200, the fork philosopher 30 grabbed was not yet released
+  log.py: at 200, the fork philosopher 30 grabbed was not yet released
+  log.py: at 200, the fork philosopher 64 grabbed was not yet released
+  log.py: at 200, the fork philosopher 52 grabbed was not yet released
+  log.py: at 200, the fork philosopher 38 grabbed was not yet released
+  log.py: at 200, the fork philosopher 38 grabbed was not yet released
+  log.py: at 200, the fork philosopher 28 grabbed was not yet released
+  log.py: at 200, the fork philosopher 84 grabbed was not yet released
+  log.py: at 200, the fork philosopher 84 grabbed was not yet released
+  log.py: at 200, the fork philosopher 60 grabbed was not yet released
+  log.py: at 200, the fork philosopher 24 grabbed was not yet released
+  log.py: at 200, the fork philosopher 4 grabbed was not yet released
+  log.py: at 200, the fork philosopher 78 grabbed was not yet released
+  log.py: at 200, the fork philosopher 90 grabbed was not yet released
+  log.py: at 200, the fork philosopher 26 grabbed was not yet released
+  log.py: at 200, the fork philosopher 42 grabbed was not yet released
+  log.py: at 200, the fork philosopher 2 grabbed was not yet released
+  log.py: at 201, the fork philosopher 168 grabbed was not yet released
+  log.py: at 201, the fork philosopher 100 grabbed was not yet released
+  log.py: at 201, the fork philosopher 156 grabbed was not yet released
+  log.py: at 201, the fork philosopher 172 grabbed was not yet released
+  log.py: at 201, the fork philosopher 196 grabbed was not yet released
+  log.py: at 201, the fork philosopher 138 grabbed was not yet released
+  log.py: at 201, the fork philosopher 152 grabbed was not yet released
+  log.py: at 201, the fork philosopher 198 grabbed was not yet released
+  log.py: at 201, the fork philosopher 174 grabbed was not yet released
+  log.py: at 201, the fork philosopher 162 grabbed was not yet released
+  log.py: at 201, the fork philosopher 170 grabbed was not yet released
+  log.py: at 201, the fork philosopher 182 grabbed was not yet released
+  log.py: at 201, the fork philosopher 132 grabbed was not yet released
+  log.py: at 201, the fork philosopher 128 grabbed was not yet released
+  log.py: at 201, the fork philosopher 194 grabbed was not yet released
+  log.py: at 201, the fork philosopher 146 grabbed was not yet released
+  log.py: at 201, the fork philosopher 104 grabbed was not yet released
+  log.py: at 201, the fork philosopher 200 grabbed was not yet released
+  log.py: at 201, the fork philosopher 142 grabbed was not yet released
+  log.py: at 201, the fork philosopher 198 grabbed was not yet released
+  log.py: at 201, the fork philosopher 114 grabbed was not yet released
+  log.py: at 201, the fork philosopher 134 grabbed was not yet released
+  log.py: at 201, the fork philosopher 164 grabbed was not yet released
+  log.py: at 201, the fork philosopher 174 grabbed was not yet released
+  log.py: at 201, the fork philosopher 176 grabbed was not yet released
+  log.py: at 201, the fork philosopher 98 grabbed was not yet released
+  log.py: at 201, the fork philosopher 148 grabbed was not yet released
+  log.py: at 201, the fork philosopher 180 grabbed was not yet released
+  log.py: at 201, the fork philosopher 178 grabbed was not yet released
+  log.py: at 201, the fork philosopher 178 grabbed was not yet released
+  log.py: at 201, the fork philosopher 190 grabbed was not yet released
+  log.py: at 201, the fork philosopher 108 grabbed was not yet released
+  log.py: at 201, the fork philosopher 108 grabbed was not yet released
+  log.py: at 201, the fork philosopher 150 grabbed was not yet released
+  log.py: at 201, the fork philosopher 110 grabbed was not yet released
+  log.py: at 201, the fork philosopher 148 grabbed was not yet released
+  log.py: at 201, the fork philosopher 146 grabbed was not yet released
+  log.py: at 201, the fork philosopher 122 grabbed was not yet released
+  log.py: at 201, the fork philosopher 114 grabbed was not yet released
+  log.py: at 201, the fork philosopher 116 grabbed was not yet released
+  log.py: at 201, the fork philosopher 184 grabbed was not yet released
+  log.py: at 201, the fork philosopher 158 grabbed was not yet released
+  log.py: at 201, the fork philosopher 188 grabbed was not yet released
+  log.py: at 201, the fork philosopher 166 grabbed was not yet released
+  log.py: at 201, the fork philosopher 116 grabbed was not yet released
+  log.py: at 201, the fork philosopher 130 grabbed was not yet released
+  log.py: at 201, the fork philosopher 134 grabbed was not yet released
+  log.py: at 201, the fork philosopher 186 grabbed was not yet released
+  log.py: at 201, the fork philosopher 140 grabbed was not yet released
+  log.py: at 201, the fork philosopher 102 grabbed was not yet released
+  log.py: at 201, the fork philosopher 104 grabbed was not yet released
+  log.py: at 201, the fork philosopher 106 grabbed was not yet released
+  log.py: at 201, the fork philosopher 158 grabbed was not yet released
+  log.py: at 201, the fork philosopher 106 grabbed was not yet released
+  log.py: at 201, the fork philosopher 118 grabbed was not yet released
+  log.py: at 201, the fork philosopher 112 grabbed was not yet released
+  log.py: at 201, the fork philosopher 142 grabbed was not yet released
+  log.py: at 201, the fork philosopher 112 grabbed was not yet released
+  log.py: at 201, the fork philosopher 160 grabbed was not yet released
+  log.py: at 201, the fork philosopher 144 grabbed was not yet released
+  log.py: at 201, the fork philosopher 144 grabbed was not yet released
+  log.py: at 201, the fork philosopher 192 grabbed was not yet released
+  log.py: at 201, the fork philosopher 140 grabbed was not yet released
+  log.py: operation after death

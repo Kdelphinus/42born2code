@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:26:08 by myko              #+#    #+#             */
-/*   Updated: 2023/02/27 19:13:44 by myko             ###   ########.fr       */
+/*   Updated: 2023/02/28 17:00:05 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	main(int argc, char **argv)
 
 	if (check_arg(argc, argv, &dining))
 		return (EXIT_FAILURE);
+	if (dining.p_num == 1)
+		return (EXIT_SUCCESS);
 	if (philo_init(&dining))
 		return (EXIT_FAILURE);
 	if (dining_start(&dining))
 		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
