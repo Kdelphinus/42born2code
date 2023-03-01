@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/03/01 13:36:06 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/01 17:17:21 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_dining
 	t_philo			*philos;
 	pthread_mutex_t	print;
 	pthread_mutex_t	lock;
-	pthread_mutex_t	pick_up;
+	pthread_mutex_t	*pick_up;
 }	t_dining;
 
 // check_arg.c

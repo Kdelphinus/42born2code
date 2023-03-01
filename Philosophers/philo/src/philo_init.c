@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:49:55 by myko              #+#    #+#             */
-/*   Updated: 2023/03/01 13:21:41 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/01 17:30:40 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,21 @@
 
 int	mutex_init(t_dining *dining)
 {
+	int	i;
+
 	if (pthread_mutex_init(&dining->lock, NULL))
 		return (FAIL_FLAG);
 	if (pthread_mutex_init(&dining->print, NULL))
 		return (FAIL_FLAG);
-	if (pthread_mutex_init(&dining->pick_up, NULL))
+	dining->pick_up = malloc(sizeof(pthread_mutex_t) * dining->p_num);
+	if (!dining->pick_up)
 		return (FAIL_FLAG);
+	i = -1;
+	while (++i < dining->p_num)
+	{
+		if (pthread_mutex_init(&dining->pick_up[i], NULL))
+			return (FAIL_FLAG);
+	}
 	return (SUCCESS_FLAG);
 }
 

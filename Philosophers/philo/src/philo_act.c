@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:39:26 by myko              #+#    #+#             */
-/*   Updated: 2023/03/01 14:10:15 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/01 17:39:30 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,19 @@ int	dining_end(t_dining *dining)
 		// if (!pthread_join(dining->philos[i].tid, NULL))
 		// 	return (FAIL_FLAG);
 	}
-	while (pthread_mutex_destroy(&dining->pick_up))
-		pthread_mutex_unlock(&dining->pick_up);
+	i = -1;
+	while (++i < dining->p_num)
+	{
+		while (pthread_mutex_destroy(&dining->pick_up[i]))
+			pthread_mutex_unlock(&dining->pick_up[i]);
+	}
 	while (pthread_mutex_destroy(&dining->lock))
 		pthread_mutex_unlock(&dining->lock);
 	while (pthread_mutex_destroy(&dining->print))
 		pthread_mutex_unlock(&dining->print);
 	free(dining->philos);
 	free(dining->forks);
+	free(dining->pick_up);
 	return (SUCCESS_FLAG);
 }
 
