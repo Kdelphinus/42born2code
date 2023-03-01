@@ -22,11 +22,13 @@
   <component name="ChangeListManager">
     <list default="true" id="83bb1b02-75e8-416b-8a85-ef068047a0f6" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inc/philo.h" beforeDir="false" afterPath="$PROJECT_DIR$/inc/philo.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log" beforeDir="false" afterPath="$PROJECT_DIR$/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo" beforeDir="false" afterPath="$PROJECT_DIR$/philo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/philo_act.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_act.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/philo_eat.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_eat.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/philo_init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_init.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/log" beforeDir="false" afterPath="$PROJECT_DIR$/tester_philosophers/logs/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/philo_log" beforeDir="false" afterPath="$PROJECT_DIR$/tester_philosophers/logs/philo_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/results_log" beforeDir="false" afterPath="$PROJECT_DIR$/tester_philosophers/logs/results_log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1677654721415</updated>
       <workItem from="1677654722393" duration="1126000" />
-      <workItem from="1677655877706" duration="4054000" />
+      <workItem from="1677655877706" duration="6272000" />
     </task>
     <servers />
   </component>

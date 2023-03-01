@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:47:08 by myko              #+#    #+#             */
-/*   Updated: 2023/03/01 17:38:03 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/01 18:16:57 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,13 @@ int	philo_eat(t_dining *dining, t_philo *philo, int id)
 		while (1)
 		{
 			while (dining->forks[philo->left_fork] == USING)
-				;
+				usleep(10);
 			pthread_mutex_lock(&dining->pick_up[philo->left_fork]);
+			if (dining->forks[philo->left_fork] == USING)
+			{
+				pthread_mutex_unlock(&dining->pick_up[philo->left_fork]);
+				continue;
+			}
 			dining->forks[philo->left_fork] = USING;
 			if (dining->forks[philo->right_fork] == NOT_USING)
 			{
@@ -56,8 +61,13 @@ int	philo_eat(t_dining *dining, t_philo *philo, int id)
 		while (1)
 		{
 			while (dining->forks[philo->right_fork] == USING)
-				;
+				usleep(10);
 			pthread_mutex_lock(&dining->pick_up[philo->right_fork]);
+			if (dining->forks[philo->right_fork] == USING)
+			{
+				pthread_mutex_unlock(&dining->pick_up[philo->right_fork]);
+				continue;
+			}
 			dining->forks[philo->right_fork] = USING;
 			if (dining->forks[philo->left_fork] == NOT_USING)
 			{
