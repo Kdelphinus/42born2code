@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="philo" targetName="philo" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="83bb1b02-75e8-416b-8a85-ef068047a0f6" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/philo_eat.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_eat.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/advanced_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/destructor.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/leak_valgrind.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/philo_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/results_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/norm.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/run.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_py/const.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_py/err_flags.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_py/forks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_py/log.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_py/parse.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_py/print.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_py/read.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_sh/const.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_sh/print_result.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_sh/test_arg.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_sh/test_retval.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/srcs_sh/test_time.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/test.sh" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CMakeLists.txt" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2022" />
+    <option name="minorVersion" value="3.2" />
+  </component>
+  <component name="ProjectId" id="2MP26U3dUjVfRHxHxkDjgf9Ku2h" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "//wsl$/Ubuntu-22.04/home/delphinus/42born2code/Philosophers/philo",
+    "settings.editor.selected.configurable": "CMakeSettings",
+    "settings.editor.splitter.proportion": "0.30021366"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="philo" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="5 610 200 200" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="philo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="philo" RUN_TARGET_NAME="philo">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="83bb1b02-75e8-416b-8a85-ef068047a0f6" name="변경" comment="" />
+      <created>1677654721415</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677654721415</updated>
+      <workItem from="1677654722393" duration="1126000" />
+      <workItem from="1677655877706" duration="885000" />
+    </task>
+    <servers />
+  </component>
+</project>

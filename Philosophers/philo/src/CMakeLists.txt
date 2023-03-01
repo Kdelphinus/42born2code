@@ -1,0 +1,11 @@
+ADD_EXECUTABLE(
+        philo
+        main.c
+        check_arg.c
+        philo_init.c
+        philo_act.c
+        philo_eat.c
+        philo_sleep.c
+        philo_print.c
+        get_time.c
+)
