@@ -22,14 +22,10 @@
   <component name="ChangeListManager">
     <list default="true" id="44dc61e3-aefc-4ed7-b7d2-330ef96500fc" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/philo/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/philo/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/philo/inc/philo.h" beforeDir="false" afterPath="$PROJECT_DIR$/philo/inc/philo.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo/log" beforeDir="false" afterPath="$PROJECT_DIR$/philo/log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/philo/philo" beforeDir="false" afterPath="$PROJECT_DIR$/philo/philo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/philo/src/check_arg.c" beforeDir="false" afterPath="$PROJECT_DIR$/philo/src/check_arg.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/philo/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/philo/src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/philo/src/philo_act.c" beforeDir="false" afterPath="$PROJECT_DIR$/philo/src/philo_act.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/philo/src/philo_eat.c" beforeDir="false" afterPath="$PROJECT_DIR$/philo/src/philo_eat.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/philo/src/philo_init.c" beforeDir="false" afterPath="$PROJECT_DIR$/philo/src/philo_init.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +206,7 @@
       <workItem from="1677230151050" duration="5259000" />
       <workItem from="1677643081352" duration="206000" />
       <workItem from="1677643683831" duration="12000" />
-      <workItem from="1677643749680" duration="606000" />
+      <workItem from="1677643749680" duration="610000" />
     </task>
     <servers />
   </component>

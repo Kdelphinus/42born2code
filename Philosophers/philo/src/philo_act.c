@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:39:26 by myko              #+#    #+#             */
-/*   Updated: 2023/03/01 13:35:09 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/01 14:10:15 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*philo_act(void *arg)
 	c_philo = (t_philo *)arg;
 	dining = c_philo->dining;
 	if (c_philo->id % 2)
-		usleep(100);
+		usleep(10000);
 	while (dining->die_flag == LIVE)
 	{
 		if (philo_eat(dining, c_philo, c_philo->id) == ENOUGH)

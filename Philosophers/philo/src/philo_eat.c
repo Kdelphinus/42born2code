@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:47:08 by myko              #+#    #+#             */
-/*   Updated: 2023/03/01 13:42:22 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/01 14:13:37 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ void	eating(t_dining *dining)
 
 int	philo_eat(t_dining *dining, t_philo *philo, int id)
 {
-	while (dining->forks[philo->left_fork] == USING || dining->forks[philo->right_fork] == USING)
-		usleep(1) ;
+	while (dining->forks[philo->left_fork] == USING \
+		|| dining->forks[philo->right_fork] == USING)
+		;
 	pthread_mutex_lock(&dining->pick_up);
 	dining->forks[philo->left_fork] = USING;
 	dining->forks[philo->right_fork] = USING;
