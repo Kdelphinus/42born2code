@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:39:26 by myko              #+#    #+#             */
-/*   Updated: 2023/02/28 17:57:55 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/01 13:35:09 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*philo_act(void *arg)
 		usleep(100);
 	while (dining->die_flag == LIVE)
 	{
-		if (philo_eat(dining, c_philo, c_philo->id) == ENUOGH)
+		if (philo_eat(dining, c_philo, c_philo->id) == ENOUGH)
 			break ;
 		philo_sleep(dining, c_philo->id);
 		philo_print(dining, "is thinking", c_philo->id);
@@ -46,7 +46,7 @@ void	eat_check(t_dining *dining)
 			break ;
 	}
 	if (i == dining->p_num)
-		dining->eat_flag = ENUOGH;
+		dining->eat_flag = ENOUGH;
 }
 
 void	philo_check(t_dining *dining)
@@ -54,19 +54,19 @@ void	philo_check(t_dining *dining)
 	int			i;
 	long long	curr_time;
 
-	while (dining->eat_flag == NOT_ENUOGH)
+	while (dining->eat_flag == NOT_ENOUGH)
 	{
 		i = -1;
 		while (++i < dining->p_num && dining->die_flag == LIVE)
 		{
-			pthread_mutex_lock(&(dining->lock));
+			pthread_mutex_lock(&dining->lock);
 			curr_time = get_time();
 			if (curr_time - dining->philos[i].last_eat > dining->t_die)
 			{
 				philo_print(dining, "died", i);
 				dining->die_flag = DIE;
 			}
-			pthread_mutex_unlock(&(dining->lock));
+			pthread_mutex_unlock(&dining->lock);
 		}
 		if (dining->die_flag == DIE)
 			break ;
@@ -85,21 +85,15 @@ int	dining_end(t_dining *dining)
 		// if (!pthread_join(dining->philos[i].tid, NULL))
 		// 	return (FAIL_FLAG);
 	}
-	i = -1;
-	while (++i < dining->p_num)
-	{
-		while (pthread_mutex_destroy(&(dining->forks[i])))
-			pthread_mutex_unlock(&(dining->forks[i]));
-	}
-	// if (!pthread_mutex_destroy(&(dining->lock)))
-	// 	return (FAIL_FLAG);
-	// if (!pthread_mutex_destroy(&(dining->print)))
-	// 	return (FAIL_FLAG);
-	pthread_mutex_destroy(&(dining->lock));
-	pthread_mutex_destroy(&(dining->print));
+	while (pthread_mutex_destroy(&dining->pick_up))
+		pthread_mutex_unlock(&dining->pick_up);
+	while (pthread_mutex_destroy(&dining->lock))
+		pthread_mutex_unlock(&dining->lock);
+	while (pthread_mutex_destroy(&dining->print))
+		pthread_mutex_unlock(&dining->print);
 	free(dining->philos);
 	free(dining->forks);
-	return (SUCESS_FLAG);
+	return (SUCCESS_FLAG);
 }
 
 int	dining_start(t_dining *dining)
@@ -117,7 +111,6 @@ int	dining_start(t_dining *dining)
 			return (FAIL_FLAG);
 	}
 	philo_check(dining);
-	if (dining_end(dining))
-		return (FAIL_FLAG);
-	return (SUCESS_FLAG);
+	dining_end(dining);
+	return (SUCCESS_FLAG);
 }

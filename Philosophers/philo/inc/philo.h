@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/02/28 16:24:34 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/01 13:36:06 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@
 
 typedef enum s_flags
 {
-	SUCESS_FLAG = 0,
+	SUCCESS_FLAG = 0,
 	FAIL_FLAG,
 	LIVE,
 	DIE,
-	ENUOGH,
-	NOT_ENUOGH,
+	ENOUGH,
+	NOT_ENOUGH,
+	USING,
+	NOT_USING,
 }	t_flags;
 
 typedef struct s_philo
@@ -37,7 +39,6 @@ typedef struct s_philo
 	int				left_fork;
 	int				right_fork;
 	long long		last_eat;
-	long long		start_time;
 	struct s_dining	*dining;
 }	t_philo;
 
@@ -50,11 +51,12 @@ typedef struct s_dining
 	int				min_eat;
 	int				die_flag;
 	int				eat_flag;
+	int				*forks;
 	long long		start_time;
 	t_philo			*philos;
 	pthread_mutex_t	print;
 	pthread_mutex_t	lock;
-	pthread_mutex_t	*forks;
+	pthread_mutex_t	pick_up;
 }	t_dining;
 
 // check_arg.c

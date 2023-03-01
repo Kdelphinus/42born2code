@@ -61,7 +61,7 @@ int	ft_atoi(const char *str)
 		result = result * 10 + (str[i] - '0') * sign;
 		i++;
 	}
-	return (result);
+	return ((int)(result));
 }
 
 int	check_arg(int argc, char **argv, t_dining *dining)
@@ -74,7 +74,7 @@ int	check_arg(int argc, char **argv, t_dining *dining)
 	dining->t_sleep = ft_atoi(argv[4]);
 	dining->min_eat = 0;
 	dining->die_flag = LIVE;
-	dining->eat_flag = NOT_ENUOGH;
+	dining->eat_flag = NOT_ENOUGH;
 	if (argc == 6)
 		dining->min_eat = ft_atoi(argv[5]);
 	if (dining->p_num <= 0 || dining->t_die <= 0 || dining->t_eat <= 0 \
@@ -85,5 +85,5 @@ int	check_arg(int argc, char **argv, t_dining *dining)
 		printf("0 1 has taken a fork\n");
 		printf("%d 1 died\n", dining->t_die);
 	}
-	return (SUCESS_FLAG);
+	return (SUCCESS_FLAG);
 }

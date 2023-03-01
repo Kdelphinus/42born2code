@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:47:08 by myko              #+#    #+#             */
-/*   Updated: 2023/02/28 20:28:22 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/01 13:42:22 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,21 @@ void	eating(t_dining *dining)
 
 int	philo_eat(t_dining *dining, t_philo *philo, int id)
 {
-	pthread_mutex_lock(&(dining->forks[philo->left_fork]));
+	while (dining->forks[philo->left_fork] == USING || dining->forks[philo->right_fork] == USING)
+		usleep(1) ;
+	pthread_mutex_lock(&dining->pick_up);
+	dining->forks[philo->left_fork] = USING;
+	dining->forks[philo->right_fork] = USING;
+	pthread_mutex_unlock(&dining->pick_up);
 	philo_print(dining, "has taken a fork", id);
-	pthread_mutex_lock(&(dining->forks[philo->right_fork]));
 	philo_print(dining, "has taken a fork", id);
-	pthread_mutex_lock(&(dining->lock));
 	philo_print(dining, "is eating", id);
 	philo->last_eat = get_time();
-	pthread_mutex_unlock(&(dining->lock));
 	philo->eat_cnt++;
 	eating(dining);
-	pthread_mutex_unlock(&(dining->forks[philo->right_fork]));
-	pthread_mutex_unlock(&(dining->forks[philo->left_fork]));
+	pthread_mutex_lock(&dining->pick_up);
+	dining->forks[philo->left_fork] = NOT_USING;
+	dining->forks[philo->right_fork] = NOT_USING;
+	pthread_mutex_unlock(&dining->pick_up);
 	return (dining->eat_flag);
-	// if (dining->eat_flag == ENUOGH)
-	// 	return (ENUOGH);
-	// return (NOT_ENUOGH);
 }
