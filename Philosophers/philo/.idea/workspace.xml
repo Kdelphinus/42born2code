@@ -22,9 +22,20 @@
   <component name="ChangeListManager">
     <list default="true" id="83bb1b02-75e8-416b-8a85-ef068047a0f6" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inc/philo.h" beforeDir="false" afterPath="$PROJECT_DIR$/inc/philo.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log" beforeDir="false" afterPath="$PROJECT_DIR$/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo" beforeDir="false" afterPath="$PROJECT_DIR$/philo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/philo_act.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_act.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/philo_eat.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_eat.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/philo_init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_init.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/philo_print.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_print.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/philo_sleep.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_sleep.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/philo_think.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_think.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/log" beforeDir="false" afterPath="$PROJECT_DIR$/tester_philosophers/logs/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/philo_log" beforeDir="false" afterPath="$PROJECT_DIR$/tester_philosophers/logs/philo_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/results_log" beforeDir="false" afterPath="$PROJECT_DIR$/tester_philosophers/logs/results_log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,11 +87,6 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="philo" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="5 610 200 200" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="philo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="philo" RUN_TARGET_NAME="philo">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -100,7 +106,8 @@
       <workItem from="1677730943682" duration="148000" />
       <workItem from="1677731100790" duration="511000" />
       <workItem from="1677731627049" duration="7405000" />
-      <workItem from="1677743417353" duration="3630000" />
+      <workItem from="1677743417353" duration="9697000" />
+      <workItem from="1677762473758" duration="1000" />
     </task>
     <servers />
   </component>

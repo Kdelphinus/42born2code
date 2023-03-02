@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:49:55 by myko              #+#    #+#             */
-/*   Updated: 2023/03/01 17:30:40 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/02 20:17:37 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,16 @@ int	p_init(t_dining *dining)
 		dining->philos[i].id = i;
 		dining->philos[i].eat_cnt = 0;
 		dining->philos[i].last_eat = 0;
-		dining->philos[i].left_fork = i;
-		dining->philos[i].right_fork = (i + 1) % dining->p_num;
+		if (i % 2)
+		{
+			dining->philos[i].left_fork = i;
+			dining->philos[i].right_fork = (i + 1) % dining->p_num;
+		}
+		else
+		{
+			dining->philos[i].right_fork = i;
+			dining->philos[i].left_fork = (i + 1) % dining->p_num;
+		}
 		dining->philos[i].dining = dining;
 	}	
 	return (SUCCESS_FLAG);
@@ -54,7 +62,7 @@ int	p_init(t_dining *dining)
 
 int	philo_init(t_dining *dining)
 {
-	int i;
+	int	i;
 
 	dining->forks = malloc(sizeof(int) * dining->p_num);
 	if (!dining->forks)

@@ -21,6 +21,7 @@ SRC_NAME = main.c \
 		   philo_eat.c \
 		   philo_sleep.c \
 		   philo_print.c \
+		   philo_think.c \
 		   get_time.c
 SRC = $(addprefix $(SRC_DIR), $(SRC_NAME))
 OBJ_DIR = ./obj/

@@ -1823,3 +1823,11 @@
   log.py: at 283, the fork philosopher 64 grabbed was not yet released
   log.py: at 283, the fork philosopher 156 grabbed was not yet released
   log.py: at 283, the fork philosopher 154 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: at 200, the fork philosopher 2 grabbed was not yet released
+  log.py: at 200, the fork philosopher 4 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']

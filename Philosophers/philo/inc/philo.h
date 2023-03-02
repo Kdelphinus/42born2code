@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/03/02 18:16:58 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/02 20:17:03 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_dining
 	int				t_die;
 	int				t_eat;
 	int				t_sleep;
-	int 			t_think;
+	int				t_think;
 	int				min_eat;
 	int				die_flag;
 	int				eat_flag;
