@@ -6,32 +6,11 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:39:26 by myko              #+#    #+#             */
-/*   Updated: 2023/03/02 14:44:52 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/02 18:17:10 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-void	philo_think(t_dining *dining, int id)
-{
-	long long	think_start;
-	long long	curr_time;
-
-	philo_print(dining, "is thinking", id);
-	if (dining->t_think <= 10)
-	{
-		usleep(dining->t_think);
-		return ;
-	}
-	think_start = get_time();
-	while (dining->die_flag == LIVE)
-	{
-		curr_time = get_time();
-		if (curr_time - think_start >= dining->t_think)
-			break ;
-		usleep(10);
-	}
-}
 
 void	*philo_act(void *arg)
 {
@@ -41,8 +20,8 @@ void	*philo_act(void *arg)
 	c_philo = (t_philo *)arg;
 	dining = c_philo->dining;
 	if (c_philo->id % 2)
-		usleep(100);
-	while (dining->die_flag == LIVE)
+		usleep(10000);
+	while (dining->die_flag == LIVE && dining->eat_flag == NOT_ENOUGH)
 	{
 		if (philo_eat(dining, c_philo, c_philo->id) == ENOUGH)
 			break ;

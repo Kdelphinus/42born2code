@@ -7,5 +7,6 @@ ADD_EXECUTABLE(
         philo_eat.c
         philo_sleep.c
         philo_print.c
+        philo_think.c
         get_time.c
 )

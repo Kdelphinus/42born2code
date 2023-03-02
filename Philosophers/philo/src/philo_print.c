@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:43:37 by myko              #+#    #+#             */
-/*   Updated: 2023/02/28 18:00:46 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/02 18:09:39 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 void	philo_print(t_dining *dining, char *string, int id)
 {
-	pthread_mutex_lock(&(dining->print));
-	if (dining->die_flag == LIVE)
-	{
-		printf("%lld ", timestamp(dining->start_time));
-		printf("%d ", id + 1);
-		printf("%s\n", string);
-	}
-	pthread_mutex_unlock(&(dining->print));
+//	pthread_mutex_lock(&(dining->print));
+	if (dining->die_flag == LIVE && dining->eat_flag == NOT_ENOUGH)
+	printf("%lld %d %s\n", timestamp(dining->start_time), id + 1, string);
+//	pthread_mutex_unlock(&(dining->print));
 }
