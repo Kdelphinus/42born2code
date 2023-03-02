@@ -1620,3 +1620,107 @@
   log.py: at 492, the fork philosopher 39 grabbed was not yet released
   log.py: at 502, the fork philosopher 99 grabbed was not yet released
   log.py: at 502, the fork philosopher 116 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: at 350, the fork philosopher 4 grabbed was not yet released
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '15', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '200', '390', '200', '200']
+  log.py: at 213, philosopher 133 ate 11ms longer
+  log.py: at 214, philosopher 81 ate 13ms longer
+  log.py: at 224, philosopher 177 ate 22ms longer
+  log.py: at 226, philosopher 105 ate 25ms longer
+  log.py: at 226, philosopher 153 ate 24ms longer
+  log.py: at 236, philosopher 85 ate 35ms longer
+  log.py: at 237, philosopher 87 ate 36ms longer
+  log.py: at 248, philosopher 141 ate 46ms longer
+  log.py: at 248, philosopher 171 ate 46ms longer
+  log.py: at 258, philosopher 25 ate 57ms longer
+  log.py: at 270, philosopher 33 ate 69ms longer
+  log.py: at 281, philosopher 49 ate 80ms longer
+  log.py: at 281, philosopher 99 ate 80ms longer
+  log.py: at 281, philosopher 15 ate 81ms longer
+  log.py: at 281, philosopher 83 ate 80ms longer
+  log.py: at 282, philosopher 159 ate 80ms longer
+  log.py: at 282, philosopher 7 ate 82ms longer
+  log.py: at 290, philosopher 185 ate 88ms longer
+  log.py: at 291, philosopher 79 ate 90ms longer
+  log.py: at 292, philosopher 45 ate 91ms longer
+  log.py: at 292, philosopher 47 ate 91ms longer
+  log.py: at 292, philosopher 77 ate 91ms longer
+  log.py: at 292, philosopher 127 ate 90ms longer
+  log.py: at 292, philosopher 69 ate 91ms longer
+  log.py: at 292, philosopher 59 ate 91ms longer
+  log.py: at 292, philosopher 31 ate 91ms longer
+  log.py: at 292, philosopher 29 ate 91ms longer
+  log.py: at 292, philosopher 1 ate 92ms longer
+  log.py: at 292, philosopher 169 ate 90ms longer
+  log.py: at 292, philosopher 95 ate 91ms longer
+  log.py: at 292, philosopher 145 ate 90ms longer
+  log.py: at 292, philosopher 19 ate 92ms longer
+  log.py: at 292, philosopher 37 ate 91ms longer
+  log.py: at 292, philosopher 163 ate 90ms longer
+  log.py: at 292, philosopher 5 ate 92ms longer
+  log.py: at 293, philosopher 3 ate 93ms longer
+  log.py: at 293, philosopher 151 ate 91ms longer
+  log.py: at 293, philosopher 93 ate 92ms longer
+  log.py: at 300, philosopher 53 ate 99ms longer
+  log.py: at 300, philosopher 155 ate 98ms longer
+  log.py: at 300, philosopher 97 ate 99ms longer
+  log.py: at 300, philosopher 189 ate 98ms longer
+  log.py: at 300, philosopher 21 ate 100ms longer
+  log.py: at 300, philosopher 71 ate 99ms longer
+  log.py: at 300, philosopher 103 ate 99ms longer
+  log.py: at 300, philosopher 183 ate 98ms longer
+  log.py: at 300, philosopher 175 ate 98ms longer
+  log.py: at 300, philosopher 61 ate 99ms longer
+  log.py: at 300, philosopher 55 ate 99ms longer
+  log.py: at 300, philosopher 17 ate 100ms longer
+  log.py: at 300, philosopher 73 ate 99ms longer
+  log.py: at 300, philosopher 131 ate 98ms longer
+  log.py: at 301, philosopher 9 ate 101ms longer
+  log.py: at 301, philosopher 197 ate 99ms longer
+  log.py: at 301, philosopher 91 ate 100ms longer
+  log.py: at 301, philosopher 167 ate 99ms longer
+  log.py: at 301, philosopher 173 ate 99ms longer
+  log.py: at 301, philosopher 181 ate 99ms longer
+  log.py: at 301, philosopher 199 ate 99ms longer
+  log.py: at 301, philosopher 65 ate 100ms longer
+  log.py: at 301, philosopher 75 ate 100ms longer
+  log.py: at 301, philosopher 149 ate 99ms longer
+  log.py: at 301, philosopher 109 ate 100ms longer
+  log.py: at 301, philosopher 115 ate 100ms longer
+  log.py: at 301, philosopher 57 ate 100ms longer
+  log.py: at 301, philosopher 187 ate 99ms longer
+  log.py: at 301, philosopher 117 ate 100ms longer
+  log.py: at 301, philosopher 191 ate 99ms longer
+  log.py: at 301, philosopher 101 ate 100ms longer
+  log.py: at 301, philosopher 165 ate 99ms longer
+  log.py: at 301, philosopher 143 ate 99ms longer
+  log.py: at 301, philosopher 113 ate 100ms longer
+  log.py: at 301, philosopher 137 ate 99ms longer
+  log.py: at 301, philosopher 11 ate 101ms longer
+  log.py: at 301, philosopher 123 ate 100ms longer
+  log.py: at 301, philosopher 27 ate 100ms longer
+  log.py: at 301, philosopher 179 ate 99ms longer
+  log.py: at 301, philosopher 111 ate 100ms longer
+  log.py: at 301, philosopher 125 ate 100ms longer
+  log.py: at 301, philosopher 41 ate 100ms longer
+  log.py: at 281, the fork philosopher 192 grabbed was not yet released
+  log.py: at 301, the fork philosopher 100 grabbed was not yet released
+  log.py: at 301, the fork philosopher 164 grabbed was not yet released
+  log.py: at 301, the fork philosopher 122 grabbed was not yet released
+  log.py: at 301, the fork philosopher 136 grabbed was not yet released
+  log.py: at 301, the fork philosopher 142 grabbed was not yet released
+  log.py: at 301, the fork philosopher 166 grabbed was not yet released
+  log.py: at 301, the fork philosopher 124 grabbed was not yet released
+  log.py: at 301, the fork philosopher 124 grabbed was not yet released
+  log.py: at 301, the fork philosopher 42 grabbed was not yet released
+  log.py: at 301, the fork philosopher 180 grabbed was not yet released
+  log.py: at 301, the fork philosopher 10 grabbed was not yet released
+  log.py: at 301, the fork philosopher 138 grabbed was not yet released
+  log.py: at 301, the fork philosopher 110 grabbed was not yet released
+  log.py: at 301, the fork philosopher 28 grabbed was not yet released

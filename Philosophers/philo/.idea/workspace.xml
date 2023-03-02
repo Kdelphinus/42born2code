@@ -22,9 +22,12 @@
   <component name="ChangeListManager">
     <list default="true" id="83bb1b02-75e8-416b-8a85-ef068047a0f6" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log" beforeDir="false" afterPath="$PROJECT_DIR$/log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/philo" beforeDir="false" afterPath="$PROJECT_DIR$/philo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/philo_act.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_act.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/philo_eat.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_eat.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/log" beforeDir="false" afterPath="$PROJECT_DIR$/tester_philosophers/logs/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/philo_log" beforeDir="false" afterPath="$PROJECT_DIR$/tester_philosophers/logs/philo_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tester_philosophers/logs/results_log" beforeDir="false" afterPath="$PROJECT_DIR$/tester_philosophers/logs/results_log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,14 +70,15 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "last_opened_file_path": "/Users/myko/42born2code/Philosophers/philo",
-    "settings.editor.selected.configurable": "preferences.editor.code.editing",
-    "settings.editor.splitter.proportion": "0.30021366"
+    "settings.editor.selected.configurable": "org.intellij.sdk.settings.AppSettingsConfigurable",
+    "settings.editor.splitter.proportion": "0.30021366",
+    "structure.view.defaults.are.configured": "true"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="philo" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="5 610 200 200" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="philo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="philo" RUN_TARGET_NAME="philo">
@@ -94,7 +98,8 @@
       <workItem from="1677654722393" duration="1126000" />
       <workItem from="1677655877706" duration="6272000" />
       <workItem from="1677730943682" duration="148000" />
-      <workItem from="1677731100790" duration="140000" />
+      <workItem from="1677731100790" duration="511000" />
+      <workItem from="1677731627049" duration="1863000" />
     </task>
     <servers />
   </component>
