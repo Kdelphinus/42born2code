@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/03/03 14:44:24 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/03 17:31:57 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int			dining_end(t_dining *dining);
 int			dining_start(t_dining *dining);
 
 // philo_eat.c
-void		eating(t_dining *dining);
+void		eating(t_dining *dining, long long eat_start);
 int			philo_eat(t_dining *dining, t_philo *philo, int id);
 
 // philo_sleep.c
@@ -117,7 +117,7 @@ long long	timestamp(long long start_time);
 long long	get_time(void);
 
 // philo_print.c
-void		philo_print(t_dining *dining, char *string, int id);
+void		philo_print(t_dining *dining, char *string, int id, long long ts);
 
 // ft_error.c
 int			ft_free(t_dining *dining, int flag);

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:28:12 by myko              #+#    #+#             */
-/*   Updated: 2023/03/03 14:32:01 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/03 17:45:45 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	check_arg(int argc, char **argv, t_dining *dining)
 	dining->min_eat = 0;
 	dining->die_flag = LIVE;
 	dining->eat_flag = NOT_ENOUGH;
-	dining->t_think = (dining->t_die - dining->t_eat - dining->t_sleep) / 2;
+	dining->t_think = (dining->t_die - dining->t_eat - dining->t_sleep) / 4;
 	if (dining->t_think <= 0)
 		dining->t_think = 5;
 	if (argc == 6)
