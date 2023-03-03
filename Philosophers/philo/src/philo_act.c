@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:39:26 by myko              #+#    #+#             */
-/*   Updated: 2023/03/02 20:17:20 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/03 14:35:23 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	dining_start(t_dining *dining)
 		dining->philos[i].last_eat = get_time();
 		arg = (void *)&(dining->philos[i]);
 		if (pthread_create(&(dining->philos[i].tid), NULL, philo_act, arg))
-			return (FAIL_FLAG);
+			return (ft_join(dining, i));
 	}
 	philo_check(dining);
 	dining_end(dining);

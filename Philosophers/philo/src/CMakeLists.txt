@@ -9,4 +9,4 @@ ADD_EXECUTABLE(
         philo_print.c
         philo_think.c
         get_time.c
-)
+        ft_error.c)

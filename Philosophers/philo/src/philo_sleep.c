@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:56:11 by myko              #+#    #+#             */
-/*   Updated: 2023/03/02 19:39:28 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/03 13:32:17 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	philo_sleep(t_dining *dining, int id)
 		curr_time = get_time();
 		if (curr_time - sleep_start >= dining->t_sleep)
 			break ;
-		usleep(500);
+		usleep(CHECK_TIME);
 	}
 }

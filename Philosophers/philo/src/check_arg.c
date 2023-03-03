@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:28:12 by myko              #+#    #+#             */
-/*   Updated: 2023/03/02 14:52:49 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/03 14:32:01 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_atoi(const char *str)
 int	check_arg(int argc, char **argv, t_dining *dining)
 {
 	if (argc < 5 || argc > 6)
-		return (FAIL_FLAG);
+		return (ft_error(ARG_ERROR));
 	dining->p_num = ft_atoi(argv[1]);
 	dining->t_die = ft_atoi(argv[2]);
 	dining->t_eat = ft_atoi(argv[3]);
@@ -82,7 +82,7 @@ int	check_arg(int argc, char **argv, t_dining *dining)
 		dining->min_eat = ft_atoi(argv[5]);
 	if (dining->p_num <= 0 || dining->t_die <= 0 || dining->t_eat <= 0 \
 		|| dining->t_sleep <= 0 || (argc == 6 && dining->min_eat <= 0))
-		return (FAIL_FLAG);
+		return (ft_error(ARG_ERROR));
 	if (dining->p_num == 1)
 	{
 		printf("0 1 has taken a fork\n");

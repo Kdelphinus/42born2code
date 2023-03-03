@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:13:23 by myko              #+#    #+#             */
-/*   Updated: 2023/03/02 19:40:07 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/03 13:32:37 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	philo_think(t_dining *dining, int id)
 	long long	curr_time;
 
 	philo_print(dining, "is thinking", id);
-	if (dining->t_think <= 1000)
+	if (dining->t_think <= 10)
 	{
 		usleep(dining->t_think * 1000);
 		return ;
@@ -29,6 +29,6 @@ void	philo_think(t_dining *dining, int id)
 		curr_time = get_time();
 		if (curr_time - think_start >= dining->t_think)
 			break ;
-		usleep(500);
+		usleep(CHECK_TIME);
 	}
 }

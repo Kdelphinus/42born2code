@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:47:08 by myko              #+#    #+#             */
-/*   Updated: 2023/03/02 20:20:12 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/03 13:32:20 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	eating(t_dining *dining)
 		curr_time = get_time();
 		if (curr_time - eat_start >= dining->t_eat)
 			break ;
-		usleep(500);
+		usleep(CHECK_TIME);
 	}
 }
 

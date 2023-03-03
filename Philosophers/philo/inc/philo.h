@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/03/02 20:17:03 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/03 14:44:24 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,32 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <sys/time.h>
+
+# define CHECK_TIME 500
+
+typedef enum s_error
+{
+	ARG_ERROR,
+	MALLOC_ERROR,
+	MUTEX_ERROR,
+	CREATE_ERROR,
+}	t_error;
+
+typedef enum s_free
+{
+	CASE_ONE,
+	CASE_TWO,
+	CASE_THREE,
+	ALL_FREE,
+	ALL_FREE_TWO,
+}	t_free;
+
+typedef enum s_destroy
+{
+	CASE_ONE_MU,
+	CASE_TWO_MU,
+	ALL_DESTROY,
+}	t_destroy;
 
 typedef enum s_flags
 {
@@ -92,5 +118,11 @@ long long	get_time(void);
 
 // philo_print.c
 void		philo_print(t_dining *dining, char *string, int id);
+
+// ft_error.c
+int			ft_free(t_dining *dining, int flag);
+int			ft_destroy(t_dining *dining, int flag, int i);
+int			ft_join(t_dining *dining, int i);
+int			ft_error(int flag);
 
 #endif
