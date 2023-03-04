@@ -22,13 +22,10 @@
   <component name="ChangeListManager">
     <list default="true" id="83bb1b02-75e8-416b-8a85-ef068047a0f6" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/check_arg.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/check_arg.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inc/philo.h" beforeDir="false" afterPath="$PROJECT_DIR$/inc/philo.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/philo" beforeDir="false" afterPath="$PROJECT_DIR$/philo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/philo_act.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_act.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/philo_eat.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_eat.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/philo_print.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_print.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/philo_sleep.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_sleep.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/philo_think.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/philo_think.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +77,6 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="philo" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="4 410 200 200" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="philo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="philo" RUN_TARGET_NAME="philo">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -113,6 +105,8 @@
       <workItem from="1677836012638" duration="19000" />
       <workItem from="1677911560915" duration="17000" />
       <workItem from="1677911595794" duration="529000" />
+      <workItem from="1677912357137" duration="110000" />
+      <workItem from="1677912670943" duration="106000" />
     </task>
     <servers />
   </component>

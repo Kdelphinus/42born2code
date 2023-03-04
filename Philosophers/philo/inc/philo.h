@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/03/03 17:31:57 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/04 15:52:48 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-# define CHECK_TIME 500
+typedef enum s_time
+{
+	ODD_OR_EVEN = 10,
+	WAIT_TIME = 100,
+	CHECK_TIME = 500,
+}	t_time;
 
 typedef enum s_error
 {
@@ -47,7 +52,7 @@ typedef enum s_destroy
 
 typedef enum s_flags
 {
-	SUCCESS_FLAG = 0,
+	SUCCESS_FLAG,
 	FAIL_FLAG,
 	LIVE,
 	DIE,

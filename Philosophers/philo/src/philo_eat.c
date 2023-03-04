@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:47:08 by myko              #+#    #+#             */
-/*   Updated: 2023/03/04 15:41:45 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/04 15:52:07 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	pick_up_the_fork(t_dining *dining, t_philo *philo, int id)
 		pthread_mutex_unlock(&dining->pick_up[philo->right_fork]);
 		if (flag)
 			break ;
-		usleep(100);
+		usleep(WAIT_TIME);
 	}
 	pthread_mutex_lock(&dining->print);
 	philo_print(dining, "has taken a fork", id, get_time());
