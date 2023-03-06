@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = philo
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror -fsanitize=thread -g
 
 SRC_DIR = ./src/
 SRC_NAME = main.c \

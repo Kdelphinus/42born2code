@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:47:08 by myko              #+#    #+#             */
-/*   Updated: 2023/03/04 15:52:07 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/06 21:30:39 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@ void	eating(t_dining *dining, long long eat_start)
 {
 	long long	curr_time;
 
-	while (dining->die_flag == LIVE)
+	pthread_mutex_lock(&dining->death);
+	while (1)
 	{
+		pthread_mutex_unlock(&dining->death);
 		curr_time = get_time();
 		if (curr_time - eat_start >= dining->t_eat)
 			break ;
 		usleep(CHECK_TIME);
+		pthread_mutex_lock(&dining->death);
 	}
+	pthread_mutex_unlock(&dining->death);
 }
 
 void	pick_up_the_fork(t_dining *dining, t_philo *philo, int id)
@@ -61,7 +65,9 @@ int	philo_eat(t_dining *dining, t_philo *philo, int id)
 	philo_print(dining, "is eating", id, philo->last_eat);
 	pthread_mutex_unlock(&dining->print);
 	eating(dining, philo->last_eat);
+	pthread_mutex_lock(&dining->lock[id]);
 	philo->eat_cnt++;
+	pthread_mutex_unlock(&dining->lock[id]);
 	pthread_mutex_lock(&dining->pick_up[philo->left_fork]);
 	dining->forks[philo->left_fork] = NOT_USING;
 	pthread_mutex_unlock(&dining->pick_up[philo->left_fork]);
