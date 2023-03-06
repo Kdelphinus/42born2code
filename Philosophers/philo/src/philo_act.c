@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:39:26 by myko              #+#    #+#             */
-/*   Updated: 2023/03/03 18:25:27 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/04 15:52:56 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*philo_act(void *arg)
 	c_philo = (t_philo *)arg;
 	dining = c_philo->dining;
 	if (c_philo->id % 2)
-		usleep(10);
+		usleep(ODD_OR_EVEN);
 	while (dining->die_flag == LIVE && dining->eat_flag == NOT_ENOUGH)
 	{
 		if (philo_eat(dining, c_philo, c_philo->id) == ENOUGH)
@@ -59,14 +59,14 @@ void	philo_check(t_dining *dining)
 		i = -1;
 		while (++i < dining->p_num && dining->die_flag == LIVE)
 		{
-			pthread_mutex_lock(&dining->print); //
+			pthread_mutex_lock(&dining->print);
 			curr_time = get_time();
 			if (curr_time - dining->philos[i].last_eat > dining->t_die)
 			{
 				philo_print(dining, "died", i, curr_time);
 				dining->die_flag = DIE;
 			}
-			pthread_mutex_unlock(&dining->print); //
+			pthread_mutex_unlock(&dining->print);
 		}
 		if (dining->die_flag == DIE)
 			break ;
@@ -110,7 +110,6 @@ int	dining_start(t_dining *dining)
 		arg = (void *)&(dining->philos[i]);
 		if (pthread_create(&(dining->philos[i].tid), NULL, philo_act, arg))
 			return (ft_join(dining, i));
-//		usleep(10);
 	}
 	philo_check(dining);
 	dining_end(dining);

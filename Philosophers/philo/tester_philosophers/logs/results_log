@@ -1831,3 +1831,25 @@
   log.py: at 200, the fork philosopher 2 grabbed was not yet released
   log.py: at 200, the fork philosopher 4 grabbed was not yet released
   log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '600', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '3', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '600', '350', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '4', '390', '200', '200']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '5', '800', '400', '100']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '15', '200', '400', '800']
+  log.py: ./philo ['./tester_philosophers/advanced_test.py', '200', '390', '200', '200']
+  log.py: at 203, philosopher 59 ate 1ms longer
+  log.py: at 204, philosopher 107 ate 1ms longer
+  log.py: at 204, philosopher 102 ate 1ms longer
+  log.py: at 204, philosopher 133 ate 1ms longer
+  log.py: at 204, philosopher 100 ate 1ms longer
+  log.py: at 204, philosopher 120 ate 1ms longer
+  log.py: at 201, the fork philosopher 22 grabbed was not yet released
+  log.py: at 202, the fork philosopher 76 grabbed was not yet released
+  log.py: at 202, the fork philosopher 50 grabbed was not yet released
+  log.py: at 202, the fork philosopher 58 grabbed was not yet released
+  log.py: at 202, the fork philosopher 60 grabbed was not yet released
+  log.py: at 203, the fork philosopher 119 grabbed was not yet released
+  log.py: at 208, the fork philosopher 40 grabbed was not yet released
+  log.py: at 208, the fork philosopher 132 grabbed was not yet released
