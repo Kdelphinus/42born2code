@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:28:12 by myko              #+#    #+#             */
-/*   Updated: 2023/03/04 15:30:45 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/06 14:40:30 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	check_arg(int argc, char **argv, t_dining *dining)
 	if (dining->p_num == 1)
 	{
 		printf("0 1 has taken a fork\n");
+		usleep(dining->t_die * 1000);
 		printf("%d 1 died\n", dining->t_die);
 	}
 	return (SUCCESS_FLAG);
