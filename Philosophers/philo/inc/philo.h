@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/03/04 15:52:48 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/06 14:14:32 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ void		philo_sleep(t_dining *dining, int id);
 void		philo_think(t_dining *dining, int id);
 
 // get_time.c
-long long	timestamp(long long start_time);
 long long	get_time(void);
 
 // philo_print.c
