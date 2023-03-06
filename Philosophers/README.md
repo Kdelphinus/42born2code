@@ -228,6 +228,12 @@ int pthread_mutex_unlock(pthread_mutex_t *mutex);
 
 return 값은 성공 시 0, 실패 시 그에 맞는 error 번호를 반환한다. 에러의 종류는 mutex가 lock 상태거나 유효하지 않은(즉, 잘못 초기화된 것일 때) mutex일 때, 발생한다.
 
+## 3. 스레드 확인
+
+``` shell
+ps -M [PID]
+```
+
 ## 참고 문헌
 - [42, Philosophers](https://cdn.intra.42.fr/pdf/pdf/67985/en.subject.pdf)
 - [JOINC, 시스템 라이브러리 함수](https://www.joinc.co.kr/w/man/3)
