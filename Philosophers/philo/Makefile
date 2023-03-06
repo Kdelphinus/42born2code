@@ -6,12 +6,12 @@
 #    By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/08 18:47:55 by myko              #+#    #+#              #
-#    Updated: 2023/03/03 18:32:51 by myko             ###   ########.fr        #
+#    Updated: 2023/03/06 21:58:17 by myko             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
-FLAG = -Wall -Wextra -Werror -fsanitize=thread -g
+FLAG = -Wall -Wextra -Werror #-fsanitize=thread -g
 
 SRC_DIR = ./src/
 SRC_NAME = main.c \
