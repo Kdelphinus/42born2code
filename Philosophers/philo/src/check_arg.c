@@ -75,6 +75,7 @@ int	check_arg(int argc, char **argv, t_dining *dining)
 	dining->min_eat = 0;
 	dining->die_flag = LIVE;
 	dining->eat_flag = NOT_ENOUGH;
+	// 4를 나누는 것보다 0.95를 곱하는 것이 유리!
 	dining->t_think = (dining->t_die - dining->t_eat - dining->t_sleep) / 4;
 	if (dining->t_think <= 0)
 		dining->t_think = 5;
