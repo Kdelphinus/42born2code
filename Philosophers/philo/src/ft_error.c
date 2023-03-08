@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 13:55:57 by myko              #+#    #+#             */
-/*   Updated: 2023/03/06 21:37:31 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/08 16:54:47 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ int	ft_free(t_dining *dining, int flag)
 		free(dining->forks);
 	if (flag >= CASE_THREE)
 		free(dining->philos);
-	if (flag >= CASE_FOUR)
-		free(dining->pick_up);
 	if (flag >= ALL_FREE)
 	{
-		free(dining->lock);
+		free(dining->pick_up);
 		if (flag == ALL_FREE_TWO)
 			return (ft_error(CREATE_ERROR));
 		return (ft_error(MUTEX_ERROR));
@@ -32,30 +30,18 @@ int	ft_free(t_dining *dining, int flag)
 
 int	ft_destroy(t_dining *dining, int flag, int i)
 {
-	int	j;
-
-	if (flag >= CASE_TWO_MU)
-	{
-		j = i;
-		i = dining->p_num;
-	}
 	if (flag >= CASE_ONE_MU)
 	{
 		while (--i >= 0)
 			pthread_mutex_destroy(&dining->pick_up[i]);
 	}
 	if (flag >= CASE_TWO_MU)
-	{
-		while (--j >= 0)
-			pthread_mutex_destroy(&dining->lock[j]);
-	}
+		pthread_mutex_destroy(&dining->die);
 	if (flag >= CASE_THREE_MU)
-		pthread_mutex_destroy(&dining->print);
-	if (flag >= CASE_FOUR_MU)
-		pthread_mutex_destroy(&dining->full);
+		pthread_mutex_destroy(&dining->eat);
 	if (flag >= ALL_DESTROY)
 	{
-		pthread_mutex_destroy(&dining->death);
+		pthread_mutex_destroy(&dining->print);
 		ft_free(dining, ALL_FREE_TWO);
 	}
 	return (ft_free(dining, ALL_FREE));

@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:49:55 by myko              #+#    #+#             */
-/*   Updated: 2023/03/06 21:38:56 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/08 16:54:31 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,12 @@ int	mutex_init(t_dining *dining)
 		if (pthread_mutex_init(&dining->pick_up[i], NULL))
 			return (ft_destroy(dining, CASE_ONE_MU, i));
 	}
-	dining->lock = malloc(sizeof(pthread_mutex_t) * (dining->p_num + 1));
-	if (!dining->lock)
-		return (ft_free(dining, CASE_FOUR));
-	i = -1;
-	while (++i< dining->p_num)
-	{
-		if (pthread_mutex_init(&dining->lock[i], NULL))
-			return (ft_destroy(dining, CASE_TWO_MU, i));
-	}
-	if (pthread_mutex_init(&dining->print, NULL))
+	if (pthread_mutex_init(&dining->die, NULL))
+		return (ft_destroy(dining, CASE_ONE_MU, i));
+	if (pthread_mutex_init(&dining->eat, NULL))
 		return (ft_destroy(dining, CASE_TWO_MU, i));
-	if (pthread_mutex_init(&dining->full, NULL))
-		(ft_destroy(dining, CASE_FOUR_MU, i));
-	if (pthread_mutex_init(&dining->death, NULL))
-		(ft_destroy(dining, ALL_DESTROY, i));
+	if (pthread_mutex_init(&dining->print, NULL))
+		return (ft_destroy(dining, CASE_THREE_MU, i));
 	return (SUCCESS_FLAG);
 }
 

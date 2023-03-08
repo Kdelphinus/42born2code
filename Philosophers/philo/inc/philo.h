@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/03/06 21:45:56 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/08 16:54:20 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef enum s_free
 	CASE_ONE,
 	CASE_TWO,
 	CASE_THREE,
-	CASE_FOUR,
 	ALL_FREE,
 	ALL_FREE_TWO,
 }	t_free;
@@ -49,7 +48,6 @@ typedef enum s_destroy
 	CASE_ONE_MU,
 	CASE_TWO_MU,
 	CASE_THREE_MU,
-	CASE_FOUR_MU,
 	ALL_DESTROY,
 }	t_destroy;
 
@@ -89,10 +87,9 @@ typedef struct s_dining
 	int				*forks;
 	long long		start_time;
 	t_philo			*philos;
-	pthread_mutex_t	full;
-	pthread_mutex_t death;
 	pthread_mutex_t	print;
-	pthread_mutex_t	*lock;
+	pthread_mutex_t	eat;
+	pthread_mutex_t	die;
 	pthread_mutex_t	*pick_up;
 }	t_dining;
 
@@ -114,7 +111,7 @@ int			dining_start(t_dining *dining);
 
 // philo_eat.c
 void		eating(t_dining *dining, long long eat_start);
-int			philo_eat(t_dining *dining, t_philo *philo, int id);
+void		philo_eat(t_dining *dining, t_philo *philo, int id);
 
 // philo_sleep.c
 void		philo_sleep(t_dining *dining, int id);
