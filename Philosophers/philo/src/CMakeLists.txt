@@ -3,11 +3,9 @@ ADD_EXECUTABLE(
         main.c
         check_arg.c
         philo_init.c
+        philo_dining.c
         philo_act.c
-        philo_eat.c
-        philo_sleep.c
         philo_print.c
-        philo_think.c
         get_time.c
         ft_error.c
-)
+        philo_check.c)

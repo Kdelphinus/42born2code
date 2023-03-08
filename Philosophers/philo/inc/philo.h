@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/03/08 16:54:20 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/08 17:51:51 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,22 +102,22 @@ int			mutex_init(t_dining *dining);
 int			p_init(t_dining *dining);
 int			philo_init(t_dining *dining);
 
-// philo_act.c
+// philo_dining.c
 void		*philo_act(void *arg);
-void		eat_check(t_dining *dining);
-void		philo_check(t_dining *dining);
 int			dining_end(t_dining *dining);
 int			dining_start(t_dining *dining);
 
+// philo_check.c
+int			flag_check(t_dining *dining);
+void		eat_check(t_dining *dining);
+void		philo_check(t_dining *dining);
+
 // philo_eat.c
-void		eating(t_dining *dining, long long eat_start);
-void		philo_eat(t_dining *dining, t_philo *philo, int id);
-
-// philo_sleep.c
 void		philo_sleep(t_dining *dining, int id);
-
-// philo_think.c
 void		philo_think(t_dining *dining, int id);
+void		eating(t_dining *dining, long long eat_start);
+void		pick_up_the_fork(t_dining *dining, t_philo *philo, int id);
+void		philo_eat(t_dining *dining, t_philo *philo, int id);
 
 // get_time.c
 long long	get_time(void);
