@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_act.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myko <myko@student.1337.ma>                +#+  +:+       +#+        */
+/*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:18:18 by myko              #+#    #+#             */
-/*   Updated: 2023/03/08 17:48:33 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/08 20:02:12 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ void	pick_up_the_fork(t_dining *dining, t_philo *philo, int id)
 			dining->forks[philo->left_fork] = USING;
 			dining->forks[philo->right_fork] = USING;
 			flag = 1;
+			pthread_mutex_lock(&dining->print);
+			philo_print(dining, "has taken a fork", id, get_time());
+			philo_print(dining, "has taken a fork", id, get_time());
+			pthread_mutex_unlock(&dining->print);
 		}
 		pthread_mutex_unlock(&dining->pick_up[philo->left_fork]);
 		pthread_mutex_unlock(&dining->pick_up[philo->right_fork]);
@@ -83,10 +87,6 @@ void	pick_up_the_fork(t_dining *dining, t_philo *philo, int id)
 			break ;
 		usleep(WAIT_TIME);
 	}
-	pthread_mutex_lock(&dining->print);
-	philo_print(dining, "has taken a fork", id, get_time());
-	philo_print(dining, "has taken a fork", id, get_time());
-	pthread_mutex_unlock(&dining->print);
 }
 
 void	philo_eat(t_dining *dining, t_philo *philo, int id)

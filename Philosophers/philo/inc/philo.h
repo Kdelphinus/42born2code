@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:57:28 by myko              #+#    #+#             */
-/*   Updated: 2023/03/08 17:51:51 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/08 19:51:47 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef enum s_time
 {
-	ODD_OR_EVEN = 10,
+	ODD_OR_EVEN = 100,
 	WAIT_TIME = 100,
 	CHECK_TIME = 500,
 }	t_time;
@@ -94,7 +94,7 @@ typedef struct s_dining
 }	t_dining;
 
 // check_arg.c
-int			ft_atoi(const char *str);
+int			ft_atoi(const char *str, int sign);
 int			check_arg(int argc, char **argv, t_dining *dining);
 
 // philo_init.c

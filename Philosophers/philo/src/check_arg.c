@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:28:12 by myko              #+#    #+#             */
-/*   Updated: 2023/03/06 14:41:18 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/08 19:54:12 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ static int	overflow_down_check(long long result, char num)
 	return (1);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, int sign)
 {
 	int			i;
-	int			sign;
 	long long	result;
 
 	i = 0;
-	sign = 1;
 	result = 0;
 	while ((9 <= str[i] && str[i] <= 13) || str[i] == ' ')
 		i++;
@@ -61,6 +59,8 @@ int	ft_atoi(const char *str)
 		result = result * 10 + (str[i] - '0') * sign;
 		i++;
 	}
+	if (str[i])
+		return (-1);
 	return ((int)(result));
 }
 
@@ -68,10 +68,10 @@ int	check_arg(int argc, char **argv, t_dining *dining)
 {
 	if (argc < 5 || argc > 6)
 		return (ft_error(ARG_ERROR));
-	dining->p_num = ft_atoi(argv[1]);
-	dining->t_die = ft_atoi(argv[2]);
-	dining->t_eat = ft_atoi(argv[3]);
-	dining->t_sleep = ft_atoi(argv[4]);
+	dining->p_num = ft_atoi(argv[1], 1);
+	dining->t_die = ft_atoi(argv[2], 1);
+	dining->t_eat = ft_atoi(argv[3], 1);
+	dining->t_sleep = ft_atoi(argv[4], 1);
 	dining->min_eat = 0;
 	dining->die_flag = LIVE;
 	dining->eat_flag = NOT_ENOUGH;
@@ -79,7 +79,7 @@ int	check_arg(int argc, char **argv, t_dining *dining)
 	if (dining->t_think <= 0)
 		dining->t_think = 5;
 	if (argc == 6)
-		dining->min_eat = ft_atoi(argv[5]);
+		dining->min_eat = ft_atoi(argv[5], 1);
 	if (dining->p_num <= 0 || dining->t_die <= 0 || dining->t_eat <= 0 \
 		|| dining->t_sleep <= 0 || (argc == 6 && dining->min_eat <= 0))
 		return (ft_error(ARG_ERROR));
