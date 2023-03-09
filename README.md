@@ -23,6 +23,7 @@
 - [06. pipex](#06-pipex)
 - [07. push_swap](#07-push_swap)
 - [08. Philsophers](#08-philosophers)
+- [09. minishell](#09-minishell)
 
 ## 01. Libft
 - 기간: 2022.07.05 ~ 2022.07.14
@@ -73,7 +74,13 @@
 - 한줄평: 꼬인 매듭이 풀리면 슬슬 흘러간다.
 
 ## 08. Philosophers
-- 기간: 2023.01.11 ~
+- 기간: 2023.01.11 ~ 2023.03.09
 - 개요: 철학자를 살려라!(what is the basic of threading a process?)
+- 보너스: X
+- 한줄평: 임계 영역은 최대한 쓰지 않는 것으로
+
+## 09. minishell
+- 기간: 2023.03.10 ~ 
+- 개요: 간단한 쉘 구현
 - 보너스: 
 - 한줄평: 
