@@ -8,6 +8,24 @@
         "type": "tabs",
         "children": [
           {
+            "id": "82395df61a7a9fc8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "minishell/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "a12708b27b30c450",
+        "type": "tabs",
+        "children": [
+          {
             "id": "ba86af6f3edf4b05",
             "type": "leaf",
             "state": {
@@ -69,7 +87,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "79def2b8714f6901",
@@ -85,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Philosophers/README.md",
+                "file": "minishell/README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Philosophers/README.md",
+                "file": "minishell/README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Philosophers/README.md"
+                "file": "minishell/README.md"
               }
             }
           }
@@ -146,8 +165,11 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "ba86af6f3edf4b05",
+  "active": "82395df61a7a9fc8",
   "lastOpenFiles": [
+    "Philosophers/README.md",
+    "minishell/README.md",
+    "minishell",
     "README.md"
   ]
 }
