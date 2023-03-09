@@ -18,6 +18,7 @@
   - [7) pthread_mutex_destroy](#7-pthread_mutex_destroy)
   - [8) pthread_mutex_lock](#8-pthread_mutex_lock)
   - [9) pthread_mutex_unlock](#9-pthread_mutex_unlock)
+- [3. data race 확인](#3-data-race-확인)
 - [참고 문헌](#참고-문헌)
 - [Tester](#tester)
 
@@ -228,11 +229,32 @@ int pthread_mutex_unlock(pthread_mutex_t *mutex);
 
 return 값은 성공 시 0, 실패 시 그에 맞는 error 번호를 반환한다. 에러의 종류는 mutex가 lock 상태거나 유효하지 않은(즉, 잘못 초기화된 것일 때) mutex일 때, 발생한다.
 
-## 3. 스레드 확인
+## 3. data race 확인
 
-``` shell
-ps -M [PID]
+### 1) fsanitize 이용(편함)
+
+```shell
+-fsanitize=thread -g
 ```
+
+컴파일할 때, 위 플래그를 추가하면 data race가 뜰 때 에러 표시를 내며 멈춘다.
+
+
+## 2) valgrind 이용 (에러를 더 잘 잡음)
+
+mac에서 사용하기 위해선 brew를 통해 valgrind를 설치해야 한다.
+
+```shell
+valgrind --tool=helgrind ./philo 4 410 200 200 7
+```
+
+또는 DRD 플래그를 이용해 data race를 확인할 수 있는데 이는 Linux에서만 사용 가능하다고 한다.
+
+```shell
+valgrind --tool=drd ./philo 4 410 200 200 7
+```
+
+fsanitize보다 더 깐깐하게 잡기 때문에 하드코어해진다.
 
 ## 참고 문헌
 - [42, Philosophers](https://cdn.intra.42.fr/pdf/pdf/67985/en.subject.pdf)
