@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:28:12 by myko              #+#    #+#             */
-/*   Updated: 2023/03/08 19:54:12 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/10 14:10:49 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	check_arg(int argc, char **argv, t_dining *dining)
 	dining->die_flag = LIVE;
 	dining->eat_flag = NOT_ENOUGH;
 	// 4를 나누는 것보다 0.95를 곱하는 것이 유리!
-	dining->t_think = (dining->t_die - dining->t_eat - dining->t_sleep) / 4;
+	dining->t_think = (dining->t_die - dining->t_eat - dining->t_sleep) * 0.91;
 	if (dining->t_think <= 0)
 		dining->t_think = 5;
 	if (argc == 6)

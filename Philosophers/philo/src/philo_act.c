@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:18:18 by myko              #+#    #+#             */
-/*   Updated: 2023/03/08 20:02:12 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/10 14:08:06 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ void	philo_eat(t_dining *dining, t_philo *philo, int id)
 	philo->eat_cnt++;
 	pthread_mutex_unlock(&dining->eat);
 	pthread_mutex_lock(&dining->pick_up[philo->left_fork]);
-	dining->forks[philo->left_fork] = NOT_USING;
-	pthread_mutex_unlock(&dining->pick_up[philo->left_fork]);
 	pthread_mutex_lock(&dining->pick_up[philo->right_fork]);
+	dining->forks[philo->left_fork] = NOT_USING;
 	dining->forks[philo->right_fork] = NOT_USING;
+	pthread_mutex_unlock(&dining->pick_up[philo->left_fork]);
 	pthread_mutex_unlock(&dining->pick_up[philo->right_fork]);
 }
