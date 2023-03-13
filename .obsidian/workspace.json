@@ -4,34 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "6e189dd217f15a1c",
+        "id": "baa22b5cc1e4fc30",
         "type": "tabs",
         "children": [
           {
-            "id": "82395df61a7a9fc8",
+            "id": "295728dc3b2c8c87",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "minishell/README.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "a12708b27b30c450",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "ba86af6f3edf4b05",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Philosophers/README.md",
                 "mode": "source",
                 "source": false
               }
@@ -165,10 +147,21 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "82395df61a7a9fc8",
+  "active": "8a3620a13cb8fc8e",
   "lastOpenFiles": [
     "Philosophers/README.md",
     "minishell/README.md",
+    "무제 파일 1.canvas",
+    "무제 파일.canvas",
+    "Philosophers/philo/philo",
+    "Philosophers/philo/obj/ft_error.o",
+    "Philosophers/philo/obj/get_time.o",
+    "Philosophers/philo/obj/philo_print.o",
+    "Philosophers/philo/obj/philo_check.o",
+    "Philosophers/philo/obj/philo_act-469b3623.o.tmp",
+    "Philosophers/philo/obj/ft_error-99078ae6.o.tmp",
+    "Philosophers/philo/obj/philo_dining-3ba04e1a.o.tmp",
+    "Philosophers/philo/obj/main-4b7cbadf.o.tmp",
     "minishell",
     "README.md"
   ]

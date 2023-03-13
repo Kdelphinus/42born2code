@@ -52,6 +52,16 @@
 
 > 구현과 설명은 subject에 국한되어야 하며 요청되지 않은 내용들은 필요하지 않다. 만약 의심스러운 요구가 있으면 bash를 참조해라.
 
-## 0.3 submission
+### 0.3 submission
 
-평소처럼 Git 저장소에 과제를 제춯한다. 
+평소처럼 Git 저장소에 과제를 제출한다. 
+
+## 1. Functions
+
+### 1.1 readline
+
+```c
+char *readline(const char *);
+```
+
+ 
