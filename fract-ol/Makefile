@@ -25,6 +25,7 @@ SRCS_NAME = main.c \
 			multicron.c \
 			burning_ship.c \
 			spider_set.c \
+			newton_fractals.c \
 			key_hook.c \
 			utils_1.c \
 			utils_2.c \

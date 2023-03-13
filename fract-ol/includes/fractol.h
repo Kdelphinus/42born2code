@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:07:38 by myko              #+#    #+#             */
-/*   Updated: 2023/02/09 13:36:06 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/13 21:35:25 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 // use to calculate fractal
 # define BOUNDARY			2
-# define SIDE				1400
+# define SIDE				1000
 
 typedef struct s_comp
 {
@@ -86,6 +86,7 @@ void	mandelbox_draw(t_frac *frac);
 void	multicron_draw(t_frac *frac);
 void	burning_draw(t_frac *frac);
 void	spider_draw(t_frac *frac);
+void	newton_draw(t_frac *frac);
 void	coloring(int coor, int value, t_frac *frac);
 
 // key_hook.c

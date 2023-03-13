@@ -6,7 +6,7 @@
 /*   By: myko <myko@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:17:48 by myko              #+#    #+#             */
-/*   Updated: 2022/10/13 21:35:38 by myko             ###   ########.fr       */
+/*   Updated: 2023/03/13 21:35:46 by myko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	ft_close(void)
 {
-	// linux에선 system 함수가 안 되는 듯
-	system("leaks fractol");
 	exit(EXIT_SUCCESS);
 }
 
@@ -35,5 +33,7 @@ int	ft_error(void)
 	printf("- mandelbox [scale]\n");
 	printf("- multicron [d]\n");
 	printf("- burning\n");
+	printf("- spider\n");
+	printf("- newton\n");
 	return (-1);
 }
