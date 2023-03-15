@@ -473,11 +473,35 @@ int	main(void)
 void (*signal(int sig, void (*func)(int)))(int);
 ```
 
-**signal** 함수는 시그널 처리를 설정한다. 시그널 처리는 다음과 같은 방법으로 설정할 수 있다.
+**signal** 함수는 시그널 처리를 설정한다.
 
-|유형|의미|
-|:---|:---|
-|SIG_DFL|기존 방법을 따른다.|
-|SIG_IGN|시그널을 무시한다.|
-|함수 이름|시그널이 발생하면 지정된 함수를 호출한다.|
+#### 파라미터
+- sig
+	- 처리할 시그널
+	- man signal을 치면 이미 정의된 시그널 중 하나를 사용
+- func
+	- 어떤 것을 넣느냐에 따라 동작이 다른다.
+		- SIG_DFL: 기존 정의된 방법을 따른다.
+		- SIG_IGN: 시그널을 무시한다.
+		- 함수 이름: 시그널이 발생하면 지정된 함수를 호출한다.
+
+### 1. 14 sigemptyset
+
+```c
+#include <signal.h>
+
+int sigemptyset(sigset_t *set);
+```
+
+**sigemptyset** 함수는 인자로 주어진 set에 포함되어 있는 모든 시그널을 비운다.
+
+> sigset_t
+>
+> ```c
+> typedef struct {
+> 	unsigned int __sigbits[4];
+> }.  sigset_t;
+> ``` 
+>
+> 시그널 집합의 처리를 위해 사용하는 크기가 4인 unsigned int 배열
 
