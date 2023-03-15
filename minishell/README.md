@@ -485,23 +485,104 @@ void (*signal(int sig, void (*func)(int)))(int);
 		- SIG_IGN: 시그널을 무시한다.
 		- 함수 이름: 시그널이 발생하면 지정된 함수를 호출한다.
 
-### 1. 14 sigemptyset
+### 1. 14 sigset_t
+
+```c
+typedef struct {
+	unsigned int __sigbits[4];
+}   sigset_t;
+```
+
+**sigset_t** 는 복수의 시그널을 처리할 수 있도록 만든 구조체이다. 
+
+### 1.15 sigemptyset, sigaddset
 
 ```c
 #include <signal.h>
 
 int sigemptyset(sigset_t *set);
+int sigaddset(sigset_t *set, int signum);
 ```
 
-**sigemptyset** 함수는 인자로 주어진 set에 포함되어 있는 모든 시그널을 비운다.
+**sigemptyset** 함수는 인자로 주어진 set에 포함되어 있는 모든 시그널들을 비운다.
 
-> sigset_t
->
-> ```c
-> typedef struct {
-> 	unsigned int __sigbits[4];
-> }.  sigset_t;
-> ``` 
->
-> 시그널 집합의 처리를 위해 사용하는 크기가 4인 unsigned int 배열
+**sigaddset** 함수는 signum 번호의 시그널을 set에 추가한다.
 
+#### 반환값
+
+- 성공 시: 0
+- 실패 시: -1
+
+### 1.15 sigaction
+
+```c
+#include <signal.h>
+
+struct sigaction {
+	union __sigaction_u    __sigaction_u; /* signal handler */
+	sigset_t    sa_mask;                  /* signal maks to apply */
+	int         sa_flags;                 /* see signal options below */ 
+};
+
+union __sigaction_u {
+	void   (*__sa_handler)(int);
+	void   (*__sa_sigaction)(int, siginfo_t *, void *);
+};
+
+#define sa_handler.     __sigaction_u.__sa_handler
+#define sa_sigaction    __sigaction_u.__sa_sigaction
+
+int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);
+```
+
+**sigaction** 함수는 특정 시그널의 수신에 대해서 취할 액션을 설정하거나 변경하기 위해서 사용된다.
+
+#### 파라미터
+
+- signum
+	- 시그널을 명시한다.
+	- SIGKILL, SIGSTOP을 제외한 모든 시그널을 넣을 수 있다.
+- act
+	- NULL이 아니라면 signum 번호를 가지는 시그널에 대해서 act함수가 설치된다.
+- oldact
+	- NULL이 아니라면 이전의 액션은 oldact에 저장된다.
+
+#### 반환값
+ 
+- 성공 시: 0
+- 실패 시: -1
+
+> **struct sigaction**
+>
+> - sa_handler과 sa_sigaction
+> 	- signum 번호를 가지는 시그널이 발생했을 때, 실행된 함수를 설치한다.
+> 	- 함수 외에도 SIG_DFL, SIG_IGN을 지정할 수 있다.
+> 
+> 	- 만약 sa_flags에 SA_SIGINFO가 설정되어 있지 않으면 sa_handler에 시그널을 처리할 동작을 지정한다.
+> 	- 반대로 SA_SIGINFO가 설정되어 있다면 sa_sigaction 멤버를 사용한다.
+>
+> - sa_mask
+> 	- 시그널 핸들러가 동작 중일 때, 블록할 시그널을 시그널 집합으로 지정한다.
+> 	- 시그널 핸들러가 시작되어 시그널을 전달할 때, 이미 블록된 시그널 집합에 sa_mask로 지정한 시그널 집합을 추가한다.
+> 	- sa_flags에 SA_NODEFER을 설정하지 않으면 시그널 핸들러를 호출하게 한 시그널도 블록된다.
+>
+> - sa_flags
+> |플래그|설명|
+> |:---|:---|
+> |SA_ONSTACK|이 값을 설정하면 시그널을 처리할 프로세스에 sigaltstack 시스템 호출로 생성한 대체 시그널 스택이 있는 경우에만 대체 스택에서 시그널을 처리한다. 그렇지 않으면 시그널은 일반 스택에서 처리된다.|
+> |SA_RESETHAND|이 값을 설정하면 시그널의 기본 처리 방법은 SIG_DFL로 재설정되고 시그널이 처리되는 동안 시그널을 블록하지 않는다.|
+> |SA_NODEFEER|이 값을 설정하면 시그널이 처리되는 동안 유닉스 커널에서 해당 시그널을 자동으로 블록하지 못한다.|
+> |SA_RESTART|이 값을 설정하면 시스템은 시그널 핸들러에 의해 중지된 기능을 재시작하게 된다.|
+> |SA_SIGINFO|이 값을 설정하지 않고 시그널을 받으면 시그널 번호만 시그널 핸들러로 전달된다.|
+> |SA_NOCLDWAIT|이 값이 설정되어 있고 시그널이 SIGCHLLD면 시스템은 자식 프로세스가 종료될 때 좀비 프로세스를 만들지 않는다.|
+> |SA_NOCLDSTOP|이 값이 설정되어 있고 시그널이 SIGHLD면 자식 프로세스가 중지나 재시작할 때, 부보 프로세스에 SIGCHILD 시그널을 전달하지 않는다.
+
+
+
+## 참고 자료
+
+- [42 seoul, minishell](https://cdn.intra.42.fr/pdf/pdf/68660/en.subject.pdf)
+- [Kdelphinus's github, pipex README](https://github.com/Kdelphinus/42born2code/blob/main/pipex/README.md)
+- [길은 가면, 뒤에 있다. , (시스템프로그래밍) 시그널](https://12bme.tistory.com/224)
+- [네이버 블로그 d, sigaction 함수의 활용](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=skssim&logNo=121271980)
+- 
