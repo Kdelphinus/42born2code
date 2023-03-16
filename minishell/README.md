@@ -651,7 +651,7 @@ int kill(pid_t pid, int sig);
 - 실패 시: -1
 	- 적당한 errno 값을 설정
 
-### 1. 18  unlink
+### 1.18  unlink
 
 ```c
 #include <unistd.h>
