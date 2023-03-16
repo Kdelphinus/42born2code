@@ -2,6 +2,26 @@
 
 ## Index
 
+- [0. Subject](#0-subject)
+	- [0.1 개요](#01-개요)
+	- [0.2 Mandatory part](#02-mandatory-part)
+	- [0.3 Submission](#03-submission)
+- [1. Functions](#1-functions)
+	- [1.1 errno](#11-errno)
+	- [1.2 perror](#12-perror)
+	- [1.3 strerror](#13-strerror)
+	- [1.4 fork](#14-fork)
+	- [1.5 waitpid](#15-waitpid)
+	- [1.6 wait3, wait4](#16-wait3-wait4)
+	- [1.7 exit](#17-exit)
+	- [1.8 execve](#18-execve)
+	- [1.9 dup](#19-dup)
+	- [1.10 dup2](#110-dup2)
+	- [1.11 pipe](#111-pipe)
+	- [1.12 access](#112-access)
+	- [1.13 signal](#113-signal)
+	- 
+
 ## 0. Subject
 
 ### 0.1 개요
@@ -485,7 +505,7 @@ void (*signal(int sig, void (*func)(int)))(int);
 		- SIG_IGN: 시그널을 무시한다.
 		- 함수 이름: 시그널이 발생하면 지정된 함수를 호출한다.
 
-### 1. 14 sigset_t
+### 1.14 sigset_t
 
 ```c
 typedef struct {
@@ -513,7 +533,7 @@ int sigaddset(sigset_t *set, int signum);
 - 성공 시: 0
 - 실패 시: -1
 
-### 1.15 sigaction
+### 1.16 sigaction
 
 ```c
 #include <signal.h>
@@ -583,7 +603,7 @@ int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact)
 > 	- SA_NOCLDSTOP
 > 		- 이 값이 설정되어 있고 시그널이 SIGHLD면 자식 프로세스가 중지나 재시작할 때, 부보 프로세스에 SIGCHILD 시그널을 전달하지 않는다.
 
-### 1.16 kill
+### 1.17 kill
 
 ```c
 #include <signal.h>
@@ -610,7 +630,7 @@ int kill(pid_t pid, int sig);
 - 실패 시: -1
 	- 적당한 errno 값을 설정
 
-### 1. 17  unlink
+### 1. 18  unlink
 
 ```c
 #include <unistd.h>
@@ -643,7 +663,7 @@ int	unlink(const char *pathname);
 
 정상적으로 파일이나 link가 삭제되면 0을 반환한다. 오류가 발생하면 -1을 반환하고 errno에 상세오류 내용이 저장된다.
 
-### 1.18 readline
+### 1.19 readline
 
 > #### GNU readline
 > 
@@ -670,7 +690,7 @@ char *readline(const char *prompt);
 - 문자열 입력 시: 입력된 문자열이 저장된 주소
 - 빈 문자열 입력 시: NULL
 
-### 1.19 rl_clear_history
+### 1.20 rl_clear_history
 
 ```c
 #include <readline/readline.h> // 정확하지 않음 history.h 일수도
@@ -680,7 +700,7 @@ void rl_clear_history(void);
 
 **rl_clear_history** 함수는 history.h안에 있는 clear_history() 함수와 동일한 방식으로 모든 항목을 삭제하여 히스토리 목록을 지운다. clear_history() 함수와 다른 점은 Readline이 히스토리 목록에 저장하는 비공개 데이터를 해제한다는 것이다.
 
-### 1.20 rl_on_new_line
+### 1.21 rl_on_new_line
 
 ```c
 #include <readline/readline.h>
@@ -695,7 +715,7 @@ int rl_on_new_line(void);
 - 성공 시: 0
 - 실패 시: -1
 
-### 1.20 rl_replace_line
+### 1.22 rl_replace_line
 
 ```c
 #include <readline/readline.h>
@@ -718,7 +738,7 @@ void rl_replace_line(const char *text, int clear_undo);
 	- 0일 경우: 현재 줄과 연결된 실행 취소 목록을 지우지 않음
 	- 그 외의 경우: 현재 줄과 연결된 실행 취소 목록을 지움
 
-### 1.21 rl_redisplay
+### 1.23 rl_redisplay
 
 ```c
 #include <readline/readline.h>
@@ -730,7 +750,7 @@ void rl_redisplay(void);
 
 시그널을 받았을 때의 상황에서 rl_redisplay 함수를 사용한다.
 
-### 1.22 add_history
+### 1.24 add_history
 
 ```c
 #include <readline/history.h>
@@ -746,7 +766,7 @@ void add_history(const char *string);
 
 - string: 히스토리 목록에 넣을 문자열
 
-### 1.23 getcwd
+### 1.25 getcwd
 
 ```c
 #include <unistd.h>
@@ -779,7 +799,7 @@ buf의 길이는 <sys/param.h>에 정의된 MAXPATHLEN보다 커야한다.
 	- NULL 포인터 반환
 	- 전역 변수 errno가 오류를 나타내도록 설정
 
-### 1.24 chdir
+### 1.26 chdir
 
 ```c
 #include <unistd.h>
@@ -804,7 +824,7 @@ int chdir(const char *path);
 	- -1 반환
 	- errno 설정됨
 
-### 1.25 stat, lstat, fstat
+### 1.27 stat, lstat, fstat
 
 ```c
 #include <sys/stat.h>
@@ -836,7 +856,7 @@ int fstat(int fildes, struct stat *buf);
 	- -1을 반환
 	- errno 설정됨
 
-### 1.26 opendir, readdir, closedir
+### 1.28 opendir, readdir, closedir
 
 ```c
 #include <dirent.h>
@@ -921,7 +941,7 @@ int           closedir(DIR *dirp);
 	- -1을 반환
 	- errno 설정
 
-### 1.27 ttyname, isatty
+### 1.29 ttyname, isatty
 
 ```c
 #include <unistd.h>
@@ -952,7 +972,7 @@ int   isatty(int fd);
 	- fd가 발견되고 isatty가 참을 반환할 경우: 이름 반환
 	- 실패 시: NULL 포인터
 
-### 1.28 ttyslot
+### 1.30 ttyslot
 
 ```c
 #include <unistd.h>
@@ -967,7 +987,7 @@ int ttyslot(void);
 - 성공 시: 사용 중인 터미널의 인덱스
 - 실패 시: 0
 
-### 1.29 ioctl
+### 1.31 ioctl
 
 ```c
 #include <sys/ioctl.h>
@@ -1002,7 +1022,7 @@ int ioctl(int fildes, unsigned long request, ...);
 	- -1 반환
 	- errno 설정
 
-### 1.30 getenv
+### 1.32 getenv
 
 ```c
 #include <stdlib.h>
@@ -1023,7 +1043,7 @@ char *getenv(const char *name);
 - 성공 시: name과 일치하는 환경변수의 value
 - 실패 시: NULL
 
-### 1.31 tcsetattr, tcgetattr
+### 1.33 tcsetattr, tcgetattr
 
 ```c
 #include <termios.h>
@@ -1098,7 +1118,7 @@ int tcsetattr(int fildes, int optional_actions, const struct termios *termios_p)
 |ECHONL|NL 문자가 반향된다. ECHO 플래그와 상관없이 NL 문자를 반향한다.|
 |ECHOCTL|제어문자가 반향되도록 한다. 이 플래그를 on 시킨 상태에서 ctrl + x를 누르면 ^X로 화면에 표시된다.|
 
-### 1.32 tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
+### 1.34 tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
 
 ```c
 #include <term.h>
