@@ -643,6 +643,274 @@ int	unlink(const char *pathname);
 
 정상적으로 파일이나 link가 삭제되면 0을 반환한다. 오류가 발생하면 -1을 반환하고 errno에 상세오류 내용이 저장된다.
 
+### 1.18 readline
+
+> #### GNU readline
+> 
+> **GNU readline** 은 명령 줄 인터페이스(CLI)에서 줄 편집 및 입력 기록 저장 등의 역할을 하는 라이브러리이다. 입력 자동 완성, 커서 이동, 잘라내기, 복사, 붙여녛기 등의 기능을 지원하며 Bash 등의 CLI 기반 인터랙티브 소프트웨어에서 사용된다.
+> 
+> 컴파일할 때, ``-lreadline`` 컴파일러 플래그를 사용해야 한다.
+
+```c
+#include <readline/readline.h>
+
+char *readline(const char *prompt);
+```
+
+**readline** 함수는 입력받은 문자열을 저장하고 저장된 메모리 주소를 반환하는 함수다. 
+
+입력 받은 문자열이 할당되어 주소가 반환되는 것이기에 free를 해줘야 한다.
+
+#### 파라미터
+
+- prompt: 실행 시, 출력할 문장
+
+#### 반환값
+
+- 문자열 입력 시: 입력된 문자열이 저장된 주소
+- 빈 문자열 입력 시: NULL
+
+### 1.19 rl_clear_history
+
+```c
+#include <readline/readline.h> // 정확하지 않음 history.h 일수도
+
+void rl_clear_history(void);
+```
+
+**rl_clear_history** 함수는 history.h안에 있는 clear_history() 함수와 동일한 방식으로 모든 항목을 삭제하여 히스토리 목록을 지운다. clear_history() 함수와 다른 점은 Readline이 히스토리 목록에 저장하는 비공개 데이터를 해제한다는 것이다.
+
+### 1.20 rl_on_new_line
+
+```c
+#include <readline/readline.h>
+
+int rl_on_new_line(void);
+```
+
+**rl_on_new_line** 함수는 일반적으로 update와 관련된 함수들에게 커서가 개행문자를 통해 다음 줄로 이동한 것을 알려준다. 그렇기에 개행 문자 출력 이후에 사용된다.
+
+#### 반환값
+
+- 성공 시: 0
+- 실패 시: -1
+
+### 1.20 rl_replace_line
+
+```c
+#include <readline/readline.h>
+
+void rl_replace_line(const char *text, int clear_undo);
+```
+
+**rl_replace_line** 함수는 rl_line_buffer의 내용을 text로 바꾼다. 가능하면 point와 mark는 유지한다.
+
+> #### rl_line_buffer
+> 
+> 지금까지 얻은 줄이다. rl_extend_line_buffer 함수를 사용하면 rl_line_buffer에 할당된 메모리를 늘릴 수 있다.
+> 
+> 아마 readline으로 받은 줄을 의미하는 것 아닐까....?
+
+#### 파라미터
+
+- text: rl_line_buffer를 대체할 문장
+- clear_undo
+	- 0일 경우: 현재 줄과 연결된 실행 취소 목록을 지우지 않음
+	- 그 외의 경우: 현재 줄과 연결된 실행 취소 목록을 지움
+
+### 1.21 rl_redisplay
+
+```c
+#include <readline/readline.h>
+
+void rl_redisplay(void);
+```
+
+**rl_redisplay** 함수는 화면에 표시되는 내용을 변경하여 rl_line_buffer의 현재 내용을 반영한다. 이때, 프롬프트 값은 readline 함수에 프롬프트로 준 문자열로 이동한다. 
+
+시그널을 받았을 때의 상황에서 rl_redisplay 함수를 사용한다.
+
+### 1.22 add_history
+
+```c
+#include <readline/history.h>
+
+void add_history(const char *string);
+```
+
+**add_history** 함수는 주어진 문자열을 히스토리 목록 끝에 배치한다. 연결된 데이터 필드가 있는 경우는 NULL로 설정된다. 
+
+만약 stifle_history 함수를 사용하여 설정된 최대 히스토리 목록의 개수를 초과하면 가장 오래된 히스토리 목록을 제거한다. 히스토리 목록은 터미널처럼 방향키로 하나씩 불러올 수 있으며 스택처럼 가장 마지막 목록부터 확인할 수 있다.
+
+#### 파라미터
+
+- string: 히스토리 목록에 넣을 문자열
+
+### 1.23 getcwd
+
+```c
+#include <unistd.h>
+
+char *getcwd(char *buf, size_t size);
+```
+
+**getcwd** 함수는 현재 작업 디렉토리의 절대 경로명을 buf가 참조하는 메모리에 복사하고 buf에 대한 포인터를 반환한다.
+
+만약 buf가 NULL이면 경로명을 저장하는데 필요한 공간이 size와 관계없이 할당된다. 그리고 이렇게 할당된 공간은 free할 수 있다.
+
+buf의 길이는 <sys/param.h>에 정의된 MAXPATHLEN보다 커야한다.
+
+이러한 방법은 많이 사용되었으나 현재 디렉토리('.')를 열고 fchdir 함수를 사용하여 반환하는 것이 훨씬 빠르고 오류 발생 가능성이 적은 방법이다. 
+
+#### 파라미터
+
+- buf
+	- 할당되어있는 경우: 경로가 저장될 문자열
+- size
+	- buf의 크기
+	- 만약 buf에 NULL을 입력하면 size의 크기는 의미가 없다.
+
+#### 반환값
+
+- 성공 시
+	- buf가 할당되어 있는 경우: 할당된 buf의 주소를 반환
+	- buf에 NULL 포인터를 넣은 경우: 새로 할당된 주소를 반환
+- 실패 시
+	- NULL 포인터 반환
+	- 전역 변수 errno가 오류를 나타내도록 설정
+
+### 1.24 chdir
+
+```c
+#include <unistd.h>
+
+int chdir(const char *path);
+```
+
+**chdir** 함수는 현재 작업 중인 디렉토리를 변경한다. 쉘 상에서 cd 명령어와 동일한 동작을 한다.
+
+디렉토리가 현재 디렉토리가 되려면 프로세스에 디렉토리에 대한 실행(검색) 권한이 있어야 한다.
+
+#### 파라미터
+
+- path
+	- 변경할 디렉토리의 경로명
+	- 현재 디렉토리가 검색의 시작점이 된다.
+
+#### 반환값
+
+- 성공 시: 0
+- 실패 시
+	- -1 반환
+	- errno 설정됨
+
+### 1.25 stat, lstat, fstat
+
+```c
+#include <sys/stat.h>
+
+int stat(const char *restrict path, struct stat *resrict buf);
+int lstat(const char *restrict path, struct stat *resrict buf);
+int fstat(int fildes, struct stat *buf);
+```
+
+위 함수들은 파일에 대한 정보를 반환한다. 파일 자체에 대한 권한은 필요하지 않지만 stat()과 lstat()
+의 경우, 파일로 연결되는 경로의 모든 디렉토리에 대한 실행(검색) 권한이 필요하다.
+
+**stat** 함수의 경우, 경로가 가리키는 파일에 대한 통계를 작성하고 buf를 채웁니다.
+
+**lstat** 함수의 경우, stat과 동일하지만 경로가 심볼릭 링크인 경우 참조하는 파일이 아니라 링크 자체를 통계화한다는 점이 다르다.
+
+**fstat** 함수의 경우, stat과 동일하지만, 통계 처리할 파일이 파일 기술자 fd로 지정된다는 점이 다르다.
+
+#### 파라미터
+
+- path: 확인할 파일의 경로
+- buf: 파일에 대한 정보를 저장할 buf
+- fildes: 확인할 파일의 fd
+
+### 반환값
+
+- 성공 시: 0
+- 실패 시
+	- -1을 반환
+	- errno 설정됨
+
+### 1.26 opendir, readdir, closedir
+
+```c
+#include <dirent.h>
+
+typedef struct _dirdesc {
+	int	dd_fd;		/* file descriptor associated with directory */
+	long	dd_loc;		/* offset in current buffer */
+	long	dd_size;	/* amount of data returned by getdirentries */
+	char	*dd_buf;	/* data buffer */
+	int	dd_len;		/* size of data buffer */
+	long	dd_seek;	/* magic cookie returned by getdirentries */
+	long	dd_rewind;	/* magic cookie for rewinding */
+	int	dd_flags;	/* flags for readdir */
+	pthread_mutex_t	dd_lock; /* for thread locking */
+	struct _telldir *dd_td;	/* telldir position recording */
+} DIR;
+
+struct dirent {
+	u_int32_t d_fileno;		/* file number of entry */
+	u_int16_t d_reclen;		/* length of this record */
+	u_int8_t  d_type; 		/* file type, see below */
+	u_int8_t  d_namlen;		/* length of string in d_name */
+#ifdef _POSIX_SOURCE
+	char	d_name[255 + 1];	/* name must be no longer than this */
+#else
+#define	MAXNAMLEN	255
+	char	d_name[MAXNAMLEN + 1];	/* name must be no longer than this */
+#endif
+};
+
+DIR           *opendir(const char *filename);
+sturct dirent *readdir(DIR *dirp);
+int           closedir(DIR *dirp);
+```
+
+> #### directory streadm
+>
+> DIR * 를 directory stream이라고 부른다. 이 디렉토리 스트림은 정규 파일 조작을 위한 파일 스트림(FILE * )과 상당히 비슷한 방식으로 쓰인다. 
+
+**opendir** 함수는 filename으로 디렉토리를 열고 디렉토리 스트림을 연결한 다음 후속 작업에서 디렉토리 스트림을 식별하는데 사용할 포인터를 반환한다.
+
+만약 filename에 access 할 수 없거나 전체 내용을 담을 수 있는 충분한 메모리를 할당할 수 없는 경우 NULL 포인터가 반환된다.
+
+#### 파라미터 
+
+- filename: 열고자 하는 디렉토리 이름
+
+#### 반환값
+
+- 성공 시: 디렉토리 스트림을 식별하는데 사용할 포인터
+- 실패 시: NULL 포인터
+
+**readdir** 함수는 다음 디렉토리 항목에 대한 포인터를 반환한다. 디렉토리 항목은 동일한 디렉토리 스트림에서 readdir이나 closedir 함수가 실행될 때까지 유효하게 유지된다.
+
+이 함수는 디렉토리 끝에 도달하거나 오류가 발생하면 NULL을 반환한다. 그리고 에러가 발생했을 땐, errno는 getdirentries(2) 시스템 콜에 대해 문서화된 값 중 하나로 설정될 수 있다.
+
+그리고 readdir 함수가 반환하는 디렉토리의 항목 순서는 지정되지 않는다. 즉, 정렬 순서 항목으로 반환된다는 보장이 없다.
+
+#### 파라미터
+
+- dirp: 현재 디렉토리 항목
+
+#### 반환값
+
+- 성공 시
+	- 다음이 있을 때: 다음 디렉토리 항목
+	- 끝까지 도달했을 때: NULL 포인터
+- 실패 시
+	- NULL 포인터 반환
+	- errno 설정
+
+**closedir** 함수는 주어진 디렉토리 스트림을 닫고 dirp 포인터와 연결된 구조체를 해제하는 함수다.
+
+#### 
 
 ## 참고 자료
 
@@ -650,4 +918,7 @@ int	unlink(const char *pathname);
 - [Kdelphinus's github, pipex README](https://github.com/Kdelphinus/42born2code/blob/main/pipex/README.md)
 - [길은 가면, 뒤에 있다. , (시스템프로그래밍) 시그널](https://12bme.tistory.com/224)
 - [네이버 블로그 d, sigaction 함수의 활용](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=skssim&logNo=121271980)
-- 
+- [GNU, GNU Readline Library](https://web.archive.org/web/20111029034104/http://cnswww.cns.cwru.edu/php/chet/readline/readline.html)
+- [GNU, GNU History Library](https://web.archive.org/web/20111107191103/http://cnswww.cns.cwru.edu/php/chet/readline/history.html)
+- [Apple Computer, sys/dirent.h](https://opensource.apple.com/source/xnu/xnu-124.8/bsd/sys/dirent.h.auto.html)
+- [Apple Computer, dirent.h](https://opensource.apple.com/source/Libc/Libc-320/include/dirent.h.auto.html)
