@@ -17,7 +17,7 @@
 |Turn in files|Makefile, *.h, *.c|
 |Makefile|NAME, all, clean, fclean, re|
 |Arguments||
-|External functs.|readline, rl_clear_history, rl_on_new_line, rl_replace_line, rl_redisplay, add_history, printf, malloc, free, write, access, open, read, close, fork, wait, waitpid, wait3, wait4, signal, sigaction, sigemptyset, sigaddset, kill, exit, dup, dup2, pipe, opendir, readdir, closedir, strerror, perror, isatty, ttyname, ttyslot, ioctl, getenv, tcsetattr, tcgetattr, tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs|
+|External functs.|readline, rl_clear_history, rl_on_new_line, rl_replace_line, rl_redisplay, add_history, printf, malloc, free, write, access, open, read, close, fork, wait, waitpid, wait3, wait4, signal, sigaction, sigemptyset, sigaddset, kill, exit, getcwd, chdir, stat, lstat, fstat, unlink, execve, dup, dup2, pipe, opendir, readdir, closedir, strerror, perror, isatty, ttyname, ttyslot, ioctl, getenv, tcsetattr, tcgetattr, tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs|
 |Libft authorized|Yes|
 |Description|Write a shell|
 
@@ -591,6 +591,57 @@ int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact)
 int kill(pid_t pid, int sig);
 ```
 
+ **kill** 함수는 특정 프로세스나 프로세스 그룹에 시그널을 보내기 위해서 사용한다.
+
+#### 파라미터
+
+- pid
+	- 양수일 때: sig 시그널을 pid로 보낸다.
+	- 0일 때: 현재 프로세스가 속한 프로세스 그룹의 모든 프로세스에게 sig 시그널을 보낸다.
+	- -1일 때: 1번 프로세스를 제외한 모든 프로세스에게 sig 시그널을 보낸다.
+	- -1보다 작을 때: -pid 프로세스가 포함된 모든 그룹의 프로세스에게 sig 시그널을 보낸다.
+- sig
+	- 0일 때: 어떤 시그널도 보내지 않지만 에러 검사는 할 수 있다.
+	- 시그널 목록 중 하나일 때: 지정된 시그널을 보낸다.
+
+#### 반환값
+
+- 성공 시: 0
+- 실패 시: -1
+	- 적당한 errno 값을 설정
+
+### 1. 17  unlink
+
+```c
+#include <unistd.h>
+
+int	unlink(const char *pathname);
+```
+
+``unlink`` 함수는 파일을 삭제하는 system call 함수이다.
+그러나 정확하게 이야기하면 ``unlink`` 함수는 hard link의 이름을 삭제하고 hard link가 참고하는 count를 하나 감소시킨다.
+그리고 hard link의 참조 count가 0이 되면 실제 파일의 내용이 저장되어 있는 disk space를 free하여 삭제한다.
+그렇기에 만약 hard link를 생성하지 않은 파일에 unlink를 사용하면 사실상 파일 삭제와 같은 역할을 한다.
+
+> #### hard link 복습
+> 1. i-node  
+> - 파일이 생성될 때, 파일마다 주어지는 고유 번호
+> - ls 명령어에서 -i 옵션을 주면 i-node를 확인할 수 있다.
+>   
+> 2. hard link
+> - 간단하게는 파일을 복사하는 것
+> - 허나 cp 명령어와는 다른데 어떤 파일을 수정해도 hard link로 연결된 모든 파일이 같이 수정된다.
+> - 왜냐하면 완전 새로운 파일을 만드는 것이 아니라 같은 i-node를 가리키는 파일을 하나 더 만드는 것이기 때문이다.
+>   
+> 3. soft link
+> - 바로가기 기능과 거의 비슷
+> - 그렇기에 i-node의 값이 원본과 다르다.
+
+그러나 만약 open 함수로 파일이 열려진 상태에서 unlink를 호출하여 hard link의 참조 count를 0으로 만들면 directory entry에서 파일 이름 등의 정보는 삭제되어도 disk space는 해제되지 않는다.
+
+즉, OS는 hard link의 참조 count가 0이면서 file open 참조 count도 0일 때, 파일의 내용이 저장된 disk space를 free한다.
+
+정상적으로 파일이나 link가 삭제되면 0을 반환한다. 오류가 발생하면 -1을 반환하고 errno에 상세오류 내용이 저장된다.
 
 
 ## 참고 자료
