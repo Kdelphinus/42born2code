@@ -1028,9 +1028,121 @@ char *getenv(const char *name);
 ```c
 #include <termios.h>
 
-int tcgetattr()
+typedef unsigned long	tcflag_t;
+typedef unsigned char	cc_t;
+typedef long		speed_t;	/* XXX should be unsigned long */
+
+struct termios {
+	tcflag_t	c_iflag;	/* input flags */
+	tcflag_t	c_oflag;	/* output flags */
+	tcflag_t	c_cflag;	/* control flags */
+	tcflag_t	c_lflag;	/* local flags */
+	cc_t		c_cc[NCCS];	/* control chars */
+	speed_t		c_ispeed;	/* input speed */
+	speed_t		c_ospeed;	/* output speed */
+};
+
+int tcgetattr(int fildes, struct termios *termios_p);
 int tcsetattr(int fildes, int optional_actions, const struct termios *termios_p);
 ```
+
+**tcgetattr** 함수는 터미널 파일에 대한 속성을 얻어서 termios_p에 저장한다.
+
+#### 파라미터
+
+- fd: 터미널의 fd
+- termios_p: 터미널 속성을 저장할 포인터
+
+#### 반환값
+
+- 성공 시: 0
+- 실패 시
+	- -1을 반환
+	- errno 설정
+		- EBADF: 유효하지 않은 fd
+		- ENOTTY: 터미널이 아닌 fd
+		- EINVAL: termios_p is NULL
+
+**tcsetatter** 함수는 터미널 파일에 대한 속성을 설정한다.
+
+#### 파라미터
+
+- fd: 터미널 fd
+- optional_actions
+	- 동작 선택
+	- TCSNOW: 속성을 바로 변경한다
+	- TCSADRAIN: 송신을 완료한 후 변경한다.
+	- TCSAFLUSH: 송수신 완료 후 변경한다.
+- termios_p: 터미널 속성을 저장할 포인터
+
+#### 반환값
+
+- 성공 시: 0
+- 실패 시
+	- -1
+	- errno 설정
+		- EBADF: 유효하지 않은 fd
+		- ENOTTY: 터미널이 아닌 fd
+		- EINVAL: termios_p is NULL
+
+#### c_lflag의 속성
+
+|이름|설명|
+|:---|:---|
+|ISIG|signal을 받아들인다. 이 플래그가 on이면 INTR, QUIT, SUSP, DSUSP와 같은 특수문자를 받아들인다.|
+|ICANON|이 플래그가 on이면 정규모드로 입력이 이루어진다.|
+|NOFLSH|queue flush를 비활성화 시킨다.|
+|ECHO|반향(어떤 사건이나 발표 따위가 세상에 영향을 미치어 일어나는 반응)을 설정한다. 이 플래그가 off되어 있으면 입력은 반향되지 않는다.|
+|ECHOE|erase 문자를 반향한다. ECHO 플래그가 on이면 스크린의 마지막 문자를 지운다.|
+|ECHOPRT|ECHO, ECHOPRT가 on인 상태에서 ERASE가 발생하면 삭제되는 문자가 '\\' 뒤에 표시된다. 만약 모든 문자를 삭제했다면 '/'가 출력된다.|
+|ECHONL|NL 문자가 반향된다. ECHO 플래그와 상관없이 NL 문자를 반향한다.|
+|ECHOCTL|제어문자가 반향되도록 한다. 이 플래그를 on 시킨 상태에서 ctrl + x를 누르면 ^X로 화면에 표시된다.|
+
+### 1.32 tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs
+
+```c
+#include <term.h>
+
+int tgetent(char *bp, const char *name);
+int tgetflag(char *id);
+int tgetnum(char *id);
+char *tgetstr(char *id, char **area);
+char *tgoto(const char *cap, int col, int row);
+int tputs(const char *str, int affcnt, int (*putc)(int));
+```
+
+> #### termcap.h
+>  
+>  터미널 등에서 커서를 제어하기 위해서 사용하는 라이브러리이다. 이 라이브러리를 사용할 시, -lncurses 옵션을 붙어주어야 한다.
+
+위 함수들은 termcap 라이브러리를 사용하는 프로그램들을 위한 함수이다.
+
+**tgetent** 함수는 name에 대한 항목을 불러온다. 
+
+#### 파라미터
+
+- bp
+	- 대부분 무시한다.
+	- 만일 이를 사용한다면 다른 루틴 함수에서도 이용한다.
+	- 그러나 대부분 루틴들이 공통적으로 사용하는 BUFFER를 내부적으로 할당하여 사용한다.
+- name
+	- 보편적으로 TERM 환경 변수로 할당된 터미널 타입을 이용한다.
+
+#### 반환값
+
+- 성공 시: 1
+- name의 값이 비어있는 경우: 0
+- 실패 시: -1
+
+**tgetflag** 함수는 id에 대한 플래그를 얻을 수 있으면 1, 없으면 0을 반환한다.
+
+**tgetnum** 함수는 id에 대한 값을 가져올 수 있으면 그 값을, 없으면 -1을 반환한다.
+
+**tgetstr** 함수는 id에 대한 문자열 항목을 가져올 수 있으면 반환하고, 없으면 NULL을 반환한다. area인자는 tgetent에서 사용된 bp를 의미하는데 일반적으로 쓰지 않기에 대부분 NULL을 넣는다.
+
+**tgoto** 함수는 커서 모션의 세로열(col), 가로열(row)를 고려한 것을 반환한다. 여기서 인자인 cap은 capablilty를 의미하며 일반적으로 cursor motion이 cm에 대한 것을 사용한다. tgoto에서 반환된 값은 tputs 함수의 인자로 사용된다. 실패할 경우, NULL을 반환한다.
+
+**tputs** 함수는 터미널 출력 결과를 나타내는 루틴이다. str의 인자는 tgetstr이나 tgoto를 통해 얻은 값을 넣으며, affcnt의 경우 영향을 끼칠 줄의 수를 나타내는데 일반적으로 1을 준다. putc는 ASCII 문자 값을 인자로 받아 표준 출력의 쓰기 작업으로 터미널에 ASCII 문자 값을 출력해주는 함수다. 함수의 동작이 성공하면 0, 그렇기 않으면 -1을 반환한다.
 
 ## 참고 자료
 
@@ -1042,3 +1154,8 @@ int tcsetattr(int fildes, int optional_actions, const struct termios *termios_p)
 - [GNU, GNU History Library](https://web.archive.org/web/20111107191103/http://cnswww.cns.cwru.edu/php/chet/readline/history.html)
 - [Apple Computer, sys/dirent.h](https://opensource.apple.com/source/xnu/xnu-124.8/bsd/sys/dirent.h.auto.html)
 - [Apple Computer, dirent.h](https://opensource.apple.com/source/Libc/Libc-320/include/dirent.h.auto.html)
+- [Apple Computer, sys/termios.h](https://opensource.apple.com/source/xnu/xnu-201/bsd/sys/termios.h.auto.html)
+- [팔만코딩경, 표준입력으로 들어오는 ctrl + d Handling](https://80000coding.oopy.io/13bd7bb7-3a7f-4b51-b84a-905c47368277)
+- [오늘도 밤이야, UNIX termcap 라이브러리를 이용한 커서 제어)](https://hyeonski.tistory.com/6)
+- [팔만코딩경, minishell](https://bigpel66.oopy.io/library/42/inner-circle/10)
+- 
