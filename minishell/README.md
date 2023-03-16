@@ -967,7 +967,70 @@ int ttyslot(void);
 - 성공 시: 사용 중인 터미널의 인덱스
 - 실패 시: 0
 
+### 1.29 ioctl
 
+```c
+#include <sys/ioctl.h>
+
+int ioctl(int fildes, unsigned long request, ...);
+```
+
+**ioctl** 함수는 하드웨어의 제어하고 상태 정보를 얻을 수 있는 함수다. 예를 들어 터미널의 많은 작동 특성은 ioctl 요청으로 제어할 수 있다. input output control의 약자이다.
+
+다른 말로 read 함수와 write 함수만으로 해결되지 않는 제어에 사용된다. 예를 들어 CD-ROM 드라이버에 실제 장치에서 디스크를 꺼내도록 지시하는 등의 low level의 하드웨어를 제어하는 행위는 ioctl만 가능하다.
+
+#### 파라미터
+
+- fildes
+	- fd값으로 열려있어야 한다.
+- request
+	- 장치에 따라 달라지는 요청 코드
+	- 사용되는 매크로는 <sys/ioctl.h> 파일에 있다.
+	- 우리는 <sys/ioccom.h>에 있는 듯...
+- ...
+	- 타입이 지정되지 않은 메모리 포인터
+	- 전통적으로 *argp라고 한다.
+
+#### 반환값
+
+- 성공 시
+	- 일반적인 상황: 0을 반환
+	- 몇몇 요청의 경우
+		- 출력 매개변수로 사용
+		- 음수가 아닌 값
+- 실패 시
+	- -1 반환
+	- errno 설정
+
+### 1.30 getenv
+
+```c
+#include <stdlib.h>
+
+char *getenv(const char *name);
+```
+
+**getenv** 함수는 name이라는 이름을 가진 환경변수를 가져온다. 
+
+환경변수는 "key=value" 형태로 저장되며 name이 key가 된다. 즉, name이란 key를 가진 value를 반환하는 것이다.
+
+#### 파라미터
+
+- name: 가져올 환경변수 key
+
+#### 반환값
+
+- 성공 시: name과 일치하는 환경변수의 value
+- 실패 시: NULL
+
+### 1.31 tcsetattr, tcgetattr
+
+```c
+#include <termios.h>
+
+int tcgetattr()
+int tcsetattr(int fildes, int optional_actions, const struct termios *termios_p);
+```
 
 ## 참고 자료
 
