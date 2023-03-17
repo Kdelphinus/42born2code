@@ -1,4 +1,9 @@
 ADD_EXECUTABLE(
         minishell
         main.c
+        pipe_split_set.c
+        pipe_utils.c
+        pipe_pid.c
+        pipe_error.c
+        pipe_run.c
 )
