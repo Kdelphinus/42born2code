@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = push_swap
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror -fsanitize=address -g
 LIBFT_FLAG = -Llib -lft
 
 SRC_DIR = ./src/

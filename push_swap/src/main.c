@@ -37,7 +37,7 @@ static void	p_sort(t_stack *stack)
 	free(stack->b);
 	free(stack->a);
 }
-
+#include <stdio.h>
 int	main(int argc, char **argv)
 {
 	int		flag;
