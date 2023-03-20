@@ -1,12 +1,12 @@
 #include "minishell.h"
 
-char	**path_init(void)
+char	**path_init(t_envp *tenvp)
 {
 	char	**paths;
 
 	paths = malloc(sizeof(char *) * 6);
 	if (!paths)
-		error(MALLOC_ERROR, "malloc");
+		error(MALLOC_ERROR, "malloc", tenvp);
 	paths[0] = ft_strdup("/usr/local/bin");
 	paths[1] = ft_strdup("/usr/bin");
 	paths[2] = ft_strdup("/bin");

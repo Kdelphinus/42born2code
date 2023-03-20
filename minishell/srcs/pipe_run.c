@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-static void	working_pid(t_envp tenvp)
+static void	working_pid(t_envp *tenvp)
 {
 	int		fds[2];
 	pid_t	pid;
@@ -8,21 +8,23 @@ static void	working_pid(t_envp tenvp)
 	int		status;
 
 	i = -1;
-	while (++i < tenvp.argc)
+	while (++i < tenvp->argc)
 	{
 		if (pipe(fds) == -1)
-			error(PIPE_ERROR, "pipe");
-		if (i == tenvp.argc - 1)
+			error(PIPE_ERROR, "pipe", tenvp);
+		if (i == tenvp->argc - 1)
 		{
 			close(fds[0]);
 			close(fds[1]);
 		}
+		if (tenvp->exit_status)
+			break ;
 		pid = fork();
 		if (pid == -1)
-			error(FORK_ERROR, "fork");
+			error(FORK_ERROR, "fork", tenvp);
 		if (pid == 0)
 		{
-			if (i < tenvp.argc - 1)
+			if (i < tenvp->argc - 1)
 			{
 				dup2(fds[1], STDOUT_FILENO);
 				close(fds[0]);
@@ -31,15 +33,15 @@ static void	working_pid(t_envp tenvp)
 		}
 		else
 		{
-			if (i == tenvp.argc - 1)
+			if (i == tenvp->argc - 1)
 			{
-				if (waitpid(pid, NULL, 0) == -1)
-					error(RUN_ERROR, "pid");
+				if (waitpid(pid, &status, 0) == -1)
+					error(RUN_ERROR, "pid", tenvp);
 			}
 			else
 			{
 				if (waitpid(pid, &status, WNOHANG) == -1)
-					error(RUN_ERROR, "pid");
+					error(RUN_ERROR, "pid", tenvp);
 				dup2(fds[0], STDIN_FILENO);
 				close(fds[1]);
 			}
@@ -57,15 +59,15 @@ static int	argv_len(char **argv)
 	return (i);
 }
 
-int	pipex(char *str, t_envp tenvp)
+int	pipex(char *str, t_envp *tenvp)
 {
 	int i;
 
-	tenvp.argv = ft_split(str, '|');
-	tenvp.argc = argv_len(tenvp.argv);
+	tenvp->argv = ft_split(str, '|');
+	tenvp->argc = argv_len(tenvp->argv);
 	i = -1;
-	while (++i < tenvp.argc)
-		tenvp.argv[i] = ft_strtrim(tenvp.argv[i], " 	");
+	while (++i < tenvp->argc)
+		tenvp->argv[i] = ft_strtrim(tenvp->argv[i], " 	");
 	working_pid(tenvp);
 	return (EXIT_SUCCESS);
 }

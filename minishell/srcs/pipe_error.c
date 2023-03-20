@@ -1,23 +1,30 @@
 #include "minishell.h"
 
-int	error(int errnum, char *problem)
+int	error(int errnum, char *problem, t_envp *tenvp)
 {
-	problem = ft_strjoin("pipex: ", problem);
-	if (errnum == ARGC_ERROR)
-		ft_putstr_fd("pipex: Invaild argument\n", STDERR_FILENO);
-	else if (errnum == COMMAND_ERROR)
+	problem = ft_strjoin("minishell: ", problem);
+	if (errnum == COMMAND_ERROR)
 	{
 		problem = ft_strjoin(problem, ": command not found\n");
 		ft_putstr_fd(problem, STDERR_FILENO);
-		exit(EXIT_COMMAND_ERROR);
+		if (tenvp->main_pid != getpid())
+			exit(EXIT_COMMAND_ERROR); // TODO 나중에 종료변수 저장하도록 만들기
+		tenvp->exit_status = EXIT_COMMAND_ERROR;
+		return (tenvp->exit_status);
 	}
 	else if (errnum == PERMISSION_ERROR)
 	{
 		problem = ft_strjoin(problem, ": permission denied\n");
 		ft_putstr_fd(problem, STDERR_FILENO);
-		exit(EXIT_PERMOSSION_ERROR);
+		if (tenvp->main_pid != getpid())
+			exit(EXIT_PERMOSSION_ERROR);
+		tenvp->exit_status = EXIT_PERMOSSION_ERROR;
+		return (tenvp->exit_status);
 	}
 	else
 		perror(problem);
-	exit(EXIT_FAILURE);
+	if (tenvp->main_pid != getpid())
+		exit(EXIT_FAILURE); // TODO 나중에 종료변수 저장하도록 만들기
+	tenvp->exit_status = EXIT_FAILURE;
+	return (tenvp->exit_status);
 }
