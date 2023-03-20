@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-static char	**exception2(int i, t_envp tenvp)
+char	**exception2(int i, t_envp tenvp)
 {
 	char	**new_argv;
 
@@ -18,7 +18,7 @@ static char	**exception2(int i, t_envp tenvp)
 	return (new_argv);
 }
 
-static char	**exception(int i, t_envp tenvp, char *cmd)
+char	**exception(int i, t_envp tenvp, char *cmd)
 {
 	char	**new_argv;
 
@@ -33,7 +33,7 @@ static char	**exception(int i, t_envp tenvp, char *cmd)
 	return (new_argv);
 }
 
-static char	**argv_init(int i, t_envp tenvp)
+char	**argv_init(int i, t_envp tenvp)
 {
 	char	**new_argv;
 

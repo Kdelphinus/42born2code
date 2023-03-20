@@ -8,28 +8,43 @@ static void	working_pid(t_envp tenvp)
 	int		status;
 
 	i = -1;
-	while (++i < tenvp.argc - 1)
+	while (++i < tenvp.argc)
 	{
 		if (pipe(fds) == -1)
 			error(PIPE_ERROR, "pipe");
+		if (i == tenvp.argc - 1)
+		{
+			close(fds[0]);
+			close(fds[1]);
+		}
 		pid = fork();
 		if (pid == -1)
 			error(FORK_ERROR, "fork");
 		if (pid == 0)
 		{
-			dup2(fds[1], STDOUT_FILENO);
-			close(fds[0]);
+			if (i < tenvp.argc - 1)
+			{
+				dup2(fds[1], STDOUT_FILENO);
+				close(fds[0]);
+			}
 			work_pid(i, tenvp);
 		}
 		else
 		{
-			if (waitpid(pid, &status, WNOHANG) == -1)
-				error(RUN_ERROR, "pid");
-			dup2(fds[0], STDIN_FILENO);
-			close(fds[1]);
+			if (i == tenvp.argc - 1)
+			{
+				if (waitpid(pid, NULL, 0) == -1)
+					error(RUN_ERROR, "pid");
+			}
+			else
+			{
+				if (waitpid(pid, &status, WNOHANG) == -1)
+					error(RUN_ERROR, "pid");
+				dup2(fds[0], STDIN_FILENO);
+				close(fds[1]);
+			}
 		}
 	}
-	work_pid(i, tenvp);
 }
 
 static int	argv_len(char **argv)
@@ -42,21 +57,15 @@ static int	argv_len(char **argv)
 	return (i);
 }
 
-int	pipex(char *str, char **envp)
+int	pipex(char *str, t_envp tenvp)
 {
-	int		i;
-	t_envp	tenvp;
+	int i;
 
-	tenvp.paths = ft_split(getenv("PATH"), ':');
-	if (!tenvp.paths)
-		tenvp.paths = path_init();
 	tenvp.argv = ft_split(str, '|');
 	tenvp.argc = argv_len(tenvp.argv);
 	i = -1;
 	while (++i < tenvp.argc)
 		tenvp.argv[i] = ft_strtrim(tenvp.argv[i], " 	");
-	tenvp.envp = envp;
 	working_pid(tenvp);
 	return (EXIT_SUCCESS);
 }
-
