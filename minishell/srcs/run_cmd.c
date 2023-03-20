@@ -35,4 +35,8 @@ void	run_cmd(char *cmd, t_envp *tenvp)
 		waitpid(pid, &status, 0);
 	else
 		error(FORK_ERROR, "fork", tenvp);
+	if (WIFEXITED(status))
+		tenvp->exit_status = WEXITSTATUS(status);
+	else
+		exit(1); // TODO 시그널에 의해 종료되었거나 강제 종료되었을 때 처리가 필요함
 }

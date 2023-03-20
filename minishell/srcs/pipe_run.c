@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-static void	working_pid(t_envp *tenvp)
+static int	working_pid(t_envp *tenvp)
 {
 	int		fds[2];
 	pid_t	pid;
@@ -47,6 +47,7 @@ static void	working_pid(t_envp *tenvp)
 			}
 		}
 	}
+	return (status);
 }
 
 static int	argv_len(char **argv)
@@ -59,15 +60,19 @@ static int	argv_len(char **argv)
 	return (i);
 }
 
-int	pipex(char *str, t_envp *tenvp)
+void	pipex(char *str, t_envp *tenvp)
 {
 	int i;
+	int	status;
 
 	tenvp->argv = ft_split(str, '|');
 	tenvp->argc = argv_len(tenvp->argv);
 	i = -1;
 	while (++i < tenvp->argc)
 		tenvp->argv[i] = ft_strtrim(tenvp->argv[i], " 	");
-	working_pid(tenvp);
-	return (EXIT_SUCCESS);
+	status = working_pid(tenvp);
+	if (WIFEXITED(status))
+		tenvp->exit_status = WEXITSTATUS(status);
+	else
+		exit(1); // TODO 시그널에 의해 종료되었거나 강제 종료되었을 때 처리가 필요함
 }
