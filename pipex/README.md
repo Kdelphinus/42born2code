@@ -204,9 +204,11 @@ pid_t	waitpid(pid_t pid, int *status, int options);
 	> |매크로|설명|
 	> |:---:|:---:|
 	> |WIFEXITED(status)|자식 프로세스가 정상적으로 종료되었다면 TRUE|
-	> |WIFSIGNALED(status)|자식 프로세스가 시그널에 의해 종료되었다면 TRUE|
-	> |WIFSTOPPED(status)|자식 프로세스가 중단되었다면 TRUE|
 	> |WEXITSTATUS(status)|자식 프로세스가 정상 종료되었을 때 반환한 값|
+	> |WIFSIGNALED(status)|자식 프로세스가 시그널에 의해 종료되었다면 TRUE|
+	> |WTERMSIG(status)|자식 프로세스가 시그널에 의해 종료되었을 때 반환한 값|
+	> |WIFSTOPPED(status)|자식 프로세스가 중단되었다면 TRUE|
+	> |WSTOPSIG(status)|자식 프로세스가 중단되었을 때 반환한 값|
 
 - ``int options``: 여러 상수값이 있지만 대체로 두 가지를 많이 사용한다.
   - ``WNOHANG``: 자식 프로세스가 종료되었는지 실행 중인지 확인만 하고 바로 복귀, 즉 부모 프로세스는 block되지 않는다.
