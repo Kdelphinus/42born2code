@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "baa22b5cc1e4fc30",
+        "id": "5dee2bc897d0c875",
         "type": "tabs",
         "children": [
           {
-            "id": "295728dc3b2c8c87",
+            "id": "408d87fe0fd16498",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "minishell/README.md",
+                "file": "minishell/redirection.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "79def2b8714f6901",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "minishell/README.md",
+                "file": "minishell/redirection.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "minishell/README.md",
+                "file": "minishell/redirection.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "minishell/README.md"
+                "file": "minishell/redirection.md"
               }
             }
           }
@@ -147,8 +146,11 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "295728dc3b2c8c87",
+  "active": "408d87fe0fd16498",
   "lastOpenFiles": [
+    "minishell/redirection.md",
+    "minishell/개요.md",
+    "무제 파일.canvas",
     "pipex/cmake-build-debug/CMakeFiles/clion-Debug-log.txt",
     "pipex/cmake-build-debug/CMakeFiles/cmake.check_cache",
     "pipex/cmake-build-debug/CMakeCache.txt",
@@ -159,12 +161,9 @@
     "pipex/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/progress.marks",
     "pipex/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/TargetDirectories.txt",
     "pipex/cmake-build-debug/CMakeFiles/CMakeTmp/cmake_install.cmake",
-    "pipex/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/CMakeDirectoryInformation.cmake",
     "pipex/README.md",
-    "minishell/README.md",
     "Philosophers/README.md",
     "무제 파일 1.canvas",
-    "무제 파일.canvas",
     "README.md"
   ]
 }
