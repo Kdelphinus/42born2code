@@ -108,7 +108,7 @@
 ```c
 #include <unistd.h>
 
-int sleep(useconds_t usec);
+int usleep(useconds_t usec);
 ```
 
 마이크로초 단위로 sleep한다. 100000ms = 1s이다.
