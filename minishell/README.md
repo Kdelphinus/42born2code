@@ -1,5 +1,7 @@
 # minishell
 
+[42Seoulcowork/Minishell_202303](https://github.com/42Seoulcowork/Minishell_202303)이 원본입니다.
+
 ## 1. git 관련
 
 - 별일 없으면 **무조건 한 파일씩!** commit 하기
@@ -34,6 +36,8 @@
 |4/17~22|**공통**<br>-4/17에 평가 받기<br>- 통과 시, 다음 과제<br>- 실패 시, 피드백 후 리트라이|
 
 ## 4. 진행 현황
+
+자세한 것은 원본 레포지토리의 깃 로그 참조
 
 ### 1) 2023.03.30
 - redirection 설정 구현
@@ -165,3 +169,14 @@ else
 	- 있는 파일을 그대로 입력했을 때, "command not found"가 나오도록 수정
 	- unset 명령어의 인자로 변수 이름이 될 수 없는 것들이 들어올 때 에러 처리
 
+### 5) 2023.04.11
+- heredoc fd 닫아야 함
+  - 구조체를 바꾸던지, while로 close하던지
+- here_doc에 환경변수 형태가 들어오면 환경변수 값으로 대체하면 안 됨
+- 값이 없는 환경변수를 참조할 때, NULL 참조해서 터짐
+- cmd가 NULL일 때, 처리
+- built-in 함수에 인자로 빈문자열("", '')이 들어왔을 때, 처리
+
+### 6) 2023.04.12
+- built-in, execute 관련 leak check
+- 파이프 fd들 close
