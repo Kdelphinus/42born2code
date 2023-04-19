@@ -1,0 +1,2 @@
+while true; do leaks minishell; sleep 3; done;
+단 -fsanitize=address 없이
