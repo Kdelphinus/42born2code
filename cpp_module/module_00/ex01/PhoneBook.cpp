@@ -1,5 +1,7 @@
-//
-// Created by Myoung jun Ko on 4/25/23.
-//
-
 #include "PhoneBook.h"
+#include <iostream>
+
+int main(void)
+{
+    std::cout << "Hello World\n" << std::endl;
+}
