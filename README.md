@@ -9,7 +9,7 @@
   - **내년 1월에 미니쉘 시작만이라도...**
     - 1월 시작? ㅎㅎㅎ
     - 3월 시작도 못하면 정말 블랙홀...위험...
-    - 이제 미니쉘 subillie([github](https://github.com/subillie), [intra](https://profile.intra.42.fr/users/subinlee))가 ~~캐리할~~버스 탈 차례
+    - 이제 미니쉘 subillie([github](https://github.com/subillie), [intra](https://profile.intra.42.fr/users/subinlee))가 ~~캐리할~~ 버스 탈 차례
 - 23년도 목표 올해 멤버 달기!!
 
 ## Index
