@@ -9,11 +9,12 @@
   - **내년 1월에 미니쉘 시작만이라도...**
     - 1월 시작? ㅎㅎㅎ
     - 3월 시작도 못하면 정말 블랙홀...위험...
-    - 이제 미니쉘 subillie([github](https://github.com/subillie), [intra](https://profile.intra.42.fr/users/subinlee))가 캐리할 차례
+    - 이제 미니쉘 subillie([github](https://github.com/subillie), [intra](https://profile.intra.42.fr/users/subinlee))가 ~~캐리할~~버스 탈 차례
+- 23년도 목표 올해 멤버 달기!!
 
 ## Index
 
-- [01. Libf](#01-libft)
+- [01. Libft](#01-libft)
 - [02. ft_printf](#02-ft_printf)
 - [03. get_next_line](#03-get_next_line)
 - [04. Born2beroot](#04-born2beroot)
