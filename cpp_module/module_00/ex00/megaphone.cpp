@@ -9,7 +9,7 @@ int	main(int argc, char **argv)
 	else {
 		for (int i = 1; i < argc; i++) {
 			for (int j = 0; argv[i][j]; j++)
-				str += (char)std::toupper(argv[i][j]);
+				str += static_cast<char>(std::toupper(argv[i][j]));
 		}
 		std::cout << str << std::endl;
 	}

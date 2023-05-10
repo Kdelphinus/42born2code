@@ -5,17 +5,17 @@ int main()
 	std::string cmd;
 	PhoneBook phoneBook = PhoneBook();
 
-	while (1) {
+	while (true) {
 		std::cout << "Input command(ADD, SEARCH, EXIT): ";
 		getline(std::cin, cmd);
 		if (std::cin.eof())
 			exit(0);
 		if (cmd == "ADD")
-			phoneBook.Add();
+			phoneBook.add();
 		else if (cmd == "SEARCH")
-			phoneBook.Search();
+			phoneBook.search();
 		else if (cmd == "EXIT")
-			phoneBook.Exit();
+			phoneBook.exitPhoneBook();
 		else
 			std::cout << "Wrong command" << std::endl;
 	}

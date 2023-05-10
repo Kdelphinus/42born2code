@@ -7,16 +7,23 @@
 
 class Contact {
 	private:
-		std::string first_name;
-		std::string last_name;
-		std::string nickname;
-		std::string phone_number;
-		std::string darkest_secret;
+		std::string _firstName;
+		std::string _lastName;
+		std::string _nickname;
+		std::string _phoneNumber;
+		std::string _darkestSecret;
+		std::string _checkLength(std::string str);
 	public:
 		Contact();
-		void Add();
-		void PrintInfo(int idx);
-		void DetailInfo(int idx);
+		Contact(
+				std::string firstName,
+				std::string lastName,
+				std::string nickname,
+				std::string phoneNumber,
+				std::string darkestSecret
+		);
+		void printInfo(int idx);
+		void detailInfo(int idx);
 };
 
 #endif

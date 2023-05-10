@@ -6,13 +6,16 @@
 
 class PhoneBook {
 	private:
-		int idx;
-		Contact contact_list[8];
+		int _idx;
+        int _totalIdx;
+		Contact _contactList[8];
+		bool _tryAtoi(const char *line, int& result);
+		bool _getLine(std::string& str);
 	public:
 		PhoneBook();
-		void Add();
-		void Search();
-		void Exit();
+		void add();
+		void search();
+		void exitPhoneBook();
 };
 
 #endif
