@@ -23,6 +23,9 @@
 - [07. push_swap](#07-push_swap)
 - [08. Philsophers](#08-philosophers)
 - [09. minishell](#09-minishell)
+- [10. net_practice](#10-net_practice)
+- [11. cpp_modules 00~04](#11-cpp_modules-0004)
+- [12. cub3d](#12-cub3d)
 
 ## 01. Libft
 - 기간: 2022.07.05 ~ 2022.07.14
@@ -83,10 +86,16 @@
 - 기간: 2023.04.24 ~ 2023.05.02
 - 개요: 시스템 관리 관련 연습 문제들
 - 보너스: X
-- 한줄평: ip, submask, router...
+- 한줄평: ip, submask, router
 
 ## 11. cpp_modules 00~04
 - 기간: 2023.04.24 ~
 - 개요: cpp module 연습하기
 - 보너스: X
 - 한줄평: 
+
+## 12. cub3d
+- 기간: 2023.05.11 ~ 2023.05.
+- 개요: 레이캐스팅 실습
+- 보너스: X
+- 한줄평: subject를 잘 확인하자
