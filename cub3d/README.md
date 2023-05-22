@@ -1,5 +1,7 @@
 # cub3d
 
+작업은 [이 곳](https://github.com/jaekkang/cub3d)에서 진행했습니다.
+
 ## 1. git 관련
 
 - 별일 없으면 **무조건 한 파일씩!** commit 하기
