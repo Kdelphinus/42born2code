@@ -3,7 +3,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 STD_FLAG = -std=c++98
 
-SRC = main.cpp 
+SRC = main.cpp sed.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
