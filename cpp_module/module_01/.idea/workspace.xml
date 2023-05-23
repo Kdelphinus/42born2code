@@ -18,11 +18,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c78e748-067c-470a-8569-b637548fb092" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/ex05/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ex05/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex04/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/ex04/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex04/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex04/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex04/sed.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex04/sed.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex04/sed.h" beforeDir="false" afterPath="$PROJECT_DIR$/ex04/sed.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +34,13 @@
     <projectState path="$PROJECT_DIR$/ex04">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Makefile_for_C++" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -136,7 +141,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684737635053</updated>
       <workItem from="1684737636617" duration="628000" />
-      <workItem from="1684840543427" duration="3931000" />
+      <workItem from="1684840543427" duration="4133000" />
     </task>
     <servers />
   </component>
