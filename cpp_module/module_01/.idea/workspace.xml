@@ -17,11 +17,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c78e748-067c-470a-8569-b637548fb092" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex05/Harl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex05/Harl.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex05/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex05/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="6c78e748-067c-470a-8569-b637548fb092" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,7 +135,7 @@
       <workItem from="1684840543427" duration="4528000" />
       <workItem from="1684895220707" duration="1181000" />
       <workItem from="1684900750693" duration="297000" />
-      <workItem from="1684901055256" duration="3468000" />
+      <workItem from="1684901055256" duration="3729000" />
     </task>
     <servers />
   </component>
