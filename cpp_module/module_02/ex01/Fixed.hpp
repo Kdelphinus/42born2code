@@ -22,7 +22,7 @@ class Fixed {
 		int toInt(void) const;
 		float toFloat(void) const;
 
-//		&operator<<();
 };
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif

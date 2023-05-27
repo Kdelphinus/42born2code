@@ -35,10 +35,14 @@ void Fixed::setRawBits(const int raw) {
 	this->_num = raw;
 }
 
-int Fixed::toInt() const {
+int Fixed::toInt(void) const {
 	return roundf(this->_num);
 }
 
-float Fixed::toFloat() const {
-	return static_cast<float>this->_num;
+float Fixed::toFloat(void) const {
+	return static_cast<float>(this->_num);
+}
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
+	return out << fixed.toFloat();
 }
