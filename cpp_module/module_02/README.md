@@ -31,7 +31,7 @@
 - 정수부와 소수부의 경계를 소수점의 위치라고 생각하고 2진수로 변환된 수를 그대로 넣으면 된다.
 - 남는 자리는 0으로 채운다.
 
-![고정 소수점](https://gguguk.github.io/assets/img/post_img/fixed_point.png)
+![고정 소수점](img/fixed_point.png)
 
 예를 들어, 10진수 7.625를 32비트 고정 소수점으로 표현해보자.
 먼저 7.625를 2진수로 표현하면 다음과 같다.
@@ -42,7 +42,7 @@ $$
 
 이를 위 그림에 대입하여 고정 소수점으로 나타내면 다음과 같다.
 
-![111.101 고정 소수점](https://gguguk.github.io/assets/img/post_img/fixed_point_example.png)
+![111.101 고정 소수점](img/fixed_point_example.png)
 
 #### 장점
 
@@ -65,7 +65,7 @@ $$
 - 다음 8비트는 `지수부(exponent)` 를 나타낸다. 정규화 과정에서 얻어낸 지수에 bias를 더한 값으로 채운다.
 - 다음 23비트는 `가수부(mantissa)` 를 나타낸다. 소수 부분의 값으로 채운다.
 
-![부동 소수점](https://gguguk.github.io/assets/img/post_img/floating_point.png)
+![부동 소수점](img/floating_point.png)
 
 #### 정규화
 
@@ -106,7 +106,7 @@ bias를 더해주는 이유는 **지수가 음수일 경우를 대처하기 위�
 3. 지수부: $2_{(10)} + 127_{(10)}(bias) = 129_{(10)} = 10000001_{(2)}$
 4. 가수부: $11101_{(2)}$
 
-![부동 소수점 예시](https://gguguk.github.io/assets/img/post_img/floating_point_example.png)
+![부동 소수점 예시](img/floating_point_example.png)
 
 #### 장점
 
