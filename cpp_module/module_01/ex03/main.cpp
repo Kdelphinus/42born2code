@@ -1,4 +1,4 @@
-[#include "Weapon.h"
+#include "Weapon.h"
 #include "HumanA.h"
 #include "HumanB.h"
 
