@@ -72,13 +72,13 @@ void	ray_cast(t_ray *ray, t_game_info *game_info)
 	window_init(game_info->map_data, game_info->img);
 	while (++x < SCREENWIDTH)
 	{
-		ray_dir_init(x, ray);
-		ray_step_init(ray);
-		dda(ray, game_info->map_data);
-		choice_tex(ray);
-		put_color(x, ray, game_info->map_data->textures, game_info);
+		ray_dir_init(x, ray);                                        // ray의 방향 초기화
+		ray_step_init(ray);                                          // ray가 나가는 방향 초기화 및 가까운 x, y면 거리 계산
+		dda(ray, game_info->map_data);                               // dda 알고리즘으로 벽의 좌표 계산
+		choice_tex(ray);                                             // 벽까지의 거리와 어느 텍스쳐를 출력할 지 결정
+		put_color(x, ray, game_info->map_data->textures, game_info); // 각 벽에 대해서 텍스쳐의 비율 조정 및 픽셀값 입력
 	}
 	ray->frame_time = 0.022;
-	ray->move_speed = ray->frame_time * 15.0;
-	ray->rot_speed = ray->frame_time * 3.0;
+	ray->move_speed = ray->frame_time * 15.0;                        // 플레이어가 움직이는 속도
+	ray->rot_speed = ray->frame_time * 3.0;                          // 플레이어의 시야가 회전하는 속도
 }
