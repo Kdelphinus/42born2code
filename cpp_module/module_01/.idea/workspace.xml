@@ -18,11 +18,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c78e748-067c-470a-8569-b637548fb092" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/../module_04/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../module_03/ex01/ClapTrap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../module_03/ex01/ClapTrap.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../module_03/ex01/ScavTrap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../module_03/ex01/ScavTrap.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +64,11 @@
         </entry>
       </map>
     </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$/ex04" value="RE_IMPORT" />
+      </map>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -97,6 +98,11 @@
   }
 }</component>
   <component name="RunManager" selected="Makefile 애플리케이션.all">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_01" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -139,6 +145,7 @@
       <workItem from="1684901055256" duration="3822000" />
       <workItem from="1685790725184" duration="150000" />
       <workItem from="1685790975226" duration="54000" />
+      <workItem from="1686198876093" duration="469000" />
     </task>
     <servers />
   </component>

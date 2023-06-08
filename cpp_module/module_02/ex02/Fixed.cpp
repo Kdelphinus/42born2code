@@ -45,7 +45,7 @@ Fixed Fixed::operator-(const Fixed &fixed) const {
 }
 
 Fixed Fixed::operator*(const Fixed &fixed) const {
-	return Fixed(this->toFloat() * fixed.toFloat());
+	return Fixed(this->toFloat() * fixed.toFloat()); // 직접 값을 가져와 비트연산을 해라 - to 진홍 -
 }
 
 Fixed Fixed::operator/(const Fixed &fixed) const {
