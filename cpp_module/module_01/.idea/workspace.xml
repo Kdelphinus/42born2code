@@ -19,6 +19,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6c78e748-067c-470a-8569-b637548fb092" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex03/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/ex03/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex04/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/ex04/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex05/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/ex05/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex06/Harl.h" beforeDir="false" afterPath="$PROJECT_DIR$/ex06/Harl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex06/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/ex06/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex06/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex06/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,11 +104,6 @@
   }
 }</component>
   <component name="RunManager" selected="Makefile 애플리케이션.all">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_01" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -146,6 +147,8 @@
       <workItem from="1685790725184" duration="150000" />
       <workItem from="1685790975226" duration="54000" />
       <workItem from="1686198876093" duration="469000" />
+      <workItem from="1686201314840" duration="368000" />
+      <workItem from="1686209848923" duration="830000" />
     </task>
     <servers />
   </component>

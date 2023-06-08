@@ -1,4 +1,4 @@
-NAME = sed_is_for_losers
+NAME = sedIsForLosers
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 STD_FLAG = -std=c++98

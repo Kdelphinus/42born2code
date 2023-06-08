@@ -1,4 +1,4 @@
-NAME = hi_this_is_brain
+NAME = hiThisIsBrain
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 STD_FLAG = -std=c++98

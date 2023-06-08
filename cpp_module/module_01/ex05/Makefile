@@ -1,4 +1,4 @@
-NAME = harl_2
+NAME = harl2
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 STD_FLAG = -std=c++98

@@ -1,4 +1,4 @@
-NAME = unnecessary_violence
+NAME = unnecessaryViolence
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 STD_FLAG = -std=c++98
