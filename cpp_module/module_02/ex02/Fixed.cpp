@@ -45,11 +45,15 @@ Fixed Fixed::operator-(const Fixed &fixed) const {
 }
 
 Fixed Fixed::operator*(const Fixed &fixed) const {
-	return Fixed(this->toFloat() * fixed.toFloat()); // 직접 값을 가져와 비트연산을 해라 - to 진홍 -
+    int mod = 1 << this->_fractionalBits;
+    int fixedMod = 1 << fixed._fractionalBits;
+    return Fixed((static_cast<float>(this->_num) / mod) * (static_cast<float>(fixed._num) / fixedMod));
 }
 
 Fixed Fixed::operator/(const Fixed &fixed) const {
-	return Fixed(this->toFloat() / fixed.toFloat());
+    int mod = 1 << this->_fractionalBits;
+    int fixedMod = 1 << fixed._fractionalBits;
+    return Fixed((static_cast<float>(this->_num) / mod) / (static_cast<float>(fixed._num) / fixedMod));
 }
 
 Fixed Fixed::operator++(void) {
