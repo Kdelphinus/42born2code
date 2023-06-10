@@ -1,4 +1,4 @@
-NAME = Repetitive_work
+NAME = RepetitiveWork
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 STD_FLAG = -std=c++98

@@ -1,4 +1,4 @@
-NAME = Serena_my_love
+NAME = SerenaMyLove
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 STD_FLAG = -std=c++98
