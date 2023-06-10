@@ -1,4 +1,4 @@
-NAME = my_first_class_in_OCF
+NAME = myFirstClassInOcf
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 STD_FLAG = -std=c++98
