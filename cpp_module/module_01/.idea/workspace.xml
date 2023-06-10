@@ -19,11 +19,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6c78e748-067c-470a-8569-b637548fb092" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex03/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/ex03/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex04/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/ex04/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex05/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/ex05/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex06/Harl.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex06/Harl.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ex06/Harl.h" beforeDir="false" afterPath="$PROJECT_DIR$/ex06/Harl.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex06/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/ex06/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ex06/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex06/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,34 +101,6 @@
     &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Makefile 애플리케이션.all">
-    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_01" TARGET_NAME="all" CONFIG_NAME="all" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_01" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_01" TARGET_NAME="re" CONFIG_NAME="re" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="sed_is_for_losers" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_01" TARGET_NAME="sed_is_for_losers" CONFIG_NAME="sed_is_for_losers" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Makefile 애플리케이션.all" />
-      <item itemvalue="Makefile 애플리케이션.fclean" />
-      <item itemvalue="Makefile 애플리케이션.re" />
-      <item itemvalue="Makefile 애플리케이션.sed_is_for_losers" />
-    </list>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
@@ -149,6 +119,7 @@
       <workItem from="1686198876093" duration="469000" />
       <workItem from="1686201314840" duration="368000" />
       <workItem from="1686209848923" duration="830000" />
+      <workItem from="1686390536900" duration="4449000" />
     </task>
     <servers />
   </component>

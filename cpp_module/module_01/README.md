@@ -8,3 +8,4 @@
 
 ## 참고 문헌
 - [42seoul, C++ Module 01](https://cdn.intra.42.fr/pdf/pdf/82232/en.subject.pdf)
+- [팔만코딩경, switch case에서의 명시적 fallthrough](https://80000coding.oopy.io/e570df15-29ef-4642-9045-4f72795785e9)
