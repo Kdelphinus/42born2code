@@ -13,6 +13,6 @@ int main() {
     std::cout << "boundary of a triangle: " << bsp(a, b, c, p2) << std::endl;
 
     Point p3 = Point(Fixed(1), Fixed(0));
-    std::cout << "outside of a triangle: " << bsp(a, b, c, p2) << std::endl;
+    std::cout << "outside of a triangle: " << bsp(a, b, c, p3) << std::endl;
 	return 0;
 }
