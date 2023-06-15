@@ -1,21 +1,21 @@
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap() : ClapTrap() {
-    std::cout << "ScavTrap Default constructor called" << std::endl;
-	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 20;
+    std::cout << "ScavTrap " << this->_name << " Default constructor called" << std::endl;
+    this->_hitPoints = 100;
+    this->_energyPoints = 50;
+    this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-    std::cout << "ScavTrap Name constructor called" << std::endl;
+    std::cout << "ScavTrap " << this->_name << " Name constructor called" << std::endl;
     this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &st) {
-    std::cout << "ScavTrap Copy constructor called" << std::endl;
+    std::cout << "ScavTrap " << this->_name << " Copy constructor called" << std::endl;
     this->_name = st.getName();
     this->_hitPoints = st.getHitPoints();
     this->_energyPoints = st.getEnergyPoints();
@@ -23,18 +23,18 @@ ScavTrap::ScavTrap(const ScavTrap &st) {
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &st) {
-    std::cout << "ScavTrap Copy assignment operator called" << std::endl;
     if (this != &st) {
         this->_name = st.getName();
         this->_hitPoints = st.getHitPoints();
         this->_energyPoints = st.getEnergyPoints();
         this->_attackDamage = st.getDamage();
     }
+    std::cout << "ScavTrap " << this->_name << " Copy assignment operator called" << std::endl;
     return *this;
 }
 
 ScavTrap::~ScavTrap() {
-    std::cout << "ScavTrap Destructor called" << std::endl;
+    std::cout << "ScavTrap " << this->_name << " Destructor called" << std::endl;
 }
 
 void ScavTrap::attack(const std::string &target) {
@@ -48,5 +48,5 @@ void ScavTrap::attack(const std::string &target) {
 }
 
 void ScavTrap::guardGate() {
-	std::cout << this->_name << " is now in Gate keeper mode" << std::endl;
+    std::cout << this->_name << " is now in Gate keeper mode" << std::endl;
 }

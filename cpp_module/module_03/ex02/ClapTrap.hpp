@@ -4,32 +4,32 @@
 #include <iostream>
 
 class ClapTrap {
-	protected:
-		std::string _name;
-		int _hitPoints;
-		int _energyPoints;
-		int _attackDamage;
+    protected:
+        std::string _name;
+        int _hitPoints;
+        int _energyPoints;
+        int _attackDamage;
 
     public:
         ClapTrap();
-		ClapTrap(std::string name);
+        ClapTrap(std::string name);
         ClapTrap(const ClapTrap &ct);
         ClapTrap &operator=(const ClapTrap &ct);
         ~ClapTrap();
 
-		void setName(std::string name);
-		void setDamage(int damage);
-		void setHitPoints(int hp);
-		void setEnergyPoints(int ep);
+        void setName(std::string name);
+        void setDamage(int damage);
+        void setHitPoints(int hp);
+        void setEnergyPoints(int ep);
 
         std::string getName(void) const;
-		int getDamage(void) const ;
-		int getHitPoints(void) const;
-		int getEnergyPoints(void) const;
+        int getDamage(void) const;
+        int getHitPoints(void) const;
+        int getEnergyPoints(void) const;
 
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
+        void attack(const std::string &target);
+        void takeDamage(unsigned int amount);
+        void beRepaired(unsigned int amount);
 };
 
 #endif

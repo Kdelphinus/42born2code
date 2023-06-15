@@ -8,7 +8,8 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
     std::cout << "Name constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &ct) : _name(ct.getName()), _hitPoints(ct.getHitPoints()), _energyPoints(ct.getEnergyPoints()),
+ClapTrap::ClapTrap(const ClapTrap &ct) : _name(ct.getName()), _hitPoints(ct.getHitPoints()),
+                                         _energyPoints(ct.getEnergyPoints()),
                                          _attackDamage(ct.getDamage()) {
     std::cout << "Copy constructor called" << std::endl;
 }
