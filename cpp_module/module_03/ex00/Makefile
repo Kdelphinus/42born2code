@@ -1,4 +1,4 @@
-NAME = AaaaandOPEN!
+NAME = aaaaandOPEN!
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 STD_FLAG = -std=c++98
