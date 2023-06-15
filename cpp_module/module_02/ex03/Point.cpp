@@ -7,10 +7,14 @@ Point::Point(const Fixed fixedX, const Fixed fixedY) : _x(fixedX), _y(fixedY) {}
 Point::Point(const Point &point) : _x(point._x), _y(point._y) {}
 
 Point &Point::operator=(const Point &point) {
-    if (this->_x != point.getX())
-        const_cast<Fixed>(this->_x) = point.getX();
-    if (this->_y != point.getY())
-        const_cast<Fixed>(this->_y) = point.getY();
+    if (this->_x != point.getX()) {
+        Fixed& tmpX = const_cast<Fixed&>(this->_x);
+        tmpX = point.getX();
+    }
+    if (this->_y != point.getY()) {
+        Fixed& tmpY = const_cast<Fixed&>(this->_y);
+        tmpY = point.getY();
+    }
 	return *this;
 }
 
