@@ -9,6 +9,7 @@
       <config projectName="module_01" targetName="fclean" />
       <config projectName="module_01" targetName="re" />
       <config projectName="module_01" targetName="all" />
+      <config projectName="module_01" targetName="sedIsForLosers" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -98,6 +99,18 @@
     &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="sedIsForLosers" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_01" TARGET_NAME="sedIsForLosers" CONFIG_NAME="sedIsForLosers" version="1">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
@@ -118,6 +131,7 @@
       <workItem from="1686209848923" duration="830000" />
       <workItem from="1686390536900" duration="4541000" />
       <workItem from="1686632854131" duration="293000" />
+      <workItem from="1686818254894" duration="156000" />
     </task>
     <servers />
   </component>
