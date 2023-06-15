@@ -57,19 +57,19 @@ void ClapTrap::setHitPoints(int hp) {
     this->_hitPoints = hp;
 }
 
-std::string ClapTrap::getName() {
+std::string ClapTrap::getName() const {
     return this->_name;
 }
 
-int ClapTrap::getDamage() {
+int ClapTrap::getDamage() const {
     return this->_attackDamage;
 }
 
-int ClapTrap::getHitPoints() {
+int ClapTrap::getHitPoints() const {
     return this->_hitPoints;
 }
 
-int ClapTrap::getEnergyPoints() {
+int ClapTrap::getEnergyPoints() const {
     return this->_energyPoints;
 }
 
