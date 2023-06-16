@@ -2,18 +2,24 @@
 
 Dog::Dog() : Animal() {
     Animal::_type = "Dog";
+    std::cout << "Dog constructor called" << std::endl;
 }
 
 Dog::Dog(const Dog &dog) : Animal() {
     Animal::_type = dog.getType();
+    std::cout << "Dog copy constructor called" << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &dog) {
-    Animal::_type = dog.getType();
+    if (this != &dog)
+        Animal::_type = dog.getType();
+    std::cout << "Dog copy assignment operator called" << std::endl;
     return *this;
 }
 
-Dog::~Dog() {}
+Dog::~Dog() {
+    std::cout << "Dog destructor called" << std::endl;
+}
 
 void Dog::makeSound() const {
     std::cout << "멍멍!!" << std::endl;

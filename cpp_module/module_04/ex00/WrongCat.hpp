@@ -10,7 +10,7 @@ class WrongCat : public WrongAnimal {
         WrongCat &operator=(const WrongCat &wrongCat);
         ~WrongCat();
 
-        void makeSound() const override;
+        void makeSound() const;
 };
 
 #endif
