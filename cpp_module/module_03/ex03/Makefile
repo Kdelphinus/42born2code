@@ -1,6 +1,6 @@
 NAME = nowItisWerid
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror #-Wshadow #-Wno-shadow
 STD_FLAG = -std=c++98
 
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
