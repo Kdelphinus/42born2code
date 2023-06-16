@@ -5,7 +5,7 @@
 
 class Animal {
 	protected:
-		std::string _type;
+		std::string type;
     public:
         Animal();
         Animal(const Animal &animal);
