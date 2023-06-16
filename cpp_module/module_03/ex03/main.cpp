@@ -4,7 +4,10 @@
 #include "DiamondTrap.hpp"
 
 int main() {
-    DiamondTrap a;
+    DiamondTrap a = DiamondTrap("test");
 
-    std::cout << a.getName() << std::endl;
+    std::cout << "name: " << a.getName() << " (_clap_name)\n"
+              << "hp: " << a.getHitPoints() << " (FragTrap: 100)\n"
+              << "ep: " << a.getEnergyPoints() << " (ScavTrap: 50)\n"
+              << "damage: " << a.getDamage() << " (FragTrap: 30)" << std::endl;
 }
