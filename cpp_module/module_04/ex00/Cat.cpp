@@ -1,21 +1,20 @@
 #include "Cat.hpp"
 
-Cat::Cat() {
-	this->setType("Cat");
+Cat::Cat() : Animal() {
+	Animal::_type = "Cat";
 }
 
-Cat::Cat(const Cat &cat) {
-    this->setType(cat.getType());
+Cat::Cat(const Cat &cat) : Animal() {
+    Animal::_type = cat.getType();
 }
 
 Cat &Cat::operator=(const Cat &cat) {
-	this->setType(cat.getType());
-    return (*this);
+	Animal::_type = cat.getType();
+    return *this;
 }
 
-Cat::~Cat() {
-}
+Cat::~Cat() {}
 
 void Cat::makeSound() const {
-	std::cout << "멍멍!!" << std::endl;
+	std::cout << "야옹~" << std::endl;
 }

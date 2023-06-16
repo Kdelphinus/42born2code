@@ -5,7 +5,7 @@
 
 class Animal {
 	protected:
-		std::string type;
+		std::string _type;
     public:
         Animal();
         Animal(const Animal &animal);
@@ -13,7 +13,7 @@ class Animal {
         ~Animal();
 
 		virtual void makeSound() const;
-		const std::string getType() const;
+		std::string getType() const;
 		void setType(std::string type);
 };
 
