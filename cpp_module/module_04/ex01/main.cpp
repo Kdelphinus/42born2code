@@ -1,31 +1,19 @@
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include "Brain.hpp"
 
 int main() {
-	const Animal* animal = new Animal();
-	const Animal* dog = new Dog();
-	const Animal* cat = new Cat();
-    const WrongAnimal* wrongAnimal = new WrongAnimal();
-    const WrongAnimal* wrongCat = new WrongCat();
+	Brain brain = Brain();
 
-    std::cout << animal->getType() << " : " << std::endl;
-    animal->makeSound();
-	std::cout << dog->getType() << " : " << std::endl;
-    dog->makeSound();
-    std::cout << cat->getType() << " : " << std::endl;
-    cat->makeSound();
-    std::cout << wrongAnimal->getType() << " : " << std::endl;
-    wrongAnimal->makeSound();
-    std::cout << wrongCat->getType() << " : " << std::endl;
-    wrongCat->makeSound();
+    brain.setIdeas(0, "Cat");
+    brain.setIdeas(1, "Dog");
+    std::cout << "ideas[0]: " << brain.getIdeas(0) << std::endl;
+    std::cout << "ideas[1]: " << brain.getIdeas(1) << std::endl;
+    std::cout << "ideas[2]: " << brain.getIdeas(2) << std::endl;
 
-    delete animal;
-    delete dog;
-    delete cat;
-    delete wrongAnimal;
-    delete wrongCat;
+    Brain tmp;
+
+    tmp = brain;
+    std::cout << "ideas[0]: " << tmp.getIdeas(0) << std::endl;
+    std::cout << "ideas[1]: " << tmp.getIdeas(1) << std::endl;
+    std::cout << "ideas[2]: " << tmp.getIdeas(2) << std::endl;
 	return 0;
 }
