@@ -10,9 +10,9 @@ Animal::Animal(const Animal &animal) : type(animal.getType()) {
 
 Animal &Animal::operator=(const Animal &animal) {
     if (this != &animal)
-	    this->type = animal.getType();
+        this->type = animal.getType();
     std::cout << "Animal copy assignment operator called" << std::endl;
-	return *this;
+    return *this;
 }
 
 Animal::~Animal() {
@@ -20,12 +20,12 @@ Animal::~Animal() {
 }
 
 std::string Animal::getType() const {
-	return this->type;
+    return this->type;
 }
 
 void Animal::setType(std::string type) {
-	if (this->type != type)
-		this->type = type;
+    if (this->type != type)
+        this->type = type;
 }
 
 void Animal::makeSound() const {
