@@ -31,3 +31,12 @@ void Animal::setType(std::string type) {
 void Animal::makeSound() const {
     std::cout << "this is animal" << std::endl;
 }
+
+void Animal::setIdeas(int idx, std::string idea) const {
+    std::cout << "Animal can't have " << idea << " (" << idx << ")" << std::endl;
+}
+
+std::string Animal::getIdeas(int idx) const {
+    std::cout << "Animal can't get " << idx << " idea" << std::endl;
+    return "";
+}
