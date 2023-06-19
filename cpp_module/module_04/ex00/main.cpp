@@ -5,15 +5,15 @@
 #include "WrongCat.hpp"
 
 int main() {
-	const Animal* animal = new Animal();
-	const Animal* dog = new Dog();
-	const Animal* cat = new Cat();
-    const WrongAnimal* wrongAnimal = new WrongAnimal();
-    const WrongAnimal* wrongCat = new WrongCat();
+    const Animal *animal = new Animal();
+    const Animal *dog = new Dog();
+    const Animal *cat = new Cat();
+    const WrongAnimal *wrongAnimal = new WrongAnimal();
+    const WrongAnimal *wrongCat = new WrongCat();
 
     std::cout << animal->getType() << " : " << std::endl;
     animal->makeSound();
-	std::cout << dog->getType() << " : " << std::endl;
+    std::cout << dog->getType() << " : " << std::endl;
     dog->makeSound();
     std::cout << cat->getType() << " : " << std::endl;
     cat->makeSound();
@@ -27,5 +27,5 @@ int main() {
     delete cat;
     delete wrongAnimal;
     delete wrongCat;
-	return 0;
+    return 0;
 }

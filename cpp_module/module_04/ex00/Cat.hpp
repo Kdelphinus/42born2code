@@ -10,7 +10,7 @@ class Cat : public Animal {
         Cat &operator=(const Cat &cat);
         ~Cat();
 
-		void makeSound() const;
+        void makeSound() const;
 };
 
 #endif

@@ -12,7 +12,7 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &wrongAnimal) {
     if (this != &wrongAnimal)
         this->type = wrongAnimal.getType();
     std::cout << "Wrong animal copy assignment operator called" << std::endl;
-	return *this;
+    return *this;
 }
 
 WrongAnimal::~WrongAnimal() {
