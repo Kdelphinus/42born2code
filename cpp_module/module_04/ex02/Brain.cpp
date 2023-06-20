@@ -31,7 +31,7 @@ void Brain::setIdeas(int idx, std::string idea) {
     this->ideas[idx] = idea;
 }
 
-std::string Brain::getIdeas(int idx) const {
+std::string const Brain::getIdeas(int idx) const {
     if (idx >= 100 || idx < 0) {
         std::cout << "Invalid index" << std::endl;
         return "";

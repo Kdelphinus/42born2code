@@ -19,7 +19,7 @@ WrongAnimal::~WrongAnimal() {
     std::cout << "Wrong animal destructor called" << std::endl;
 }
 
-std::string WrongAnimal::getType() const {
+std::string const &WrongAnimal::getType() const {
     return this->type;
 }
 

@@ -14,8 +14,7 @@
 */
 
 int main() {
-//    추상 클래스이기에 컴파일 시, 에러
-//    const AbstractAnimal *abstractAnimal = new AbstractAnimal();
+//    const AbstractAnimal *abstractAnimal = new AbstractAnimal(); // 추상 클래스이기에 컴파일 시, 에러
 
     std::cout << "\n========ANIMAL========" << std::endl;
     std::cout << "<create>" << std::endl;

@@ -12,7 +12,7 @@ class AbstractAnimal {
         AbstractAnimal &operator=(const AbstractAnimal &abstractAnimal);
         virtual ~AbstractAnimal();
 
-        std::string getType() const;
+        std::string const &getType() const;
         void setType(std::string type);
 
         virtual void makeSound() const = 0;

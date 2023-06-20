@@ -13,7 +13,7 @@ class Brain {
         ~Brain();
 
         void setIdeas(int idx, std::string idea);
-        std::string getIdeas(int idx) const;
+        std::string const getIdeas(int idx) const;
 };
 
 #endif

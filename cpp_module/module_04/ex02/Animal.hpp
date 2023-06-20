@@ -13,7 +13,7 @@ class Animal {
         virtual ~Animal(); // 가상 소멸자를 사용하지 않으면 기반 클래스의 소멸자만 호출됨
 
         virtual void makeSound() const;
-        std::string getType() const;
+        std::string const &getType() const;
         void setType(std::string type);
 
         virtual void setIdeas(int idx, std::string idea) const;

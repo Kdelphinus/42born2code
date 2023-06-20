@@ -19,7 +19,7 @@ AbstractAnimal::~AbstractAnimal() {
     std::cout << "AbstractAnimal destructor called" << std::endl;
 }
 
-std::string AbstractAnimal::getType() const {
+std::string const &AbstractAnimal::getType() const {
     return this->type;
 }
 
