@@ -1,16 +1,16 @@
-#ifndef ABSTRACTANIMAL_HPP
-#define ABSTRACTANIMAL_HPP
+#ifndef AANIMAL_HPP
+#define AANIMAL_HPP
 
 #include <iostream>
 
-class AbstractAnimal {
+class AAnimal {
     protected:
         std::string type;
     public:
-        AbstractAnimal();
-        AbstractAnimal(const AbstractAnimal &abstractAnimal);
-        AbstractAnimal &operator=(const AbstractAnimal &abstractAnimal);
-        virtual ~AbstractAnimal();
+        AAnimal();
+        AAnimal(const AAnimal &aAnimal);
+        AAnimal &operator=(const AAnimal &aAnimal);
+        virtual ~AAnimal();
 
         std::string const &getType() const;
         void setType(std::string type);

@@ -1,7 +1,7 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "AbstractCat.hpp"
-#include "AbstractDog.hpp"
+#include "ACat.hpp"
+#include "ADog.hpp"
 
 /*
  * Animal이 const로 선언되었기에 Animal에서 선언된 멤버들은 수정이 불가하다.
@@ -14,7 +14,7 @@
 */
 
 int main() {
-//    const AbstractAnimal *abstractAnimal = new AbstractAnimal(); // 추상 클래스이기에 컴파일 시, 에러
+//    const AAnimal *AAnimal = new AAnimal(); // 추상 클래스이기에 컴파일 시, 에러
 
     std::cout << "\n========ANIMAL========" << std::endl;
     std::cout << "<create>" << std::endl;
@@ -49,25 +49,25 @@ int main() {
 
     std::cout << "\n========ABSTRACT DOG========" << std::endl;
     std::cout << "<create>" << std::endl;
-    const AbstractAnimal *abstractDog = new AbstractDog();
-    std::cout << "\ntype : " << abstractDog->getType() << std::endl;
+    const AAnimal *aDog = new ADog();
+    std::cout << "\ntype : " << aDog->getType() << std::endl;
     std::cout << "sound: ";
-    abstractDog->makeSound();
-    abstractDog->setIdeas(0, "Abstract Dog's idea");
-    std::cout << "ideas: " << abstractDog->getIdeas(0) << std::endl;
+    aDog->makeSound();
+    aDog->setIdeas(0, "Abstract Dog's idea");
+    std::cout << "ideas: " << aDog->getIdeas(0) << std::endl;
     std::cout << "\n<delete>" << std::endl;
-    delete abstractDog;
+    delete aDog;
 
     std::cout << "\n========ABSTRACT CAT========" << std::endl;
     std::cout << "<create>" << std::endl;
-    const AbstractAnimal *abstractCat = new AbstractCat();
-    std::cout << "\ntype : " << abstractCat->getType() << std::endl;
+    const AAnimal *aCat = new ACat();
+    std::cout << "\ntype : " << aCat->getType() << std::endl;
     std::cout << "sound: ";
-    abstractCat->makeSound();
-    abstractCat->setIdeas(0, "Abstract Cat's idea");
-    std::cout << "ideas: " << abstractCat->getIdeas(0) << std::endl;
+    aCat->makeSound();
+    aCat->setIdeas(0, "Abstract Cat's idea");
+    std::cout << "ideas: " << aCat->getIdeas(0) << std::endl;
     std::cout << "\n<delete>" << std::endl;
-    delete abstractCat;
+    delete aCat;
 
     return 0;
 }

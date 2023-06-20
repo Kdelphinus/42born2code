@@ -10,9 +10,9 @@ SRC = main.cpp \
 	  WrongAnimal.cpp \
 	  WrongCat.cpp \
 	  Brain.cpp \
-	  AbstractAnimal.cpp \
-	  AbstractCat.cpp \
-	  AbstractDog.cpp
+	  AAnimal.cpp \
+	  ACat.cpp \
+	  ADog.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
