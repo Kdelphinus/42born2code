@@ -3,7 +3,16 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 STD_FLAG = -std=c++98
 
-SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp AbstractCat.cpp AbstractDog.cpp
+SRC = main.cpp \
+	  Animal.cpp \
+	  Dog.cpp \
+	  Cat.cpp \
+	  WrongAnimal.cpp \
+	  WrongCat.cpp \
+	  Brain.cpp \
+	  AbstractAnimal.cpp \
+	  AbstractCat.cpp \
+	  AbstractDog.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
