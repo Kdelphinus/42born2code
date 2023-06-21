@@ -17,3 +17,12 @@ Ice &Ice::operator=(const Ice &ice) {
 Ice::~Ice() {
     std::cout << "Ice Destructor called" << std::endl;
 }
+
+AMateria *Ice::clone() const {
+    std::cout << "Ice clone" << std::endl;
+    return AMateria(&this);
+}
+
+void Ice::use(ICharacter &target) {
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}
