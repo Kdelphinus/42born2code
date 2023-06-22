@@ -4,7 +4,7 @@ AMateria::AMateria() : type("material") {
     std::cout << "AMateria Default constructor called" << std::endl;
 }
 
-AMateria::AMateria(const std::string &type) : type(type){
+AMateria::AMateria(const std::string &type) : type(type) {
     std::cout << "AMaterial string constructor called" << std::endl;
 }
 
@@ -28,5 +28,5 @@ const std::string &AMateria::getType() const {
 }
 
 void AMateria::use(ICharacter &target) {
-    std::cout << "You can't use AMateria" << std::endl;
+    std::cout << "You can't use AMateria " << target.getName() << std::endl;
 }

@@ -3,7 +3,12 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 STD_FLAG = -std=c++98
 
-SRC = main.cpp AMateria.cpp Cure.cpp Ice.cpp ICharacter.cpp
+SRC = main.cpp \
+	  AMateria.cpp \
+	  Cure.cpp \
+	  Ice.cpp \
+	  Character.cpp \
+	  MateriaSource.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
