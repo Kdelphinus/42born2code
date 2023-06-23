@@ -1,6 +1,6 @@
 NAME = interfaceAndRecap
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -g
 STD_FLAG = -std=c++98
 
 SRC = main.cpp \

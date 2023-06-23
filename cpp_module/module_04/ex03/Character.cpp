@@ -51,6 +51,10 @@ MateriaSource Character::getInven(int idx) const {
 }
 
 void Character::equip(AMateria *m) {
+    if (!m) {
+        std::cout << "Invalid materia" << std::endl;
+        return;
+    }
     for (int i = 0; i < 4; i++) {
         if (!this->invenIdx[i]) {
             this->inven[i].setSource(m);
@@ -70,13 +74,9 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter &target) {
-    if (idx < 0 || idx >= 4 || !this->invenIdx[idx]) {
+    if (idx < 0 || idx >= 4 || !this->invenIdx[idx] || !this->inven[idx].getSource()) {
         std::cout << "Invalid index" << std::endl;
         return;
     }
-
-    if (this->inven[idx].getSource()->getType() == "ice")
-        std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-    else if (this->inven[idx].getSource()->getType() == "cure")
-        std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+    this->inven[idx].getSource()->use(target);
 }

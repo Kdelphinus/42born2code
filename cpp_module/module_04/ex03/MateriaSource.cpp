@@ -25,10 +25,10 @@ void MateriaSource::learnMateria(AMateria *materia) {
 }
 
 AMateria *MateriaSource::createMateria(const std::string &type) {
-    AMateria *clone;
     if (type == "ice")
-        clone = new Ice(type);
-    if (type == "cure")
-        clone = new Cure(type);
-    return clone;
+        return new Ice(type);
+    else if (type == "cure")
+        return new Cure(type);
+    else
+        return 0; // nullptr을 쓰라고 ide는 추천하지만 서브젝트 상에서 0을 반환해야 하므로 0 반환
 }

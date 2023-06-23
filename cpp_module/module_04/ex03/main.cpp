@@ -15,13 +15,24 @@ int main() {
     me->equip(tmp);
     tmp = src->createMateria("cure");
     me->equip(tmp);
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("error");
+    me->equip(tmp);
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
 
     ICharacter *bob = new Character("bob");
+    ICharacter *coc = new Character("coc");
 
     me->use(0, *bob);
     me->use(1, *bob);
+    me->use(2, *coc);
+    me->use(3, *coc);
+    me->use(4, *coc);
 
     delete bob;
+    delete coc;
     delete me;
     delete src;
 
