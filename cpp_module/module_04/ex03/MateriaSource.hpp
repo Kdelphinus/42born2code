@@ -17,7 +17,7 @@ class MateriaSource : public IMateriaSource {
 
         AMateria *getSource() const;
         void setSource(AMateria *m);
-        void learnMateria(AMateria *materia) override;
+        void learnMateria(AMateria *materia);
         AMateria *createMateria(std::string const &type);
 };
 

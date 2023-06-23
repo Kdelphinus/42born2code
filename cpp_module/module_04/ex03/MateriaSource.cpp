@@ -1,23 +1,16 @@
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource() : source() {
-    std::cout << "MateriaSource Default constructor called" << std::endl;
-}
+MateriaSource::MateriaSource() : source() {}
 
-MateriaSource::MateriaSource(const MateriaSource &materiaSource) : source(materiaSource.getSource()) {
-    std::cout << "MateriaSource Copy constructor called" << std::endl;
-}
+MateriaSource::MateriaSource(const MateriaSource &materiaSource) : source(materiaSource.getSource()) {}
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &materiaSource) {
     if (this != &materiaSource)
         this->source = materiaSource.getSource();
-    std::cout << "MateriaSource Copy assignment operator called" << std::endl;
     return *this;
 }
 
-MateriaSource::~MateriaSource() {
-    std::cout << "MateriaSource Destructor called" << std::endl;
-}
+MateriaSource::~MateriaSource() {}
 
 AMateria *MateriaSource::getSource() const {
     return this->source;

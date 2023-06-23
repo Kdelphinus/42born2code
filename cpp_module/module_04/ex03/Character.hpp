@@ -7,11 +7,11 @@
 class Character : public ICharacter {
     private:
         std::string name;
-        bool invenIdx[4] = {false, false, false, false};
+        bool invenIdx[4];
         MateriaSource inven[4];
     public:
         Character();
-        Character(const std::string &name);
+        explicit Character(const std::string &name);
         Character(const Character &character);
         Character &operator=(const Character &character);
         ~Character();

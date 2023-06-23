@@ -12,7 +12,7 @@ class AMateria {
     public:
         AMateria();
         AMateria(const AMateria &aMateria);
-        AMateria(const std::string &type);
+        explicit AMateria(const std::string &type);
         AMateria &operator=(const AMateria &aMateria);
         virtual ~AMateria();
 

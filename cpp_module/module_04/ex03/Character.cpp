@@ -1,15 +1,22 @@
 #include "Character.hpp"
 
-Character::Character() : name() {
-    std::cout << "Character Default constructor called" << std::endl;
+Character::Character() : name(), invenIdx() {
+    for (int i = 0; i < 4; i++)
+        this->invenIdx[i] = false;
 }
 
-Character::Character(const std::string &name) : name(name) {
-    std::cout << "Character name constructor called" << std::endl;
+Character::Character(const std::string &name) : name(name), invenIdx() {
+    for (int i = 0; i < 4; i++)
+        this->invenIdx[i] = false;
 }
 
-Character::Character(const Character &character) : name(character.getName()) {
-    std::cout << "Character Copy constructor called" << std::endl;
+Character::Character(const Character &character) : name(character.getName()), invenIdx() {
+    for (int i = 0; i < 4; i++) {
+        if (character.getInvenIdx(i)) {
+            this->inven[i] = character.getInven(i);
+            this->invenIdx[i] = true;
+        }
+    }
 }
 
 Character &Character::operator=(const Character &character) {
@@ -22,13 +29,10 @@ Character &Character::operator=(const Character &character) {
             }
         }
     }
-    std::cout << "Character Copy assignment operator called" << std::endl;
     return *this;
 }
 
-Character::~Character() {
-    std::cout << "Character Destructor called" << std::endl;
-}
+Character::~Character() {}
 
 const std::string &Character::getName() const {
     return this->name;
@@ -39,7 +43,7 @@ bool Character::getInvenIdx(int idx) const {
 }
 
 MateriaSource Character::getInven(int idx) const {
-    if (idx < 0 || idx >= 4 || this->invenIdx[idx] == false) {
+    if (idx < 0 || idx >= 4 || !this->invenIdx[idx]) {
         std::cout << "Invalid index" << std::endl;
         return this->inven[0];
     }
@@ -48,7 +52,7 @@ MateriaSource Character::getInven(int idx) const {
 
 void Character::equip(AMateria *m) {
     for (int i = 0; i < 4; i++) {
-        if (this->invenIdx[i] == false) {
+        if (!this->invenIdx[i]) {
             this->inven[i].setSource(m);
             this->invenIdx[i] = true;
             return;
@@ -70,5 +74,9 @@ void Character::use(int idx, ICharacter &target) {
         std::cout << "Invalid index" << std::endl;
         return;
     }
-    target.equip(this->inven[idx].getSource());
+
+    if (this->inven[idx].getSource()->getType() == "ice")
+        std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+    else if (this->inven[idx].getSource()->getType() == "cure")
+        std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
