@@ -14,5 +14,5 @@ int main() {
 
     Point p3 = Point(Fixed(1), Fixed(0));
     std::cout << "outside of a triangle: " << bsp(a, b, c, p3) << std::endl;
-	return 0;
+    return 0;
 }
