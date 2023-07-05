@@ -4,7 +4,7 @@ Fixed::Fixed() : _num(0) {
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &fixed) : _num(fixed._num) {
+Fixed::Fixed(const Fixed &fixed) : _num(fixed.getRawBits()) {
     std::cout << "Copy constructor called" << std::endl;
 }
 
