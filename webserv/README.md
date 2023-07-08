@@ -5,7 +5,32 @@
 ## Index
 
 - [0. Subject](#0-subject)
+  - [0.1 개요](#01-개요)
+  - [0.2 Mandatory](#02-mandatory)
+  - [0.3 요구 사항](#03-요구-사항)
+  - [0.4 For MacOS](#04-for-macos)
+  - [0.5 Configuration file](#05-configuration-file)
+  - [0.6 Bonus](#06-bonus)
 - [1. 함수 정리](#1-함수-정리)
+  - [1.1 socket address structures](#11-socket-address-structures)
+    - [1.1.1 sockaddr](#111-sockaddr)
+    - [1.1.2 sockaddr_in](#112-sockaddrin)
+    - [1.1.3 sockaddr_in6](#113-sockaddrin6)
+  - [1.2 socket()](#12-socket)
+  - [1.3 bind()](#13-bind)
+  - [1.4 listen()](#14-listen)
+  - [1.5 accept()](#15-accept)
+  - [1.6 connect()](#16-connect)
+  - [1.7 select()](#17-select)
+  - [1.8 epoll](#18-epoll)
+    - [1.8.1 epoll_create()](#181-epollcreate)
+    - [1.8.2 epoll_wait()](#182-epollwait)
+    - [1.8.3 epoll_ctl()](#183-epollctl)
+  - [1.9 kqueue()](#19-kqueue)
+  - [1.10 htons(), htonl(), ntohs(), ntohl()](#110-htons-htonl-ntohs-ntohl)
+- [2. IO Multiplexing](#2-io-multiplexing)
+  - [2.1 기본 개념](#21-기본-개념)
+  - [2.2 Multiplexing](#22-multiplexing)
 - [참고 문헌](#참고-문헌)
 
 ## 0. Subject
@@ -217,7 +242,7 @@ struct sockaddr_in6 {
     - link-local 주소체계에서는 모든 인터페이스가 같은 네트워크를 가지고 있다. 그래서 인터페이스를 구분하는데 사용하는 변수다.
     - 특정 조건에서만 사용되며 대부분은 0을 넣는다.
 
-### socket()
+### 1.2 socket()
 
 `socket`은 소켓을 생성하여 반환하는 함수다.
 
@@ -250,7 +275,7 @@ int socket(int domain, int type, int protocol);
     - `-1`: 실패
     - `그 외`: 소켓 디스크립터
 
-### bind()
+### 1.3 bind()
 
 `bind` 는 소켓에 로컬 주소를 할당하는 함수다.
 
@@ -268,7 +293,7 @@ int bind(int sockfd, struct sockaddr *myaddr, socklen_t addrlen);
     - `0`: 성공
     - `-1`: 실패
 
-### listen()
+### 1.4 listen()
 
 `listen` 은 서버가 연결 요청 대기상태로 만드는 함수다.
 
@@ -288,7 +313,7 @@ int listen(int sock, int backlog);
 > `연결요청 대기상태`: 클라이언트가 연결 요청을 했을 때, 연결이 수락될 때까지 서버 측에서 연결요청 자체를 대기시킬 수 있는 상태
 > `연결요청 대기 큐`: 클라이언트가 연결요청을 했을 때, 서버 측에서 accept 함수로 허락하기 전까지 머물러 있는 일종의 대기실
 
-### accept()
+### 1.5 accept()
 
 `accept`는 클라이언트의 접속 요청을 수락하는 함수다.
 
@@ -306,7 +331,7 @@ int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
     - `-1`: 실패
     - `그 외`: 소켓 디스크립터
 
-### connect()
+### 1.6 connect()
 
 `connect` 는 클라이언트가 서버에 연결 요청하는 함수다.
 
@@ -324,7 +349,7 @@ int connect(int sockfd, const struct sockaddr *serv_addr, socklen_t addrlen);
     - `0`: 성공
     - `-1`: 실패
 
-### select()
+### 1.7 select()
 
 `select` 는 하나의 서버가 여러 개의 클라이언트와 통신할 때, 하나의 스레드에서 통신할 수 있도록 fd의 변화를 감지하는 함수이다.
 
@@ -359,7 +384,7 @@ int  FD_ISSET(int fd, fd_set *set);  // fd번째 fd_set이 1인지 확인 -> fd�
 때문에 대상 fd가 늘어날수록 느려지며 O(n)의 시간복잡도를 가진다.
 또한 고정된 단일 bit table을 사용하기에 관리할 수 있는 fd도 최대 1024개로 제한되어 있다.
 
-### epoll()
+### 1.8 epoll
 `epoll` 은 `select` 함수처럼 multiplexing에서 fd를 관리한다.
 관리할 수 있는 fd의 수는 무제한이며 `select, poll` 과 달리 fd의 상태가 kernel에서 관리하여 상태가 바뀐 것을 직접 통지해준다.
 즉, fd_set을 검사하기 위해 루프를 돌 필요가 없다. 
@@ -398,7 +423,7 @@ int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)
 int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
 ```
 
-#### epoll_create
+#### 1.8.1 epoll_create()
 입력한 size만큼 kernel에 polling 공간을 요청한다.
 
 - 변수
@@ -407,7 +432,7 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
     - 하지만 시스템 자원이 감당할 수 있는지 먼저 확인이 필요하다.
 - 반환값: fd
 
-#### epoll_wait
+#### 1.8.2 epoll_wait()
 이벤트 발생까지 대기한다.
 
 - 변수
@@ -422,7 +447,7 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
   - `0`: timeout 내 이벤트가 발생하지 않았을 때
   - `그 외`: 발생한 이벤트 개수
 
-#### epoll_ctl
+#### 1.8.3 epoll_ctl()
 어떤 fd에 대해 어떤 event를 관찰할지 관리한다.
 
 - 변수
@@ -447,7 +472,7 @@ Edge-Triggered 방식을 사용하면 데이터 수신 시 딱 한 번만 이벤
 errno가 `EWOULDBLOCK` 이 될 때까지, 즉 buffer가 비워질 때까지 읽는 것이다.
 그렇기에 Non-Blocking으로 구현할 때는 buffer size를 고려하고 errno도 상시로 확인해야 한다.
 
-### kqueue()
+### 1.9 kqueue()
 먼저 `kqueue 기법`은 [FreeBSD](https://ko.wikipedia.org/wiki/FreeBSD) 환경에서 사용하는 I/O Multiplexing 기법이다.
 kernel에 event를 저장할 queue를 생성하면, I/O event가 queue에 쌓이고 사용자가 이를 직접 polling하는 방식이기에 `select, poll` 처럼 event가 발생한 fd를 찾기 위한 추가 작업이 필요없다.
 FreeBSD 환경에서의 `epoll`이라고도 할 수 있다.
@@ -508,16 +533,35 @@ struct kevent {
   - `EVFILT_TIMER`: 임의의 timer를 ident로 지정 -> 주기마다 반환
 - `flags`: event에 수행할 작업
   - `EV_ADD`
-  - `EV_ENABLE`
-  - `EV_DISABLE`
-  - `EV_DISPATCH`
-  - `EV_DELETE`
-  - `EV_RECEIPT`
+    - kqueue에 이벤트를 추가
+    - 있는 event를 또 추가하면 인자가 update되어 중복 방지
+    - 추가된 event는 `EV_DISABLE` 플래그로 재정의되지 않는 한 자동으로 활성화
+  - `EV_ENABLE`: `kevent()` 호출 시, event 반환을 허용 
+  - `EV_DISABLE`: 이벤트를 비활성화하여 `kevent()`가 반환하지 않도록 함, 필터 자체는 비활성화되지 않음
+  - `EV_DISPATCH`: 이벤트 전달 직후 `EV_DISABLE` 설정
+  - `EV_DELETE`: kqueue에서 이벤트 제거
+  - `EV_RECEIPT`: kqueue 대량 변경 시 유용(보류 중인 event 제외)
   - `EV_ONESHOT`
+    - event 감지로 인한 첫 번째 filter 실행만 반환
+    - 이후, 사용자가 kqueue에서 event를 검색하면 삭제됨
   - `EV_CLEAR`
-  - `EV_ERROR`
+    - 사용자가 event 검색 후 상태 재설정
+    - 재 상태 대신 상태 변화를 보고하는 필터에 유용
+  - `EV_ERROR`: 각종 error
+- `fflags`: `filter`별 flag
+- `data`: `filter`별 data 값
+- `udata`: 명확하지 않은 user data
+- `ex[4]`: kernel과 주고받는 확장 data
+  - `ex[0], ex[1]`: filter에 의해 정의
+  - `ex[2], ex[3]`: context
 
-### htons(), htonl(), ntohs(), ntohl()
+kevent 구조체를 쉽게 초기화하기 위한 `EV_SET()` 함수도 있다.
+
+```c++
+EV_SET(key, ident, filter, flags, fflagse, data, udata)
+```
+
+### 1.10 htons(), htonl(), ntohs(), ntohl()
 
 ## 2. IO Multiplexing
 이 글은 [1부](https://blog.naver.com/n_cloudplatform/222189669084)와 [2부](https://blog.naver.com/n_cloudplatform/222255261317)를 정리한 것이다.
