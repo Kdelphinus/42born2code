@@ -608,7 +608,7 @@ I/O 작업은 커널에서 동작하기에 유저는 I/O 작업을 '요청'하�
 기법들로 나뉜다.
 
 ## 3. Nginx
-
+### 3.1 개요
 `Nginx`는 러시아 개발자인 Igor Sysoev가 개발한 **동시접속 처리에 특화된 웹 서버프로그램**이다.
 `Apache`보다 동작이 단순하고 전달자 역할만하기 때문에 동시접속 처리에 특화되어 있다.
 
@@ -632,6 +632,69 @@ Nginx가 하는 일은 크게 두 가지이다.
 두 번째 목적은 클라이언트가 프록시 서버라는 가짜 서버에 요청을 하면 프록시 서버가 요청을 **분배**하여 리버스 서버에게 요청하여 받고 클라이언트에게 전달하는 것을 의미한다.
 여기서 프록시 서버가 Nginx, 리버스 서버가 응용프로그램 서버이다.
 
+### 3.2 nginx.conf
+Nginx의 기본 설정 파일은 `nginx.conf`이며 아래의 경로 중 하나에 위치한다.
+
+- /usr/local/nginx/conf
+- /etc/nginx
+- /usr/local/etc/nginx
+
+Nginx의 모듈들은 configuration 파일에 있는 **directives**에 의해 제어된다.
+
+기본적으로 주어지는 nginx.conf는 다음과 같다.
+
+```shell
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+        worker_connections 768;
+        # multi_accept on;
+}
+
+http {
+
+        ...
+
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+}
+```
+
+directives는 다시 두 개로 나뉜다.
+
+#### simple directives
+이름, 인자값이 있고 ;으로 끝난다.
+
+- `user`: linux 시스템의 어떤 사용자가 nginx 서버를 동작시킬지 설정한다.
+- `worker_processes`: 몇 개의 thread가 사용될 지 정의한다. cpu 코어 수에 맞추는 것이 권장된다.
+- `pid`: nginx pid가 적혀있는 파일이다.
+- `include`: 외부 configuration 내용을 가져온다. 모듈에 따라 다른 파일에 작성하고 include하는 것이 권장된다.
+
+#### block directives
+중괄호로 구분된 집합 영역을 의미한다.
+만약 block directives 내부에 또 다른 block directives를 가질 수 있는 경우, context라고 부른다.
+
+- `core`: 환경 설정 파일의 최상단에 위치하며 한 번만 사용할 수 있다. nginx의 기본적인 동작 방식을 정의한다.
+- `http`: 웹서버에 대한 동작을 설정하는 영역으로 server 블록과 location 블록의 루트 블록이다.
+- `server`: 가상 호스팅의 개념으로 하나의 서버를 커버한다.
+- `location`: server 블록 내에서 특정 URL을 처리하는 방법을 정의한다.
+- `events`: 네트워크 동작에 관련된 내용을 설정한다.
+
+적용은 **core -> http -> server -> location**순으로 적용된다.
+만약 동일한 simple directives가 block 별로 정의될 경우 depth가 가장 깊은 block의 설정을 따라간다.
+
+directives에 들어갈 수 있는 syntax는 [docs](https://nginx.org/en/docs/http/ngx_http_core_module.html)에 정의되어 있다.
+읽는 방법은 아래와 같다.
+
+```shell
+Syntax:   log_not_found on | off;  # 문법
+Default:  log_not_found on;        # 기본값
+Context:  http, server, location   # 해당 Syntax가 적용되는 block directive
+```
+
 ## 참고 문헌
 
 - [42seoul, webserve](https://cdn.intra.42.fr/pdf/pdf/86733/en.subject.pdf)
@@ -645,3 +708,4 @@ Nginx가 하는 일은 크게 두 가지이다.
 - [Icarus, [Nginx]Nginx 이해하기](https://icarus8050.tistory.com/57)
 - [-o-k's story, [Ubuntu]Ubuntu 20.04에 Nginx 설치 및 이해](https://t-okk.tistory.com/154)
 - [한 단계 더 깊게, [간단 정리]Nginx Tutorial](https://tyoon9781.tistory.com/entry/nginx-tutorial)
+- [Gelog, Nginx 설정을 알아보자](https://velog.io/@gehwan96/Nginx-%EC%84%A4%EC%A0%95%EC%9D%84-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90)
