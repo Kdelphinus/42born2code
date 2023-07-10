@@ -5,32 +5,33 @@
 ## Index
 
 - [0. Subject](#0-subject)
-  - [0.1 개요](#01-개요)
-  - [0.2 Mandatory](#02-mandatory)
-  - [0.3 요구 사항](#03-요구-사항)
-  - [0.4 For MacOS](#04-for-macos)
-  - [0.5 Configuration file](#05-configuration-file)
-  - [0.6 Bonus](#06-bonus)
+    - [0.1 개요](#01-개요)
+    - [0.2 Mandatory](#02-mandatory)
+    - [0.3 요구 사항](#03-요구-사항)
+    - [0.4 For MacOS](#04-for-macos)
+    - [0.5 Configuration file](#05-configuration-file)
+    - [0.6 Bonus](#06-bonus)
 - [1. 함수 정리](#1-함수-정리)
-  - [1.1 socket address structures](#11-socket-address-structures)
-    - [1.1.1 sockaddr](#111-sockaddr)
-    - [1.1.2 sockaddr_in](#112-sockaddrin)
-    - [1.1.3 sockaddr_in6](#113-sockaddrin6)
-  - [1.2 socket()](#12-socket)
-  - [1.3 bind()](#13-bind)
-  - [1.4 listen()](#14-listen)
-  - [1.5 accept()](#15-accept)
-  - [1.6 connect()](#16-connect)
-  - [1.7 select()](#17-select)
-  - [1.8 epoll](#18-epoll)
-    - [1.8.1 epoll_create()](#181-epollcreate)
-    - [1.8.2 epoll_wait()](#182-epollwait)
-    - [1.8.3 epoll_ctl()](#183-epollctl)
-  - [1.9 kqueue()](#19-kqueue)
-  - [1.10 htons(), htonl(), ntohs(), ntohl()](#110-htons-htonl-ntohs-ntohl)
+    - [1.1 socket address structures](#11-socket-address-structures)
+        - [1.1.1 sockaddr](#111-sockaddr)
+        - [1.1.2 sockaddr_in](#112-sockaddrin)
+        - [1.1.3 sockaddr_in6](#113-sockaddrin6)
+    - [1.2 socket()](#12-socket)
+    - [1.3 bind()](#13-bind)
+    - [1.4 listen()](#14-listen)
+    - [1.5 accept()](#15-accept)
+    - [1.6 connect()](#16-connect)
+    - [1.7 select()](#17-select)
+    - [1.8 epoll](#18-epoll)
+        - [1.8.1 epoll_create()](#181-epollcreate)
+        - [1.8.2 epoll_wait()](#182-epollwait)
+        - [1.8.3 epoll_ctl()](#183-epollctl)
+    - [1.9 kqueue()](#19-kqueue)
+    - [1.10 htons(), htonl(), ntohs(), ntohl()](#110-htons-htonl-ntohs-ntohl)
 - [2. IO Multiplexing](#2-io-multiplexing)
-  - [2.1 기본 개념](#21-기본-개념)
-  - [2.2 Multiplexing](#22-multiplexing)
+    - [2.1 기본 개념](#21-기본-개념)
+    - [2.2 Multiplexing](#22-multiplexing)
+- [3. Nginx](#3-nginix)
 - [참고 문헌](#참고-문헌)
 
 ## 0. Subject
@@ -83,7 +84,7 @@
 - 모든 매크로를 사용할 수 있다. `FD_SET, FD_CLR, FD_ISSET, FD_ZERO` 와 같이 정의할 수 있다.
 - 서버에 대한 요청이 절대 중단되지 않아야 한다.
 - 서버는 선택한 웹 브라우저와 호환되어야 한다.
-- NGNIX는 HTTP 1.1을 준수하며 헤더와 응답 동작을 비교하는데 사용될 수 있다.
+- Nginx는 HTTP 1.1을 준수하며 헤더와 응답 동작을 비교하는데 사용될 수 있다.
 - HTTP의 응답 상태 코드가 정확해야 한다.
 - 기본 오류 페이지가 제공되지 않는 경우 서버에 기본 오류 페이지가 있어야 한다.
 - `fork`를 CGI가 아닌 다른 것(예: PHP, Python 등)에 사용할 수 없다.
@@ -106,7 +107,7 @@ fcntl(fd, F_SETFL, O_NONBLOCK);
 
 ### 0.5 Configuration file
 
-> NGNIX의 구성 파일의 server 부분에서 영감을 얻을 수 있다.
+> Nginx의 구성 파일의 server 부분에서 영감을 얻을 수 있다.
 
 구성 파일에서 아래와 같은 것을 수행할 수 있어야 한다.
 
@@ -134,7 +135,7 @@ fcntl(fd, F_SETFL, O_NONBLOCK);
 
 평가 중에 모든 기능이 작동하는지 테스트하고 시연할 수 있도록 몇 가지 구성 파일과 기본 파일을 제공해야 한다.
 
-> 동작에 대한 의문이 있는 경우 NGNIX와 비교해야 한다.
+> 동작에 대한 의문이 있는 경우 Nginx와 비교해야 한다.
 > 예를 들어 `server_name`이 어떻게 작동하는지 확인하면 된다.
 >
 > 작은 테스터가 함께 제공된다.
@@ -360,16 +361,16 @@ int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struc
 ```
 
 - 변수
-  - `nfds`: 관리하느 fd의 개수, 최대 파일번호 + 1로 지정
-  - `readfds`: 읽을 데이터가 있는지 확인할 fd가 들어있는 구조체
-  - `writefds`: 쓰여진 데이터가 있는지 확인할 fd가 들어있는 구조체
-  - `exceptfds`: fd에 예외사항이 있나 검사할 목록
-  - `timeout`: 타임아웃 시간, NULL을 설정하면 타임아웃 없음
-    - `select` 함수는 blocking 함수이므로 타임아웃을 주어 blocking 되는 것을 막음
+    - `nfds`: 관리하느 fd의 개수, 최대 파일번호 + 1로 지정
+    - `readfds`: 읽을 데이터가 있는지 확인할 fd가 들어있는 구조체
+    - `writefds`: 쓰여진 데이터가 있는지 확인할 fd가 들어있는 구조체
+    - `exceptfds`: fd에 예외사항이 있나 검사할 목록
+    - `timeout`: 타임아웃 시간, NULL을 설정하면 타임아웃 없음
+        - `select` 함수는 blocking 함수이므로 타임아웃을 주어 blocking 되는 것을 막음
 - 반환값
-  - `0`: 타임아웃
-  - `양수`: 변화가 생긴 fd의 수
-  - `-1`: 오류
+    - `0`: 타임아웃
+    - `양수`: 변화가 생긴 fd의 수
+    - `-1`: 오류
 
 그리고 `fd_set` 구조체를 위한 함수도 있다.
 
@@ -385,9 +386,10 @@ int  FD_ISSET(int fd, fd_set *set);  // fd번째 fd_set이 1인지 확인 -> fd�
 또한 고정된 단일 bit table을 사용하기에 관리할 수 있는 fd도 최대 1024개로 제한되어 있다.
 
 ### 1.8 epoll
+
 `epoll` 은 `select` 함수처럼 multiplexing에서 fd를 관리한다.
 관리할 수 있는 fd의 수는 무제한이며 `select, poll` 과 달리 fd의 상태가 kernel에서 관리하여 상태가 바뀐 것을 직접 통지해준다.
-즉, fd_set을 검사하기 위해 루프를 돌 필요가 없다. 
+즉, fd_set을 검사하기 위해 루프를 돌 필요가 없다.
 또한 변화가 감지된 fd의 목록 자체를 반환하기 때문에 파일을 추가 탐색할 필요가 없어 효율적이다.
 
 epoll은 두 가지 방식이 존재한다.
@@ -395,11 +397,11 @@ epoll은 두 가지 방식이 존재한다.
 ![epoll](reference/img/epoll.png)
 
 1. Level-Triggered(LT): 특정 준위(상태)가 **유지**되는 동안 감지
-   - 입력 buffer에 데이터가 남아있는 동안 계속해서 이벤트가 등록
-   - `select, poll`은 Level-Triggered 방식만 지원
+    - 입력 buffer에 데이터가 남아있는 동안 계속해서 이벤트가 등록
+    - `select, poll`은 Level-Triggered 방식만 지원
 2. Edge-Triggered(ET): 특정 준위(상태)가 **변화**하는 시점에만 탐지
-   - 입력 buffer로 데이터가 수신된 상황에 딱 한 번 이벤트가 등록
-   - 이후 재설정은 하지 않는다.
+    - 입력 buffer로 데이터가 수신된 상황에 딱 한 번 이벤트가 등록
+    - 이후 재설정은 하지 않는다.
 
 ```c++
 typedef union epoll_data {
@@ -424,44 +426,47 @@ int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event);
 ```
 
 #### 1.8.1 epoll_create()
+
 입력한 size만큼 kernel에 polling 공간을 요청한다.
 
 - 변수
-  - `size`: 요청할 polling 공간의 크기
-    - size는 예상되는 최대 동시 접속 수로 설정
-    - 하지만 시스템 자원이 감당할 수 있는지 먼저 확인이 필요하다.
+    - `size`: 요청할 polling 공간의 크기
+        - size는 예상되는 최대 동시 접속 수로 설정
+        - 하지만 시스템 자원이 감당할 수 있는지 먼저 확인이 필요하다.
 - 반환값: fd
 
 #### 1.8.2 epoll_wait()
+
 이벤트 발생까지 대기한다.
 
 - 변수
-  - `epfd`: `epoll_create` 에서 생성된 관심 대상 fd
-  - `events`: 발생한 이벤트의 정보
-  - `maxevents`: 처리할 최대 event 수 제한
-  - `timeout`
-    - `0`: 대기없이 즉시 종료
-    - `-1`: 무한 대기
-    - `그 외`: millisecond 단위 시간
+    - `epfd`: `epoll_create` 에서 생성된 관심 대상 fd
+    - `events`: 발생한 이벤트의 정보
+    - `maxevents`: 처리할 최대 event 수 제한
+    - `timeout`
+        - `0`: 대기없이 즉시 종료
+        - `-1`: 무한 대기
+        - `그 외`: millisecond 단위 시간
 - 반환값
-  - `0`: timeout 내 이벤트가 발생하지 않았을 때
-  - `그 외`: 발생한 이벤트 개수
+    - `0`: timeout 내 이벤트가 발생하지 않았을 때
+    - `그 외`: 발생한 이벤트 개수
 
 #### 1.8.3 epoll_ctl()
+
 어떤 fd에 대해 어떤 event를 관찰할지 관리한다.
 
 - 변수
-  - `op`: fd에 대해 어떤 작업을 할지 정의
-    - `EPOLL_CTL_ADD`: fd 추가
-    - `EPOLL_CTL_DEL`: fd 삭제
-    - `EPOLL_CTL_MOD`: fd의 event 값 변경
-  - `event`: 모니터링 대상 fd에 어떤 이벤트가 발생했을 때, 인지할 지 정의
-    - `EPOLLIN`: read(입력) 이벤트 발생
-    - `EPOLLOUT`: write(출력) 이벤트 발생
-    - `EPOLLERR`: 에러 발생
-    - `EPOLLHUP`: 연결 종려 또는 Half-close 발생
-    - `EPOLLPRI`: 중요 데이터(OOB) 발생 여부 검사 
-    - `EPOLLLET`: Edge-Triggered 방식으로 설정, default는 Level-Triggerd
+    - `op`: fd에 대해 어떤 작업을 할지 정의
+        - `EPOLL_CTL_ADD`: fd 추가
+        - `EPOLL_CTL_DEL`: fd 삭제
+        - `EPOLL_CTL_MOD`: fd의 event 값 변경
+    - `event`: 모니터링 대상 fd에 어떤 이벤트가 발생했을 때, 인지할 지 정의
+        - `EPOLLIN`: read(입력) 이벤트 발생
+        - `EPOLLOUT`: write(출력) 이벤트 발생
+        - `EPOLLERR`: 에러 발생
+        - `EPOLLHUP`: 연결 종려 또는 Half-close 발생
+        - `EPOLLPRI`: 중요 데이터(OOB) 발생 여부 검사
+        - `EPOLLLET`: Edge-Triggered 방식으로 설정, default는 Level-Triggerd
 
 Edge-Triggered 방식을 사용하면 데이터 수신 시 딱 한 번만 이벤트를 발생시키기에 충분한 양의 buffer를 마련한 다음 한 번에 모든 데이터를 다 읽어들여야 깔끔하게 동작한다.
 만약 buffer size보다 큰 데이터가 들어오면 여러 번에 걸쳐 write를 해야 하는데 도중 다음 wait 함수를 호출하게 된다면 Blocking 상태로 빠져버리는 문제점이 있다.
@@ -473,8 +478,10 @@ errno가 `EWOULDBLOCK` 이 될 때까지, 즉 buffer가 비워질 때까지 읽�
 그렇기에 Non-Blocking으로 구현할 때는 buffer size를 고려하고 errno도 상시로 확인해야 한다.
 
 ### 1.9 kqueue()
+
 먼저 `kqueue 기법`은 [FreeBSD](https://ko.wikipedia.org/wiki/FreeBSD) 환경에서 사용하는 I/O Multiplexing 기법이다.
-kernel에 event를 저장할 queue를 생성하면, I/O event가 queue에 쌓이고 사용자가 이를 직접 polling하는 방식이기에 `select, poll` 처럼 event가 발생한 fd를 찾기 위한 추가 작업이 필요없다.
+kernel에 event를 저장할 queue를 생성하면, I/O event가 queue에 쌓이고 사용자가 이를 직접 polling하는 방식이기에 `select, poll` 처럼 event가 발생한 fd를 찾기 위한
+추가 작업이 필요없다.
 FreeBSD 환경에서의 `epoll`이라고도 할 수 있다.
 
 ```c++
@@ -491,16 +498,16 @@ int kevent(int kq, const struct kevent *changelist, int nchanges, \
 즉, `kqueue`로 할당받은 공간을 `kevent`로 관리하는 것이다.
 
 - 변수
-  - `kq`: `kqueue` 함수가 반환한 kqueue의 fd
-  - `chagelist`
-    - <sys/event.h>에 정의된 kevent 구조의 배열에 대한 pointer
-    - 변경 목록에 포함된 모든 변경사항은 큐에서 보류 중인 이벤트를 읽기 전에 적용
-  - `nchanges`: 변경 목록의 크기
-  - `eventlist`: kevent 구조체 배열에 대한 pointer
-  - `nevents`: eventlist의 크기, 0이면 즉시 반환
-  - `timeout`
-    - null이면 kevent가 무한 대기
-    - user process의 polling을 위해선 값이 0인 timespec 구조를 가리키게 구현해야 함
+    - `kq`: `kqueue` 함수가 반환한 kqueue의 fd
+    - `chagelist`
+        - <sys/event.h>에 정의된 kevent 구조의 배열에 대한 pointer
+        - 변경 목록에 포함된 모든 변경사항은 큐에서 보류 중인 이벤트를 읽기 전에 적용
+    - `nchanges`: 변경 목록의 크기
+    - `eventlist`: kevent 구조체 배열에 대한 pointer
+    - `nevents`: eventlist의 크기, 0이면 즉시 반환
+    - `timeout`
+        - null이면 kevent가 무한 대기
+        - user process의 polling을 위해선 값이 0인 timespec 구조를 가리키게 구현해야 함
 
 `kqueue` 함수에 대한 모든 작업은 같은 이름의 `kevent` 구조체에 의해 이루어진다.
 `kevent` 는 ident, filter라는 인자를 하나의 key로 삼아 식별되며, kqueue 내에는 독립적인 kevent만 존재하게 된다.
@@ -524,36 +531,36 @@ struct kevent {
 
 - `ident`: event 식별자
 - `filter`: event 선처리할 때 사용되는 filter
-  - `EVFILT_READ`: fd를 ident로 지정 -> 읽을 data가 있을 때마다 반환
-  - `EVFILT_WRITE`: fd를 ident로 지정 -> 쓸 data가 있을 때마다 반환
-  - `EVFILT_EMPTY`: fd를 ident로 지정 -> 쓸 data가 없을 때마다 반환
-  - `EVFILT_VNODE`: fd 또는 fflags에서 지정한 event를 ident로 지정 -> event 발생 시 반환
-  - `EVFILT_PROC`: 감시할 pid 또는 fflags에서 지정한 event를 ident로 지정 -> event 발생 시 반환
-  - `EVFILT_SIGNAL`: signal number를 ident로 지정 -> signal 발생 시 반환
-  - `EVFILT_TIMER`: 임의의 timer를 ident로 지정 -> 주기마다 반환
+    - `EVFILT_READ`: fd를 ident로 지정 -> 읽을 data가 있을 때마다 반환
+    - `EVFILT_WRITE`: fd를 ident로 지정 -> 쓸 data가 있을 때마다 반환
+    - `EVFILT_EMPTY`: fd를 ident로 지정 -> 쓸 data가 없을 때마다 반환
+    - `EVFILT_VNODE`: fd 또는 fflags에서 지정한 event를 ident로 지정 -> event 발생 시 반환
+    - `EVFILT_PROC`: 감시할 pid 또는 fflags에서 지정한 event를 ident로 지정 -> event 발생 시 반환
+    - `EVFILT_SIGNAL`: signal number를 ident로 지정 -> signal 발생 시 반환
+    - `EVFILT_TIMER`: 임의의 timer를 ident로 지정 -> 주기마다 반환
 - `flags`: event에 수행할 작업
-  - `EV_ADD`
-    - kqueue에 이벤트를 추가
-    - 있는 event를 또 추가하면 인자가 update되어 중복 방지
-    - 추가된 event는 `EV_DISABLE` 플래그로 재정의되지 않는 한 자동으로 활성화
-  - `EV_ENABLE`: `kevent()` 호출 시, event 반환을 허용 
-  - `EV_DISABLE`: 이벤트를 비활성화하여 `kevent()`가 반환하지 않도록 함, 필터 자체는 비활성화되지 않음
-  - `EV_DISPATCH`: 이벤트 전달 직후 `EV_DISABLE` 설정
-  - `EV_DELETE`: kqueue에서 이벤트 제거
-  - `EV_RECEIPT`: kqueue 대량 변경 시 유용(보류 중인 event 제외)
-  - `EV_ONESHOT`
-    - event 감지로 인한 첫 번째 filter 실행만 반환
-    - 이후, 사용자가 kqueue에서 event를 검색하면 삭제됨
-  - `EV_CLEAR`
-    - 사용자가 event 검색 후 상태 재설정
-    - 재 상태 대신 상태 변화를 보고하는 필터에 유용
-  - `EV_ERROR`: 각종 error
+    - `EV_ADD`
+        - kqueue에 이벤트를 추가
+        - 있는 event를 또 추가하면 인자가 update되어 중복 방지
+        - 추가된 event는 `EV_DISABLE` 플래그로 재정의되지 않는 한 자동으로 활성화
+    - `EV_ENABLE`: `kevent()` 호출 시, event 반환을 허용
+    - `EV_DISABLE`: 이벤트를 비활성화하여 `kevent()`가 반환하지 않도록 함, 필터 자체는 비활성화되지 않음
+    - `EV_DISPATCH`: 이벤트 전달 직후 `EV_DISABLE` 설정
+    - `EV_DELETE`: kqueue에서 이벤트 제거
+    - `EV_RECEIPT`: kqueue 대량 변경 시 유용(보류 중인 event 제외)
+    - `EV_ONESHOT`
+        - event 감지로 인한 첫 번째 filter 실행만 반환
+        - 이후, 사용자가 kqueue에서 event를 검색하면 삭제됨
+    - `EV_CLEAR`
+        - 사용자가 event 검색 후 상태 재설정
+        - 재 상태 대신 상태 변화를 보고하는 필터에 유용
+    - `EV_ERROR`: 각종 error
 - `fflags`: `filter`별 flag
 - `data`: `filter`별 data 값
 - `udata`: 명확하지 않은 user data
 - `ex[4]`: kernel과 주고받는 확장 data
-  - `ex[0], ex[1]`: filter에 의해 정의
-  - `ex[2], ex[3]`: context
+    - `ex[0], ex[1]`: filter에 의해 정의
+    - `ex[2], ex[3]`: context
 
 kevent 구조체를 쉽게 초기화하기 위한 `EV_SET()` 함수도 있다.
 
@@ -564,9 +571,12 @@ EV_SET(key, ident, filter, flags, fflagse, data, udata)
 ### 1.10 htons(), htonl(), ntohs(), ntohl()
 
 ## 2. IO Multiplexing
-이 글은 [1부](https://blog.naver.com/n_cloudplatform/222189669084)와 [2부](https://blog.naver.com/n_cloudplatform/222255261317)를 정리한 것이다.
+
+이 글은 [1부](https://blog.naver.com/n_cloudplatform/222189669084)
+와 [2부](https://blog.naver.com/n_cloudplatform/222255261317)를 정리한 것이다.
 
 ### 2.1 기본 개념
+
 I/O 작업은 커널에서 동작하기에 유저는 I/O 작업을 '요청'하고 '응답'을 받는다.
 이에 따라 응답을 어떤 순서로 받는지(synchronous/asynchronous), 어떤 타이밍에 받는지(blocking/non-blocking)에 따라 여러 모델로 나뉜다.
 
@@ -589,12 +599,38 @@ I/O 작업은 커널에서 동작하기에 유저는 I/O 작업을 '요청'하�
 각각의 특징들은 본문을 직접 참고할 것
 
 ### 2.2 Multiplexing
+
 다중화는 하나를 여러 개처럼 보이게 동작한다는 의미이다.
 이를 I/O 관점에서 해석하면 **한 프로세스가 여러 파일을 관리**하는 기법이다.
 만약 server-client 환경이라면 하나의 server에서 여러 socket을 관리하여 여러 client가 접속할 수 있도록 구성된다.
 
-프로세스에서 특정 파일에 접근할 때는 fd를 이용하는데 fd를 어떻게 감시하면서 대기하느냐에 따라 `select, poll, epoll(linux), kqueue(bsd), iocp(window)` 등 다양한 기법들로 나뉜다.
+프로세스에서 특정 파일에 접근할 때는 fd를 이용하는데 fd를 어떻게 감시하면서 대기하느냐에 따라 `select, poll, epoll(linux), kqueue(bsd), iocp(window)` 등 다양한
+기법들로 나뉜다.
 
+## 3. Nginx
+
+`Nginx`는 러시아 개발자인 Igor Sysoev가 개발한 **동시접속 처리에 특화된 웹 서버프로그램**이다.
+`Apache`보다 동작이 단순하고 전달자 역할만하기 때문에 동시접속 처리에 특화되어 있다.
+
+> #### Apache
+> `Apache`는 1995년 개발된 오픈소스 웹서버다.
+> 웹브라우저에서 아파치 서버에게 클라이언트의 요청을 보내면 이에 아파치 서버가 응답하여 html을 보내주는 것이 기본 동작이다.
+
+| 구분       | Nginx                        | Apache                |
+|:---------|:-----------------------------|:----------------------|
+| 단순성, 편의성 | 복잡                           | 단순                    |
+| 정적 컨텐츠   | 동시 연결 접속 가능(메모리, 속도 모두 더 좋음) | 하나의 클라이언트에 하나의 프로세스   |
+| 동적 컨텐츠   | 자체 동적 컨텐츠 처리 기능 없음           | 자체 동적 컨텐츠 기능을 가질 수 있음 |
+
+Nginx는 Event-Driven으로 동작하기에 Apache처럼 요청의 수만큼 자원이 들어가지 않고 단일 서버로 동시에 많은 연결을 처리할 수 있다.
+
+Nginx가 하는 일은 크게 두 가지이다.
+
+- 정적 파일을 응답해주는 **HTTP Web server**
+- **Reverse Proxy Server**로 활용되어 WAS 서버의 부하를 줄이는 **로드 밸런서**
+
+두 번째 목적은 클라이언트가 프록시 서버라는 가짜 서버에 요청을 하면 프록시 서버가 요청을 **분배**하여 리버스 서버에게 요청하여 받고 클라이언트에게 전달하는 것을 의미한다.
+여기서 프록시 서버가 Nginx, 리버스 서버가 응용프로그램 서버이다.
 
 ## 참고 문헌
 
@@ -604,4 +640,8 @@ I/O 작업은 커널에서 동작하기에 유저는 I/O 작업을 '요청'하�
 - [양햄찌가 만드는 세상, [소켓 프로그래밍]](https://jhnyang.tistory.com/251)
 - [네이버클라우드, IO Multiplexing 기본 개념부터 심화까지 -1부-](https://blog.naver.com/n_cloudplatform/222189669084)
 - [네이버클라우드, IO Multiplexing 기본 개념부터 심화까지 -2부-](https://blog.naver.com/n_cloudplatform/222255261317)
-
+- [경영학도의 좌충우돌 코딩, Nginx 이해하기 및 기본 환경설정 세팅하기](https://whatisthenext.tistory.com/123)
+- [Live Insight, [Linux] Apache Nginx 차이 비교 총정리!!](https://rootkey.tistory.com/143)
+- [Icarus, [Nginx]Nginx 이해하기](https://icarus8050.tistory.com/57)
+- [-o-k's story, [Ubuntu]Ubuntu 20.04에 Nginx 설치 및 이해](https://t-okk.tistory.com/154)
+- [한 단계 더 깊게, [간단 정리]Nginx Tutorial](https://tyoon9781.tistory.com/entry/nginx-tutorial)

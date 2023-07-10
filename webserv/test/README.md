@@ -2,7 +2,7 @@
 
 ```shell
 # 서버
-make epoll
+make all
 ./epoll <port_number>
 ```
 
@@ -11,4 +11,4 @@ make epoll
 telnet 127.0.0.1 <port_number>
 ```
 
-클라이언트끼리 채팅하는 서버가 만들어진다.
+여러 터미널에서 클라이언트를 접속하면 클라이언트끼리 채팅하는 서버가 만들어진다.
