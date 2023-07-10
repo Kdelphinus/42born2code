@@ -86,18 +86,18 @@ int main(int argc, char **argv) {
                 user_data->fd = clientfd;
 
                 char *tmp = "First insert your nickname :";
-                write(user_data->fd, tmp, 29);
+                write(user_data->fd, tmp, strlen(tmp));
 
                 sleep(1);
-                read(user_data->fd, user_data->name, sizeof(user_data->name));
+                read(user_data->fd, user_data->name, 80);
                 user_data->name[strlen(user_data->name) - 1] = 0;
 
-                printf("Welcomd [%s] \n", user_data->name);
+                printf("Welcome \"%s\"\n", user_data->name);
 
                 sleep(1);
                 sprintf(buf, "Okay your nickname %s\n", user_data->name);
 
-                write(user_data->fd, buf, 40);
+                write(user_data->fd, buf, strlen(buf));
 
                 ev.events = EPOLLIN;
                 ev.data.ptr = user_data;
@@ -129,6 +129,6 @@ void send_msg(struct epoll_event ev, char *msg) {
         memset(buf, 0x00, MAXLINE + 24);
         sprintf(buf, "%s : %s", user_data->name, msg);
         if (user_fds[i] == 1)
-            write(i, buf, MAXLINE + 24);
+            write(i, buf, strlen(buf));
     }
 }
