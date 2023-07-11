@@ -608,7 +608,9 @@ I/O 작업은 커널에서 동작하기에 유저는 I/O 작업을 '요청'하�
 기법들로 나뉜다.
 
 ## 3. Nginx
+
 ### 3.1 개요
+
 `Nginx`는 러시아 개발자인 Igor Sysoev가 개발한 **동시접속 처리에 특화된 웹 서버프로그램**이다.
 `Apache`보다 동작이 단순하고 전달자 역할만하기 때문에 동시접속 처리에 특화되어 있다.
 
@@ -633,6 +635,7 @@ Nginx가 하는 일은 크게 두 가지이다.
 여기서 프록시 서버가 Nginx, 리버스 서버가 응용프로그램 서버이다.
 
 ### 3.2 nginx.conf
+
 Nginx의 기본 설정 파일은 `nginx.conf`이며 아래의 경로 중 하나에 위치한다.
 
 - /usr/local/nginx/conf
@@ -666,6 +669,7 @@ http {
 directives는 다시 두 개로 나뉜다.
 
 #### simple directives
+
 이름, 인자값이 있고 ;으로 끝난다.
 
 - `user`: linux 시스템의 어떤 사용자가 nginx 서버를 동작시킬지 설정한다.
@@ -674,6 +678,7 @@ directives는 다시 두 개로 나뉜다.
 - `include`: 외부 configuration 내용을 가져온다. 모듈에 따라 다른 파일에 작성하고 include하는 것이 권장된다.
 
 #### block directives
+
 중괄호로 구분된 집합 영역을 의미한다.
 만약 block directives 내부에 또 다른 block directives를 가질 수 있는 경우, context라고 부른다.
 
@@ -710,4 +715,5 @@ Context:  http, server, location   # 해당 Syntax가 적용되는 block directi
 - [한 단계 더 깊게, [간단 정리]Nginx Tutorial](https://tyoon9781.tistory.com/entry/nginx-tutorial)
 - [Gelog, Nginx 설정을 알아보자](https://velog.io/@gehwan96/Nginx-%EC%84%A4%EC%A0%95%EC%9D%84-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90)
 - [팔만코딩경, webserv](https://80000coding.oopy.io/3586247b-c9a5-4bc4-9630-2545af1ae78d)
-- [오늘도 밤이야, [UNIX]I/O Multiplexing을 위한 kqueue 사용법](https://hyeonski.tistory.com/9)
+- [오늘도 밤이야(hyeonski), [UNIX]I/O Multiplexing을 위한 kqueue 사용법](https://hyeonski.tistory.com/9)
+- [FreeBSD, kqueue](https://man.freebsd.org/cgi/man.cgi?kqueue#EXAMPLES)

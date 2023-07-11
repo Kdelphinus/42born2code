@@ -11,6 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1f4ed8e9-b3ef-4523-9f89-127bb71ca665" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/test/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/kqueue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/kqueue.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +45,8 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C/C++"
+    "settings.editor.selected.configurable": "preferences.sourceCode.C/C++",
+    "structure.view.defaults.are.configured": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
@@ -55,6 +58,8 @@
       <option name="presentableId" value="Default" />
       <updated>1689048643449</updated>
       <workItem from="1689048643450" duration="1978000" />
+      <workItem from="1689058378560" duration="2740000" />
+      <workItem from="1689076207766" duration="2758000" />
     </task>
     <servers />
   </component>
