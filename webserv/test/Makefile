@@ -1,23 +1,15 @@
-NAME = epoll
 GCC = gcc
 GCC_FLAGS = -Wall -Wextra -Werror
 
-SRC = epoll.c
-OBJ = $(SRC:.c=.o)
+epoll:
+	$(GCC) $(GCC_FLAGS) epoll.c -o epoll
 
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	$(GCC) $(OBJ) $(GCC_FLAGS) -o $(NAME)
+kqueue:
+	$(GCC) $(GCC_FLAGS) kqueue.c -o kqueue
 
 clean:
-	rm -rf $(OBJ)
-
-fclean: clean
-	rm -rf $(NAME)
+	rm -rf epoll kqueue
 
 re:
-	make fclean
+	make clean
 	make all
-
-.PHONY: all clean fclean re
