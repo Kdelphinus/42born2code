@@ -710,4 +710,4 @@ Context:  http, server, location   # 해당 Syntax가 적용되는 block directi
 - [한 단계 더 깊게, [간단 정리]Nginx Tutorial](https://tyoon9781.tistory.com/entry/nginx-tutorial)
 - [Gelog, Nginx 설정을 알아보자](https://velog.io/@gehwan96/Nginx-%EC%84%A4%EC%A0%95%EC%9D%84-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90)
 - [팔만코딩경, webserv](https://80000coding.oopy.io/3586247b-c9a5-4bc4-9630-2545af1ae78d)
-
+- [오늘도 밤이야, [UNIX]I/O Multiplexing을 위한 kqueue 사용법](https://hyeonski.tistory.com/9)
