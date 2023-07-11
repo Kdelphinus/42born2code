@@ -31,7 +31,7 @@
 - [2. IO Multiplexing](#2-io-multiplexing)
     - [2.1 기본 개념](#21-기본-개념)
     - [2.2 Multiplexing](#22-multiplexing)
-- [3. Nginx](#3-nginix)
+- [3. Nginx](#3-nginx)
 - [참고 문헌](#참고-문헌)
 
 ## 0. Subject
