@@ -1,10 +1,27 @@
-GCC_FLAGS = -Wall -Wextra -Werror
+# epoll test
+epoll: epoll.o
+	gcc $< -o $@
 
-epoll:
-	gcc $(GCC_FLAGS) epoll.c -o epoll
+epoll.o: epoll.c
+	gcc -c $< -o $@
 
-kqueue:
-	c++ $(GCC_FLAGS) kqueue.c -o kqueue
+# kqueue1 test
+kqueue1: kqueue1.o
+	cc $< -o $@
 
-fclean:
-	rm -rf epoll kqueue
+kqueue1.o: kqueue.c
+	cc -c $< -o $@
+
+# kqueue2 test
+kqueue2: kqueue2.o
+	c++ $< -o $@
+
+kqueue2.o: kqueue.cpp
+	c++ -c $< -o $@
+
+# clean, fclean
+clean:
+	rm -rf epoll.o kqueue1.o kqueue2.o
+
+fclean: clean
+	rm -rf epoll kqueue1 kqueue2
