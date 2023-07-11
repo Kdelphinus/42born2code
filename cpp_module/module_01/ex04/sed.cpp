@@ -15,5 +15,5 @@ std::string my_sed(std::string origin, std::string s1, std::string s2) {
 	}
 	if (origin.size() != start)
 		repl += origin.substr(start, origin.size());
-	return (repl);
+	return repl;
 }
