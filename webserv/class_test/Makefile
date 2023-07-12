@@ -1,5 +1,5 @@
 all:
-	g++ Kqueue.cpp main.cpp Server.cpp utils.cpp -o test
+	c++ Kqueue.cpp main.cpp Server.cpp -o test
 
 fclean:
 	rm -rf test

@@ -1,14 +1,19 @@
 #include "Kqueue.hpp"
 #include "Server.hpp"
-#include "utils.c"
+#include <stdio.h> // TODO for test
+
+static void exitWithPerror(const std::string &msg) {
+	std::cerr << msg << std::endl;
+	exit(EXIT_FAILURE);
+}
 
 int main() {
 	Server ser = Server(PF_INET, SOCK_STREAM, 0);
 
 	ser.initServer(AF_INET, htons(8080), htonl(INADDR_ANY));
-	ser.bind();
-	ser.listen(5);
-	ser.fcntl(ser.getServerSocket(), F_SETFL, O_NONBLOCK);
+	ser.serverBind();
+	ser.serverListen(5);
+	ser.serverFcntl(ser.getServerSocket(), F_SETFL, O_NONBLOCK);
 
 	Kqueue kq = Kqueue();
 	kq.changeEvents(ser.getServerSocket(), EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, NULL);
@@ -17,11 +22,10 @@ int main() {
 	int newEvents;
 	struct kevent *currEvent;
 	while (1) {
+		// TODO 서버가 접속을 요청할 때, kevent() 함수가 뭔가 문제가 있음
 		newEvents = kq.pendingEvents(8, NULL);
-
 		for (int i = 0; i < newEvents; ++i) {
 			currEvent = kq.getEvent(i);
-
 			if (currEvent->flags & EV_ERROR) {
 				if (currEvent->ident == ser.getServerSocket())
 					exitWithPerror("server socket error");
@@ -32,9 +36,9 @@ int main() {
 			}
 			else if (currEvent->filter == EVFILT_READ) {
 				if (currEvent->ident == ser.getServerSocket()) {
-					int clientSocket = ser.accept(NULL, NULL);
+					int clientSocket = ser.clientAccept(NULL, NULL);
 					std::cout << "accept new client: " << clientSocket << std::endl;
-					ser.fcntl(clientSocket, F_SETFL, O_NONBLOCK);
+					ser.serverFcntl(clientSocket, F_SETFL, O_NONBLOCK);
 
 					kq.changeEvents(clientSocket, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, NULL);
 					kq.changeEvents(clientSocket, EVFILT_WRITE, EV_ADD | EV_ENABLE, 0, 0, NULL);

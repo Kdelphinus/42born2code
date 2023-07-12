@@ -1,5 +1,10 @@
 #include "Kqueue.hpp"
 
+static void exitWithPerror(const std::string &msg) {
+	std::cerr << msg << std::endl;
+	exit(EXIT_FAILURE);
+}
+
 Kqueue::Kqueue() : _kq(kqueue()) {
 	if (_kq == -1)
 		exitWithPerror("kqueue() error\n" + std::string(strerror(errno)));
@@ -22,15 +27,18 @@ const int Kqueue::getKq() const {
 	return _kq;
 }
 
-int Kqueue::pendingEvents(int nevents, const struct timespec timeover) {
-	int newEvents = kevent(_kq, &_changeList[0], _changeList.size(), _eventList, nevents, timeover);
+int Kqueue::pendingEvents(int nevents, const struct timespec *timeout) {
+	int newEvents;
+
+	// TODO 클라이언트가 요청할 때, kevent()가 정상 동작하지 않음
+	newEvents = kevent(_kq, &_changeList[0], _changeList.size(), _eventList, nevents, timeout);
 	if (newEvents == -1)
 		exitWithPerror("kevent() error\n" + std::string(strerror(errno)));
 	_changeList.clear();
 	return newEvents;
 }
 
-struct kevent *Kqueue::getEvent(int i) const {
+struct kevent *Kqueue::getEvent(int i) {
 	return &_eventList[i];
 }
 
@@ -47,6 +55,6 @@ bool Kqueue::getClientsEnd(struct kevent *currEvent) const {
 	return _clients.find(currEvent->ident) != _clients.end();
 }
 
-const std::string Kqueue::getClients(int key) const {
-	return _clients[key];
+std::string Kqueue::getClients(int key) const {
+	return _clients.at(key);
 }
