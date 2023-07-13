@@ -10,9 +10,9 @@ int main() {
 	Server ser = Server(PF_INET, SOCK_STREAM, 0);
 
 	ser.initServer(AF_INET, 8080, INADDR_ANY);
-	ser.serverBind();
-	ser.serverListen(5);
-	ser.serverFcntl(ser.getServerSocket(), F_SETFL, O_NONBLOCK);
+	ser.bindServer();
+	ser.listenServer(5);
+	ser.fcntlServer(ser.getServerSocket(), F_SETFL, O_NONBLOCK);
 
 	Kqueue kq = Kqueue();
 	kq.changeEvents(ser.getServerSocket(), EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, NULL);
@@ -36,7 +36,7 @@ int main() {
 				if (currEvent->ident == ser.getServerSocket()) {
 					int clientSocket = ser.clientAccept(NULL, NULL);
 					std::cout << "accept new client: " << clientSocket << std::endl;
-					ser.serverFcntl(clientSocket, F_SETFL, O_NONBLOCK);
+					ser.fcntlServer(clientSocket, F_SETFL, O_NONBLOCK);
 
 					kq.changeEvents(clientSocket, EVFILT_READ, EV_ADD | EV_ENABLE, 0, 0, NULL);
 					kq.changeEvents(clientSocket, EVFILT_WRITE, EV_ADD | EV_ENABLE, 0, 0, NULL);

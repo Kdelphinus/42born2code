@@ -1,5 +1,6 @@
 #include "Kqueue.hpp"
 
+// TODO 나중에 하나로 몰기
 static void exitWithPerror(const std::string &msg) {
 	std::cerr << msg << std::endl;
 	exit(EXIT_FAILURE);
@@ -23,10 +24,6 @@ void Kqueue::disconnectClient(int clientFd) {
 	_clients.erase(clientFd);
 }
 
-const int Kqueue::getKq() const {
-	return _kq;
-}
-
 int Kqueue::pendingEvents(int nevents, const struct timespec *timeout) {
 	int newEvents;
 
@@ -37,8 +34,16 @@ int Kqueue::pendingEvents(int nevents, const struct timespec *timeout) {
 	return newEvents;
 }
 
+const int Kqueue::getKq() const {
+	return _kq;
+}
+
 struct kevent *Kqueue::getEvent(int i) {
 	return &_eventList[i];
+}
+
+std::string Kqueue::getClients(int key) const {
+	return _clients.at(key);
 }
 
 void Kqueue::setClients(int key, std::string value, int option) {
@@ -52,8 +57,4 @@ void Kqueue::setClients(int key, std::string value, int option) {
 
 bool Kqueue::getClientsEnd(struct kevent *currEvent) const {
 	return _clients.find(currEvent->ident) != _clients.end();
-}
-
-std::string Kqueue::getClients(int key) const {
-	return _clients.at(key);
 }

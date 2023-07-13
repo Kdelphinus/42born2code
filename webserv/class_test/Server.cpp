@@ -1,5 +1,7 @@
 #include "Server.hpp"
 
+
+// TODO 하나로 합치
 static void exitWithPerror(const std::string &msg) {
 	std::cerr << msg << std::endl;
 	exit(EXIT_FAILURE);
@@ -17,18 +19,18 @@ void Server::initServer(sa_family_t sinFamily, int sinPort, uint32_t sAddr) {
 	_serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);
 }
 
-void Server::serverBind() {
+void Server::bindServer() {
 	if (bind(_serverSocket, (struct sockaddr *)&_serverAddr, sizeof(_serverAddr)) == -1)
 		exitWithPerror("bind() error\n" + std::string(strerror(errno)));
 }
 
-void Server::serverListen(int num) {
+void Server::listenServer(int num) {
 	if (listen(_serverSocket, num) == -1)
 		exitWithPerror("listen() error\n" + std::string(strerror(errno)));
 
 }
 
-void Server::serverFcntl(int fd, int cmd, int option) {
+void Server::fcntlServer(int fd, int cmd, int option) {
 	fcntl(fd, cmd, option);
 }
 

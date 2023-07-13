@@ -21,9 +21,9 @@ class Server {
 		Server(int domain, int type, int protocol);
 
 		void initServer(sa_family_t sinFamily, int sinPort, uint32_t sAddr);
-		void serverBind();
-		void serverListen(int num);
-		void serverFcntl(int fd, int cmd, int option);
+		void bindServer();
+		void listenServer(int num);
+		void fcntlServer(int fd, int cmd, int option);
 
 		const int getServerSocket() const;
 		const int clientAccept(struct sockaddr *addr, socklen_t *addrLen);
