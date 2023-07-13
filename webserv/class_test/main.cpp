@@ -1,6 +1,5 @@
 #include "Kqueue.hpp"
 #include "Server.hpp"
-#include <stdio.h> // TODO for test
 
 static void exitWithPerror(const std::string &msg) {
 	std::cerr << msg << std::endl;
@@ -10,7 +9,7 @@ static void exitWithPerror(const std::string &msg) {
 int main() {
 	Server ser = Server(PF_INET, SOCK_STREAM, 0);
 
-	ser.initServer(AF_INET, htons(8080), htonl(INADDR_ANY));
+	ser.initServer(AF_INET, 8080, INADDR_ANY);
 	ser.serverBind();
 	ser.serverListen(5);
 	ser.serverFcntl(ser.getServerSocket(), F_SETFL, O_NONBLOCK);
@@ -22,7 +21,6 @@ int main() {
 	int newEvents;
 	struct kevent *currEvent;
 	while (1) {
-		// TODO 서버가 접속을 요청할 때, kevent() 함수가 뭔가 문제가 있음
 		newEvents = kq.pendingEvents(8, NULL);
 		for (int i = 0; i < newEvents; ++i) {
 			currEvent = kq.getEvent(i);

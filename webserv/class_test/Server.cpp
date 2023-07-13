@@ -11,7 +11,7 @@ Server::Server(int domain, int type, int protocol) : _serverSocket(socket(domain
 	memset(&_serverAddr, 0, sizeof(_serverAddr));
 }
 
-void Server::initServer(sa_family_t sinFamily, uint16_t sinPort, uint32_t sAddr) {
+void Server::initServer(sa_family_t sinFamily, int sinPort, uint32_t sAddr) {
 	_serverAddr.sin_family = sinFamily;
 	_serverAddr.sin_port = htons(sinPort);
 	_serverAddr.sin_addr.s_addr = htonl(INADDR_ANY);

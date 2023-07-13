@@ -30,7 +30,6 @@ const int Kqueue::getKq() const {
 int Kqueue::pendingEvents(int nevents, const struct timespec *timeout) {
 	int newEvents;
 
-	// TODO 클라이언트가 요청할 때, kevent()가 정상 동작하지 않음
 	newEvents = kevent(_kq, &_changeList[0], _changeList.size(), _eventList, nevents, timeout);
 	if (newEvents == -1)
 		exitWithPerror("kevent() error\n" + std::string(strerror(errno)));

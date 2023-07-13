@@ -20,7 +20,7 @@ class Server {
 //        ~Server();
 		Server(int domain, int type, int protocol);
 
-		void initServer(sa_family_t sinFamily, uint16_t sinPort, uint32_t sAddr);
+		void initServer(sa_family_t sinFamily, int sinPort, uint32_t sAddr);
 		void serverBind();
 		void serverListen(int num);
 		void serverFcntl(int fd, int cmd, int option);
