@@ -82,17 +82,17 @@ int main(int argc, char **argv) {
 				clientfd = accept(listenfd, (struct sockaddr *) &clientaddr, &clilen);
 				user_fds[clientfd] = 1; // 연결 처리
 
-				user_data = malloc(sizeof(user_data));
+				user_data = malloc(sizeof(struct udata));
 				user_data->fd = clientfd;
 
 				char *tmp = "First insert your nickname :";
 				write(user_data->fd, tmp, strlen(tmp));
 
 				sleep(1);
-				read(user_data->fd, user_data->name, 80);
-				user_data->name[strlen(user_data->name) - 1] = 0;
+				read(user_data->fd, user_data->name, sizeof(user_data) - 1);
+				user_data->name[strlen(user_data->name)] = '\0';
 
-				printf("Welcome \"%s\"\n", user_data->name);
+				printf("Welcome %s\n", user_data->name);
 
 				sleep(1);
 				sprintf(buf, "Okay your nickname %s\n", user_data->name);
