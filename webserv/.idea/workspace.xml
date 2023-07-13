@@ -15,15 +15,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f4ed8e9-b3ef-4523-9f89-127bb71ca665" name="변경" comment=":wrench: .idea 변">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webserv.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_test/Kqueue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/class_test/Kqueue.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_test/Server.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/class_test/Server.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_test/Server.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/class_test/Server.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class_test/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/class_test/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="1f4ed8e9-b3ef-4523-9f89-127bb71ca665" name="변경" comment=":wrench: .idea 변" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
