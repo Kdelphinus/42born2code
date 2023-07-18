@@ -16,6 +16,9 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(OBJ) $(CXXFLAGS) $(STD_FLAG) -o $(NAME)
 
+%.o: %.c
+	$(CXX) $(CXXFLAGS) $(STD_FLAG) -c $< -o $@
+
 clean:
 	rm -rf $(OBJ)
 
