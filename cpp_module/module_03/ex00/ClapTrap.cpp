@@ -74,8 +74,8 @@ int ClapTrap::getEnergyPoints() const {
 }
 
 void ClapTrap::attack(const std::string &target) {
-	if (this->_energyPoints == 0) {
-		std::cout << this->_name << " has no energy point" << std::endl;
+	if (this->_energyPoints == 0 || this->_hitPoints == 0) {
+		std::cout << this->_name << " has no energy point or has no hit points" << std::endl;
 		return;
 	}
 	--this->_energyPoints;
@@ -95,8 +95,8 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	if (this->_energyPoints == 0) {
-		std::cout << this->_name << " has no energy point" << std::endl;
+	if (this->_energyPoints == 0 || this->_hitPoints == 0) {
+		std::cout << this->_name << " has no energy point or has no hit points" << std::endl;
 		return;
 	}
 	--this->_energyPoints;
