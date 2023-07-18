@@ -3,7 +3,9 @@
 #include "FragTrap.hpp"
 
 int main() {
+	FragTrap a = FragTrap("HI");
 
-	FragTrap a = FragTrap();
+	a.highFivesGuys();
 
+	std::cout << "hp: " << a.getHitPoints() << " ep: " << a.getEnergyPoints() << " ad: " << a.getDamage() << std::endl;
 }
