@@ -41,3 +41,4 @@
 
 ## 참고 자료
 - [42seoul, C++ Module 05](https://cdn.intra.42.fr/pdf/pdf/81249/en.subject.pdf)
+- [Jseo Doodle, CPP Module 05](https://bigpel66.oopy.io/library/42/inner-circle/16)
