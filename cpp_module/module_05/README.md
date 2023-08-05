@@ -1,6 +1,7 @@
 # C++ Module 05
 
 ## 개념
+
 - `Repetition` : 반복문을 사용하여 특정 코드를 여러번 실행하는 것
     - `for`, `while`, `do-while`
     - `do-while` 은 일단 코드를 실행한 후에 조건을 확인하며 반복할 지 확인
@@ -26,19 +27,38 @@
           // 다른 예외를 처리하는 코드
       }
       ```
+- `Custom Exception`
+  - ```c++
+      class CustomException : public std::exception {
+      public:
+        virtual const char* what() const throw() {
+            return "CustomException";
+        }
+      };
+      ```
+  - `std::exception` 을 상속받아 `what()` 함수를 오버라이딩하여 에러를 직접 정의할 수 있다.
+  - 이때, `CustomException`들은 모두 `std::exception` 을 상속받으므로 `catch`에 `std::exception` 을 사용하면 모든 `CustomException` 을 처리할 수
+    있다.
+- `Unwind`
+  - 예외가 발생하면, 해당 예외를 처리하는 코드 블록을 찾을 때까지 스택을 거슬러 올라가며 호출된 함수들을 모두 종료시킨다.
+  - 이때, 수명이 끝난 객체들은 모두 소멸자가 호출된다.
 
 
 ## 문제
 
 ### ex00
 
+`Bureacrat`의 내부 클래스인 `GradeTooHighException`과 `GradeTooLowException`은 `Bureacrat`의 소멸자가 호출될 때 소멸되는 것이 맞다.
+하지만 unwind 과정으로 처리될 때, 예외가 던져진 순간의 스택 상태로 돌아가기에 해당 예외 처리하는데 필요한 정보가 보존된다.
+
+즉, 예외 처리 과정에선 별도의 매커니즘으로 인해 `Bureacrat`와 `GradeTooHighException`, `GradeTooLowException` 클래스는 독립적으로 소멸된다.
 ### ex01
 
 ### ex02
 
 ### ex03
 
-
 ## 참고 자료
+
 - [42seoul, C++ Module 05](https://cdn.intra.42.fr/pdf/pdf/81249/en.subject.pdf)
 - [Jseo Doodle, CPP Module 05](https://bigpel66.oopy.io/library/42/inner-circle/16)
