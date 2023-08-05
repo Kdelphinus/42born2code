@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
+Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name) {
   if (grade < 1)
 	throw (GradeTooHighException());
   if (grade > 150)
@@ -16,9 +16,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &bureaucrat) {
   return *this;
 }
 
-Bureaucrat::~Bureaucrat() {
-  std::cout << "delete" << std::endl;
-}
+Bureaucrat::~Bureaucrat() {}
 
 void Bureaucrat::incrementGrade() {
   if (_grade == 1)
@@ -32,7 +30,17 @@ void Bureaucrat::decrementGrade() {
   ++_grade;
 }
 
-const std::string Bureaucrat::getName() const {
+void Bureaucrat::signForm(Form &form) {
+  try {
+	form.beSigned(*this);
+	std::cout << _name << " signs " << form.getName() << std::endl;
+  } catch (std::exception &e) {
+	std::cout << _name << " couldn't sign " << form.getName() << " because "
+			  << e.what() << std::endl;
+  }
+}
+
+const std::string &Bureaucrat::getName() const {
   return _name;
 }
 

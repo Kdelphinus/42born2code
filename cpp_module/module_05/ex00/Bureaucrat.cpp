@@ -16,9 +16,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &bureaucrat) {
   return *this;
 }
 
-Bureaucrat::~Bureaucrat() {
-  std::cout << "delete" << std::endl;
-}
+Bureaucrat::~Bureaucrat() {}
 
 void Bureaucrat::incrementGrade() {
   if (_grade == 1)
