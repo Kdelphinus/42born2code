@@ -20,7 +20,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(OBJ) $(CXXFLAGS) $(STD_FLAG) -o $(NAME)
 
-%.o: %.c
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) $(STD_FLAG) -c $< -o $@
 
 clean:
