@@ -21,6 +21,7 @@ int main() {
 	Bureaucrat test1 = Bureaucrat("test1", 1);
 
 	std::cout << "====test1====" << std::endl;
+	std::cout << test1;
 	std::cout << "Name: " << test1.getName() << std::endl;
 	std::cout << "Grade: " << test1.getGrade() << std::endl;
 	test1.incrementGrade();
@@ -37,6 +38,7 @@ int main() {
 	Bureaucrat test2 = Bureaucrat("test2", 150);
 
 	std::cout << "====test2====" << std::endl;
+	std::cout << test2;
 	std::cout << "Name: " << test2.getName() << std::endl;
 	std::cout << "Grade: " << test2.getGrade() << std::endl;
 	test2.decrementGrade();
@@ -53,6 +55,7 @@ int main() {
 	Bureaucrat test3 = Bureaucrat("test3", 42);
 
 	std::cout << "====test3====" << std::endl;
+	std::cout << test3;
 	std::cout << "Name: " << test3.getName() << std::endl;
 	std::cout << "Grade: " << test3.getGrade() << std::endl;
 	test3.decrementGrade();
