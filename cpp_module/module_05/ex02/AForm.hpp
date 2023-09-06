@@ -12,6 +12,8 @@ class Form {
   bool _signed;
   const int _gradeToSign;
   const int _gradeToExecute;
+  std::string _target;
+
  public:
   Form();
   Form(const std::string &name, int gradeToSign, int gradeToExecute);
@@ -19,10 +21,14 @@ class Form {
   Form &operator=(const Form &form);
   ~Form();
 
+  void setSigned(bool signedValue);
+  void setTarget(const std::string &target);
+
   const std::string &getName() const;
   bool isSigned() const;
   int getGradeToSign() const;
   int getGradeToExecute() const;
+  const std::string &getTarget() const;
 
   void beSigned(Bureaucrat &bureaucrat);
   virtual void execute(Bureaucrat const &executor) const = 0;

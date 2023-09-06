@@ -27,21 +27,19 @@ Form &Form::operator=(const Form &form) {
 
 Form::~Form() {}
 
-const std::string &Form::getName() const {
-  return _name;
-}
+void Form::setSigned(bool signedValue) { _signed = signedValue; }
 
-bool Form::isSigned() const {
-  return _signed;
-}
+void Form::setTarget(const std::string &target) { _target = target; }
 
-int Form::getGradeToSign() const {
-  return _gradeToSign;
-}
+const std::string &Form::getName() const { return _name; }
 
-int Form::getGradeToExecute() const {
-  return _gradeToExecute;
-}
+bool Form::isSigned() const { return _signed; }
+
+int Form::getGradeToSign() const { return _gradeToSign; }
+
+int Form::getGradeToExecute() const { return _gradeToExecute; }
+
+const std::string &Form::getTarget() const { return _target; }
 
 void Form::beSigned(Bureaucrat &bureaucrat) {
   if (bureaucrat.getGrade() > _gradeToSign)

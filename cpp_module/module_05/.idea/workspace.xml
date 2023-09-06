@@ -6,9 +6,12 @@
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="module_05" targetName="fclean" />
+      <config projectName="module_05" targetName="Makefile" />
+      <config projectName="module_05" targetName="makefile" />
       <config projectName="module_05" targetName="ex02" />
       <config projectName="module_05" targetName="re" />
       <config projectName="module_05" targetName="all" />
+      <config projectName="module_05" targetName="GNUmakefile" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -17,12 +20,18 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment=":art: AForm -&gt; Form 이름 수정">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/AForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/AForm.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/AForm.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/AForm.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/PresidentialPardonForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/PresidentialPardonForm.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/PresidentialPardonForm.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/PresidentialPardonForm.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/RobotomyRequestForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/RobotomyRequestForm.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/RobotomyRequestForm.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/RobotomyRequestForm.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +42,41 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
     <projectState path="$PROJECT_DIR$/ex02">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/ex03">
       <ProjectState />
     </projectState>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Kdelphinus &lt;kmj951015@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="SIGN_OFF_COMMIT" value="true" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Kdelphinus&quot;
+  }
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="88278342-9ab5-4307-b1e2-b565c7706b59" />
+        <option name="url" value="https://github.com/Kdelphinus/42born2code.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MakefileLocalSettings">
     <option name="availableProjects">
@@ -47,14 +85,30 @@
           <key>
             <ExternalProjectPojo>
               <option name="name" value="module_05" />
-              <option name="path" value="$PROJECT_DIR$/ex02" />
+              <option name="path" value="$PROJECT_DIR$/ex03" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
                 <option name="name" value="module_05" />
-                <option name="path" value="$PROJECT_DIR$/ex02" />
+                <option name="path" value="$PROJECT_DIR$/ex03" />
+              </ExternalProjectPojo>
+            </list>
+          </value>
+        </entry>
+        <entry>
+          <key>
+            <ExternalProjectPojo>
+              <option name="name" value="module_05" />
+              <option name="path" value="$PROJECT_DIR$" />
+            </ExternalProjectPojo>
+          </key>
+          <value>
+            <list>
+              <ExternalProjectPojo>
+                <option name="name" value="module_05" />
+                <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
             </list>
           </value>
@@ -63,70 +117,80 @@
     </option>
     <option name="projectSyncType">
       <map>
-        <entry key="$PROJECT_DIR$/ex02" value="RE_IMPORT" />
+        <entry key="$PROJECT_DIR$/ex03" value="RE_IMPORT" />
       </map>
     </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="OCResolveContextSettings">
+    <option name="configuration" value="$PROJECT_DIR$/ex03/Intern.cpp" />
+  </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2023" />
     <option name="minorVersion" value="2.1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2UvhQ4oezzqqSRUdLWvOgtFPTtf" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/myko/42born2code/cpp_module/module_05/ex03&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Makefile 애플리케이션.all">
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ex03" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Makefile 애플리케이션.GNUmakefile">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_05" TARGET_NAME="all" CONFIG_NAME="all" version="1">
+    <configuration name="GNUmakefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_05" TARGET_NAME="GNUmakefile" CONFIG_NAME="GNUmakefile" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ex02" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_05" TARGET_NAME="ex02" CONFIG_NAME="ex02" version="1">
+    <configuration name="Makefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_05" TARGET_NAME="Makefile" CONFIG_NAME="Makefile" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_05" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_05" TARGET_NAME="re" CONFIG_NAME="re" version="1">
+    <configuration name="makefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_05" TARGET_NAME="makefile" CONFIG_NAME="makefile" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Makefile 애플리케이션.all" />
-      <item itemvalue="Makefile 애플리케이션.fclean" />
-      <item itemvalue="Makefile 애플리케이션.re" />
-      <item itemvalue="Makefile 애플리케이션.ex02" />
+      <item itemvalue="Makefile 애플리케이션.GNUmakefile" />
+      <item itemvalue="Makefile 애플리케이션.Makefile" />
+      <item itemvalue="Makefile 애플리케이션.makefile" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
@@ -137,8 +201,45 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1693825943480</updated>
-      <workItem from="1693825947388" duration="12000" />
+      <workItem from="1693825947388" duration="206000" />
+      <workItem from="1693976006525" duration="7883000" />
+      <workItem from="1693984021133" duration="637000" />
     </task>
+    <task id="LOCAL-00001" summary=":wrench: ex02 Makefile로 target 수정">
+      <option name="closed" value="true" />
+      <created>1693826131564</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1693826131564</updated>
+    </task>
+    <task id="LOCAL-00002" summary=":art: ex02 요구사항 동작 추가">
+      <option name="closed" value="true" />
+      <created>1693981310470</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693981310470</updated>
+    </task>
+    <task id="LOCAL-00003" summary=":art: AForm -&gt; Form 이름 수정">
+      <option name="closed" value="true" />
+      <created>1693982873543</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1693982873543</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value=":wrench: ex02 Makefile로 target 수정" />
+    <MESSAGE value=":art: ex02 요구사항 동작 추가" />
+    <MESSAGE value=":art: AForm -&gt; Form 이름 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value=":art: AForm -&gt; Form 이름 수정" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

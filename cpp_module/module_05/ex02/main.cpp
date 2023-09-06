@@ -5,10 +5,12 @@
 
 int main() {
   try {
-  	Bureaucrat bureaucrat = Bureaucrat("bureaucrat", 5);
-	ShrubberyCreationForm shrubberyCreationForm = ShrubberyCreationForm();
-	RobotomyRequestForm robotomyRequestForm = RobotomyRequestForm();
-	PresidentialPardonForm presidentialPardonForm = PresidentialPardonForm();
+	std::string target = "target";
+	Bureaucrat bureaucrat = Bureaucrat("bureaucrat", 5);
+	ShrubberyCreationForm shrubberyCreationForm = ShrubberyCreationForm(target);
+	RobotomyRequestForm robotomyRequestForm = RobotomyRequestForm(target);
+	PresidentialPardonForm
+		presidentialPardonForm = PresidentialPardonForm(target);
 
 	std::cout << "** ShrubberyCreationForm **" << std::endl;
 	bureaucrat.signForm(shrubberyCreationForm);
@@ -24,6 +26,5 @@ int main() {
   } catch (std::exception &e) {
 	std::cerr << e.what() << std::endl;
   }
-
   return 0;
 }
