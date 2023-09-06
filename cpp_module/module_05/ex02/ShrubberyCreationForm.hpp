@@ -5,7 +5,7 @@
 
 class ShrubberyCreationForm : public Form {
  public:
-  ShrubberyCreationForm(std::string &target);
+  explicit ShrubberyCreationForm(const std::string &target);
   ShrubberyCreationForm(const ShrubberyCreationForm &form);
   ShrubberyCreationForm &operator=(const ShrubberyCreationForm &form);
   ~ShrubberyCreationForm();

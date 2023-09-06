@@ -1,8 +1,8 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string &target) : Form(
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form(
 	"ShrubberyCreationForm",
-													  145,
+	145,
 	137) {
   setTarget(target);
 }

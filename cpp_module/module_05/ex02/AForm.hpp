@@ -19,7 +19,7 @@ class Form {
   Form(const std::string &name, int gradeToSign, int gradeToExecute);
   Form(const Form &form);
   Form &operator=(const Form &form);
-  ~Form();
+  virtual ~Form();
 
   void setSigned(bool signedValue);
   void setTarget(const std::string &target);
