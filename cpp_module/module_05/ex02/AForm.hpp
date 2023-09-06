@@ -2,6 +2,7 @@
 #define AForm_HPP
 
 #include <iostream>
+#include <fstream>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -18,11 +19,6 @@ class AForm {
   AForm &operator=(const AForm &AForm);
   ~AForm();
 
-  void setName(const std::string &name);
-  void setSigned(bool sign);
-  void setGradeToSign(int gradeToSign);
-  void setGradeToExecute(int gradeToExecute);
-
   const std::string &getName() const;
   bool isSigned() const;
   int getGradeToSign() const;
@@ -36,6 +32,14 @@ class AForm {
 	const char *what() const throw();
   };
   class GradeTooLowException : public std::exception {
+   public:
+	const char *what() const throw();
+  };
+  class FormNotSignedException : public std::exception {
+   public:
+	const char *what() const throw();
+  };
+  class BureaucratExecuteException : public std::exception {
    public:
 	const char *what() const throw();
   };
