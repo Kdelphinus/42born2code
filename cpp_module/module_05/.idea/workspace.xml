@@ -18,16 +18,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment=":art: Intern 클래스에 makeForm 함수 추가 및 main 작성">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex02/AForm.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/AForm.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex02/PresidentialPardonForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/PresidentialPardonForm.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex02/PresidentialPardonForm.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/PresidentialPardonForm.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex02/RobotomyRequestForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/RobotomyRequestForm.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex02/RobotomyRequestForm.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/RobotomyRequestForm.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.hpp" afterDir="false" />
-    </list>
+    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment=":wrench: .idea 수정" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,7 +160,7 @@
       <workItem from="1693825947388" duration="206000" />
       <workItem from="1693976006525" duration="7883000" />
       <workItem from="1693984021133" duration="2566000" />
-      <workItem from="1693989867569" duration="328000" />
+      <workItem from="1693989867569" duration="621000" />
     </task>
     <task id="LOCAL-00001" summary=":wrench: ex02 Makefile로 target 수정">
       <option name="closed" value="true" />
@@ -219,7 +210,23 @@
       <option name="project" value="LOCAL" />
       <updated>1693990094104</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary=":recycle: refactoring">
+      <option name="closed" value="true" />
+      <created>1693990312635</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693990312635</updated>
+    </task>
+    <task id="LOCAL-00008" summary=":wrench: .idea 수정">
+      <option name="closed" value="true" />
+      <created>1693990347325</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1693990347325</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -230,7 +237,9 @@
     <MESSAGE value=":building_construction: Form 클래스의 파생 클래스 생성자는 target을 무조건 받도록 수정" />
     <MESSAGE value=":wrench: ex03 Makefile로 target 수정" />
     <MESSAGE value=":art: Intern 클래스에 makeForm 함수 추가 및 main 작성" />
-    <option name="LAST_COMMIT_MESSAGE" value=":art: Intern 클래스에 makeForm 함수 추가 및 main 작성" />
+    <MESSAGE value=":recycle: refactoring" />
+    <MESSAGE value=":wrench: .idea 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value=":wrench: .idea 수정" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
