@@ -1,12 +1,14 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45) {}
+RobotomyRequestForm::RobotomyRequestForm() : Form("RobotomyRequestForm",
+												  72,
+												  45) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &form)
-	: AForm(form) {}
+	: Form(form) {}
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &form) {
-  AForm::operator=(form);
+  Form::operator=(form);
   return *this;
 }
 

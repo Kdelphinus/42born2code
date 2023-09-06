@@ -1,13 +1,13 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm(
+PresidentialPardonForm::PresidentialPardonForm() : Form(
 	"PresidentialPardonForm", 25, 5) {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &form)
-	: AForm(form) {}
+	: Form(form) {}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &form) {
-  AForm::operator=(form);
+  Form::operator=(form);
   return *this;
 }
 

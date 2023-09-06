@@ -6,18 +6,18 @@
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
-class AForm {
+class Form {
  private:
   const std::string _name;
   bool _signed;
   const int _gradeToSign;
   const int _gradeToExecute;
  public:
-  AForm();
-  AForm(const std::string &name, int gradeToSign, int gradeToExecute);
-  AForm(const AForm &AForm);
-  AForm &operator=(const AForm &AForm);
-  ~AForm();
+  Form();
+  Form(const std::string &name, int gradeToSign, int gradeToExecute);
+  Form(const Form &form);
+  Form &operator=(const Form &form);
+  ~Form();
 
   const std::string &getName() const;
   bool isSigned() const;
@@ -44,6 +44,6 @@ class AForm {
 	const char *what() const throw();
   };
 };
-std::ostream &operator<<(std::ostream &os, const AForm &AForm);
+std::ostream &operator<<(std::ostream &os, const Form &AForm);
 
 #endif

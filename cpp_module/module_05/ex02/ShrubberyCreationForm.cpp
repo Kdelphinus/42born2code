@@ -1,14 +1,14 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm",
-													   145,
-													   137) {}
+ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShrubberyCreationForm",
+													  145,
+													  137) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &form)
-	: AForm(form) {}
+	: Form(form) {}
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &form) {
-  AForm::operator=(form);
+  Form::operator=(form);
   return *this;
 }
 

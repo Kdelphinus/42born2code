@@ -4,7 +4,7 @@
 #include "AForm.hpp"
 #include <cstdlib>
 
-class RobotomyRequestForm : public AForm {
+class RobotomyRequestForm : public Form {
  public:
   RobotomyRequestForm();
   RobotomyRequestForm(const RobotomyRequestForm &robotomyRequestForm);
