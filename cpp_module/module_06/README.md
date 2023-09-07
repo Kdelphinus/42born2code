@@ -43,24 +43,28 @@ std::cout << b << std::endl;
 - 지원 범위: C++
 - 상속 관계에 있는 class 간의 형 변환
 - 포인터나 레퍼런스 객체에만 사용 가능
-- 단, 기반 클래스에 virtual 함수가 정상 동작해야 함
+- 관련되지 않은 클래스에 대한 포인터 사이에서도 NULL 포인터 캐스팅은 가능
+- 모든 유형의 포인터를 void 포인터로 캐스팅할 수 있음
 
 ```c++
 class Base {};
 class Derived : public Base {};
 
-Base b; Base pb;
-Derived d; Derived pd;
+Base base; Base p_base;
+Derived derive; Derived p_derive;
 
-pb = dynamic_cast<Base*>(&b); // OK
-pd = dynamic_cast<Derived*>(&d); // OK
-pb = dynamic_cast<Base*>(&d); // OK: derived to base
-pd = dynamic_cast<Derived*>(&b); // Error: base to derived
+p_base = dynamic_cast<Base*>(&base); // OK
+p_derive = dynamic_cast<Derived*>(&derive); // OK
+p_base = dynamic_cast<Base*>(&derive); // OK: derived to base
+p_derive = dynamic_cast<Derived*>(&base); // Error: base to derived
 ```
 
-
+- 단, 가상 함수가 있다면 Error 케이스 상황도 가능
 
 ### static_cast
+- 지원: C++
+- 
+
 ### const_cast
 ### reinterpret_cast
 
