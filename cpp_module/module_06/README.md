@@ -338,6 +338,14 @@ float: 42.0f
 double: 42.0
 ```
 
+### ex01
+
+- 아래의 메소드들을 가지는 static class `Serializer`를 구성
+  - `uintptr_t serialize(Data* ptr);` : pointer -> `uintptr_t`
+  - `Data* deserialize(uintptr_t raw);` : `uintptr_t` -> pointer
+- 멤버를 가지고 있는 `Data` 구조체를 생성
+- `serialize`와 `deserialize` 함수를 이용해 `Data *` 를 `uintptr_t`로 변경했다가 복구하는 테스트를 작성
+
 ## 참고 문헌
 
 - [42Seoul, C++ Module 06](en.subject.pdf)
