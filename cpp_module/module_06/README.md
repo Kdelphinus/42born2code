@@ -13,7 +13,7 @@
         - type이 pointer: nullptr
         - type이 reference: bad_cast(exception으로 처리)
 
-- 예시 1) 다운 캐스팅 오류
+#### 예시 1) 다운 캐스팅 오류
 
 ```c++
 #include <iostream>
@@ -76,7 +76,7 @@ Runtime Error
 
 `new Blog()`를 통해서 생성되었기에 `Tistory` 생성자는 호출되지 않았다. 그렇기에 캐스팅이 불가하다.
 
-- 예제 2) 다운 캐스팅 성공
+#### 예제 2) 다운 캐스팅 성공
 
 ```c++
 #include <iostream>
@@ -142,7 +142,7 @@ This is Tistory Class
 - 예제 1과 바뀐 거는 `Blog* pBlog = new Tistory()` 하나 뿐이다.
 - `pBlog->Show()`에서 `pBlog`는 `Tistory`를 가리키고 있지만, `virtual`로 선언되지 않았기에 `Blog`의 `Show()`를 호출한다.
 
-- 예제 3) 업 캐스팅
+#### 예제 3) 업 캐스팅
 
 ```c++
 #include <iostream>
