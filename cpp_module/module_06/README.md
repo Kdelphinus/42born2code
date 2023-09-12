@@ -346,6 +346,18 @@ double: 42.0
 - 멤버를 가지고 있는 `Data` 구조체를 생성
 - `serialize`와 `deserialize` 함수를 이용해 `Data *` 를 `uintptr_t`로 변경했다가 복구하는 테스트를 작성
 
+### ex02
+- virtual 소멸자만 가지는 `Base` 클래스 생성
+- `Base`를 public하게 상속받고 비어있는 `A`, `B`, `C` 클래스 생성
+> 이때, 네 개의 클래스는 OCF를 지키지 않아도 된다.
+- 아래 함수들을 구성
+  - `Base *generate(void)`: `A`, `B`, `C` 중 하나를 `Base *` 타입으로 무작위 반환하는 함수
+  - `void identify(Base* p)`: 입력 받은 클래스가 실제로 `A`, `B`, `C` 중 어떤 것인지 출력하는 함수
+  - `void identify(Base& p)`
+    - 입력 받은 클래스가 실제로 `A`, `B`, `C` 중 어떤 것인지 출력하는 함수
+    - 이때, 이 함수 내에서 포인터 사용은 금지
+- `typeinfo` 헤더는 금지
+
 ## 참고 문헌
 
 - [42Seoul, C++ Module 06](en.subject.pdf)
