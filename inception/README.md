@@ -1,18 +1,19 @@
 # Inception
 
 ## Index
+
 - [Subject](#subject)
-  - [General guidelines](#general-guidelines)
-  - [Mandatory part](#mandatory-part)
-    - [설정해야 할 것](#설정해야-할-것)
-    - [그 외 주의사항](#그-외-주의사항)
+    - [General guidelines](#general-guidelines)
+    - [Mandatory part](#mandatory-part)
+        - [설정해야 할 것](#설정해야-할-것)
+        - [그 외 주의사항](#그-외-주의사항)
 - [개념](#개념)
-  - [Docker](#docker)
-  - [Container](#container)
-  - [Imgae](#imgae)
-  - [레이어 저장방식](#레이어-저장방식)
-  - [Dockerfile](#dockerfile)
-  - [Docker-compose](#docker-compose)
+    - [Docker](#docker)
+    - [Container](#container)
+    - [Imgae](#imgae)
+    - [레이어 저장방식](#레이어-저장방식)
+    - [Dockerfile](#dockerfile)
+    - [Docker-compose](#docker-compose)
 - [참고 문헌](#참고-문헌)
 
 ## Subject
@@ -59,7 +60,7 @@
 
 - WordPress 데이터베이스 반드시 두 명의 사용자가 있어야 하며 그 중 하나는 관리자여야 한다. 이때 이름은 admin/Admin이란 단어가 포함되면 안 된다.
 
-> 보륢은 도커를 사용하는 호스트 머신의 /home/login/data 폴더에서 사용할 수 있다. 물론 login은 사용자 계정으로 바꿔야 한다.
+> 보은 도커를 사용하는 호스트 머신의 /home/login/data 폴더에서 사용할 수 있다. 물론 login은 사용자 계정으로 바꿔야 한다.
 
 작업을 더욱 간단하게 하려면, 도메인 이름이 로컬 IP 주소를 가리키도록 구성해야 한다.
 
@@ -87,25 +88,30 @@
 ## 개념
 
 ### Docker
+
 - 컨테이너 기반의 오픈소스 가상화 플랫폼
 - 다양한 프로그램, 실행환경을 컨테이너로 추상화하하고 동일한 인터페이스를 제공하여 프로그램의 배포 및 관리를 단순하게 해준다.
 - 백엔드 프로그램, 데이터베이스 서버, 메시지 큐 등 어떤 프로그램도 컨테이너로 추상화 가능
 - 그리고 어떤 환경에서도 실행 가능
 
 ### Container
+
 - 격리된 공간에서 프로세스가 동작하는 기술
 - 기존 가상화 대상이었던 OS 대신 프로세스를 격리하는 방식을 `리눅스 컨테이너`라고 한다.
 
 ### Imgae
+
 - 컨테이너 실행에 필요한 파일과 설정값 등을 포함하고 있는 것
 - 상태값을 가지지 않고 변하지 않는다.
 - 컨테이너는 이미지를 실행한 상태라고 볼 수 있으며 추가되거나 변하는 값은 컨테이너에 저장된다.
 
 ### 레이어 저장방식
+
 - 이미지는 여러 개의 읽기 전용 레이어로 구성되며 이 레이어를 바탕으로 파일 시스템을 구성한다.
 - 그렇기에 기존 이미지에 파일을 추가해도 레이어 하나만 추가하기에 굉장히 효율적이다.
 
 ### Dockerfile
+
 ```dockerfile
 
 # vertx/vertx3 debian version
@@ -122,16 +128,39 @@ EXPOSE 7000
 
 CMD ["start.sh"]
 ```
+
 - 이미지를 만들기 위한 설정 파일
 - 자체 DSL(Domain Specific Language)을 사용하여 이미지 생성 과정을 정의한다.
 
+| 명령         | 기능 및 설명                                                                                                                                                      | 예시                                                                                |
+|:-----------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|
+| FROM       | - 기본 이미지 지정                                                                                                                                                  | FROM alpine                                                                       |
+| WORKDIR    | - 컨테이너 내에서 작업 디렉토리 설정                                                                                                                                        | WORKDIR /app                                                                      |
+| COPY       | - 파일 또는 디렉토리를 복사할 때 경로를 지정                                                                                                                                   | COPY src/ /app (호스트 시스템의 src/ 폴더를 컨테이너의 /app 경로로 복사)                              |
+| ADD        | - COPY + URL이나 압축 파일 다운 및 추출<br/>- Docker 공식 문서에서는 COPY를 먼저 고려하고 ADD는 필요한 경우에만 사용할 것을 권장                                                                     | ADD build/distributions/app-3.3.1.tar /                                           |
+| RUN        | - 컨테이너 내에서 실행할 명령어<br/>- 이미지를 빌드하는 동안 실행되며, 그 결과는 이미지의 레이어로 저장된다.                                                                                            | RUN apt-get update && apt-get install -y python3                                  |
+| ENV        | - 이미지 내에서 사용될 환경 변수 설정<br/>- .env 파일에 있는 환경 변수를 가져올 경우, docker-compose.yml에서 ${ENV_NAME}으로 사용 가능                                                             | ENV DB_HOST=localhost DB_PORT=5432                                                |
+| EXPOSE     | - 컨테이너가 리스닝할 포트를 정의<br/>- 컨테이너 내부의 애플리케이션이 외부에 접근 가능한 포트를 열게 한다.                                                                                             | EXPOSE 80                                                                         |
+| CMD        | - 컨테이너가 시작될 때 실행할 명령을 지정<br/>- default값을 갖는 param 역할을 하는 경우가 많다.<br/>- Exec 형식: JSON 배열 형식, `/bin/sh -c` 를 사용하여 명령 실행<br/>- Shell 형식: 문자열 형식, 쉘을 사용하여 명령을 실행 | CMD ["python", "app.py"] (Exec 방식)<br/>CMD python app.py (Shell 형삭)               |
+| ENTRYPOINT | - CMD와 거의 유사하지만 Docker Compose에서 새로운 명령어를 지정해도 덮어쓰이지 않고 항상 실행된다.<br/>- 실행 방식은 CMD와 동일하며 핵심 실행 파일이 된다.                                                        | ENTRYPOINT ["python", "app.py"] (Exec 방식)<br/>ENTRYPOINT python app.py (Shell 형삭) |
+
+> 만약 ENTRYPOINT와 CMD를 함께 사용한다면, CMD에 지정된 명령은 ENTRYPOINT 명령어에 인수로 처리된다.
+> ```dockerfile
+> ENTRYPOINT ["python", "app.py"]
+> CMD ["--debug"]
+> ```
+> 위의 설정으로 실행하면 `python app.py --debug` 명령어가 실행된다.
+> 하지만 `docker run` 명령어로 컨테이너를 시작할 때, `--debug` 대신 다른 인수를 지정할 수도 있다.
+
 ### Docker compose
+
 - 단일 서버에서 여러 개의 컨테이너를 하나의 서비스로 정의해 묶음으로 관리할 수 있는 작업 환경을 제공하는 도구
 - 여러 개의 컨테이너가 하나의 어플리케이션으로 동작할 때 각각의 컨테이너 테스트를 위해 일일이 컨테이너를 실행하는 것은 매우 번거롭기 때문에 Docker compose를 사용한다.
 - docker compose는 여러 개의 컨테이너의 옵션과 환경을 정의한 파일을 읽어 컨테이너를 순차적으로 생성하는 방식으로 동작한다.
 - 이때, 각 컨테이너의 의존성, 네트워크, 볼륨 등과 컨테이너의 수 등도 조절할 수 있다.
 
 #### docker-compose.yml
+
 ```yaml
 version: '3.9' # yaml 파일 포맷 버전
 
@@ -139,22 +168,22 @@ services: # 도커 컴포즈로 생성할 컨테이너 옵션 정의
   db: # 생성할 컨테이너 이름 
     image: mysql:8 # 사용할 이미지
     volumes: # 컨테이너에서 사용할 볼륨
-    - db:/var/lib/mysql
+      - db:/var/lib/mysql
     restart: unless-stopped # 컨테이너가 종료되었을 때 자동으로 재시작
     environment: # 컨테이너 내부에서 사용할 환경변수
-    - MYSQL_ROOT_PASSWORD=seosh817
-    - MYSQL_DATABASE=seosh817
-    - MYSQL_USER=seosh817
-    - MYSQL_PASSWORD=seosh817
+      - MYSQL_ROOT_PASSWORD=seosh817
+      - MYSQL_DATABASE=seosh817
+      - MYSQL_USER=seosh817
+      - MYSQL_PASSWORD=seosh817
     networks: # 컨테이너가 사용할 네트워크
-    - wordpress
+      - wordpress
 
   wordpress:
     depends_on: # 특정 컨테이너와 의존 관계, 이 항목에 명시된 컨테이너가 먼저 실행
-    - db
+      - db
     image: wordpress:latest
     ports: # 서비스의 컨테이너를 개방할 포트
-    - "8000:80"
+      - "8000:80"
     restart: unless-stopped
     environment:
       WORDPRESS_DB_HOST: db:3306
@@ -162,15 +191,17 @@ services: # 도커 컴포즈로 생성할 컨테이너 옵션 정의
       WORDPRESS_DB_PASSWORD: seosh817
       WORDPRESS_DB_NAME: seosh817
     networks:
-    - wordpress
+      - wordpress
 
 volumes:
-  db: {}
+  db: { }
 
 networks:
-  wordpress: {}
+  wordpress: { }
 ```
+
 > yaml 파일에서 들여쓰기는 tab이 아닌 공백 2칸으로 한다.
+
 - docker-compose.yml은 기존 run 명령어를 yaml 파일로 변환한 것이다.
 - 위 docker-compose.yml 파일은 wordpress와 mysql 두 개의 서비스가 존재하고 볼륨을 db, 네트워크를 wordpress로 정의하였다.
 
@@ -188,6 +219,7 @@ $ docker-compose -p my-project up -d
 # 단, scale 시 주의할 점은 포트를 여러개 지정하면 충돌이나므로 호스트 포트는 하나만 지정해주어야 함.
 $ docker-compose scale [서비스명]=[컨테이너 갯수]
 ```
+
 - `-d`: 도커 컴포즈 프로젝트를 백그라운드에서 실행
 - `-p`: 프로젝트 이름 지정, 명시하지 않으면 현재 디렉토리의 이름
 
@@ -198,16 +230,46 @@ $ docker-compose down
 # 프로젝트 내 컨테이너, 네트워크 및 볼륨 종료 및 제거
 $ docker-compose down -v
 ```
+
 - `-v`: 프로젝트 내 볼륨까지 제거
 
 ```shell
 # 프로젝트 내 컨테이너 목록 확인
-$ docker-compose ps
+$ docker-compose ps통
 ```
 
+### PID 1
+
+- 주로 시스템을 시작하고 종료하는데 사용되는 init process
+- 커널이 첫 번째로 만든 프로세스
+- 모든 프로세스는 init 프로세스를 부모 프로세스로 가진다. (고아 프로세스도 입양한다.)
+- 모든 스레드는 kthreadd(PID 2)를 부모 프로세스로 가진다.
+
+#### docker와의 관계
+
+- 컨테이너 내부에도 PID 1 프로세스가 존재하고 모든 프로세스의 부모 프로세스가 된다.
+- 그렇기에 PID 1이 종료되면 컨테이너가 중지되고 종료되며 시그널을 캐치하고 처리할 수 있어야 한다.
+- 리눅스와 달리 컨테이너는 init 프로세스가 PID 1이 아니다.
+
+- 만약 init 프로세스의 역할을 수행하지 못하는 프로세스가 PID 1이 된다면 컨테이너는 정상적인 시그널 처리와 고아 프로세스 입양을 할 수 없게 된다.
+- 그렇기에 init 프로세스의 역할을 해주는 프로그램인 dumb-init과 tini를 컨테이너의 PID 1로 지정해주는 방법이 있다.
+- Dockerfile에서 `CMD`나 `ENTRYPOINT` 명령어로 PID 1로 실행될 어플리케이션을 지정할 수 있다.
+
+```dockerfile
+# 최초로 dumb-init을 실행한다.
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
+# dumb-init의 인자로 CMD의 내용이 들어오게 된다.
+CMD ["sh", "/scripts/run.sh"]
+```
 
 ## 참고 문헌
+
 - [42seoul, inception](./en.subject.pdf)
 - [Shane's planet, Ubuntu 20.04 LTS) Docker 설치하기](https://shanepark.tistory.com/237)
 - [subicura, 초보를 위한 도커 안내서 - 도커란 무엇인가?](https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html)
 - [seunghwaan, 도커 컴포즈 - 개념 정리 및 사용법](https://seosh817.tistory.com/387)
+- [aqualung5150.log, [Inception] 3. PID 1과 dumb-init](https://velog.io/@rockaria/Inception-3.-PID-1%EA%B3%BC-dumb-init)
+- [하이초로그, [42seoul] 5 circle - INCEPTION](https://velog.io/@highcho/42seoul-INCEPTION)
+- [Jseo Doodle, Inception](https://bigpel66.oopy.io/library/42/inner-circle/20)
+- [Alpine Linux, Release Branches](https://alpinelinux.org/releases/)
