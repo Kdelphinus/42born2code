@@ -14,6 +14,9 @@
     - [레이어 저장방식](#레이어-저장방식)
     - [Dockerfile](#dockerfile)
     - [Docker-compose](#docker-compose)
+    - [PID 1](#pid-1)
+        - [docker와의 관계](#docker와의-관계)
+
 - [참고 문헌](#참고-문헌)
 
 ## Subject
@@ -263,8 +266,52 @@ ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["sh", "/scripts/run.sh"]
 ```
 
-## 참고 문헌
+## 자잘한 설명
+### apk 관련
+`alpine`에는 `apt` 대신 `apk`로 패키지를 관리한다.
 
+```shell
+apk update && apk upgrade && apk add --no-cache nginx openssl \
+    && rm -rf /var/cache/apk/*
+```
+
+- `add`: 패키지 설치
+- `--no-cache`: 캐시를 사용하지 않고 설치
+- `rm -rf /var/cache/apk/*`: 캐시 삭제
+  - 이미지 용량을 줄이기 위해
+> `&&`로 묶은 이유
+> 
+> `add` 명령어에 다른 라이브러리가 추가되었을 때, `apk update`와 `apk upgrade`가 상위 줄에 존재하면 이전 빌드 캐시로 인해 실행되지 않는다.
+> 즉, `add`만 다시 실행되고 이는 설치 오류를 일으킬 수 있다.
+> 그렇기에 `update`, `upgrade`, `add` 를 묶어서 실행한다. 
+
+### openssl
+```shell
+openssl openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
+    -subj "/C=KR/ST=Seoul/L=Seoul/O=42Seoul/OU=Ko/CN=localhost" \
+    -keyout /etc/ssl/server.key -out /etc/ssl/server.crt \
+```
+
+- `openssl req`: SSL/TLS 인증서 요청을 생성하고 관리
+- `-newkey rsa:4096`: RSA 알고리즘을 사용하고 4096비트의 키를 생성
+- `-days 365`: 인증서의 유효기간을 365일로 설정
+- `-nodes`: 비밀번호를 사용하지 않음, 즉 개인키를 암호화하지 않음
+- `-x509`: 자체 서명된 인증서를 생성하기 위한 옵션
+- `-subj`: 인증서의 주체 필드를 설정
+  - `/C=KR`: 국가
+  - `/ST=Seoul`: 주
+  - `/L=Seoul`: 도시
+  - `/O=42Seoul`: 조직
+  - `/OU=Ko`: 조직 단위
+  - `/CN=localhost`: 공용 이름
+- `-keyout`: 개인키 파일의 경로
+- `-out`: 인증서 파일의 경로
+
+### daemon off
+- `daemon off`는 nginx가 백그라운드에서 실행되지 않도록 한다.
+- 이를 통해 `nginx`가 PID 1로 실행되고 nginx 자체 신호 핸들러를 사용할 수 있게 된다.
+
+## 참고 문헌
 - [42seoul, inception](./en.subject.pdf)
 - [Shane's planet, Ubuntu 20.04 LTS) Docker 설치하기](https://shanepark.tistory.com/237)
 - [subicura, 초보를 위한 도커 안내서 - 도커란 무엇인가?](https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html)
@@ -273,3 +320,6 @@ CMD ["sh", "/scripts/run.sh"]
 - [하이초로그, [42seoul] 5 circle - INCEPTION](https://velog.io/@highcho/42seoul-INCEPTION)
 - [Jseo Doodle, Inception](https://bigpel66.oopy.io/library/42/inner-circle/20)
 - [Alpine Linux, Release Branches](https://alpinelinux.org/releases/)
+- [docker docs, Best pracies for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+- [Google cloud, 컨테이너 빌드에 대한 권장사항](https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ko)
+- [swalloow, 컨테이너 환경을 위한 초기화 시스템(Tini, Dumb-Init)](https://swalloow.github.io/container-tini-dumb-init/)
