@@ -16,7 +16,10 @@
     - [Docker-compose](#docker-compose)
     - [PID 1](#pid-1)
         - [docker와의 관계](#docker와의-관계)
-
+- [자잘한 설명](#자잘한-설명)
+    - [apk 관련](#apk-관련)
+    - [openssl](#openssl)
+    - [daemon off](#daemon-off)
 - [참고 문헌](#참고-문헌)
 
 ## Subject
