@@ -272,7 +272,9 @@ CMD ["sh", "/scripts/run.sh"]
 ```
 
 ## 자잘한 설명
+
 ### apk 관련
+
 `alpine`에는 `apt` 대신 `apk`로 패키지를 관리한다.
 
 ```shell
@@ -283,14 +285,16 @@ apk update && apk upgrade && apk add --no-cache nginx openssl \
 - `add`: 패키지 설치
 - `--no-cache`: 캐시를 사용하지 않고 설치
 - `rm -rf /var/cache/apk/*`: 캐시 삭제
-  - 이미지 용량을 줄이기 위해
+    - 이미지 용량을 줄이기 위해
+
 > `&&`로 묶은 이유
-> 
+>
 > `add` 명령어에 다른 라이브러리가 추가되었을 때, `apk update`와 `apk upgrade`가 상위 줄에 존재하면 이전 빌드 캐시로 인해 실행되지 않는다.
 > 즉, `add`만 다시 실행되고 이는 설치 오류를 일으킬 수 있다.
-> 그렇기에 `update`, `upgrade`, `add` 를 묶어서 실행한다. 
+> 그렇기에 `update`, `upgrade`, `add` 를 묶어서 실행한다.
 
 ### openssl
+
 ```shell
 openssl openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
     -subj "/C=KR/ST=Seoul/L=Seoul/O=42Seoul/OU=Ko/CN=localhost" \
@@ -303,20 +307,60 @@ openssl openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
 - `-nodes`: 비밀번호를 사용하지 않음, 즉 개인키를 암호화하지 않음
 - `-x509`: 자체 서명된 인증서를 생성하기 위한 옵션
 - `-subj`: 인증서의 주체 필드를 설정
-  - `/C=KR`: 국가
-  - `/ST=Seoul`: 주
-  - `/L=Seoul`: 도시
-  - `/O=42Seoul`: 조직
-  - `/OU=Ko`: 조직 단위
-  - `/CN=localhost`: 공용 이름
+    - `/C=KR`: 국가
+    - `/ST=Seoul`: 주
+    - `/L=Seoul`: 도시
+    - `/O=42Seoul`: 조직
+    - `/OU=Ko`: 조직 단위
+    - `/CN=localhost`: 공용 이름
 - `-keyout`: 개인키 파일의 경로
 - `-out`: 인증서 파일의 경로
 
 ### daemon off
+
 - `daemon off`는 nginx가 백그라운드에서 실행되지 않도록 한다.
 - 이를 통해 `nginx`가 PID 1로 실행되고 nginx 자체 신호 핸들러를 사용할 수 있게 된다.
 
+## 명령어
+
+### docker 이미지 생성 및 실행
+
+```shell
+# 이미지 생성
+$ docker build -t {NAME} {DOCKERFILE_PATH}
+```
+
+```shell
+# 이미지 실행
+$ docker run -d --rm -p 80:443 --name {CONTAINER_NAME} {IMAGE_NAME}
+```
+
+```shell
+# 컨테이너 내부로 들어가기
+$ docker exec -it {CONTAINER_NAME} sh
+```
+
+```shell
+# 컨테이너 종료
+$ docker stop {CONTAINER_NAME}
+```
+
+```shell
+# 이미지 삭제
+$ docker rmi {IMAGE_NAME}
+```
+
+### nginx ssl 버전 확인
+
+```shell
+$ openssl s_client -connect localhost:{PORT_NUMBER} -tls1_2  # TLSv1.2 확인
+$ openssl s_client -connect localhost:{PORT_NUMBER} -tls1_3  # TLSv1.3 확인
+
+$ openssl s_client -connect localhost:{PORT_NUMBER} -tls1  # TLSv1 확인
+```
+
 ## 참고 문헌
+
 - [42seoul, inception](./en.subject.pdf)
 - [Shane's planet, Ubuntu 20.04 LTS) Docker 설치하기](https://shanepark.tistory.com/237)
 - [subicura, 초보를 위한 도커 안내서 - 도커란 무엇인가?](https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html)
@@ -328,3 +372,4 @@ openssl openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
 - [docker docs, Best pracies for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 - [Google cloud, 컨테이너 빌드에 대한 권장사항](https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ko)
 - [swalloow, 컨테이너 환경을 위한 초기화 시스템(Tini, Dumb-Init)](https://swalloow.github.io/container-tini-dumb-init/)
+- [자유인을 위하여, 웹/리눅스 서버에서의 TLS/SSL 버전 확인 및 설정 방법](https://iamfreeman.tistory.com/entry/%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C%EC%9D%98-TLS-SSL-%EB%B2%84%EC%A0%84-%ED%99%95%EC%9D%B8-%EB%B0%A9%EB%B2%95)
