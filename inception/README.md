@@ -359,6 +359,45 @@ $ openssl s_client -connect localhost:{PORT_NUMBER} -tls1_3  # TLSv1.3 확인
 $ openssl s_client -connect localhost:{PORT_NUMBER} -tls1  # TLSv1 확인
 ```
 
+### mariadb 관련
+
+#### 데이터베이스 초기화
+
+일반적으로 mysql을 설치하면 첫 번째 실행 시 자동으로 수행된다. 그러나 docker 컨테이너처럼 커스텀 설치나 특수한 환경에서는 수동으로 명령어를 실행해야 한다.
+
+```shell
+# mysql 초기화 및 데이터베이스 시스템 설정
+$ mysql_install_db {OPTIONS}
+```
+
+- `--user={USER_NAME}`: mysql을 실행할 사용자 지정, 기본적으로 `mysql` 사용자로 사용
+- `--datadir={DATA_DIR}`: 데이터 디렉토리 지정, 데이터베이스 파일이 해당 디렉토리에 생성된다.
+- `--basedir={BASE_DIR}`: mysql 설치 디렉토리 지정, 실행 파일과 라이브러리 파일이 해당 디렉토리에 생성된다.
+- `--force`: 데이터 디렉토리가 이미 존재하는 경우에도 강제로 초기화
+- `--rpm`: RPM 패키지를 설치할 때 사용
+
+더 많은 옵션은 [공식문서](https://mariadb.com/kb/en/mariadb-install-db/)를 참고하면 된다.
+
+#### 데이터베이스 서버 동작 및 설정 제어
+
+`/etc/my.cnf.d/mairadb-server.cnf` 에는 데이터베이스 서버의 설정이 저장되어 있다.
+
+- `skip-networking`
+    - `1`로 설정되어 있으면 서버는 TCP/IP 연결을 수신하지 않는다.
+    - 그렇기에 로컬 클라이언트만 서버에 연결하고 싶은 경우 사용하면 된다.
+    - 기본값은 `0`으로 설정되어 있다. 근데 `alpine`에서 설치할 땐, 기본이 1로 되어있다.
+- `bind-address`
+    - 데이터베이스 서버가 특정 IP 주소에만 바인딩되도록 한다.
+    - 기본적으론 모든 주소를 연결하도록 되어있지만 Debian이나 Ubuntu같은 일부 시스템은 `127.0.0.1`로 설정되어 있어 로컬만 수신하도록 되어있다.
+    - `0.0.0.0`으로 설정하여 모든 주소를 수신하도록 설정할 수 있다.
+- `skip-name-resolve`
+    - mysql 서버가 외부로부터 접속 요청을 받으면 인증을 위해 ip 주소를 호스트 네임으로 변경한다.
+    - 이때, 호스트 네임을 확인하기 위해 DNS 서버에 요청을 보내는데 이는 시간이 오래 걸리기 때문에 `skip-name-resolve`를 사용하여 DNS 서버에 요청을 보내지 않도록 설정할 수 있다.
+- `skip-host-cache`
+    - 호스트 이름 캐시를 비활성화 시킨다.
+
+더 많은 옵션은 [공식문서](https://mariadb.com/kb/en/server-system-variables/)를 참고하면 된다.
+
 ## 참고 문헌
 
 - [42seoul, inception](./en.subject.pdf)
@@ -373,3 +412,6 @@ $ openssl s_client -connect localhost:{PORT_NUMBER} -tls1  # TLSv1 확인
 - [Google cloud, 컨테이너 빌드에 대한 권장사항](https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ko)
 - [swalloow, 컨테이너 환경을 위한 초기화 시스템(Tini, Dumb-Init)](https://swalloow.github.io/container-tini-dumb-init/)
 - [자유인을 위하여, 웹/리눅스 서버에서의 TLS/SSL 버전 확인 및 설정 방법](https://iamfreeman.tistory.com/entry/%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C%EC%9D%98-TLS-SSL-%EB%B2%84%EC%A0%84-%ED%99%95%EC%9D%B8-%EB%B0%A9%EB%B2%95)
+- [MariaDB, Server System Variables](https://mariadb.com/kb/en/server-system-variables/)
+- [MariaDB, mysql_install_db](https://mariadb.com/kb/en/mariadb-install-db/)
+- [Server Training/일상, mysql 최적화 하기](https://jy-p.tistory.com/48)
