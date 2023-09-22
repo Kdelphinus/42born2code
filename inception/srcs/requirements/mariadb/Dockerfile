@@ -1,6 +1,6 @@
 FROM alpine:3.17
 
-RUN apk update && apk upgrade && apk add mariadb mariadb-client vim \
+RUN apk update && apk upgrade && apk add mariadb mariadb-client \
     && rm -rf /var/cache/apk/* \
     && mkdir -p /var/run/mysqld \
     && chmod 777 /var/run/mysqld; \
