@@ -421,3 +421,4 @@ $ mysql_install_db {OPTIONS}
 - [MariaDB, Server System Variables](https://mariadb.com/kb/en/server-system-variables/)
 - [MariaDB, mysql_install_db](https://mariadb.com/kb/en/mariadb-install-db/)
 - [Server Training/일상, mysql 최적화 하기](https://jy-p.tistory.com/48)
+- [brixxt27 github, inception](https://github.com/brixxt27/inception)
