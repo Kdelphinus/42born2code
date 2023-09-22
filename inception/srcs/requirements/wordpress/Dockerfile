@@ -1,15 +1,24 @@
 FROM alpine:3.17
 
-RUN apk update && apk upgrade && apk add php7 php7-fpm php7-curl php7-gd php7-json php7-mbstring php7-mysqli php7-xml php7-zip
-
-RUN mkdir /var/www/html
-
-COPY wordpress /var/www/html
-
-RUN chown -R www-data:www-data /var/www/html
-
-EXPOSE 80
-
-CMD ["php-fpm7", "-F"]
-
-ENV WORDPRESS_DB_HOST=mariadb
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+RUN apk update && apk upgrade && apk add \
+    curl \
+    tar \
+    unzip \
+    php8 \
+    php8-fpm \
+    php8-phar \
+    php8-mysqli \
+    php8-mysqlnd \
+    php8-json \
+    php8-curl \
+    php8-dom \
+    php8-exif \
+    php8-fileinfo \
+    php8-mbstring \
+    php8-openssl \
+    php8-xml \
+    php8-zip \
+    php8-redis \
+    php8-ctype \
+    && rm -rf /var/cache/apk/*
