@@ -404,6 +404,10 @@ $ mysql_install_db {OPTIONS}
 
 더 많은 옵션은 [공식문서](https://mariadb.com/kb/en/server-system-variables/)를 참고하면 된다.
 
+### php 관련
+
+2023년 9월 기준으로 php7은 apk로 받을 수 없는 듯 하다. php8 버전을 사용해야 한다.
+
 ## 참고 문헌
 
 - [42seoul, inception](./en.subject.pdf)
