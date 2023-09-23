@@ -404,6 +404,31 @@ $ mysql_install_db {OPTIONS}
 
 더 많은 옵션은 [공식문서](https://mariadb.com/kb/en/server-system-variables/)를 참고하면 된다.
 
+#### sql 관련
+
+```text
+USE mysql;                               # mysql 데이터베이스 사용
+FLUSH PRIVILEGES;                        # 권한 설정을 새로고침해서 현재까지 변경 사항 적용
+DELETE FROM mysql.user WHERE User='';    # 빈 사용자 계정 삭제
+DROP DATABASE test;                      # test 데이터베이스 삭제
+DELETE FROM mysql.db WHERE Db='test';    # test 데이터베이스에 대한 권한 삭제
+
+# root 계정 중 호스트 주소가 로컬 호스트가 아닌 것을 삭제 -> 원격 접속 제한
+DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';                    # root 계정의 비밀번호 변경
+CREATE DATABASE wordpress CHARACTER SET utf8 COLLATE utf8_general_ci;  # wordpress 데이터베이스 생성
+CREATE USER 'myko'@'%' IDENTIFIED by '1234';                           # 모든 호스트에서 접속 가능한 wordpress 사용자 생성
+GRANT ALL PRIVILEGES ON wordpress.* TO 'myko'@'%';                     # wordpress 데이터베이스에 대한 모든 권한 부여
+
+#ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT}';
+#CREATE DATABASE ${DB_NAME} CHARACTER SET utf8 COLLATE utf8_general_ci;
+#CREATE USER '${DB_USER}'@'%' IDENTIFIED by '${DB_PASS}';
+#GRANT ALL PRIVILEGES ON wordpress.* TO '${DB_USER}'@'%';
+
+FLUSH PRIVILEGES; # 권한 설정을 새로고침해서 현재까지 변경 사항 적용
+```
+
 ### php 관련
 
 2023년 9월 기준으로 php7은 apk로 받을 수 없는 듯 하다. php8 버전을 사용해야 한다.
