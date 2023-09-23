@@ -1,6 +1,5 @@
 FROM alpine:3.17
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 RUN apk update && apk upgrade && apk add \
     curl \
     tar \
