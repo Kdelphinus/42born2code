@@ -1,5 +1,13 @@
 #!bin/sh
 
+ROOT_PASSWORD=12345
+DB_NAME=wordpress
+DB_USER=myko
+DB_PASSWORD=12345
+ADMIN_USER=myko
+ADMIN_PASSWORD=12345
+ADMIN_EMAIL=myko@student.42seoul.kr
+
 # mysql이 없을 때 mysql 구성
 if [ ! -d "/var/lib/mysql/mysql" ]; then
 
@@ -24,9 +32,9 @@ DROP DATABASE test;
 DELETE FROM mysql.db WHERE Db='test';
 DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
-CREATE DATABASE wordpress CHARACTER SET utf8 COLLATE utf8_general_ci;
-CREATE USER 'myko'@'%' IDENTIFIED by '1234';
-GRANT ALL PRIVILEGES ON wordpress.* TO 'myko'@'%';
+CREATE DATABASE $DB_NAME CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE USER '$DB_USER'@'%' IDENTIFIED by '$DB_PASSWORD';
+GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'%';
 FLUSH PRIVILEGES;
 EOF
         # run init.sql
