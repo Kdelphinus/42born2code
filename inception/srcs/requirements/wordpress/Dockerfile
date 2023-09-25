@@ -1,4 +1,4 @@
-FROM alpine:3.17.5
+FROM alpine:3.17
 
 RUN apk update && apk upgrade && apk add php81 \
     #The PHP extensions listed below are highly recommended
