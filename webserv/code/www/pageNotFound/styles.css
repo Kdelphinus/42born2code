@@ -1,0 +1,84 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch:700');
+
+/* Define color variables */
+:root {
+    --white: #ededed;
+    --purple: #9779B3;
+    --font-main: 'Cabin Sketch', cursive;
+}
+
+/* Reset default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styles */
+body {
+    min-height: 100vh;
+    width: 100%;
+    font-family: var(--font-main);
+    background-color: var(--white);
+}
+
+/* Container styles */
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--purple);
+    text-shadow: 0 2px 5px var(--purple);
+}
+
+/* Header styles */
+.container h1 {
+    font-size: 5rem;
+    text-transform: uppercase;
+}
+
+/* Monkey image styles */
+.container .monkey-hammer-hat {
+    width: 250px;
+}
+
+/* Monkey arm animation */
+.container .monkey-hammer-hat #arm {
+    transform: translateX(0) translateY(0);
+    animation: fix-issue 1.5s 1.5s cubic-bezier(.17, .67, .6, 1.33) infinite;
+}
+
+/* Subheader styles */
+.container h2 {
+    font-size: 4rem;
+    text-transform: uppercase;
+}
+
+/* Keyframes for monkey arm animation */
+@keyframes fix-issue {
+    40% {
+        transform: translateX(-2px) translateY(-1.5px);
+    }
+    75%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+/* Media query for small screens */
+@media only screen and (max-width: 600px) {
+    /* Hide main header */
+    .container h1 {
+        display: none;
+    }
+
+    /* Adjust subheader size and margins */
+    .container h2 {
+        font-size: 2.3rem;
+        margin: 0 1rem;
+    }
+}

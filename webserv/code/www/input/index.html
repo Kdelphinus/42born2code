@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 업로드</title>
+</head>
+
+<body>
+
+<form enctype="multipart/form-data" id="uploadForm">
+    <label for="file">파일 선택:</label>
+    <input type="file" name="file" id="file">
+    <input type="button" value="업로드" onclick="uploadFile()" name="submit">
+</form>
+
+<script>
+    function uploadFile() {
+        const fileInput = document.getElementById('file');
+        if (fileInput.files.length === 0) {
+            alert('파일을 선택해주세요.');
+            return;
+        }
+
+        var file = fileInput.files[0];
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', `${window.location.origin}/input/`, true);
+        xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+
+        // 프로그레스 바 업데이트
+        xhr.upload.onprogress = function (e) {
+            if (e.lengthComputable) {
+                var percentComplete = (e.loaded / e.total) * 100;
+                document.getElementById("progressBar").value = percentComplete;
+            }
+        };
+
+        xhr.onload = function () {
+            if (xhr.status === 200 || xhr.status === 201) {
+                alert('업로드 성공!');
+            } else {
+                alert('업로드 실패: ' + xhr.responseText);
+            }
+        };
+
+        // Send the file's binary content as the request body
+        xhr.send(file);
+
+    }
+</script>
+
+</body>
+</html>

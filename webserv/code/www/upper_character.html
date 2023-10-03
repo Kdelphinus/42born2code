@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To Uppercase</title>
+</head>
+<body>
+    <h1>Convert lowercase to uppercase</h1>
+    <form id="uppercaseForm">
+        <label for="data">Enter Data:</label>
+        <input type="text" name="data" id="data">
+        <input type="submit" value="make uppercase">
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("uppercaseForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            const formData = new FormData(this); // Create a FormData object from the form
+
+            // Extract the value without the key
+            const value = formData.get("data");
+
+            // Create a new XMLHttpRequest to send the value as the body
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/test-cgi/cgi_tester", true);
+            xhr.setRequestHeader("Content-Type", "text/plain");
+            xhr.send(value);
+
+            // Handle the response here
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        // Handle a successful response
+                        document.getElementById("result").innerHTML = "Result: " + xhr.responseText;
+                    } else {
+                        // Handle an error response
+                        document.getElementById("result").innerHTML = "Error: " + xhr.status;
+                    }
+                }
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>doodle jump</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+	<!DOCTYPE HTML>
+	<html lang="en-US">
+	<head>
+		<title>Jump</title>
+	</head>
+	<body>
+		<div class="container">
+			<canvas id="canvas">
+				Aww, your browser doesn't support HTML5!
+			</canvas>
+	
+			<div id="mainMenu">
+				<h1>doodle jump</h1>
+				<h3>using HTML5,</h3>
+				<h3>...by <a href="https://twitter.com/solitarydesigns/" target="_blank">Kushagra Agarwal</a></h3>
+				<h3>and <a href="https://cssdeck.com" target="_blank">CSSDeck</a></h3>
+	
+				<p class="info">
+					use
+					<span class="key left">←</span>
+					<span class="key right">→</span>
+					to move and space to (re) start...
+				</p>
+				<a class="button" href="javascript:init()">Play</a>
+			</div>
+			
+			<div id="gameOverMenu">
+				<h1>game over!</h1>
+				<h3 id="go_score">you scored 0 points</h3>
+	
+				<a class="button" href="javascript:reset()">Restart</a>
+				<a id="tweetBtn" target="_blank" class="button tweet" href="#">Tweet score</a>
+	
+				<a id="fbBtn" target="_blank" class="button fb" href="#">Post on FB</a>
+			</div>
+			
+			
+			<!-- Preloading image ;) -->
+			<img id="sprite" src="https://i.imgur.com/2WEhF.png"/>
+	
+			<div id="scoreBoard">
+				<p id="score">0</p>
+			</div>
+	
+		</div>
+	</body>
+	</html>	
+</body>
+</html>
+

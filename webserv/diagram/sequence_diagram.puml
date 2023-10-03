@@ -1,0 +1,63 @@
+@startuml
+
+actor Client1 as c1
+
+box "Webserver" #LightGray
+    participant ServerOperator as so
+    create Kqueue as kq
+    activate so
+    activate kq
+
+    so -> kq : init
+    loop 이벤트 발생 개수
+        alt Error Event
+            c1 -> kq : invalid event
+            kq -> so : error event
+            so -> c1 : disconnect
+            destroy c1
+        else Read Event
+            c1 -> so: request
+            kq -> so : read event
+            alt 없는 Client
+                so -> c1 : accept
+            create Request as req
+            else 있는 Client
+                activate req
+                so -> req : request
+            end
+        else Write Event
+            c1 -> kq : write event
+            kq -> so : write event
+            create Response as res
+            activate res
+            so -> res : create
+            alt GET
+                so -> res: GET
+                create Get
+                activate Get
+                res -> Get : GET
+                Get -> res : Status, Header, Body
+                destroy Get
+            else POST
+                so -> res: POST
+                create Post
+                activate Post
+                res -> Post : POST
+                Post -> res : Status, Header, Body
+                destroy Post
+            else DELETE
+                so -> res : DELETE
+                create Delete
+                activate Delete
+                res -> Delete : DELETE
+                Delete -> res : Status, Header, Body
+                destroy Delete
+            res -> c1 : response
+            destroy req
+            destroy res
+            end
+        end
+    end
+end box
+
+@enduml
