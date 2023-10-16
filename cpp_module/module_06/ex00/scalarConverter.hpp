@@ -2,6 +2,8 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <climits>
 
 class ScalarConverter {
  private:
@@ -10,17 +12,22 @@ class ScalarConverter {
 	int _intInput;
 	float _floatInput;
 	double _doubleInput;
+
+	bool _charIsNonDisplayable;
+	bool _charIsImpossible;
+	bool _intIsImpossible;
+	bool _floatIsImpossible;
+	bool _doubleIsImpossible;
+
  public:
 	ScalarConverter(void);
-	ScalarConverter(ScalarConverter const &sc);
-	ScalarConverter &operator=(ScalarConverter const &sc);
+	ScalarConverter(const std::string &input);
+	ScalarConverter(const ScalarConverter &sc);
+	ScalarConverter &operator=(const ScalarConverter &sc);
 	~ScalarConverter(void);
 
-	std::string &getInput(void) const;
-	char &getCharInput(void) const;
-	int &getIntInput(void) const;
-	float &getFloatInput(void) const;
-	double &getDoubleInput(void) const;
+	const std::string &getInput(void) const;
+	void setInput(std::string const &input);
 
 	void convert(const std::string &input);
 	void print(void) const;

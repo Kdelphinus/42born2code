@@ -6,7 +6,8 @@ int main(int ac, char **av) {
 		return 1;
 	}
 
-	static ScalarConverter sc(av[1]);
-	std::cout << sc << std::endl;
+	ScalarConverter sc(av[1]);
+	sc.convert(av[1]);
+	sc.print();
 	return 0;
 }
