@@ -2,35 +2,28 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
-#include <cstdlib>
-#include <climits>
+#include <string>
 
 class ScalarConverter {
  private:
-	std::string _input;
-	char _charInput;
-	int _intInput;
-	float _floatInput;
-	double _doubleInput;
+	static std::string _input;
+	static std::string _char;
+	static std::string _int;
+	static std::string _float;
+	static std::string _double;
 
-	bool _charIsNonDisplayable;
-	bool _charIsImpossible;
-	bool _intIsImpossible;
-	bool _floatIsImpossible;
-	bool _doubleIsImpossible;
+	ScalarConverter();
+	ScalarConverter(const ScalarConverter &);
+	ScalarConverter &operator=(const ScalarConverter &);
+	~ScalarConverter();
 
  public:
-	ScalarConverter(void);
-	ScalarConverter(const std::string &input);
-	ScalarConverter(const ScalarConverter &sc);
-	ScalarConverter &operator=(const ScalarConverter &sc);
-	~ScalarConverter(void);
+	static void convert(const std::string &input);
 
-	const std::string &getInput(void) const;
-	void setInput(std::string const &input);
-
-	void convert(const std::string &input);
-	void print(void) const;
+	class InvalidInput : public std::exception {
+	 public:
+		const char *what() const throw();
+	};
 };
 
 #endif

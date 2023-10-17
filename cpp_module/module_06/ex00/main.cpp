@@ -6,8 +6,6 @@ int main(int ac, char **av) {
 		return 1;
 	}
 
-	ScalarConverter sc(av[1]);
-	sc.convert(av[1]);
-	sc.print();
+	ScalarConverter::convert(av[1]);
 	return 0;
 }
