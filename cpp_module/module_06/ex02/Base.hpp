@@ -5,7 +5,7 @@
 
 class Base {
  public:
-	virtual ~Base() { std::cout << "Base destructor" << std::endl; };
+	virtual ~Base() {};
 };
 
 #endif
