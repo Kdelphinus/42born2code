@@ -6,11 +6,10 @@
 
 class ScalarConverter {
  private:
-	static std::string _input;
-//	static std::string _char;
-//	static std::string _int;
-//	static std::string _float;
-//	static std::string _double;
+	static char _char;
+	static int _int;
+	static float _float;
+	static double _double;
 
 	static bool _isPseudoLiteral;
 
@@ -30,7 +29,5 @@ class ScalarConverter {
 		const char *what() const throw();
 	};
 };
-
-bool ScalarConverter::_isPseudoLiteral = false;
 
 #endif
