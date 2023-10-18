@@ -1,5 +1,21 @@
 # C++ Module 06
 
+## Index
+
+- [C++ casts](#c-casts)
+  - [dynamic_cast](#dynamiccast)
+  - [static_cast](#staticcast)
+  - [reinterpret_cast](#reinterpretcast)
+  - [const_cast](#constcast)
+- [static member variable](#static-member-variable)
+- [Serialization](#serialization)
+- [Pseudo Literals](#pseudo-literals)
+- [Subject](#subject)
+  - [ex00](#ex00)
+  - [ex01](#ex01)
+  - [ex02](#ex02)
+- [참고 문헌](#참고-문헌)
+
 ## C++ casts
 
 ### dynamic_cast
@@ -298,6 +314,64 @@ before : BlockDMask
 after : QlockDMask
 ```
 
+## static member variable
+
+static 멤버 변수는 클래스의 모든 객체가 공유하는 변수이다.
+그렇기에 static 멤버 변수는 클래스 자체에 속하고 객체를 생성하지 않아도 사용할 수 있다.
+
+```c++
+MyClass::static_member_variable = 42;
+```
+
+위와 같이 클래스 이름을 사용하여 접근할 수 있으며 클래스 내부에선 멤버 변수처럼 접근할 수 있다.
+
+허나 이때, 초기화 과정이 필요한데 `main.cpp` 에 초기화 해줘야 한다. (꼭 여기에다 해야 한다는 근거는 없으나 경험이 있음)
+
+```c++
+#include <iostream>
+
+class MyClass {
+	public:
+      static int static_member_variable;
+};
+
+int MyClass::static_member_variable = 42;
+
+int main() {
+	std::cout << MyClass::static_member_variable << std::endl;
+	
+	MyClass::static_member_variable = 21;
+	std::cout << MyClass::static_member_variable << std::endl;
+    return 0;
+}
+```
+
+## Serialization
+
+`Serialization(직렬화)`은 데이터 구조나 오브젝트 상태를 동일하거나 다른 컴퓨터 환경에 저장하고 나중에 재구성할 수 있는 포맷으로 변환하는 과정이다.
+즉, **현재 데이터의 상태를 영속적으로 저장하거나 다른 환경으로 전달하기 위해 어떠한 정해진 포맷으로 변환하는 과정**을 말한다.
+
+그리고 변환된 데이터를 다시 원래 데이터로 변환시키는 과정을 `Deserialization(역직렬화)`라고 한다.
+
+대체로 바이트 형태로 데이터 변환(직렬화)와 그것을 다시 객체로 변환(역직렬화)하는 방법을 많이 사용한다.
+
+## Pseudo Literals
+
+- `inf` : 양의 무한대, 연산 결과가 무한대로 수렴하는 경우 이 값이 나타난다.
+- `+inf` : 양의 무한대
+- `-inf` : 음의 무한대
+- `inff` : float형 양의 무한대
+- `+inff` : float형 양의 무한대
+- `-inff` : float형 음의 무한대
+- `nan` : Not a Number, 연산 결과가 정의되지 않거나 부정확한 경우, 일반적으로 오류이다.
+- `+nan` : 부호가 양수인 Not a Number
+- `-nan` : 부호가 음수인 Not a Number
+- `nanf` : float형인 Not a Number
+- `+nanf` : 부호가 양수이고 float형인 Not a Number
+- `-nanf` : 부호가 음수이고 float형인 Not a Number
+
+> 이때, nan의 부호는 부동 소수점 숫자 부호에 따라 결정되며 부호 정보를 강조하고 싶을 때 사용된다.
+
 ## Subject
 
 ### ex00
@@ -367,3 +441,6 @@ double: 42.0
 - [개발자 지망생, [C++] reinterpret_cast(타입캐스트 연산자)](https://blockdmask.tistory.com/242)
 - [개발자 지망생, [C++] dynamic_cast(타입캐스트 연산자)](https://blockdmask.tistory.com/241)
 - [HardCore in Programming, [C++] static 키워드 완벽 가이드](https://kukuta.tistory.com/434)
+- [위키피디아, 직렬화](https://ko.wikipedia.org/wiki/%EC%A7%81%EB%A0%AC%ED%99%94)
+- [해피쿠 블로그, [Java] 직렬화(Serialization)에 대해 알아보자](https://www.happykoo.net/@happykoo/posts/257)
+- [우아한 기술블로그, 자바 직렬화, 그것이 알고싶다. 훑어보기편](https://techblog.woowahan.com/2550/)
