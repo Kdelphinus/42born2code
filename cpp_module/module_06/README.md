@@ -372,6 +372,35 @@ int main() {
 
 > 이때, nan의 부호는 부동 소수점 숫자 부호에 따라 결정되며 부호 정보를 강조하고 싶을 때 사용된다.
 
+## std::numeric_limits
+
+`std::numeric_limits`는 템플릿 클래스로서, 특정 타입의 수치적 특성을 제공하는 클래스 템플릿으로 `<limits>` 헤더에 정의되어 있다.
+
+```c++
+template <class T> class numeric_limits;
+```
+
+클래스는 위와 같이 정의 되어 있으며 안에는 다양한 멤버 변수가 정의되어 있다.
+
+여기선 `min()`, `max()`를 사용해서 각 자료형의 범위를 확인했는데 각 타입당 반환값은 다음과 같다.
+
+| type   | min()        | max()        |
+|:-------|:-------------|:-------------|
+| char   | -128         | 127          |
+| int    | -2147483648  | 2147483647   |
+| float  | 1.17549e-38  | 3.40282e+38  |
+| double | 2.22507e-308 | 1.79769e+308 |
+
+이때, `float`과 `double` 자료형의 `min()`함수가 우리가 생각하는 최솟값이 아니라 `denormalized number`이다.
+
+> ### denormalized number
+>
+> 비정규화 값은 가장 작은 일반 숫자보다 더 작은 0이 아닌 값, 즉 표현할 수 있는 0과 가장 가까운 값을 말한다.
+> 비정규화 값은 부동소수점 연산에서 0 주위의 언더플로 차이를 채워준다.
+
+따라서 범위로 사용하기엔 부적절하다. 또한 우리가 생각하는 최솟값을 `lowest()`라는 함수로 구할 수 있으나 `c++11`에 도입되었다.
+그렇기에 `float`과 `double`은 `max()` 값에 -를 붙여서 사용하였다.
+
 ## Subject
 
 ### ex00
@@ -421,9 +450,12 @@ double: 42.0
 - `serialize`와 `deserialize` 함수를 이용해 `Data *` 를 `uintptr_t`로 변경했다가 복구하는 테스트를 작성
 
 ### ex02
+
 - virtual 소멸자만 가지는 `Base` 클래스 생성
 - `Base`를 public하게 상속받고 비어있는 `A`, `B`, `C` 클래스 생성
+
 > 이때, 네 개의 클래스는 OCF를 지키지 않아도 된다.
+
 - 아래 함수들을 구성
   - `Base *generate(void)`: `A`, `B`, `C` 중 하나를 `Base *` 타입으로 무작위 반환하는 함수
   - `void identify(Base* p)`: 입력 받은 클래스가 실제로 `A`, `B`, `C` 중 어떤 것인지 출력하는 함수
@@ -441,6 +473,8 @@ double: 42.0
 - [개발자 지망생, [C++] reinterpret_cast(타입캐스트 연산자)](https://blockdmask.tistory.com/242)
 - [개발자 지망생, [C++] dynamic_cast(타입캐스트 연산자)](https://blockdmask.tistory.com/241)
 - [HardCore in Programming, [C++] static 키워드 완벽 가이드](https://kukuta.tistory.com/434)
-- [위키피디아, 직렬화](https://ko.wikipedia.org/wiki/%EC%A7%81%EB%A0%AC%ED%99%94)
+- [위키백과, 직렬화](https://ko.wikipedia.org/wiki/%EC%A7%81%EB%A0%AC%ED%99%94)
 - [해피쿠 블로그, [Java] 직렬화(Serialization)에 대해 알아보자](https://www.happykoo.net/@happykoo/posts/257)
 - [우아한 기술블로그, 자바 직렬화, 그것이 알고싶다. 훑어보기편](https://techblog.woowahan.com/2550/)
+- [위키백과, 비정규 값](https://ko.wikipedia.org/wiki/비정규_값)
+- [cppreference, std::numeric_limits](https://en.cppreference.com/w/cpp/types/numeric_limits)
