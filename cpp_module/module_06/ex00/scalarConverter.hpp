@@ -2,7 +2,10 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <iomanip>
 #include <string>
+#include <cstdlib>
+#include <limits>
 
 class ScalarConverter {
  private:
@@ -19,7 +22,7 @@ class ScalarConverter {
 	~ScalarConverter();
 
 	static void isInvalidInput(const std::string &input);
-	static void print();
+	static void print(const char *&input, int precision);
 
  public:
 	static void convert(const std::string &input);
