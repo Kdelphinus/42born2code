@@ -18,11 +18,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment=":wrench: .idea 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex03/Intern.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex03/Intern.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex03/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex03/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment=":art: Intern::makeForm()에 출력문 추가" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,7 +163,7 @@
       <workItem from="1693989867569" duration="725000" />
       <workItem from="1694068749450" duration="23000" />
       <workItem from="1697531417951" duration="370000" />
-      <workItem from="1698123847797" duration="901000" />
+      <workItem from="1698123847797" duration="1212000" />
     </task>
     <task id="LOCAL-00001" summary=":wrench: ex02 Makefile로 target 수정">
       <option name="closed" value="true" />
@@ -257,7 +253,23 @@
       <option name="project" value="LOCAL" />
       <updated>1697531783914</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary=":wrench: .idea 수정">
+      <option name="closed" value="true" />
+      <created>1698124877968</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1698124877968</updated>
+    </task>
+    <task id="LOCAL-00013" summary=":art: Intern::makeForm()에 출력문 추가">
+      <option name="closed" value="true" />
+      <created>1698124912232</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1698124912232</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -271,7 +283,8 @@
     <MESSAGE value=":recycle: refactoring" />
     <MESSAGE value=":adhesive_bandage: 출력문 수정" />
     <MESSAGE value=":wrench: .idea 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value=":wrench: .idea 수정" />
+    <MESSAGE value=":art: Intern::makeForm()에 출력문 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value=":art: Intern::makeForm()에 출력문 추가" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
