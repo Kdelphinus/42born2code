@@ -22,7 +22,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	throw (FormNotSignedException());
   if (executor.getGrade() > getGradeToExecute())
 	throw (BureaucratExecuteException());
-  std::ofstream file(getTarget() + "_shrubbery");
+  std::ofstream file
+	  ((getTarget() + "_shrubbery").c_str()); // const char *를 제외하고는 c++98이 아니다.
   if (!file.is_open())
 	throw (std::runtime_error("Cannot open file"));
 
