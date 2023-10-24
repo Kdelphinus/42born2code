@@ -9,6 +9,7 @@ int main() {
 
 	std::cout << bureaucrat;
 	std::cout << form;
+	std::cout << form2;
 
 	std::cout << "\nsign form" << std::endl;
 	bureaucrat.signForm(form);
