@@ -4,8 +4,8 @@
 
 - [Subject](#Subject)
 - [STL Containers](#stl-containers)
-- [Iterators](#iterators)
-- [Algorithms](#algorithms)
+- [Algorithm](#algorithm)
+- [Iterator](#iterator)
 - [References](#references)
 
 ## Subject
@@ -150,12 +150,63 @@ int main() {
     - `queue`
     - `priority_queue`
 
-## Iterators
+## Algorithm
+https://learn.microsoft.com/ko-kr/cpp/standard-library/algorithm?view=msvc-170
+https://modoocode.com/225
+https://velog.io/@kth811/6.-c-STL-algorithm
 
+## Iterator
 
-## Algorithms
+**반복자(Iterator)**는 C++ 프로그램이 서로 다른 데이터 구조들이 균일한 방식으로 작업할 수 있도록 도와주는 포인터의 일반화이다.
+또한 컨테이너와 알고리즘이 하나로 동작하게 묶어주는 인터페이스 역할을 한다.
+알고리즘마다 다른 방식으로 컨테이너를 순회할 수 있기에 반복자에도 여러 종류가 있다.
+
+- 반복자는 컨테이너 내부의 원소(객체)를 가리키고 접근할 수 있어야 한다.
+- 반복자는 다음 원소로 이동하고 컨테이너의 모든 원소를 순회할 수 있어야 한다.
+
+```cpp
+contanier<T>::iterator it;
+```
+
+선언은 위와 같이 하며 순회를 위해 `begin()`과 `end()`는 모든 컨테이너가 가지고 있다.
+
+- `begin()`: 첫 번째 원소를 가리키는 반복자를 반환
+- `end()`: 마지막 원소의 다음을 가리키는 반복자를 반환
+
+따라서 원소를 순회할 때와 비어있는지 확인할 때는 다음과 같이 구현할 수 있다.
+
+```c++
+for (it = container.begin(); it != container.end(); ++it) {
+  // ...
+}
+
+bool empty = container.begin() == container.end();
+bool empty = container.empty();
+```
+
+> 반복문에서 반복자를 증가시킬 때 후위 연산자보단 전위 연산자를 사용한다.
+> 후위 연산자를 사용하면 반복자의 이전 값을 반환하기에 임시로 객체가 생겨 성능이 늦어진다.
+
+### Iterator Categories
+
+- 입력 반복자(input iterator)
+  - 현 위치의 원소를 한 번만 읽을 수 있는 반복자(istream)
+- 출력 반복자(output iterator)
+  - 현 위치의 원소를 한 번만 쓸 수 있는 반복자(ostream)
+- 순방향 반복자(forward iterator)
+  - 입력, 출력 반복자 기능에 순방향으로 이동(++) 가능한 재할당될 수 있는 반복자
+- 양방향 반복자(bidirectional iterator)
+  - 순방향 반복자 기능에 역방향으로 이동(--) 가능한 반복자
+  - `!=`, `==`, `++`, `--` 연산자를 사용할 수 있다.
+  - `list`, `set`, `map` 등
+- 임의 접근 반복자(random access iterator)
+  - 양방향 반복자 기능에 임의 접근(`+`, `-`, `+=`, `-=`, `[]`, `<`, `>`, `<=`, `>=`, `==`, `!=`) 가능한 반복자
+  - `vector`, `deque` 등
+
+모든 컨테이너는 양방향 반복자 이상을 제공하며 배열 기반 컨테이너인 `vector`, `deque`는 임의 접근 반복자를 제공한다.
 
 ## References
 - [42Seoul, C++ Module 08](https://cdn.intra.42.fr/pdf/pdf/102839/en.subject.pdf)
 - [모두의 코드, C++ 레퍼런스 - STL 컨테이너](https://modoocode.com/174)
-- 
+- [영화같이, [C++] Iterator에 대해서](https://cho001.tistory.com/193)
+- [Microsoft Learn, C++ <Iterator>](https://learn.microsoft.com/ko-kr/cpp/standard-library/iterator?view=msvc-170)
