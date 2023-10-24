@@ -18,7 +18,20 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment=":art: Intern::makeForm()에 출력문 추가" />
+    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment=":art: Intern::makeForm()에 출력문 추가">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex00/Bureaucrat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex00/Bureaucrat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex00/Bureaucrat.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex00/Bureaucrat.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex01/Bureaucrat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex01/Bureaucrat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex01/Bureaucrat.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex01/Bureaucrat.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex01/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex01/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/Bureaucrat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/Bureaucrat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/Bureaucrat.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/Bureaucrat.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex03/Bureaucrat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex03/Bureaucrat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex03/Bureaucrat.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex03/Bureaucrat.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex03/ShrubberyCreationForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex03/ShrubberyCreationForm.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -138,14 +151,14 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ex03" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="module_05" TARGET_NAME="ex03" CONFIG_NAME="ex03" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -163,7 +176,8 @@
       <workItem from="1693989867569" duration="725000" />
       <workItem from="1694068749450" duration="23000" />
       <workItem from="1697531417951" duration="370000" />
-      <workItem from="1698123847797" duration="1212000" />
+      <workItem from="1698123847797" duration="1551000" />
+      <workItem from="1698134563554" duration="442000" />
     </task>
     <task id="LOCAL-00001" summary=":wrench: ex02 Makefile로 target 수정">
       <option name="closed" value="true" />
