@@ -18,19 +18,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment=":art: Intern::makeForm()에 출력문 추가">
+    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment=":wrench: .idea 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex00/Bureaucrat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex00/Bureaucrat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex00/Bureaucrat.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex00/Bureaucrat.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex01/Bureaucrat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex01/Bureaucrat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex01/Bureaucrat.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex01/Bureaucrat.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex01/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex01/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex02/Bureaucrat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/Bureaucrat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex02/Bureaucrat.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/Bureaucrat.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex02/ShrubberyCreationForm.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex03/Bureaucrat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex03/Bureaucrat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex03/Bureaucrat.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex03/Bureaucrat.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex03/ShrubberyCreationForm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ex03/ShrubberyCreationForm.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +167,7 @@
       <workItem from="1694068749450" duration="23000" />
       <workItem from="1697531417951" duration="370000" />
       <workItem from="1698123847797" duration="1551000" />
-      <workItem from="1698134563554" duration="442000" />
+      <workItem from="1698134563554" duration="855000" />
     </task>
     <task id="LOCAL-00001" summary=":wrench: ex02 Makefile로 target 수정">
       <option name="closed" value="true" />
@@ -283,7 +273,39 @@
       <option name="project" value="LOCAL" />
       <updated>1698124912232</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary=":recycle: ofstream 생성자가 받는 변수 관련 수정">
+      <option name="closed" value="true" />
+      <created>1698135154403</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1698135154403</updated>
+    </task>
+    <task id="LOCAL-00015" summary=":adhesive_bandage: form2 출력문 추가">
+      <option name="closed" value="true" />
+      <created>1698135175866</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1698135175866</updated>
+    </task>
+    <task id="LOCAL-00016" summary=":recycle: 기본 생성자 추가 및 private에 선언">
+      <option name="closed" value="true" />
+      <created>1698135204114</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1698135204114</updated>
+    </task>
+    <task id="LOCAL-00017" summary=":wrench: .idea 수정">
+      <option name="closed" value="true" />
+      <created>1698135210108</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1698135210108</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -296,9 +318,12 @@
     <MESSAGE value=":art: Intern 클래스에 makeForm 함수 추가 및 main 작성" />
     <MESSAGE value=":recycle: refactoring" />
     <MESSAGE value=":adhesive_bandage: 출력문 수정" />
-    <MESSAGE value=":wrench: .idea 수정" />
     <MESSAGE value=":art: Intern::makeForm()에 출력문 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value=":art: Intern::makeForm()에 출력문 추가" />
+    <MESSAGE value=":recycle: ofstream 생성자가 받는 변수 관련 수정" />
+    <MESSAGE value=":adhesive_bandage: form2 출력문 추가" />
+    <MESSAGE value=":recycle: 기본 생성자 추가 및 private에 선언" />
+    <MESSAGE value=":wrench: .idea 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value=":wrench: .idea 수정" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
