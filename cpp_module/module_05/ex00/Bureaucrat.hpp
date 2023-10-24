@@ -7,6 +7,8 @@ class Bureaucrat {
  private:
   const std::string _name;
   int _grade;
+
+  Bureaucrat(); // name을 다시 바꿀 수 없는 것은 옳지 않다고 생각하여 옮김
  public:
   Bureaucrat(const std::string &name, int grade);
   Bureaucrat(const Bureaucrat &bureaucrat);
