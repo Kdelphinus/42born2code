@@ -18,10 +18,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment=":wrench: .idea 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="1cf42b68-e862-4d67-983f-0606e93a889b" name="변경" comment=":wrench: .idea 수정" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,7 +164,7 @@
       <workItem from="1694068749450" duration="23000" />
       <workItem from="1697531417951" duration="370000" />
       <workItem from="1698123847797" duration="1551000" />
-      <workItem from="1698134563554" duration="855000" />
+      <workItem from="1698134563554" duration="1004000" />
     </task>
     <task id="LOCAL-00001" summary=":wrench: ex02 Makefile로 target 수정">
       <option name="closed" value="true" />
@@ -305,7 +302,23 @@
       <option name="project" value="LOCAL" />
       <updated>1698135210108</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary=":memo: 주의 사항 추가">
+      <option name="closed" value="true" />
+      <created>1698135615213</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1698135615213</updated>
+    </task>
+    <task id="LOCAL-00019" summary=":wrench: .idea 수정">
+      <option name="closed" value="true" />
+      <created>1698135621381</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1698135621381</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -322,6 +335,7 @@
     <MESSAGE value=":recycle: ofstream 생성자가 받는 변수 관련 수정" />
     <MESSAGE value=":adhesive_bandage: form2 출력문 추가" />
     <MESSAGE value=":recycle: 기본 생성자 추가 및 private에 선언" />
+    <MESSAGE value=":memo: 주의 사항 추가" />
     <MESSAGE value=":wrench: .idea 수정" />
     <option name="LAST_COMMIT_MESSAGE" value=":wrench: .idea 수정" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
