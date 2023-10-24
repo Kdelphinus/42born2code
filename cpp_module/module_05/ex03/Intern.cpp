@@ -25,12 +25,16 @@ Form *Intern::makeForm(const std::string &formName, const std::string &target) {
 	}
   }
 
-  switch (key) {
-	case 0: return new PresidentialPardonForm(target);
-	case 1: return new RobotomyRequestForm(target);
-	case 2: return new ShrubberyCreationForm(target);
-	default: throw Intern::FormNotFoundException();
+  if (key != -1) {
+	std::cout << "Intern creates " << formName << std::endl;
+	switch (key) {
+	  case 0: return new PresidentialPardonForm(target);
+	  case 1: return new RobotomyRequestForm(target);
+	  case 2: return new ShrubberyCreationForm(target);
+	  default: throw Intern::FormNotFoundException();
+	}
   }
+  throw Intern::FormNotFoundException();
 }
 
 const char *Intern::FormNotFoundException::what() const throw() {

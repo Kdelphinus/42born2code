@@ -3,7 +3,7 @@
 
 int main() {
   try {
-	Bureaucrat bender("Bender", 150);
+	Bureaucrat bender("Bender", 50);
 	Intern someRandomIntern;
 	Form *rrf;
 
