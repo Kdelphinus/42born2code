@@ -151,13 +151,92 @@ int main() {
     - `priority_queue`
 
 ## Algorithm
-https://learn.microsoft.com/ko-kr/cpp/standard-library/algorithm?view=msvc-170
-https://modoocode.com/225
-https://velog.io/@kth811/6.-c-STL-algorithm
+
+**알고리즘(algorithm)** 라이브러리는 컨테이너에 반복자들을 가지고 정렬, 검색 등의 작업을 쉽게 수행할 수 있도록 도와주는 라이브러리이다.
+
+알고리즘의 정의된 함수들은 크게 아래와 같은 두 가지 형태를 따르고 있다.
+
+```c++
+template <typename Iter>
+void doSomething(Iter begin, Iter end);
+
+template <typename Iter, typename Pred>
+void doSomething(Iter begin, Iter end, Pred pred);
+```
+
+이때 **서술자(Predict)** 라고 하는 특정한 조건을 받는 함수들이 있다.
+서술자에는 일반적으로 `bool` 을 반환하는 함수 객체를 전달하게 된다.
+
+### 정렬
+
+알고리즘 라이브러리가 지원하는 정렬은 3가지이다.
+
+- `sort`: 컨테이너의 원소들을 정렬한다.
+- `stable_sort`: `sort`와 동일하게 동작하지만, 원소들의 순서가 같은 경우에는 원래의 순서를 유지한다.
+- `partial_sort`: 컨테이너의 원소들 중 일부만 정렬한다.
+
+이때 `sort`에 들어가는 반복자의 경우, 반드시 임의접근 반복자(RandomAccessIterator) 타입을 가져야 한다.
+그렇기에 `vector`, `deque` 등의 컨테이너만 사용할 수 있다.
+
+또한 정렬은 기본적으로 오름차순으로 정렬된다. 이를 바꿔주기 위해선 서술자에 함수를 넣어주어야 한다.
+타입에 국한받지 않도록 `template`을 사용하여 구현하면 편하다.
+
+```c++
+template <typename T>
+struct greater_comp {
+  bool operator()(const T& a, const T& b) const {
+    return a > b;
+  }
+};
+```
+
+또한 `functional` 헤더에는 `greater` 라는 템플릿 클래스가 정의되어 있기에 아래와 같이 사용할 수 있다.
+
+```c++
+std::sort(v.begin(), v.end(), std::greater<int>());
+```
+
+물론 `>` 연산자가 존재하는 타입들만 가능하다.
+
+#### Partial Sort
+
+`partial_sort` 함수는 아래와 같이 세 개의 인자를 갖는다.
+
+```c++
+std::partial(start, middle, end)
+```
+
+`[start, middle)` 개수의 원소들만 정렬하고 나머지 위치는 정렬되지 않은 상태로 남아있다.
+
+만약 전체 원소의 개수가 `N` 개이고, 정렬하려는 원소의 개수가 `M` 개라고 할 때, 시간복잡도는 `O(NlogM)` 이다.
+그렇기에 예를 들어 100명 중, 상위 10명의 학생만 성적순으로 보고 싶다면 `partial_sort` 를 사용하는 것이 효율적이다.
+
+#### stable_sort
+
+값이 같을 때, 기존의 자리를 보장해주는 정렬법이다.
+그렇기에 `sort` 보다는 느리다.
+
+`sort` 가 최악의 경우에도 `O(n log n)` 이 보장된다면, `stable_sort` 는 최악의 경우 `O(n (log n)^2)` 로 더 느리다.
+
+그 외에도 아래와 같은 다양한 함수들이 정의되어 있다.
+
+- `count` : 특정 원소의 개수를 구한다.
+- `find` : 특정 원소의 처음 위치를 반환한다.
+- `reverse` : 컨테이너의 원소들을 뒤집는다.
+- `max_element, min_element` : 컨테이너의 최대, 최소 원소를 반환한다.
+- `minmax_element` : 컨테이너의 최대, 최소 원소를 pair 형태로 반환한다.
+- `swap, swap_range` : 해당 변수 값을 서로 바꿔준다. (swap_range는 특정 범위의 값들은 다른 연속된 메모리 공간의 값들과 바꿀 수 있다.)
+- `iter_swap` : 특정 반복자의 값을 서로 바꿔준다.
+- `copy` : 특정 범위의 값을 다른 곳에 복사한다.
+- `unique` : 중복된 값을 뒤로 보내며 함수를 재정렬한다. erase와 같이 사용하면 중복된 원소들을 제거할 수 있다. 반환은 밀려난 원소의 시작점이다.
+- `lower_bound, upper_bound` : 특정 값의 위치를 반환한다. (lower_bound는 특정 값 이상, upper_bound는 특정 값 초과)
+- `equal_range` : 특정 값의 위치를 pair 형태로 반환한다. (lower_bound, upper_bound의 pair 형태)
+- `remove` : 특정 값을 모두 지운다.
+- `remove_if` : 특정 조건을 만족하는 값들을 지운다.
 
 ## Iterator
 
-**반복자(Iterator)**는 C++ 프로그램이 서로 다른 데이터 구조들이 균일한 방식으로 작업할 수 있도록 도와주는 포인터의 일반화이다.
+**반복자(Iterator)** 는 C++ 프로그램이 서로 다른 데이터 구조들이 균일한 방식으로 작업할 수 있도록 도와주는 포인터의 일반화이다.
 또한 컨테이너와 알고리즘이 하나로 동작하게 묶어주는 인터페이스 역할을 한다.
 알고리즘마다 다른 방식으로 컨테이너를 순회할 수 있기에 반복자에도 여러 종류가 있다.
 
@@ -210,3 +289,5 @@ bool empty = container.empty();
 - [모두의 코드, C++ 레퍼런스 - STL 컨테이너](https://modoocode.com/174)
 - [영화같이, [C++] Iterator에 대해서](https://cho001.tistory.com/193)
 - [Microsoft Learn, C++ <Iterator>](https://learn.microsoft.com/ko-kr/cpp/standard-library/iterator?view=msvc-170)
+- [모두의 코드, C++ <10 - 3. C++ STL - 알고리즘(algorithm)>](https://modoocode.com/225)
+- [kth811, 6. c++ STL algorithm](https://velog.io/@kth811/6.-c-STL-algorithm)
