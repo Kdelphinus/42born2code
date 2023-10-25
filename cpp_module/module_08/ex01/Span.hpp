@@ -25,17 +25,21 @@ class Span {
   };
   ~Span() {};
 
-  // TODO 있는 숫자를 또 삽입하려 했을 때 에러 처리
   void addNumber(int n) {
 	if (_v.size() == _n)
 	  throw FullException();
+	if (std::find(_v.begin(), _v.end(), n) != _v.end())
+	  throw DuplicatedNumberException();
 	_v.push_back(n);
   };
   void addNumber(int begin, int end) {
 	if (end < begin || _v.size() + (end - begin) > _n)
 	  throw FullException();
-	for (int i = begin; i < end; i++)
+	for (int i = begin; i < end; i++) {
+	  if (std::find(_v.begin(), _v.end(), i) != _v.end())
+		throw DuplicatedNumberException();
 	  _v.push_back(i);
+	}
   };
 
   int shortestSpan() {
@@ -65,6 +69,12 @@ class Span {
    public:
 	virtual const char *what() const throw() {
 	  return "Not enough elements";
+	}
+  };
+  class DuplicatedNumberException : public std::exception {
+   public:
+	virtual const char *what() const throw() {
+	  return "Duplicated number";
 	}
   };
 };
