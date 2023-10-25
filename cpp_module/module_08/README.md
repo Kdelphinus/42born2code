@@ -284,6 +284,16 @@ bool empty = container.empty();
 
 모든 컨테이너는 양방향 반복자 이상을 제공하며 배열 기반 컨테이너인 `vector`, `deque`는 임의 접근 반복자를 제공한다.
 
+## 주의할 점
+
+### ex00
+
+### ex01
+
+- `constexpr` 는 함수가 더 효율적이고 안전하게 컴파일되도록 바꾼 것을 의미한다. 그렇기에 `since` 를 확인하여 98버전인지 확인하면 된다.
+
+> `constexpr` 는 컴파일 시간에 평가되는 상수 표현식을 나타내는 한정자이다.
+
 ## References
 - [42Seoul, C++ Module 08](https://cdn.intra.42.fr/pdf/pdf/102839/en.subject.pdf)
 - [모두의 코드, C++ 레퍼런스 - STL 컨테이너](https://modoocode.com/174)
