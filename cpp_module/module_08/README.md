@@ -35,9 +35,9 @@
 - files: Makefile, main.cpp, Span.{h, hpp} (+ Span.tpp)
 - 최대 N개의 정수를 저장할 수 있는 `Span` 클래스를 개발한다. 이때 N은 `unsigned int`이며 생성자에게 전달되는 유일한 매개변수이다.
 - `Span` 클래스는 다음과 같은 메서드를 제공해야 한다.
-  - `addNumber`: 정수를 추가한다. 이때 추가된 정수는 `Span` 클래스에 저장된다. 만약 같은 정수가 있거나 추가할 수 없다면, 예외를 던진다.
-    - `shortestSpan`: `Span` 클래스에 저장된 정수 중 두 개의 정수 사이의 가장 짧은 거리를 반환한다. 만약 정수가 하나 뿐이라면, 예외를 던진다.
-    - `longestSpan`: `Span` 클래스에 저장된 정수 중 두 개의 정수 사이의 가장 긴 거리를 반환한다. 만약 정수가 하나 뿐이라면, 예외를 던진다.
+	- `addNumber`: 정수를 추가한다. 이때 추가된 정수는 `Span` 클래스에 저장된다. 만약 같은 정수가 있거나 추가할 수 없다면, 예외를 던진다.
+		- `shortestSpan`: `Span` 클래스에 저장된 정수 중 두 개의 정수 사이의 가장 짧은 거리를 반환한다. 만약 정수가 하나 뿐이라면, 예외를 던진다.
+		- `longestSpan`: `Span` 클래스에 저장된 정수 중 두 개의 정수 사이의 가장 긴 거리를 반환한다. 만약 정수가 하나 뿐이라면, 예외를 던진다.
 - 테스트를 작성하고 아래의 테스트들보다 더 철저해야 한다. 적어도 만 개 이상의 숫자로 테스트해야 한다.
 
 <details>
@@ -133,22 +133,22 @@ int main() {
 컨테이너는 자신이 보관하는 원소들의 메모리를 관리하여, 각각의 원소에 접근할 수 있는 멤버 함수를 제공한다.
 접근할 때는 **직접 함수를 호출**하거나 **반복자(iterator)**를 사용한다.
 
-한 가지 유의할 사항은 `stack`, `queue`, `priority_queue`는 **컨테이너 어댑터(container adaptor)**라는 점이다.
+한 가지 유의할 사항은 `stack`, `queue`, `priority_queue`는 **컨테이너 어댑터(container adaptor)** 라는 점이다.
 이들은 다른 컨테이너 클래스를 상속 받아서 다른 컨테이너 클래스 객체에 특정한 인터페이스를 제공한다.
 
 - 순차 컨테이너(sequential container)
-    - `vector`
-    - `list`
-    - `deque(double ended queue)`
+	- `vector`
+	- `list`
+	- `deque(double ended queue)`
 - 연관 컨테이너(associative container)
-    - `set`
-    - `multiset` : 여러 키를 가지는 `set`
-    - `map`
-    - `multimap` : 여러 키를 가지는 `map`
+	- `set`
+	- `multiset` : 여러 키를 가지는 `set`
+	- `map`
+	- `multimap` : 여러 키를 가지는 `map`
 - 컨테이너 어댑터(container adaptor)
-    - `stack`
-    - `queue`
-    - `priority_queue`
+	- `stack`
+	- `queue`
+	- `priority_queue`
 
 ## Algorithm
 
@@ -269,18 +269,18 @@ bool empty = container.empty();
 ### Iterator Categories
 
 - 입력 반복자(input iterator)
-  - 현 위치의 원소를 한 번만 읽을 수 있는 반복자(istream)
+	- 현 위치의 원소를 한 번만 읽을 수 있는 반복자(istream)
 - 출력 반복자(output iterator)
-  - 현 위치의 원소를 한 번만 쓸 수 있는 반복자(ostream)
+	- 현 위치의 원소를 한 번만 쓸 수 있는 반복자(ostream)
 - 순방향 반복자(forward iterator)
-  - 입력, 출력 반복자 기능에 순방향으로 이동(++) 가능한 재할당될 수 있는 반복자
+	- 입력, 출력 반복자 기능에 순방향으로 이동(++) 가능한 재할당될 수 있는 반복자
 - 양방향 반복자(bidirectional iterator)
-  - 순방향 반복자 기능에 역방향으로 이동(--) 가능한 반복자
-  - `!=`, `==`, `++`, `--` 연산자를 사용할 수 있다.
-  - `list`, `set`, `map` 등
+	- 순방향 반복자 기능에 역방향으로 이동(--) 가능한 반복자
+	- `!=`, `==`, `++`, `--` 연산자를 사용할 수 있다.
+	- `list`, `set`, `map` 등
 - 임의 접근 반복자(random access iterator)
-  - 양방향 반복자 기능에 임의 접근(`+`, `-`, `+=`, `-=`, `[]`, `<`, `>`, `<=`, `>=`, `==`, `!=`) 가능한 반복자
-  - `vector`, `deque` 등
+	- 양방향 반복자 기능에 임의 접근(`+`, `-`, `+=`, `-=`, `[]`, `<`, `>`, `<=`, `>=`, `==`, `!=`) 가능한 반복자
+	- `vector`, `deque` 등
 
 모든 컨테이너는 양방향 반복자 이상을 제공하며 배열 기반 컨테이너인 `vector`, `deque`는 임의 접근 반복자를 제공한다.
 
@@ -294,10 +294,39 @@ bool empty = container.empty();
 
 > `constexpr` 는 컴파일 시간에 평가되는 상수 표현식을 나타내는 한정자이다.
 
+### ex02
+
+- 아래와 같이 `stack` 은 컨테이너 어댑터이기에 컨테이너 클래스가 지정되지 않은 채 인스턴스화 되면 deque를 가져와서 사용한다..
+
+```c++
+template <typename T, typename Container = std::deque<T>> class stack;
+```
+
+- 그렇기에 `deque` 가 지원하는 iterator를 구현하면 되며 지원하는 종류는 총 8가지다.
+
+![deque iterator](img/deque_iterator.png)
+
+- 이 중, const를 반환하는 4가지 반복자는 C++11 이후로 도입되었다.
+
+![deque rbegin](img/deque_rbegin.png)
+
+- 정확히는 `reverse_iterator` 와 `const_reverse_iterator` 를 반환하는 두 개의 함수가 있다. 이를 c++11에 와서 두 개로 나눈 것이다. 그렇기에 정확히 하려면 모든 함수에
+  있어서 const를 구현해주는 것이 맞는 듯하다.
+
+> #### `reverse_iterator`
+> `reverse_iterator` 는 `iterator` 와 동일한 인터페이스를 제공한다.
+> 다만, `begin` 이 가리키는 곳이 마지막 원소가 있는 곳이고 `operator++` 과 `operator--` 의 동작이 반대이다.
+
+> #### `iterator` 와 `const_iterator`의 차이점
+> 차이는 반복자가 가리키는 값이 `const` 인가, 아닌가라는 것 하나이다.
+> 만약 `const_iteraotr` 가 가리키는 변수에 값을 대입하면 컴파일 에러가 발생한다.
+
 ## References
+
 - [42Seoul, C++ Module 08](https://cdn.intra.42.fr/pdf/pdf/102839/en.subject.pdf)
 - [모두의 코드, C++ 레퍼런스 - STL 컨테이너](https://modoocode.com/174)
 - [영화같이, [C++] Iterator에 대해서](https://cho001.tistory.com/193)
 - [Microsoft Learn, C++ <Iterator>](https://learn.microsoft.com/ko-kr/cpp/standard-library/iterator?view=msvc-170)
 - [모두의 코드, C++ <10 - 3. C++ STL - 알고리즘(algorithm)>](https://modoocode.com/225)
 - [kth811, 6. c++ STL algorithm](https://velog.io/@kth811/6.-c-STL-algorithm)
+- [cppreference, std::deque](https://en.cppreference.com/w/cpp/container/deque)
