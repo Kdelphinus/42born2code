@@ -9,28 +9,27 @@
 
 class ScalarConverter {
  private:
-	static char _char;
-	static int _int;
-	static float _float;
-	static double _double;
+  static char _char;
+  static int _int;
+  static float _float;
+  static double _double;
 
-	static bool _isPseudoLiteral;
+  ScalarConverter();
+  ScalarConverter(const ScalarConverter &);
+  ScalarConverter &operator=(const ScalarConverter &);
+  ~ScalarConverter();
 
-	ScalarConverter();
-	ScalarConverter(const ScalarConverter &);
-	ScalarConverter &operator=(const ScalarConverter &);
-	~ScalarConverter();
-
-	static void isInvalidInput(const std::string &input);
-	static void print(const char *&input, int precision);
+  static bool isPseudoLiteral(const std::string &input);
+  static bool isNumeric(const std::string &input);
+  static void print(const std::string &input, int precision);
 
  public:
-	static void convert(const std::string &input);
+  static void convert(const std::string &input);
 
-	class InvalidInput : public std::exception {
-	 public:
-		const char *what() const throw();
-	};
+  class InvalidInput : public std::exception {
+   public:
+	const char *what() const throw();
+  };
 };
 
 #endif
