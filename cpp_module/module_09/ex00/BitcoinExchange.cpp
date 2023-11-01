@@ -4,16 +4,13 @@ BitcoinExchange::BitcoinExchange() {
   addExchange();
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &be) {
-  for (const_it i = be._exchange.begin(); i != be._exchange.end(); ++i)
-	_exchange[i->first] = i->second;
-}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &be)
+	: _exchange(be._exchange) {}
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &be) {
   if (this != &be) {
 	_exchange.clear();
-	for (const_it i = be._exchange.begin(); i != be._exchange.end(); ++i)
-	  _exchange[i->first] = i->second;
+	_exchange = be._exchange;
   }
   return *this;
 }
