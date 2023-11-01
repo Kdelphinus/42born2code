@@ -2,8 +2,8 @@
 # ProgramName && Files                                                         #
 # **************************************************************************** #
 NAME = btc
-INC_FILES = BitcoinExchage.hpp
-SRC_FILES = main.cpp BitcoinExchage.cpp
+INC_FILES = BitcoinExchange.hpp
+SRC_FILES = main.cpp BitcoinExchange.cpp
 # **************************************************************************** #
 # Directories && Paths                                                         #
 # **************************************************************************** #
