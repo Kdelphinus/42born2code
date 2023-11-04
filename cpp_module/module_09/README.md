@@ -115,6 +115,8 @@ Error
 
 ### ex02
 
+- file: Makefile, main.cpp, PmergeMe.{cpp, hpp}
+
 아래와 같은 제약 조건을 가진 프로그램을 만들어야 한다.
 
 - 프로그램의 이름은 `PmergeMe` 으로 만들어야 한다.
