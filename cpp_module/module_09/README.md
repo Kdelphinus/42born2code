@@ -174,3 +174,4 @@ $> ./PmergeMe `jot -r 3000 1 100000 | tr '\n' ' '`
 ## References
 
 - [42Seoul, cpp module 09](./en.subject.pdf)
+- [팔만코딩경, cpp09 - mergeInsertionSort(ford-johnson algorithm)](https://80000coding.oopy.io/6880ebc0-acb3-4225-809f-37fc419adf71)
