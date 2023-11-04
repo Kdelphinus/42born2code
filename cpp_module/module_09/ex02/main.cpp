@@ -1,3 +1,12 @@
-//
-// Created by myko on 23. 10. 26.
-//
+#include "PmergeMe.hpp"
+
+int main(int ac, char *av[]) {
+  if (ac != 2) {
+	std::cout << "Error" << std::endl;
+	return 1;
+  }
+
+  PmergeMe pmg;
+
+  return 0;
+}
