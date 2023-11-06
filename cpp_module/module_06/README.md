@@ -464,6 +464,23 @@ double: 42.0
     - 이때, 이 함수 내에서 포인터 사용은 금지
 - `typeinfo` 헤더는 금지
 
+## 테스트 전 확인할 것
+
+### ex00
+
+- 나는 인식한 타입을 먼저 바꾸고 그 타입이 변환 불가하면 다 impossible로 출력했다.
+
+> You have to first detect the type of the literal passed as parameter, convert it from string to its actual type, then
+> convert it explicitly to the three other data types. Lastly, display the results as shown below.
+> If a conversion does not make any sense or overflows, display a message to inform the user that the type conversion is
+> impossible. Include any header you need in order to handle numeric limits and special values.
+
+- float과 double에 `std::fixed` 를 사용하여 소수점을 고정했다. 이에 따라 값이 매우 부정확하다.
+- float의 경우 int 범위를 간신히 넘어갔을 때, 구분하지 못하는 경우가 많다.
+- 하지만 위 규칙은 인식된 타입을 변환할 때만 적용하고 그 외 세가지 타입 변환 시에는 `static_cast` 로 명시적 변환
+
+- float과 double의 경우, 범위를 벗어나면 atof 상에서 inf로 변환된다.
+
 ## 참고 문헌
 
 - [42Seoul, C++ Module 06](en.subject.pdf)
