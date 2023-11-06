@@ -38,6 +38,9 @@ bool ScalarConverter::isNumeric(const std::string &input) {
   int dotCnt = 0;
   int numCnt = 0;
 
+  if (input.size() == 1 && !std::isdigit(input[0]))
+	return true;
+
   for (size_t i = 0; i < input.size(); ++i) {
 	if (i == 0 && (input[i] == '-' || input[i] == '+'))
 	  continue;
@@ -71,14 +74,17 @@ void ScalarConverter::convert(const std::string &input) {
   int precision = 1;
   if (input.find_first_of(".") != input.npos && input[input.size() - 1] != '.')
 	precision = input.size() - input.find_first_of(".") - 1;
-  if (input[input.size() - 1] == 'f')
+  if (input.size() > 1 && input[input.size() - 1] == 'f')
 	--precision;
 
   print(input, precision);
 }
 
 void ScalarConverter::print(const std::string &input, int precision) {
-  _double = std::atof(input.c_str());
+  if (input.size() == 1 && !std::isdigit(input[0]))
+	_double = static_cast<double>(input[0]);
+  else
+	_double = std::atof(input.c_str());
 
   if (_double < 0 || _double > 127)
 	std::cout << "char: impossible" << std::endl;
