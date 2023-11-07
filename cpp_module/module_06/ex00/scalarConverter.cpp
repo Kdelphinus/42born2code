@@ -24,7 +24,7 @@ const char *ScalarConverter::InvalidInput::what() const throw() {
 
 bool ScalarConverter::isPseudoLiteral(const std::string &input) {
   if (input == "+inf" || input == "-inf" || input == "inf" ||
-	  input == "+nan" || input == "-nan" || input == "nan") {
+	  input == "nan") {
 	_double = std::atof(input.c_str());
 	std::cout << "char: impossible\n"
 			  << "int: impossible\n"
@@ -33,11 +33,11 @@ bool ScalarConverter::isPseudoLiteral(const std::string &input) {
 	return true;
   }
   if (input == "+inff" || input == "-inff" || input == "inff" ||
-	  input == "+nanf" || input == "-nanf" || input == "nanf") {
+	  input == "nanf") {
 	_float = static_cast<float>(std::atof(input.c_str()));
 	std::cout << "char: impossible\n"
 			  << "int: impossible\n"
-			  << "float: " << _float << "\n"
+			  << "float: " << _float << "f\n"
 			  << "double: " << static_cast<double>(_float) << std::endl;
 	return true;
   }
@@ -75,6 +75,8 @@ bool ScalarConverter::isNumeric(const std::string &input) {
 	++numCnt;
   }
   if (numCnt == 0 || (dotCnt == 0 && input[input.size() - 1] == 'f'))
+	return false;
+  if (".f" == input)
 	return false;
   return true;
 }
