@@ -7,7 +7,7 @@ int main() {
 	sp.addNumber(0, 10000);
 
 	std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
-	std::cout << "longest span: 0" << sp.longestSpan() << std::endl;
+	std::cout << "longest span: " << sp.longestSpan() << std::endl;
   } catch (std::exception &e) {
 	std::cout << e.what() << std::endl;
   }
