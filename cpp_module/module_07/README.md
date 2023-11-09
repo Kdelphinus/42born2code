@@ -4,15 +4,15 @@
 
 - [Subject](#subject)
 - [C++ templates](#c-templates)
-	- [함수 템플릿(Function Template)](#함수-템플릿function-template)
-	- [함수 템플릿 특수화(Function Template Specialization)](#함수-템플릿-특수화function-template-specialization)
-	- [클래스 템플릿(Class Template)](#클래스-템플릿class-template)
-	- [클래스 템플릿 특수화(Class Template Specialization)](#클래스-템플릿-특수화class-template-specialization)
-		- [암시적 특수화(Implicit Specialization)](#암시적-특수화implicit-specialization)
-		- [명시적 특수화(Explicit Specialization)](#명시적-특수화explicit-specialization)
-		- [부분 특수화(Partial Specialization)](#부분-특수화partial-specialization)
-		- [중첩 클래스 템플릿(Nested Class Template)](#중첩-클래스-템플릿nested-class-template)
-	- [typedef](#typedef)
+    - [함수 템플릿(Function Template)](#함수-템플릿function-template)
+    - [함수 템플릿 특수화(Function Template Specialization)](#함수-템플릿-특수화function-template-specialization)
+    - [클래스 템플릿(Class Template)](#클래스-템플릿class-template)
+    - [클래스 템플릿 특수화(Class Template Specialization)](#클래스-템플릿-특수화class-template-specialization)
+        - [암시적 특수화(Implicit Specialization)](#암시적-특수화implicit-specialization)
+        - [명시적 특수화(Explicit Specialization)](#명시적-특수화explicit-specialization)
+        - [부분 특수화(Partial Specialization)](#부분-특수화partial-specialization)
+        - [중첩 클래스 템플릿(Nested Class Template)](#중첩-클래스-템플릿nested-class-template)
+    - [typedef](#typedef)
 - [참고 문헌](#참고-문헌)
 
 ## Subject
@@ -21,9 +21,9 @@
 
 - Files: Makefile, main.cpp, whatever.{h, hpp}
 - 아래와 같은 함수 템플릿을 구현하기
-	- `swap` : 주어진 두 인수의 값을 바꾼다. 아무것도 반환하지 않는다.
-	- `min` : 주어진 두 인수 중 작은 값을 반환한다. 두 값이 같으면 두 번째 값을 반환한다.
-	- `max` : 주어진 두 인수 중 큰 값을 반환한다. 두 값이 같으면 두 번째 값을 반환한다.
+    - `swap` : 주어진 두 인수의 값을 바꾼다. 아무것도 반환하지 않는다.
+    - `min` : 주어진 두 인수 중 작은 값을 반환한다. 두 값이 같으면 두 번째 값을 반환한다.
+    - `max` : 주어진 두 인수 중 큰 값을 반환한다. 두 값이 같으면 두 번째 값을 반환한다.
 - 이 함수들은 어떤 형식의 인수 T와도 함께 호출될 수 있다.
 - 유일한 조건은 두 인수가 동일한 타입을 가져야 하고 모든 비교 연산자를 지원해야 한다는 것이다.
 
@@ -64,9 +64,9 @@ max(c, d) = chaine2
 
 - Files: Makefile, iter.{h, cpp}, main.cpp
 - 3개의 매개변수를 사용하고 아무것도 반환하지 않는 함수 템플릿 `iter`를 구현하기
-	- 첫 번째 매개변수는 배열의 주소이다.
-	- 두 번째 매개변수는 배열의 길이이다.
-	- 세 번째 매개변수는 배열의 모든 요소를 호출하는 함수이다.
+    - 첫 번째 매개변수는 배열의 주소이다.
+    - 두 번째 매개변수는 배열의 길이이다.
+    - 세 번째 매개변수는 배열의 모든 요소를 호출하는 함수이다.
 - 테스트가 포함된 main.cpp 파일을 제출하고 테스트를 실행할 수 있는 충분한 코드를 제공해야 한다.
 - `iter` 함수 템플릿은 배열 형식에 관계없이 작동해야 한다.
 - 세 번째 매개변수는 인스턴스화 함수 템플릿이 될 수 있다.
@@ -75,14 +75,14 @@ max(c, d) = chaine2
 
 - Files: Makefile, Array.{h, cpp}, main.cpp (+ Array.tpp)
 - T 타입의 요소를 포함하고 다음 동작과 함수가 있는 클래스 템플릿 `Array`를 구현한다.
-	- 매개변수가 없을 때: 빈 배열을 만든다.
-	- `unsigned int n`를 매개변수로 할 때: 초기화된 n개 요소의 배열을 만든다.
+    - 매개변수가 없을 때: 빈 배열을 만든다.
+    - `unsigned int n`를 매개변수로 할 때: 초기화된 n개 요소의 배열을 만든다.
   > TIP: `int * a = new int();` 를 컴파일하고 `*a`를 확인해볼 것
-	- 복사 및 할당 연산자: deepcopy(모두 복사 후, 원래 배열과 복사된 배열 중 하나를 수정해도 다른 배열에 영향을 미치지 않음)
-	- 메모리를 할당하려면 `new[]` 연산자를 사용해야 한다. 미리 메모리를 할당하는 것은 금지된다. 또한 할당되지 않은 메모리에 접근하면 안 된다.
-	- 요소들은 `[]` 연산자를 사용해 접근할 수 있어야 한다.
-	- `[]` 연산자로 접근할 때, 인덱스를 벗어나면 `std::exception`을 `throw` 한다.
-	- 멤버 함수 `size()`는 배열의 요소 개수를 반환한다. 이 멤버 함수는 파라미터가 필요없고 현재 인스턴스를 수정해선 안 된다.
+    - 복사 및 할당 연산자: deepcopy(모두 복사 후, 원래 배열과 복사된 배열 중 하나를 수정해도 다른 배열에 영향을 미치지 않음)
+    - 메모리를 할당하려면 `new[]` 연산자를 사용해야 한다. 미리 메모리를 할당하는 것은 금지된다. 또한 할당되지 않은 메모리에 접근하면 안 된다.
+    - 요소들은 `[]` 연산자를 사용해 접근할 수 있어야 한다.
+    - `[]` 연산자로 접근할 때, 인덱스를 벗어나면 `std::exception`을 `throw` 한다.
+    - 멤버 함수 `size()`는 배열의 요소 개수를 반환한다. 이 멤버 함수는 파라미터가 필요없고 현재 인스턴스를 수정해선 안 된다.
 - 테스트가 포함된 main.cpp로 테스트하고 함께 제출한다.
 
 ## C++ templates
