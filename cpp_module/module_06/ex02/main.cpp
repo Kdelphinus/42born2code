@@ -3,7 +3,6 @@
 #include "C.hpp"
 
 Base *generate(void) {
-  std::srand(std::time(0));
   int i = std::rand() % 3;
 
   std::cout << "Create: ";
@@ -53,6 +52,8 @@ void identify(Base &p) {
 }
 
 int main() {
+  std::srand(std::time(0));
+
   Base *p = generate();
   Base &r = *p;
 
