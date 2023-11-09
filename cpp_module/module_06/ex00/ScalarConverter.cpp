@@ -1,4 +1,4 @@
-#include "scalarConverter.hpp"
+#include "ScalarConverter.hpp"
 
 char ScalarConverter::_char;
 int ScalarConverter::_int;
