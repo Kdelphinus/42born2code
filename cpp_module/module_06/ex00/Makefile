@@ -2,8 +2,8 @@
 # ProgramName && Files                                                         #
 # **************************************************************************** #
 NAME = convert
-INC_FILES = scalarConverter.hpp
-SRC_FILES = main.cpp scalarConverter.cpp
+INC_FILES = ScalarConverter.hpp
+SRC_FILES = main.cpp ScalarConverter.cpp
 # **************************************************************************** #
 # Directories && Paths                                                         #
 # **************************************************************************** #
