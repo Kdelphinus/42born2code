@@ -223,7 +223,7 @@ This is Blog Class
 - 실수와 정수, 열거형과 정수형, 실수와 실수 사이의 변환 등을 허용한다.
 - 포인터 타입을 다른 것으로 변환 하는 것은 허용되지 않는다. (compile error)
 - 하지만 상속 관계에 있는 포인터끼리 변환은 가능하다.
-    - static_cast<Derived*>(base_ptr) (downcast) 시에는 unsafe하게 동작한다. (safe하게 사용하려면 dynamic_cast 사용)
+  - static_cast<Derived*>(base_ptr) (downcast) 시에는 unsafe하게 동작한다. (safe하게 사용하려면 dynamic_cast 사용)
 
 ### reinterpret_cast
 
@@ -233,53 +233,50 @@ This is Blog Class
 - `reinterpret_cast<type>(expression)` 형태에서 expression을 type의 비트 단위로 바꾸는 것이다.
 - 하지만 const 변수들은 사용 불가
 
+- `reinterpret_cast`는 `reinterpret_cast` 로 변환된 것을 다시 캐스팅하는 것 이외의 다른 용도로는 안전하게 사용할 수 없다.
+- `reinterpret_cast`는 실제 사용은 아래와 같이 두 개의 고유 값이 비슷하지 않은 인덱스로 끝나지 않도록 인덱스를 매핑하는 해시 함수에서 사용된다.
+
+> 무슨 코드인지 나도 이해 아직 못 함
+
 ```c++
-#include<iostream>
-#include<cstdio>
+#include <iostream>
 using namespace std;
- 
-struct Cube{
-    int a;
-};
- 
-int main(void){
-    int a = 71234561;
- 
-    //1. int -> int * 로 타입캐스팅
-    //변수 a의 값을 절대주소로 받는 포인터 ptr1
-    //이 경우에는 주소 111번지를 가리키고 있는 poiner가 됩니다.
-    //111번지가 어느곳을 가리킬지 모르기 때문에 위험합니다.
-    int *ptr1;
-    ptr1 = reinterpret_cast<int *>(a);
- 
-    
-    //2. int * -> char * 로 타입캐스팅
-    //컴파일러에 따라 다르게 나옵니다.
-    int *ptr2 = &a;
-    char * c;
-    c = reinterpret_cast<char *>(ptr2);
-    cout << "2. int* -> char * (cout) : " << *c << endl;
-    printf("2. int* -> char * (printf int type) : %d\n", *c);
- 
-    
-    //3. struct 내의 첫번째 int -> int *
-    //struct cube에는 int 형 변수 하나만 존재 하므로,
-    //ptr3은 int a변수의 시작점을 잘 가리키고 있습니다
-    Cube cb;
-    cb.a = 20;
-    int * ptr3;
-    ptr3 = reinterpret_cast<int *>(&cb);
-    cout << "3. struct -> int * : " << *ptr3 << endl;
- 
-    return 0;
+
+// Returns a hash code based on an address
+unsigned short Hash( void *p ) {
+   unsigned int val = reinterpret_cast<unsigned int>( p );
+   return ( unsigned short )( val ^ (val >> 16));
+}
+
+using namespace std;
+int main() {
+   int a[20];
+   for ( int i = 0; i < 20; i++ )
+      cout << Hash( a + i ) << endl;
 }
 ```
 
 ```shell
-# 실행 결과
-2. int* -> char * (cout) : 
-2. int* -> char * (printf int type) : 1
-3. struct -> int * : 20
+64641
+64645
+64889
+64893
+64881
+64885
+64873
+64877
+64865
+64869
+64857
+64861
+64849
+64853
+64841
+64845
+64833
+64837
+64825
+64829
 ```
 
 ### const_cast
@@ -495,3 +492,4 @@ double: 42.0
 - [우아한 기술블로그, 자바 직렬화, 그것이 알고싶다. 훑어보기편](https://techblog.woowahan.com/2550/)
 - [위키백과, 비정규 값](https://ko.wikipedia.org/wiki/비정규_값)
 - [cppreference, std::numeric_limits](https://en.cppreference.com/w/cpp/types/numeric_limits)
+- [Microsoft, reinterpret_cast 연산자](https://learn.microsoft.com/ko-kr/cpp/cpp/reinterpret-cast-operator?view=msvc-170)
