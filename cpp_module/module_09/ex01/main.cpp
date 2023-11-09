@@ -9,9 +9,10 @@ int main(int ac, char *av[]) {
   try {
 	RPN rpn;
 	std::cout << rpn.solution(av[1]) << std::endl;
-  }
-  catch (std::exception &e) {
-	std::cout << "Error" << std::endl;
+  } catch (RPN::ZeroDivisionException &e) {
+	std::cout << e.what() << std::endl;
+  } catch (std::exception &e) {
+	std::cout << "Error: invalid input" << std::endl;
 	return 1;
   }
   return 0;

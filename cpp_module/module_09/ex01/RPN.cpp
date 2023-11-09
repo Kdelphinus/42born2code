@@ -33,8 +33,11 @@ void RPN::calculate(char op) {
 	_eq.push(b - a);
   else if (op == '*')
 	_eq.push(b * a);
-  else if (op == '/')
+  else if (op == '/') {
+	if (a == 0)
+	  throw	RPN::ZeroDivisionException();
 	_eq.push(b / a);
+  }
 }
 
 int RPN::solution(const char *eq) {

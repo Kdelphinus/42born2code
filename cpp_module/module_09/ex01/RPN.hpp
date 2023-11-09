@@ -17,6 +17,13 @@ class RPN {
   ~RPN();
 
   int solution(const char *eq);
+
+  class ZeroDivisionException : public std::exception {
+   public:
+	virtual const char *what() const throw() {
+	  return "Error: division by zero";
+	}
+  };
 };
 
 #endif
