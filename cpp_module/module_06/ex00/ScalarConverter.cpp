@@ -44,17 +44,6 @@ bool ScalarConverter::isPseudoLiteral(const std::string &input) {
   return false;
 }
 
-TYPE ScalarConverter::getType(const std::string &input) {
-  if (input.find_first_of(".") != input.npos) {
-	if (input[input.size() - 1] == 'f')
-	  return FLOAT;
-	return DOUBLE;
-  }
-  if (input.size() == 1 && !std::isdigit(input[0]))
-	return CHAR;
-  return INT;
-}
-
 bool ScalarConverter::isNumeric(const std::string &input) {
   int dotCnt = 0;
   int numCnt = 0;
@@ -70,15 +59,29 @@ bool ScalarConverter::isNumeric(const std::string &input) {
 	}
 	if (!std::isdigit(input[i]) && input[i] != 'f')
 	  return false;
-	if (input[i] == 'f' && i != input.size() - 1)
-	  return false;
+	if (input[i] == 'f') {
+	  if (i != input.size() - 1)
+		return false;
+	  continue;
+	}
 	++numCnt;
   }
   if (numCnt == 0 || (dotCnt == 0 && input[input.size() - 1] == 'f'))
 	return false;
-  if (".f" == input)
-	return false;
   return true;
+}
+
+TYPE ScalarConverter::getType(const std::string &input) {
+  if (input.size() == 1 && !std::isdigit(input[0]))
+	return CHAR;
+
+  if (!isNumeric(input))
+	throw InvalidInput();
+  if (input.find_first_of(".") == input.npos)
+	return INT;
+  if (input[input.size() - 1] == 'f')
+	return FLOAT;
+  return DOUBLE;
 }
 
 void ScalarConverter::convertChar(const std::string &input) {
@@ -209,18 +212,14 @@ void ScalarConverter::convert(const std::string &input) {
 	return;
 
   TYPE type = getType(input);
-  if (type == CHAR) {
+  if (type == CHAR)
 	convertChar(input);
-  } else {
-	if (!isNumeric(input))
-	  throw InvalidInput();
-	if (type == INT)
-	  convertInt(input);
-	else if (type == FLOAT)
-	  convertFloat(input);
-	else
-	  convertDouble(input);
-  }
+  else if (type == INT)
+	convertInt(input);
+  else if (type == FLOAT)
+	convertFloat(input);
+  else
+	convertDouble(input);
 
   int precision = 1;
   if (input.find_first_of(".") != input.npos && input[input.size() - 1] != '.')
