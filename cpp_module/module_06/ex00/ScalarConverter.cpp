@@ -7,6 +7,8 @@ double ScalarConverter::_double;
 bool ScalarConverter::_isImpossible;
 bool ScalarConverter::_isCharImpossible;
 bool ScalarConverter::_isIntImpossible;
+bool ScalarConverter::_isFloatImpossible;
+bool ScalarConverter::_isDoubleImpossible;
 
 ScalarConverter::ScalarConverter() {}
 
@@ -92,36 +94,19 @@ void ScalarConverter::convertChar(const std::string &input) {
 }
 
 bool ScalarConverter::isOverflow(const std::string &input) {
-  size_t len = input.size();
-  if (input[0] == '-' || input[0] == '+')
-	--len;
-
-  if (len > 10) {
-	_isImpossible = true;
-	return true;
-  }
-
-  if (len == 10) {
-	if (input[0] == '-') {
-	  if (input.compare("-2147483648") > 0) {
-		_isImpossible = true;
-		return true;
-	  }
-	} else if (input[0] == '+') {
-	  if (input.compare("+2147483647") > 0) {
-		_isImpossible = true;
-		return true;
-	  }
-	} else {
-	  if (input.compare("2147483647") > 0) {
-		_isImpossible = true;
-		return true;
-	  }
-	}
+  long long num = 0;
+  for (size_t i = 0; i < input.size(); ++i) {
+	if (i == 0 && (input[i] == '-' || input[i] == '+'))
+	  continue;
+	num *= 10;
+	num += input[i] - '0';
+	if (num > std::numeric_limits<int>::max()
+		|| num < std::numeric_limits<int>::min())
+	  return true;
   }
   return false;
 }
-
+float a = +.0f;
 void ScalarConverter::convertInt(const std::string &input) {
   if (isOverflow(input)) {
 	_isImpossible = true;
@@ -141,6 +126,10 @@ void ScalarConverter::convertInt(const std::string &input) {
 
 void ScalarConverter::convertFloat(const std::string &input) {
   _float = static_cast<float>(std::atof(input.c_str()));
+  if (_float == 0 && input != "0") {
+	_isImpossible = true;
+	return;
+  }
 
   if (_float < static_cast<float>(std::numeric_limits<char>::min()) ||
 	  static_cast<float>(std::numeric_limits<char>::max()) < _float)
@@ -159,6 +148,10 @@ void ScalarConverter::convertFloat(const std::string &input) {
 
 void ScalarConverter::convertDouble(const std::string &input) {
   _double = std::atof(input.c_str());
+  if (_double == 0 && input != "0") {
+	_isImpossible = true;
+	return;
+  }
 
   if (_double < std::numeric_limits<char>::min() ||
 	  std::numeric_limits<char>::max() < _double)
@@ -172,6 +165,8 @@ void ScalarConverter::convertDouble(const std::string &input) {
   else
 	_int = static_cast<int>(_double);
 
+  if (_double < static_cast<double>(std::numeric_limits<float>::min()))
+	_isFloatImpossible = true;
   _float = static_cast<float>(_double);
 }
 
@@ -192,6 +187,9 @@ void ScalarConverter::print(int precision) {
 
   if (_isImpossible)
 	std::cout << "float: impossible" << std::endl;
+  else if (_isFloatImpossible)
+	std::cout << "float: " << std::fixed << std::setprecision(1) << _float
+			  << "f" << std::endl;
   else {
 	std::cout << "float: " << std::fixed << std::setprecision(precision)
 			  << _float

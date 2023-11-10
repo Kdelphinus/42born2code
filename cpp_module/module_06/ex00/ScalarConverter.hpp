@@ -24,6 +24,8 @@ class ScalarConverter {
   static bool _isImpossible;
   static bool _isCharImpossible;
   static bool _isIntImpossible;
+  static bool _isFloatImpossible;
+  static bool _isDoubleImpossible;
 
   ScalarConverter();
   ScalarConverter(const ScalarConverter &);
