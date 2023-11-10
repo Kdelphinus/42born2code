@@ -106,7 +106,7 @@ bool ScalarConverter::isOverflow(const std::string &input) {
   }
   return false;
 }
-float a = +.0f;
+
 void ScalarConverter::convertInt(const std::string &input) {
   if (isOverflow(input)) {
 	_isImpossible = true;
@@ -166,12 +166,8 @@ void ScalarConverter::convertDouble(const std::string &input) {
 	_int = static_cast<int>(_double);
 
   if (std::abs(_double)
-	  < static_cast<double>(std::numeric_limits<float>::min())) {
-	std::cout << _double << std::endl;
-	std::cout << static_cast<double>(std::numeric_limits<float>::min())
-			  << std::endl;
+	  < static_cast<double>(std::numeric_limits<float>::min()))
 	_isFloatImpossible = true;
-  }
   _float = static_cast<float>(_double);
 }
 

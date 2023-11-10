@@ -8,8 +8,7 @@ int main(int ac, char **av) {
   try {
 	ScalarConverter::convert(av[1]);
   } catch (std::exception &e) {
-	std::cerr << e.what() << std::endl;
-	return 1;
+	std::cout << e.what() << std::endl;
   }
   return 0;
 }
