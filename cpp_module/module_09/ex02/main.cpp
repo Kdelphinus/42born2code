@@ -8,5 +8,7 @@ int main(int ac, char *av[]) {
 
   PmergeMe pmg(ac, av);
 
+  std::cout << "Before: ";
+  pmg.printList();
   return 0;
 }

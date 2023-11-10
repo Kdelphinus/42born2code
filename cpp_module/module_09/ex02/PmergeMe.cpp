@@ -17,13 +17,24 @@ PmergeMe::PmergeMe(int ac, char *av[]) {
 }
 
 PmergeMe::PmergeMe(const PmergeMe &pmg) {
-  *this = pmg;
+  _vector = pmg._vector;
+  _list = pmg._list;
 }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &pmg) {
-  (void)pmg;
+  if (this != &pmg) {
+	_vector.clear();
+	_list.clear();
+	_vector = pmg._vector;
+	_list = pmg._list;
+  }
   return *this;
 }
 
 PmergeMe::~PmergeMe() {}
 
+void PmergeMe::printList() const {
+  for (std::list<int>::const_iterator it = _list.begin(); it != _list.end(); it++)
+	std::cout << *it << " ";
+  std::cout << std::endl;
+}

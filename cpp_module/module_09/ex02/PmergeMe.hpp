@@ -10,13 +10,15 @@ class PmergeMe {
  private:
   std::list<int> _list;
   std::vector<int> _vector;
+  PmergeMe();
 
  public:
-  PmergeMe();
   PmergeMe(int ac, char *av[]);
   PmergeMe(const PmergeMe &pmg);
   PmergeMe &operator=(const PmergeMe &pmg);
   ~PmergeMe();
+
+  void printList() const;
 
   class InvalidInputException : public std::exception {
    public:
