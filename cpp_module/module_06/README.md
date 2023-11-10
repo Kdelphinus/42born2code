@@ -3,17 +3,17 @@
 ## Index
 
 - [C++ casts](#c-casts)
-  - [dynamic_cast](#dynamiccast)
-  - [static_cast](#staticcast)
-  - [reinterpret_cast](#reinterpretcast)
-  - [const_cast](#constcast)
+    - [dynamic_cast](#dynamiccast)
+    - [static_cast](#staticcast)
+    - [reinterpret_cast](#reinterpretcast)
+    - [const_cast](#constcast)
 - [static member variable](#static-member-variable)
 - [Serialization](#serialization)
 - [Pseudo Literals](#pseudo-literals)
 - [Subject](#subject)
-  - [ex00](#ex00)
-  - [ex01](#ex01)
-  - [ex02](#ex02)
+    - [ex00](#ex00)
+    - [ex01](#ex01)
+    - [ex02](#ex02)
 - [참고 문헌](#참고-문헌)
 
 ## C++ casts
@@ -223,7 +223,7 @@ This is Blog Class
 - 실수와 정수, 열거형과 정수형, 실수와 실수 사이의 변환 등을 허용한다.
 - 포인터 타입을 다른 것으로 변환 하는 것은 허용되지 않는다. (compile error)
 - 하지만 상속 관계에 있는 포인터끼리 변환은 가능하다.
-  - static_cast<Derived*>(base_ptr) (downcast) 시에는 unsafe하게 동작한다. (safe하게 사용하려면 dynamic_cast 사용)
+    - static_cast<Derived*>(base_ptr) (downcast) 시에는 unsafe하게 동작한다. (safe하게 사용하려면 dynamic_cast 사용)
 
 ### reinterpret_cast
 
@@ -441,8 +441,8 @@ double: 42.0
 ### ex01
 
 - 아래의 메소드들을 가지는 static class `Serializer`를 구성
-  - `uintptr_t serialize(Data* ptr);` : pointer -> `uintptr_t`
-  - `Data* deserialize(uintptr_t raw);` : `uintptr_t` -> pointer
+    - `uintptr_t serialize(Data* ptr);` : pointer -> `uintptr_t`
+    - `Data* deserialize(uintptr_t raw);` : `uintptr_t` -> pointer
 - 멤버를 가지고 있는 `Data` 구조체를 생성
 - `serialize`와 `deserialize` 함수를 이용해 `Data *` 를 `uintptr_t`로 변경했다가 복구하는 테스트를 작성
 
@@ -454,11 +454,11 @@ double: 42.0
 > 이때, 네 개의 클래스는 OCF를 지키지 않아도 된다.
 
 - 아래 함수들을 구성
-  - `Base *generate(void)`: `A`, `B`, `C` 중 하나를 `Base *` 타입으로 무작위 반환하는 함수
-  - `void identify(Base* p)`: 입력 받은 클래스가 실제로 `A`, `B`, `C` 중 어떤 것인지 출력하는 함수
-  - `void identify(Base& p)`
-    - 입력 받은 클래스가 실제로 `A`, `B`, `C` 중 어떤 것인지 출력하는 함수
-    - 이때, 이 함수 내에서 포인터 사용은 금지
+    - `Base *generate(void)`: `A`, `B`, `C` 중 하나를 `Base *` 타입으로 무작위 반환하는 함수
+    - `void identify(Base* p)`: 입력 받은 클래스가 실제로 `A`, `B`, `C` 중 어떤 것인지 출력하는 함수
+    - `void identify(Base& p)`
+        - 입력 받은 클래스가 실제로 `A`, `B`, `C` 중 어떤 것인지 출력하는 함수
+        - 이때, 이 함수 내에서 포인터 사용은 금지
 - `typeinfo` 헤더는 금지
 
 ## 테스트 전 확인할 것
