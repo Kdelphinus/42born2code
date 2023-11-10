@@ -165,8 +165,13 @@ void ScalarConverter::convertDouble(const std::string &input) {
   else
 	_int = static_cast<int>(_double);
 
-  if (_double < static_cast<double>(std::numeric_limits<float>::min()))
+  if (std::abs(_double)
+	  < static_cast<double>(std::numeric_limits<float>::min())) {
+	std::cout << _double << std::endl;
+	std::cout << static_cast<double>(std::numeric_limits<float>::min())
+			  << std::endl;
 	_isFloatImpossible = true;
+  }
   _float = static_cast<float>(_double);
 }
 
