@@ -9,7 +9,7 @@ class Array {
   T *_array;
   unsigned int _size;
  public:
-  Array() : _array(new T()), _size(0) {};
+  Array() : _array(new T[0]), _size(0) {};
   Array(unsigned int n) : _array(new T[n]), _size(n) {};
   Array(const Array &src) : _array(new T[src._size]), _size(src._size) {
 	for (unsigned int i = 0; i < _size; i++)
