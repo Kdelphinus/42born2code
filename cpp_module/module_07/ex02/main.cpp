@@ -1,48 +1,44 @@
 #include <iostream>
 #include <Array.hpp>
 
+#define MAX_VAL 750
 int main(int, char **) {
-  int maxVal = 750;
-  Array<int> numbers(maxVal);
-  int *mirror = new int[maxVal];
+  Array<int> numbers(MAX_VAL);
+  int *mirror = new int[MAX_VAL];
   srand(time(NULL));
-  for (int i = 0; i < maxVal; i++) {
+  for (int i = 0; i < MAX_VAL; i++) {
 	const int value = rand();
 	numbers[i] = value;
 	mirror[i] = value;
   }
-
+  //SCOPE
   {
 	Array<int> tmp = numbers;
 	Array<int> test(tmp);
-
-	tmp[0] = 21;
-	test[0] = 42;
-	std::cout << "numbers[0]: " << numbers[0] << std::endl;
-	std::cout << "tmp[0]: " << tmp[0] << std::endl;
-	std::cout << "test[0]: " << test[0] << std::endl;
   }
 
-  try {
-	for (int i = 0; i < maxVal; i++) {
-	  if (mirror[i] != numbers[i])
-		throw std::exception();
+  for (int i = 0; i < MAX_VAL; i++) {
+	if (mirror[i] != numbers[i]) {
+	  std::cerr << "didn't save the same value!!" << std::endl;
+	  return 1;
 	}
-  } catch (const std::exception &e) {
-	std::cout << "Error: didn't save the same value!!" << std::endl;
   }
   try {
 	numbers[-2] = 0;
   }
   catch (const std::exception &e) {
-	std::cout << "Error: minus index" << std::endl;
+	std::cerr << e.what() << '\n';
   }
   try {
-	numbers[maxVal] = 0;
+	numbers[MAX_VAL] = 0;
   }
   catch (const std::exception &e) {
-	std::cout << "Error: max index" << std::endl;
+	std::cerr << e.what() << '\n';
   }
-  delete[] mirror;
+
+  for (int i = 0; i < MAX_VAL; i++) {
+	numbers[i] = rand();
+  }
+  delete[] mirror;//
   return 0;
 }
