@@ -27,9 +27,9 @@ class Array {
   };
   ~Array() { delete[] _array; };
 
-  T &operator[](unsigned int i) {
-	if (i >= _size)
-	  throw std::exception();
+  T &operator[](ssize_t i) const {
+	if (i < 0 || i >= static_cast<ssize_t>(_size))
+	  throw std::out_of_range("Error: Index out of range");
 	return _array[i];
   }
 
