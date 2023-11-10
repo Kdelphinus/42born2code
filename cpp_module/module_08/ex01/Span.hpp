@@ -31,6 +31,7 @@ class Span {
 	_v.push_back(n);
   };
 
+  // TODO : iterator를 사용해서 구현하기(주영이 깃허브 참고)
   void addNumber(int begin, int end) {
 	if (end < begin || _v.size() + (end - begin) > _n)
 	  throw FullException();
