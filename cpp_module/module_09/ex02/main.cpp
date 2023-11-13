@@ -10,5 +10,7 @@ int main(int ac, char *av[]) {
 
   std::cout << "Before: ";
   pmg.printList();
+  pmg.listMergeInsertion();
+
   return 0;
 }
