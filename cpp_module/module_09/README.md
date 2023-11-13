@@ -182,6 +182,18 @@ $> ./PmergeMe `jot -r 3000 1 100000 | tr '\n' ' '`
 
 ## 주의할 점
 
+### ex02
+
+```c++
+#include <list>
+
+# c++98버전에선 error(c++11부턴 가능)
+std::list<std::pair<int, int>> v;
+
+# >>이 비트 연산과 혼동이 있을 수 있기에 한 칸 띄어야 함
+std::list<std::pair<int, int> > v;
+```
+
 ## References
 
 - [42Seoul, cpp module 09](./en.subject.pdf)
