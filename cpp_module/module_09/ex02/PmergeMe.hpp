@@ -7,6 +7,9 @@
 #include <vector>
 #include <cstdlib>
 
+typedef std::pair<int, int> intPair;
+typedef std::list<int>::iterator listIt;
+typedef std::vector<int>::iterator vectorIt;
 typedef std::list<int>::const_iterator listConstIt;
 typedef std::vector<int>::const_iterator vectorConstIt;
 
