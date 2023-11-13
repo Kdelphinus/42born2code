@@ -34,7 +34,19 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &pmg) {
 PmergeMe::~PmergeMe() {}
 
 void PmergeMe::printList() const {
-  for (std::list<int>::const_iterator it = _list.begin(); it != _list.end(); it++)
+  for (listConstIt it = _list.begin(); it != _list.end();
+	   it++)
 	std::cout << *it << " ";
   std::cout << std::endl;
+}
+
+void PmergeMe::printVector() const {
+  for (vectorConstIt it = _vector.begin();
+	   it != _vector.end(); it++)
+	std::cout << *it << " ";
+  std::cout << std::endl;
+}
+
+void PmergeMe::listMergeInsertion() {
+  
 }
