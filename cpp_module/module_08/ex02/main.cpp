@@ -4,6 +4,10 @@
 int main() {
   {
 	MutantStack<int> mstack;
+	const MutantStack<int> cmstack;
+
+	mstack.begin();
+	cmstack.begin();
 
 	mstack.push(5);
 	mstack.push(17);
