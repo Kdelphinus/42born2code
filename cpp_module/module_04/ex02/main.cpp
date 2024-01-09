@@ -16,58 +16,58 @@
 int main() {
 //    const AAnimal *AAnimal = new AAnimal(); // 추상 클래스이기에 컴파일 시, 에러
 
-    std::cout << "\n========ANIMAL========" << std::endl;
-    std::cout << "<create>" << std::endl;
-    const Animal *animal = new Animal();
-    std::cout << "\ntype : " << animal->getType() << std::endl;
-    std::cout << "sound: ";
-    animal->makeSound();
-    std::cout << "\n<delete>" << std::endl;
-    delete animal;
+  std::cout << "\n========ANIMAL========" << std::endl;
+  std::cout << "<create>" << std::endl;
+  const Animal *animal = new Animal();
+  std::cout << "\ntype : " << animal->getType() << std::endl;
+  std::cout << "sound: ";
+  animal->makeSound();
+  std::cout << "\n<delete>" << std::endl;
+  delete animal;
 
-    std::cout << "\n========DOG========" << std::endl;
-    std::cout << "<create>" << std::endl;
-    const Animal *dog = new Dog();
-    std::cout << "\ntype : " << dog->getType() << std::endl;
-    std::cout << "sound: ";
-    dog->makeSound();
-    dog->setIdeas(0, "Dog's idea");
-    std::cout << "ideas: " << dog->getIdeas(0) << std::endl;
-    std::cout << "\n<delete>" << std::endl;
-    delete dog;
+  std::cout << "\n========DOG========" << std::endl;
+  std::cout << "<create>" << std::endl;
+  const Animal *dog = new Dog();
+  std::cout << "\ntype : " << dog->getType() << std::endl;
+  std::cout << "sound: ";
+  dog->makeSound();
+  dog->setIdeas(0, "Dog's idea");
+  std::cout << "ideas: " << dog->getIdeas(0) << std::endl;
+  std::cout << "\n<delete>" << std::endl;
+  delete dog;
 
-    std::cout << "\n========CAT========" << std::endl;
-    std::cout << "<create>" << std::endl;
-    const Animal *cat = new Cat();
-    std::cout << "\ntype : " << cat->getType() << std::endl;
-    std::cout << "sound: ";
-    cat->makeSound();
-    cat->setIdeas(0, "Cat's idea");
-    std::cout << "ideas: " << cat->getIdeas(0) << std::endl;
-    std::cout << "\n<delete>" << std::endl;
-    delete cat;
+  std::cout << "\n========CAT========" << std::endl;
+  std::cout << "<create>" << std::endl;
+  const Animal *cat = new Cat();
+  std::cout << "\ntype : " << cat->getType() << std::endl;
+  std::cout << "sound: ";
+  cat->makeSound();
+  cat->setIdeas(0, "Cat's idea");
+  std::cout << "ideas: " << cat->getIdeas(0) << std::endl;
+  std::cout << "\n<delete>" << std::endl;
+  delete cat;
 
-    std::cout << "\n========ABSTRACT DOG========" << std::endl;
-    std::cout << "<create>" << std::endl;
-    const AAnimal *aDog = new ADog();
-    std::cout << "\ntype : " << aDog->getType() << std::endl;
-    std::cout << "sound: ";
-    aDog->makeSound();
-    aDog->setIdeas(0, "Abstract Dog's idea");
-    std::cout << "ideas: " << aDog->getIdeas(0) << std::endl;
-    std::cout << "\n<delete>" << std::endl;
-    delete aDog;
+  std::cout << "\n========ABSTRACT DOG========" << std::endl;
+  std::cout << "<create>" << std::endl;
+  const AAnimal *aDog = new ADog();
+  std::cout << "\ntype : " << aDog->getType() << std::endl;
+  std::cout << "sound: ";
+  aDog->makeSound();
+  aDog->setIdeas(0, "Abstract Dog's idea");
+  std::cout << "ideas: " << aDog->getIdeas(0) << std::endl;
+  std::cout << "\n<delete>" << std::endl;
+  delete aDog;
 
-    std::cout << "\n========ABSTRACT CAT========" << std::endl;
-    std::cout << "<create>" << std::endl;
-    const AAnimal *aCat = new ACat();
-    std::cout << "\ntype : " << aCat->getType() << std::endl;
-    std::cout << "sound: ";
-    aCat->makeSound();
-    aCat->setIdeas(0, "Abstract Cat's idea");
-    std::cout << "ideas: " << aCat->getIdeas(0) << std::endl;
-    std::cout << "\n<delete>" << std::endl;
-    delete aCat;
+  std::cout << "\n========ABSTRACT CAT========" << std::endl;
+  std::cout << "<create>" << std::endl;
+  const AAnimal *aCat = new ACat();
+  std::cout << "\ntype : " << aCat->getType() << std::endl;
+  std::cout << "sound: ";
+  aCat->makeSound();
+  aCat->setIdeas(0, "Abstract Cat's idea");
+  std::cout << "ideas: " << aCat->getIdeas(0) << std::endl;
+  std::cout << "\n<delete>" << std::endl;
+  delete aCat;
 
-    return 0;
+  return 0;
 }

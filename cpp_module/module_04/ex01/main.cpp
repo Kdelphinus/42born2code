@@ -12,25 +12,25 @@
 */
 
 int main() {
-    const Animal *dog = new Dog();
-    const Animal *cat = new Cat();
+  const Animal *dog = new Dog();
+  const Animal *cat = new Cat();
 
-    std::cout << "\n========DOG========" << std::endl;
-    std::cout << "type : " << dog->getType() << std::endl;
-    std::cout << "sound: ";
-    dog->makeSound();
-    dog->setIdeas(0, "Dog's idea");
-    std::cout << "ideas: " << dog->getIdeas(0) << std::endl;
+  std::cout << "\n========DOG========" << std::endl;
+  std::cout << "type : " << dog->getType() << std::endl;
+  std::cout << "sound: ";
+  dog->makeSound();
+  dog->setIdeas(0, "Dog's idea");
+  std::cout << "ideas: " << dog->getIdeas(0) << std::endl;
 
-    std::cout << "\n========CAT========" << std::endl;
-    std::cout << "type : " << cat->getType() << std::endl;
-    std::cout << "sound: ";
-    cat->makeSound();
-    cat->setIdeas(0, "cat's idea");
-    std::cout << "ideas: " << cat->getIdeas(0) << std::endl;
-    std::cout << std::endl;
+  std::cout << "\n========CAT========" << std::endl;
+  std::cout << "type : " << cat->getType() << std::endl;
+  std::cout << "sound: ";
+  cat->makeSound();
+  cat->setIdeas(0, "cat's idea");
+  std::cout << "ideas: " << cat->getIdeas(0) << std::endl;
+  std::cout << std::endl;
 
-    delete dog;
-    delete cat;
-    return 0;
+  delete dog;
+  delete cat;
+  return 0;
 }

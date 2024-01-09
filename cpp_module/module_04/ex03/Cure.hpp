@@ -5,15 +5,15 @@
 #include "ICharacter.hpp"
 
 class Cure : public AMateria {
-    public:
-        Cure();
-        Cure(const Cure &cure);
-        explicit Cure(const std::string &type);
-        Cure &operator=(const Cure &cure);
-        ~Cure();
+ public:
+  Cure();
+  Cure(const Cure &cure);
+  explicit Cure(const std::string &type);
+  Cure &operator=(const Cure &cure);
+  ~Cure();
 
-        AMateria *clone() const;
-        void use(ICharacter &target);
+  AMateria *clone() const;
+  void use(ICharacter &target);
 };
 
 #endif
