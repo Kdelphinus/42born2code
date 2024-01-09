@@ -369,6 +369,10 @@ typedef X<double, 3.14> DoubleX;
 DoubleX x;
 ```
 
+## 고려할 점
+
+vscode codespace에서 컴파일 할 때, ssize_t가 C++98 플래그 때문에 컴파일이 되지 않는다. 
+
 ## 참고 문헌
 
 - [blockdmask, [C++] 템플릿에 관하여 1 (템플릿이란, 함수 템플릿)](https://blockdmask.tistory.com/43)
