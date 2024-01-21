@@ -198,3 +198,4 @@ std::list<std::pair<int, int> > v;
 
 - [42Seoul, cpp module 09](./en.subject.pdf)
 - [팔만코딩경, cpp09 - mergeInsertionSort(ford-johnson algorithm)](https://80000coding.oopy.io/6880ebc0-acb3-4225-809f-37fc419adf71)
+- [인생은 B와 D사이 Code다, MergeInsertionSort를 구현하기 전에](https://tolerblanc.github.io/algorithm/merge-insertion-sort/)
