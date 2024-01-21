@@ -161,8 +161,7 @@ void PmergeMe::dequeMakeChain(size_t pairCount,
 															deque &mainChain,
 															deque &subChain) {
 	dequeIt start = _deque.begin();
-
-	for (size_t i = 0; i < pairCount - 1; i++) {
+	for (size_t i = 0; i < pairCount; i++) {
 		if (i == pairCount - 1 || i % 2)
 			subChain.insert(subChain.end(),
 											start + i * pairSize,
@@ -190,18 +189,14 @@ void PmergeMe::dequeBinaryInsertion(size_t idx,
 	int right = idx + _insertNum;
 	while (left <= right) {
 		int mid = (left + right) / 2;
-		std::cout << "while start" << std::endl;
 		if (mainChain[mid * pairSize] < *subChainIt)
 			left = mid + 1;
 		else
 			right = mid - 1;
-		std::cout << "while end" << std::endl;
 	}
-	std::cout << "before insert" << std::endl;
 	mainChain.insert(mainChainIt + left * pairSize,
 									 subChainIt,
 									 subChainIt + pairSize);
-	std::cout << "after insert" << std::endl;
 	_insertNum++;
 }
 
