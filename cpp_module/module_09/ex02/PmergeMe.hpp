@@ -3,40 +3,73 @@
 
 #include <iostream>
 #include <limits>
-#include <list>
+#include <deque>
 #include <vector>
 #include <cstdlib>
 
-typedef std::pair<int, int> intPair;
-typedef std::list<int>::iterator listIt;
-typedef std::vector<int>::iterator vectorIt;
-typedef std::list<int>::const_iterator listConstIt;
-typedef std::vector<int>::const_iterator vectorConstIt;
+typedef std::deque<unsigned int> deque;
+typedef std::vector<unsigned int> vector;
+typedef std::deque<unsigned int>::iterator dequeIt;
+typedef std::vector<unsigned int>::iterator vectorIt;
 
 class PmergeMe {
  private:
-  std::list<int> _list;
-  std::vector<int> _vector;
+	int _insertNum;
+	int _jacobsthalIndex;
 
-  PmergeMe();
-  PmergeMe(const PmergeMe &pmg);
-  PmergeMe &operator=(const PmergeMe &pmg);
+	deque _deque;
+	vector _vector;
+	vector _jacobsthal;
+
+	PmergeMe();
+	PmergeMe(const PmergeMe &pmg);
+	PmergeMe &operator=(const PmergeMe &pmg);
+
+	void makeJacopsthal();
+	size_t getIndex(size_t idx);
+
+	void vectorMergeInsertion(size_t pairCount, size_t pairSize);
+	void vectorComparePair(size_t pairCount, size_t pairSize);
+	void vectorInsertion(size_t pairCount,
+											 size_t pairSize,
+											 vector &mainChain,
+											 vector &subChain);
+	void vectorMakeChain(size_t pairCount,
+											 size_t pairSize,
+											 vector &mainChain,
+											 vector &subChain);
+	void vectorBinaryInsertion(size_t idx,
+														 size_t pairSize,
+														 vector &mainChain,
+														 vector &subChain);
+
+	void dequeMergeInsertion(size_t pairCount, size_t pairSize);
+	void dequeComparePair(size_t pairCount, size_t pairSize);
+	void dequeInsertion(size_t pairCount,
+											size_t pairSize,
+											deque &mainChain,
+											deque &subChain);
+	void dequeMakeChain(size_t pairCount,
+											size_t pairSize,
+											deque &mainChain,
+											deque &subChain);
+	void dequeBinaryInsertion(size_t pairCount,
+														size_t pairSize,
+														deque &mainChain,
+														deque &subChain);
 
  public:
-  PmergeMe(int ac, char *av[]);
-  ~PmergeMe();
+	PmergeMe(int ac, char *av[]);
+	~PmergeMe();
 
-  void printList() const;
-  void printVector() const;
-  void listMergeInsertion();
-  void vectorMergeInsertion();
+	void compareMergeInsertion();
 
-  class InvalidInputException : public std::exception {
-   public:
-	virtual const char *what() const throw() {
-	  return "Error";
-	}
-  };
+	class InvalidInputException : public std::exception {
+	 public:
+		virtual const char *what() const throw() {
+			return "[Error] Invalid Input";
+		}
+	};
 };
 
 #endif
