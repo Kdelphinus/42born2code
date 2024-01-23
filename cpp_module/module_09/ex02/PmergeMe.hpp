@@ -30,10 +30,7 @@ private:
 
     void vectorMergeInsertion(size_t pairCount, size_t pairSize);
     void vectorComparePair(size_t pairCount, size_t pairSize);
-    void vectorInsertion(size_t pairCount,
-                         size_t pairSize,
-                         vector &mainChain,
-                         vector &subChain);
+    void vectorInsertion(size_t pairCount, size_t pairSize);
     void vectorMakeChain(size_t pairCount,
                          size_t pairSize,
                          vector &mainChain,
@@ -45,10 +42,7 @@ private:
 
     void dequeMergeInsertion(size_t pairCount, size_t pairSize);
     void dequeComparePair(size_t pairCount, size_t pairSize);
-    void dequeInsertion(size_t pairCount,
-                        size_t pairSize,
-                        deque &mainChain,
-                        deque &subChain);
+    void dequeInsertion(size_t pairCount, size_t pairSize);
     void dequeMakeChain(size_t pairCount,
                         size_t pairSize,
                         deque &mainChain,
@@ -63,13 +57,6 @@ public:
     ~PmergeMe();
 
     void compareMergeInsertion();
-
-    class InvalidInputException : public std::exception {
-    public:
-        virtual const char *what() const throw() {
-            return "[Error] Invalid Input";
-        }
-    };
 };
 
 #endif

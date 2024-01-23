@@ -10,7 +10,7 @@ PmergeMe::PmergeMe(int ac, char *av[]) {
     for (int i = 1; i < ac; i++) {
         d = std::atof(av[i]);
         if (d < i_min || d > i_max || d <= 0)
-            throw InvalidInputException();
+            throw std::runtime_error("Invalid input");
         _vector.push_back(static_cast<unsigned int>(d));
         _deque.push_back(static_cast<unsigned int>(d));
     }
@@ -116,22 +116,8 @@ void PmergeMe::vectorBinaryInsertion(size_t idx,
     _insertNum++;
 }
 
-/*
-size_t PmergeMe::getInsertPos(size_t idx) {
-    if (idx < 2)
-        return _jacobsthal[idx];
-    if (idx - 1 == _jacobsthal[_jacobsthalIndex]) {
-        _jacobsthalIndex++;
-        return _jacobsthal[_jacobsthalIndex + 1];
-    }
-    return idx - 1;
-}
-*/
-
-void PmergeMe::vectorInsertion(size_t pairCount,
-                               size_t pairSize,
-                               vector &mainChain,
-                               vector &subChain) {
+void PmergeMe::vectorInsertion(size_t pairCount, size_t pairSize) {
+    vector mainChain, subChain;
     size_t insertPos = 0;
     _insertNum = 0;
     _jacobsthalIndex = 0;
@@ -150,10 +136,9 @@ void PmergeMe::vectorMergeInsertion(size_t pairCount, size_t pairSize) {
     if (pairCount == 1)
         return;
 
-    vector mainChain, subChain;
     vectorComparePair(pairCount, pairSize);
     vectorMergeInsertion(pairCount / 2, pairSize * 2);
-    vectorInsertion(pairCount, pairSize, mainChain, subChain);
+    vectorInsertion(pairCount, pairSize);
 }
 
 void PmergeMe::dequeComparePair(size_t pairCount, size_t pairSize) {
@@ -212,10 +197,8 @@ void PmergeMe::dequeBinaryInsertion(size_t idx,
     _insertNum++;
 }
 
-void PmergeMe::dequeInsertion(size_t pairCount,
-                              size_t pairSize,
-                              deque &mainChain,
-                              deque &subChain) {
+void PmergeMe::dequeInsertion(size_t pairCount, size_t pairSize) {
+    deque mainChain, subChain;
     size_t insertPos = 0;
     _insertNum = 0;
     _jacobsthalIndex = 0;
@@ -234,10 +217,9 @@ void PmergeMe::dequeMergeInsertion(size_t pairCount, size_t pairSize) {
     if (pairCount == 1)
         return;
 
-    deque mainChain, subChain;
     dequeComparePair(pairCount, pairSize);
     dequeMergeInsertion(pairCount / 2, pairSize * 2);
-    dequeInsertion(pairCount, pairSize, mainChain, subChain);
+    dequeInsertion(pairCount, pairSize);
 }
 
 void PmergeMe::compareMergeInsertion() {
