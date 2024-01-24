@@ -4,10 +4,6 @@
 int main() {
   {
 	MutantStack<int> mstack;
-	const MutantStack<int> cmstack;
-
-	mstack.begin();
-	cmstack.begin();
 
 	mstack.push(5);
 	mstack.push(17);
@@ -23,7 +19,7 @@ int main() {
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
 
-	std::cout << "mstack: ";
+	std::cout << "\nmstack: ";
 	while (it != ite) {
 	  std::cout << *it << " ";
 //	  *it = 100;  // iterator 타입은 값을 바꿀 수있다.
@@ -80,7 +76,6 @@ int main() {
 	  ++it;
 	}
 	std::cout << std::endl;
-	std::list<int> s(list);
   }
   return 0;
 }
