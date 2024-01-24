@@ -24,25 +24,6 @@ class BitcoinExchange {
   ~BitcoinExchange();
 
   void printExchange(const char *fileName);
-
-  class DataException : public std::exception {
-   public:
-	virtual const char *what() const throw() {
-	  return "Error: could not find \"data.csv\".";
-	}
-  };
-  class FileException : public std::exception {
-   public:
-	virtual const char *what() const throw() {
-	  return "Error: could not open file.";
-	}
-  };
-  class HeaderException : public std::exception {
-   public:
-	virtual const char *what() const throw() {
-	  return "Error: header must be \"date | value\".";
-	}
-  };
 };
 
 #endif

@@ -22,7 +22,7 @@ void BitcoinExchange::addExchange() {
   file.open("data.csv");
 
   if (!file.is_open())
-	throw FileException();
+	throw std::runtime_error("Error: could not open file.");
 
   std::string line, date, value, delimiter = ",";
   size_t pos;
@@ -130,7 +130,7 @@ void BitcoinExchange::printExchange(const char *fileName) {
 
   file.open(fileName);
   if (!file.is_open())
-	throw FileException();
+	throw std::runtime_error("Error: could not open file.");
 
   std::string line, date, value, delimiter = " | ";
   int i = 0;
@@ -139,7 +139,7 @@ void BitcoinExchange::printExchange(const char *fileName) {
   while (std::getline(file, line)) {
 	if (i == 0) {
 	  if (line != "date | value")
-		throw HeaderException();
+		throw std::runtime_error("Error: header must be \"date | value\".");
 	  ++i;
 	  continue;
 	}

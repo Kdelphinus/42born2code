@@ -35,7 +35,7 @@ void RPN::calculate(char op) {
 	_eq.push(b * a);
   else if (op == '/') {
 	if (a == 0)
-	  throw	RPN::ZeroDivisionException();
+	  throw	std::runtime_error("Error: division by zero");
 	_eq.push(b / a);
   }
 }
@@ -52,10 +52,10 @@ int RPN::solution(const char *eq) {
 	else if (eq_str[i] == '+' || eq_str[i] == '-' || eq_str[i] == '*'
 		|| eq_str[i] == '/') {
 	  if (_eq.size() < 2)
-		throw std::exception();
+		throw std::runtime_error("Error: invalid input");
 	  calculate(eq_str[i]);
 	} else
-	  throw std::exception();
+	  throw std::runtime_error("Error: invalid input");
   }
   return _eq.top();
 }
