@@ -10,65 +10,28 @@ class Span {
   unsigned int _n;
   std::vector<int> _v;
   Span();
+
  public:
-  Span(unsigned int n) : _n(n) {};
-  Span(const Span &span) : _n(span._n) {
-	std::copy(span._v.begin(), span._v.end(), _v.begin());
-  };
-  Span &operator=(const Span &span) {
-	if (this != &span) {
-	  _n = span._n;
-	  _v.clear();
-	  std::copy(span._v.begin(), span._v.end(), _v.begin());
-	}
-	return *this;
-  };
-  ~Span() {};
+  Span(unsigned int n);
+  Span(const Span &span);
+  Span &operator=(const Span &span);
+  ~Span();
 
-  void addNumber(int n) {
-	if (_v.size() == _n)
-	  throw FullException();
-	_v.push_back(n);
-  };
+  void addNumber(int n);
+  void addNumber(int begin, int end);
+  template<typename T>
+  void addNumber(T begin, T end) {
+    if (end < begin)
+      throw std::runtime_error("Error: invalid input");
+    if (_v.size() + (end - begin) > _n)
+      throw std::runtime_error("Span is full");
+    for (T it = begin; it != end; ++it) {
+      _v.push_back(*it);
+    }
+  }
 
-  // TODO : iterator를 사용해서 구현하기(주영이 깃허브 참고)
-  void addNumber(int begin, int end) {
-	if (end < begin || _v.size() + (end - begin) > _n)
-	  throw FullException();
-	for (int i = begin; i < end; i++) {
-	  _v.push_back(i);
-	}
-  };
-
-  int shortestSpan() {
-	if (_v.size() < 2)
-	  throw NotEnoughElementsException();
-	std::vector<int> tmp(_v);
-	std::sort(tmp.begin(), tmp.end());
-	int min = tmp[1] - tmp[0];
-	for (std::vector<int>::iterator it = tmp.begin() + 1; it != tmp.end(); ++it)
-	  min = std::min(min, *it - *(it - 1));
-	return min;
-  };
-  int longestSpan() {
-	if (_v.size() < 2)
-	  throw NotEnoughElementsException();
-	return *std::max_element(_v.begin(), _v.end())
-		- *std::min_element(_v.begin(), _v.end());
-  };
-
-  class FullException : public std::exception {
-   public:
-	virtual const char *what() const throw() {
-	  return "Span is full";
-	}
-  };
-  class NotEnoughElementsException : public std::exception {
-   public:
-	virtual const char *what() const throw() {
-	  return "Not enough elements";
-	}
-  };
+  int shortestSpan();
+  int longestSpan();
 };
 
 #endif
