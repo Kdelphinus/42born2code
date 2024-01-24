@@ -1,1 +1,13 @@
-version: 
+version: '3.9'
+
+services:
+  mariadb:
+    build: ./requirements/mariadb
+    container_name: mariadb
+    restart: on-failure
+    volumes:
+      - ./srcs/mariadb:/var/lib/mysql
+    env_file:
+      - .env
+    expose:
+      - 3306

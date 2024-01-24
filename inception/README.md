@@ -10,7 +10,7 @@
 - [개념](#개념)
     - [Docker](#docker)
     - [Container](#container)
-    - [Imgae](#imgae)
+    - [Image](#image)
     - [레이어 저장방식](#레이어-저장방식)
     - [Dockerfile](#dockerfile)
     - [Docker-compose](#docker-compose)
@@ -22,7 +22,9 @@
     - [daemon off](#daemon-off)
 - [명령어](#명령어)
     - [docker 이미지 생성 및 실행](#docker-이미지-생성-및-실행)
-    - [nginx ssl 버전 확인](#nginx-ssl-버전-확인)
+    - [nginx](#nginx)
+      - [nginx config 관련](#nginx-config-관련)
+      - [nginx ssl 버전 확인](#nginx-ssl-버전-확인)
     - [mariadb 관련](#mariadb-관련)
         - [데이터베이스 초기화](#데이터베이스-초기화)
         - [데이터베이스 서버 동작 및 설정 제어](#데이터베이스-서버-동작-및-설정-제어)
@@ -115,7 +117,7 @@
 - 격리된 공간에서 프로세스가 동작하는 기술
 - 기존 가상화 대상이었던 OS 대신 프로세스를 격리하는 방식을 `리눅스 컨테이너`라고 한다.
 
-### Imgae
+### Image
 
 - 컨테이너 실행에 필요한 파일과 설정값 등을 포함하고 있는 것
 - 상태값을 가지지 않고 변하지 않는다.
@@ -358,7 +360,16 @@ $ docker stop {CONTAINER_NAME}
 $ docker rmi {IMAGE_NAME}
 ```
 
-### nginx ssl 버전 확인
+### nginx
+
+#### nginx config 관련
+
+```nginx configuration
+listen 443 ssl;  # ipv4 443 포트로 ssl 연결
+listen [::]:443 ssl;  # ipv6 주소로 ssl 연결
+```
+
+#### nginx ssl 버전 확인
 
 ```shell
 $ openssl s_client -connect localhost:{PORT_NUMBER} -tls1_2  # TLSv1.2 확인
@@ -383,6 +394,7 @@ $ mysql_install_db {OPTIONS}
 - `--basedir={BASE_DIR}`: mysql 설치 디렉토리 지정, 실행 파일과 라이브러리 파일이 해당 디렉토리에 생성된다.
 - `--force`: 데이터 디렉토리가 이미 존재하는 경우에도 강제로 초기화
 - `--rpm`: RPM 패키지를 설치할 때 사용
+- `--skip-test-db`: 테스트 데이터베이스를 생성하지 않음
 
 더 많은 옵션은 [공식문서](https://mariadb.com/kb/en/mariadb-install-db/)를 참고하면 된다.
 
