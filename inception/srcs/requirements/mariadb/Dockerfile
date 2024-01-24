@@ -1,16 +1,14 @@
-FROM alpine:3.17
+FROM alpine:3.18
 
-RUN apk update && apk upgrade && apk add mariadb mariadb-client \
+RUN apk update && apk upgrade && apk add mariadb mariadb-client dumb-init \
     && rm -rf /var/cache/apk/* \
-    && mkdir -p /var/run/mysqld \
-    && chmod 777 /var/run/mysqld; \
-    sed -i "s|\[mysqld\]|\[mysqld\]\nskip-host-cache\nskip-name-resolve\nbind-address=0.0.0.0|g" /etc/my.cnf.d/mariadb-server.cnf; \
-    sed -i "s|skip-networking|skip-networking=0|g" /etc/my.cnf.d/mariadb-server.cnf; \
-    mysql_install_db --user=mysql --datadir=/var/lib/mysql
+    && sed -i "s|\[mysqld\]|\[mysqld\]\nskip-host-cache\nskip-name-resolve\nbind-address=0.0.0.0|g" /etc/my.cnf.d/mariadb-server.cnf \
+    && sed -i "s|skip-networking|skip-networking=0|g" /etc/my.cnf.d/mariadb-server.cnf
 
 EXPOSE 3306
 
-COPY ./conf/setup.sh .
-RUN sh setup.sh && rm setup.sh
-USER mysql
-CMD ["mysqld"]
+COPY ./tools/configuration.sh .
+
+# docker-compose에서 지정한 명령어와 관계없이 항상 실행
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["sh", "configuration.sh"]
