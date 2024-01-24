@@ -57,5 +57,7 @@ int RPN::solution(const char *eq) {
 	} else
 	  throw std::runtime_error("Error: invalid input");
   }
+  if (_eq.size() != 1)
+    throw std::runtime_error("Error: invalid input");
   return _eq.top();
 }

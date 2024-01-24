@@ -10,7 +10,7 @@ int main(int ac, char *av[]) {
 	RPN rpn;
 	std::cout << rpn.solution(av[1]) << std::endl;
   } catch (std::exception &e) {
-	std::cout << "Error: invalid input" << std::endl;
+	std::cout << e.what() << std::endl;
 	return 1;
   }
   return 0;
