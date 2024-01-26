@@ -182,6 +182,10 @@ $> ./PmergeMe `jot -r 3000 1 100000 | tr '\n' ' '`
 
 ## 주의할 점
 
+### ex00
+
+- data.csv에 대해 나는 완전 무결하다고 가정했으나 평가자에 따라 그걸 인정하지 않을 수도 있다.
+
 ### ex02
 
 ```c++
@@ -193,6 +197,9 @@ std::list<std::pair<int, int>> v;
 # >>이 비트 연산과 혼동이 있을 수 있기에 한 칸 띄어야 함
 std::list<std::pair<int, int> > v;
 ```
+
+- vector와 deque 속도 중 vector가 더 빠르다. 저장하는 방식은 vector가 연속적으로 저장하기에 반복적으로 길이가 변하는 삽입과정이 있으면 느려져야 하나 여기서 구현한
+  ford-johnson algorithm은 길이 변화 없이 덮어쓰기 때문에 순차적인 vector가 오히려 빠른 것으로 보인다.
 
 ## References
 
