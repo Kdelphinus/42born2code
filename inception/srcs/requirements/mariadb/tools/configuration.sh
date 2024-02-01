@@ -21,3 +21,5 @@ if [ ! -e "/run/mysqld/mysqld.sock" ]; then
     mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "FLUSH PRIVILEGES;"
     mysqladmin -uroot -p"$MYSQL_ROOT_PASSWORD" shutdown
 fi
+
+exec mysqld

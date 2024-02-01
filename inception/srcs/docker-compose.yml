@@ -1,60 +1,58 @@
-version: '3.9'
-
 services:
   mariadb:
     build: ./requirements/mariadb
-    image: mariadb
     container_name: mariadb
     env_file: .env
     networks:
       - inception
     volumes:
-      - /home/myko/data/mysql:/var/lib/mysql
+      - db-volume:/var/lib/mysql
     ports:
       - "3306:3306"
-    restart: on-failure
+    restart: always
 
   wordpress:
     build: ./requirements/wordpress
-    image: wordpress
     container_name: wordpress
     env_file: .env
     networks:
       - inception
     volumes:
-      - /home/myko/data/www:/var/www
+      - wp-volume:/var/www
     expose:
       - "9000"
     depends_on:
       - mariadb
-    restart: on-failure
+    restart: always
 
   nginx:
     build: ./requirements/nginx
-    image: nginx
     container_name: nginx
     networks:
       - inception
     volumes:
-      - /home/myko/data/www:/var/www
+      - wp-volume:/var/www
     ports:
       - "443:443"
     depends_on:
       - wordpress
-    restart: on-failure
+      - mariadb
+    restart: always
 
 networks:
   inception:
+    driver: bridge
 
-  #volumes:
-  #  db-volume:
-  #    driver_opts:
-  #      type: none
-  #      o: bind
-  #      device: /home/myko/data/mysql
-#  wp-volume:
-#    driver_opts:
-#      type: none
-#      o: bind
-#      device: /home/myko/data/www
-#  mine:
+volumes:
+  db-volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/myko/data/mysql
+  wp-volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/myko/data/www

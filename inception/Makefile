@@ -1,63 +1,25 @@
-# **************************************************************************** #
-# ProgramName && Files                                                         #
-# **************************************************************************** #
-NAME = 
-INC_FILES = 
-SRC_FILES = 
-# **************************************************************************** #
-# Directories && Paths                                                         #
-# **************************************************************************** #
-INC_DIR = ./
-SRC_DIR = ./srcs/
-OBJ_DIR = ./obj/
-DEP_DIR = ./dep/
-SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES))
-OBJS = $(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
-DEPS = $(addprefix $(DEP_DIR), $(SRC_FILES:.cpp=.d))
-# **************************************************************************** #
-# Compiler && flags                                                            #
-# **************************************************************************** #
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror
-INCFLAGS = -I $(INC_DIR)
-DEPFLAGS = -MMD -MF $(DEP_DIR)$(@F:.o=.d)
-STD_FLAG = -std=c++98
-# **************************************************************************** #
-# Output controls                                                              #
-# **************************************************************************** #
-RST =	\033[0m
-GRN =	\033[1;32m
-CYN =	\033[1;36m
-BCY =	\033[1;96m
-HOM =	\033[A
-CLR =	\033[K
-# **************************************************************************** #
-# Rules                                                                        #
-# **************************************************************************** #
-.DEFAULT_GOAL = all
--include $(DEPS)
-all: $(NAME)
+all:
+	mkdir -p /home/myko/data/wordpress
+	mkdir -p /home/myko/data/mariadb
+	docker-compose -f ./srcs/docker-compose.yml up --detach
 
-$(NAME): $(OBJS)
-	@$(CXX) $(OBJS) $(CXXFLAGS) $(STD_FLAG) -o $(NAME)
-	@echo "$(CLR)$(GRN)$(NAME) compiled!$(RST)"
+build:
+	mkdir -p /home/myko/data/wordpress
+	mkdir -p /home/myko/data/mariadb
+	docker-compose -f ./srcs/docker-compose.yml up --detach --build
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
-	@mkdir -p $(OBJ_DIR) $(DEP_DIR)
-	@$(CXX) $(DEPFLAGS) $(INCFLAGS) $(CXXFLAGS) $(STD_FLAG) -c $< -o $@
-	@echo "$(CLR)$(GRN)$(NAME) compiling... $(BCY)$<$(RST)$(HOM)"
+down:
+	docker-compose -f ./srcs/docker-compose.yml down
 
-clean:
-	@rm -rf $(OBJ_DIR) $(DEP_DIR)
-	@echo "$(GRN)$(NAME) cleaned!$(RST)"
+re: down
+	docker-compose -f ./srcs/docker-compose.yml up --detach --build
 
-fclean: clean
-	@rm -rf $(NAME)
-	@echo "$(HOM)$(GRN)$(NAME) fcleaned!$(RST)"
+clean: down
+	docker system prune -a
 
-re:
-	@make fclean
-	@make all
-	@echo "$(HOM)$(GRN)$(NAME) remade!$(RST)"
+fclean:
+	docker-compose -f ./srcs/docker-compose.yml down -v
+	docker system prune --all --force --volumes
+	sudo rm -rf /home/myko/data
 
-.PHONY: all clean fclean re
+.PHONY	: all build down re clean fclean
