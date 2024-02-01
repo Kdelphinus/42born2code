@@ -1,6 +1,7 @@
 FROM alpine:3.18
 
-RUN apk update && apk upgrade && apk add --no-cache nginx openssl dumb-init
+RUN apk update && apk upgrade && apk add --no-cache nginx openssl dumb-init  \
+    && rm -rf /var/cache/apk/*
 
 COPY ./conf/nginx.conf /etc/nginx/http.d/nginx.conf
 COPY ./tools/configuration.sh .
