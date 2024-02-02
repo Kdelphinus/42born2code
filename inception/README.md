@@ -9,17 +9,19 @@
         - [그 외 주의사항](#그-외-주의사항)
 - [개념](#개념)
     - [Docker](#docker)
-    - [Container](#container)
-    - [Image](#image)
-    - [레이어 저장방식](#레이어-저장방식)
-    - [Dockerfile](#dockerfile)
-    - [Docker-compose](#docker-compose)
+      - [Container](#container)
+      - [Image](#image)
+      - [레이어 저장방식](#레이어-저장방식)
+      - [Dockerfile](#dockerfile)
+      - [Docker-compose](#docker-compose)
+      - [Volume](#volume)
     - [PID 1](#pid-1)
         - [docker와의 관계](#docker와의-관계)
-- [자잘한 설명](#자잘한-설명)
-    - [apk 관련](#apk-관련)
+    - [Alpine Linux](#alpine-linux)
+      - [apk](#apk)
     - [openssl](#openssl)
     - [daemon off](#daemon-off)
+    - [서버 3계층 구조(3-tier architecture)](#서버-3계층-구조3-tier-architecture)
 - [명령어](#명령어)
     - [docker 이미지 생성 및 실행](#docker-이미지-생성-및-실행)
     - [nginx](#nginx)
@@ -101,6 +103,8 @@
 > 보안상의 이유로 모든 자격 증명, API 키, 환경 변수 등은 .env 파일에 로컬로 저장하고 git에선 무시해야 한다.
 > 공개적으로 저장된 자격 증명을 사용하면 0점을 받게 된다.
 
+---
+
 ## 개념
 
 ### Docker
@@ -110,28 +114,62 @@
 - 백엔드 프로그램, 데이터베이스 서버, 메시지 큐 등 어떤 프로그램도 컨테이너로 추상화 가능
 - 그리고 어떤 환경에서도 실행 가능
 
+<details>
+<summary>docker option</summary>
+<div markdown="1">
+
 ![docker option](img/docker_option.png)
 
-### Container
+</div>
+</details>
+
+- docker는 리눅스 컨테이너를 사용하여 프로세스를 격리하고, 리눅스 커널을 공유한다.
+- 그렇기에 linux kernel에 있는 기능을 사용하여 컨테이너를 생성한다.
+
+<details>
+<summary>docker container의 기능</summary>
+<div markdown="1">
+
+1. chroot(Change Root Directory) - 프로세스 격리
+   - chroot를 통해 특정 디렉토리 경로를 root로 지정하여 환경 분리가 가능
+   - 상위 디렉토리에 프로세스가 접근할 수 없도록 설정하는 것으로 해당 경로에 프로세스를 격리
+   - 즉, `bin` , `boot` , `dev` 폴더 등을 새로 만들어서 가짜 루트 디렉토리를 만들어 프로세스를 격리하는데 사용한다.
+
+2. namespace - 컨테이너 분리
+    - 6가지 독립 기능을 지원한다.
+      - pid(Process ID) - 독립적인 프로세스 공간 할당
+      - net(Network) - namespace 간의 네트워크 격리(중복 포트 바인딩 등)
+      - ipc(InterProcess Communication) - 프로세스 간 통신 격리
+      - mnt(Mount) - 호스트 파일시스템에 구애받지 않고 독립적으로 파일 시스템을 관리
+      - uts(UNIX Time-sharing System) - 호스트 이름과 도메인 이름 격리
+      - user - 사용자와 그룹 격리
+
+3. cgroup(Control Group) - 자원 제한
+    - 자원에 대한 제어를 가능하게 해주는 리눅스 커널 기능
+    - CPU, 메모리, 디스크 I/O, 네트워크, device 노드(/dev/) 등을 제어할 수 있다.
+
+</div>
+</details>
+
+#### Container
 
 - 격리된 공간에서 프로세스가 동작하는 기술
 - 기존 가상화 대상이었던 OS 대신 프로세스를 격리하는 방식을 `리눅스 컨테이너`라고 한다.
 
-### Image
+#### Image
 
 - 컨테이너 실행에 필요한 파일과 설정값 등을 포함하고 있는 것
 - 상태값을 가지지 않고 변하지 않는다.
 - 컨테이너는 이미지를 실행한 상태라고 볼 수 있으며 추가되거나 변하는 값은 컨테이너에 저장된다.
 
-### 레이어 저장방식
+#### 레이어 저장방식
 
 - 이미지는 여러 개의 읽기 전용 레이어로 구성되며 이 레이어를 바탕으로 파일 시스템을 구성한다.
 - 그렇기에 기존 이미지에 파일을 추가해도 레이어 하나만 추가하기에 굉장히 효율적이다.
 
-### Dockerfile
+#### Dockerfile
 
 ```dockerfile
-
 # vertx/vertx3 debian version
 FROM subicura/vertx3:3.3.1
 MAINTAINER chungsub.kim@purpleworks.co.kr
@@ -170,14 +208,16 @@ CMD ["start.sh"]
 > 위의 설정으로 실행하면 `python app.py --debug` 명령어가 실행된다.
 > 하지만 `docker run` 명령어로 컨테이너를 시작할 때, `--debug` 대신 다른 인수를 지정할 수도 있다.
 
-### Docker compose
+#### Docker compose
 
 - 단일 서버에서 여러 개의 컨테이너를 하나의 서비스로 정의해 묶음으로 관리할 수 있는 작업 환경을 제공하는 도구
 - 여러 개의 컨테이너가 하나의 어플리케이션으로 동작할 때 각각의 컨테이너 테스트를 위해 일일이 컨테이너를 실행하는 것은 매우 번거롭기 때문에 Docker compose를 사용한다.
 - docker compose는 여러 개의 컨테이너의 옵션과 환경을 정의한 파일을 읽어 컨테이너를 순차적으로 생성하는 방식으로 동작한다.
 - 이때, 각 컨테이너의 의존성, 네트워크, 볼륨 등과 컨테이너의 수 등도 조절할 수 있다.
 
-#### docker-compose.yml
+<details>
+<summary>docker-compose.yml</summary>
+<div markdown="1">
 
 ```yaml
 version: '3.9' # yaml 파일 포맷 버전
@@ -220,6 +260,9 @@ networks:
 
 > yaml 파일에서 들여쓰기는 tab이 아닌 공백 2칸으로 한다.
 
+</div>
+</details>
+
 - docker-compose.yml은 기존 run 명령어를 yaml 파일로 변환한 것이다.
 - 위 docker-compose.yml 파일은 wordpress와 mysql 두 개의 서비스가 존재하고 볼륨을 db, 네트워크를 wordpress로 정의하였다.
 
@@ -256,10 +299,17 @@ $ docker-compose down -v
 $ docker-compose ps통
 ```
 
+#### Volume
+- Container의 생명주기와 관계없이 데이터를 영구적으로 저장할 수 있는 옵션 중 하나로 다른 방법으론 [Bind mounts](https://velog.io/@haeny01/Docker-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B4%80%EB%A6%AC1-Volume-%EA%B3%BC-Bind-mounts)가 있다.
+- 여러 개의 컨테이너에서 동일한 호스트 디렉토리에 접근할 수 있도록 마운트 할 수 있다. 그렇기에 컨테이너 간 데이터 공유가 가능하다.
+
+---
+
 ### PID 1
 
 - 주로 시스템을 시작하고 종료하는데 사용되는 init process
 - 커널이 첫 번째로 만든 프로세스
+- 해당 프로세스를 통해 시그널을 처리한다.
 - 모든 프로세스는 init 프로세스를 부모 프로세스로 가진다. (고아 프로세스도 입양한다.)
 - 모든 스레드는 kthreadd(PID 2)를 부모 프로세스로 가진다.
 
@@ -281,9 +331,31 @@ ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["sh", "/scripts/run.sh"]
 ```
 
-## 자잘한 설명
+---
 
-### apk 관련
+### Alpine Linux
+
+- 경량의 컨테이너에 기반해 서비스를 운영하는 마이크로서비스 아키텍처를 가능하게 하는 os
+- `musl libc` , `BusyBox` 로 구성되어 있다.
+
+<details>
+<summary>musl libc, BusyBox 설명</summary>
+<div markdown="1">
+
+- musl libc
+  - 경량의 임베디드 리눅스를 위한 신뢰성 있는 표준 C 라이브러리
+  - C 표준 또는 POSIX의 표준을 준수하여 작성된 프로그램을 실행될 때 실제로 동작하고 사용하게 되는 연관 프로그램 라이브러리
+- BusyBox
+  - UNIX 계열 OS 내에 공통 유틸리티들 중에 서버 운영에 필요한 공통적인 패키지들만 모은 초경량 패키지
+  - 리눅스 커널과 핵심 바이너리, 라이브러리만 포함
+  - 그렇기에 yum과 같은 패키지 관리자가 없어 실행 파일을 직접 빌드해야 한다.
+  - 실행 파일을 여러 파일이 아닌 하나의 실행 파일로 만들어 용량을 줄이고, 리눅스 시스템을 더욱 경량화시킨다.
+  - 일반적으로 임베디드 장치에 사용하기 위해 만듬
+
+</div>
+</details>
+
+#### apk
 
 `alpine`에는 `apt` 대신 `apk`로 패키지를 관리한다.
 
@@ -330,6 +402,40 @@ openssl openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
 
 - `daemon off`는 nginx가 백그라운드에서 실행되지 않도록 한다.
 - 이를 통해 `nginx`가 PID 1로 실행되고 nginx 자체 신호 핸들러를 사용할 수 있게 된다.
+
+---
+
+### 서버 3계층 구조(3-tier architecture)
+
+- 3계층 구조는 어떤 플랫폼을 3계층으로 나눠 별도의 논리적/물리적 장치에 구축 및 운영하는 형태를 말한다.
+- 다층 구조(Multi-tier / n-tier architecture)의 일종이다.
+- Inception에서는 아래와 같은 세 가지 계층으로 분류한다.
+  - Presentation Layer: 사용자 인터페이스(ex. wordpress, php-fpm)
+    - 사용자가 직접 마주하게 되는 계층
+    - 주로 UI를 지원하기에 이 외에 로직은 처리하지 않는다.
+    - GUI, 프론트엔드 등이 여기에 해당한다.
+  - Application Layer: 비즈니스 로직 계층 혹은 트랜잭션 계층(ex. nginx)
+    - 사용자의 요청을 처리하고 가공하는 계층
+    - 프레젠테이션 계층 입장에선 서버처럼, 데이터 계층 입장에선 클라이언트처럼 동작
+    - 미들웨어나 백엔드 등이 여기에 해당한다.
+  - Data Layer: 데이터 저장 계층(ex. mariadb)
+    - 데이터를 저장하고 관리하는 계층
+    - 여러 DBMS들을 사용한다.
+    - 데이터 계층, 백엔드가 여기에 해당한다.
+
+- 장점
+  - 각 계층이 독립적으로 구성되어 있어 유지보수가 용이하다.
+  - 업무 분담이 명확해지고 유지보수가 용이해진다.
+  - 여러 대의 서버를 구축함으로 서버의 부하를 줄일 수 있다.
+  - 특정 계층에 대해서만 서버 업그레이드가 가능하다.
+- 단점
+  - 구축 및 운영에 비용이 많이 든다.
+  - 각 계층 간의 통신이 많아지면서 성능이 저하될 수 있다.
+  - 문제가 발생하는 지점이 증가한다.
+
+=> **서비스 규모 및 사용자 증가에 따라 계층 구조를 고려하여 설계해야 한다.**
+
+---
 
 ## 명령어
 
@@ -465,3 +571,5 @@ FLUSH PRIVILEGES; # 권한 설정을 새로고침해서 현재까지 변경 사�
 - [MariaDB, mysql_install_db](https://mariadb.com/kb/en/mariadb-install-db/)
 - [Server Training/일상, mysql 최적화 하기](https://jy-p.tistory.com/48)
 - [brixxt27 github, inception](https://github.com/brixxt27/inception)
+- [윤주 조의 Notion, Docker & Inception](https://www.notion.so/Docker-9da7d28f9e684b8aa2db195c83301b0b)
+- [haney-dev v.log, Docker 데이터 관리1 - Volume 과 Bind mounts](https://velog.io/@haeny01/Docker-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B4%80%EB%A6%AC1-Volume-%EA%B3%BC-Bind-mounts)
