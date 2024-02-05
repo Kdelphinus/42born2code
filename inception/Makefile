@@ -1,11 +1,11 @@
 all:
-	mkdir -p /home/myko/data/wordpress
-	mkdir -p /home/myko/data/mariadb
+	mkdir -p /home/myko/data/www
+	mkdir -p /home/myko/data/mysql
 	docker-compose -f ./srcs/docker-compose.yml up --detach
 
 build:
-	mkdir -p /home/myko/data/wordpress
-	mkdir -p /home/myko/data/mariadb
+	mkdir -p /home/myko/data/www
+	mkdir -p /home/myko/data/mysql
 	docker-compose -f ./srcs/docker-compose.yml up --detach --build
 
 down:

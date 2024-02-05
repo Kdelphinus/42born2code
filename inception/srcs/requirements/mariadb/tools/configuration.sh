@@ -14,10 +14,13 @@ if [ ! -e "/run/mysqld/mysqld.sock" ]; then
         sleep 1
     done
 
-    #https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html
+    # root 사용자 암호 설정
     mysql -uroot --skip-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
+    # 사용자에게 데이터베이스에 대한 모든 접근 권한 부여
     mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"
+    # 데이터베이스 생성
     mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
+    # 권한 새로고침
     mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -e "FLUSH PRIVILEGES;"
     mysqladmin -uroot -p"$MYSQL_ROOT_PASSWORD" shutdown
 fi

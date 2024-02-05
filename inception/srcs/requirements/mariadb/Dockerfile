@@ -1,6 +1,6 @@
 FROM alpine:3.18
 
-RUN apk update && apk upgrade && apk add --no-cache mariadb mariadb-client dumb-init \
+RUN apk update && apk upgrade && apk add mariadb mariadb-client dumb-init \
     && rm -rf /var/cache/apk/*
 
 COPY ./conf/my.cnf /etc/my.cnf
