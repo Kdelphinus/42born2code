@@ -1,7 +1,9 @@
 services:
   mariadb:
     build: ./requirements/mariadb
+    image: mariadb
     container_name: mariadb
+    pull_policy: never
     env_file: .env
     networks:
       - inception
@@ -13,7 +15,9 @@ services:
 
   wordpress:
     build: ./requirements/wordpress
+    image: wordpress
     container_name: wordpress
+    pull_policy: never
     env_file: .env
     networks:
       - inception
@@ -27,7 +31,9 @@ services:
 
   nginx:
     build: ./requirements/nginx
+    image: nginx
     container_name: nginx
+    pull_policy: never
     networks:
       - inception
     volumes:
