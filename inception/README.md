@@ -596,6 +596,14 @@ FLUSH PRIVILEGES; # 권한 설정을 새로고침해서 현재까지 변경 사�
 
 2023년 9월 기준으로 php7은 apk로 받을 수 없는 듯 하다. php8 버전을 사용해야 한다.
 
+### linux root 관련
+
+```shell
+$ sudo passwd root
+```
+
+위 명령어로 root 비밀번호를 변경할 수 있다. 평가 첫 부분에서 docker를 초기화가 권한에 막힌다면 root 계정으로 접근해서 할 것
+
 ## 참고 문헌
 
 - [42seoul, inception](./en.subject.pdf)
