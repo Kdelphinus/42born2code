@@ -113,7 +113,7 @@
 - 보너스: X
 - 한줄평: 가상 환경 세팅은 어렵지만 중요하다.
 
-## 16. [transcendence](https://github.com/tail-passengers)
+## 16. [transcendence](https://github.com/tail-passengers/tail-passengers)
 - 기간: 2024.02.06 ~ 2024.04.19
 - 개요: 게임, 유저가 있는 웹 페이지 만들기
 - 보너스: 일부
